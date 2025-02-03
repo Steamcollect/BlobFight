@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class BlobVisual : MonoBehaviour
 {
@@ -10,20 +9,26 @@ public class BlobVisual : MonoBehaviour
     [Header("References")]
     [SerializeField] Transform[] points;
     [SerializeField] MeshFilter outlineMeshFilter;
+    [SerializeField] MeshFilter fillMeshFilter;
 
     private Mesh outlineMesh;
+    private Mesh fillMesh;
     private Vector2 blobCenter;
 
     private void Awake()
     {
         outlineMesh = new Mesh();
         outlineMeshFilter.mesh = outlineMesh;
+
+        fillMesh = new Mesh();
+        fillMeshFilter.mesh = fillMesh;
     }
 
     private void Update()
     {
         blobCenter = CalculateBlobCenter();
         UpdateOutlineMesh();
+        UpdateFillMesh();
     }
 
     private Vector2 CalculateBlobCenter()
@@ -63,5 +68,33 @@ public class BlobVisual : MonoBehaviour
 
         outlineMesh.vertices = vertices.ToArray();
         outlineMesh.triangles = triangles.ToArray();
+    }
+
+    private void UpdateFillMesh()
+    {
+        fillMesh.Clear();
+
+        Vector3[] pointsPos = new Vector3[points.Length];
+        for (int i = 0; i < points.Length; i++)
+        {
+            pointsPos[i] = points[i].position;
+        }
+
+        fillMesh.vertices = pointsPos;
+        fillMesh.triangles = DrawFilledTriangles(pointsPos);
+    }
+
+    int[] DrawFilledTriangles(Vector3[] pointsPos)
+    {
+        int triangleAmout = pointsPos.Length - 2;
+        List<int> newTriangles = new List<int>();
+        for (int i = 0; i < triangleAmout; i++)
+        {
+            newTriangles.Add(0);
+            newTriangles.Add(i+2);
+            newTriangles.Add(i+1);
+        }
+
+        return newTriangles.ToArray();
     }
 }
