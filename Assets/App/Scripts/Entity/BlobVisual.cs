@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class BlobVisual : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float pointRadius = 0.5f;
     [SerializeField] float outlineThickness = 0.1f;
 
     [Header("References")]
@@ -45,11 +45,8 @@ public class BlobVisual : MonoBehaviour
 
         for (int i = 0; i < points.Length; i++)
         {
-            Vector2 point = (Vector2)points[i].localPosition;
-            Vector2 dir = (blobCenter + point).normalized * (pointRadius + outlineThickness);
-
-            vertices.Add(point);
-            vertices.Add(point + dir);
+            vertices.Add(points[i].position);
+            vertices.Add((blobCenter + (Vector2)points[i].localPosition + ((Vector2)points[i].localPosition - blobCenter).normalized * outlineThickness) - blobCenter);
         }
 
         for (int i = 0; i < points.Length * 2; i += 2)
@@ -66,10 +63,5 @@ public class BlobVisual : MonoBehaviour
 
         outlineMesh.vertices = vertices.ToArray();
         outlineMesh.triangles = triangles.ToArray();
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(CalculateBlobCenter(), .1f);
     }
 }
