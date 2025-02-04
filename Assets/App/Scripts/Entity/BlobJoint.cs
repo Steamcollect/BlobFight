@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class BlobJoint : MonoBehaviour
 {
@@ -52,6 +50,26 @@ public class BlobJoint : MonoBehaviour
         }
 
         onJointsConnected?.Invoke();
+    }
+
+    public void MoveJointsByTransform(Vector2 newCenterPosition)
+    {
+        Vector2 currentCenter = GetJointsCenter();
+        Vector2 offset = newCenterPosition - currentCenter;
+        foreach (var joint in jointsRb)
+        {
+            joint.transform.position += (Vector3)offset;
+        }
+
+        ResetJoints();
+    }
+    void ResetJoints()
+    {
+        foreach (var joint in joints)
+        {
+            joint.rb.velocity = Vector2.zero;
+            joint.ResetSpringDistance();
+        }
     }
 
     #region SpringJoint

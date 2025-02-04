@@ -1,8 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using System.Drawing;
-using UnityEngine.Windows;
 
 public class BlobMovement : MonoBehaviour
 {
