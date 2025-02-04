@@ -22,7 +22,7 @@ public class SpawnerManager : MonoBehaviour
         for (int i = 0; i < blobs.Length; i++)
         {
             int spawnerIndex = Random.Range(0, spawns.Count);
-            blobs[i].MoveJointsByTransform(spawnPoints[spawnerIndex].position);
+            blobs[i].MoveJointsByTransform(spawns[spawnerIndex].position);
             spawns.RemoveAt(spawnerIndex);
         }
     }
