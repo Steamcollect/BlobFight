@@ -7,9 +7,11 @@ public class BlobVisual : MonoBehaviour
     [SerializeField] float outlineThickness = 0.1f;
 
     [Header("References")]
-    [SerializeField] Transform[] points;
     [SerializeField] MeshFilter outlineMeshFilter;
     [SerializeField] MeshFilter fillMeshFilter;
+
+    [Space(10)]
+    [SerializeField] BlobJoint blobJoint;
 
     private Mesh outlineMesh;
     private Mesh fillMesh;
@@ -34,11 +36,11 @@ public class BlobVisual : MonoBehaviour
     private Vector2 CalculateBlobCenter()
     {
         Vector2 sum = Vector2.zero;
-        foreach (Transform point in points)
+        foreach (Rigidbody2D point in blobJoint.jointsRb)
         {
-            sum += (Vector2)point.position;
+            sum += (Vector2)point.transform.position;
         }
-        return sum / points.Length;
+        return sum / blobJoint.jointsRb.Length;
     }
 
     private void UpdateOutlineMesh()
@@ -48,15 +50,19 @@ public class BlobVisual : MonoBehaviour
         List<Vector3> vertices = new List<Vector3>();
         List<int> triangles = new List<int>();
 
-        for (int i = 0; i < points.Length; i++)
+        for (int i = 0; i < blobJoint.jointsRb.Length; i++)
         {
-            vertices.Add(points[i].position);
-            vertices.Add((blobCenter + (Vector2)points[i].localPosition + ((Vector2)points[i].localPosition - blobCenter).normalized * outlineThickness) - blobCenter);
+            vertices.Add(blobJoint.jointsRb[i].position);
+            vertices.Add(
+                (blobCenter
+                + (Vector2)blobJoint.jointsRb[i].transform.localPosition
+                + ((Vector2)blobJoint.jointsRb[i].transform.localPosition - blobCenter).normalized
+                * outlineThickness) - blobCenter);
         }
 
-        for (int i = 0; i < points.Length * 2; i += 2)
+        for (int i = 0; i < blobJoint.jointsRb.Length * 2; i += 2)
         {
-            int next = (i + 2) % (points.Length * 2);
+            int next = (i + 2) % (blobJoint.jointsRb.Length * 2);
             triangles.Add(i);
             triangles.Add(next);
             triangles.Add(i + 1);
@@ -74,10 +80,10 @@ public class BlobVisual : MonoBehaviour
     {
         fillMesh.Clear();
 
-        Vector3[] pointsPos = new Vector3[points.Length];
-        for (int i = 0; i < points.Length; i++)
+        Vector3[] pointsPos = new Vector3[blobJoint.jointsRb.Length];
+        for (int i = 0; i < blobJoint.jointsRb.Length; i++)
         {
-            pointsPos[i] = points[i].position;
+            pointsPos[i] = blobJoint.jointsRb[i].position;
         }
 
         fillMesh.vertices = pointsPos;
