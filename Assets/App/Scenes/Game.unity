@@ -276,6 +276,10 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 1512705057059886075, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1958119224346039856, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 256
@@ -406,11 +410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417928549951212344, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: inputs.Array.data[0].keys.Array.data[0]
-      value: 275
+      value: 276
       objectReference: {fileID: 0}
     - target: {fileID: 8417928549951212344, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: inputs.Array.data[0].keys.Array.data[1]
-      value: 276
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 8417928549951212344, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: inputs.Array.data[1].keys.Array.data[0]
@@ -1437,6 +1441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1451403421}
     m_Modifications:
+    - target: {fileID: 1512705057059886075, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_Name
       value: Blob_1

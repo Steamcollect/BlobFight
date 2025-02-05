@@ -18,12 +18,49 @@ public class SpawnerManager : MonoBehaviour
 
     private void Start()
     {
-        List<Transform> spawns = new List<Transform>(spawnPoints);
-        for (int i = 0; i < blobs.Length; i++)
+        blobs[0].MoveJointsByTransform(spawnPoints.GetRandom().position);
+        for (int i = 1; i < blobs.Length; i++)
         {
-            int spawnerIndex = Random.Range(0, spawns.Count);
-            blobs[i].MoveJointsByTransform(spawns[spawnerIndex].position);
-            spawns.RemoveAt(spawnerIndex);
+            SpawnBlob(blobs[i]);
         }
+    }
+
+    void SpawnBlob(BlobJoint blob)
+    {
+        Transform bestSpawn = GetFarthestSpawnPoint(blob);
+        if (bestSpawn != null)
+        {
+            blob.MoveJointsByTransform(bestSpawn.position);
+        }
+    }
+
+    Transform GetFarthestSpawnPoint(BlobJoint excludedBlob)
+    {
+        Transform bestSpawn = null;
+        float maxDistance = float.MinValue;
+
+        foreach (Transform spawn in spawnPoints)
+        {
+            float minDistanceToBlobs = float.MaxValue;
+
+            foreach (BlobJoint blob in blobs)
+            {
+                if (blob == excludedBlob) continue;
+
+                float distance = Vector2.Distance(spawn.position, blob.GetJointsCenter());
+                if (distance < minDistanceToBlobs)
+                {
+                    minDistanceToBlobs = distance;
+                }
+            }
+
+            if (minDistanceToBlobs > maxDistance)
+            {
+                maxDistance = minDistanceToBlobs;
+                bestSpawn = spawn;
+            }
+        }
+
+        return bestSpawn;
     }
 }
