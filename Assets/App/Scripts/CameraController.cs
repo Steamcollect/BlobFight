@@ -11,17 +11,19 @@ public class CameraController : MonoBehaviour
     [Space(10)]
     [SerializeField] float moveSmoothTime = 0.2f;
     [SerializeField] float zoomSmoothTime = 0.2f;
-
-    [Header("References")]
-    [SerializeField] List<BlobJoint> blobs;
-    [SerializeField] Camera cam;
-
+    
     private Vector3 velocity = Vector3.zero;
     private float zoomVelocity = 0f;
 
+    [Header("References")]
+    [SerializeField] Camera cam;
+
+    [Space(10)]
+    [SerializeField] RSO_BlobInGame rsoBlobInGame;
+
     private void LateUpdate()
     {
-        if (blobs.Count == 0) return;
+        if (rsoBlobInGame.Value.Count == 0) return;
 
         Vector2 center = CalculateCenter();
         float distance = CalculateMaxDistance(center);
@@ -38,17 +40,17 @@ public class CameraController : MonoBehaviour
     private Vector2 CalculateCenter()
     {
         Vector2 sum = Vector2.zero;
-        foreach (BlobJoint blob in blobs)
+        foreach (BlobJoint blob in rsoBlobInGame.Value)
         {
             sum += blob.GetJointsCenter();
         }
-        return sum / blobs.Count;
+        return sum / rsoBlobInGame.Value.Count;
     }
 
     private float CalculateMaxDistance(Vector2 center)
     {
         float maxDistance = 0f;
-        foreach (BlobJoint blob in blobs)
+        foreach (BlobJoint blob in rsoBlobInGame.Value)
         {
             float distance = Vector2.Distance(center, blob.GetJointsCenter());
             if (distance > maxDistance)

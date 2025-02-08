@@ -17,7 +17,7 @@ public class BlobMovement : MonoBehaviour
     [SerializeField] float angularDrag;
     [Space(5)]
     [SerializeField] float moveSpeed;
-    [SerializeField] float pushForce;
+    [SerializeField] float gravity;
 
     [Header("References")]
     [SerializeField] EntityInput entityInput;
@@ -64,6 +64,7 @@ public class BlobMovement : MonoBehaviour
     {
         blobJoint.SetDrag(drag);
         blobJoint.SetAngularDrag(angularDrag);
+        blobJoint.SetGravity(gravity);
         
         blobJoint.MultiplyInitialSpringDistance(idleDistanceMult);
         blobJoint.SetDamping(idleDamping);

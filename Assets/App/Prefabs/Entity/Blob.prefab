@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 1512705057059886075}
   - component: {fileID: 134132838203943034}
   - component: {fileID: 8938147006757121265}
+  - component: {fileID: -1610601298197935888}
   - component: {fileID: 8222720963693322868}
   m_Layer: 0
   m_Name: Blob
@@ -597,15 +598,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleDistanceMult: 1
-  idleDamping: 0.3
-  idleFrequency: 2
+  idleDamping: 0.5
+  idleFrequency: 4
   openDistanceMult: 2.5
-  openDamping: 1
-  openFrequency: 10
+  openDamping: 0.8
+  openFrequency: 30
   drag: 1
   angularDrag: 1
   moveSpeed: 5
-  pushForce: 5
+  gravity: 7
   entityInput: {fileID: 8417928549951212344}
   blobJoint: {fileID: 8938147006757121265}
 --- !u!114 &134132838203943034
@@ -650,6 +651,20 @@ MonoBehaviour:
   - {fileID: 1461552652359324139}
   - {fileID: 820511166989179409}
   - {fileID: 3851416666136729516}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+--- !u!114 &-1610601298197935888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290518167020313716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f767ee3d0e0aabf4a8aee6bbe0043a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blobJoint: {fileID: 8938147006757121265}
 --- !u!114 &8222720963693322868
 MonoBehaviour:
   m_ObjectHideFlags: 0

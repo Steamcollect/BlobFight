@@ -9,10 +9,11 @@ public class BlobJoint : MonoBehaviour
 
     [Header("References")]
     public Rigidbody2D[] jointsRb;
-    List<Joint> joints = new List<Joint>();
+    List<MyJoint> joints = new List<MyJoint>();
 
-    //[Space(10)]
+    [Space(10)]
     // RSO
+    [SerializeField] RSO_BlobInGame rsoBlobInGame;
     // RSF
     // RSP
 
@@ -22,13 +23,14 @@ public class BlobJoint : MonoBehaviour
 
     private void Start()
     {
+        rsoBlobInGame.Value.Add(this);
         SetupSprings();
     }
     void SetupSprings()
     {
         for (int i = 0; i < jointsRb.Length; i++)
         {
-            Joint joint = jointsRb[i].gameObject.AddComponent<Joint>();
+            MyJoint joint = jointsRb[i].gameObject.AddComponent<MyJoint>();
             joint.rb = jointsRb[i];
             jointsRb[i].freezeRotation = true;
 
@@ -43,7 +45,7 @@ public class BlobJoint : MonoBehaviour
                 float distance = Vector2.Distance(jointsRb[i].transform.position, jointsRb[j].transform.position);
                 spring.distance = distance;
 
-                joint.jointsConnected.Add(new Joint.Spring(distance, spring, jointsRb[j]));
+                joint.jointsConnected.Add(new MyJoint.Spring(distance, spring, jointsRb[j]));
             }
 
             joints.Add(joint);
@@ -52,6 +54,7 @@ public class BlobJoint : MonoBehaviour
         onJointsConnected?.Invoke();
     }
 
+    #region Joint
     public void MoveJointsByTransform(Vector2 newCenterPosition)
     {
         Vector2 currentCenter = GetJointsCenter();
@@ -71,6 +74,18 @@ public class BlobJoint : MonoBehaviour
             joint.ResetSpringDistance();
         }
     }
+
+    public Vector2 GetJointsCenter()
+    {
+        Vector2 sum = Vector2.zero;
+        foreach (Rigidbody2D joint in jointsRb)
+        {
+            sum += (Vector2)joint.transform.position;
+        }
+        return sum / jointsRb.Length;
+    }
+
+    #endregion
 
     #region SpringJoint
     public void MultiplyInitialSpringDistance(float multiplier)
@@ -126,8 +141,30 @@ public class BlobJoint : MonoBehaviour
             joint.SetAngularDrag(angularDrag);
         }
     }
+    public void SetGravity(float gravity)
+    {
+        foreach (var joint in joints)
+        {
+            joint.SetGravity(gravity);
+        }
+    }
     #endregion
 
+    #region Collider
+    public void AddOnCollisionEnterListener(Action<Collision2D> action)
+    {
+        foreach (var joint  in joints)
+        {
+            joint.AddOnCollisionEnterListener(action);
+        }
+    }
+    public void RemoveOnCollisionEnterListener(Action<Collision2D> action)
+    {
+        foreach (var joint  in joints)
+        {
+            joint.RemoveOnCollisionEnterListener(action);
+        }
+    }
     public void SetCollidersPosOffset(float dist)
     {
         Vector2 center = GetJointsCenter();
@@ -137,16 +174,8 @@ public class BlobJoint : MonoBehaviour
             joint.SetCollidPos(center, dist);
         }
     }
+    #endregion
 
-    public Vector2 GetJointsCenter()
-    {
-        Vector2 sum = Vector2.zero;
-        foreach (Rigidbody2D joint in jointsRb)
-        {
-            sum += (Vector2)joint.transform.position;
-        }
-        return sum / jointsRb.Length;
-    }
 
     private void OnValidate()
     {

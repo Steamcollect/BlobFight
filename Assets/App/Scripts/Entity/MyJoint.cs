@@ -1,12 +1,16 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Joint : MonoBehaviour
+public class MyJoint : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Collider2D collid;
 
     public List<Spring> jointsConnected = new();
+
+    public Action<Collision2D> OnCollision;
 
     #region SpringJoint
     public void MultiplyInitialSpringDistance(float multiplier)
@@ -52,13 +56,27 @@ public class Joint : MonoBehaviour
     {
         rb.angularDrag = angularDrag;
     }
+    public void SetGravity(float gravity)
+    {
+        rb.gravityScale = gravity;
+    }
     #endregion
 
+    #region Collision
+    public void AddOnCollisionEnterListener(Action<Collision2D> action)
+    {
+        OnCollision += action;
+    }
+    public void RemoveOnCollisionEnterListener(Action<Collision2D> action)
+    {
+        OnCollision -= action;
+    }
     public void SetCollidPos(Vector2 center, float distance)
     {
         Vector2 dir = (center - (Vector2)rb.transform.localPosition).normalized;
         collid.offset = dir * distance;
     }
+    #endregion
 
     [System.Serializable]
     public class Spring
@@ -75,11 +93,17 @@ public class Joint : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //print(collision.gameObject.name);
+        OnCollision?.Invoke(collision);
+    }
+
     private void OnDrawGizmosSelected()
     {
-        for (int i = 0; i < jointsConnected.Count; i++)
-        {
-            Gizmos.DrawLine(rb.transform.position, jointsConnected[i].rbConnect.transform.position);
-        }
+        //for (int i = 0; i < jointsConnected.Count; i++)
+        //{
+        //    Gizmos.DrawLine(rb.transform.position, jointsConnected[i].rbConnect.transform.position);
+        //}
     }
 }

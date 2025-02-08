@@ -5,11 +5,11 @@ public class SpawnerManager : MonoBehaviour
     //[Header("Settings")]
 
     [Header("References")]
-    [SerializeField] BlobJoint[] blobs;
-    [SerializeField] Transform[] spawnPoints;
-
+    
     //[Space(10)]
     // RSO
+    [SerializeField] RSO_BlobInGame rsoBlobinGame;
+    [SerializeField] RSO_Spawnpoints rsoSpawnPoints;
     // RSF
     // RSP
 
@@ -18,10 +18,25 @@ public class SpawnerManager : MonoBehaviour
 
     private void Start()
     {
-        blobs[0].MoveJointsByTransform(spawnPoints.GetRandom().position);
-        for (int i = 1; i < blobs.Length; i++)
+        Invoke("LateStart", .05f);
+    }
+    void LateStart()
+    {
+        if (rsoBlobinGame.Value.Count == 0)
         {
-            SpawnBlob(blobs[i]);
+            Debug.LogError("You havnt any blob in the scene");
+            return;
+        }
+        if (rsoSpawnPoints.Value.Count == 0)
+        {
+            Debug.LogError("You havnt any spawnpoint in the scene");
+            return;
+        }
+
+        rsoBlobinGame.Value[0].MoveJointsByTransform(rsoSpawnPoints.Value.GetRandom().position);
+        for (int i = 1; i < rsoBlobinGame.Value.Count; i++)
+        {
+            SpawnBlob(rsoBlobinGame.Value[i]);
         }
     }
 
@@ -39,11 +54,11 @@ public class SpawnerManager : MonoBehaviour
         Transform bestSpawn = null;
         float maxDistance = float.MinValue;
 
-        foreach (Transform spawn in spawnPoints)
+        foreach (Transform spawn in rsoSpawnPoints.Value)
         {
             float minDistanceToBlobs = float.MaxValue;
 
-            foreach (BlobJoint blob in blobs)
+            foreach (BlobJoint blob in rsoBlobinGame.Value)
             {
                 if (blob == excludedBlob) continue;
 
