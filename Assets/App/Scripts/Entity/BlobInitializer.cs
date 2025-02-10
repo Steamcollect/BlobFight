@@ -26,6 +26,8 @@ public class BlobInitializer : MonoBehaviour
 
     private void Awake()
     {
+        if (rsoBlobInGame.Value == null) rsoBlobInGame.Value = new();
+
         if(rsoBlobInGame.Value.Count >= blob.Length)
         {
             Destroy(gameObject);

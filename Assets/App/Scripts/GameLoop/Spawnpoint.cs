@@ -16,6 +16,15 @@ public class Spawnpoint : MonoBehaviour
 
     private void Start()
     {
+        if (rsoSpawnpoints.Value == null)
+        {
+            rsoSpawnpoints.Value = new();
+        }
         rsoSpawnpoints.Value.Add(transform);
+    }
+
+    private void OnDisable()
+    {
+        rsoSpawnpoints.Value.Remove(transform);
     }
 }
