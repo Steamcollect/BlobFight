@@ -41,18 +41,18 @@ public class BlobMovement : MonoBehaviour
     }
     private void OnDisable()
     {
-        entityInput.GetInput("Jump").OnKeyDown -= OpenBlob;
-        entityInput.GetInput("Jump").OnKeyUp -= CloseBlob;
-        entityInput.GetInput("Move").OnUpdateFloat -= Move;
+        entityInput.compressDownInput -= OpenBlob;
+        entityInput.compressUpInput -= CloseBlob;
+        entityInput.moveInput -= Move;
 
         blobJoint.onJointsConnected -= SetupJoint;
     }
 
     private void Start()
     {
-        entityInput.GetInput("Jump").OnKeyDown += OpenBlob;
-        entityInput.GetInput("Jump").OnKeyUp += CloseBlob;
-        entityInput.GetInput("Move").OnUpdateFloat += Move;
+        entityInput.compressDownInput += OpenBlob;
+        entityInput.compressUpInput += CloseBlob;
+        entityInput.moveInput += Move;
     }
 
     private void FixedUpdate()

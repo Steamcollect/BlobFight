@@ -8,7 +8,9 @@ public class BlobVisual : MonoBehaviour
 
     [Header("References")]
     [SerializeField] MeshFilter outlineMeshFilter;
+    [SerializeField] MeshRenderer outlineRenderer;
     [SerializeField] MeshFilter fillMeshFilter;
+    [SerializeField] MeshRenderer fillRenderer;
 
     [Space(10)]
     [SerializeField] BlobJoint blobJoint;
@@ -24,6 +26,17 @@ public class BlobVisual : MonoBehaviour
 
         fillMesh = new Mesh();
         fillMeshFilter.mesh = fillMesh;
+    }
+
+    public void Setup(BlobColor colors)
+    {
+        Material mat = new Material(outlineRenderer.material);
+        mat.color = colors.outlineColor;
+        outlineRenderer.material = mat;
+
+        mat = new Material(fillRenderer.material);
+        mat.color = colors.fillColor;
+        fillRenderer.material = mat;
     }
 
     private void Update()
@@ -89,7 +102,6 @@ public class BlobVisual : MonoBehaviour
         fillMesh.vertices = pointsPos;
         fillMesh.triangles = DrawFilledTriangles(pointsPos);
     }
-
     int[] DrawFilledTriangles(Vector3[] pointsPos)
     {
         int triangleAmout = pointsPos.Length - 2;
@@ -104,12 +116,12 @@ public class BlobVisual : MonoBehaviour
         return newTriangles.ToArray();
     }
 
-    public void ShowVisual()
+    public void Show()
     {
         outlineMeshFilter.gameObject.SetActive(true);
         fillMeshFilter.gameObject.SetActive(true);
     }
-    public void HideVisual()
+    public void Hide()
     {
         outlineMeshFilter.gameObject.SetActive(false);
         fillMeshFilter.gameObject.SetActive(false);

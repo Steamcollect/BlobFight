@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d3ec124ce4f1c49afa993d92e69f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rsoBlobinGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rsoSpawnpoints: {fileID: 11400000, guid: d4cdf6f7c8bfe6848815f3d96432d7b6, type: 2}

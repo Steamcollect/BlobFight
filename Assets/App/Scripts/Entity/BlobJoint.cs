@@ -13,17 +13,16 @@ public class BlobJoint : MonoBehaviour
 
     [Space(10)]
     // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
     // RSF
     // RSP
 
     //[Header("Input")]
     //[Header("Output")]
+
     public Action onJointsConnected;
 
     private void Start()
     {
-        rsoBlobInGame.Value.Add(this);
         SetupSprings();
     }
     void SetupSprings()
@@ -52,6 +51,15 @@ public class BlobJoint : MonoBehaviour
         }
 
         onJointsConnected?.Invoke();
+    }
+
+    public void SetupLayer(LayerMask layerMask)
+    {
+        foreach (MyJoint joint in joints)
+        {
+            joint.collid.gameObject.layer = Mathf.RoundToInt(Mathf.Log(layerMask.value, 2)); // Convert layer to binary value
+            joint.collid.excludeLayers = layerMask;
+        }
     }
 
     #region Joint

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7946708860282828989}
   - component: {fileID: 1461552652359324139}
   - component: {fileID: 7314335959617273680}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -148,6 +148,62 @@ CircleCollider2D:
   m_Offset: {x: -0.000000020154022, y: 0.5}
   serializedVersion: 2
   m_Radius: 1
+--- !u!1 &1689548152335019987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7476704659426826772}
+  - component: {fileID: 2542050320697814845}
+  m_Layer: 0
+  m_Name: Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7476704659426826772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689548152335019987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6496818755490878508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2542050320697814845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689548152335019987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92713f31260688347b0a951356e303cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleDistanceMult: 1
+  idleDamping: 0.5
+  idleFrequency: 4
+  openDistanceMult: 2.5
+  openDamping: 0.8
+  openFrequency: 30
+  drag: 1
+  angularDrag: 1
+  moveSpeed: 5
+  gravity: 7
+  entityInput: {fileID: 8417928549951212344}
+  blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &1958215696552307569
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +216,7 @@ GameObject:
   - component: {fileID: 1451318033437719641}
   - component: {fileID: 5199536782192627005}
   - component: {fileID: 561798976202441509}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +332,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -308,7 +364,7 @@ GameObject:
   - component: {fileID: 5144953740920473036}
   - component: {fileID: 1416860201021149844}
   - component: {fileID: 7004736946990032236}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +480,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -537,11 +593,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6496818755490878508}
   - component: {fileID: 8417928549951212344}
-  - component: {fileID: 1512705057059886075}
-  - component: {fileID: 134132838203943034}
-  - component: {fileID: 8938147006757121265}
-  - component: {fileID: -1610601298197935888}
-  - component: {fileID: 8222720963693322868}
+  - component: {fileID: 5527555768437477477}
+  - component: {fileID: 3420423106000584793}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Untagged
@@ -562,6 +615,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7476704659426826772}
+  - {fileID: 7400549710319070123}
+  - {fileID: 6605376836526451057}
   - {fileID: 5190642175830350477}
   - {fileID: 8157001937566509527}
   m_Father: {fileID: 0}
@@ -578,14 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9f339748fb464fb9ea98524bc19f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputs:
-  - inputName: Move
-    inputType: 1
-    keys: 7100000064000000
-  - inputName: Jump
-    inputType: 0
-    keys: 20000000
---- !u!114 &1512705057059886075
+--- !u!114 &5527555768437477477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,22 +643,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 3290518167020313716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92713f31260688347b0a951356e303cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleDistanceMult: 1
-  idleDamping: 0.5
-  idleFrequency: 4
-  openDistanceMult: 2.5
-  openDamping: 0.8
-  openFrequency: 30
-  drag: 1
-  angularDrag: 1
-  moveSpeed: 5
-  gravity: 7
-  entityInput: {fileID: 8417928549951212344}
-  blobJoint: {fileID: 8938147006757121265}
---- !u!114 &134132838203943034
+  m_Actions: {fileID: -944628639613478452, guid: 3a2635b26da0c6e498256051b0bb3110, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8417928549951212344}
+        m_TargetAssemblyTypeName: EntityInput, Assembly-CSharp
+        m_MethodName: MoveInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 50ddf205-803f-458a-829b-87e790053327
+    m_ActionName: GameplayControls/Move[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8417928549951212344}
+        m_TargetAssemblyTypeName: EntityInput, Assembly-CSharp
+        m_MethodName: CompressInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 08ef53c9-1052-4863-a90d-faf136a1bcd9
+    m_ActionName: GameplayControls/Compress[/Keyboard/space]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: GameplayControls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &3420423106000584793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -618,62 +705,113 @@ MonoBehaviour:
   m_GameObject: {fileID: 3290518167020313716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9dfed204d22f344acb348ca38c933f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3838ae0a432b6eb43be6c1ce200b74ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineThickness: 0.3
-  outlineMeshFilter: {fileID: 1097680500150144223}
-  fillMeshFilter: {fileID: 4563486604708086893}
-  blobJoint: {fileID: 8938147006757121265}
---- !u!114 &8938147006757121265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3290518167020313716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 760ff11ce7bc1fd4b90af5b43ff382e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingDistanceFromCenter: 0.7
-  jointsRb:
-  - {fileID: 1416860201021149844}
-  - {fileID: 3680761657178793572}
-  - {fileID: 7872576145946085461}
-  - {fileID: 4984413241403491806}
-  - {fileID: 5199536782192627005}
-  - {fileID: 3082515600078681646}
-  - {fileID: 2015801568820680587}
-  - {fileID: 3904607103932247175}
-  - {fileID: 7535632789336118327}
-  - {fileID: 1461552652359324139}
-  - {fileID: 820511166989179409}
-  - {fileID: 3851416666136729516}
+  blob:
+  - color:
+      fillColor: {r: 0.25014594, g: 0.57376105, b: 0.90188676, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 128
+  - color:
+      fillColor: {r: 0.78867924, g: 0.14731927, b: 0.18731742, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 256
+  - color:
+      fillColor: {r: 0.14693947, g: 0.78113204, b: 0.12232816, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 512
+  - color:
+      fillColor: {r: 0.9019608, g: 0.7560127, b: 0.25098047, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 1024
+  - color:
+      fillColor: {r: 0.81886786, g: 0.21475962, b: 0.6932412, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 2048
+  - color:
+      fillColor: {r: 0.25098047, g: 0.9019608, b: 0.7242118, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 4096
+  - color:
+      fillColor: {r: 0.28537065, g: 0.25098047, b: 0.9019608, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 8192
+  - color:
+      fillColor: {r: 0.5486354, g: 0.25098047, b: 0.9019608, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 16384
+  - color:
+      fillColor: {r: 0.9019608, g: 0.5590684, b: 0.25098047, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 32768
+  - color:
+      fillColor: {r: 0.70702076, g: 0.9019608, b: 0.25098047, a: 1}
+      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    layer:
+      serializedVersion: 2
+      m_Bits: 65536
+  joint: {fileID: 6321734985548798584}
+  visual: {fileID: 6232837032291008028}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
---- !u!114 &-1610601298197935888
+  rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
+--- !u!1 &3826005012139323585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6605376836526451057}
+  - component: {fileID: 9170801157344067591}
+  m_Layer: 0
+  m_Name: Combat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6605376836526451057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826005012139323585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6496818755490878508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9170801157344067591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3290518167020313716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f767ee3d0e0aabf4a8aee6bbe0043a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5
-  blobJoint: {fileID: 8938147006757121265}
-  rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
---- !u!114 &8222720963693322868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3290518167020313716}
+  m_GameObject: {fileID: 3826005012139323585}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c877f11c32c8ce94fa0f8e0e85247666, type: 3}
@@ -698,6 +836,54 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!1 &4440481460841885347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7400549710319070123}
+  - component: {fileID: 5355027135910952395}
+  m_Layer: 0
+  m_Name: Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7400549710319070123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440481460841885347}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6496818755490878508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5355027135910952395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440481460841885347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f767ee3d0e0aabf4a8aee6bbe0043a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  collisions: []
+  blobJoint: {fileID: 6321734985548798584}
+  rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
 --- !u!1 &5201094002138468326
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +896,7 @@ GameObject:
   - component: {fileID: 427051575648473473}
   - component: {fileID: 7535632789336118327}
   - component: {fileID: 4765438213785107794}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +1012,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -858,7 +1044,7 @@ GameObject:
   - component: {fileID: 8327089307547377761}
   - component: {fileID: 7872576145946085461}
   - component: {fileID: 5461186431456246447}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +1160,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1006,7 +1192,7 @@ GameObject:
   - component: {fileID: 6510027769779256633}
   - component: {fileID: 3904607103932247175}
   - component: {fileID: 2415959324251676680}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1308,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1154,7 +1340,7 @@ GameObject:
   - component: {fileID: 695396901438022122}
   - component: {fileID: 2015801568820680587}
   - component: {fileID: 215701415311500111}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1270,7 +1456,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1302,7 +1488,7 @@ GameObject:
   - component: {fileID: 9086300473950249381}
   - component: {fileID: 3680761657178793572}
   - component: {fileID: 8150117541801350838}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1418,7 +1604,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1450,7 +1636,7 @@ GameObject:
   - component: {fileID: 6478285351606861403}
   - component: {fileID: 3082515600078681646}
   - component: {fileID: 6899225929122140839}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1752,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1681,7 +1867,7 @@ GameObject:
   - component: {fileID: 5451416999801356720}
   - component: {fileID: 3851416666136729516}
   - component: {fileID: 3051257457178679431}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1983,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1826,6 +2012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8157001937566509527}
+  - component: {fileID: 6232837032291008028}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -1850,6 +2037,24 @@ Transform:
   - {fileID: 1316377803677497410}
   m_Father: {fileID: 6496818755490878508}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6232837032291008028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688631288203330377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9dfed204d22f344acb348ca38c933f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineThickness: 0.3
+  outlineMeshFilter: {fileID: 1097680500150144223}
+  outlineRenderer: {fileID: 1326883160990318666}
+  fillMeshFilter: {fileID: 4563486604708086893}
+  fillRenderer: {fileID: 329917302850067089}
+  blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &7969637081626993723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +2067,7 @@ GameObject:
   - component: {fileID: 8084878817012673011}
   - component: {fileID: 820511166989179409}
   - component: {fileID: 5254413122866333050}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1978,7 +2183,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2007,8 +2212,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5190642175830350477}
+  - component: {fileID: 6321734985548798584}
   m_Layer: 0
-  m_Name: Physics
+  m_Name: Joints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2041,6 +2247,32 @@ Transform:
   - {fileID: 4657501727551700784}
   m_Father: {fileID: 6496818755490878508}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6321734985548798584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036656644236040139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760ff11ce7bc1fd4b90af5b43ff382e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingDistanceFromCenter: 0.7
+  jointsRb:
+  - {fileID: 1416860201021149844}
+  - {fileID: 3680761657178793572}
+  - {fileID: 7872576145946085461}
+  - {fileID: 4984413241403491806}
+  - {fileID: 5199536782192627005}
+  - {fileID: 3082515600078681646}
+  - {fileID: 2015801568820680587}
+  - {fileID: 3904607103932247175}
+  - {fileID: 7535632789336118327}
+  - {fileID: 1461552652359324139}
+  - {fileID: 820511166989179409}
+  - {fileID: 3851416666136729516}
 --- !u!1 &8363391856563956878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,7 +2285,7 @@ GameObject:
   - component: {fileID: 3360203005770897490}
   - component: {fileID: 4984413241403491806}
   - component: {fileID: 1958119224346039856}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BlobJoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2169,7 +2401,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
