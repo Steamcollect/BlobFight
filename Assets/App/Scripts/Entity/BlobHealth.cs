@@ -9,7 +9,7 @@ public class BlobHealth : MonoBehaviour
 
     bool isinvincible = false;
 
-    List<Collision2D> collisions = new();
+    public List<GameObject> collisions = new();
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
@@ -60,7 +60,7 @@ public class BlobHealth : MonoBehaviour
     {
         if (isinvincible) return;
 
-        if(collisions.Find(x => x == collision) == null)
+        if (!collisions.Contains(collision.gameObject))
         {
             if (collision.gameObject.TryGetComponent(out IDamagable damagable))
             {
@@ -68,10 +68,11 @@ public class BlobHealth : MonoBehaviour
             }
         }
 
-        collisions.Add(collision);
+        collisions.Add(collision.gameObject);
     }
+
     void OnExitCollision(Collision2D collision)
     {
-        collisions.Remove(collision);
+        collisions.Remove(collision.gameObject);
     }
 }
