@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SpawnBlobPanel : MonoBehaviour
+public class PlayerSelectionPanel : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] int blobRequireToPlay = 1;
@@ -20,7 +20,8 @@ public class SpawnBlobPanel : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
 
-    //[Header("Output")]
+    [Header("Output")]
+    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
 
     private void OnEnable()
     {
@@ -49,6 +50,8 @@ public class SpawnBlobPanel : MonoBehaviour
     {
         if (rsoBlobInGame.Value.Count < blobRequireToPlay) return;
 
-        StartCoroutine(Utils.LoadSceneAsync("Level_1", LoadSceneMode.Additive, ()=>print("Loaded")));
+        StartCoroutine(Utils.UnloadSceneAsync("MainMenu"));
+
+        rseLoadNextLevel.Call();
     }
 }

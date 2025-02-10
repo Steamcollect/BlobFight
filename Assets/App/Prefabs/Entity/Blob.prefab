@@ -711,61 +711,61 @@ MonoBehaviour:
   blob:
   - color:
       fillColor: {r: 0.25014594, g: 0.57376105, b: 0.90188676, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.17397642, g: 0.42543107, b: 0.6830188, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 128
   - color:
       fillColor: {r: 0.78867924, g: 0.14731927, b: 0.18731742, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.6075471, g: 0.118070446, b: 0.14809978, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 256
   - color:
       fillColor: {r: 0.14693947, g: 0.78113204, b: 0.12232816, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.117671974, g: 0.6301887, b: 0.09868988, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 512
   - color:
       fillColor: {r: 0.9019608, g: 0.7560127, b: 0.25098047, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.645283, g: 0.5446033, b: 0.19358483, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 1024
   - color:
       fillColor: {r: 0.81886786, g: 0.21475962, b: 0.6932412, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.6377357, g: 0.15762901, b: 0.5379732, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 2048
   - color:
       fillColor: {r: 0.25098047, g: 0.9019608, b: 0.7242118, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.20200069, g: 0.7283019, b: 0.5856299, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 4096
   - color:
       fillColor: {r: 0.28537065, g: 0.25098047, b: 0.9019608, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.1950444, g: 0.16923454, b: 0.645283, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 8192
   - color:
       fillColor: {r: 0.5486354, g: 0.25098047, b: 0.9019608, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.4144351, g: 0.20037729, b: 0.6679245, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 16384
   - color:
       fillColor: {r: 0.9019608, g: 0.5590684, b: 0.25098047, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.6301887, g: 0.39151496, b: 0.17478818, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 32768
   - color:
       fillColor: {r: 0.70702076, g: 0.9019608, b: 0.25098047, a: 1}
-      outlineColor: {r: 1, g: 1, b: 1, a: 1}
+      outlineColor: {r: 0.5552724, g: 0.7056604, b: 0.20637229, a: 1}
     layer:
       serializedVersion: 2
       m_Bits: 65536

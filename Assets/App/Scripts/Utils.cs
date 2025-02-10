@@ -50,13 +50,13 @@ public static class Utils
     /// <param name="loadMode"></param>
     /// <param name="action"></param>
     /// <returns></returns>
-    public static IEnumerator LoadSceneAsync(int sceneIndex, LoadSceneMode loadMode, Action action)
+    public static IEnumerator LoadSceneAsync(int sceneIndex, LoadSceneMode loadMode, Action action = null)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex, loadMode);
 
         yield return new WaitUntil(() => asyncLoad.isDone);
 
-        action.Invoke();
+        action?.Invoke();
     }
     
     /// <summary>
@@ -66,28 +66,36 @@ public static class Utils
     /// <param name="loadMode"></param>
     /// <param name="action"></param>
     /// <returns></returns>
-    public static IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode loadMode, Action action)
+    public static IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode loadMode, Action action = null)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, loadMode);
 
         yield return new WaitUntil(() => asyncLoad.isDone);
 
-        action.Invoke();
+        action?.Invoke();
     }
 
     /// <summary>
     /// Unload Scene Asyncronely and call action at the end
     /// </summary>
-    /// <param name="sceneIndex"></param>
+    /// <param name="sceneName"></param>
     /// <param name="action"></param>
     /// <returns></returns>
-    public static IEnumerator UnloadSceneAsync(int sceneIndex, Action action)
+    public static IEnumerator UnloadSceneAsync(string sceneName, Action action = null)
+    {
+        AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(sceneName);
+
+        yield return new WaitUntil(() => asyncLoad.isDone);
+
+        action?.Invoke();
+    }
+    public static IEnumerator UnloadSceneAsync(int sceneIndex, Action action = null)
     {
         AsyncOperation asyncLoad = SceneManager.UnloadSceneAsync(sceneIndex);
 
         yield return new WaitUntil(() => asyncLoad.isDone);
 
-        action.Invoke();
+        action?.Invoke();
     }
     #endregion
 

@@ -7,6 +7,13 @@ public class WrapperInitializer : MonoBehaviour
 
     private void Awake()
     {
+        WrapperInitializer wrapperInitializer = FindFirstObjectByType<WrapperInitializer>();
+        if (wrapperInitializer != null && wrapperInitializer != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         rsoBlobInGame.Value = new();
         rsoSpawnpoints.Value = new();
     }
