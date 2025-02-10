@@ -19,6 +19,11 @@ public class BlobInitializer : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
 
+    private void OnDisable()
+    {
+        rsoBlobInGame.Value.Remove(joint);
+    }
+
     private void Awake()
     {
         if(rsoBlobInGame.Value.Count >= blob.Length)
