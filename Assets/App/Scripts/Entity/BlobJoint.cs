@@ -165,6 +165,21 @@ public class BlobJoint : MonoBehaviour
             joint.RemoveOnCollisionEnterListener(action);
         }
     }
+    public void AddOnCollisionExitListener(Action<Collision2D> action)
+    {
+        foreach (var joint  in joints)
+        {
+            joint.AddOnCollisionExitListener(action);
+        }
+    }
+    public void RemoveOnCollisionExitListener(Action<Collision2D> action)
+    {
+        foreach (var joint  in joints)
+        {
+            joint.RemoveOnCollisionExitListener(action);
+        }
+    }
+
     public void SetCollidersPosOffset(float dist)
     {
         Vector2 center = GetJointsCenter();

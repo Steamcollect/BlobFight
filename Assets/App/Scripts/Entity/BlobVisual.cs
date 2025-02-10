@@ -103,4 +103,15 @@ public class BlobVisual : MonoBehaviour
 
         return newTriangles.ToArray();
     }
+
+    public void ShowVisual()
+    {
+        outlineMeshFilter.gameObject.SetActive(true);
+        fillMeshFilter.gameObject.SetActive(true);
+    }
+    public void HideVisual()
+    {
+        outlineMeshFilter.gameObject.SetActive(false);
+        fillMeshFilter.gameObject.SetActive(false);
+    }
 }

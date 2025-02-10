@@ -1,7 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 public class BlobHealth : MonoBehaviour
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] int maxHealth;
+    int currentHealth;
+
+    bool isinvincible = false;
+
+    List<Collision2D> collisions = new();
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
@@ -12,24 +20,58 @@ public class BlobHealth : MonoBehaviour
     // RSP
 
     //[Header("Input")]
-    //[Header("Output")]
+    [Header("Output")]
+    [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
 
     private void OnDisable()
     {
-        blobJoint.RemoveOnCollisionEnterListener(OnCollision);
+        blobJoint.RemoveOnCollisionEnterListener(OnEnterCollision);
+        blobJoint.RemoveOnCollisionExitListener(OnExitCollision);
     }
 
     private void Start()
     {
+        Setup();
         Invoke("LateStart", .05f);
     }
     void LateStart()
     {
-        blobJoint.AddOnCollisionEnterListener(OnCollision);
+        blobJoint.AddOnCollisionEnterListener(OnEnterCollision);
+        blobJoint.AddOnCollisionExitListener(OnExitCollision);
     }
 
-    void OnCollision(Collision2D collision)
+    void TakeDamage(int damage)
     {
-        print(collision.gameObject.name);
+        currentHealth -= damage;
+
+        if (currentHealth <= 0) Die();
+    }
+    void Die()
+    {
+        rseOnBlobDeath.Call(blobJoint);
+    }
+
+    void Setup()
+    {
+        currentHealth = maxHealth;
+    }
+
+    void OnEnterCollision(Collision2D collision)
+    {
+        if (isinvincible) return;
+
+        if(collisions.Find(x => x == collision) == null)
+        {
+            if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+            {
+                TakeDamage(damagable.GetDamage());
+            }
+        }
+
+        collisions.Add(collision);
+    }
+    void OnExitCollision(Collision2D collision)
+    {
+        collisions.Remove(collision);
     }
 }

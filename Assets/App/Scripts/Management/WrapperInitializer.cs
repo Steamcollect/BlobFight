@@ -2,12 +2,12 @@ using UnityEngine;
 public class WrapperInitializer : MonoBehaviour
 {
     [Header("RSO")]
-    [SerializeField] RSO_BlobInGame rsoblobInGame;
+    [SerializeField] RSO_BlobInGame rsoBlobInGame;
     [SerializeField] RSO_Spawnpoints rsoSpawnpoints;
 
     private void Awake()
     {
-        rsoblobInGame.Value = new();
+        rsoBlobInGame.Value = new();
         rsoSpawnpoints.Value = new();
     }
 }

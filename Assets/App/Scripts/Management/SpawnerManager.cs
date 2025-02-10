@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     //[Space(10)]
     // RSO
     [SerializeField] RSO_BlobInGame rsoBlobinGame;
-    [SerializeField] RSO_Spawnpoints rsoSpawnPoints;
+    [SerializeField] RSO_Spawnpoints rsoSpawnpoints;
     // RSF
     // RSP
 
@@ -27,13 +27,13 @@ public class SpawnerManager : MonoBehaviour
             Debug.LogError("You havnt any blob in the scene");
             return;
         }
-        if (rsoSpawnPoints.Value.Count == 0)
+        if (rsoSpawnpoints.Value.Count == 0)
         {
             Debug.LogError("You havnt any spawnpoint in the scene");
             return;
         }
 
-        rsoBlobinGame.Value[0].MoveJointsByTransform(rsoSpawnPoints.Value.GetRandom().position);
+        rsoBlobinGame.Value[0].MoveJointsByTransform(rsoSpawnpoints.Value.GetRandom().position);
         for (int i = 1; i < rsoBlobinGame.Value.Count; i++)
         {
             SpawnBlob(rsoBlobinGame.Value[i]);
@@ -54,7 +54,7 @@ public class SpawnerManager : MonoBehaviour
         Transform bestSpawn = null;
         float maxDistance = float.MinValue;
 
-        foreach (Transform spawn in rsoSpawnPoints.Value)
+        foreach (Transform spawn in rsoSpawnpoints.Value)
         {
             float minDistanceToBlobs = float.MaxValue;
 

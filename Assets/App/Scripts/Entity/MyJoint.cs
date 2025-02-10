@@ -10,7 +10,7 @@ public class MyJoint : MonoBehaviour
 
     public List<Spring> jointsConnected = new();
 
-    public Action<Collision2D> OnCollision;
+    public Action<Collision2D> OnCollisionEnter, OnCollisionExit;
 
     #region SpringJoint
     public void MultiplyInitialSpringDistance(float multiplier)
@@ -65,12 +65,21 @@ public class MyJoint : MonoBehaviour
     #region Collision
     public void AddOnCollisionEnterListener(Action<Collision2D> action)
     {
-        OnCollision += action;
+        OnCollisionEnter += action;
     }
     public void RemoveOnCollisionEnterListener(Action<Collision2D> action)
     {
-        OnCollision -= action;
+        OnCollisionEnter -= action;
     }
+    public void AddOnCollisionExitListener(Action<Collision2D> action)
+    {
+        OnCollisionExit += action;
+    }
+    public void RemoveOnCollisionExitListener(Action<Collision2D> action)
+    {
+        OnCollisionExit -= action;
+    }
+    
     public void SetCollidPos(Vector2 center, float distance)
     {
         Vector2 dir = (center - (Vector2)rb.transform.localPosition).normalized;
@@ -96,7 +105,11 @@ public class MyJoint : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //print(collision.gameObject.name);
-        OnCollision?.Invoke(collision);
+        OnCollisionEnter?.Invoke(collision);
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        OnCollisionExit?.Invoke(collision);
     }
 
     private void OnDrawGizmosSelected()
