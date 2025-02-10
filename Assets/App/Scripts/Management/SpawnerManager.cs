@@ -13,8 +13,19 @@ public class SpawnerManager : MonoBehaviour
     // RSF
     // RSP
 
-    //[Header("Input")]
+    [Header("Input")]
+    [SerializeField] RSE_SpawnBlob rseSpawnBlob;
+
     //[Header("Output")]
+
+    private void OnEnable()
+    {
+        rseSpawnBlob.action += SpawnBlob;
+    }
+    private void OnDisable()
+    {
+         rseSpawnBlob.action -= SpawnBlob;
+    }
 
     private void Start()
     {
@@ -22,11 +33,7 @@ public class SpawnerManager : MonoBehaviour
     }
     void LateStart()
     {
-        if (rsoBlobInGame.Value.Count == 0)
-        {
-            Debug.LogError("You havnt any blob in the scene");
-            return;
-        }
+        if (rsoBlobInGame.Value.Count == 0) return;
         if (rsoSpawnpoints.Value.Count == 0)
         {
             Debug.LogError("You havnt any spawnpoint in the scene");

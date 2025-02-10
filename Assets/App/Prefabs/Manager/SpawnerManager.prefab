@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rsoSpawnpoints: {fileID: 11400000, guid: d4cdf6f7c8bfe6848815f3d96432d7b6, type: 2}
+  rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}

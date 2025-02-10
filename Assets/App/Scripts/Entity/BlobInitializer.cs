@@ -21,21 +21,21 @@ public class BlobInitializer : MonoBehaviour
 
     private void Awake()
     {
+        if(rsoBlobInGame.Value.Count >= blob.Length)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         rsoBlobInGame.Value.Add(joint);
     }
 
     private void Start()
     {
-        visual.Setup(blob[rsoBlobInGame.Value.Count - 1].color);
-
-        Invoke("LateStart", .05f);
-    }
-
-    void LateStart()
-    {
         joint.SetupLayer(blob[rsoBlobInGame.Value.Count - 1].layer);
-
         rseSpawnBlob.Call(joint);
+
+        visual.Setup(blob[rsoBlobInGame.Value.Count - 1].color);
     }
 }
 

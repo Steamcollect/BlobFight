@@ -58,6 +58,22 @@ public static class Utils
 
         action.Invoke();
     }
+    
+    /// <summary>
+    /// Load Scene Asyncronely and call action at the end
+    /// </summary>
+    /// <param name="sceneIndex"></param>
+    /// <param name="loadMode"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    public static IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode loadMode, Action action)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, loadMode);
+
+        yield return new WaitUntil(() => asyncLoad.isDone);
+
+        action.Invoke();
+    }
 
     /// <summary>
     /// Unload Scene Asyncronely and call action at the end
