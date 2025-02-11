@@ -62,6 +62,23 @@ public class BlobJoint : MonoBehaviour
         }
     }
 
+    public void EnableJoint()
+    {
+        foreach (MyJoint joint in joints)
+        {
+            joint.collid.enabled = true;
+            joint.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+    public void DisableJoint()
+    {
+        foreach (MyJoint joint in joints)
+        {
+            joint.collid.enabled = false;
+            joint.rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
     #region Joint
     public void MoveJointsByTransform(Vector2 newCenterPosition)
     {

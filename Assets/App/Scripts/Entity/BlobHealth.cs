@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class BlobHealth : MonoBehaviour
 
     bool isinvincible = false;
 
-    public List<GameObject> collisions = new();
+    List<GameObject> collisions = new();
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
@@ -21,7 +22,7 @@ public class BlobHealth : MonoBehaviour
 
     //[Header("Input")]
     [Header("Output")]
-    [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
+    public Action OnDeath;
 
     private void OnDisable()
     {
@@ -48,10 +49,10 @@ public class BlobHealth : MonoBehaviour
     }
     void Die()
     {
-        rseOnBlobDeath.Call(blobJoint);
+        OnDeath?.Invoke();
     }
 
-    void Setup()
+    public void Setup()
     {
         currentHealth = maxHealth;
     }

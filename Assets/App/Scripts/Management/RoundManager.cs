@@ -9,7 +9,7 @@ public class RoundManager : MonoBehaviour
     //[Space(10)]
     // RSO
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    List<BlobJoint> blobs;
+    List<BlobMotor> blobs;
     // RSF
     // RSP
 
@@ -30,10 +30,10 @@ public class RoundManager : MonoBehaviour
 
     private void Start()
     {
-        blobs = new List<BlobJoint>(rsoBlobInGame.Value);
+        blobs = new List<BlobMotor>(rsoBlobInGame.Value);
     }
 
-    void CheckBlobCount(BlobJoint blob)
+    void CheckBlobCount(BlobMotor blob)
     {
         blobs.Remove(blob);
 

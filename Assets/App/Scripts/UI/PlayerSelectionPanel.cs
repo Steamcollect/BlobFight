@@ -32,7 +32,7 @@ public class PlayerSelectionPanel : MonoBehaviour
         rseSpawnBlob.action -= OnBlobSpawned;
     }
 
-    void OnBlobSpawned(BlobJoint blob)
+    void OnBlobSpawned(BlobMotor blob)
     {
         if(rsoBlobInGame.Value.Count >= blobRequireToPlay)
         {

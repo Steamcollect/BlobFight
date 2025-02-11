@@ -40,9 +40,9 @@ public class CameraController : MonoBehaviour
     private Vector2 CalculateCenter()
     {
         Vector2 sum = Vector2.zero;
-        foreach (BlobJoint blob in rsoBlobInGame.Value)
+        foreach (BlobMotor blob in rsoBlobInGame.Value)
         {
-            sum += blob.GetJointsCenter();
+            sum += blob.joint.GetJointsCenter();
         }
         return sum / rsoBlobInGame.Value.Count;
     }
@@ -50,9 +50,9 @@ public class CameraController : MonoBehaviour
     private float CalculateMaxDistance(Vector2 center)
     {
         float maxDistance = 0f;
-        foreach (BlobJoint blob in rsoBlobInGame.Value)
+        foreach (BlobMotor blob in rsoBlobInGame.Value)
         {
-            float distance = Vector2.Distance(center, blob.GetJointsCenter());
+            float distance = Vector2.Distance(center, blob.joint.GetJointsCenter());
             if (distance > maxDistance)
             {
                 maxDistance = distance;

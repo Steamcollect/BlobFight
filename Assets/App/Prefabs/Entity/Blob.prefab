@@ -112,7 +112,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &7314335959617273680
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &561798976202441509
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &7004736946990032236
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -771,8 +771,10 @@ MonoBehaviour:
       m_Bits: 65536
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
+  health: {fileID: 5355027135910952395}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
+  rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
 --- !u!1 &3826005012139323585
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,9 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  collisions: []
   blobJoint: {fileID: 6321734985548798584}
-  rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
 --- !u!1 &5201094002138468326
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,7 +996,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4765438213785107794
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5461186431456246447
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1292,7 +1292,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &2415959324251676680
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1440,7 +1440,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &215701415311500111
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1588,7 +1588,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &8150117541801350838
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1736,7 +1736,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &6899225929122140839
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1967,7 +1967,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &3051257457178679431
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2167,7 +2167,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5254413122866333050
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2385,7 +2385,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1958119224346039856
 CircleCollider2D:
   m_ObjectHideFlags: 0

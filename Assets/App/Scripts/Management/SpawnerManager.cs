@@ -40,23 +40,23 @@ public class SpawnerManager : MonoBehaviour
             return;
         }
 
-        rsoBlobInGame.Value[0].MoveJointsByTransform(rsoSpawnpoints.Value.GetRandom().position);
+        rsoBlobInGame.Value[0].Spawn(rsoSpawnpoints.Value.GetRandom().position);
         for (int i = 1; i < rsoBlobInGame.Value.Count; i++)
         {
             SpawnBlob(rsoBlobInGame.Value[i]);
         }
     }
 
-    void SpawnBlob(BlobJoint blob)
+    void SpawnBlob(BlobMotor blob)
     {
         Transform bestSpawn = GetFarthestSpawnPoint(blob);
         if (bestSpawn != null)
         {
-            blob.MoveJointsByTransform(bestSpawn.position);
+            blob.Spawn(bestSpawn.position);
         }
     }
 
-    Transform GetFarthestSpawnPoint(BlobJoint excludedBlob)
+    Transform GetFarthestSpawnPoint(BlobMotor excludedBlob)
     {
         Transform bestSpawn = null;
         float maxDistance = float.MinValue;
@@ -65,11 +65,11 @@ public class SpawnerManager : MonoBehaviour
         {
             float minDistanceToBlobs = float.MaxValue;
 
-            foreach (BlobJoint blob in rsoBlobInGame.Value)
+            foreach (BlobMotor blob in rsoBlobInGame.Value)
             {
                 if (blob == excludedBlob) continue;
 
-                float distance = Vector2.Distance(spawn.position, blob.GetJointsCenter());
+                float distance = Vector2.Distance(spawn.position, blob.joint.GetJointsCenter());
                 if (distance < minDistanceToBlobs)
                 {
                     minDistanceToBlobs = distance;
