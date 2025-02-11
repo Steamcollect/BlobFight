@@ -708,67 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3838ae0a432b6eb43be6c1ce200b74ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blob:
-  - color:
-      fillColor: {r: 0.25014594, g: 0.57376105, b: 0.90188676, a: 1}
-      outlineColor: {r: 0.17397642, g: 0.42543107, b: 0.6830188, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 128
-  - color:
-      fillColor: {r: 0.78867924, g: 0.14731927, b: 0.18731742, a: 1}
-      outlineColor: {r: 0.6075471, g: 0.118070446, b: 0.14809978, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 256
-  - color:
-      fillColor: {r: 0.14693947, g: 0.78113204, b: 0.12232816, a: 1}
-      outlineColor: {r: 0.12103939, g: 0.5773585, b: 0.10348872, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 512
-  - color:
-      fillColor: {r: 0.9019608, g: 0.7560127, b: 0.25098047, a: 1}
-      outlineColor: {r: 0.645283, g: 0.5446033, b: 0.19358483, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 1024
-  - color:
-      fillColor: {r: 0.81886786, g: 0.21475962, b: 0.6932412, a: 1}
-      outlineColor: {r: 0.6377357, g: 0.15762901, b: 0.5379732, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 2048
-  - color:
-      fillColor: {r: 0.25098047, g: 0.9019608, b: 0.7242118, a: 1}
-      outlineColor: {r: 0.1957209, g: 0.7056604, b: 0.5648562, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 4096
-  - color:
-      fillColor: {r: 0.28537065, g: 0.25098047, b: 0.9019608, a: 1}
-      outlineColor: {r: 0.1950444, g: 0.16923454, b: 0.645283, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 8192
-  - color:
-      fillColor: {r: 0.5486354, g: 0.25098047, b: 0.9019608, a: 1}
-      outlineColor: {r: 0.40175915, g: 0.18599501, b: 0.6528301, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 16384
-  - color:
-      fillColor: {r: 0.9019608, g: 0.5590684, b: 0.25098047, a: 1}
-      outlineColor: {r: 0.6301887, g: 0.39151496, b: 0.17478818, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 32768
-  - color:
-      fillColor: {r: 0.70702076, g: 0.9019608, b: 0.25098047, a: 1}
-      outlineColor: {r: 0.5552724, g: 0.7056604, b: 0.20637229, a: 1}
-    layer:
-      serializedVersion: 2
-      m_Bits: 65536
+  blobVisuals: {fileID: 11400000, guid: 96af32aab7d73644885a3faf46ac1939, type: 2}
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
   health: {fileID: 5355027135910952395}

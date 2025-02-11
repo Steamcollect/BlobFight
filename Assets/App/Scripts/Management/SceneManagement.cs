@@ -8,6 +8,8 @@ public class SceneManagement : MonoBehaviour
 
     string currentLevel = "";
 
+    bool isLoading = false;
+
     //[Header("References")]
 
     //[Space(10)]
@@ -36,6 +38,10 @@ public class SceneManagement : MonoBehaviour
 
     void LoadNextLevelRandomly()
     {
+        if (isLoading) return;
+
+        isLoading = true;
+
         if(currentLevel != "")
         {
             StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
@@ -46,7 +52,10 @@ public class SceneManagement : MonoBehaviour
         int rnd = Random.Range(0, levels.Count);
         currentLevel = levels[rnd];
         levels.RemoveAt(rnd);
-        
-        StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive));
+
+        StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
+        {
+            isLoading = false;
+        }));
     }
 }

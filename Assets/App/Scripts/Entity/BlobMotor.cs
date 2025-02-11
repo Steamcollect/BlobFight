@@ -4,7 +4,7 @@ using UnityEngine;
 public class BlobMotor : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] BlobInitializeStatistic[] blob;
+    [SerializeField] SSO_BlobVisuals blobVisuals;
 
     [Header("References")]
     public BlobJoint joint;
@@ -38,7 +38,7 @@ public class BlobMotor : MonoBehaviour
     {
         if (rsoBlobInGame.Value == null) rsoBlobInGame.Value = new();
 
-        if(rsoBlobInGame.Value.Count >= blob.Length)
+        if(rsoBlobInGame.Value.Count >= blobVisuals.blobs.Length)
         {
             Destroy(gameObject);
             return;
@@ -49,8 +49,8 @@ public class BlobMotor : MonoBehaviour
 
     private void Start()
     {
-        joint.SetupLayer(blob[rsoBlobInGame.Value.Count - 1].layer);
-        visual.Setup(blob[rsoBlobInGame.Value.Count - 1].color);
+        joint.SetupLayer(blobVisuals.blobs[rsoBlobInGame.Value.Count - 1].layer);
+        visual.Setup(blobVisuals.blobs[rsoBlobInGame.Value.Count - 1].color);
 
         Setup();
     }
@@ -83,17 +83,4 @@ public class BlobMotor : MonoBehaviour
         Disable();
         rseOnBlobDeath.Call(this);
     }
-}
-
-[System.Serializable]
-public struct BlobInitializeStatistic
-{
-    public BlobColor color;
-    public LayerMask layer;
-}
-
-[System.Serializable]
-public struct BlobColor
-{
-    public Color fillColor, outlineColor;
 }
