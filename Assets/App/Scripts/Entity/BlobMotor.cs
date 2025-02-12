@@ -10,6 +10,7 @@ public class BlobMotor : MonoBehaviour
     public BlobJoint joint;
     [SerializeField] BlobVisual visual;
     [SerializeField] BlobHealth health;
+    [SerializeField] BlobStamina stamina;
 
     [Space(10)]
     // RSO
@@ -57,6 +58,8 @@ public class BlobMotor : MonoBehaviour
 
     void Setup()
     {
+        stamina.Setup();
+
         rseSpawnBlob.Call(this);
         Invoke("Enable", .05f);
     }

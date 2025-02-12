@@ -21,13 +21,6 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 128
   - color:
-      fillColor: {r: 0.24715555, g: 0.7660377, b: 0.34827927, a: 1}
-      outlineColor: {r: 0.047155544, g: 0.5660377, b: 0.14827926, a: 1}
-      autoSetOutlineColor: 1
-    layer:
-      serializedVersion: 2
-      m_Bits: 256
-  - color:
       fillColor: {r: 0.7647059, g: 0.24705881, b: 0.26575917, a: 1}
       outlineColor: {r: 0.5647059, g: 0.047058806, b: 0.06575917, a: 1}
       autoSetOutlineColor: 1
@@ -35,12 +28,19 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 512
   - color:
-      fillColor: {r: 0.2479529, g: 0.7509433, b: 0.6238703, a: 1}
-      outlineColor: {r: 0.04795289, g: 0.5509433, b: 0.42387033, a: 1}
+      fillColor: {r: 0.24715555, g: 0.7660377, b: 0.34827927, a: 1}
+      outlineColor: {r: 0.047155544, g: 0.5660377, b: 0.14827926, a: 1}
       autoSetOutlineColor: 1
     layer:
       serializedVersion: 2
-      m_Bits: 1024
+      m_Bits: 256
+  - color:
+      fillColor: {r: 0.8490566, g: 0.32520464, b: 0.7136101, a: 1}
+      outlineColor: {r: 0.6490566, g: 0.12520464, b: 0.5136101, a: 1}
+      autoSetOutlineColor: 1
+    layer:
+      serializedVersion: 2
+      m_Bits: 4096
   - color:
       fillColor: {r: 0.93962264, g: 0.5217275, b: 0.14714837, a: 1}
       outlineColor: {r: 0.73962265, g: 0.3217275, b: -0.052851632, a: 1}
@@ -56,9 +56,16 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4096
   - color:
-      fillColor: {r: 0.8490566, g: 0.32520464, b: 0.7136101, a: 1}
-      outlineColor: {r: 0.6490566, g: 0.12520464, b: 0.5136101, a: 1}
+      fillColor: {r: 0.79086214, g: 0.87169814, b: 0.20229968, a: 1}
+      outlineColor: {r: 0.59086215, g: 0.67169815, b: 0.0022996813, a: 1}
       autoSetOutlineColor: 1
     layer:
       serializedVersion: 2
-      m_Bits: 4096
+      m_Bits: 8192
+  - color:
+      fillColor: {r: 0.2479529, g: 0.7509433, b: 0.6238703, a: 1}
+      outlineColor: {r: 0.04795289, g: 0.5509433, b: 0.42387033, a: 1}
+      autoSetOutlineColor: 1
+    layer:
+      serializedVersion: 2
+      m_Bits: 1024

@@ -195,15 +195,19 @@ MonoBehaviour:
   idleDistanceMult: 1
   idleDamping: 0.5
   idleFrequency: 4
-  openDistanceMult: 2.5
-  openDamping: 0.8
-  openFrequency: 30
+  extendDistanceMult: 2.5
+  extendDamping: 0.8
+  extendFrequency: 80
+  extendStaminaCostPerSec: 100
   drag: 1
   angularDrag: 1
-  moveSpeed: 5
+  moveSpeed: 30
   gravity: 7
+  dashForce: 2400
+  dashStaminaCost: 50
   entityInput: {fileID: 8417928549951212344}
   blobJoint: {fileID: 6321734985548798584}
+  blobStamina: {fileID: 8390691681812695191}
 --- !u!1 &1958215696552307569
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +621,7 @@ Transform:
   m_Children:
   - {fileID: 7476704659426826772}
   - {fileID: 7400549710319070123}
+  - {fileID: 5337325012829136767}
   - {fileID: 6605376836526451057}
   - {fileID: 5190642175830350477}
   - {fileID: 8157001937566509527}
@@ -691,6 +696,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 08ef53c9-1052-4863-a90d-faf136a1bcd9
     m_ActionName: GameplayControls/Compress[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8417928549951212344}
+        m_TargetAssemblyTypeName: EntityInput, Assembly-CSharp
+        m_MethodName: DashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 33ec8e36-ccff-4f7b-b366-564e38b4fbb5
+    m_ActionName: GameplayControls/Dash[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: GameplayControls
@@ -712,6 +733,7 @@ MonoBehaviour:
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
   health: {fileID: 5355027135910952395}
+  stamina: {fileID: 8390691681812695191}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
   rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
@@ -2361,3 +2383,49 @@ CircleCollider2D:
   m_Offset: {x: 0.000000007664111, y: -0.5}
   serializedVersion: 2
   m_Radius: 1
+--- !u!1 &8522687321041744991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5337325012829136767}
+  - component: {fileID: 8390691681812695191}
+  m_Layer: 0
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5337325012829136767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522687321041744991}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6496818755490878508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8390691681812695191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522687321041744991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424969f260250b542b1ede0200556e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  staminaGivenPerSec: 30

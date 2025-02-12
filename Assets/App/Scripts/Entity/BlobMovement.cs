@@ -1,3 +1,4 @@
+using UnityEditor.Search;
 using UnityEngine;
 
 public class BlobMovement : MonoBehaviour
@@ -8,9 +9,13 @@ public class BlobMovement : MonoBehaviour
     [SerializeField] float idleFrequency;
 
     [Space(10)]
-    [SerializeField] float openDistanceMult;
-    [SerializeField, Range(0, 1)] float openDamping;
-    [SerializeField] float openFrequency;
+    [SerializeField] float extendDistanceMult;
+    [SerializeField, Range(0, 1)] float extendDamping;
+    [SerializeField] float extendFrequency;
+
+    [Space(5)]
+    [SerializeField] float extendStaminaCostPerSec;
+    bool isExtend;
 
     [Space(10)]
     [SerializeField] float drag;
@@ -19,9 +24,16 @@ public class BlobMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float gravity;
 
+    [Space(5)]
+    [SerializeField] float dashForce;
+    [SerializeField] float dashStaminaCost;
+
+    Vector2 moveInput;
+
     [Header("References")]
     [SerializeField] EntityInput entityInput;
     [SerializeField] BlobJoint blobJoint;
+    [SerializeField] BlobStamina blobStamina;
 
     class MySpringJoint
     {
@@ -41,22 +53,41 @@ public class BlobMovement : MonoBehaviour
     }
     private void OnDisable()
     {
-        entityInput.compressDownInput -= OpenBlob;
-        entityInput.compressUpInput -= CloseBlob;
-        entityInput.moveInput -= Move;
+        entityInput.compressDownInput -= ExtendBlob;
+        entityInput.compressUpInput -= ShrinkBlob;
+        entityInput.moveInput -= SetInput;
+        entityInput.dashInput -= Dash;
 
         blobJoint.onJointsConnected -= SetupJoint;
     }
 
     private void Start()
     {
-        entityInput.compressDownInput += OpenBlob;
-        entityInput.compressUpInput += CloseBlob;
-        entityInput.moveInput += Move;
+        entityInput.compressDownInput += ExtendBlob;
+        entityInput.compressUpInput += ShrinkBlob;
+        entityInput.dashInput += Dash;
+
+        entityInput.moveInput += SetInput;
+    }
+
+    private void Update()
+    {
+        if (isExtend)
+        {
+            if(!blobStamina.HaveEnoughStamina(extendStaminaCostPerSec * Time.deltaTime))
+            {
+                ShrinkBlob();
+            }
+            else
+            {
+                blobStamina.RemoveStamina(extendStaminaCostPerSec * Time.deltaTime);
+            }
+        }
     }
 
     private void FixedUpdate()
     {
+        Move();
         blobJoint.SetCollidersPosOffset(.5f);
     }
 
@@ -71,21 +102,41 @@ public class BlobMovement : MonoBehaviour
         blobJoint.SetFrequency(idleFrequency);
     }
 
-    void OpenBlob()
+    void ExtendBlob()
     {
-        blobJoint.MultiplyInitialSpringDistance(openDistanceMult);
-        blobJoint.SetDamping(openDamping);
-        blobJoint.SetFrequency(openFrequency);
+        if(blobStamina.HaveEnoughStamina(extendStaminaCostPerSec * Time.deltaTime))
+        {
+            isExtend = true;
+
+            blobJoint.MultiplyInitialSpringDistance(extendDistanceMult);
+            blobJoint.SetDamping(extendDamping);
+            blobJoint.SetFrequency(extendFrequency);
+        }        
     }
-    void CloseBlob()
+    void ShrinkBlob()
     {
         blobJoint.MultiplyInitialSpringDistance(idleDistanceMult);
         blobJoint.SetDamping(idleDamping);
         blobJoint.SetFrequency(idleFrequency);
+
+        isExtend = false;
     }
 
-    void Move(float input)
+    void SetInput(Vector2 input)
     {
-        blobJoint.Move(Vector2.right * input * moveSpeed);
+        moveInput = input;
+    }
+
+    void Move()
+    {
+        blobJoint.Move(Vector2.right * moveInput.x * moveSpeed);
+    }
+    void Dash()
+    {
+        if (blobStamina.HaveEnoughStamina(dashStaminaCost))
+        {
+            blobStamina.RemoveStamina(dashStaminaCost);
+            blobJoint.Move(moveInput * dashForce);
+        }
     }
 }
