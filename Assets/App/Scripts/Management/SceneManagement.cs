@@ -20,7 +20,9 @@ public class SceneManagement : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
 
-    //[Header("Output")]
+    [Header("Output")]
+    [SerializeField] RSE_FadeIn rseFadeIn;
+    [SerializeField] RSE_FadeOut rseFadeOut;
 
     private void OnEnable()
     {
@@ -42,20 +44,24 @@ public class SceneManagement : MonoBehaviour
 
         isLoading = true;
 
-        if(currentLevel != "")
+        rseFadeOut.Call(() =>
         {
-            StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
-        }
+            if (currentLevel != "")
+            {
+                StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
+            }
 
-        if (levels.Count <= 0) levels.AddRange(levelsName);
+            if (levels.Count <= 0) levels.AddRange(levelsName);
 
-        int rnd = Random.Range(0, levels.Count);
-        currentLevel = levels[rnd];
-        levels.RemoveAt(rnd);
+            int rnd = Random.Range(0, levels.Count);
+            currentLevel = levels[rnd];
+            levels.RemoveAt(rnd);
 
-        StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
-        {
-            isLoading = false;
-        }));
+            StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
+            {
+                rseFadeIn.Call(() => isLoading = false);
+            }));
+        });
+        
     }
 }
