@@ -173,6 +173,16 @@ public class BlobJoint : MonoBehaviour
             joint.SetGravity(gravity);
         }
     }
+
+    public Vector2 GetVelocity()
+    {
+        Vector2 sum = Vector2.zero;
+        foreach (Rigidbody2D rb in jointsRb)
+        {
+            sum += rb.velocity;
+        }
+        return sum / jointsRb.Length;
+    }
     #endregion
 
     #region Collider

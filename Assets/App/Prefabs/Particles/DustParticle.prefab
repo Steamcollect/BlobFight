@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3049682186368047411}
   - component: {fileID: 4007821960139497423}
   - component: {fileID: 3329929730782232051}
+  - component: {fileID: -439307440694880795}
   m_Layer: 0
-  m_Name: TouchParticle
+  m_Name: DustParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +44,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -168,9 +169,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 1
-      minScalar: 1
+      minMaxState: 0
+      scalar: 0.5
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -664,8 +665,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 5
-    angle: 19.48
+    type: 4
+    angle: 64.46
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -751,7 +752,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
+      value: 1.5
       mode: 0
       spread: 0
       speed:
@@ -870,7 +871,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 40
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2189,7 +2190,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -4830,3 +4831,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-439307440694880795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285877776200245646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6fa9326cfa03f242bb2439d1a7ddf49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

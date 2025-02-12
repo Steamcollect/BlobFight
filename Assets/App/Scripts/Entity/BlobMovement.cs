@@ -157,6 +157,7 @@ public class BlobMovement : MonoBehaviour
     }
     public void DisableMovement()
     {
+        ShrinkBlob();
         canMove = false;
     }
 }
