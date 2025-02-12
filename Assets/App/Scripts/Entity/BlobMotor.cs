@@ -79,6 +79,8 @@ public class BlobMotor : MonoBehaviour
     {
         joint.DisableJoint();
         visual.Hide();
+
+        rseOnBlobDeath.Call(this);
     }
 
     public void Spawn(Vector2 position)

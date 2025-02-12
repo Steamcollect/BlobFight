@@ -10,10 +10,8 @@ public class BlobHealth : MonoBehaviour
 
     bool isinvincible = false;
 
-    List<GameObject> collisions = new();
-
-    [Header("References")]
-    [SerializeField] BlobJoint blobJoint;
+    [Header("References")] 
+    [SerializeField] BlobTrigger blobTrigger;
 
     //[Space(10)]
     // RSO
@@ -27,8 +25,7 @@ public class BlobHealth : MonoBehaviour
 
     private void OnDisable()
     {
-        blobJoint.RemoveOnCollisionEnterListener(OnEnterCollision);
-        blobJoint.RemoveOnCollisionExitListener(OnExitCollision);
+        blobTrigger.OnCollisionEnter -= OnEnterCollision;
     }
 
     private void Start()
@@ -38,8 +35,8 @@ public class BlobHealth : MonoBehaviour
     }
     void LateStart()
     {
-        blobJoint.AddOnCollisionEnterListener(OnEnterCollision);
-        blobJoint.AddOnCollisionExitListener(OnExitCollision);
+        blobTrigger.OnCollisionEnter += OnEnterCollision;
+
     }
 
     void TakeDamage(int damage)
@@ -60,28 +57,16 @@ public class BlobHealth : MonoBehaviour
 
     void OnEnterCollision(Collision2D collision)
     {
-        if (isinvincible) return;
-
-        if (!collisions.Contains(collision.gameObject))
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
         {
-            if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+            if (damagable.CanInstanteKill())
             {
-                if (damagable.CanInstanteKill())
-                {
-                    OnDestroy?.Invoke();
-                }
-                else
-                {
-                    TakeDamage(damagable.GetDamage());
-                }
+                OnDestroy?.Invoke();
+            }
+            else
+            {
+                TakeDamage(damagable.GetDamage());
             }
         }
-
-        collisions.Add(collision.gameObject);
-    }
-
-    void OnExitCollision(Collision2D collision)
-    {
-        collisions.Remove(collision.gameObject);
     }
 }
