@@ -1,11 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 public class MovingProps : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float moveSpeed;
     int currentPosIndex;
+
+    [SerializeField] float delayBeforeStart;
+    [SerializeField] float delayAtPoint;
 
     [Header("References")]
     [SerializeField] Transform movable;
@@ -24,8 +28,19 @@ public class MovingProps : MonoBehaviour
         if(positions.Length > 0)
         {
             movable.position = positions[0].position;
-            SetNextPos();
+            StartCoroutine(DelayBeforeStart());
         }
+    }
+
+    IEnumerator DelayBeforeStart()
+    {
+        yield return new WaitForSeconds(delayBeforeStart);
+        SetNextPos();
+    }
+    IEnumerator DelayAtPoint()
+    {
+        yield return new WaitForSeconds(delayAtPoint);
+        SetNextPos();
     }
 
     void SetNextPos()
@@ -34,7 +49,7 @@ public class MovingProps : MonoBehaviour
         float moveTime = Vector2.Distance(movable.position, positions[currentPosIndex].position) / moveSpeed;
         movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
         {
-            SetNextPos();
+            StartCoroutine(DelayAtPoint());
         });
     }
 }

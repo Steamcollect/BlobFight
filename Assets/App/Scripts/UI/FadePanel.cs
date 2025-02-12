@@ -42,6 +42,8 @@ public class FadePanel : MonoBehaviour
 
     void FadeIn(Action OnEnd = null)
     {
+        backgroundImage.rectTransform.DOKill();
+
         backgroundImage.rectTransform.sizeDelta = Vector2.zero;
         float screenSize = Mathf.Max(Screen.width, Screen.height);
 
@@ -58,6 +60,8 @@ public class FadePanel : MonoBehaviour
     }
     void FadeOut(Action OnEnd = null)
     {
+        backgroundImage.rectTransform.DOKill();
+
         float screenSize = Mathf.Max(Screen.width, Screen.height);
         backgroundImage.rectTransform.sizeDelta = new Vector2(screenSize * 2.5f, screenSize * 2.5f);
 
@@ -69,7 +73,6 @@ public class FadePanel : MonoBehaviour
         })
             .OnComplete(() =>
             {
-                print("end");
                 OnEnd?.Invoke();
             });
     }

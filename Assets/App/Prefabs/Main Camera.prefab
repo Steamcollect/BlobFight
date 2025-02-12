@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0281db0e9930143a4324f21fcb5b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSize: 5.5
+  minSize: 7
   maxSize: 15
   zoomMultiplier: 1.1
   moveSmoothTime: 0.2

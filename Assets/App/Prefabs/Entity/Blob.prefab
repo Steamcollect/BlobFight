@@ -733,6 +733,7 @@ MonoBehaviour:
   visual: {fileID: 6232837032291008028}
   health: {fileID: 5355027135910952395}
   stamina: {fileID: 8390691681812695191}
+  movement: {fileID: 2542050320697814845}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
   rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}

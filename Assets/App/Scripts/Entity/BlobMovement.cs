@@ -30,6 +30,8 @@ public class BlobMovement : MonoBehaviour
 
     Vector2 moveInput;
 
+    bool canMove = true;
+
     [Header("References")]
     [SerializeField] EntityInput entityInput;
     [SerializeField] BlobJoint blobJoint;
@@ -72,6 +74,8 @@ public class BlobMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove) return;
+
         if (isExtend)
         {
             if(!blobStamina.HaveEnoughStamina(extendStaminaCostPerSec * Time.deltaTime))
@@ -87,7 +91,10 @@ public class BlobMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
         blobJoint.SetCollidersPosOffset(.5f);
     }
 
@@ -104,6 +111,8 @@ public class BlobMovement : MonoBehaviour
 
     void ExtendBlob()
     {
+        if (!canMove) return;
+
         if(blobStamina.HaveEnoughStamina(extendStaminaCostPerSec * Time.deltaTime))
         {
             isExtend = true;
@@ -133,10 +142,21 @@ public class BlobMovement : MonoBehaviour
     }
     void Dash()
     {
+        if (!canMove) return;
+
         if (blobStamina.HaveEnoughStamina(dashStaminaCost))
         {
             blobStamina.RemoveStamina(dashStaminaCost);
             blobJoint.Move(moveInput * dashForce);
         }
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+    public void DisableMovement()
+    {
+        canMove = false;
     }
 }

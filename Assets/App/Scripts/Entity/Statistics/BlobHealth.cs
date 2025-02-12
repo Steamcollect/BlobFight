@@ -23,6 +23,7 @@ public class BlobHealth : MonoBehaviour
     //[Header("Input")]
     [Header("Output")]
     public Action OnDeath;
+    public Action OnDestroy;
 
     private void OnDisable()
     {
@@ -65,7 +66,14 @@ public class BlobHealth : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out IDamagable damagable))
             {
-                TakeDamage(damagable.GetDamage());
+                if (damagable.CanInstanteKill())
+                {
+                    OnDestroy?.Invoke();
+                }
+                else
+                {
+                    TakeDamage(damagable.GetDamage());
+                }
             }
         }
 

@@ -3,6 +3,13 @@ public class Damagable : MonoBehaviour, IDamagable
 {
     [Header("Settings")]
     [SerializeField] int damage;
+    [SerializeField] DamageType damageType;
+
+    public enum DamageType
+    {
+        Damage,
+        Destroy
+    }
 
     //[Header("References")]
 
@@ -16,5 +23,10 @@ public class Damagable : MonoBehaviour, IDamagable
     public int GetDamage()
     {
         return damage;
+    }
+
+    public bool CanInstanteKill()
+    {
+        return damageType == DamageType.Destroy;
     }
 }
