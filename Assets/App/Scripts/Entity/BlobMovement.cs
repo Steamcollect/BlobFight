@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.Search;
 using UnityEngine;
 
@@ -26,7 +27,8 @@ public class BlobMovement : MonoBehaviour
 
     [Space(5)]
     [SerializeField] float dashForce;
-    [SerializeField] float dashStaminaCost;
+    [SerializeField] float dashCooldown;
+    bool canDash = true;
 
     Vector2 moveInput;
 
@@ -142,13 +144,16 @@ public class BlobMovement : MonoBehaviour
     }
     void Dash()
     {
-        if (!canMove) return;
+        if (!canMove || !canDash) return;
 
-        if (blobStamina.HaveEnoughStamina(dashStaminaCost))
-        {
-            blobStamina.RemoveStamina(dashStaminaCost);
-            blobJoint.Move(moveInput * dashForce);
-        }
+        blobJoint.Move(moveInput * dashForce);
+        StartCoroutine(DashCooldown());
+    }
+    IEnumerator DashCooldown()
+    {
+        canDash = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     public void EnableMovement()

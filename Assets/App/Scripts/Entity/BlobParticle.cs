@@ -48,8 +48,16 @@ public class BlobParticle : MonoBehaviour
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
     }
 
-    void OnTouchEnter(Collision2D coll) => DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
-    void OnTouchExit(ContactPoint2D contact) => DustParticle(contact.point, contact.normal);
+    void OnTouchEnter(Collision2D coll)
+    {
+        if (coll.transform.CompareTag("Blob")) return;
+        DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
+    }
+    void OnTouchExit(ContactPoint2D contact)
+    {
+        if (contact.collider.transform.CompareTag("Blob")) return;
+        DustParticle(contact.point, contact.normal);
+    }
 
     void DustParticle(Vector2 position, Vector2 direction)
     {
