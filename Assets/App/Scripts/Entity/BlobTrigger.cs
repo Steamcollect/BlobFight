@@ -10,6 +10,7 @@ public class BlobTrigger : MonoBehaviour
     [SerializeField] BlobJoint blobJoint;
     
     List<GameObject> collisions = new();
+    Dictionary<GameObject, ContactPoint2D> lastContacts = new();
 
     //[Space(10)]
     // RSO
@@ -19,6 +20,7 @@ public class BlobTrigger : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
     public Action<Collision2D> OnCollisionEnter, OnCollisionExit;
+    public Action<ContactPoint2D> OnCollisionExitGetLastContact;
 
     private void OnDisable()
     {
@@ -42,8 +44,13 @@ public class BlobTrigger : MonoBehaviour
         {
             OnCollisionEnter?.Invoke(collision);
         }
-
         collisions.Add(collision.gameObject);
+
+        // Stocke le dernier point de contact et sa normale
+        if (collision.contactCount > 0)
+        {
+            lastContacts[collision.gameObject] = collision.GetContact(collision.contactCount - 1);
+        }
     }
 
     void OnExitCollision(Collision2D collision)
@@ -53,6 +60,13 @@ public class BlobTrigger : MonoBehaviour
         if (!collisions.Contains(collision.gameObject))
         {
             OnCollisionExit?.Invoke(collision);
+
+            if (lastContacts.TryGetValue(collision.gameObject, out ContactPoint2D lastPoint))
+            {
+                OnCollisionExitGetLastContact?.Invoke(lastPoint);
+            }
+
+            lastContacts.Remove(collision.gameObject);
         }
     }
 }

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158568281928d1f4ebe6cda948a31f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchParticleStartingCount: 5
+  touchParticleStartingCount: 15
   trigger: {fileID: 606557387366902294}
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
 --- !u!1 &1689548152335019987

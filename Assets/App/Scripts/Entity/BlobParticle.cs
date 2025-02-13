@@ -23,13 +23,13 @@ public class BlobParticle : MonoBehaviour
 
     private void OnEnable()
     {
-        trigger.OnCollisionEnter += DustParticle;
-        //trigger.OnCollisionExit += DustParticle;
+        trigger.OnCollisionEnter += OnTouchEnter;
+        trigger.OnCollisionExitGetLastContact += OnTouchExit;
     }
     private void OnDisable()
     {
-        trigger.OnCollisionEnter -= DustParticle;
-        trigger.OnCollisionExit -= DustParticle;
+        trigger.OnCollisionEnter -= OnTouchEnter;
+        trigger.OnCollisionExitGetLastContact -= OnTouchExit;
     }
 
     private void Start()
@@ -40,7 +40,10 @@ public class BlobParticle : MonoBehaviour
         }
     }
 
-    void DustParticle(Collision2D collision)
+    void OnTouchEnter(Collision2D coll) => DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
+    void OnTouchExit(ContactPoint2D contact) => DustParticle(contact.point, contact.normal);
+
+    void DustParticle(Vector2 position, Vector2 direction)
     {
         ParticleSystem particle;
         if (dustParticles.Count <= 0) particle = CreateParticle(dustParticlePrefab);
@@ -51,8 +54,8 @@ public class BlobParticle : MonoBehaviour
         ParticleSystem.MainModule main = particle.main;
         main.stopAction = ParticleSystemStopAction.Callback;
 
-        particle.transform.position = collision.GetContact(0).point;
-        particle.transform.up = collision.GetContact(0).normal;
+        particle.transform.position = position;
+        particle.transform.up = direction;
 
         particle.Play();
     }
