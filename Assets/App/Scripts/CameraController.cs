@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,11 +16,29 @@ public class CameraController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private float zoomVelocity = 0f;
 
+    [Space(10)]
+    [SerializeField] float shakeSpeed;
+    float shakeOffset;
+
     [Header("References")]
     [SerializeField] Camera cam;
 
+    Coroutine shakeCoroutine;
+
     [Space(10)]
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
+
+    [Header("Input")]
+    [SerializeField] RSE_CameraShake rseCameraShake;
+
+    private void OnEnable()
+    {
+        rseCameraShake.action += Shake;
+    }
+    private void OnDisable()
+    {
+        rseCameraShake.action -= Shake;
+    }
 
     private void LateUpdate()
     {
@@ -59,5 +78,29 @@ public class CameraController : MonoBehaviour
             }
         }
         return maxDistance * zoomMultiplier;
+    }
+
+    void Shake(float range, float time)
+    {
+        StartCoroutine(CameraShake(range, time));
+    }
+    IEnumerator CameraShake(float range, float time)
+    {
+        if (range > Mathf.Abs(shakeOffset))
+        {
+            float elapsedTime = 0f;
+            while (elapsedTime < time)
+            {
+                float dampingFactor = 1 - (elapsedTime / time);
+                shakeOffset = range * dampingFactor;
+                elapsedTime += Time.deltaTime;
+
+                //transform.rotation = Quaternion.Euler(0, 0, shakeOffset);
+                yield return null;
+            }
+
+            shakeOffset = 0f;
+            transform.rotation = Quaternion.Euler(0, 0, shakeOffset);
+        }
     }
 }

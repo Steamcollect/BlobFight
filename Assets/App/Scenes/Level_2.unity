@@ -1284,29 +1284,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: orthographic size
-      value: 9.683836
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.26666668
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.26666668
-      objectReference: {fileID: 0}
-    - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.26666668
-      objectReference: {fileID: 0}
     - target: {fileID: 4666903761734457750, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: shakeSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

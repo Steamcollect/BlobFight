@@ -880,7 +880,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  shakeIntensityOnDeath: 10
+  shakeTimeOnDeath: 0.1
   blobTrigger: {fileID: 606557387366902294}
+  rseCamShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
 --- !u!1 &5201094002138468326
 GameObject:
   m_ObjectHideFlags: 0

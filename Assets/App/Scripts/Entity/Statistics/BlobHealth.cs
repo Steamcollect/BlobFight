@@ -8,6 +8,10 @@ public class BlobHealth : MonoBehaviour
     [SerializeField] int maxHealth;
     int currentHealth;
 
+    [Space(10)]
+    [SerializeField] float shakeIntensityOnDeath;
+    [SerializeField] float shakeTimeOnDeath;
+
     [Header("References")] 
     [SerializeField] BlobTrigger blobTrigger;
 
@@ -20,6 +24,8 @@ public class BlobHealth : MonoBehaviour
     [Header("Output")]
     public Action OnDeath;
     public Action<ContactPoint2D> OnDestroy;
+
+    [SerializeField] RSE_CameraShake rseCamShake;
 
     private void OnDisable()
     {
@@ -45,6 +51,7 @@ public class BlobHealth : MonoBehaviour
     }
     void Die()
     {
+        rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
         OnDeath?.Invoke();
     }
 
@@ -59,6 +66,7 @@ public class BlobHealth : MonoBehaviour
         {
             if (damagable.CanInstanteKill())
             {
+                rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
                 OnDestroy?.Invoke(collision.GetContact(0));
             }
             else
