@@ -194,7 +194,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchParticleStartingCount: 15
   trigger: {fileID: 606557387366902294}
+  health: {fileID: 5355027135910952395}
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
+  deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
+  destroyParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
 --- !u!1 &1689548152335019987
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +786,7 @@ MonoBehaviour:
   health: {fileID: 5355027135910952395}
   stamina: {fileID: 8390691681812695191}
   movement: {fileID: 2542050320697814845}
+  particle: {fileID: 4617812964555812280}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
   rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}

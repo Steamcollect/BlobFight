@@ -8,8 +8,6 @@ public class BlobHealth : MonoBehaviour
     [SerializeField] int maxHealth;
     int currentHealth;
 
-    bool isinvincible = false;
-
     [Header("References")] 
     [SerializeField] BlobTrigger blobTrigger;
 
@@ -21,7 +19,7 @@ public class BlobHealth : MonoBehaviour
     //[Header("Input")]
     [Header("Output")]
     public Action OnDeath;
-    public Action OnDestroy;
+    public Action<ContactPoint2D> OnDestroy;
 
     private void OnDisable()
     {
@@ -61,7 +59,7 @@ public class BlobHealth : MonoBehaviour
         {
             if (damagable.CanInstanteKill())
             {
-                OnDestroy?.Invoke();
+                OnDestroy?.Invoke(collision.GetContact(0));
             }
             else
             {

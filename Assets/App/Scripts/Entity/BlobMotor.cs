@@ -13,6 +13,7 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobHealth health;
     [SerializeField] BlobStamina stamina;
     [SerializeField] BlobMovement movement;
+    [SerializeField] BlobParticle particle;
 
     [Space(10)]
     // RSO
@@ -29,12 +30,12 @@ public class BlobMotor : MonoBehaviour
     private void OnEnable()
     {
         health.OnDeath += OnDeath;
-        health.OnDestroy += Disable;
+        health.OnDestroy += OnDestroyed;
     }
     private void OnDisable()
     {
         health.OnDeath -= OnDeath;
-        health.OnDeath -= Disable;
+        health.OnDestroy -= OnDestroyed;
 
         rsoBlobInGame.Value.Remove(this);
     }
@@ -79,8 +80,7 @@ public class BlobMotor : MonoBehaviour
     {
         joint.DisableJoint();
         visual.Hide();
-
-        rseOnBlobDeath.Call(this);
+        movement.DisableMovement();
     }
 
     public void Spawn(Vector2 position)
@@ -91,8 +91,16 @@ public class BlobMotor : MonoBehaviour
     }
     void OnDeath()
     {
-        movement.DisableMovement();
+        particle.DeathParticle(joint.GetJointsCenter(), currentStats.color);
 
+        Disable();
+        rseOnBlobDeath.Call(this);
+    }
+    void OnDestroyed(ContactPoint2D contact)
+    {
+        particle.DestroyParticle(contact, currentStats.color);
+
+        Disable();
         rseOnBlobDeath.Call(this);
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,17 @@ public class BlobParticle : MonoBehaviour
 
     [Header("References")]
     [SerializeField] BlobTrigger trigger;
+    [SerializeField] BlobHealth health;
 
     [Space(5)]
     [SerializeField] ParticleSystem dustParticlePrefab;
     Queue<ParticleSystem> dustParticles = new();
+
+    [SerializeField] ParticleSystem deathParticlePrefab;
+    Queue<ParticleSystem> deathParticles = new();
+    
+    [SerializeField] ParticleSystem destroyParticlePrefab;
+    Queue<ParticleSystem> destroyParticles = new();
 
     //[Space(10)]
     // RSO
@@ -35,9 +43,9 @@ public class BlobParticle : MonoBehaviour
     private void Start()
     {
         for (int i = 0; i < touchParticleStartingCount; i++)
-        {
-            dustParticles.Enqueue(CreateParticle(dustParticlePrefab));
-        }
+            dustParticles.Enqueue(CreateParticle(dustParticlePrefab, OnTouchParticleEnd));
+
+        deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
     }
 
     void OnTouchEnter(Collision2D coll) => DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
@@ -46,7 +54,7 @@ public class BlobParticle : MonoBehaviour
     void DustParticle(Vector2 position, Vector2 direction)
     {
         ParticleSystem particle;
-        if (dustParticles.Count <= 0) particle = CreateParticle(dustParticlePrefab);
+        if (dustParticles.Count <= 0) particle = CreateParticle(dustParticlePrefab, OnTouchParticleEnd);
         else particle = dustParticles.Dequeue();
 
         particle.gameObject.SetActive(true);
@@ -65,10 +73,55 @@ public class BlobParticle : MonoBehaviour
         dustParticles.Enqueue(particle);
     }
 
-    ParticleSystem CreateParticle(ParticleSystem prefab)
+    public void DeathParticle(Vector2 position, BlobColor color)
+    {
+        ParticleSystem particle;
+        if (deathParticles.Count <= 0) particle = CreateParticle(deathParticlePrefab, OnDeathParticleEnd);
+        else particle = deathParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+
+        ParticleSystem.MainModule main = particle.main;
+        main.stopAction = ParticleSystemStopAction.Callback;
+
+        particle.transform.position = position;
+        main.startColor = color.fillColor;
+
+        particle.Play();
+    }
+    void OnDeathParticleEnd(ParticleSystem particle)
+    {
+        particle.gameObject.SetActive(false);
+        deathParticles.Enqueue(particle);
+    }
+    
+    public void DestroyParticle(ContactPoint2D contact, BlobColor color)
+    {
+        ParticleSystem particle;
+        if (destroyParticles.Count <= 0) particle = CreateParticle(destroyParticlePrefab, OnDestroyParticleEnd);
+        else particle = destroyParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+
+        ParticleSystem.MainModule main = particle.main;
+        main.stopAction = ParticleSystemStopAction.Callback;
+
+        particle.transform.position = contact.point;
+        particle.transform.up = contact.normal;
+        main.startColor = color.fillColor;
+
+        particle.Play();
+    }
+    void OnDestroyParticleEnd(ParticleSystem particle)
+    {
+        particle.gameObject.SetActive(false);
+        deathParticles.Enqueue(particle);
+    }
+
+    ParticleSystem CreateParticle(ParticleSystem prefab, Action<ParticleSystem> stopAction)
     {
         ParticleSystem particle = Instantiate(prefab, transform);
-        particle.GetComponent<ParticleCallback>().Setup(OnTouchParticleEnd, particle);
+        particle.GetComponent<ParticleCallback>().Setup(stopAction, particle);
 
         particle.gameObject.SetActive(false);
         return particle;
