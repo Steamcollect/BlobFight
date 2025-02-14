@@ -15,20 +15,24 @@ public class RoundManager : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
 
     [Header("Output")]
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
+    [SerializeField] RSE_OnFightEnd rseOnFightEnd;
 
     private void OnEnable()
     {
         rseOnBlobDeath.action += CheckBlobCount;
+        rseOnFightStart.action += Setup;
     }
     private void OnDisable()
     {
         rseOnBlobDeath.action -= CheckBlobCount;
+        rseOnFightStart.action -= Setup;
     }
 
-    private void Start()
+    void Setup()
     {
         blobs = new List<BlobMotor>(rsoBlobInGame.Value);
     }
@@ -39,6 +43,7 @@ public class RoundManager : MonoBehaviour
 
         if(blobs.Count <= 1)
         {
+            rseOnFightEnd.Call();
             rseLoadNextLevel.Call();
         }
     }

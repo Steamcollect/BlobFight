@@ -1255,10 +1255,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.3
+  delayBeforeStart: 0
+  delayAtPoint: 0
   movable: {fileID: 2283546443015957139}
   positions:
   - {fileID: 2122258889941170472}
   - {fileID: 2176931108172692312}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!1 &2535923846144462583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 9999
+  damageType: 0
 --- !u!61 &7902200692271731291
 BoxCollider2D:
   m_ObjectHideFlags: 0

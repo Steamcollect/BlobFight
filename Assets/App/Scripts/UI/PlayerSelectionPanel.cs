@@ -50,8 +50,6 @@ public class PlayerSelectionPanel : MonoBehaviour
     {
         if (rsoBlobInGame.Value.Count < blobRequireToPlay) return;
 
-        StartCoroutine(Utils.UnloadSceneAsync("MainMenu"));
-
         rseLoadNextLevel.Call();
     }
 }

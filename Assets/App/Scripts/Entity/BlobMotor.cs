@@ -21,7 +21,9 @@ public class BlobMotor : MonoBehaviour
     // RSF
     // RSP
 
-    //[Header("Input")]
+    [Header("Input")]
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
+    [SerializeField] RSE_OnFightEnd rseOnFightEnd;
 
     [Header("Output")]
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
@@ -29,11 +31,17 @@ public class BlobMotor : MonoBehaviour
 
     private void OnEnable()
     {
+        rseOnFightStart.action += UnlockInteraction;
+        rseOnFightEnd.action += LockInteraction;
+
         health.OnDeath += OnDeath;
         health.OnDestroy += OnDestroyed;
     }
     private void OnDisable()
     {
+        rseOnFightStart.action -= UnlockInteraction;
+        rseOnFightEnd.action -= LockInteraction;
+
         health.OnDeath -= OnDeath;
         health.OnDestroy -= OnDestroyed;
 
@@ -60,27 +68,35 @@ public class BlobMotor : MonoBehaviour
         visual.Setup(currentStats.color);
 
         Setup();
+        UnlockInteraction();
     }
 
     void Setup()
     {
         stamina.Setup();
-
         rseSpawnBlob.Call(this);
-        Invoke("Enable", .05f);
     }
 
-    public void Enable()
+    void Enable()
     {
-        movement.EnableMovement();
         joint.EnableJoint();
         visual.Show();
     }
-    public void Disable()
+    void Disable()
     {
         joint.DisableJoint();
         visual.Hide();
+
+        LockInteraction();
+    }
+
+    void LockInteraction()
+    {
         movement.DisableMovement();
+    }
+    void UnlockInteraction()
+    {
+        movement.EnableMovement();
     }
 
     public void Spawn(Vector2 position)

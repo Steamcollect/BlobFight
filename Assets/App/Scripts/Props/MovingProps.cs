@@ -20,10 +20,21 @@ public class MovingProps : MonoBehaviour
     // RSF
     // RSP
 
-    //[Header("Input")]
+    [Header("Input")]
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
+    
     //[Header("Output")]
 
-    private void Start()
+    private void OnEnable()
+    {
+        rseOnFightStart.action += Setup;
+    }
+    private void OnDisable()
+    {
+        rseOnFightStart.action -= Setup;
+    }
+
+    private void Setup()
     {
         if(positions.Length > 0)
         {
@@ -51,5 +62,10 @@ public class MovingProps : MonoBehaviour
         {
             StartCoroutine(DelayAtPoint());
         });
+    }
+
+    private void OnDestroy()
+    {
+        movable.DOKill();
     }
 }

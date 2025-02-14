@@ -23,6 +23,7 @@ public class SceneManagement : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_FadeIn rseFadeIn;
     [SerializeField] RSE_FadeOut rseFadeOut;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
 
     private void OnEnable()
     {
@@ -36,6 +37,7 @@ public class SceneManagement : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Utils.LoadSceneAsync("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Additive));
+        currentLevel = "MainMenu";
     }
 
     void LoadNextLevelRandomly()
@@ -59,7 +61,11 @@ public class SceneManagement : MonoBehaviour
 
             StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
             {
-                rseFadeIn.Call(() => isLoading = false);
+                rseFadeIn.Call(() =>
+                {
+                    rseOnFightStart.Call();
+                    isLoading = false;
+                });
             }));
         });
         
