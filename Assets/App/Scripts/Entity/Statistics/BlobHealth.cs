@@ -8,6 +8,8 @@ public class BlobHealth : MonoBehaviour
     [SerializeField] int maxHealth;
     int currentHealth;
 
+    bool isDead;
+
     [Space(10)]
     [SerializeField] float shakeIntensityOnDeath;
     [SerializeField] float shakeTimeOnDeath;
@@ -40,7 +42,6 @@ public class BlobHealth : MonoBehaviour
     void LateStart()
     {
         blobTrigger.OnCollisionEnter += OnEnterCollision;
-
     }
 
     void TakeDamage(int damage)
@@ -52,11 +53,15 @@ public class BlobHealth : MonoBehaviour
     void Die()
     {
         rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+        isDead = true;
         OnDeath?.Invoke();
     }
 
+    public bool IsDead() { return isDead; }
+
     public void Setup()
     {
+        isDead = false;
         currentHealth = maxHealth;
     }
 
