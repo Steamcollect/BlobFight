@@ -5,6 +5,7 @@ public class SceneManagement : MonoBehaviour
     [Header("Settings")]
     [SerializeField] string[] levelsName;
     List<string> levels = new();
+	[SerializeField] string mainMenuName;
 
     string currentLevel = "";
 
@@ -36,8 +37,8 @@ public class SceneManagement : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Utils.LoadSceneAsync("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Additive));
-        currentLevel = "MainMenu";
+        StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive));
+        currentLevel = mainMenuName;
     }
 
     void LoadNextLevelRandomly()
