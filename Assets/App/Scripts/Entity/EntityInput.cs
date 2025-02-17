@@ -45,4 +45,9 @@ public class EntityInput : MonoBehaviour
                 break;
         }
     }
+
+    public void OnControllerDisconnect()
+    {
+        Destroy(gameObject);
+    }
 }
