@@ -124,4 +124,6 @@ public class BlobMotor : MonoBehaviour
     {
         return currentStats.color;
     }
+
+    public bool IsAlive() { return !health.IsDead(); }
 }
