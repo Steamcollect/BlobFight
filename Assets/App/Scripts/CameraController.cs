@@ -16,14 +16,14 @@ public class CameraController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private float zoomVelocity = 0f;
 
+    private Vector3 posOffset;
+
     [Space(10)]
     [SerializeField] float shakeSpeed;
     float shakeOffset;
 
     [Header("References")]
     [SerializeField] Camera cam;
-
-    Coroutine shakeCoroutine;
 
     [Space(10)]
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
@@ -39,7 +39,6 @@ public class CameraController : MonoBehaviour
     {
         rseCameraShake.action -= Shake;
     }
-
     private void LateUpdate()
     {
         if (rsoBlobInGame.Value.Count == 0) return;
@@ -49,7 +48,7 @@ public class CameraController : MonoBehaviour
 
         // SmoothDamp for position
         Vector3 targetPosition = new Vector3(center.x, center.y, cam.transform.position.z);
-        cam.transform.position = Vector3.SmoothDamp(cam.transform.position, targetPosition, ref velocity, moveSmoothTime);
+        cam.transform.position = Vector3.SmoothDamp(cam.transform.position, targetPosition, ref velocity, moveSmoothTime) + posOffset;
 
         // SmoothDamp for zoom
         float targetSize = Mathf.Clamp(distance, minSize, maxSize);
@@ -88,23 +87,25 @@ public class CameraController : MonoBehaviour
     {
         StartCoroutine(CameraShake(range, time));
     }
-    IEnumerator CameraShake(float range, float time)
+    IEnumerator CameraShake(float magnitude, float time)
     {
-        if (range > Mathf.Abs(shakeOffset))
+        if (magnitude > Mathf.Abs(shakeOffset))
         {
-            float elapsedTime = 0f;
-            while (elapsedTime < time)
-            {
-                float dampingFactor = 1 - (elapsedTime / time);
-                shakeOffset = range * dampingFactor;
-                elapsedTime += Time.deltaTime;
+            float elapsed = 0f;
 
-                //transform.rotation = Quaternion.Euler(0, 0, shakeOffset);
+            while (elapsed < time)
+            {
+                float currentMagnitude = Mathf.Lerp(magnitude, 0, elapsed / time);
+
+                float x = Random.Range(-1f, 1f) * currentMagnitude;
+                float y = Random.Range(-1f, 1f) * currentMagnitude * 0.5f;
+
+                posOffset =new Vector3(x, y, 0);
+                elapsed += Time.deltaTime;
+
                 yield return null;
             }
-
-            shakeOffset = 0f;
-            transform.rotation = Quaternion.Euler(0, 0, shakeOffset);
+            posOffset = Vector3.zero;
         }
     }
 }
