@@ -147,11 +147,11 @@ public class BlobJoint : MonoBehaviour
     #endregion
 
     #region Rigidbody
-    public void Move(Vector2 force)
+    public void AddForce(Vector2 force)
     {
         foreach (var joint in joints)
         {
-            joint.Move(force);
+            joint.AddForce(force);
         }
     }
     public void SetDrag(float drag)

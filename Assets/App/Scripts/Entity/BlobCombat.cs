@@ -1,10 +1,13 @@
 using UnityEngine;
 public class BlobCombat : MonoBehaviour
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] float pushBackForce;
+    [SerializeField] float returnPushBackForce;
 
     [Header("References")]
     [SerializeField] BlobTrigger blobTrigger;
+    [SerializeField] BlobJoint blobJoint;
 
     //[Space(10)]
     // RSO
@@ -30,6 +33,12 @@ public class BlobCombat : MonoBehaviour
 
     void OnEnterCollision(BlobMotor blob)
     {
-        print(blob.joint.GetVelocity());
+        float velocity = blobJoint.GetVelocity().sqrMagnitude;
+        if (blob.joint.GetVelocity().sqrMagnitude < velocity)
+        {
+            Vector2 direction = (blob.joint.GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
+            blob.joint.AddForce(direction * pushBackForce * velocity);
+            blobJoint.AddForce(-direction * returnPushBackForce * velocity);
+        }
     }
 }

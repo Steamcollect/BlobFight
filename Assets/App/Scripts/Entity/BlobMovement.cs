@@ -139,13 +139,13 @@ public class BlobMovement : MonoBehaviour
 
     void Move()
     {
-        blobJoint.Move(Vector2.right * moveInput.x * moveSpeed);
+        blobJoint.AddForce(Vector2.right * moveInput.x * moveSpeed);
     }
     void Dash()
     {
         if (!canMove || !canDash) return;
 
-        blobJoint.Move(moveInput * dashForce);
+        blobJoint.AddForce(moveInput * dashForce);
         StartCoroutine(DashCooldown());
     }
     IEnumerator DashCooldown()

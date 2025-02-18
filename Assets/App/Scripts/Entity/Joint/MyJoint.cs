@@ -45,7 +45,7 @@ public class MyJoint : MonoBehaviour
     #endregion
 
     #region Rigidbody
-    public void Move(Vector2 force)
+    public void AddForce(Vector2 force)
     {
         rb.AddForce(force);
     }

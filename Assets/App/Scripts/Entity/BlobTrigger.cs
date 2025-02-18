@@ -54,6 +54,8 @@ public class BlobTrigger : MonoBehaviour
                 {
                     OnCollisionEnterWithBlob?.Invoke(joint.parentMotor);
                 }
+
+                blobs.Add(joint.parentMotor);
             }
         }
         collisions.Add(collision.gameObject);
@@ -81,6 +83,8 @@ public class BlobTrigger : MonoBehaviour
             // Check if blob
             if (collision.transform.TryGetComponent(out MyJoint joint))
             {
+                blobs.Remove(joint.parentMotor);
+
                 if (!blobs.Contains(joint.parentMotor))
                 {
                     OnCollisionExitWithBlob?.Invoke(joint.parentMotor);

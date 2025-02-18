@@ -681,7 +681,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pushBackForce: 1.1
+  returnPushBackForce: 0.5
   blobTrigger: {fileID: 606557387366902294}
+  blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &3290518167020313716
 GameObject:
   m_ObjectHideFlags: 0
