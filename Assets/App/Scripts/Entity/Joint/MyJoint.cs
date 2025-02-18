@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MyJoint : MonoBehaviour
 {
+    public BlobMotor parentMotor;
     public Rigidbody2D rb;
     public Collider2D collid;
 
