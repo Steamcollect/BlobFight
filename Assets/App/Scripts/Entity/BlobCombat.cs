@@ -19,7 +19,7 @@ public class BlobCombat : MonoBehaviour
 
     private void OnDisable()
     {
-        blobTrigger.OnCollisionEnterWithBlob -= OnEnterCollision;
+        blobTrigger.OnCollisionEnterWithBlob -= OnBlobCollisionEnter;
     }
 
     private void Start()
@@ -28,10 +28,16 @@ public class BlobCombat : MonoBehaviour
     }
     void LateStart()
     {
-        blobTrigger.OnCollisionEnterWithBlob += OnEnterCollision;
+        blobTrigger.OnCollisionEnterWithBlob += OnBlobCollisionEnter;
     }
 
-    void OnEnterCollision(BlobMotor blob)
+    void OnEnterCollision(Collision2D collision)
+    {
+        if(collision.gameObject.TryGetComponent(out EntityHealth health))
+        {
+        }
+    }
+    void OnBlobCollisionEnter(BlobMotor blob)
     {
         float velocity = blobJoint.GetVelocity().sqrMagnitude;
         if (blob.joint.GetVelocity().sqrMagnitude < velocity)

@@ -64,10 +64,10 @@ public class BlobVisual : MonoBehaviour
         fillMesh.Clear();
 
         List<Vector3> pointsPos = new List<Vector3>();
-        for (int i = 0; i < blobJoint.jointsRb.Length - 1; i++)
+        for (int i = 0; i < blobJoint.jointsRb.Length; i++)
         {
             Vector3 p0 = blobJoint.jointsRb[i].position;
-            Vector3 p1 = blobJoint.jointsRb[i + 1].position;
+            Vector3 p1 = blobJoint.jointsRb[(i + 1) % blobJoint.jointsRb.Length].position;
 
             // Calcul de la normale entre les deux points
             Vector3 segmentDirection = (p1 - p0).normalized;
@@ -82,9 +82,6 @@ public class BlobVisual : MonoBehaviour
                 pointsPos.Add(bezierPoint);
             }
         }
-
-        // Ajouter le dernier point
-        pointsPos.Add(blobJoint.jointsRb[blobJoint.jointsRb.Length - 1].position);
 
         fillMesh.vertices = pointsPos.ToArray();
         fillMesh.triangles = GetTriangles(pointsPos);
