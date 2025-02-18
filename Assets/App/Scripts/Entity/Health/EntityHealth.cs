@@ -17,18 +17,20 @@ public class EntityHealth : MonoBehaviour
     // RSP
 
     [Header("Input")]
+    public Action onTakeDamage;
     public Action onDeath;
     public Action<ContactPoint2D> onDestroy;
 
     //[Header("Output")]
 
-    protected void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
         if (currentHealth <= 0) Die();
+        else onTakeDamage?.Invoke();
     }
-    protected void Die()
+    public void Die()
     {
         isDead = true;
         onDeath?.Invoke();

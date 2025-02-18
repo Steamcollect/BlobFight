@@ -31,12 +31,6 @@ public class BlobCombat : MonoBehaviour
         blobTrigger.OnCollisionEnterWithBlob += OnBlobCollisionEnter;
     }
 
-    void OnEnterCollision(Collision2D collision)
-    {
-        if(collision.gameObject.TryGetComponent(out EntityHealth health))
-        {
-        }
-    }
     void OnBlobCollisionEnter(BlobMotor blob)
     {
         float velocity = blobJoint.GetVelocity().sqrMagnitude;

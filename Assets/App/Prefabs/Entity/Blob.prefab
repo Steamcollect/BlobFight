@@ -2328,6 +2328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingDistanceFromCenter: 0.7
+  mass: 5
   motor: {fileID: 3420423106000584793}
   jointsRb:
   - {fileID: 1416860201021149844}

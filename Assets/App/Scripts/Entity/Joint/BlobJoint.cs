@@ -6,6 +6,7 @@ public class BlobJoint : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float startingDistanceFromCenter;
+    public int mass;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
