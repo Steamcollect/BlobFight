@@ -37,6 +37,7 @@ public class BlobMovement : MonoBehaviour
     [SerializeField] EntityInput entityInput;
     [SerializeField] BlobJoint blobJoint;
     [SerializeField] BlobStamina blobStamina;
+    [SerializeField] BlobVisual blobVisual;
 
     class MySpringJoint
     {
@@ -121,6 +122,8 @@ public class BlobMovement : MonoBehaviour
             blobJoint.MultiplyInitialSpringDistance(extendDistanceMult);
             blobJoint.SetDamping(extendDamping);
             blobJoint.SetFrequency(extendFrequency);
+
+            blobVisual.SetToExtend();
         }        
     }
     void ShrinkBlob()
@@ -130,6 +133,8 @@ public class BlobMovement : MonoBehaviour
         blobJoint.SetFrequency(idleFrequency);
 
         isExtend = false;
+
+        blobVisual.SetToShrink();
     }
 
     void SetInput(Vector2 input)

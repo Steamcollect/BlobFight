@@ -258,6 +258,7 @@ MonoBehaviour:
   entityInput: {fileID: 8417928549951212344}
   blobJoint: {fileID: 6321734985548798584}
   blobStamina: {fileID: 8390691681812695191}
+  blobVisual: {fileID: 6232837032291008028}
 --- !u!1 &1958215696552307569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,6 +2113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9dfed204d22f344acb348ca38c933f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shrinkBevelCount: 3
+  shrinkHeightFactor: 0.04
+  extendBevelCount: 4
+  extendHeightFactor: 0.15
   outlineThickness: 0.3
   outlineMeshFilter: {fileID: 1097680500150144223}
   outlineRenderer: {fileID: 1326883160990318666}

@@ -1,10 +1,20 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BlobVisual : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] int shrinkBevelCount;
+    [SerializeField, Range(0, .3f)] float shrinkHeightFactor;
+    [Space(5)]
+    [SerializeField] int extendBevelCount;
+    [SerializeField, Range(0, .3f)] float extendHeightFactor;
+
+    [Space(5)]
     [SerializeField] float outlineThickness = 0.1f;
+    int bevelCount;
+    float heightFactor;
 
     [Header("References")]
     [SerializeField] MeshFilter outlineMeshFilter;
@@ -17,7 +27,6 @@ public class BlobVisual : MonoBehaviour
 
     private Mesh outlineMesh;
     private Mesh fillMesh;
-    private Vector2 blobCenter;
 
     private void Awake()
     {
@@ -39,78 +48,99 @@ public class BlobVisual : MonoBehaviour
         fillRenderer.material = mat;
     }
 
+    private void Start()
+    {
+        SetToShrink();
+    }
+
     private void Update()
     {
-        blobCenter = CalculateBlobCenter();
-        UpdateOutlineMesh();
         UpdateFillMesh();
-    }
-
-    private Vector2 CalculateBlobCenter()
-    {
-        Vector2 sum = Vector2.zero;
-        foreach (Rigidbody2D point in blobJoint.jointsRb)
-        {
-            sum += (Vector2)point.transform.position;
-        }
-        return sum / blobJoint.jointsRb.Length;
-    }
-
-    private void UpdateOutlineMesh()
-    {
-        outlineMesh.Clear();
-
-        List<Vector3> vertices = new List<Vector3>();
-        List<int> triangles = new List<int>();
-
-        for (int i = 0; i < blobJoint.jointsRb.Length; i++)
-        {
-            vertices.Add(blobJoint.jointsRb[i].position);
-            vertices.Add(
-                (blobCenter
-                + (Vector2)blobJoint.jointsRb[i].transform.localPosition
-                + ((Vector2)blobJoint.jointsRb[i].transform.localPosition - blobCenter).normalized
-                * outlineThickness) - blobCenter);
-        }
-
-        for (int i = 0; i < blobJoint.jointsRb.Length * 2; i += 2)
-        {
-            int next = (i + 2) % (blobJoint.jointsRb.Length * 2);
-            triangles.Add(i);
-            triangles.Add(next);
-            triangles.Add(i + 1);
-
-            triangles.Add(i + 1);
-            triangles.Add(next);
-            triangles.Add(next + 1);
-        }
-
-        outlineMesh.vertices = vertices.ToArray();
-        outlineMesh.triangles = triangles.ToArray();
+        UpdateOutlineMesh();
     }
 
     private void UpdateFillMesh()
     {
         fillMesh.Clear();
 
-        Vector3[] pointsPos = new Vector3[blobJoint.jointsRb.Length];
-        for (int i = 0; i < blobJoint.jointsRb.Length; i++)
+        List<Vector3> pointsPos = new List<Vector3>();
+        for (int i = 0; i < blobJoint.jointsRb.Length - 1; i++)
         {
-            pointsPos[i] = blobJoint.jointsRb[i].position;
+            Vector3 p0 = blobJoint.jointsRb[i].position;
+            Vector3 p1 = blobJoint.jointsRb[i + 1].position;
+
+            // Calcul de la normale entre les deux points
+            Vector3 segmentDirection = (p1 - p0).normalized;
+            Vector3 normal = Vector3.Cross(segmentDirection, Vector3.forward).normalized * heightFactor;
+            Vector3 midPoint = (p0 + p1) / 2 + normal;
+
+            // Ajout des points intermédiaires basés sur une courbe de Bézier quadratique
+            for (int j = 0; j <= bevelCount; j++)
+            {
+                float t = j / (float)(bevelCount + 1);
+                Vector3 bezierPoint = Mathf.Pow(1 - t, 2) * p0 + 2 * (1 - t) * t * midPoint + Mathf.Pow(t, 2) * p1;
+                pointsPos.Add(bezierPoint);
+            }
         }
 
-        fillMesh.vertices = pointsPos;
-        fillMesh.triangles = DrawFilledTriangles(pointsPos);
+        // Ajouter le dernier point
+        pointsPos.Add(blobJoint.jointsRb[blobJoint.jointsRb.Length - 1].position);
+
+        fillMesh.vertices = pointsPos.ToArray();
+        fillMesh.triangles = GetTriangles(pointsPos);
     }
-    int[] DrawFilledTriangles(Vector3[] pointsPos)
+    private void UpdateOutlineMesh()
     {
-        int triangleAmout = pointsPos.Length - 2;
+        outlineMesh.Clear();
+
+        List<Vector3> outlinePoints = new List<Vector3>();
+        List<Vector3> extendedOutlinePoints = new List<Vector3>();
+
+        for (int i = 0; i < fillMesh.vertices.Length; i++)
+        {
+            Vector3 point = fillMesh.vertices[i];
+            Vector3 prevPoint = fillMesh.vertices[(i - 1 + fillMesh.vertices.Length) % fillMesh.vertices.Length];
+            Vector3 nextPoint = fillMesh.vertices[(i + 1) % fillMesh.vertices.Length];
+
+            // Calcul de la direction moyenne pour lisser l'outline
+            Vector3 direction = ((point - prevPoint).normalized + (nextPoint - point).normalized).normalized;
+            Vector3 perpendicular = Vector3.Cross(direction, Vector3.forward).normalized;
+
+            Vector3 outlinePoint = point;
+            Vector3 extendedOutlinePoint = point + perpendicular * outlineThickness;
+
+            outlinePoints.Add(outlinePoint);
+            extendedOutlinePoints.Add(extendedOutlinePoint);
+        }
+
+        // Génération des triangles pour relier les points de l'outline
+        List<int> outlineTriangles = new List<int>();
+        int count = outlinePoints.Count;
+        for (int i = 0; i < count; i++)
+        {
+            int nextIndex = (i + 1) % count;
+            outlineTriangles.Add(i);
+            outlineTriangles.Add(nextIndex);
+            outlineTriangles.Add(i + count);
+
+            outlineTriangles.Add(nextIndex);
+            outlineTriangles.Add(nextIndex + count);
+            outlineTriangles.Add(i + count);
+        }
+
+        outlineMesh.vertices = outlinePoints.Concat(extendedOutlinePoints).ToArray();
+        outlineMesh.triangles = outlineTriangles.ToArray();
+    }
+    private int[] GetTriangles(List<Vector3> pointsPos)
+    {
+        int triangleAmount = pointsPos.Count - 2;
         List<int> newTriangles = new List<int>();
-        for (int i = 0; i < triangleAmout; i++)
+
+        for (int i = 0; i < triangleAmount; i++)
         {
             newTriangles.Add(0);
-            newTriangles.Add(i+2);
-            newTriangles.Add(i+1);
+            newTriangles.Add(i + 2);
+            newTriangles.Add(i + 1);
         }
 
         return newTriangles.ToArray();
@@ -125,5 +155,16 @@ public class BlobVisual : MonoBehaviour
     {
         outlineMeshFilter.gameObject.SetActive(false);
         fillMeshFilter.gameObject.SetActive(false);
+    }
+
+    public void SetToShrink()
+    {
+        bevelCount = shrinkBevelCount;
+        heightFactor = shrinkHeightFactor;
+    }
+    public void SetToExtend()
+    {
+        bevelCount = extendBevelCount;
+        heightFactor = extendHeightFactor;
     }
 }
