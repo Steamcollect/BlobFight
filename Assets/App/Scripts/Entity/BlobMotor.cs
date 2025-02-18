@@ -34,16 +34,16 @@ public class BlobMotor : MonoBehaviour
         rseOnFightStart.action += UnlockInteraction;
         rseOnFightEnd.action += LockInteraction;
 
-        health.OnDeath += OnDeath;
-        health.OnDestroy += OnDestroyed;
+        health.onDeath += OnDeath;
+        health.onDestroy += OnDestroyed;
     }
     private void OnDisable()
     {
         rseOnFightStart.action -= UnlockInteraction;
         rseOnFightEnd.action -= LockInteraction;
 
-        health.OnDeath -= OnDeath;
-        health.OnDestroy -= OnDestroyed;
+        health.onDeath -= OnDeath;
+        health.onDestroy -= OnDestroyed;
 
         rsoBlobInGame.Value.Remove(this);
     }

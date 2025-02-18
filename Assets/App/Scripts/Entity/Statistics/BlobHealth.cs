@@ -2,13 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class BlobHealth : MonoBehaviour
-{
-    [Header("Settings")]
-    [SerializeField] int maxHealth;
-    int currentHealth;
 
-    bool isDead;
+public class BlobHealth : EntityHealth
+{
+    //[Header("Settings")]
 
     [Space(10)]
     [SerializeField] float shakeIntensityOnDeath;
@@ -23,15 +20,14 @@ public class BlobHealth : MonoBehaviour
     // RSP
 
     //[Header("Input")]
-    [Header("Output")]
-    public Action OnDeath;
-    public Action<ContactPoint2D> OnDestroy;
+    //[Header("Output")]
 
     [SerializeField] RSE_CameraShake rseCamShake;
 
     private void OnDisable()
     {
         blobTrigger.OnCollisionEnter -= OnEnterCollision;
+        onDeath -= OnDeath;
     }
 
     private void Start()
@@ -42,27 +38,18 @@ public class BlobHealth : MonoBehaviour
     void LateStart()
     {
         blobTrigger.OnCollisionEnter += OnEnterCollision;
+        onDeath += OnDeath;
     }
-
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-
-        if (currentHealth <= 0) Die();
-    }
-    void Die()
-    {
-        rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-        isDead = true;
-        OnDeath?.Invoke();
-    }
-
-    public bool IsDead() { return isDead; }
 
     public void Setup()
     {
         isDead = false;
         currentHealth = maxHealth;
+    }
+
+    void OnDeath()
+    {
+        rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
     }
 
     void OnEnterCollision(Collision2D collision)
@@ -72,7 +59,7 @@ public class BlobHealth : MonoBehaviour
             if (damagable.CanInstanteKill())
             {
                 rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-                OnDestroy?.Invoke(collision.GetContact(0));
+                onDestroy?.Invoke(collision.GetContact(0));
             }
             else
             {
