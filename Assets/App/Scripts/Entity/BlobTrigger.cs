@@ -10,6 +10,8 @@ public class BlobTrigger : MonoBehaviour
     [SerializeField] BlobJoint blobJoint;
     
     List<GameObject> collisions = new();
+    List<BlobMotor> blobs = new();
+
     Dictionary<GameObject, ContactPoint2D> lastContacts = new();
 
     //[Space(10)]
@@ -20,6 +22,7 @@ public class BlobTrigger : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
     public Action<Collision2D> OnCollisionEnter, OnCollisionExit;
+    public Action<BlobMotor> OnCollisionEnterWithBlob, OnCollisionExitWithBlob;
     public Action<ContactPoint2D> OnCollisionExitGetLastContact;
 
     private void OnDisable()
@@ -43,6 +46,17 @@ public class BlobTrigger : MonoBehaviour
         if (!collisions.Contains(collision.gameObject))
         {
             OnCollisionEnter?.Invoke(collision);
+
+            // Check if blob
+            if (collision.transform.TryGetComponent(out MyJoint joint))
+            {
+                if (!blobs.Contains(joint.parentMotor))
+                {
+                    OnCollisionEnterWithBlob?.Invoke(joint.parentMotor);
+                }
+
+                blobs.Add(joint.parentMotor);
+            }
         }
         collisions.Add(collision.gameObject);
 
@@ -64,6 +78,17 @@ public class BlobTrigger : MonoBehaviour
             if (lastContacts.TryGetValue(collision.gameObject, out ContactPoint2D lastPoint))
             {
                 OnCollisionExitGetLastContact?.Invoke(lastPoint);
+            }
+
+            // Check if blob
+            if (collision.transform.TryGetComponent(out MyJoint joint))
+            {
+                blobs.Remove(joint.parentMotor);
+
+                if (!blobs.Contains(joint.parentMotor))
+                {
+                    OnCollisionExitWithBlob?.Invoke(joint.parentMotor);
+                }
             }
 
             lastContacts.Remove(collision.gameObject);

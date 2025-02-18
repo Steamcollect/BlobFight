@@ -8,10 +8,11 @@ public class BlobJoint : MonoBehaviour
     [SerializeField] float startingDistanceFromCenter;
 
     [Header("References")]
+    [SerializeField] BlobMotor motor;
+
     public Rigidbody2D[] jointsRb;
     List<MyJoint> joints = new List<MyJoint>();
 
-    [Space(10)]
     // RSO
     // RSF
     // RSP
@@ -32,6 +33,7 @@ public class BlobJoint : MonoBehaviour
             MyJoint joint = jointsRb[i].gameObject.AddComponent<MyJoint>();
             joint.rb = jointsRb[i];
             jointsRb[i].freezeRotation = true;
+            joint.parentMotor = motor;
 
             joint.collid = jointsRb[i].gameObject.GetComponent<Collider2D>();
 
@@ -145,11 +147,11 @@ public class BlobJoint : MonoBehaviour
     #endregion
 
     #region Rigidbody
-    public void Move(Vector2 force)
+    public void AddForce(Vector2 force)
     {
         foreach (var joint in joints)
         {
-            joint.Move(force);
+            joint.AddForce(force);
         }
     }
     public void SetDrag(float drag)

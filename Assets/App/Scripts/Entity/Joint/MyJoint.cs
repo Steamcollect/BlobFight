@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MyJoint : MonoBehaviour
 {
+    public BlobMotor parentMotor;
     public Rigidbody2D rb;
     public Collider2D collid;
 
@@ -44,7 +45,7 @@ public class MyJoint : MonoBehaviour
     #endregion
 
     #region Rigidbody
-    public void Move(Vector2 force)
+    public void AddForce(Vector2 force)
     {
         rb.AddForce(force);
     }
