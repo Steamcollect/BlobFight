@@ -1254,6 +1254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchType: 1
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 0.3
   delayBeforeStart: 0
   delayAtPoint: 0
@@ -1261,7 +1263,6 @@ MonoBehaviour:
   positions:
   - {fileID: 2122258889941170472}
   - {fileID: 2176931108172692312}
-  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!1 &2535923846144462583
 GameObject:
   m_ObjectHideFlags: 0

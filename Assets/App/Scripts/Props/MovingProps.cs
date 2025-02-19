@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 
-public class MovingProps : MonoBehaviour
+public class MovingProps : GameProps
 {
     [Header("Settings")]
     [SerializeField] float moveSpeed;
@@ -20,21 +20,10 @@ public class MovingProps : MonoBehaviour
     // RSF
     // RSP
 
-    [Header("Input")]
-    [SerializeField] RSE_OnFightStart rseOnFightStart;
-    
+    //[Header("Input")]
     //[Header("Output")]
 
-    private void OnEnable()
-    {
-        rseOnFightStart.action += Setup;
-    }
-    private void OnDisable()
-    {
-        rseOnFightStart.action -= Setup;
-    }
-
-    private void Setup()
+    public override void Launch()
     {
         if(positions.Length > 0)
         {

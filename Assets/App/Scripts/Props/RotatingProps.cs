@@ -1,8 +1,9 @@
 using UnityEngine;
-public class RotatingProps : MonoBehaviour
+public class RotatingProps : GameProps
 {
     [Header("Settings")]
     [SerializeField] float rotationSpeed;
+    bool isLaunched = false;
 
     //[Header("References")]
 
@@ -14,8 +15,15 @@ public class RotatingProps : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    public override void Launch()
+    {
+        isLaunched = true;
+    }
+
     private void Update()
     {
+        if (isLaunched) return;
+
         float zRot = transform.rotation.eulerAngles.z;
         transform.rotation = Quaternion.Euler(0,0, zRot + rotationSpeed * Time.deltaTime);
     }

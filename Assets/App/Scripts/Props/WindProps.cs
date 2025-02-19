@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-public class WindZone : MonoBehaviour
+public class WindProps : GameProps
 {
     [Header("Settings")]
     [SerializeField] float windForce;
+    bool isLaunched = false;
 
     //[Header("References")]
     List<Rigidbody2D> rbs = new();
@@ -16,8 +17,15 @@ public class WindZone : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    public override void Launch()
+    {
+        isLaunched = true;
+    }
+
     private void FixedUpdate()
     {
+        if (isLaunched) return;
+
         if(rbs.Count > 0)
         {
             foreach(var rbs in rbs)
