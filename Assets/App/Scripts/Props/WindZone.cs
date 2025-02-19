@@ -4,8 +4,6 @@ public class WindZone : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float windForce;
-    [SerializeField] float directionAngle;
-    Vector2 direction;
 
     //[Header("References")]
     List<Rigidbody2D> rbs = new();
@@ -24,7 +22,7 @@ public class WindZone : MonoBehaviour
         {
             foreach(var rbs in rbs)
             {
-                rbs.AddForce(direction * windForce);
+                rbs.AddForce(transform.up * windForce);
             }
         }
     }
@@ -42,14 +40,5 @@ public class WindZone : MonoBehaviour
         {
             rbs.Remove(rb);
         }
-    }
-
-    private void OnValidate()
-    {
-        direction = new Vector2(Mathf.Sin(directionAngle * Mathf.Deg2Rad), Mathf.Cos(directionAngle * Mathf.Deg2Rad));
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawLine(transform.position, (Vector2)transform.position + direction);
     }
 }
