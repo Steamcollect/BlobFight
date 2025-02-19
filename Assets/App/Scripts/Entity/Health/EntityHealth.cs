@@ -5,7 +5,7 @@ public class EntityHealth : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected int maxHealth;
-    protected int currentHealth;
+    public int currentHealth;
 
     protected bool isDead;
 
@@ -17,19 +17,25 @@ public class EntityHealth : MonoBehaviour
     // RSP
 
     [Header("Input")]
+    public Action onTakeDamage;
     public Action onDeath;
     public Action<ContactPoint2D> onDestroy;
 
     //[Header("Output")]
 
-    protected void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
+        if(isDead) return;
+
         currentHealth -= damage;
+        onTakeDamage?.Invoke();
 
         if (currentHealth <= 0) Die();
     }
-    protected void Die()
+    public void Die()
     {
+        if (isDead) return;
+
         isDead = true;
         onDeath?.Invoke();
     }

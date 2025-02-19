@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
-
-public class BlobTrigger : MonoBehaviour
+public class EntityTrigger : MonoBehaviour
 {
     //[Header("Settings")]
 
-    [Header("References")]
-    [SerializeField] BlobJoint blobJoint;
-    
+    //[Header("References")]
     List<GameObject> collisions = new();
     List<BlobMotor> blobs = new();
 
@@ -25,28 +22,10 @@ public class BlobTrigger : MonoBehaviour
     public Action<BlobMotor> OnCollisionEnterWithBlob, OnCollisionExitWithBlob;
     public Action<ContactPoint2D> OnCollisionExitGetLastContact;
 
-    private void OnDisable()
-    {
-        blobJoint.RemoveOnCollisionEnterListener(OnEnterCollision);
-        blobJoint.RemoveOnCollisionExitListener(OnExitCollision);
-    }
-
-    private void Start()
-    {
-        Invoke("LateStart", .05f);
-    }
-    void LateStart()
-    {
-        blobJoint.AddOnCollisionEnterListener(OnEnterCollision);
-        blobJoint.AddOnCollisionExitListener(OnExitCollision);
-    }
-
-    void OnEnterCollision(Collision2D collision)
+    protected void OnEnterCollision(Collision2D collision)
     {
         if (!collisions.Contains(collision.gameObject))
         {
-            OnCollisionEnter?.Invoke(collision);
-
             // Check if blob
             if (collision.transform.TryGetComponent(out MyJoint joint))
             {
@@ -56,6 +35,10 @@ public class BlobTrigger : MonoBehaviour
                 }
 
                 blobs.Add(joint.parentMotor);
+            }
+            else
+            {
+                OnCollisionEnter?.Invoke(collision);
             }
         }
         collisions.Add(collision.gameObject);
@@ -67,14 +50,12 @@ public class BlobTrigger : MonoBehaviour
         }
     }
 
-    void OnExitCollision(Collision2D collision)
+    protected void OnExitCollision(Collision2D collision)
     {
         collisions.Remove(collision.gameObject);
 
         if (!collisions.Contains(collision.gameObject))
         {
-            OnCollisionExit?.Invoke(collision);
-
             if (lastContacts.TryGetValue(collision.gameObject, out ContactPoint2D lastPoint))
             {
                 OnCollisionExitGetLastContact?.Invoke(lastPoint);
@@ -89,6 +70,10 @@ public class BlobTrigger : MonoBehaviour
                 {
                     OnCollisionExitWithBlob?.Invoke(joint.parentMotor);
                 }
+            }
+            else
+            {
+                OnCollisionExit?.Invoke(collision);
             }
 
             lastContacts.Remove(collision.gameObject);

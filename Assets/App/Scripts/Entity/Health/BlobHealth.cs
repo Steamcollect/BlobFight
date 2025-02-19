@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class BlobHealth : EntityHealth
@@ -28,6 +29,7 @@ public class BlobHealth : EntityHealth
     {
         blobTrigger.OnCollisionEnter -= OnEnterCollision;
         onDeath -= OnDeath;
+        //onTakeDamage -= OnTakeDamage;
     }
 
     private void Start()
@@ -39,6 +41,7 @@ public class BlobHealth : EntityHealth
     {
         blobTrigger.OnCollisionEnter += OnEnterCollision;
         onDeath += OnDeath;
+        //onTakeDamage += OnTakeDamage;
     }
 
     public void Setup()
@@ -47,6 +50,11 @@ public class BlobHealth : EntityHealth
         currentHealth = maxHealth;
     }
 
+    //void OnTakeDamage()
+    //{
+        
+    //}
+
     void OnDeath()
     {
         rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
@@ -54,16 +62,23 @@ public class BlobHealth : EntityHealth
 
     void OnEnterCollision(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+        if (collision.gameObject.TryGetComponent(out Damagable damagable))
         {
-            if (damagable.CanInstanteKill())
+            switch (damagable.GetDamageType())
             {
-                rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-                onDestroy?.Invoke(collision.GetContact(0));
-            }
-            else
-            {
-                TakeDamage(damagable.GetDamage());
+                case Damagable.DamageType.Damage:
+                    TakeDamage(damagable.GetDamage());
+                    break;
+                
+                case Damagable.DamageType.Kill:
+                    rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+                    onDeath?.Invoke();
+                    break;
+                
+                case Damagable.DamageType.Destroy:
+                    rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+                    onDestroy?.Invoke(collision.GetContact(0));
+                    break;
             }
         }
     }

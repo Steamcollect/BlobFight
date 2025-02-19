@@ -242,17 +242,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92713f31260688347b0a951356e303cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleDistanceMult: 1
-  idleDamping: 0.5
-  idleFrequency: 4
-  extendDistanceMult: 2.5
-  extendDamping: 0.2
-  extendFrequency: 150
+  shrinkStatistics:
+    moveSpeed: 100
+    gravity: 15
+    drag: 5
+    mass: 15
+    distanceMult: 1
+    damping: 0.5
+    frequency: 4
+  extendStatistics:
+    moveSpeed: 50
+    gravity: 25
+    drag: 7
+    mass: 30
+    distanceMult: 2.5
+    damping: 0.2
+    frequency: 150
   extendStaminaCostPerSec: 100
-  drag: 5
-  angularDrag: 1
-  moveSpeed: 100
-  gravity: 15
   dashForce: 4000
   dashCooldown: 0.8
   entityInput: {fileID: 8417928549951212344}
@@ -682,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackForce: 1.1
+  pushBackForce: 2
   returnPushBackForce: 0.5
   blobTrigger: {fileID: 606557387366902294}
   blobJoint: {fileID: 6321734985548798584}
@@ -943,9 +949,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f767ee3d0e0aabf4a8aee6bbe0043a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  shakeIntensityOnDeath: 10
-  shakeTimeOnDeath: 0.1
+  maxHealth: 500000
+  currentHealth: 0
+  shakeIntensityOnDeath: 0.7
+  shakeTimeOnDeath: 0.25
   blobTrigger: {fileID: 606557387366902294}
   rseCamShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
 --- !u!1 &5201094002138468326
@@ -2328,6 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingDistanceFromCenter: 0.7
+  mass: 12
   motor: {fileID: 3420423106000584793}
   jointsRb:
   - {fileID: 1416860201021149844}

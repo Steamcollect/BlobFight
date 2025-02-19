@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Damagable : MonoBehaviour, IDamagable
+public class Damagable : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] int damage;
@@ -8,6 +8,7 @@ public class Damagable : MonoBehaviour, IDamagable
     public enum DamageType
     {
         Damage,
+        Kill,
         Destroy
     }
 
@@ -20,13 +21,12 @@ public class Damagable : MonoBehaviour, IDamagable
 
     //[Header("Input")]
     //[Header("Output")]
+    public DamageType GetDamageType()
+    {
+        return damageType;
+    }
     public int GetDamage()
     {
         return damage;
-    }
-
-    public bool CanInstanteKill()
-    {
-        return damageType == DamageType.Destroy;
     }
 }

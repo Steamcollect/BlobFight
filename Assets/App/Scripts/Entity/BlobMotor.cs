@@ -10,7 +10,7 @@ public class BlobMotor : MonoBehaviour
     [Header("References")]
     public BlobJoint joint;
     [SerializeField] BlobVisual visual;
-    [SerializeField] BlobHealth health;
+    public BlobHealth health;
     [SerializeField] BlobStamina stamina;
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;

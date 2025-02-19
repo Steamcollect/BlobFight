@@ -6,6 +6,7 @@ public class BlobJoint : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float startingDistanceFromCenter;
+    public float mass;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -32,6 +33,7 @@ public class BlobJoint : MonoBehaviour
         {
             MyJoint joint = jointsRb[i].gameObject.AddComponent<MyJoint>();
             joint.rb = jointsRb[i];
+            joint.rb.mass = mass / jointsRb.Length;
             jointsRb[i].freezeRotation = true;
             joint.parentMotor = motor;
 
@@ -161,18 +163,20 @@ public class BlobJoint : MonoBehaviour
             joint.SetDrag(drag);
         }
     }
-    public void SetAngularDrag(float angularDrag)
-    {
-        foreach (var joint in joints)
-        {
-            joint.SetAngularDrag(angularDrag);
-        }
-    }
+
     public void SetGravity(float gravity)
     {
         foreach (var joint in joints)
         {
             joint.SetGravity(gravity);
+        }
+    }
+    public void SetMass(float mass)
+    {
+        this.mass = mass;
+        foreach (var joint in joints)
+        {
+            joint.SetMass(mass / joints.Count);
         }
     }
 
