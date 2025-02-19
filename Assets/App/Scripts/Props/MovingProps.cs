@@ -34,6 +34,11 @@ public class MovingProps : MonoBehaviour
         rseOnFightStart.action -= Setup;
     }
 
+    private void Start()
+    {
+         Setup();
+    }
+
     private void Setup()
     {
         if(positions.Length > 0)

@@ -25,6 +25,8 @@ public class EntityHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(isDead) return;
+
         currentHealth -= damage;
         onTakeDamage?.Invoke();
 
@@ -32,6 +34,8 @@ public class EntityHealth : MonoBehaviour
     }
     public void Die()
     {
+        if (isDead) return;
+
         isDead = true;
         onDeath?.Invoke();
     }

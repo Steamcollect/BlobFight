@@ -62,16 +62,23 @@ public class BlobHealth : EntityHealth
 
     void OnEnterCollision(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+        if (collision.gameObject.TryGetComponent(out Damagable damagable))
         {
-            if (damagable.CanInstanteKill())
+            switch (damagable.GetDamageType())
             {
-                rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-                onDestroy?.Invoke(collision.GetContact(0));
-            }
-            else
-            {
-                TakeDamage(damagable.GetDamage());
+                case Damagable.DamageType.Damage:
+                    TakeDamage(damagable.GetDamage());
+                    break;
+                
+                case Damagable.DamageType.Kill:
+                    rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+                    onDeath?.Invoke();
+                    break;
+                
+                case Damagable.DamageType.Destroy:
+                    rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+                    onDestroy?.Invoke(collision.GetContact(0));
+                    break;
             }
         }
     }

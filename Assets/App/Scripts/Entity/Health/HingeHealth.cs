@@ -43,6 +43,7 @@ public class HingeHealth : EntityHealth
     }
     void OnDeath()
     {
+        graphics.color = endColor;
         for (int i = 0; i < joints.Length; i++)
         {
             joints[i].enabled = false;

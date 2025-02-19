@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HingeTrigger : EntityTrigger
@@ -37,6 +38,23 @@ public class HingeTrigger : EntityTrigger
         {
             int damage = (int)(rb.velocity.sqrMagnitude * rb.mass);
             health.TakeDamage(damage);
+        }
+        else if (collision.gameObject.TryGetComponent(out Damagable damagable))
+        {
+            switch (damagable.GetDamageType())
+            {
+                case Damagable.DamageType.Damage:
+                    health.TakeDamage(damagable.GetDamage());
+                    break;
+
+                case Damagable.DamageType.Kill:
+                    health.Die();
+                    break;
+
+                case Damagable.DamageType.Destroy:
+                    gameObject.SetActive(false);
+                    break;
+            }
         }
     }
 
