@@ -5,7 +5,7 @@ public class EntityHealth : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] protected int maxHealth;
-    protected int currentHealth;
+    public int currentHealth;
 
     protected bool isDead;
 
@@ -26,9 +26,9 @@ public class EntityHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        onTakeDamage?.Invoke();
 
         if (currentHealth <= 0) Die();
-        else onTakeDamage?.Invoke();
     }
     public void Die()
     {

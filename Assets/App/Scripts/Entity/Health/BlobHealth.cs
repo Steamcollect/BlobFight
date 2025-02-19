@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class BlobHealth : EntityHealth
@@ -28,6 +29,7 @@ public class BlobHealth : EntityHealth
     {
         blobTrigger.OnCollisionEnter -= OnEnterCollision;
         onDeath -= OnDeath;
+        //onTakeDamage -= OnTakeDamage;
     }
 
     private void Start()
@@ -39,6 +41,7 @@ public class BlobHealth : EntityHealth
     {
         blobTrigger.OnCollisionEnter += OnEnterCollision;
         onDeath += OnDeath;
+        //onTakeDamage += OnTakeDamage;
     }
 
     public void Setup()
@@ -46,6 +49,11 @@ public class BlobHealth : EntityHealth
         isDead = false;
         currentHealth = maxHealth;
     }
+
+    //void OnTakeDamage()
+    //{
+        
+    //}
 
     void OnDeath()
     {
