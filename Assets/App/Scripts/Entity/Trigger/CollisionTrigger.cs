@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-public class EntityTrigger : MonoBehaviour
+public class CollisionTrigger : MonoBehaviour
 {
     //[Header("Settings")]
 

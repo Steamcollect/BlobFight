@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HingeTrigger : EntityTrigger
+public class HingeTrigger : CollisionTrigger
 {
     //[Header("Settings")]
 
