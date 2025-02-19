@@ -53,13 +53,13 @@ public class MyJoint : MonoBehaviour
     {
         rb.drag = drag;
     }
-    public void SetAngularDrag(float angularDrag)
-    {
-        rb.angularDrag = angularDrag;
-    }
     public void SetGravity(float gravity)
     {
         rb.gravityScale = gravity;
+    }
+    public void SetMass(float mass)
+    {
+        rb.mass = mass;
     }
     #endregion
 

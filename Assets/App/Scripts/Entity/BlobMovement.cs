@@ -4,27 +4,15 @@ using UnityEngine;
 public class BlobMovement : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float idleDistanceMult;
-    [SerializeField, Range(0, 1)] float idleDamping;
-    [SerializeField] float idleFrequency;
+    [SerializeField] BlobStatistics shrinkStatistics;
+    [SerializeField] BlobStatistics extendStatistics;
+    BlobStatistics statistics;
 
-    [Space(10)]
-    [SerializeField] float extendDistanceMult;
-    [SerializeField, Range(0, 1)] float extendDamping;
-    [SerializeField] float extendFrequency;
-
-    [Space(5)]
+    [Space(15)]
     [SerializeField] float extendStaminaCostPerSec;
     bool isExtend;
 
     [Space(10)]
-    [SerializeField] float drag;
-    [SerializeField] float angularDrag;
-    [Space(5)]
-    [SerializeField] float moveSpeed;
-    [SerializeField] float gravity;
-
-    [Space(5)]
     [SerializeField] float dashForce;
     [SerializeField] float dashCooldown;
     bool canDash = true;
@@ -67,6 +55,8 @@ public class BlobMovement : MonoBehaviour
 
     private void Start()
     {
+        statistics = shrinkStatistics;
+
         entityInput.compressDownInput += ExtendBlob;
         entityInput.compressUpInput += ShrinkBlob;
         entityInput.dashInput += Dash;
@@ -102,13 +92,8 @@ public class BlobMovement : MonoBehaviour
 
     void SetupJoint()
     {
-        blobJoint.SetDrag(drag);
-        blobJoint.SetAngularDrag(angularDrag);
-        blobJoint.SetGravity(gravity);
-        
-        blobJoint.MultiplyInitialSpringDistance(idleDistanceMult);
-        blobJoint.SetDamping(idleDamping);
-        blobJoint.SetFrequency(idleFrequency);
+        statistics = shrinkStatistics;
+        SetJointStats();
     }
 
     void ExtendBlob()
@@ -119,18 +104,16 @@ public class BlobMovement : MonoBehaviour
         {
             isExtend = true;
 
-            blobJoint.MultiplyInitialSpringDistance(extendDistanceMult);
-            blobJoint.SetDamping(extendDamping);
-            blobJoint.SetFrequency(extendFrequency);
+            statistics = extendStatistics;
+            SetJointStats();
 
             blobVisual.SetToExtend();
         }        
     }
     void ShrinkBlob()
     {
-        blobJoint.MultiplyInitialSpringDistance(idleDistanceMult);
-        blobJoint.SetDamping(idleDamping);
-        blobJoint.SetFrequency(idleFrequency);
+        statistics = shrinkStatistics;
+        SetJointStats();
 
         isExtend = false;
 
@@ -144,7 +127,7 @@ public class BlobMovement : MonoBehaviour
 
     void Move()
     {
-        blobJoint.AddForce(Vector2.right * moveInput.x * moveSpeed);
+        blobJoint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
     }
     void Dash()
     {
@@ -168,5 +151,16 @@ public class BlobMovement : MonoBehaviour
     {
         ShrinkBlob();
         canMove = false;
+    }
+
+    void SetJointStats()
+    {
+        blobJoint.SetDrag(statistics.drag);
+        blobJoint.SetGravity(statistics.gravity);
+
+        blobJoint.MultiplyInitialSpringDistance(statistics.distanceMult);
+        blobJoint.SetDamping(statistics.damping);
+        blobJoint.SetFrequency(statistics.frequency);
+        blobJoint.SetMass(statistics.mass);
     }
 }

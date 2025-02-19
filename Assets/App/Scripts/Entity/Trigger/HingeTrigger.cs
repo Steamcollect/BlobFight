@@ -29,7 +29,7 @@ public class HingeTrigger : EntityTrigger
 
     void OnBlobCollision(BlobMotor blob)
     {
-        int damage = (int)blob.joint.GetVelocity().sqrMagnitude * blob.joint.mass;
+        int damage = (int)(blob.joint.GetVelocity().sqrMagnitude * blob.joint.mass);
         health.TakeDamage(damage);
     }
     void OnCollision(Collision2D collision)
