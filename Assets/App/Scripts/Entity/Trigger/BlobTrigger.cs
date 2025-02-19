@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlobTrigger : EntityTrigger
+public class BlobTrigger : CollisionTrigger
 {
     //[Header("Settings")]
 
