@@ -27,6 +27,11 @@ public class HingeTrigger : CollisionTrigger
         OnCollisionEnterWithBlob -= OnBlobCollision;
     }
 
+    public void SetHealthScript(HingeHealth hingeHealth)
+    {
+        health = hingeHealth;
+    }
+
     void OnBlobCollision(BlobMotor blob)
     {
         int damage = (int)(blob.joint.GetVelocity().sqrMagnitude * blob.joint.mass);

@@ -12,7 +12,6 @@ public class DynamicSceneSwitcher : EditorWindow
     private GUIStyle labelStyle;
     private GUIStyle buttonStyle;
     private GUIStyle buttonRefreshStyle;
-    private GUIStyle scrollStyle;
 
     [MenuItem("Tools/Dynamic Scene Switcher")]
     public static void ShowWindow()
