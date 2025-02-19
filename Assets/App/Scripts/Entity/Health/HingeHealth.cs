@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -6,7 +7,7 @@ public class HingeHealth : EntityHealth
     //[Header("Settings")]
 
     [Header("References")]
-    [SerializeField, ContextMenuItem("Get All Joints In Object", "GetAllJoints")] HingeJoint2D[] joints;
+    [SerializeField, ContextMenuItem("Get All Joints In Object", "GetAllJoints")] List<HingeJoint2D> joints = new List<HingeJoint2D>();
 
     [Space(10)]
     [SerializeField] SpriteRenderer graphics;
@@ -41,17 +42,25 @@ public class HingeHealth : EntityHealth
     {
         graphics.color = Color.Lerp(endColor, initColor, (float)currentHealth / (float)maxHealth);
     }
+
+    public void SetHingeJoint(HingeJoint2D hingeJoint2D)
+    {
+        joints.Add(hingeJoint2D);
+    }
+
+    public void SetHingeColor(SpriteRenderer spriteRenderer, Color32 color, Color32 color1)
+    {
+        graphics = spriteRenderer;
+        initColor = color;
+        endColor = color1;
+    }
+
     void OnDeath()
     {
         graphics.color = endColor;
-        for (int i = 0; i < joints.Length; i++)
+        for (int i = 0; i < joints.Count; i++)
         {
             joints[i].enabled = false;
         }
-    }
-
-    void GetAllJoints()
-    {
-        joints = GetComponents<HingeJoint2D>();
     }
 }

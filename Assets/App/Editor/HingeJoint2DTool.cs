@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class HingeJoint2DTool : EditorWindow
 
     private ReorderableList reorderableList;
     private bool modeHammer = false;
+    private int life = 0;
 
     [MenuItem("Tools/Hinge Joint 2D Creator")]
     public static void ShowWindow()
@@ -76,7 +78,6 @@ public class HingeJoint2DTool : EditorWindow
             EditorGUI.LabelField(rect, "Selected GameObjects", EditorStyles.boldLabel);
         };
 
-        // Draw the list items
         reorderableList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
         {
             GameObject obj = selectedObjects[index];
@@ -85,7 +86,6 @@ public class HingeJoint2DTool : EditorWindow
 
         reorderableList.onReorderCallback = (ReorderableList list) =>
         {
-            // Ensure we update the actual selectedObjects list
             selectedObjects = new List<GameObject>(list.list as List<GameObject>);
         };
     }
@@ -122,6 +122,16 @@ public class HingeJoint2DTool : EditorWindow
 
             GUILayout.Space(10);
 
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(30);
+
+            life = EditorGUILayout.IntField("Life", life);
+
+            GUILayout.Space(30);
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.ExpandHeight(true));
 
             GUILayout.Space(10);
@@ -147,25 +157,49 @@ public class HingeJoint2DTool : EditorWindow
         EditorGUI.EndDisabledGroup();
 
         EditorGUILayout.Space(5);
+
+        EditorGUI.BeginDisabledGroup(!allHaveRigidbody || selectedObjects.Count < 2);
+        if (GUILayout.Button("CLEAR HINGE JOINTS 2D", buttonCreateHingeStyle))
+        {
+            ClearHingeJoints();
+        }
+        EditorGUI.EndDisabledGroup();
+
+        EditorGUILayout.Space(5);
+    }
+
+    private void ClearHingeJoints()
+    {
+        Undo.RecordObjects(selectedObjects.ToArray(), "CLEAR HINGE JOINTS 2D");
+
+        for (int i = 0; i < selectedObjects.Count; i++)
+        {
+            foreach (var hinge in selectedObjects[i].GetComponents<HingeJoint2D>())
+            {
+                Undo.DestroyObjectImmediate(hinge);
+            }
+
+            if (selectedObjects[i].GetComponent<HingeHealth>() != null)
+            {
+                Undo.DestroyObjectImmediate(selectedObjects[i].GetComponent<HingeHealth>());
+            }
+
+            if (selectedObjects[i].GetComponent<HingeTrigger>() != null)
+            {
+                Undo.DestroyObjectImmediate(selectedObjects[i].GetComponent<HingeTrigger>());
+            }
+        }
     }
 
     private void CreateHingeJoints()
     {
         Undo.RecordObjects(selectedObjects.ToArray(), "CREATE HINGE JOINTS 2D");
 
-        for (int i = 0; i < selectedObjects.Count - 1; i++)
-        {
-            HingeJoint2D[] hinges = selectedObjects[i].GetComponents<HingeJoint2D>();
+        ClearHingeJoints();
 
-            if (hinges.Length > 0)
-            {
-                foreach (HingeJoint2D hinge in hinges)
-                {
-                    Undo.DestroyObjectImmediate(hinge);
-                }
-            }
-            
-            if(modeHammer)
+        for (int i = 0; i < selectedObjects.Count; i++)
+        {
+            if (modeHammer)
             {
                 GameObject current = selectedObjects[i];
                 Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
@@ -232,66 +266,46 @@ public class HingeJoint2DTool : EditorWindow
             }
             else
             {
-                GameObject current = selectedObjects[i];
-                Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
-
                 if (i > 0)
                 {
-                    GameObject before = selectedObjects[i - 1];
-                    Rigidbody2D beforeRb = before.GetComponent<Rigidbody2D>();
+                    GameObject current = selectedObjects[i];
+                    Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
+                    Rigidbody2D previousRb = selectedObjects[i - 1].GetComponent<Rigidbody2D>();
 
-                    if (beforeRb == null)
-                        continue;
+                    current.AddComponent<HingeHealth>();
+                    current.AddComponent<HingeTrigger>();
 
-                    HingeJoint2D hinge2 = current.AddComponent<HingeJoint2D>();
-                    Vector2 localAnchor2;
+                    current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
+                    current.GetComponent<HingeHealth>().maxHealth = life;
+                    current.GetComponent<HingeHealth>().currentHealth = life;
 
-                    // Special case for the first hinge
-                    if (i == 1)
+                    current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
+
+                    if (i == 1 || i == selectedObjects.Count - 1)
                     {
-                        localAnchor2 = new Vector2(0, -1);
-                        hinge2.connectedBody = selectedObjects[0].GetComponent<Rigidbody2D>();
-                    }
-                    // Default case: Midpoint
-                    else
-                    {
-                        Vector2 worldMidpoint = (current.transform.position + before.transform.position) / 2;
-                        localAnchor2 = current.transform.InverseTransformPoint(worldMidpoint);
-                        hinge2.connectedBody = beforeRb;
-                    }
-
-                    hinge2.anchor = localAnchor2;
-                    hinge2.autoConfigureConnectedAnchor = true;
-
-                    GameObject next = selectedObjects[i + 1];
-                    Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
-
-                    if (currentRb == null || nextRb == null)
-                        continue;
-
-                    HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
-                    Vector2 localAnchor;
-
-                    // Special case for the last hinge
-                    if (i == selectedObjects.Count - 2)
-                    {
-                        localAnchor = new Vector2(0, 1);
+                        HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
                         hinge.connectedBody = selectedObjects[0].GetComponent<Rigidbody2D>();
-                    }
-                    // Default case: Midpoint
-                    else
-                    {
-                        Vector2 worldMidpoint = (current.transform.position + next.transform.position) / 2;
-                        localAnchor = current.transform.InverseTransformPoint(worldMidpoint);
-                        hinge.connectedBody = nextRb;
+                        hinge.anchor = new Vector2(0, i == 1 ? -1 : 1);
+                        hinge.autoConfigureConnectedAnchor = true;
+
+                        current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
                     }
 
-                    hinge.anchor = localAnchor;
-                    hinge.autoConfigureConnectedAnchor = true;
+                    if (i < selectedObjects.Count - 1)
+                    {
+                        GameObject next = selectedObjects[i + 1];
+                        Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
+                        if (nextRb == null) continue;
+
+                        HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                        hinge.connectedBody = nextRb;
+                        hinge.anchor = current.transform.InverseTransformPoint((current.transform.position + next.transform.position) / 2);
+                        hinge.autoConfigureConnectedAnchor = true;
+
+                        current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                    }
                 }
             }
         }
-
-        Debug.Log("Hinge Joints created successfully!");
     }
 }
