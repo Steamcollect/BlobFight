@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -149,11 +150,14 @@ public class GeneratorProps : EditorWindow
             Camera sceneCamera = sceneView.camera;
             Vector3 spawnPosition = sceneCamera.transform.position + sceneCamera.transform.forward * 5f;
 
+            List<GameObject> createdObjects = new List<GameObject>();
+
             // Create Parent
             GameObject bridgeParent = new GameObject("Bridge");
             Undo.RegisterCreatedObjectUndo(bridgeParent, "Create Bridge");
-            bridgeParent.transform.position = spawnPosition;
+            bridgeParent.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
             bridgeParent.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            createdObjects.Add(bridgeParent);
 
             // Create Children
             for (int i = 0; i < number; i++)
@@ -163,6 +167,50 @@ public class GeneratorProps : EditorWindow
                 GameObject newSegment = Instantiate(objectToPlace, position, Quaternion.identity);
                 newSegment.transform.SetParent(bridgeParent.transform);
                 newSegment.transform.Rotate(0, 0, 90);
+                createdObjects.Add(newSegment);
+            }
+
+            // Create Hinge & Scripts
+            for (int i = 0; i < createdObjects.Count; i++)
+            {
+                if (i > 0)
+                {
+                    GameObject current = createdObjects[i];
+                    Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
+                    Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
+
+                    current.AddComponent<HingeHealth>();
+                    current.AddComponent<HingeTrigger>();
+
+                    current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
+                    current.GetComponent<HingeHealth>().maxHealth = 10000;
+
+                    current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
+
+                    if (i == 1 || i == createdObjects.Count - 1)
+                    {
+                        HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                        hinge.connectedBody = createdObjects[0].GetComponent<Rigidbody2D>();
+                        hinge.anchor = new Vector2(0, i == 1 ? -1 : 1);
+                        hinge.autoConfigureConnectedAnchor = true;
+
+                        current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                    }
+
+                    if (i < createdObjects.Count - 1)
+                    {
+                        GameObject next = createdObjects[i + 1];
+                        Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
+                        if (nextRb == null) continue;
+
+                        HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                        hinge.connectedBody = nextRb;
+                        hinge.anchor = current.transform.InverseTransformPoint((current.transform.position + next.transform.position) / 2);
+                        hinge.autoConfigureConnectedAnchor = true;
+
+                        current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                    }
+                }
             }
         }
         else if (type == Type.Hammer)
