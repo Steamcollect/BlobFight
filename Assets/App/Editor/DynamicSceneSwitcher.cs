@@ -35,6 +35,7 @@ public class DynamicSceneSwitcher : EditorWindow
         labelStyle = new GUIStyle(EditorStyles.label)
         {
             fontStyle = FontStyle.Bold,
+            fontSize = 18,
             alignment = TextAnchor.MiddleCenter,
             margin = new RectOffset(10, 10, 10, 5),
         };
@@ -44,6 +45,7 @@ public class DynamicSceneSwitcher : EditorWindow
             margin = new RectOffset(30, 30, 10, 5),
             padding = new RectOffset(10, 10, 5, 5),
             fontStyle = FontStyle.Bold,
+            fontSize = 16,
         };
 
         buttonRefreshStyle = new GUIStyle(GUI.skin.button)
@@ -52,7 +54,7 @@ public class DynamicSceneSwitcher : EditorWindow
             padding = new RectOffset(10, 10, 15, 15),
             fontStyle = FontStyle.Bold,
             normal = { textColor = Color.white },
-            fontSize = 20
+            fontSize = 20,
         };
     }
 
