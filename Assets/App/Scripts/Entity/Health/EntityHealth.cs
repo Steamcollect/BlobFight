@@ -5,7 +5,7 @@ public class EntityHealth : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] public int maxHealth;
-    public int currentHealth;
+    protected int currentHealth;
 
     protected bool isDead;
 
