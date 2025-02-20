@@ -11,7 +11,6 @@ public class BlobMotor : MonoBehaviour
     public BlobJoint joint;
     [SerializeField] BlobVisual visual;
     public BlobHealth health;
-    [SerializeField] BlobStamina stamina;
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
 
@@ -73,7 +72,6 @@ public class BlobMotor : MonoBehaviour
 
     void Setup()
     {
-        stamina.Setup();
         rseSpawnBlob.Call(this);
     }
 
