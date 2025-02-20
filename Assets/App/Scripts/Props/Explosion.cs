@@ -25,6 +25,7 @@ public class Explosion : MonoBehaviour
     private void Start()
     {
         Explode();
+        Invoke("Explode", 1);
     }
 
     public void Explode()

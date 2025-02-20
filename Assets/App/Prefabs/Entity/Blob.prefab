@@ -243,24 +243,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkStatistics:
-    moveSpeed: 100
-    gravity: 15
-    drag: 5
+    moveSpeed: 230
+    gravity: 25
+    drag: 7
     mass: 15
     distanceMult: 1
     damping: 0.5
-    frequency: 4
+    frequency: 7
   extendStatistics:
-    moveSpeed: 50
-    gravity: 25
+    moveSpeed: 80
+    gravity: 40
     drag: 7
-    mass: 30
-    distanceMult: 2.5
-    damping: 0.2
+    mass: 300
+    distanceMult: 3.2
+    damping: 0.5
     frequency: 150
-  extendStaminaCostPerSec: 100
-  dashForce: 4000
-  dashCooldown: 0.8
+  extendStaminaCostPerSec: 50
+  dashForce: 6000
+  dashCooldown: 0.3
   entityInput: {fileID: 8417928549951212344}
   blobJoint: {fileID: 6321734985548798584}
   blobStamina: {fileID: 8390691681812695191}
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackForce: 2
+  pushBackForce: 1.5
   returnPushBackForce: 0.5
   blobTrigger: {fileID: 606557387366902294}
   blobJoint: {fileID: 6321734985548798584}
@@ -950,7 +950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500000
-  currentHealth: 0
   shakeIntensityOnDeath: 0.7
   shakeTimeOnDeath: 0.25
   blobTrigger: {fileID: 606557387366902294}

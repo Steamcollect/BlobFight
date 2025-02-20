@@ -22,7 +22,7 @@ public class RotatingProps : GameProps
 
     private void Update()
     {
-        if (isLaunched) return;
+        if (!isLaunched) return;
 
         float zRot = transform.rotation.eulerAngles.z;
         transform.rotation = Quaternion.Euler(0,0, zRot + rotationSpeed * Time.deltaTime);

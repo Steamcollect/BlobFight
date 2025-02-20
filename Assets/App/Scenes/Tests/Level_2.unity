@@ -176,6 +176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PhysicsPropsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5760642682781737976, guid: 645c6c3b4f06d00499f3b4ea0ef415a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098116842975625978, guid: 645c6c3b4f06d00499f3b4ea0ef415a5, type: 3}
       propertyPath: m_Enabled
       value: 1
