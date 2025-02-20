@@ -15,6 +15,7 @@ public class GeneratorProps : EditorWindow
     [SerializeField] private GameObject objectToPlace = null;
     [SerializeField] int number = 5;
     [SerializeField] float spacing = 1;
+    [SerializeField] int health = 1;
 
     private Vector2 scrollPosition = Vector2.zero;
     private GUIStyle labelStyle;
@@ -135,6 +136,17 @@ public class GeneratorProps : EditorWindow
         GUILayout.EndHorizontal();
 
         GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Bridge Space");
+        health = Mathf.Clamp(EditorGUILayout.IntField("Health", health), 0, 1000000);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
     }
 
     private void GUIHammer()
@@ -183,7 +195,7 @@ public class GeneratorProps : EditorWindow
                     current.AddComponent<HingeTrigger>();
 
                     current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
-                    current.GetComponent<HingeHealth>().maxHealth = 10000;
+                    current.GetComponent<HingeHealth>().maxHealth = health;
 
                     current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
 
