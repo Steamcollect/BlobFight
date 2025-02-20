@@ -9,8 +9,9 @@ public class BlobMovement : MonoBehaviour
     BlobStatistics statistics;
 
     [Space(15)]
-    [SerializeField] float extendStaminaCostPerSec;
-    bool isExtend;
+    [SerializeField] float extendTime;
+    [SerializeField] float extendCooldown;
+    bool canExtend = true;
 
     [Space(10)]
     [SerializeField] float dashForce;
@@ -24,7 +25,6 @@ public class BlobMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] EntityInput entityInput;
     [SerializeField] BlobJoint blobJoint;
-    [SerializeField] BlobStamina blobStamina;
     [SerializeField] BlobVisual blobVisual;
 
     class MySpringJoint
@@ -46,7 +46,6 @@ public class BlobMovement : MonoBehaviour
     private void OnDisable()
     {
         entityInput.compressDownInput -= ExtendBlob;
-        entityInput.compressUpInput -= ShrinkBlob;
         entityInput.moveInput -= SetInput;
         entityInput.dashInput -= Dash;
 
@@ -58,7 +57,6 @@ public class BlobMovement : MonoBehaviour
         statistics = shrinkStatistics;
 
         entityInput.compressDownInput += ExtendBlob;
-        entityInput.compressUpInput += ShrinkBlob;
         entityInput.dashInput += Dash;
 
         entityInput.moveInput += SetInput;
@@ -67,18 +65,6 @@ public class BlobMovement : MonoBehaviour
     private void Update()
     {
         if (!canMove) return;
-
-        if (isExtend)
-        {
-            if(!blobStamina.HaveEnoughStamina(extendStaminaCostPerSec * Time.deltaTime))
-            {
-                ShrinkBlob();
-            }
-            else
-            {
-                blobStamina.RemoveStamina(extendStaminaCostPerSec * Time.deltaTime);
-            }
-        }
     }
 
     private void FixedUpdate()
@@ -98,26 +84,33 @@ public class BlobMovement : MonoBehaviour
 
     void ExtendBlob()
     {
-        if (!canMove) return;
+        if (!canMove || !canExtend) return;
 
-        if(blobStamina.HaveEnoughStamina(extendStaminaCostPerSec * Time.deltaTime))
-        {
-            isExtend = true;
+        statistics = extendStatistics;
+        SetJointStats();
 
-            statistics = extendStatistics;
-            SetJointStats();
+        blobVisual.SetToExtend();
 
-            blobVisual.SetToExtend();
-        }        
+        StartCoroutine(ExtendTime());
     }
     void ShrinkBlob()
     {
         statistics = shrinkStatistics;
         SetJointStats();
 
-        isExtend = false;
-
         blobVisual.SetToShrink();
+    }
+    IEnumerator ExtendTime()
+    {
+        yield return new WaitForSeconds(extendTime);
+        ShrinkBlob();
+        StartCoroutine(ExtendCooldown());
+    }
+    IEnumerator ExtendCooldown()
+    {
+        canExtend = false;
+        yield return new WaitForSeconds(extendCooldown);
+        canExtend = true;
     }
 
     void SetInput(Vector2 input)
