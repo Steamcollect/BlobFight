@@ -44,11 +44,4 @@ public class PlayerSelectionPanel : MonoBehaviour
             blobRequireCountTxt.SetActive(true);
         }
     }
-
-    public void PlayButton()
-    {
-        if (rsoBlobInGame.Value.Count < blobRequireToPlay) return;
-
-        rseLoadNextLevel.Call();
-    }
 }

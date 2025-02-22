@@ -351,8 +351,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 253879619}
   - {fileID: 1145921159}
+  - {fileID: 253879619}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -593,22 +593,6 @@ PrefabInstance:
     - target: {fileID: 3756537218117449702, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[0]
-      value: Level_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[1]
-      value: Level_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[2]
-      value: Level_3
       objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name

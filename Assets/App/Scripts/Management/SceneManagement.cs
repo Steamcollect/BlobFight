@@ -11,15 +11,17 @@ public class SceneManagement : MonoBehaviour
 
     bool isLoading = false;
 
-    //[Header("References")]
+    [Header("References")]
 
     //[Space(10)]
     // RSO
+    [SerializeField] RSO_BlobInGame rsoBlobInGame;
     // RSF
     // RSP
 
     [Header("Input")]
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
+    [SerializeField] RSE_ReturnToMainMenu rseReturnToMainMenu;
 
     [Header("Output")]
     [SerializeField] RSE_FadeIn rseFadeIn;
@@ -29,10 +31,12 @@ public class SceneManagement : MonoBehaviour
     private void OnEnable()
     {
         rseLoadNextLevel.action += LoadNextLevelRandomly;
+        rseReturnToMainMenu.action += ReturnToMainMenu;
     }
     private void OnDisable()
     {
         rseLoadNextLevel.action -= LoadNextLevelRandomly;
+        rseReturnToMainMenu.action -= ReturnToMainMenu;
     }
 
     private void Start()
@@ -68,7 +72,36 @@ public class SceneManagement : MonoBehaviour
                     isLoading = false;
                 });
             }));
+        });        
+    }
+
+    void ReturnToMainMenu()
+    {
+        if (isLoading) return;
+
+        isLoading = true;
+
+        rseFadeOut.Call(() =>
+        {
+            if (currentLevel != "")
+            {
+                StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
+            }
+
+            for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
+            {
+                Destroy(rsoBlobInGame.Value[i].gameObject);
+            }
+            rsoBlobInGame.Value.Clear();
+
+            StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
+            {
+                rseFadeIn.Call(() =>
+                {
+                    rseOnFightStart.Call();
+                    isLoading = false;
+                });
+            }));
         });
-        
     }
 }
