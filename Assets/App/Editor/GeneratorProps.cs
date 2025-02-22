@@ -11,15 +11,16 @@ public enum Type
 
 public class GeneratorProps : EditorWindow
 {
-    [SerializeField] Type type = Type.None;
+    [SerializeField] private Type type = Type.None;
     [SerializeField] private GameObject objectToPlace = null;
-    [SerializeField] int number = 5;
-    [SerializeField] float spacing = 1;
-    [SerializeField] int health = 1;
+    [SerializeField] private int number = 5;
+    [SerializeField] private float spacing = 1;
+    [SerializeField] private int health = 1;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
     private Vector2 scrollPosition = Vector2.zero;
     private GUIStyle labelStyle;
-    private GUIStyle labelStyleSelected;
     private GUIStyle buttonGenerateBridgeStyle;
 
     [MenuItem("Tools/Generator Props")]
@@ -147,6 +148,26 @@ public class GeneratorProps : EditorWindow
         GUILayout.EndHorizontal();
 
         GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed RSE_OnPause");
+        rseOnPause = (RSE_OnPause)EditorGUILayout.ObjectField("RSE On Pause", rseOnPause, typeof(RSE_OnPause), false);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed RSE_OnResume");
+        rseOnResume = (RSE_OnResume)EditorGUILayout.ObjectField("RSE On Resume", rseOnResume, typeof(RSE_OnResume), false);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
     }
 
     private void GUIHammer()
@@ -191,8 +212,11 @@ public class GeneratorProps : EditorWindow
                     Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
                     Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
 
+                    current.AddComponent<RigidbodyMotor>();
                     current.AddComponent<HingeHealth>();
                     current.AddComponent<HingeTrigger>();
+
+                    current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
 
                     current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
                     current.GetComponent<HingeHealth>().maxHealth = health;

@@ -51,4 +51,12 @@ public class RigidbodyMotor : MonoBehaviour, IPausable
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    public void SetScripts(RSE_OnPause onPause, RSE_OnResume onResume)
+    {
+        GetRigidbody();
+
+        rseOnPause = onPause;
+        rseOnResume = onResume;
+    }
 }
