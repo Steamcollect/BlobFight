@@ -13,6 +13,11 @@ public class GridPlacementTool : EditorWindow
         GetWindow<GridPlacementTool>("Tilemap Object Placer");
     }
 
+    private void OnDisable()
+    {
+        SceneView.duringSceneGui -= OnSceneGUI;
+    }
+
     private void OnGUI()
     {
         GUILayout.Label("Place GameObject on Tilemap", EditorStyles.boldLabel);
@@ -25,6 +30,11 @@ public class GridPlacementTool : EditorWindow
             if (GUILayout.Button("Start Placing"))
             {
                 SceneView.duringSceneGui += OnSceneGUI;
+            }
+
+            if (GUILayout.Button("Stop Placing"))
+            {
+                SceneView.duringSceneGui -= OnSceneGUI;
             }
         }
     }
@@ -43,7 +53,8 @@ public class GridPlacementTool : EditorWindow
             // Ensure the GameObject is placed at the center of the tile
             snappedPosition.z = 0; // Keep the object in the 2D layer (adjust if in 3D)
 
-            Instantiate(objectToPlace, snappedPosition, Quaternion.identity);
+            GameObject newObject = Instantiate(objectToPlace, snappedPosition, Quaternion.identity);
+            Undo.RegisterCreatedObjectUndo(newObject, "Place Object");
             Event.current.Use(); // Consume the event to prevent other operations
         }
 

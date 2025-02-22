@@ -29,4 +29,10 @@ public class Damagable : MonoBehaviour
     {
         return damage;
     }
+
+    public void SetScripts(int damageVal, DamageType type)
+    {
+        damage = damageVal;
+        damageType = type;
+    }
 }
