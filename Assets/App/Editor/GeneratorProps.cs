@@ -12,7 +12,7 @@ public enum Type
 public class GeneratorProps : EditorWindow
 {
     [SerializeField] private Type type = Type.None;
-    [SerializeField] private GameObject objectToPlace = null;
+    [SerializeField] private GameObject prefabChain = null;
     [SerializeField] private int number = 5;
     [SerializeField] private float spacing = 1;
     [SerializeField] private int health = 1;
@@ -21,6 +21,7 @@ public class GeneratorProps : EditorWindow
 
     private Vector2 scrollPosition = Vector2.zero;
     private GUIStyle labelStyle;
+    private GUIStyle labelSecondStyle;
     private GUIStyle buttonGenerateBridgeStyle;
 
     [MenuItem("Tools/Generator Props")]
@@ -42,6 +43,14 @@ public class GeneratorProps : EditorWindow
             fontSize = 18,
             alignment = TextAnchor.MiddleCenter,
             margin = new RectOffset(10, 10, 10, 5),
+        };
+
+        labelSecondStyle = new GUIStyle(EditorStyles.label)
+        {
+            fontStyle = FontStyle.Bold,
+            fontSize = 14,
+            alignment = TextAnchor.MiddleCenter,
+            margin = new RectOffset(10, 10, 5, 5),
         };
 
         buttonGenerateBridgeStyle = new GUIStyle(GUI.skin.button)
@@ -86,7 +95,7 @@ public class GeneratorProps : EditorWindow
 
         EditorGUILayout.EndScrollView();
 
-        EditorGUI.BeginDisabledGroup(type == Type.None || objectToPlace == null || number < 1 || spacing < 0);
+        EditorGUI.BeginDisabledGroup(type == Type.None || prefabChain == null || number < 1 || spacing < 0);
         if (GUILayout.Button("GENERATE", buttonGenerateBridgeStyle))
         {
             Generate();
@@ -96,7 +105,7 @@ public class GeneratorProps : EditorWindow
 
     private void GUIBridge()
     {
-        if (objectToPlace == null)
+        if (prefabChain == null)
         {
             GUILayout.Space(10);
 
@@ -105,11 +114,15 @@ public class GeneratorProps : EditorWindow
 
         GUILayout.Space(10);
 
+        GUILayout.Label("Parameters", labelSecondStyle);
+
+        GUILayout.Space(10);
+
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
 
-        Undo.RecordObject(this, "Changed Bridge Object");
-        objectToPlace = (GameObject)EditorGUILayout.ObjectField("GameObject to Place", objectToPlace, typeof(GameObject), false);
+        Undo.RecordObject(this, "Prefab Chain Bridge");
+        prefabChain = (GameObject)EditorGUILayout.ObjectField("Prefab Chain", prefabChain, typeof(GameObject), false);
 
         GUILayout.Space(30);
         GUILayout.EndHorizontal();
@@ -141,7 +154,7 @@ public class GeneratorProps : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
 
-        Undo.RecordObject(this, "Changed Bridge Space");
+        Undo.RecordObject(this, "Changed Bridge Health");
         health = Mathf.Clamp(EditorGUILayout.IntField("Health", health), 0, 1000000);
 
         GUILayout.Space(30);
@@ -197,7 +210,7 @@ public class GeneratorProps : EditorWindow
             {
                 Vector3 position = bridgeParent.transform.position - new Vector3(i * spacing, 0, 0);
 
-                GameObject newSegment = Instantiate(objectToPlace, position, Quaternion.identity);
+                GameObject newSegment = Instantiate(prefabChain, position, Quaternion.identity);
                 newSegment.transform.SetParent(bridgeParent.transform);
                 newSegment.transform.Rotate(0, 0, 90);
                 createdObjects.Add(newSegment);
