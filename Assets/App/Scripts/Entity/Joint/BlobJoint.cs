@@ -23,7 +23,7 @@ public class BlobJoint : MonoBehaviour
 
     public Action onJointsConnected;
 
-    private void Start()
+    private void Awake()
     {
         SetupSprings();
     }

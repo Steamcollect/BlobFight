@@ -6,7 +6,8 @@ public class EntityHealth : MonoBehaviour
     [Header("Settings")]
     [SerializeField] public int maxHealth;
     protected int currentHealth;
-
+        
+    protected bool isInvincible = false;
     protected bool isDead;
 
     //[Header("References")]
@@ -25,7 +26,7 @@ public class EntityHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(isDead) return;
+        if(isDead || isInvincible) return;
 
         currentHealth -= damage;
         onTakeDamage?.Invoke();

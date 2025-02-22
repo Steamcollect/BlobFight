@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class BlobHealth : EntityHealth
+public class BlobHealth : EntityHealth, IPausable
 {
     //[Header("Settings")]
 
@@ -81,5 +81,15 @@ public class BlobHealth : EntityHealth
                     break;
             }
         }
+    }
+
+    public void Pause()
+    {
+        isInvincible = true;
+    }
+
+    public void Resume()
+    {
+        isInvincible = false;
     }
 }

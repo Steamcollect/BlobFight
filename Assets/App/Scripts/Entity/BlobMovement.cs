@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BlobMovement : MonoBehaviour
+public class BlobMovement : MonoBehaviour, IPausable
 {
     [Header("Settings")]
     [SerializeField] BlobStatistics shrinkStatistics;
@@ -20,7 +20,15 @@ public class BlobMovement : MonoBehaviour
 
     Vector2 moveInput;
 
-    bool canMove = true;
+    bool deathCanMove = true;
+    bool pauseCanMove = true;
+    bool canMove
+    {
+        get
+        {
+            return deathCanMove && pauseCanMove;
+        }
+    }
 
     [Header("References")]
     [SerializeField] EntityInput entityInput;
@@ -62,11 +70,6 @@ public class BlobMovement : MonoBehaviour
         entityInput.moveInput += SetInput;
     }
 
-    private void Update()
-    {
-        if (!canMove) return;
-    }
-
     private void FixedUpdate()
     {
         if (canMove)
@@ -84,7 +87,7 @@ public class BlobMovement : MonoBehaviour
 
     void ExtendBlob()
     {
-        if (!canMove || !canExtend) return;
+        if (!deathCanMove || !canExtend) return;
 
         statistics = extendStatistics;
         SetJointStats();
@@ -136,14 +139,14 @@ public class BlobMovement : MonoBehaviour
         canDash = true;
     }
 
-    public void EnableMovement()
+    public void DeathEnableMovement()
     {
-        canMove = true;
+        deathCanMove = true;
     }
-    public void DisableMovement()
+    public void DeathDisableMovement()
     {
         ShrinkBlob();
-        canMove = false;
+        deathCanMove = false;
     }
 
     void SetJointStats()
@@ -155,5 +158,15 @@ public class BlobMovement : MonoBehaviour
         blobJoint.SetDamping(statistics.damping);
         blobJoint.SetFrequency(statistics.frequency);
         blobJoint.SetMass(statistics.mass);
+    }
+
+    public void Pause()
+    {
+        pauseCanMove = false;
+    }
+
+    public void Resume()
+    {
+        pauseCanMove = true;
     }
 }

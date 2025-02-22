@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MyJoint : MonoBehaviour
+public class MyJoint : MonoBehaviour, IPausable
 {
     public BlobMotor parentMotor;
     public Rigidbody2D rb;
@@ -45,6 +45,10 @@ public class MyJoint : MonoBehaviour
     #endregion
 
     #region Rigidbody
+    Vector3 velocity;
+    float angularVelocity;
+    RigidbodyType2D bodyType;
+
     public void AddForce(Vector2 force)
     {
         rb.AddForce(force);
@@ -87,6 +91,21 @@ public class MyJoint : MonoBehaviour
         collid.offset = dir * distance;
     }
     #endregion
+
+    public void Pause()
+    {
+        velocity = rb.velocity;
+        angularVelocity = rb.angularVelocity;
+        bodyType = rb.bodyType;
+
+        rb.bodyType = RigidbodyType2D.Static;
+    }
+    public void Resume()
+    {
+        rb.bodyType = bodyType;
+        rb.velocity = velocity;
+        rb.angularVelocity = angularVelocity;
+    }
 
     [System.Serializable]
     public class Spring

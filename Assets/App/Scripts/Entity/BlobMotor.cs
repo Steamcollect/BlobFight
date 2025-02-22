@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BlobMotor : MonoBehaviour
@@ -14,6 +16,8 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
 
+    IPausable[] pausables;
+
     [Space(10)]
     // RSO
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
@@ -28,10 +32,17 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
     [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
 
+    [Space(5)]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
     private void OnEnable()
     {
         rseOnFightStart.action += UnlockInteraction;
         rseOnFightEnd.action += LockInteraction;
+
+        rseOnPause.action += OnGamePause;
+        rseOnResume.action += OnGameResume;
 
         health.onDeath += OnDeath;
         health.onDestroy += OnDestroyed;
@@ -40,6 +51,9 @@ public class BlobMotor : MonoBehaviour
     {
         rseOnFightStart.action -= UnlockInteraction;
         rseOnFightEnd.action -= LockInteraction;
+
+        rseOnPause.action -= OnGamePause;
+        rseOnResume.action -= OnGameResume;
 
         health.onDeath -= OnDeath;
         health.onDestroy -= OnDestroyed;
@@ -62,6 +76,8 @@ public class BlobMotor : MonoBehaviour
 
     private void Start()
     {
+        pausables = GetComponentsInChildren<IPausable>();
+
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
         joint.SetupLayer(currentStats.layer);
         visual.Setup(currentStats.color);
@@ -90,11 +106,11 @@ public class BlobMotor : MonoBehaviour
 
     void LockInteraction()
     {
-        movement.DisableMovement();
+        movement.DeathDisableMovement();
     }
     void UnlockInteraction()
     {
-        movement.EnableMovement();
+        movement.DeathEnableMovement();
     }
 
     public void Spawn(Vector2 position)
@@ -124,4 +140,19 @@ public class BlobMotor : MonoBehaviour
     }
 
     public bool IsAlive() { return !health.IsDead(); }
+
+    void OnGamePause()
+    {
+        foreach (IPausable pausable in pausables)
+        {
+            pausable.Pause();
+        }
+    }
+    void OnGameResume()
+    {
+        foreach (IPausable pausable in pausables)
+        {
+            pausable.Resume();
+        }
+    }
 }
