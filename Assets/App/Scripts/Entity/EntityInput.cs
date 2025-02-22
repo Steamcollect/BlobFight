@@ -14,6 +14,8 @@ public class EntityInput : MonoBehaviour
     public Action compressDownInput;
     public Action compressUpInput;
 
+    public Action pauseInput;
+
     private void Update()
     {
         moveInput?.Invoke(moveInputValue);
@@ -43,6 +45,14 @@ public class EntityInput : MonoBehaviour
             case InputActionPhase.Canceled:
                 compressUpInput?.Invoke();
                 break;
+        }
+    }
+
+    public void PauseInput(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            pauseInput?.Invoke();
         }
     }
 

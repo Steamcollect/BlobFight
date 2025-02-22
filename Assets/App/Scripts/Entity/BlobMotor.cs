@@ -15,6 +15,7 @@ public class BlobMotor : MonoBehaviour
     public BlobHealth health;
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
+    [SerializeField] EntityInput input;
 
     IPausable[] pausables;
 
@@ -31,6 +32,7 @@ public class BlobMotor : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
     [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
+    [SerializeField] RSE_TogglePause rseTogglePause;
 
     [Space(5)]
     [SerializeField] RSE_OnPause rseOnPause;
@@ -44,6 +46,8 @@ public class BlobMotor : MonoBehaviour
         rseOnPause.action += OnGamePause;
         rseOnResume.action += OnGameResume;
 
+        input.pauseInput += rseTogglePause.Call;
+
         health.onDeath += OnDeath;
         health.onDestroy += OnDestroyed;
     }
@@ -54,6 +58,8 @@ public class BlobMotor : MonoBehaviour
 
         rseOnPause.action -= OnGamePause;
         rseOnResume.action -= OnGameResume;
+
+        input.pauseInput -= rseTogglePause.Call;
 
         health.onDeath -= OnDeath;
         health.onDestroy -= OnDestroyed;

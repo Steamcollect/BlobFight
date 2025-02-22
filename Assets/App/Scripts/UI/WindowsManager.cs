@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Linq;
 
 public class WindowsManager : MonoBehaviour
@@ -39,10 +40,6 @@ public class WindowsManager : MonoBehaviour
         {
             window.EnableWindow();
         }
-        else
-        {
-            Debug.LogError($"There is no window of name \"{windowName}\"");
-        }
     }
     void DisableWindow(string windowName)
     {
@@ -50,10 +47,6 @@ public class WindowsManager : MonoBehaviour
         if (window != null)
         {
             window.DisableWindow();
-        }
-        else
-        {
-            Debug.LogError($"There is no window of name \"{windowName}\"");
         }
     }
     void CloseAllWindow()
@@ -66,25 +59,4 @@ public class WindowsManager : MonoBehaviour
             }
         }
     }
-}
-
-[System.Serializable]
-public class Window
-{
-    public string windowName;
-
-    public GameObject content;
-    bool isOpen;
-
-    public void EnableWindow()
-    {
-        content.SetActive(true);
-        isOpen = true;
-    }
-    public void DisableWindow()
-    {
-        content.SetActive(false);
-        isOpen = false;
-    }
-    public bool IsOpen() { return isOpen; }
 }
