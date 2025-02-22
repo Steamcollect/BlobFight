@@ -13,14 +13,17 @@ public enum Type
 public class GeneratorProps : EditorWindow
 {
     [SerializeField] private Type type = Type.None;
+
     [SerializeField] private GameObject prefabChain = null;
-    [SerializeField] private GameObject prefabBall = null;
     [SerializeField] private int number = 5;
     [SerializeField] private float spacing = 1;
-    [SerializeField] private float spacingBall = 1.2f;
     [SerializeField] private int health = 1;
+
+    [SerializeField] private GameObject prefabBall = null;
+    [SerializeField] private float spacingBall = 1.2f;
     [SerializeField] private int damage = 100;
     [SerializeField] private DamageType damageType = DamageType.Damage;
+
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
