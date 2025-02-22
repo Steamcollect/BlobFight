@@ -458,7 +458,7 @@ public class GeneratorProps : EditorWindow
                 current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
                 current.GetComponent<HingeHealth>().maxHealth = health;
 
-                current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
+                current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(0, 0, 0, 255), new Color32(168, 40, 38, 255));
 
                 if (i == 1)
                 {
