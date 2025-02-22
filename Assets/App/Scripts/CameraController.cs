@@ -18,6 +18,10 @@ public class CameraController : MonoBehaviour
 
     private Vector3 posOffset;
 
+    [Header("Bounds")]
+    [SerializeField] Vector2 minBounds; // Limite minimale (x, y)
+    [SerializeField] Vector2 maxBounds; // Limite maximale (x, y)
+
     [Space(10)]
     [SerializeField] float shakeSpeed;
     float shakeOffset;
@@ -53,6 +57,19 @@ public class CameraController : MonoBehaviour
         // SmoothDamp for zoom
         float targetSize = Mathf.Clamp(distance, minSize, maxSize);
         cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref zoomVelocity, zoomSmoothTime);
+
+        // Calcul de la taille de la caméra
+        float camHeight = cam.orthographicSize;
+        float camWidth = camHeight * cam.aspect;
+
+
+        // Application des bounds
+        float clampedX = Mathf.Clamp(targetPosition.x, minBounds.x + camWidth, maxBounds.x - camWidth);
+        float clampedY = Mathf.Clamp(targetPosition.y, minBounds.y + camHeight, maxBounds.y - camHeight);
+
+        // Applique la position finale avec le shake
+        Vector3 finalPosition = new Vector3(clampedX, clampedY, cam.transform.position.z) + posOffset;
+        cam.transform.position = Vector3.SmoothDamp(cam.transform.position, finalPosition, ref velocity, moveSmoothTime);
     }
 
     private Vector2 CalculateCenter()

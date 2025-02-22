@@ -155,6 +155,8 @@ MonoBehaviour:
   zoomMultiplier: 1.1
   moveSmoothTime: 0.2
   zoomSmoothTime: 0.2
+  minBounds: {x: -10, y: -10}
+  maxBounds: {x: 20, y: 20}
   shakeSpeed: 10
   cam: {fileID: 1532893824451167384}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
