@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static Damagable;
 
 public enum Type
 {
@@ -13,9 +15,13 @@ public class GeneratorProps : EditorWindow
 {
     [SerializeField] private Type type = Type.None;
     [SerializeField] private GameObject prefabChain = null;
+    [SerializeField] private GameObject prefabBall = null;
     [SerializeField] private int number = 5;
     [SerializeField] private float spacing = 1;
+    [SerializeField] private float spacingBall = 1.2f;
     [SerializeField] private int health = 1;
+    [SerializeField] private int damage = 100;
+    [SerializeField] private DamageType damageType = DamageType.Damage;
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
@@ -95,26 +101,40 @@ public class GeneratorProps : EditorWindow
 
         EditorGUILayout.EndScrollView();
 
-        EditorGUI.BeginDisabledGroup(type == Type.None || prefabChain == null || number < 1 || spacing < 0);
-        if (GUILayout.Button("GENERATE", buttonGenerateBridgeStyle))
+        if(type == Type.Bridge)
         {
-            Generate();
+            EditorGUI.BeginDisabledGroup(prefabChain == null);
+            if (GUILayout.Button("GENERATE", buttonGenerateBridgeStyle))
+            {
+                Generate();
+            }
+            EditorGUI.EndDisabledGroup();
+
+            GUILayout.Space(10);
         }
-        EditorGUI.EndDisabledGroup();
+        else if (type == Type.Hammer)
+        {
+            EditorGUI.BeginDisabledGroup(prefabChain == null || prefabBall == null);
+            if (GUILayout.Button("GENERATE", buttonGenerateBridgeStyle))
+            {
+                Generate();
+            }
+            EditorGUI.EndDisabledGroup();
+
+            GUILayout.Space(10);
+        }
     }
 
     private void GUIBridge()
     {
+        GUILayout.Label("Parameters", labelSecondStyle);
+
         if (prefabChain == null)
         {
             GUILayout.Space(10);
 
-            EditorGUILayout.HelpBox("GameObject to Place is Empty!", MessageType.Error);
+            EditorGUILayout.HelpBox("Prefab Chain Bridge is Empty!", MessageType.Error);
         }
-
-        GUILayout.Space(10);
-
-        GUILayout.Label("Parameters", labelSecondStyle);
 
         GUILayout.Space(10);
 
@@ -122,7 +142,7 @@ public class GeneratorProps : EditorWindow
         GUILayout.Space(30);
 
         Undo.RecordObject(this, "Prefab Chain Bridge");
-        prefabChain = (GameObject)EditorGUILayout.ObjectField("Prefab Chain", prefabChain, typeof(GameObject), false);
+        prefabChain = (GameObject)EditorGUILayout.ObjectField("Prefab Chain Bridge", prefabChain, typeof(GameObject), false);
 
         GUILayout.Space(30);
         GUILayout.EndHorizontal();
@@ -183,88 +203,322 @@ public class GeneratorProps : EditorWindow
         GUILayout.EndHorizontal();
     }
 
+    private void GenerateBridge()
+    {
+        SceneView sceneView = SceneView.lastActiveSceneView;
+        Camera sceneCamera = sceneView.camera;
+        Vector3 spawnPosition = sceneCamera.transform.position + sceneCamera.transform.forward * 5f;
+
+        List<GameObject> createdObjects = new List<GameObject>();
+
+        // Create Parent
+        GameObject bridgeParent = new GameObject("Bridge");
+        Undo.RegisterCreatedObjectUndo(bridgeParent, "Create Bridge");
+        bridgeParent.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
+        bridgeParent.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        createdObjects.Add(bridgeParent);
+
+        // Create Children
+        for (int i = 0; i < number; i++)
+        {
+            Vector3 position = bridgeParent.transform.position - new Vector3(i * spacing, 0, 0);
+
+            GameObject newSegment = Instantiate(prefabChain, position, Quaternion.identity);
+            newSegment.transform.SetParent(bridgeParent.transform);
+            newSegment.transform.Rotate(0, 0, 90);
+            createdObjects.Add(newSegment);
+        }
+
+        // Create Hinge & Scripts
+        for (int i = 0; i < createdObjects.Count; i++)
+        {
+            if (i > 0)
+            {
+                GameObject current = createdObjects[i];
+                Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
+                Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
+
+                current.AddComponent<RigidbodyMotor>();
+                current.AddComponent<HingeHealth>();
+                current.AddComponent<HingeTrigger>();
+
+                current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
+
+                current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
+                current.GetComponent<HingeHealth>().maxHealth = health;
+
+                current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
+
+                if (i == 1 || i == createdObjects.Count - 1)
+                {
+                    HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                    hinge.connectedBody = createdObjects[0].GetComponent<Rigidbody2D>();
+                    hinge.anchor = new Vector2(0, i == 1 ? -1 : 1);
+                    hinge.autoConfigureConnectedAnchor = true;
+
+                    current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                }
+
+                if (i < createdObjects.Count - 1)
+                {
+                    GameObject next = createdObjects[i + 1];
+                    Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
+                    if (nextRb == null) continue;
+
+                    HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                    hinge.connectedBody = nextRb;
+                    hinge.anchor = current.transform.InverseTransformPoint((current.transform.position + next.transform.position) / 2);
+                    hinge.autoConfigureConnectedAnchor = true;
+
+                    current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                }
+            }
+        }
+    }
+
     private void GUIHammer()
     {
+        GUILayout.Label("Parameters", labelSecondStyle);
 
+        if (prefabChain == null)
+        {
+            GUILayout.Space(10);
+
+            EditorGUILayout.HelpBox("Prefab Chain Hammer is Empty!", MessageType.Error);
+        }
+
+        if (prefabBall == null)
+        {
+            GUILayout.Space(10);
+
+            EditorGUILayout.HelpBox("Prefab Ball is Empty!", MessageType.Error);
+        }
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Prefab Chain Hammer");
+        prefabChain = (GameObject)EditorGUILayout.ObjectField("Prefab Chain Hammer", prefabChain, typeof(GameObject), false);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Prefab Ball Hammer");
+        prefabBall = (GameObject)EditorGUILayout.ObjectField("Prefab Ball", prefabBall, typeof(GameObject), false);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Hammer Number");
+        number = Mathf.Clamp(EditorGUILayout.IntField("Number", number), 1, 100);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Hammer Space");
+        spacing = Mathf.Clamp(EditorGUILayout.FloatField("Spacing", spacing), 0, 100);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Hammer Space Ball");
+        spacingBall = Mathf.Clamp(EditorGUILayout.FloatField("Spacing Ball", spacingBall), 0, 100);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Hammer Health");
+        health = Mathf.Clamp(EditorGUILayout.IntField("Health", health), 0, 1000000);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Hammer Damage");
+        damage = Mathf.Clamp(EditorGUILayout.IntField("Damage", damage), 0, 1000000);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed Hammer Type Damage");
+        damageType = (DamageType)EditorGUILayout.EnumPopup("Type Damage", damageType);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed RSE_OnPause");
+        rseOnPause = (RSE_OnPause)EditorGUILayout.ObjectField("RSE On Pause", rseOnPause, typeof(RSE_OnPause), false);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
+        Undo.RecordObject(this, "Changed RSE_OnResume");
+        rseOnResume = (RSE_OnResume)EditorGUILayout.ObjectField("RSE On Resume", rseOnResume, typeof(RSE_OnResume), false);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+    }
+
+    private void GenerateHammer()
+    {
+        SceneView sceneView = SceneView.lastActiveSceneView;
+        Camera sceneCamera = sceneView.camera;
+        Vector3 spawnPosition = sceneCamera.transform.position + sceneCamera.transform.forward * 5f;
+
+        List<GameObject> createdObjects = new List<GameObject>();
+
+        // Create Parent
+        GameObject bridgeParent = new GameObject("Hammer");
+        Undo.RegisterCreatedObjectUndo(bridgeParent, "Create Hammer");
+        bridgeParent.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
+        bridgeParent.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        createdObjects.Add(bridgeParent);
+
+        // Create Children
+        for (int i = 0; i < number; i++)
+        {
+            Vector3 position = bridgeParent.transform.position - new Vector3(0, i * spacing, 0);
+
+            GameObject newSegment = Instantiate(prefabChain, position, Quaternion.identity);
+            newSegment.transform.SetParent(bridgeParent.transform);
+            newSegment.transform.Rotate(0, 0, 0);
+            createdObjects.Add(newSegment);
+        }
+
+        Vector3 positionBall = bridgeParent.transform.position - new Vector3(0, number + spacingBall, 0);
+
+        GameObject ball = Instantiate(prefabBall, positionBall, Quaternion.identity);
+        ball.transform.SetParent(bridgeParent.transform);
+        ball.transform.Rotate(0, 0, 0);
+        createdObjects.Add(ball);
+
+        // Create Hinge & Scripts
+        for (int i = 0; i < createdObjects.Count; i++)
+        {
+            if (i > 0 && i < createdObjects.Count - 1)
+            {
+                GameObject current = createdObjects[i];
+                Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
+                Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
+
+                current.AddComponent<RigidbodyMotor>();
+                current.AddComponent<HingeHealth>();
+                current.AddComponent<HingeTrigger>();
+
+                current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
+
+                current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
+                current.GetComponent<HingeHealth>().maxHealth = health;
+
+                current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
+
+                if (i == 1)
+                {
+                    HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                    hinge.connectedBody = createdObjects[0].GetComponent<Rigidbody2D>();
+                    hinge.anchor = new Vector2(0f, 1);
+                    hinge.autoConfigureConnectedAnchor = true;
+
+                    current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                }
+
+                if (i < createdObjects.Count - 2)
+                {
+                    GameObject next = createdObjects[i + 1];
+                    Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
+                    if (nextRb == null) continue;
+
+                    HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                    hinge.connectedBody = nextRb;
+                    hinge.anchor = current.transform.InverseTransformPoint((current.transform.position + next.transform.position) / 2);
+                    hinge.autoConfigureConnectedAnchor = true;
+
+                    current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                }
+
+                if(i < createdObjects.Count - 1)
+                {
+                    GameObject next = createdObjects[i + 1];
+                    Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
+                    if (nextRb == null) continue;
+
+                    HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
+                    hinge.connectedBody = nextRb;
+                    hinge.anchor = new Vector2(0, -1);
+                    hinge.autoConfigureConnectedAnchor = true;
+
+                    current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
+                }
+            }
+            else if (i == createdObjects.Count - 1)
+            {
+                ball.GetComponent<Damagable>().SetScripts(damage, damageType);
+
+                Damagable[] damagableComponents = ball.GetComponentsInChildren<Damagable>();
+
+                foreach (Damagable damagable in damagableComponents)
+                {
+                    damagable.SetScripts(damage, damageType);
+                }
+            }
+        }
     }
 
     private void Generate()
     {
         if (type == Type.Bridge)
         {
-            SceneView sceneView = SceneView.lastActiveSceneView;
-            Camera sceneCamera = sceneView.camera;
-            Vector3 spawnPosition = sceneCamera.transform.position + sceneCamera.transform.forward * 5f;
-
-            List<GameObject> createdObjects = new List<GameObject>();
-
-            // Create Parent
-            GameObject bridgeParent = new GameObject("Bridge");
-            Undo.RegisterCreatedObjectUndo(bridgeParent, "Create Bridge");
-            bridgeParent.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
-            bridgeParent.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            createdObjects.Add(bridgeParent);
-
-            // Create Children
-            for (int i = 0; i < number; i++)
-            {
-                Vector3 position = bridgeParent.transform.position - new Vector3(i * spacing, 0, 0);
-
-                GameObject newSegment = Instantiate(prefabChain, position, Quaternion.identity);
-                newSegment.transform.SetParent(bridgeParent.transform);
-                newSegment.transform.Rotate(0, 0, 90);
-                createdObjects.Add(newSegment);
-            }
-
-            // Create Hinge & Scripts
-            for (int i = 0; i < createdObjects.Count; i++)
-            {
-                if (i > 0)
-                {
-                    GameObject current = createdObjects[i];
-                    Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
-                    Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
-
-                    current.AddComponent<RigidbodyMotor>();
-                    current.AddComponent<HingeHealth>();
-                    current.AddComponent<HingeTrigger>();
-
-                    current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
-
-                    current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
-                    current.GetComponent<HingeHealth>().maxHealth = health;
-
-                    current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
-
-                    if (i == 1 || i == createdObjects.Count - 1)
-                    {
-                        HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
-                        hinge.connectedBody = createdObjects[0].GetComponent<Rigidbody2D>();
-                        hinge.anchor = new Vector2(0, i == 1 ? -1 : 1);
-                        hinge.autoConfigureConnectedAnchor = true;
-
-                        current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
-                    }
-
-                    if (i < createdObjects.Count - 1)
-                    {
-                        GameObject next = createdObjects[i + 1];
-                        Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
-                        if (nextRb == null) continue;
-
-                        HingeJoint2D hinge = current.AddComponent<HingeJoint2D>();
-                        hinge.connectedBody = nextRb;
-                        hinge.anchor = current.transform.InverseTransformPoint((current.transform.position + next.transform.position) / 2);
-                        hinge.autoConfigureConnectedAnchor = true;
-
-                        current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
-                    }
-                }
-            }
+            GenerateBridge();
         }
         else if (type == Type.Hammer)
         {
-
+            GenerateHammer();
         }
     }
 }
