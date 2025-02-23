@@ -125,4 +125,20 @@ public class CameraController : MonoBehaviour
             posOffset = Vector3.zero;
         }
     }
+    private void OnDrawGizmos()
+    {
+        if (cam == null) cam = Camera.main;
+
+        // Calcul des dimensions de la caméra
+        float camHeight = cam != null ? cam.orthographicSize : 5f;
+        float camWidth = camHeight * (cam != null ? cam.aspect : 1f);
+
+        Gizmos.color = Color.green;
+
+        // Dessine le cadre des bounds
+        Gizmos.DrawLine(new Vector3(minBounds.x + camWidth, minBounds.y + camHeight, 0), new Vector3(maxBounds.x - camWidth, minBounds.y + camHeight, 0)); // Ligne haut
+        Gizmos.DrawLine(new Vector3(minBounds.x + camWidth, maxBounds.y - camHeight, 0), new Vector3(maxBounds.x - camWidth, maxBounds.y - camHeight, 0)); // Ligne bas
+        Gizmos.DrawLine(new Vector3(minBounds.x + camWidth, minBounds.y + camHeight, 0), new Vector3(minBounds.x + camWidth, maxBounds.y - camHeight, 0)); // Ligne gauche
+        Gizmos.DrawLine(new Vector3(maxBounds.x - camWidth, minBounds.y + camHeight, 0), new Vector3(maxBounds.x - camWidth, maxBounds.y - camHeight, 0)); // Ligne droite
+    }
 }

@@ -1682,22 +1682,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: maxBounds.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: maxBounds.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: minBounds.x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
-      propertyPath: minBounds.y
-      value: -10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
