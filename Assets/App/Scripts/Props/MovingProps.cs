@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 
-public class MovingProps : GameProps
+public class MovingProps : GameProps, IPausable
 {
     [Header("Settings")]
     [SerializeField] float moveSpeed;
@@ -56,5 +56,15 @@ public class MovingProps : GameProps
     private void OnDestroy()
     {
         movable.DOKill();
+    }
+
+    public void Pause()
+    {
+        movable.DOPause();
+    }
+
+    public void Resume()
+    {
+        movable.DOPlay();
     }
 }

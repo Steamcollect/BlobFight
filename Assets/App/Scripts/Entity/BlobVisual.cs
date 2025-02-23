@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BlobVisual : MonoBehaviour
+public class BlobVisual : MonoBehaviour, IPausable
 {
     [Header("Settings")]
     [SerializeField] int shrinkBevelCount;
@@ -15,6 +15,8 @@ public class BlobVisual : MonoBehaviour
     [SerializeField] float outlineThickness = 0.1f;
     int bevelCount;
     float heightFactor;
+
+    bool canDisplay = true;
 
     [Header("References")]
     [SerializeField] MeshFilter outlineMeshFilter;
@@ -55,6 +57,8 @@ public class BlobVisual : MonoBehaviour
 
     private void Update()
     {
+        if (!canDisplay) return;
+
         UpdateFillMesh();
         UpdateOutlineMesh();
     }
@@ -163,5 +167,15 @@ public class BlobVisual : MonoBehaviour
     {
         bevelCount = extendBevelCount;
         heightFactor = extendHeightFactor;
+    }
+
+    public void Pause()
+    {
+        canDisplay = false;
+    }
+
+    public void Resume()
+    {
+        canDisplay = true;
     }
 }
