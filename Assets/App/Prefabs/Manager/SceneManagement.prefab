@@ -57,3 +57,4 @@ MonoBehaviour:
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseEnablePauseAction: {fileID: 11400000, guid: 90e59a3a0cae41947a5d91e154800b98, type: 2}
   rseDisablePauseAction: {fileID: 11400000, guid: f91385a90ac547d4c9afafffbe8612c7, type: 2}
+  rseClearBlobInGame: {fileID: 11400000, guid: 0f87cf7e5d0a9d74fa1851b067bd2177, type: 2}

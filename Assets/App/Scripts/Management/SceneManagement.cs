@@ -32,6 +32,9 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
     [SerializeField] RSE_DisablePauseAction rseDisablePauseAction;
 
+    [Space(5)]
+    [SerializeField] RSE_ClearBlobInGame rseClearBlobInGame;
+
     private void OnEnable()
     {
         rseLoadNextLevel.action += LoadNextLevelRandomly;
@@ -84,6 +87,7 @@ public class SceneManagement : MonoBehaviour
             }
             else
             {
+                rseClearBlobInGame.Call();
                 currentLevel = mainMenuName;
             }
 

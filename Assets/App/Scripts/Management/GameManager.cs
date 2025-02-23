@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
         MainMenu
     }
 
-    //[Header("References")]
+    [Header("References")]
 
     //[Space(10)]
     // RSO
+    [SerializeField] RSO_BlobInGame rsoBlobInGame;
     // RSF
     // RSP
 
@@ -26,6 +27,9 @@ public class GameManager : MonoBehaviour
     [Space(5)]
     [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
     [SerializeField] RSE_DisablePauseAction rseDisablePauseAction;
+
+    [Space(5)]
+    [SerializeField] RSE_ClearBlobInGame rseClearBlobInGame;
 
     [Header("Output")]
     [SerializeField] RSE_OnResume rseOnResume;
@@ -43,6 +47,8 @@ public class GameManager : MonoBehaviour
 
         rseEnablePauseAction.action += EnablePause;
         rseDisablePauseAction.action += DisablePause;
+
+        rseClearBlobInGame.action += ClearBlobInGame;
     }
     private void OnDisable()
     {
@@ -52,6 +58,8 @@ public class GameManager : MonoBehaviour
 
         rseEnablePauseAction.action -= EnablePause;
         rseDisablePauseAction.action -= DisablePause;
+
+        rseClearBlobInGame.action -= ClearBlobInGame;
     }
 
     void TogglePause()
@@ -91,5 +99,16 @@ public class GameManager : MonoBehaviour
     void DisablePause()
     {
         canPause = false;
+    }
+
+    void ClearBlobInGame()
+    {
+        if (rsoBlobInGame.Value.Count <= 0) return;
+
+        for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
+        {
+            Destroy(rsoBlobInGame.Value[i].gameObject);
+        }
+        rsoBlobInGame.Value.Clear();
     }
 }
