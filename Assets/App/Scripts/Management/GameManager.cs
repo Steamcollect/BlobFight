@@ -2,6 +2,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] bool canPause = true;
     [SerializeField] GameState gameState = GameState.MainMenu;
     public enum GameState
     {
@@ -22,6 +23,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] RSE_OnGameStart rseOnGameStart;
     [SerializeField] RSE_ReturnToMainMenu rseReturnToMainMenu;
 
+    [Space(5)]
+    [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
+    [SerializeField] RSE_DisablePauseAction rseDisablePauseAction;
+
     [Header("Output")]
     [SerializeField] RSE_OnResume rseOnResume;
     [SerializeField] RSE_OnPause rseOnPause;
@@ -35,17 +40,23 @@ public class GameManager : MonoBehaviour
         rseTogglePause.action += TogglePause;
         rseOnGameStart.action += SetStateToGameplay;
         rseReturnToMainMenu.action += SetStateToMainMenu;
+
+        rseEnablePauseAction.action += EnablePause;
+        rseDisablePauseAction.action += DisablePause;
     }
     private void OnDisable()
     {
         rseTogglePause.action -= TogglePause;
         rseOnGameStart.action -= SetStateToGameplay;
         rseReturnToMainMenu.action -= SetStateToMainMenu;
+
+        rseEnablePauseAction.action -= EnablePause;
+        rseDisablePauseAction.action -= DisablePause;
     }
 
     void TogglePause()
     {
-        if (gameState == GameState.MainMenu) return;
+        if (gameState == GameState.MainMenu || !canPause) return;
 
         switch (gameState)
         {
@@ -71,5 +82,14 @@ public class GameManager : MonoBehaviour
     void SetStateToGameplay()
     {
         gameState = GameState.Gameplay;
+    }
+
+    void EnablePause()
+    {
+        canPause = true;
+    }
+    void DisablePause()
+    {
+        canPause = false;
     }
 }

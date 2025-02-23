@@ -1483,6 +1483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 3235758452456116101, guid: cd67a80deeafe9540ac287c2f52bcaba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3662199924006372879, guid: cd67a80deeafe9540ac287c2f52bcaba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

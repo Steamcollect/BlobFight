@@ -28,6 +28,10 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] RSE_FadeOut rseFadeOut;
     [SerializeField] RSE_OnFightStart rseOnFightStart;
 
+    [Space(5)]
+    [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
+    [SerializeField] RSE_DisablePauseAction rseDisablePauseAction;
+
     private void OnEnable()
     {
         rseLoadNextLevel.action += LoadNextLevelRandomly;
@@ -47,8 +51,19 @@ public class SceneManagement : MonoBehaviour
 
     void LoadNextLevelRandomly()
     {
+        LoadLevel(false);
+    }
+
+    void ReturnToMainMenu()
+    {
+        LoadLevel(true);
+    }
+
+    void LoadLevel(bool isMainMenu)
+    {
         if (isLoading) return;
 
+        rseDisablePauseAction.Call();
         isLoading = true;
 
         rseFadeOut.Call(() =>
@@ -58,47 +73,25 @@ public class SceneManagement : MonoBehaviour
                 StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
             }
 
-            if (levels.Count <= 0) levels.AddRange(levelsName);
+            if (!isMainMenu)
+            {
+                if (levels.Count <= 0) levels.AddRange(levelsName);
 
-            int rnd = Random.Range(0, levels.Count);
-            currentLevel = levels[rnd];
-            levels.RemoveAt(rnd);
+                int rnd = Random.Range(0, levels.Count);
+                currentLevel = levels[rnd];
+
+                levels.RemoveAt(rnd);
+            }
+            else
+            {
+                currentLevel = mainMenuName;
+            }
 
             StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
             {
                 rseFadeIn.Call(() =>
                 {
-                    rseOnFightStart.Call();
-                    isLoading = false;
-                });
-            }));
-        });        
-    }
-
-    void ReturnToMainMenu()
-    {
-        if (isLoading) return;
-
-        isLoading = true;
-
-        rseFadeOut.Call(() =>
-        {
-            if (currentLevel != "")
-            {
-                StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
-            }
-
-            for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
-            {
-                Destroy(rsoBlobInGame.Value[i].gameObject);
-            }
-            rsoBlobInGame.Value.Clear();
-
-            currentLevel = mainMenuName;
-            StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
-            {
-                rseFadeIn.Call(() =>
-                {
+                    rseEnablePauseAction.Call();
                     rseOnFightStart.Call();
                     isLoading = false;
                 });

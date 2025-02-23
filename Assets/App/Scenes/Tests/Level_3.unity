@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1477126759}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1135149789}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.96
@@ -186,7 +190,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -426,6 +431,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 2095940931}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 168552525}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.7800007
@@ -470,7 +479,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -803,6 +813,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 2009326265}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 211050994}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9799995
@@ -847,7 +861,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -855,6 +870,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2025055058}
   m_SourcePrefab: {fileID: 100100000, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+--- !u!50 &211050994 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7252215746007426744, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+  m_PrefabInstance: {fileID: 211050993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &216922201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,6 +895,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1932502188}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 896779772}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.63
@@ -919,7 +943,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (12)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -944,6 +969,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 610735283}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 207299931}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.9699993
@@ -988,7 +1017,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1013,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1909143355}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1469754956}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.650001
@@ -1057,7 +1091,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1082,6 +1117,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1332592717}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 326545465}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.89
@@ -1126,7 +1165,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1134,6 +1174,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 882650492}
   m_SourcePrefab: {fileID: 100100000, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+--- !u!50 &326545465 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7252215746007426744, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+  m_PrefabInstance: {fileID: 326545464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409770072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1231,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 896779772}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2000697886}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.64
@@ -1230,7 +1279,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (11)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1398,6 +1448,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 549156408}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 812630900}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.87
@@ -1442,7 +1496,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1467,6 +1522,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 168552525}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 584129725}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.83
@@ -1511,7 +1570,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1571,6 +1631,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 829935879}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 816747902}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.74
@@ -1615,7 +1679,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1683,6 +1748,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1135149789}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 610735283}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.9599996
@@ -1727,7 +1796,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2269,6 +2339,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 2000697886}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1909143355}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.650001
@@ -2313,7 +2387,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (10)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2513,6 +2588,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 584129725}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 549156408}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.870001
@@ -2557,7 +2636,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2582,6 +2662,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 207299931}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2009326265}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.9699993
@@ -2626,7 +2710,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3358,6 +3443,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1014144200}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1857202737}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.73
@@ -3402,7 +3491,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3557,6 +3647,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 812630900}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1702044807}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8799999
@@ -3601,7 +3695,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3626,6 +3721,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1702044807}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1332592717}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8799999
@@ -3670,7 +3769,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3792,6 +3892,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 830034423}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1014144200}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.719999
@@ -3836,7 +3940,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4756,6 +4861,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 816747902}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 98236697}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.7699995
@@ -4800,7 +4909,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4993,6 +5103,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 98236697}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1407295360}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.87
@@ -5037,7 +5151,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5062,6 +5177,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1407295360}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1477126759}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.9199996
@@ -5106,7 +5225,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5131,6 +5251,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1469754956}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2095940931}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.68
@@ -5175,7 +5299,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5441,6 +5566,10 @@ PrefabInstance:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1857202737}
+    - target: {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 829935879}
     - target: {fileID: 5174404268519360996, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.74
@@ -5485,7 +5614,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeChain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4672274055917654668, guid: 5791df7dbc9b0774ebfa7a8198347e59, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
