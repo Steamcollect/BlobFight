@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     void SetStateToMainMenu()
     {
+        rseDisableWindow.Call("PausePanel");
         gameState = GameState.MainMenu;
     }
     void SetStateToGameplay()
