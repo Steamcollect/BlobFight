@@ -94,6 +94,7 @@ public class SceneManagement : MonoBehaviour
             }
             rsoBlobInGame.Value.Clear();
 
+            currentLevel = mainMenuName;
             StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
             {
                 rseFadeIn.Call(() =>
