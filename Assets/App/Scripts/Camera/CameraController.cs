@@ -58,18 +58,14 @@ public class CameraController : MonoBehaviour
         float targetSize = Mathf.Clamp(distance, minSize, maxSize);
         cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref zoomVelocity, zoomSmoothTime);
 
-        // Calcul de la taille de la caméra
-        float camHeight = cam.orthographicSize;
-        float camWidth = camHeight * cam.aspect;
+        //Bounds fixes
+        float halfWidth = cam.orthographicSize * cam.aspect;
+        float halfHeight = cam.orthographicSize;
 
+        float clampedX = Mathf.Clamp(cam.transform.position.x, minBounds.x + halfWidth, maxBounds.x - halfWidth);
+        float clampedY = Mathf.Clamp(cam.transform.position.y, minBounds.y + halfHeight, maxBounds.y - halfHeight);
 
-        // Application des bounds
-        float clampedX = Mathf.Clamp(targetPosition.x, minBounds.x + camWidth, maxBounds.x - camWidth);
-        float clampedY = Mathf.Clamp(targetPosition.y, minBounds.y + camHeight, maxBounds.y - camHeight);
-
-        // Applique la position finale avec le shake
-        Vector3 finalPosition = new Vector3(clampedX, clampedY, cam.transform.position.z) + posOffset;
-        cam.transform.position = Vector3.SmoothDamp(cam.transform.position, finalPosition, ref velocity, moveSmoothTime);
+        cam.transform.position = new Vector3(clampedX, clampedY, cam.transform.position.z);
     }
 
     private Vector2 CalculateCenter()
@@ -127,18 +123,16 @@ public class CameraController : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if (cam == null) cam = Camera.main;
-
-        // Calcul des dimensions de la caméra
-        float camHeight = cam != null ? cam.orthographicSize : 5f;
-        float camWidth = camHeight * (cam != null ? cam.aspect : 1f);
-
         Gizmos.color = Color.green;
 
-        // Dessine le cadre des bounds
-        Gizmos.DrawLine(new Vector3(minBounds.x + camWidth, minBounds.y + camHeight, 0), new Vector3(maxBounds.x - camWidth, minBounds.y + camHeight, 0)); // Ligne haut
-        Gizmos.DrawLine(new Vector3(minBounds.x + camWidth, maxBounds.y - camHeight, 0), new Vector3(maxBounds.x - camWidth, maxBounds.y - camHeight, 0)); // Ligne bas
-        Gizmos.DrawLine(new Vector3(minBounds.x + camWidth, minBounds.y + camHeight, 0), new Vector3(minBounds.x + camWidth, maxBounds.y - camHeight, 0)); // Ligne gauche
-        Gizmos.DrawLine(new Vector3(maxBounds.x - camWidth, minBounds.y + camHeight, 0), new Vector3(maxBounds.x - camWidth, maxBounds.y - camHeight, 0)); // Ligne droite
+        Vector3 bottomLeft = new Vector3(minBounds.x, minBounds.y, 0);
+        Vector3 bottomRight = new Vector3(maxBounds.x, minBounds.y, 0);
+        Vector3 topLeft = new Vector3(minBounds.x, maxBounds.y, 0);
+        Vector3 topRight = new Vector3(maxBounds.x, maxBounds.y, 0);
+
+        Gizmos.DrawLine(bottomLeft, bottomRight); // Bas
+        Gizmos.DrawLine(bottomRight, topRight);   // Droite
+        Gizmos.DrawLine(topRight, topLeft);       // Haut
+        Gizmos.DrawLine(topLeft, bottomLeft);     // Gauche
     }
 }
