@@ -20,6 +20,7 @@ public class CollisionTrigger : MonoBehaviour
     //[Header("Output")]
     public Action<Collision2D> OnCollisionEnter, OnCollisionExit;
     public Action<BlobMotor> OnCollisionEnterWithBlob, OnCollisionExitWithBlob;
+    public Action<BlobMotor, Collision2D> OnBlobCollisionEnter;
     public Action<ContactPoint2D> OnCollisionExitGetLastContact;
 
     protected void OnEnterCollision(Collision2D collision)
@@ -32,6 +33,7 @@ public class CollisionTrigger : MonoBehaviour
                 if (!blobs.Contains(joint.parentMotor))
                 {
                     OnCollisionEnterWithBlob?.Invoke(joint.parentMotor);
+                    OnBlobCollisionEnter?.Invoke(joint.parentMotor, collision);
                 }
 
                 blobs.Add(joint.parentMotor);
