@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerSelectionPanel : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] int blobRequireToPlay = 1;
+    //[SerializeField] int blobRequireToPlay = 1;
 
     [Header("References")]
     [SerializeField] GameObject blobRequireCountTxt;
