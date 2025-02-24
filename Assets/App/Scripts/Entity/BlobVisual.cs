@@ -26,8 +26,6 @@ public class BlobVisual : MonoBehaviour, IPausable
 
     [Space(10)]
     [SerializeField] BlobJoint blobJoint;
-    [Space(10)]
-    [SerializeField] GameObject crown;
 
     private Mesh outlineMesh;
     private Mesh fillMesh;
