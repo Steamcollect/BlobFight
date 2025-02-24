@@ -17,6 +17,8 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
     [SerializeField] BlobScore winScore;
+
+
 	public GameObject interfaceReady;
 
 	[Space(5)]

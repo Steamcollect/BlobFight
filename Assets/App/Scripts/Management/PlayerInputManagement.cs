@@ -17,9 +17,9 @@ public class PlayerInputManagement : MonoBehaviour
     [SerializeField] RSE_EnableJoining rseEnableJoining;
     [SerializeField] RSE_DisableJoining rseDisableJoining;
 
-    //[Header("Output")]
+	//[Header("Output")]
 
-    private void OnEnable()
+	private void OnEnable()
     {
 		playerInputManager.onPlayerJoined += OnPlayerJoined;
 		rseEnableJoining.action += playerInputManager.EnableJoining;
