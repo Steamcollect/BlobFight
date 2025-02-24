@@ -7,7 +7,6 @@ public class PlayerSelectionPanel : MonoBehaviour
     [SerializeField] int blobRequireToPlay = 1;
 
     [Header("References")]
-    [SerializeField] Button playButton;
     [SerializeField] GameObject blobRequireCountTxt;
 
     [Space(10)]
@@ -17,31 +16,31 @@ public class PlayerSelectionPanel : MonoBehaviour
     // RSP
 
     [Header("Input")]
-    [SerializeField] RSE_SpawnBlob rseSpawnBlob;
+    [SerializeField] RSE_OnBlobReady rseOnBlobReady;
 
     [Header("Output")]
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
+    [SerializeField] RSE_DisableJoining rseDisableJoining;
+    [SerializeField] RSE_OnGameStart rseOnGameStart;
 
     private void OnEnable()
     {
-        rseSpawnBlob.action += OnBlobSpawned;
+        rseOnBlobReady.action += OnBlobReady;
     }
     private void OnDisable()
     {
-        rseSpawnBlob.action -= OnBlobSpawned;
+        rseOnBlobReady.action -= OnBlobReady;
     }
 
-    void OnBlobSpawned(BlobMotor blob)
+    void OnBlobReady()
     {
-        if(rsoBlobInGame.Value.Count >= blobRequireToPlay)
+        for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
         {
-            playButton.interactable = true;
-            blobRequireCountTxt.SetActive(false);
+            if (!rsoBlobInGame.Value[i].isReady()) return;
         }
-        else
-        {
-            playButton.interactable = false;
-            blobRequireCountTxt.SetActive(true);
-        }
+
+        rseDisableJoining.Call();
+        rseOnGameStart.Call();
+        rseLoadNextLevel.Call();
     }
 }

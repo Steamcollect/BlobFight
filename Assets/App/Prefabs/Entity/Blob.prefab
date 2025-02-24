@@ -964,6 +964,7 @@ MonoBehaviour:
   particle: {fileID: 4617812964555812280}
   input: {fileID: 8417928549951212344}
   winScore: {fileID: 0}
+  preparationPanel: {fileID: 5953893452250420699}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
@@ -1031,6 +1032,7 @@ MonoBehaviour:
   pressInputTxt: {fileID: 7137944561233763378}
   readyTxt: {fileID: 7382276932813733310}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseOnBlobReady: {fileID: 11400000, guid: 41ba8179e6d7aff419499135403837eb, type: 2}
 --- !u!1 &3702661348612332545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,12 +2394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

@@ -30,8 +30,9 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] RSE_OnGameStart rseOnGameStart;
-    
-    //[Header("Output")]
+
+    [Header("Output")]
+    [SerializeField] RSE_OnBlobReady rseOnBlobReady;
 
     private void OnEnable()
     {
@@ -68,6 +69,8 @@ public class BlobReadyValidationPanel : MonoBehaviour
                     wheelImage.gameObject.SetActive(false);
                     readyTxt.gameObject.SetActive(true);
                     transform.BumpVisual();
+
+                    rseOnBlobReady.Call();
                 }
             }
             else
@@ -90,7 +93,8 @@ public class BlobReadyValidationPanel : MonoBehaviour
         readyTxt.gameObject.SetActive(false);
         wheelImage.gameObject.SetActive(true);
         pressInputTxt.gameObject.SetActive(true);
-        pressInputTxt.transform.BumpVisual();
+        
+        transform.BumpVisual();
     }
 
     void UpdateWheelAmount()
@@ -106,4 +110,6 @@ public class BlobReadyValidationPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public bool IsReady() { return isValid; }
 }
