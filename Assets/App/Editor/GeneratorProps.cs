@@ -22,7 +22,7 @@ public class GeneratorProps : EditorWindow
     [SerializeField] private GameObject prefabBall = null;
     [SerializeField] private float spacingBall = 1.2f;
     [SerializeField] private int damage = 100;
-    [SerializeField] private DamageType damageType = DamageType.Damage;
+    [SerializeField] private DamageType damageType = DamageType.Kill;
 
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
