@@ -16,6 +16,7 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
+    public BlobScore winScore;
 
     IPausable[] pausables;
 
@@ -128,14 +129,14 @@ public class BlobMotor : MonoBehaviour
     void OnDeath()
     {
         particle.DeathParticle(joint.GetJointsCenter(), currentStats.color);
-
+        DisableCrown();
         Disable();
         rseOnBlobDeath.Call(this);
     }
     void OnDestroyed(ContactPoint2D contact)
     {
         particle.DestroyParticle(contact, currentStats.color);
-
+        DisableCrown();
         Disable();
         rseOnBlobDeath.Call(this);
     }
@@ -160,5 +161,17 @@ public class BlobMotor : MonoBehaviour
         {
             pausable.Resume();
         }
+    }
+    public void EnableCrown()
+    {
+        visual.EnableCrown();
+    }
+    public void DisableCrown()
+    {
+        visual.DisableCrown();
+    }
+    public void AddWin()
+    {
+        winScore.AddScore();
     }
 }
