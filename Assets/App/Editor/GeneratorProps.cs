@@ -17,7 +17,8 @@ public class GeneratorProps : EditorWindow
     [SerializeField] private GameObject prefabChain = null;
     [SerializeField] private int number = 5;
     [SerializeField] private float spacing = 1;
-    [SerializeField] private int health = 1;
+    [SerializeField] private int health = 500;
+    [SerializeField] private AnimationCurve damageBySpeedCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(10000, 100));
 
     [SerializeField] private GameObject prefabBall = null;
     [SerializeField] private float spacingBall = 1.2f;
@@ -187,6 +188,17 @@ public class GeneratorProps : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
 
+        Undo.RecordObject(this, "Changed Damage By Speed Curve");
+        damageBySpeedCurve = EditorGUILayout.CurveField("Damage By Speed", damageBySpeedCurve);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
         Undo.RecordObject(this, "Changed RSE_OnPause");
         rseOnPause = (RSE_OnPause)EditorGUILayout.ObjectField("RSE On Pause", rseOnPause, typeof(RSE_OnPause), false);
 
@@ -246,7 +258,7 @@ public class GeneratorProps : EditorWindow
 
                 current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
 
-                current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
+                current.GetComponent<HingeTrigger>().SetScript(current.GetComponent<HingeHealth>(), damageBySpeedCurve);
                 current.GetComponent<HingeHealth>().maxHealth = health;
 
                 current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
@@ -367,6 +379,17 @@ public class GeneratorProps : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
 
+        Undo.RecordObject(this, "Changed Damage By Speed Curve");
+        damageBySpeedCurve = EditorGUILayout.CurveField("Damage By Speed", damageBySpeedCurve);
+
+        GUILayout.Space(30);
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Space(30);
+
         Undo.RecordObject(this, "Changed Hammer Damage");
         damage = Mathf.Clamp(EditorGUILayout.IntField("Damage", damage), 0, 1000000);
 
@@ -455,7 +478,7 @@ public class GeneratorProps : EditorWindow
 
                 current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
 
-                current.GetComponent<HingeTrigger>().SetHealthScript(current.GetComponent<HingeHealth>());
+                current.GetComponent<HingeTrigger>().SetScript(current.GetComponent<HingeHealth>(), damageBySpeedCurve);
                 current.GetComponent<HingeHealth>().maxHealth = health;
 
                 current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(0, 0, 0, 255), new Color32(168, 40, 38, 255));

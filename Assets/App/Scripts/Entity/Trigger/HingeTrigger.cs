@@ -8,6 +8,8 @@ public class HingeTrigger : CollisionTrigger
     [Header("References")]
     [SerializeField] HingeHealth health;
 
+    [SerializeField] AnimationCurve damageBySpeedCurve;
+
     //[Space(10)]
     // RSO
     // RSF
@@ -27,16 +29,27 @@ public class HingeTrigger : CollisionTrigger
         OnCollisionEnterWithBlob -= OnBlobCollision;
     }
 
-    public void SetHealthScript(HingeHealth hingeHealth)
+    public void SetScript(HingeHealth hingeHealth, AnimationCurve damageCurve)
     {
         health = hingeHealth;
+        damageBySpeedCurve = damageCurve;
     }
 
     void OnBlobCollision(BlobMotor blob)
     {
-        int damage = (int)(blob.joint.GetVelocity().sqrMagnitude * blob.joint.mass);
+        Vector3 velocity = blob.joint.GetVelocity();
+        float velocityMagnitude = velocity.sqrMagnitude;
+
+        Vector3 direction = velocity.normalized;
+
+        float directnessFactor = Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.y));
+
+        float damageMultiplier = Mathf.Lerp(0f, 1f, directnessFactor);
+
+        int damage = (int)damageBySpeedCurve.Evaluate(velocityMagnitude * blob.joint.mass * damageMultiplier);
         health.TakeDamage(damage);
     }
+
     void OnCollision(Collision2D collision)
     {
         if(collision.gameObject.TryGetComponent(out Rigidbody2D rb))
