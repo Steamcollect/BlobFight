@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerInputManagement : MonoBehaviour
@@ -20,12 +21,14 @@ public class PlayerInputManagement : MonoBehaviour
 
     private void OnEnable()
     {
-        rseEnableJoining.action += playerInputManager.EnableJoining;
+		playerInputManager.onPlayerJoined += OnPlayerJoined;
+		rseEnableJoining.action += playerInputManager.EnableJoining;
         rseDisableJoining.action += playerInputManager.DisableJoining;
     }
     private void OnDisable()
     {
-        rseEnableJoining.action -= playerInputManager.EnableJoining;
+		playerInputManager.onPlayerJoined -= OnPlayerJoined;
+		rseEnableJoining.action -= playerInputManager.EnableJoining;
         rseDisableJoining.action -= playerInputManager.DisableJoining;
     }
 
@@ -33,4 +36,9 @@ public class PlayerInputManagement : MonoBehaviour
     {
         playerInputManager.DisableJoining();
     }
+
+	private void OnPlayerJoined(PlayerInput playerInput)
+	{
+		playerInput.gameObject.GetComponent<BlobMotor>().interfaceReady.SetActive(true);
+	}
 }

@@ -17,8 +17,9 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
     [SerializeField] BlobScore winScore;
+	public GameObject interfaceReady;
 
-    [Space(5)]
+	[Space(5)]
     [SerializeField] BlobReadyValidationPanel preparationPanel;
 
     IPausable[] pausables;
