@@ -1198,11 +1198,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ddd11561eec684d87d95474878e8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkPos: {x: 0.1, y: 0}
-  extendPos: {x: 0.2, y: 0}
+  shrinkPos: {x: 0, y: 1.5}
+  extendPos: {x: 0, y: 3.5}
   smoothTime: 0.05
+  rotationAmount: 1.4
+  rotationTime: 0.1
+  velocityRotDiviser: 1
   motor: {fileID: 3420423106000584793}
   joint: {fileID: 6321734985548798584}
+  movement: {fileID: 2542050320697814845}
   crown: {fileID: 985776247518708268}
 --- !u!1 &4440481460841885347
 GameObject:
@@ -2057,7 +2061,6 @@ MonoBehaviour:
   fillMeshFilter: {fileID: 4563486604708086893}
   fillRenderer: {fileID: 329917302850067089}
   blobJoint: {fileID: 6321734985548798584}
-  crown: {fileID: 0}
 --- !u!1 &7969637081626993723
 GameObject:
   m_ObjectHideFlags: 0

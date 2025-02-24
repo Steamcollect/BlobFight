@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -35,17 +36,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobJoint blobJoint;
     [SerializeField] BlobVisual blobVisual;
 
-    class MySpringJoint
-    {
-        public SpringJoint2D spring;
-        public float distance;
-
-        public MySpringJoint(SpringJoint2D spring, float distance)
-        {
-            this.spring = spring;
-            this.distance = distance;
-        }
-    }
+    //[Header("Output")]
+    public Action onShrink,onExtend;
 
     private void OnEnable()
     {
@@ -71,8 +63,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void LateStart()
     {
-        statistics = shrinkStatistics;
-        SetJointStats();
+        ShrinkBlob();
     }
 
     private void FixedUpdate()
@@ -100,6 +91,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         blobVisual.SetToExtend();
 
         StartCoroutine(ExtendTime());
+        onExtend?.Invoke();
     }
     void ShrinkBlob()
     {
@@ -107,6 +99,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         SetJointStats();
 
         blobVisual.SetToShrink();
+        onShrink?.Invoke();
     }
     IEnumerator ExtendTime()
     {

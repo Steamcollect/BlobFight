@@ -19,6 +19,7 @@ public class BlobCrown : MonoBehaviour
     [Header("References")]
     [SerializeField] BlobMotor motor;
     [SerializeField] BlobJoint joint;
+    [SerializeField] BlobMovement movement;
 
     [Space(5)]
     [SerializeField] GameObject crown;
@@ -37,11 +38,17 @@ public class BlobCrown : MonoBehaviour
     {
         motor.enableCrown += EnableCrown;
         motor.disableCrown += DisableCrown;
+
+        movement.onExtend += OnExtend;
+        movement.onShrink += OnShrink;
     }
     private void OnDisable()
     {
         motor.enableCrown -= EnableCrown;
         motor.disableCrown -= DisableCrown;
+
+        movement.onExtend -= OnExtend;
+        movement.onShrink -= OnShrink;
     }
 
     private void Update()
@@ -58,11 +65,11 @@ public class BlobCrown : MonoBehaviour
     {
         crown.SetActive(false);
     }
-    void SetPosCrownShrink()
+    void OnShrink()
     {
         posOffset = shrinkPos;
     }
-    void SetPosCrownExtend()
+    void OnExtend()
     {
         posOffset = extendPos;
     }
@@ -70,7 +77,7 @@ public class BlobCrown : MonoBehaviour
     {
         crown.transform.position = Vector2.SmoothDamp(crown.transform.position, joint.GetJointsCenter() + posOffset, ref velocity, smoothTime);
 
-        float targetRot = -(velocity / velocityRotDiviser * rotationAmount).x;
+        float targetRot = (velocity / velocityRotDiviser * rotationAmount).x;
         rotationDelta = Mathf.SmoothDamp(rotationDelta, targetRot, ref rotationVelocity, rotationTime);
         crown.transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(rotationDelta, -60, 60));
     }
