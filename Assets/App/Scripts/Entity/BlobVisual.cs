@@ -12,14 +12,6 @@ public class BlobVisual : MonoBehaviour, IPausable
     [SerializeField, Range(0, .3f)] float extendHeightFactor;
 
     [Space(5)]
-    [SerializeField] Vector2 shrinkCrownPos;
-    [SerializeField] Vector2 extendCrownPos;
-    [SerializeField] float crownSmoothTime;
-
-    private Vector3 crownVelocity;
-    private Vector2 posOffset;
-
-    [Space(5)]
     [SerializeField] float outlineThickness = 0.1f;
     int bevelCount;
     float heightFactor;
@@ -71,7 +63,6 @@ public class BlobVisual : MonoBehaviour, IPausable
 
         UpdateFillMesh();
         UpdateOutlineMesh();
-        MoveCrown();
     }
 
     private void UpdateFillMesh()
@@ -173,13 +164,11 @@ public class BlobVisual : MonoBehaviour, IPausable
     {
         bevelCount = shrinkBevelCount;
         heightFactor = shrinkHeightFactor;
-        posOffset = shrinkCrownPos;
     }
     public void SetToExtend()
     {
         bevelCount = extendBevelCount;
         heightFactor = extendHeightFactor;
-        posOffset = extendCrownPos;
     }
 
     public void Pause()
@@ -190,20 +179,5 @@ public class BlobVisual : MonoBehaviour, IPausable
     public void Resume()
     {
         canDisplay = true;
-    }
-
-    public void EnableCrown()
-    {
-        crown.SetActive(true);
-    }
-
-    public void DisableCrown()
-    {
-        crown.SetActive(false);
-    }
-
-    private void MoveCrown()
-    {
-        crown.transform.position = Vector3.SmoothDamp(crown.transform.position, blobJoint.GetJointsCenter() + posOffset, ref crownVelocity, crownSmoothTime);
     }
 }

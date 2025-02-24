@@ -16,6 +16,9 @@ public class EntityInput : MonoBehaviour
 
     public Action pauseInput;
 
+    public Action<bool> validateInput;
+    public Action returnInput;
+
     private void Update()
     {
         moveInput?.Invoke(moveInputValue);
@@ -53,6 +56,29 @@ public class EntityInput : MonoBehaviour
         if(context.phase == InputActionPhase.Started)
         {
             pauseInput?.Invoke();
+        }
+    }
+
+    public void ValidateInput(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                validateInput?.Invoke(true);
+                break;
+
+            case InputActionPhase.Canceled:
+                validateInput?.Invoke(false);
+                break;
+        }
+    }
+    public void ReturnInput(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                returnInput?.Invoke();
+                break;
         }
     }
 

@@ -39,6 +39,8 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] RSE_OnPause rseOnPause;
     [SerializeField] RSE_OnResume rseOnResume;
 
+    [HideInInspector] public Action enableCrown, disableCrown;
+    
     private void OnEnable()
     {
         rseOnFightStart.action += UnlockInteraction;
@@ -164,11 +166,11 @@ public class BlobMotor : MonoBehaviour
     }
     public void EnableCrown()
     {
-        visual.EnableCrown();
+        enableCrown?.Invoke();
     }
     public void DisableCrown()
     {
-        visual.DisableCrown();
+        disableCrown?.Invoke();
     }
     public void AddWin()
     {
