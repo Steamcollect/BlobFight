@@ -46,8 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelsName:
   - Level_1
-  - Level_2
-  - Level_3
   mainMenuName: 02_MainMenu
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}

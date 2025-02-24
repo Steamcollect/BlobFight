@@ -39,6 +39,9 @@ public class PlayerInputManagement : MonoBehaviour
 
 	private void OnPlayerJoined(PlayerInput playerInput)
 	{
-		playerInput.gameObject.GetComponent<BlobMotor>().interfaceReady.SetActive(true);
+        if(playerInput.TryGetComponent(out BlobMotor blob))
+        {
+            blob.OnJoined();
+        }
 	}
 }

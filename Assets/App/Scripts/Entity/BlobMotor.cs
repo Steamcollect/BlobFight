@@ -18,9 +18,6 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] EntityInput input;
     [SerializeField] BlobScore winScore;
 
-
-	public GameObject interfaceReady;
-
 	[Space(5)]
     [SerializeField] BlobReadyValidationPanel preparationPanel;
 
@@ -183,5 +180,9 @@ public class BlobMotor : MonoBehaviour
         winScore.AddScore();
     }
 
+    public void OnJoined()
+    {
+        preparationPanel.gameObject.SetActive(true);
+    }
     public bool isReady() { return preparationPanel.IsReady(); }
 }

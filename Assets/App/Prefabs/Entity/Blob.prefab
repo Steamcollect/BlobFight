@@ -964,7 +964,6 @@ MonoBehaviour:
   particle: {fileID: 4617812964555812280}
   input: {fileID: 8417928549951212344}
   winScore: {fileID: 0}
-  interfaceReady: {fileID: 8950143762492629804}
   preparationPanel: {fileID: 5953893452250420699}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
@@ -990,7 +989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1492093445277099404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2342,7 +2341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8978287973337524796
 RectTransform:
   m_ObjectHideFlags: 0
