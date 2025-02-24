@@ -16,7 +16,10 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
-    public BlobScore winScore;
+    [SerializeField] BlobScore winScore;
+
+    [Space(5)]
+    [SerializeField] BlobReadyValidationPanel preparationPanel;
 
     IPausable[] pausables;
 
@@ -176,4 +179,6 @@ public class BlobMotor : MonoBehaviour
     {
         winScore.AddScore();
     }
+
+    public bool isReady() { return preparationPanel.IsReady(); }
 }

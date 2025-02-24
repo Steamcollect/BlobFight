@@ -21,12 +21,12 @@ public class HingeTrigger : CollisionTrigger
     private void OnEnable()
     {
         OnCollisionEnter += OnCollision;
-        OnCollisionEnterWithBlob += OnBlobCollision;
+        OnBlobCollisionEnter += OnBlobCollision;
     }
     private void OnDisable()
     {
         OnCollisionEnter -= OnCollision;
-        OnCollisionEnterWithBlob -= OnBlobCollision;
+        OnBlobCollisionEnter -= OnBlobCollision;
     }
 
     public void SetScript(HingeHealth hingeHealth, AnimationCurve damageCurve)
@@ -35,19 +35,22 @@ public class HingeTrigger : CollisionTrigger
         damageBySpeedCurve = damageCurve;
     }
 
-    void OnBlobCollision(BlobMotor blob)
+    void OnBlobCollision(BlobMotor blob, Collision2D collision)
     {
         Vector3 velocity = blob.joint.GetVelocity();
         float velocityMagnitude = velocity.sqrMagnitude;
 
-        Vector3 direction = velocity.normalized;
+        Vector2 contactNormal = collision.GetContact(0).normal;
 
-        float directnessFactor = Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.y));
+        float impactFactor = Mathf.Abs(Vector2.Dot(velocity.normalized, contactNormal));
 
-        float damageMultiplier = Mathf.Lerp(0f, 1f, directnessFactor);
+        float damageMultiplier = Mathf.Lerp(0f, 1f, impactFactor);
 
-        int damage = (int)damageBySpeedCurve.Evaluate(velocityMagnitude * blob.joint.mass * damageMultiplier);
-        health.TakeDamage(damage);
+        int baseDamage = (int)damageBySpeedCurve.Evaluate(velocityMagnitude * blob.joint.mass);
+
+        int finalDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
+
+        health.TakeDamage(finalDamage);
     }
 
     void OnCollision(Collision2D collision)

@@ -62,12 +62,17 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     private void Start()
     {
-        statistics = shrinkStatistics;
-
         entityInput.compressDownInput += ExtendBlob;
         entityInput.dashInput += Dash;
 
         entityInput.moveInput += SetInput;
+
+        Invoke("LateStart", .1f);
+    }
+    void LateStart()
+    {
+        statistics = shrinkStatistics;
+        SetJointStats();
     }
 
     private void FixedUpdate()
