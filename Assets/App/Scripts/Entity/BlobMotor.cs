@@ -175,7 +175,7 @@ public class BlobMotor : MonoBehaviour
     {
         disableCrown?.Invoke();
     }
-    public void AddWin()
+    public void AddScore()
     {
         winScore.AddScore();
     }
