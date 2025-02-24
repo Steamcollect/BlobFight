@@ -51,8 +51,6 @@ public class HingeTrigger : CollisionTrigger
         int finalDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
 
         health.TakeDamage(finalDamage);
-
-        Debug.Log(finalDamage);
     }
 
     void OnCollision(Collision2D collision)
