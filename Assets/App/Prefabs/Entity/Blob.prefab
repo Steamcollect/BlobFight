@@ -1283,7 +1283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5753215936194828634
 Transform:
   m_ObjectHideFlags: 0
@@ -1367,6 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500000
+  isStatic: 1
   shakeIntensityOnDeath: 0.7
   shakeTimeOnDeath: 0.25
   blobTrigger: {fileID: 606557387366902294}

@@ -18,4 +18,8 @@ public class BlobScore : MonoBehaviour
     {  
         score++;
     }
+    public int GetScore()
+    {
+        return score;
+    }
 }

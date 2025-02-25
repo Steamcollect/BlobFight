@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class BlobMotor : MonoBehaviour
@@ -10,6 +11,8 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] SSO_BlobVisuals blobVisuals;
     BlobInitializeStatistic currentStats;
     public BlobInitializeStatistic GetStats() {  return currentStats; }
+
+    private int score;
 
     [Header("References")]
     [SerializeField] GameObject componentsContent;
@@ -186,7 +189,12 @@ public class BlobMotor : MonoBehaviour
 
     public void AddScore()
     {
-        //winScore.AddScore();
+        winScore.AddScore();
+    }
+    public int GetScore()
+    {
+        score = winScore.GetScore();
+        return score;
     }
     #endregion
 

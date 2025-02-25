@@ -50,7 +50,6 @@ public class BlobCrown : MonoBehaviour
         movement.onExtend -= OnExtend;
         movement.onShrink -= OnShrink;
     }
-
     private void Update()
     {
         UpdateVisual();

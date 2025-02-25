@@ -40,7 +40,8 @@ public class RoundManager : MonoBehaviour
     void CheckBlobCount(BlobMotor blob)
     {
         blobs.Remove(blob);
-        if(blobs.Count <= 1)
+
+        if(blobs.Count == 1)
         {
             blobs[0].AddScore();
             blobs[0].EnableCrown();

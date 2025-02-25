@@ -6,7 +6,8 @@ public class EntityHealth : MonoBehaviour
     [Header("Settings")]
     [SerializeField] public int maxHealth;
     protected int currentHealth;
-        
+
+    [SerializeField, Tooltip("Lock take damage function")] bool isStatic;
     protected bool isInvincible = false;
     protected bool isDead;
 
@@ -26,7 +27,7 @@ public class EntityHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(isDead || isInvincible) return;
+        if(isStatic || isDead || isInvincible) return;
 
         currentHealth -= damage;
         onTakeDamage?.Invoke();

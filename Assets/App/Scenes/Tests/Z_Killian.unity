@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 57680837}
   - {fileID: 57680836}
@@ -667,6 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 66175044}
   graphics: {fileID: 66175050}
@@ -1003,6 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 109208596}
   graphics: {fileID: 109208602}
@@ -1403,6 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 158979629}
   graphics: {fileID: 158979635}
@@ -1726,6 +1730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 181268459}
   graphics: {fileID: 181268465}
@@ -1973,6 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 182090002}
   graphics: {fileID: 182090008}
@@ -2400,6 +2406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 227445412}
   graphics: {fileID: 227445418}
@@ -2709,6 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 254280497}
   graphics: {fileID: 254280503}
@@ -2956,6 +2964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 256037071}
   graphics: {fileID: 256037077}
@@ -3388,6 +3397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 319849159}
   graphics: {fileID: 319849165}
@@ -3832,6 +3842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 442633221}
   graphics: {fileID: 442633227}
@@ -4843,6 +4854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 793718356}
   - {fileID: 793718355}
@@ -5340,6 +5352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 840779462}
   - {fileID: 840779461}
@@ -5768,6 +5781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 928212167}
   graphics: {fileID: 928212173}
@@ -6067,6 +6081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 964207257}
   - {fileID: 964207256}
@@ -6347,6 +6362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 999614489}
   - {fileID: 999614488}
@@ -6721,7 +6737,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 119
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -7012,6 +7028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1048253669}
   graphics: {fileID: 1048253675}
@@ -7259,6 +7276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1077713779}
   graphics: {fileID: 1077713785}
@@ -7506,6 +7524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1084918964}
   graphics: {fileID: 1084918970}
@@ -7888,6 +7907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1211395456}
   graphics: {fileID: 1211395462}
@@ -8232,6 +8252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1296216294}
   graphics: {fileID: 1296216300}
@@ -8415,10 +8436,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blob
       objectReference: {fileID: 0}
-    - target: {fileID: 4126363389251937977, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8457,10 +8474,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8950143762492629804, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8530,7 +8543,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 119
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -8673,6 +8686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1384853915}
   graphics: {fileID: 1384853921}
@@ -8900,7 +8914,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 119
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -9047,7 +9061,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 119
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -9190,6 +9204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1724873834}
   graphics: {fileID: 1724873840}
@@ -9570,6 +9585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1818273958}
   graphics: {fileID: 1818273964}
@@ -9965,6 +9981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1832299353}
   graphics: {fileID: 1832299359}
@@ -10295,6 +10312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1867396958}
   - {fileID: 1867396957}
@@ -10543,6 +10561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1875607995}
   graphics: {fileID: 1875608001}
@@ -10974,6 +10993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1901180287}
   - {fileID: 1901180286}
@@ -11222,6 +11242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1932440165}
   graphics: {fileID: 1932440171}
@@ -11627,6 +11648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
+  isStatic: 0
   joints:
   - {fileID: 1945642585}
   graphics: {fileID: 1945642591}
