@@ -410,7 +410,6 @@ MonoBehaviour:
   dashForce: 5000
   dashCooldown: 0.1
   maxDashCount: 2
-  dashCount: 0
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
   trigger: {fileID: 606557387366902294}
@@ -477,6 +476,12 @@ MonoBehaviour:
     damping: 0
     frequency: 1000000
   extendStaminaCost: 50
+  angleVelocityMultiplierCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
@@ -1362,6 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500000
+  isStatic: 1
   shakeIntensityOnDeath: 0.7
   shakeTimeOnDeath: 0.25
   blobTrigger: {fileID: 606557387366902294}
