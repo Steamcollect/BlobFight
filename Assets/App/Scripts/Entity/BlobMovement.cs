@@ -10,9 +10,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     BlobStatistics statistics;
 
     [Space(15)]
-    [SerializeField] float extendTime;
-    [SerializeField] float extendCooldown;
-    bool canExtend = true;
+    [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
+    bool isExtend = false;
 
     [Space(10)]
     [SerializeField] float dashForce;
@@ -35,6 +34,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] EntityInput entityInput;
     [SerializeField] BlobJoint blobJoint;
     [SerializeField] BlobVisual blobVisual;
+    [SerializeField] BlobStamina stamina;
 
     //[Header("Output")]
     public Action onShrink,onExtend;
@@ -46,6 +46,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     private void OnDisable()
     {
         entityInput.compressDownInput -= ExtendBlob;
+        entityInput.compressUpInput -= ShrinkBlob;
         entityInput.moveInput -= SetInput;
         entityInput.dashInput -= Dash;
 
@@ -55,6 +56,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     private void Start()
     {
         entityInput.compressDownInput += ExtendBlob;
+        entityInput.compressUpInput += ShrinkBlob;
         entityInput.dashInput += Dash;
 
         entityInput.moveInput += SetInput;
@@ -71,6 +73,17 @@ public class BlobMovement : MonoBehaviour, IPausable
         if (canMove)
         {
             Move();
+            if (isExtend)
+            {
+                if (!stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime))
+                {
+                    ShrinkBlob();
+                }
+                else
+                {
+                    stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
+                }
+            }
         }
         blobJoint.SetCollidersPosOffset(.5f);
     }
@@ -83,15 +96,17 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void ExtendBlob()
     {
-        if (!deathCanMove || !canExtend) return;
+        if (!deathCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime)) return;
+
+        stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
 
         statistics = extendStatistics;
         SetJointStats();
 
         blobVisual.SetToExtend();
 
-        StartCoroutine(ExtendTime());
         onExtend?.Invoke();
+        isExtend = true;
     }
     void ShrinkBlob()
     {
@@ -100,18 +115,8 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         blobVisual.SetToShrink();
         onShrink?.Invoke();
-    }
-    IEnumerator ExtendTime()
-    {
-        yield return new WaitForSeconds(extendTime);
-        ShrinkBlob();
-        StartCoroutine(ExtendCooldown());
-    }
-    IEnumerator ExtendCooldown()
-    {
-        canExtend = false;
-        yield return new WaitForSeconds(extendCooldown);
-        canExtend = true;
+
+        isExtend = false;
     }
 
     void SetInput(Vector2 input)

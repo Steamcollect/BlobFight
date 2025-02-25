@@ -423,13 +423,13 @@ MonoBehaviour:
     distanceMult: 3
     damping: 0
     frequency: 1000000
-  extendTime: 0.15
-  extendCooldown: 0.3
+  extendStaminaCost: 70
   dashForce: 6000
   dashCooldown: 0.3
   entityInput: {fileID: 8417928549951212344}
   blobJoint: {fileID: 6321734985548798584}
   blobVisual: {fileID: 6232837032291008028}
+  stamina: {fileID: 4226171251788006590}
 --- !u!1 &1958215696552307569
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +751,52 @@ MonoBehaviour:
   returnPushBackForce: 0.5
   blobTrigger: {fileID: 606557387366902294}
   blobJoint: {fileID: 6321734985548798584}
+--- !u!1 &3267906026199711181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7182060017204364085}
+  - component: {fileID: 4226171251788006590}
+  m_Layer: 0
+  m_Name: Stamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7182060017204364085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267906026199711181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1228737701814485243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4226171251788006590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267906026199711181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8e7e679a5169848a57e68213bac075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  staminaGivenPerSec: 70
 --- !u!1 &3290518167020313716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1915,7 @@ Transform:
   - {fileID: 6043654905334400925}
   - {fileID: 7400549710319070123}
   - {fileID: 4279075659712848528}
+  - {fileID: 7182060017204364085}
   - {fileID: 5190642175830350477}
   - {fileID: 8157001937566509527}
   - {fileID: 5753215936194828634}
