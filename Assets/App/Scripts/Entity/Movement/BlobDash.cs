@@ -1,0 +1,81 @@
+using System.Collections;
+    using UnityEngine;
+
+public class BlobDash : MonoBehaviour
+{
+    [Header("Settings")]
+    [SerializeField] float dashForce;
+    [SerializeField] float dashCooldown;
+
+    [Space(5)]
+    [SerializeField] int maxDashCount;
+    int dashCount;
+    bool canDash = true;
+
+    Vector2 moveInput;
+
+    [Header("References")]
+    [SerializeField] EntityInput input;
+    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobTrigger trigger;
+    [SerializeField] BlobMovement movement;
+
+    //[Space(10)]
+    // RSO
+    // RSF
+    // RSP
+
+    //[Header("Input")]
+    //[Header("Output")]
+
+    private void OnDisable()
+    {
+        input.moveInput -= SetInput;
+        input.dashInput -= Dash;
+    }
+
+    private void Start()
+    {
+        input.moveInput += SetInput;
+        input.dashInput += Dash;
+
+        Invoke("LateStart", .1f);
+    }
+
+    void LateStart()
+    {
+        dashCount = maxDashCount;
+    }
+
+    void Dash()
+    {
+        if (!movement.CanMove() || !canDash) return;
+
+        if (dashCount <= 0)
+        {
+            if (!trigger.IsGrounded()) return;
+            else dashCount = maxDashCount;
+        }
+
+        dashCount--;
+        joint.ResetVelocity();
+        joint.AddForce(moveInput * dashForce);
+        StartCoroutine(DashCooldown());
+    }
+    IEnumerator DashCooldown()
+    {
+        canDash = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
+    void OnTouchGroundable()
+    {
+
+    }
+
+    void SetInput(Vector2 input)
+    {
+        moveInput = input;
+    }
+}

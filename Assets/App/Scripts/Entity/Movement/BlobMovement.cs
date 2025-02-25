@@ -9,35 +9,18 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobStatistics extendStatistics;
     BlobStatistics statistics;
 
-    [Space(10)]
     [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
     bool isExtend = false;
-
-    [Space(20)]
-    [SerializeField] float dashForce;
-    [SerializeField] float dashCooldown;
-
-    [Space(5)]
-    [SerializeField] int maxDashCount;
-    int dashCount;
-    bool canDash = true;
 
     Vector2 moveInput;
 
     bool deathCanMove = true;
     bool pauseCanMove = true;
-    bool canMove
-    {
-        get
-        {
-            return deathCanMove && pauseCanMove;
-        }
-    }
 
     [Header("References")]
-    [SerializeField] EntityInput entityInput;
-    [SerializeField] BlobJoint blobJoint;
-    [SerializeField] BlobVisual blobVisual;
+    [SerializeField] EntityInput input;
+    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobVisual visual;
     [SerializeField] BlobStamina stamina;
 
     //[Header("Output")]
@@ -45,38 +28,34 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     private void OnEnable()
     {
-        blobJoint.onJointsConnected += SetupJoint;
+        joint.onJointsConnected += SetupJoint;
     }
     private void OnDisable()
     {
-        entityInput.compressDownInput -= ExtendBlob;
-        entityInput.compressUpInput -= ShrinkBlob;
-        entityInput.moveInput -= SetInput;
-        entityInput.dashInput -= Dash;
+        input.compressDownInput -= ExtendBlob;
+        input.compressUpInput -= ShrinkBlob;
+        input.moveInput -= SetInput;
 
-        blobJoint.onJointsConnected -= SetupJoint;
+        joint.onJointsConnected -= SetupJoint;
     }
 
     private void Start()
     {
-        entityInput.compressDownInput += ExtendBlob;
-        entityInput.compressUpInput += ShrinkBlob;
-        entityInput.dashInput += Dash;
+        input.compressDownInput += ExtendBlob;
+        input.compressUpInput += ShrinkBlob;
 
-        entityInput.moveInput += SetInput;
+        input.moveInput += SetInput;
 
         Invoke("LateStart", .1f);
     }
     void LateStart()
     {
-        dashCount = maxDashCount;
-
         ShrinkBlob();
     }
 
     private void FixedUpdate()
     {
-        if (canMove)
+        if (CanMove())
         {
             Move();
             if (isExtend)
@@ -91,7 +70,7 @@ public class BlobMovement : MonoBehaviour, IPausable
                 }
             }
         }
-        blobJoint.SetCollidersPosOffset(.5f);
+        joint.SetCollidersPosOffset(.5f);
     }
 
     void SetupJoint()
@@ -109,7 +88,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         statistics = extendStatistics;
         SetJointStats();
 
-        blobVisual.SetToExtend();
+        visual.SetToExtend();
 
         onExtend?.Invoke();
         isExtend = true;
@@ -119,7 +98,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         statistics = shrinkStatistics;
         SetJointStats();
 
-        blobVisual.SetToShrink();
+        visual.SetToShrink();
         onShrink?.Invoke();
 
         isExtend = false;
@@ -132,22 +111,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void Move()
     {
-        blobJoint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
-    }
-    void Dash()
-    {
-        if (!canMove || !canDash) return;
-
-        dashCount--;
-        blobJoint.ResetVelocity();
-        blobJoint.AddForce(moveInput * dashForce);
-        StartCoroutine(DashCooldown());
-    }
-    IEnumerator DashCooldown()
-    {
-        canDash = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
+        joint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
     }
 
     public void DeathEnableMovement()
@@ -162,13 +126,13 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void SetJointStats()
     {
-        blobJoint.SetDrag(statistics.drag);
-        blobJoint.SetGravity(statistics.gravity);
+        joint.SetDrag(statistics.drag);
+        joint.SetGravity(statistics.gravity);
 
-        blobJoint.MultiplyInitialSpringDistance(statistics.distanceMult);
-        blobJoint.SetDamping(statistics.damping);
-        blobJoint.SetFrequency(statistics.frequency);
-        blobJoint.SetMass(statistics.mass);
+        joint.MultiplyInitialSpringDistance(statistics.distanceMult);
+        joint.SetDamping(statistics.damping);
+        joint.SetFrequency(statistics.frequency);
+        joint.SetMass(statistics.mass);
     }
 
     public void Pause()
@@ -180,4 +144,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         pauseCanMove = true;
     }
+
+    public bool CanMove() { return deathCanMove && pauseCanMove; }
 }

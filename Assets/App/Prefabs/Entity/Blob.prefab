@@ -363,6 +363,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1422873333219669802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2814221374845276964}
+  - component: {fileID: 3726202644600941132}
+  m_Layer: 0
+  m_Name: Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2814221374845276964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422873333219669802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7476704659426826772}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3726202644600941132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422873333219669802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712fd8b9292a1504fb2443068b4acae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashForce: 6000
+  dashCooldown: 0.3
+  maxDashCount: 2
+  input: {fileID: 8417928549951212344}
+  joint: {fileID: 6321734985548798584}
+  trigger: {fileID: 606557387366902294}
+  movement: {fileID: 2542050320697814845}
 --- !u!1 &1689548152335019987
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +443,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2814221374845276964}
   m_Father: {fileID: 1228737701814485243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2542050320697814845
@@ -424,11 +476,9 @@ MonoBehaviour:
     damping: 0
     frequency: 1000000
   extendStaminaCost: 70
-  dashForce: 6000
-  dashCooldown: 0.3
-  entityInput: {fileID: 8417928549951212344}
-  blobJoint: {fileID: 6321734985548798584}
-  blobVisual: {fileID: 6232837032291008028}
+  input: {fileID: 0}
+  joint: {fileID: 0}
+  visual: {fileID: 0}
   stamina: {fileID: 4226171251788006590}
 --- !u!1 &1958215696552307569
 GameObject:
@@ -1207,6 +1257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fdb7dca2588d34cb6f5b90c66726c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundableTag: Groundable
+  isGrounded: 0
   blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &4126363389251937977
 GameObject:
@@ -1897,7 +1949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1228737701814485243
 Transform:
   m_ObjectHideFlags: 0

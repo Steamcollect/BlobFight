@@ -1,18 +1,19 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class BlobTrigger : CollisionTrigger
 {
     [Header("Settings")]
-    [SerializeField] float shrinkRange;
-    [SerializeField] float extendRange;
-
-    [Space(5)]
-    [SerializeField] LayerMask groundableLayer;
+    [SerializeField] string groundableTag;
+    [SerializeField] bool isGrounded = false;
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
+
+    List<GameObject> groundables = new();
+
+    public Action OnGrounded;
 
     //[Space(10)]
     // RSO
@@ -26,6 +27,9 @@ public class BlobTrigger : CollisionTrigger
     {
         blobJoint.RemoveOnCollisionEnterListener(OnEnterCollision);
         blobJoint.RemoveOnCollisionExitListener(OnExitCollision);
+
+        OnCollisionEnter -= OnEnter;
+        OnCollisionExit -= OnExit;
     }
 
     private void Start()
@@ -36,12 +40,29 @@ public class BlobTrigger : CollisionTrigger
     {
         blobJoint.AddOnCollisionEnterListener(OnEnterCollision);
         blobJoint.AddOnCollisionExitListener(OnExitCollision);
+
+        OnCollisionEnter += OnEnter;
+        OnCollisionExit += OnExit;
     }
 
-    private void OnDrawGizmosSelected()
+    void OnEnter(Collision2D collision)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, shrinkRange);
-        Gizmos.DrawWireSphere(transform.position, extendRange);
+        if (collision.gameObject.CompareTag(groundableTag))
+        {
+            if (!isGrounded)
+            {
+                isGrounded = true;
+                OnGrounded?.Invoke();
+            }
+
+            groundables.Add(collision.gameObject);
+        }
     }
+    void OnExit(Collision2D collision)
+    {
+        groundables.Remove(collision.gameObject);
+        if(groundables.Count <= 0) isGrounded = false;
+    }
+
+    public bool IsGrounded() { return isGrounded; }
 }

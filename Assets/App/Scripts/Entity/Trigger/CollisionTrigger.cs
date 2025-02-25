@@ -6,7 +6,7 @@ public class CollisionTrigger : MonoBehaviour
     //[Header("Settings")]
 
     //[Header("References")]
-    List<GameObject> collisions = new();
+    protected List<GameObject> collisions = new();
     List<BlobMotor> blobs = new();
 
     Dictionary<GameObject, ContactPoint2D> lastContacts = new();
