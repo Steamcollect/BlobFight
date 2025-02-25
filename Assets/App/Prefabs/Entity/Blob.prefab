@@ -407,9 +407,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712fd8b9292a1504fb2443068b4acae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 6000
-  dashCooldown: 0.3
+  dashForce: 5000
+  dashCooldown: 0.1
   maxDashCount: 2
+  dashCount: 0
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
   trigger: {fileID: 606557387366902294}
@@ -460,22 +461,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkStatistics:
-    moveSpeed: 230
-    gravity: 25
+    moveSpeed: 200
+    gravity: 10
     drag: 7
     mass: 15
     distanceMult: 1
     damping: 0.5
     frequency: 7
   extendStatistics:
-    moveSpeed: 80
-    gravity: 40
+    moveSpeed: 3000
+    gravity: 60
     drag: 7
-    mass: 300
+    mass: 500
     distanceMult: 3
     damping: 0
     frequency: 1000000
-  extendStaminaCost: 70
+  extendStaminaCost: 50
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
@@ -845,8 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8e7e679a5169848a57e68213bac075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
-  staminaGivenPerSec: 70
+  maxStamina: 125
+  staminaGivenPerSec: 25
 --- !u!1 &3290518167020313716
 GameObject:
   m_ObjectHideFlags: 0
