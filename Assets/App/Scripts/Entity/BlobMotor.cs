@@ -8,11 +8,12 @@ public class BlobMotor : MonoBehaviour
     [Header("Settings")]
     [SerializeField] SSO_BlobVisuals blobVisuals;
     BlobInitializeStatistic currentStats;
+    public BlobInitializeStatistic GetStats() {  return currentStats; }
 
     [Header("References")]
-    public BlobJoint joint;
+    [SerializeField] BlobJoint joint;
     [SerializeField] BlobVisual visual;
-    public BlobHealth health;
+    [SerializeField] BlobHealth health;
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
@@ -85,7 +86,6 @@ public class BlobMotor : MonoBehaviour
 
         rsoBlobInGame.Value.Add(this);
     }
-
     private void Start()
     {
         pausables = GetComponentsInChildren<IPausable>();
@@ -131,6 +131,8 @@ public class BlobMotor : MonoBehaviour
         health.Setup();
         Enable();
     }
+
+    #region Health
     void OnDeath()
     {
         particle.DeathParticle(joint.GetJointsCenter(), currentStats.color);
@@ -146,13 +148,10 @@ public class BlobMotor : MonoBehaviour
         rseOnBlobDeath.Call(this);
     }
 
-    public BlobColor GetColor()
-    {
-        return currentStats.color;
-    }
-
     public bool IsAlive() { return !health.IsDead(); }
+    #endregion
 
+    #region GameState
     void OnGamePause()
     {
         foreach (IPausable pausable in pausables)
@@ -167,6 +166,9 @@ public class BlobMotor : MonoBehaviour
             pausable.Resume();
         }
     }
+    #endregion
+
+    #region Score
     public void EnableCrown()
     {
         enableCrown?.Invoke();
@@ -175,14 +177,25 @@ public class BlobMotor : MonoBehaviour
     {
         disableCrown?.Invoke();
     }
+
     public void AddScore()
     {
         winScore.AddScore();
     }
+    #endregion
 
+    #region PreparationState
     public void OnJoined()
     {
         preparationPanel.gameObject.SetActive(true);
     }
-    public bool isReady() { return preparationPanel.IsReady(); }
+    public bool IsReady() { return preparationPanel.IsReady(); }
+    #endregion
+
+    #region Getter
+    public BlobJoint GetJoint() { return joint; }
+    public BlobHealth GetHealth() { return health; }
+
+    public BlobColor GetColor() { return currentStats.color; }
+    #endregion
 }

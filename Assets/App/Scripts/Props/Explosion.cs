@@ -49,8 +49,8 @@ public class Explosion : MonoBehaviour
             {
                 if (!blobsTouch.Contains(joint.parentMotor))
                 {
-                    joint.parentMotor.joint.AddForce(direction * pushBackForce * power);
-                    joint.parentMotor.health.TakeDamage((int)(damage * power));
+                    joint.parentMotor.GetJoint().AddForce(direction * pushBackForce * power);
+                    joint.parentMotor.GetHealth().TakeDamage((int)(damage * power));
                 }
                 blobsTouch.Add(joint.parentMotor);
             }

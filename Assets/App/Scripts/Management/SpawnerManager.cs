@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public class SpawnerManager : MonoBehaviour
 {
     //[Header("Settings")]
@@ -69,7 +70,7 @@ public class SpawnerManager : MonoBehaviour
             {
                 if (blob == excludedBlob) continue;
 
-                float distance = Vector2.Distance(spawn.position, blob.joint.GetJointsCenter());
+                float distance = Vector2.Distance(spawn.position, blob.GetJoint().GetJointsCenter());
                 if (distance < minDistanceToBlobs)
                 {
                     minDistanceToBlobs = distance;

@@ -36,7 +36,7 @@ public class PlayerSelectionPanel : MonoBehaviour
     {
         for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
         {
-            if (!rsoBlobInGame.Value[i].isReady()) return;
+            if (!rsoBlobInGame.Value[i].IsReady()) return;
         }
 
         rseDisableJoining.Call();

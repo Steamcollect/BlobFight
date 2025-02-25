@@ -34,10 +34,10 @@ public class BlobCombat : MonoBehaviour
     void OnBlobCollisionEnter(BlobMotor blob)
     {
         float velocity = blobJoint.GetVelocity().sqrMagnitude;
-        if (blob.joint.GetVelocity().sqrMagnitude < velocity)
+        if (blob.GetJoint().GetVelocity().sqrMagnitude < velocity)
         {
-            Vector2 direction = (blob.joint.GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
-            blob.joint.AddForce(direction * pushBackForce * velocity);
+            Vector2 direction = (blob.GetJoint().GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
+            blob.GetJoint().AddForce(direction * pushBackForce * velocity);
             blobJoint.AddForce(-direction * returnPushBackForce * velocity);
         }
     }
