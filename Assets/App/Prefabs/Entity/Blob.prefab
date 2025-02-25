@@ -478,7 +478,43 @@ MonoBehaviour:
   extendStaminaCost: 50
   angleVelocityMultiplierCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 65.04426
+      value: 1.3185672
+      inSlope: -0.0031142135
+      outSlope: -0.0031142135
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 117.55948
+      value: 0.95503163
+      inSlope: -0.008769241
+      outSlope: -0.008769241
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.3670922
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 153.61104
+      value: 0.009466438
+      inSlope: -0.03744219
+      outSlope: -0.03744219
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0512224
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
