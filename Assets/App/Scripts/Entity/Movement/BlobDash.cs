@@ -11,6 +11,7 @@ public class BlobDash : MonoBehaviour
     [SerializeField] int maxDashCount;
     [SerializeField] int dashCount;
     bool canDash = true;
+    bool canResetDashCount = true;
 
     Vector2 moveInput;
 
@@ -62,6 +63,8 @@ public class BlobDash : MonoBehaviour
         }
 
         dashCount--;
+        StartCoroutine(LockResetDashCount());
+
         joint.ResetVelocity();
         joint.AddForce(moveInput * dashForce);
         StartCoroutine(DashCooldown());
@@ -72,9 +75,16 @@ public class BlobDash : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
+    IEnumerator LockResetDashCount()
+    {
+        canResetDashCount = false;
+        yield return new WaitForSeconds(.1f);
+        canResetDashCount = true;
+    }
 
     void ResetDashCount()
     {
+        if(!canResetDashCount) return;
         dashCount = maxDashCount;
     }
 
