@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class BlobTrigger : CollisionTrigger
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] float shrinkRange;
+    [SerializeField] float extendRange;
+
+    [Space(5)]
+    [SerializeField] LayerMask groundableLayer;
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
@@ -31,5 +36,12 @@ public class BlobTrigger : CollisionTrigger
     {
         blobJoint.AddOnCollisionEnterListener(OnEnterCollision);
         blobJoint.AddOnCollisionExitListener(OnExitCollision);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, shrinkRange);
+        Gizmos.DrawWireSphere(transform.position, extendRange);
     }
 }

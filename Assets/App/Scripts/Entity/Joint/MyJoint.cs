@@ -49,6 +49,10 @@ public class MyJoint : MonoBehaviour, IPausable
     float angularVelocity;
     RigidbodyType2D bodyType;
 
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector3.zero;
+    }
     public void AddForce(Vector2 force)
     {
         rb.AddForce(force);

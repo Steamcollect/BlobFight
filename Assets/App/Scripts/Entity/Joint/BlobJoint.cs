@@ -149,6 +149,13 @@ public class BlobJoint : MonoBehaviour
     #endregion
 
     #region Rigidbody
+    public void ResetVelocity()
+    {
+        foreach (var joint in joints)
+        {
+            joint.ResetVelocity();
+        }
+    }
     public void AddForce(Vector2 force)
     {
         foreach (var joint in joints)

@@ -9,13 +9,17 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobStatistics extendStatistics;
     BlobStatistics statistics;
 
-    [Space(15)]
+    [Space(10)]
     [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
     bool isExtend = false;
 
-    [Space(10)]
+    [Space(20)]
     [SerializeField] float dashForce;
     [SerializeField] float dashCooldown;
+
+    [Space(5)]
+    [SerializeField] int maxDashCount;
+    int dashCount;
     bool canDash = true;
 
     Vector2 moveInput;
@@ -65,6 +69,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void LateStart()
     {
+        dashCount = maxDashCount;
+
         ShrinkBlob();
     }
 
@@ -130,8 +136,10 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void Dash()
     {
-        if (!canMove || !canDash) return;
+        if (!canMove || canDash) return;
 
+        dashCount--;
+        blobJoint.ResetVelocity();
         blobJoint.AddForce(moveInput * dashForce);
         StartCoroutine(DashCooldown());
     }
