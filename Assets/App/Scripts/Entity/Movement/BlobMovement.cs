@@ -145,7 +145,6 @@ public class BlobMovement : MonoBehaviour, IPausable
         float angleDifference = Vector2.Angle(currentNormal, newNormal);
 
         float speedFactor = angleVelocityMultiplierCurve.Evaluate(angleDifference);
-        print(speedFactor);
 
         Vector2 projectedVelocity = Vector2.Perpendicular(newNormal) * Vector2.Dot(joint.GetVelocity(), Vector2.Perpendicular(newNormal));
         Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + projectedVelocity.normalized, Color.red, 1);

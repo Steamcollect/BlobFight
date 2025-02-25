@@ -66,7 +66,7 @@ public class BlobDash : MonoBehaviour
         StartCoroutine(LockResetDashCount());
 
         joint.ResetVelocity();
-        joint.AddForce(moveInput * dashForce);
+        joint.AddForce(moveInput.normalized * dashForce);
         StartCoroutine(DashCooldown());
     }
     IEnumerator DashCooldown()
