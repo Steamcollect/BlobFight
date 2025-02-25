@@ -19,6 +19,8 @@ public class EntityInput : MonoBehaviour
     public Action<bool> validateInput;
     public Action returnInput;
 
+    public Action breakVialInput;
+
     private void Update()
     {
         moveInput?.Invoke(moveInputValue);
@@ -78,6 +80,16 @@ public class EntityInput : MonoBehaviour
         {
             case InputActionPhase.Started:
                 returnInput?.Invoke();
+                break;
+        }
+    }
+
+    public void BreakVialInput(InputAction.CallbackContext context)
+    {
+        switch(context.phase)
+        {
+            case InputActionPhase.Started:
+                breakVialInput?.Invoke();
                 break;
         }
     }

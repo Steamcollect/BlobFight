@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BlobMotor : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class BlobMotor : MonoBehaviour
     public BlobInitializeStatistic GetStats() {  return currentStats; }
 
     [Header("References")]
+    [SerializeField] GameObject componentsContent;
+
+    [Space(5)]
     [SerializeField] BlobJoint joint;
     [SerializeField] BlobVisual visual;
     [SerializeField] BlobHealth health;
@@ -127,6 +131,8 @@ public class BlobMotor : MonoBehaviour
 
     public void Spawn(Vector2 position)
     {
+        componentsContent.SetActive(true);
+
         joint.MoveJointsByTransform(position);
         health.Setup();
         Enable();
@@ -195,6 +201,7 @@ public class BlobMotor : MonoBehaviour
     #region Getter
     public BlobJoint GetJoint() { return joint; }
     public BlobHealth GetHealth() { return health; }
+    public EntityInput GetInput() { return input; }
 
     public BlobColor GetColor() { return currentStats.color; }
     #endregion

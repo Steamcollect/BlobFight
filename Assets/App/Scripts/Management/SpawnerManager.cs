@@ -4,9 +4,8 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     //[Header("Settings")]
-
+        
     [Header("References")]
-    
     //[Space(10)]
     // RSO
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
@@ -34,17 +33,10 @@ public class SpawnerManager : MonoBehaviour
     }
     void LateStart()
     {
-        if (rsoBlobInGame.Value.Count == 0) return;
         if (rsoSpawnpoints.Value.Count == 0)
         {
             Debug.LogError("You havnt any spawnpoint in the scene");
             return;
-        }
-
-        rsoBlobInGame.Value[0].Spawn(rsoSpawnpoints.Value.GetRandom().position);
-        for (int i = 1; i < rsoBlobInGame.Value.Count; i++)
-        {
-            SpawnBlob(rsoBlobInGame.Value[i]);
         }
     }
 
