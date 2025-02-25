@@ -410,7 +410,6 @@ MonoBehaviour:
   dashForce: 5000
   dashCooldown: 0.1
   maxDashCount: 2
-  dashCount: 0
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
   trigger: {fileID: 606557387366902294}
@@ -462,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shrinkStatistics:
     moveSpeed: 200
-    gravity: 10
+    gravity: 14
     drag: 7
     mass: 15
     distanceMult: 1
@@ -470,13 +469,19 @@ MonoBehaviour:
     frequency: 7
   extendStatistics:
     moveSpeed: 3000
-    gravity: 60
+    gravity: 40
     drag: 7
     mass: 500
     distanceMult: 3
     damping: 0
     frequency: 1000000
   extendStaminaCost: 50
+  angleVelocityMultiplierCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
