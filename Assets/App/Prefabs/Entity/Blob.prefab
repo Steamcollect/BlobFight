@@ -476,9 +476,9 @@ MonoBehaviour:
     damping: 0
     frequency: 1000000
   extendStaminaCost: 70
-  input: {fileID: 0}
-  joint: {fileID: 0}
-  visual: {fileID: 0}
+  input: {fileID: 8417928549951212344}
+  joint: {fileID: 6321734985548798584}
+  visual: {fileID: 6232837032291008028}
   stamina: {fileID: 4226171251788006590}
 --- !u!1 &1958215696552307569
 GameObject:
