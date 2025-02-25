@@ -136,7 +136,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void Dash()
     {
-        if (!canMove || canDash) return;
+        if (!canMove || !canDash) return;
 
         dashCount--;
         blobJoint.ResetVelocity();
