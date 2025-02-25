@@ -32,14 +32,16 @@ public class BlobDash : MonoBehaviour
     {
         input.moveInput -= SetInput;
         input.dashInput -= Dash;
-        trigger.OnGrounded -= OnTouchGroundable;
+        trigger.OnGroundedEnter -= ResetDashCount;
+        trigger.OnGroundedExit -= ResetDashCount;
     }
 
     private void Start()
     {
         input.moveInput += SetInput;
         input.dashInput += Dash;
-        trigger.OnGrounded += OnTouchGroundable;
+        trigger.OnGroundedEnter += ResetDashCount;
+        trigger.OnGroundedExit += ResetDashCount;
 
         Invoke("LateStart", .1f);
     }
@@ -71,7 +73,7 @@ public class BlobDash : MonoBehaviour
         canDash = true;
     }
 
-    void OnTouchGroundable()
+    void ResetDashCount()
     {
         dashCount = maxDashCount;
     }

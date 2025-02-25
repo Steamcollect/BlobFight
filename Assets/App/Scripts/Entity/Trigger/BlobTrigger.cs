@@ -13,7 +13,7 @@ public class BlobTrigger : CollisionTrigger
 
     List<GameObject> groundables = new();
 
-    public Action OnGrounded;
+    public Action OnGroundedEnter, OnGroundedExit;
 
     //[Space(10)]
     // RSO
@@ -52,7 +52,7 @@ public class BlobTrigger : CollisionTrigger
             if (!isGrounded)
             {
                 isGrounded = true;
-                OnGrounded?.Invoke();
+                OnGroundedEnter?.Invoke();
             }
 
             groundables.Add(collision.gameObject);
@@ -61,7 +61,11 @@ public class BlobTrigger : CollisionTrigger
     void OnExit(Collision2D collision)
     {
         groundables.Remove(collision.gameObject);
-        if(groundables.Count <= 0) isGrounded = false;
+        if(groundables.Count <= 0)
+        {
+            OnGroundedExit?.Invoke();
+            isGrounded = false;
+        }
     }
 
     public bool IsGrounded() { return isGrounded; }
