@@ -84,6 +84,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         if (!deathCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime)) return;
 
         stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
+        stamina.DisableStaminaRecuperation();
 
         statistics = extendStatistics;
         SetJointStats();
@@ -95,6 +96,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void ShrinkBlob()
     {
+        stamina.EnableStaminaRecuperation();
+
         statistics = shrinkStatistics;
         SetJointStats();
 

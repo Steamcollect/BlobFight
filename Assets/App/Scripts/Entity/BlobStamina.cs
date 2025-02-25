@@ -7,6 +7,8 @@ public class BlobStamina : MonoBehaviour
 
     [SerializeField] float staminaGivenPerSec;
 
+    bool canGetStamina = true;
+
     //[Header("References")]
 
     //[Space(10)]
@@ -24,7 +26,9 @@ public class BlobStamina : MonoBehaviour
 
     private void Update()
     {
-        if(currentStamina > maxStamina)
+        if (!canGetStamina) return;
+
+        if (currentStamina > maxStamina)
         {
             currentStamina = maxStamina;
         }
@@ -42,4 +46,6 @@ public class BlobStamina : MonoBehaviour
 
     public bool HaveEnoughStamina(float staminaRequire) { return currentStamina >= staminaRequire; }
     public float GetStamina() {  return currentStamina; }
+    public void EnableStaminaRecuperation() { canGetStamina = true;}
+    public void DisableStaminaRecuperation() { canGetStamina = false;}
 }
