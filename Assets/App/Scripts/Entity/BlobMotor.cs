@@ -186,7 +186,7 @@ public class BlobMotor : MonoBehaviour
 
     public void AddScore()
     {
-        //winScore.AddScore();
+        winScore.AddScore();
     }
     #endregion
 
