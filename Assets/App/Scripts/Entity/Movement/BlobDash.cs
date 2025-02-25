@@ -13,7 +13,7 @@ public class BlobDash : MonoBehaviour
     bool canDash = true;
     bool canResetDashCount = true;
 
-    Vector2 moveInput;
+    Vector2 dashInput;
 
     [Header("References")]
     [SerializeField] EntityInput input;
@@ -66,7 +66,7 @@ public class BlobDash : MonoBehaviour
         StartCoroutine(LockResetDashCount());
 
         joint.ResetVelocity();
-        joint.AddForce(moveInput.normalized * dashForce);
+        joint.AddForce(dashInput.normalized * dashForce);
         StartCoroutine(DashCooldown());
     }
     IEnumerator DashCooldown()
@@ -90,6 +90,6 @@ public class BlobDash : MonoBehaviour
 
     void SetInput(Vector2 input)
     {
-        moveInput = input;
+        if(input != Vector2.zero) dashInput = input;
     }
 }
