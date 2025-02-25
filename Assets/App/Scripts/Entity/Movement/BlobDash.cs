@@ -13,7 +13,7 @@ public class BlobDash : MonoBehaviour
     bool canDash = true;
     bool canResetDashCount = true;
 
-    Vector2 dashInput;
+    Vector2 dashInput = Vector2.up;
 
     [Header("References")]
     [SerializeField] EntityInput input;
