@@ -1,9 +1,10 @@
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerInputManagement : MonoBehaviour
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] bool joinForTest;
 
     [Header("References")]
     [SerializeField] PlayerInputManager playerInputManager;
@@ -34,7 +35,7 @@ public class PlayerInputManagement : MonoBehaviour
 
     private void Start()
     {
-        playerInputManager.DisableJoining();
+        if(!joinForTest) playerInputManager.DisableJoining();
     }
 
 	private void OnPlayerJoined(PlayerInput playerInput)
