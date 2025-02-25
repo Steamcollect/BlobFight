@@ -53,6 +53,10 @@ public class MyJoint : MonoBehaviour, IPausable
     {
         rb.velocity = Vector3.zero;
     }
+    public void SetVelocity(Vector2 velocity)
+    {
+        rb.velocity = velocity;
+    }
     public void AddForce(Vector2 force)
     {
         rb.AddForce(force);

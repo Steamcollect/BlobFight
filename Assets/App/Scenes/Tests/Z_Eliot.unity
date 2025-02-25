@@ -130,9 +130,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.data[1].time
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.data[0].value
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.data[1].inSlope
+      value: -0.03744219
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.data[1].inWeight
+      value: 0.0512224
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: angleVelocityMultiplierCurve.m_Curve.Array.data[1].outSlope
+      value: -0.03744219
+      objectReference: {fileID: 0}
     - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_Name
       value: Blob
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726202644600941132, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: dashForce
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -207,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 33285641}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.066032514, w: 0.99781746}
-  m_LocalPosition: {x: 6.66, y: -4.03, z: 0}
+  m_LocalPosition: {x: 6.51, y: -4.06, z: 0}
   m_LocalScale: {x: 3.500722, y: 1.3320663, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -643,7 +675,7 @@ Transform:
   m_GameObject: {fileID: 355168078}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.6240032, w: 0.78142184}
-  m_LocalPosition: {x: 13.13, y: 1.23, z: 0}
+  m_LocalPosition: {x: 13.1, y: 1.23, z: 0}
   m_LocalScale: {x: 3.500722, y: 1.3320663, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -187,6 +187,13 @@ public class BlobJoint : MonoBehaviour
         }
     }
 
+    public void SetVelocity(Vector2 velocity)
+    {
+        foreach (var joint in joints)
+        {
+            joint.SetVelocity(velocity);
+        }
+    }
     public Vector2 GetVelocity()
     {
         Vector2 sum = Vector2.zero;

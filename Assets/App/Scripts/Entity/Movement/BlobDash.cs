@@ -9,7 +9,7 @@ public class BlobDash : MonoBehaviour
 
     [Space(5)]
     [SerializeField] int maxDashCount;
-    [SerializeField] int dashCount;
+    int dashCount;
     bool canDash = true;
     bool canResetDashCount = true;
 
@@ -82,7 +82,7 @@ public class BlobDash : MonoBehaviour
         canResetDashCount = true;
     }
 
-    void ResetDashCount()
+    void ResetDashCount(Collision2D collision)
     {
         if(!canResetDashCount) return;
         dashCount = maxDashCount;

@@ -17,11 +17,16 @@ public class BlobMovement : MonoBehaviour, IPausable
     bool deathCanMove = true;
     bool pauseCanMove = true;
 
+    [Space(10)]
+    [SerializeField] AnimationCurve angleVelocityMultiplierCurve;
+    Vector2 currentNormal;
+
     [Header("References")]
     [SerializeField] EntityInput input;
     [SerializeField] BlobJoint joint;
     [SerializeField] BlobVisual visual;
     [SerializeField] BlobStamina stamina;
+    [SerializeField] BlobTrigger trigger;
 
     //[Header("Output")]
     public Action onShrink,onExtend;
@@ -29,6 +34,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     private void OnEnable()
     {
         joint.onJointsConnected += SetupJoint;
+        trigger.OnGroundedEnter += OnGroundableEnter;
+        trigger.OnGroundedExit += OnGroundableExit;
     }
     private void OnDisable()
     {
@@ -37,6 +44,9 @@ public class BlobMovement : MonoBehaviour, IPausable
         input.moveInput -= SetInput;
 
         joint.onJointsConnected -= SetupJoint;
+
+        trigger.OnGroundedEnter -= OnGroundableEnter;
+        trigger.OnGroundedExit -= OnGroundableExit;
     }
 
     private void Start()
@@ -73,10 +83,31 @@ public class BlobMovement : MonoBehaviour, IPausable
         joint.SetCollidersPosOffset(.5f);
     }
 
+    #region Setup
     void SetupJoint()
     {
         statistics = shrinkStatistics;
         SetJointStats();
+    }
+    void SetJointStats()
+    {
+        joint.SetDrag(statistics.drag);
+        joint.SetGravity(statistics.gravity);
+
+        joint.MultiplyInitialSpringDistance(statistics.distanceMult);
+        joint.SetDamping(statistics.damping);
+        joint.SetFrequency(statistics.frequency);
+        joint.SetMass(statistics.mass);
+    }
+    void SetInput(Vector2 input)
+    {
+        moveInput = input;
+    }
+    #endregion
+
+    void Move()
+    {
+        joint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
     }
 
     void ExtendBlob()
@@ -107,16 +138,31 @@ public class BlobMovement : MonoBehaviour, IPausable
         isExtend = false;
     }
 
-    void SetInput(Vector2 input)
+    void OnGroundableEnter(Collision2D collision)
     {
-        moveInput = input;
+        Vector2 newNormal = collision.GetContact(0).normal;
+
+        float angleDifference = Vector2.Angle(currentNormal, newNormal);
+
+        float speedFactor = angleVelocityMultiplierCurve.Evaluate(angleDifference);
+        print(speedFactor);
+
+        Vector2 projectedVelocity = Vector2.Perpendicular(newNormal) * Vector2.Dot(joint.GetVelocity(), Vector2.Perpendicular(newNormal));
+        Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + projectedVelocity.normalized, Color.red, 1);
+
+        joint.SetVelocity(projectedVelocity * speedFactor);
+
+        currentNormal = newNormal;
+    }
+    void OnGroundableExit(Collision2D collision)
+    {
+        if (!trigger.IsGrounded())
+        {
+            currentNormal = Vector2.zero;
+        }
     }
 
-    void Move()
-    {
-        joint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
-    }
-
+    #region State
     public void DeathEnableMovement()
     {
         deathCanMove = true;
@@ -125,17 +171,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         ShrinkBlob();
         deathCanMove = false;
-    }
-
-    void SetJointStats()
-    {
-        joint.SetDrag(statistics.drag);
-        joint.SetGravity(statistics.gravity);
-
-        joint.MultiplyInitialSpringDistance(statistics.distanceMult);
-        joint.SetDamping(statistics.damping);
-        joint.SetFrequency(statistics.frequency);
-        joint.SetMass(statistics.mass);
     }
 
     public void Pause()
@@ -148,4 +183,5 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
 
     public bool CanMove() { return deathCanMove && pauseCanMove; }
+    #endregion
 }

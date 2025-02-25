@@ -481,6 +481,7 @@ MonoBehaviour:
   joint: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
   stamina: {fileID: 4226171251788006590}
+  trigger: {fileID: 606557387366902294}
 --- !u!1 &1958215696552307569
 GameObject:
   m_ObjectHideFlags: 0
