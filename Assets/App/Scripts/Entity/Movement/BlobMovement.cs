@@ -142,7 +142,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         pauseCanMove = false;
     }
-
     public void Resume()
     {
         pauseCanMove = true;

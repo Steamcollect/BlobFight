@@ -1,5 +1,5 @@
 using System.Collections;
-    using UnityEngine;
+using UnityEngine;
 
 public class BlobDash : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class BlobDash : MonoBehaviour
 
     [Space(5)]
     [SerializeField] int maxDashCount;
-    int dashCount;
+    [SerializeField] int dashCount;
     bool canDash = true;
 
     Vector2 moveInput;
