@@ -40,6 +40,7 @@ public class BlobMotor : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_OnFightStart rseOnFightStart;
     [SerializeField] RSE_OnFightEnd rseOnFightEnd;
+    [SerializeField] RSE_OnGameStart rseOnGameStart;
 
     [Header("Output")]
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
@@ -56,6 +57,7 @@ public class BlobMotor : MonoBehaviour
     {
         rseOnFightStart.action += UnlockInteraction;
         rseOnFightEnd.action += LockInteraction;
+        rseOnGameStart.action += LockInteraction;
 
         rseOnPause.action += OnGamePause;
         rseOnResume.action += OnGameResume;
@@ -69,6 +71,7 @@ public class BlobMotor : MonoBehaviour
     {
         rseOnFightStart.action -= UnlockInteraction;
         rseOnFightEnd.action -= LockInteraction;
+        rseOnGameStart.action -= LockInteraction;
 
         rseOnPause.action -= OnGamePause;
         rseOnResume.action -= OnGameResume;
@@ -125,7 +128,7 @@ public class BlobMotor : MonoBehaviour
         LockInteraction();
     }
 
-    void LockInteraction()
+    public void LockInteraction()
     {
         movement.DeathDisableMovement();
     }

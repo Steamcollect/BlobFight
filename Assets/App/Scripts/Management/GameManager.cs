@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviour
         rseClearBlobInGame.action -= ClearBlobInGame;
     }
 
+    private void Awake()
+    {
+        rsoBlobInGame.Value = new();
+    }
+
     void TogglePause()
     {
         if (gameState == GameState.MainMenu || !canPause) return;
