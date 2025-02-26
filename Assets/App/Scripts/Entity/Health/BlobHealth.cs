@@ -69,11 +69,13 @@ public class BlobHealth : EntityHealth, IPausable
                 case Damagable.DamageType.Kill:
                     rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
                     onDeath?.Invoke();
+                    isDead = true;
                     break;
                 
                 case Damagable.DamageType.Destroy:
                     rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
                     onDestroy?.Invoke(collision.GetContact(0));
+                    isDead = true;
                     break;
             }
         }

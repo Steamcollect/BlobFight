@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using NUnit.Framework;
 
 public class BlobTrigger : CollisionTrigger
 {
@@ -8,12 +9,17 @@ public class BlobTrigger : CollisionTrigger
     [SerializeField] string groundableTag;
     [SerializeField] bool isGrounded = false;
 
+    [SerializeField] string slidableTag;
+    [SerializeField] bool isSliding = false;
+
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
 
     List<GameObject> groundables = new();
+    List<GameObject> slidables = new();
 
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
+    public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
 
     //[Space(10)]
     // RSO
@@ -49,13 +55,17 @@ public class BlobTrigger : CollisionTrigger
     {
         if (collision.gameObject.CompareTag(groundableTag))
         {
-            if (!isGrounded)
-            {
-                isGrounded = true;
-            }
+            isGrounded = true;
 
             OnGroundedEnter?.Invoke(collision);
             groundables.Add(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag(slidableTag))
+        {
+            isSliding = true;
+
+            OnSlidableEnter?.Invoke(collision);
+            slidables.Add(collision.gameObject);
         }
     }
     void OnExit(Collision2D collision)
@@ -65,6 +75,13 @@ public class BlobTrigger : CollisionTrigger
         {
             isGrounded = false;
             OnGroundedExit?.Invoke(collision);
+        }
+
+        slidables.Remove(collision.gameObject);
+        if(slidables.Count <= 0)
+        {
+            isSliding = false;
+            OnSlidableExit?.Invoke(collision);
         }
     }
 
