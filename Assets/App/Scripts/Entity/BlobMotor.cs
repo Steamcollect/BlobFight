@@ -145,14 +145,12 @@ public class BlobMotor : MonoBehaviour
     void OnDeath()
     {
         particle.DeathParticle(joint.GetJointsCenter(), currentStats.color);
-        DisableCrown();
         Disable();
         rseOnBlobDeath.Call(this);
     }
     void OnDestroyed(ContactPoint2D contact)
     {
         particle.DestroyParticle(contact, currentStats.color);
-        DisableCrown();
         Disable();
         rseOnBlobDeath.Call(this);
     }

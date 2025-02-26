@@ -44,7 +44,6 @@ public class RoundManager : MonoBehaviour
         if(blobs.Count == 1)
         {
             blobs[0].AddScore();
-            blobs[0].EnableCrown();
             rseOnFightEnd.Call();
             rseLoadNextLevel.Call();
         }

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 public class ScoreManager : MonoBehaviour
 {
     //[Header("Settings")]
@@ -14,49 +15,55 @@ public class ScoreManager : MonoBehaviour
     // RSF
     // RSP
 
-    //[Header("Input")]
+    [Header("Input")]
+    [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
     //[Header("Output")]
-    private List<int> score = new List<int>();
+    private Dictionary<BlobMotor, int> scoreDictionary = new Dictionary<BlobMotor, int>();
+    private BlobMotor blobKey;
+    private int max;
+
+    private void OnEnable()
+    {
+        rseOnBlobDeath.action += UpdateCrownOwner;
+    }
+    private void OnDisable()
+    {
+        rseOnBlobDeath.action -= UpdateCrownOwner;
+    }
     private void Start()
     {
         GetScore();
         GetScoreMax();
+
     }
     private void GetScore()
     {
-        BlobMotor blob = new BlobMotor();
-        
         for (int i = 0; rsoBlobInGame.Value.Count > i; i++)
         {
-            blob = rsoBlobInGame.Value[i];
-            score.Add(blob.GetScore());
-
+            blobKey = rsoBlobInGame.Value[i];
+            scoreDictionary.Add(blobKey, blobKey.GetScore());
         }
-        
     }
     private void GetScoreMax()
     {
-        BlobMotor blob = new BlobMotor();
-        int max = score.Max();
+        max = scoreDictionary.Values.Max();
+        blobKey = scoreDictionary.FirstOrDefault(x => x.Value == max).Key;
         for (int i = 0; rsoBlobInGame.Value.Count > i; i++)
         {
-            blob = rsoBlobInGame.Value[i];
-            if (max == blob.GetScore())
-            {
-                if(max != 0)
-                {
-                    blob.EnableCrown();
-                }
-                else
-                {
-                    blob.DisableCrown();
-                }
-                
-            }
-            else
-            {
-                blob.DisableCrown();
-            }
+            BlobMotor blob = rsoBlobInGame.Value[i];
+            blob.DisableCrown();
         }
+        blobKey.EnableCrown();
+        Debug.Log("Best player: " + blobKey.IsAlive());
+    }
+    private void UpdateCrownOwner(BlobMotor blob)
+    {
+        blob.DisableCrown();
+        BlobMotor bestPlayer = scoreDictionary
+                    .Where(p => p.Key.IsAlive()) // Exclure les joueurs morts
+                    .OrderByDescending(p => p.Value)
+                    .FirstOrDefault().Key; // Prendre le premier (meilleur score)
+        Debug.Log("Best player: "+blob.IsAlive());
+        bestPlayer.EnableCrown();
     }
 }
