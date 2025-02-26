@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712fd8b9292a1504fb2443068b4acae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 5000
+  dashForce: 6000
   dashCooldown: 0.1
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
@@ -461,8 +461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkStatistics:
-    moveSpeed: 200
-    gravity: 14
+    moveSpeed: 260
+    gravity: 18
     drag: 7
     mass: 15
     distanceMult: 1
@@ -470,7 +470,7 @@ MonoBehaviour:
     frequency: 7
   extendStatistics:
     moveSpeed: 3000
-    gravity: 40
+    gravity: 60
     drag: 7
     mass: 500
     distanceMult: 3
