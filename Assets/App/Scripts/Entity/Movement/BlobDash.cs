@@ -45,6 +45,7 @@ public class BlobDash : MonoBehaviour
         input.dashInput += Dash;
         trigger.OnGroundedEnter += ResetDashCount;
         trigger.OnGroundedExit += ResetDashCount;
+        trigger.OnSlidableEnter += ResetDashCount;
 
         Invoke("LateStart", .1f);
     }
