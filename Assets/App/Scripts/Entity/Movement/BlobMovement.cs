@@ -103,7 +103,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void SetInput(Vector2 input)
     {
-        moveInput = input;
+        moveInput = input.normalized;
     }
     #endregion
 
