@@ -18,8 +18,10 @@ public class BlobMovement : MonoBehaviour, IPausable
     bool pauseCanMove = true;
 
     [Space(10)]
+    [SerializeField] AnimationCurve angleSpeedMultiplierCurve;
     [SerializeField] AnimationCurve angleVelocityMultiplierCurve;
-    Vector2 currentNormal;
+    Vector2 currentGroundNormal;
+    float currentGroundAngle;
 
     [Header("References")]
     [SerializeField] EntityInput input;
@@ -107,7 +109,13 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void Move()
     {
-        joint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
+        float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
+        Vector2 direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
+        Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
+
+        joint.AddForce(direction * moveInput.x * statistics.moveSpeed);
+
+        //joint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
     }
 
     void ExtendBlob()
@@ -142,7 +150,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         Vector2 newNormal = collision.GetContact(0).normal;
 
-        float angleDifference = Vector2.Angle(currentNormal, newNormal);
+        float angleDifference = Vector2.Angle(currentGroundNormal, newNormal);
+        currentGroundAngle = Mathf.Atan2(newNormal.x, newNormal.y) * Mathf.Rad2Deg;
 
         float speedFactor = angleVelocityMultiplierCurve.Evaluate(angleDifference);
 
@@ -151,13 +160,13 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         joint.SetVelocity(projectedVelocity * speedFactor);
 
-        currentNormal = newNormal;
+        currentGroundNormal = newNormal;
     }
     void OnGroundableExit(Collision2D collision)
     {
         if (!trigger.IsGrounded())
         {
-            currentNormal = Vector2.zero;
+            currentGroundNormal = Vector2.zero;
         }
     }
 
