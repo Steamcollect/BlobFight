@@ -13,8 +13,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     bool isExtend = false;
 
     [SerializeField] float slidingGravity;
-    bool isSliding = false;
-    Vector2 slidingWallNormal;
 
     Vector2 moveInput;
 
@@ -122,19 +120,9 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         Vector2 direction = Vector2.right;
 
-        if (!isSliding)
-        {
-            if (currentGroundAngle != 0)
-            {
-                float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
-                direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
-                Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
-            }
-        }
-        else
-        {
-            direction = -slidingWallNormal;
-        }
+        float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
+        direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
+        Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
 
         joint.AddForce(direction * moveInput.x * statistics.moveSpeed);
     }
@@ -183,6 +171,8 @@ public class BlobMovement : MonoBehaviour, IPausable
         joint.SetVelocity(projectedVelocity * speedFactor);
 
         currentGroundNormal = newNormal;
+
+        ExitSlidingState();
     }
     void OnGroundableExit(Collision2D collision)
     {
@@ -197,9 +187,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         if (!isExtend)
         {
+            Debug.DrawLine(collision.GetContact(0).point, collision.GetContact(0).point + collision.GetContact(0).normal, Color.blue, 1);
             joint.SetGravity(slidingGravity);
-            isSliding = true;
-            slidingWallNormal = collision.GetContact(0).normal;
         }
     }
     void OnSlidableExit(Collision2D collision)
@@ -208,7 +197,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void ExitSlidingState()
     {
-        isSliding = false;
         joint.SetGravity(statistics.gravity);
     }
     #endregion

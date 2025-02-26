@@ -10,7 +10,6 @@ public class BlobTrigger : CollisionTrigger
     [SerializeField] bool isGrounded = false;
 
     [SerializeField] string slidableTag;
-    [SerializeField] bool isSliding = false;
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
@@ -62,8 +61,6 @@ public class BlobTrigger : CollisionTrigger
         }
         else if (collision.gameObject.CompareTag(slidableTag))
         {
-            isSliding = true;
-
             OnSlidableEnter?.Invoke(collision);
             slidables.Add(collision.gameObject);
         }
@@ -80,7 +77,6 @@ public class BlobTrigger : CollisionTrigger
         slidables.Remove(collision.gameObject);
         if(slidables.Count <= 0)
         {
-            isSliding = false;
             OnSlidableExit?.Invoke(collision);
         }
     }
