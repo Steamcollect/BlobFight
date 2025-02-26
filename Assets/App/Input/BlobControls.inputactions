@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shrink",
+                    "name": "Extend",
                     "type": "Button",
                     "id": "08ef53c9-1052-4863-a90d-faf136a1bcd9",
                     "expectedControlType": "Button",
@@ -73,11 +73,11 @@
                 {
                     "name": "",
                     "id": "a62bbbeb-3ea4-4f5b-8da4-b1158eeaceda",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Shrink",
+                    "action": "Extend",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -88,7 +88,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Shrink",
+                    "action": "Extend",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2223edb-e1ea-4215-92a9-fd5b187d554d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Extend",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3612921d-f1be-49c1-9de5-4e080677dacf",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Extend",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d456bb29-2c9d-4096-8a6f-c3cbc536495d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Extend",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -173,6 +206,39 @@
                     "name": "",
                     "id": "d42ad2d4-0983-430e-8ddb-1e846679cfa7",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d13c81a2-983b-4a92-b3cd-9e04689d5bed",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "baf5098c-6afe-4076-bdbb-0c08b3f20baf",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9a03c39-edc3-45eb-ae1f-ee0f2de69c33",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
