@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 232811518}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Groundable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2423,7 +2423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714849775196148984, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: score
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2811,7 +2811,7 @@ GameObject:
   - component: {fileID: 1183828114}
   m_Layer: 0
   m_Name: BallHammer(Clone)
-  m_TagString: Untagged
+  m_TagString: Groundable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3710,7 +3710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714849775196148984, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: score
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3861,7 +3861,7 @@ GameObject:
   - component: {fileID: 1600958973}
   m_Layer: 0
   m_Name: Hammer
-  m_TagString: Untagged
+  m_TagString: Groundable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

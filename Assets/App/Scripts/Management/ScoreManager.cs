@@ -53,17 +53,24 @@ public class ScoreManager : MonoBehaviour
             BlobMotor blob = rsoBlobInGame.Value[i];
             blob.DisableCrown();
         }
-        blobKey.EnableCrown();
-        Debug.Log("Best player: " + blobKey.IsAlive());
+        if (max != 0)
+        {
+            blobKey.EnableCrown();
+        }
     }
     private void UpdateCrownOwner(BlobMotor blob)
     {
+        Debug.Log("Dead: " +blob.name+" "+ blob.IsAlive());
         blob.DisableCrown();
         BlobMotor bestPlayer = scoreDictionary
-                    .Where(p => p.Key.IsAlive()) // Exclure les joueurs morts
+                    .Where(p => p.Key.IsAlive())
                     .OrderByDescending(p => p.Value)
-                    .FirstOrDefault().Key; // Prendre le premier (meilleur score)
-        Debug.Log("Best player: "+blob.IsAlive());
-        bestPlayer.EnableCrown();
+                    .FirstOrDefault().Key;
+        Debug.Log(bestPlayer.IsAlive());
+        Debug.Log(bestPlayer.name);
+        if (bestPlayer != null)
+        {
+            bestPlayer.EnableCrown();
+        }
     }
 }
