@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blob
       objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: isStatic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1530,7 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  damageType: 1
+  damageType: 2
 --- !u!61 &904335750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2097,7 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  damageType: 1
+  damageType: 2
 --- !u!61 &1428463515
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2316,7 +2320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1506091359
 Transform:
   m_ObjectHideFlags: 0
@@ -2382,7 +2386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  damageType: 1
+  damageType: 2
 --- !u!61 &1563569240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2474,7 +2478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  damageType: 1
+  damageType: 2
 --- !u!61 &1776137691
 BoxCollider2D:
   m_ObjectHideFlags: 0
