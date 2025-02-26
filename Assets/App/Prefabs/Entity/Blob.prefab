@@ -295,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7096146825044067605
 Transform:
   m_ObjectHideFlags: 0
@@ -1347,7 +1347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5753215936194828634
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,10 +1382,12 @@ MonoBehaviour:
   rotationAmount: 1.4
   rotationTime: 0.1
   velocityRotDiviser: 1
+  rseUpdateCrownColor: {fileID: 11400000, guid: 0b099065ca877d94ba1f01751a68a50d, type: 2}
   motor: {fileID: 3420423106000584793}
   joint: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
   crown: {fileID: 985776247518708268}
+  crownRenderer: {fileID: 4675951191080351047}
 --- !u!1 &4440481460841885347
 GameObject:
   m_ObjectHideFlags: 0

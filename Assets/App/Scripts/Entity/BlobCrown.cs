@@ -17,12 +17,15 @@ public class BlobCrown : MonoBehaviour
     private float rotationVelocity;
 
     [Header("References")]
+    [SerializeField] RSE_UpdateCrownColor rseUpdateCrownColor;
+    [Space(5)]
     [SerializeField] BlobMotor motor;
     [SerializeField] BlobJoint joint;
     [SerializeField] BlobMovement movement;
 
     [Space(5)]
     [SerializeField] GameObject crown;
+    [SerializeField] SpriteRenderer crownRenderer;
     
     
 
@@ -41,6 +44,8 @@ public class BlobCrown : MonoBehaviour
 
         movement.onExtend += OnExtend;
         movement.onShrink += OnShrink;
+
+        rseUpdateCrownColor.action += UpdateColor;
     }
     private void OnDisable()
     {
@@ -49,6 +54,8 @@ public class BlobCrown : MonoBehaviour
 
         movement.onExtend -= OnExtend;
         movement.onShrink -= OnShrink;
+
+        rseUpdateCrownColor.action -= UpdateColor;
     }
     private void Update()
     {
@@ -59,10 +66,20 @@ public class BlobCrown : MonoBehaviour
     {
         crown.SetActive(true);
     }
-
     void DisableCrown()
     {
         crown.SetActive(false);
+    }
+    void UpdateColor(bool isGold)
+    {
+        if (isGold)
+        {
+            crownRenderer.color = new Color32(197, 199, 37, 255);
+        }
+        else
+        {
+            crownRenderer.color = new Color32(90, 90, 90, 255);
+        }
     }
     void OnShrink()
     {
