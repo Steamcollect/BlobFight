@@ -109,13 +109,15 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void Move()
     {
-        float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
-        Vector2 direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
-        Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
+        Vector2 direction = Vector2.right;
+        if (currentGroundAngle != 0)
+        {
+            float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
+            direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
+            Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
+        }
 
         joint.AddForce(direction * moveInput.x * statistics.moveSpeed);
-
-        //joint.AddForce(Vector2.right * moveInput.x * statistics.moveSpeed);
     }
 
     void ExtendBlob()
@@ -167,6 +169,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         if (!trigger.IsGrounded())
         {
             currentGroundNormal = Vector2.zero;
+            currentGroundAngle = 0;
         }
     }
 
