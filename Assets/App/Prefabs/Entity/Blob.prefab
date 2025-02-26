@@ -477,7 +477,7 @@ MonoBehaviour:
     damping: 0
     frequency: 1000000
   extendStaminaCost: 50
-  slidingGravity: 0
+  slidingGravity: 2.5
   angleSpeedMultiplierCurve:
     serializedVersion: 2
     m_Curve:
@@ -1329,7 +1329,6 @@ MonoBehaviour:
   groundableTag: Groundable
   isGrounded: 0
   slidableTag: Slidable
-  isSliding: 0
   blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &4126363389251937977
 GameObject:
