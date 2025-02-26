@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Blob
   - Groundable
+  - Slidable
   layers:
   - Default
   - TransparentFX

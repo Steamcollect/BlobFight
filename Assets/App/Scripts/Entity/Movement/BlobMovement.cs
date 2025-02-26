@@ -12,6 +12,10 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
     bool isExtend = false;
 
+    [SerializeField] float slidingGravity;
+    bool isSliding = false;
+    Vector2 slidingWallNormal;
+
     Vector2 moveInput;
 
     bool deathCanMove = true;
@@ -36,8 +40,12 @@ public class BlobMovement : MonoBehaviour, IPausable
     private void OnEnable()
     {
         joint.onJointsConnected += SetupJoint;
+
         trigger.OnGroundedEnter += OnGroundableEnter;
         trigger.OnGroundedExit += OnGroundableExit;
+
+        trigger.OnSlidableEnter += OnSlidableEnter;
+        trigger.OnSlidableExit += OnSlidableExit;
     }
     private void OnDisable()
     {
@@ -49,6 +57,9 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         trigger.OnGroundedEnter -= OnGroundableEnter;
         trigger.OnGroundedExit -= OnGroundableExit;
+
+        trigger.OnSlidableEnter -= OnSlidableEnter;
+        trigger.OnSlidableExit -= OnSlidableExit;
     }
 
     private void Start()
@@ -110,11 +121,19 @@ public class BlobMovement : MonoBehaviour, IPausable
     void Move()
     {
         Vector2 direction = Vector2.right;
-        if (currentGroundAngle != 0)
+
+        if (!isSliding)
         {
-            float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
-            direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
-            Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
+            if (currentGroundAngle != 0)
+            {
+                float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
+                direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
+                Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
+            }
+        }
+        else
+        {
+            direction = -slidingWallNormal;
         }
 
         joint.AddForce(direction * moveInput.x * statistics.moveSpeed);
@@ -148,6 +167,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         isExtend = false;
     }
 
+    #region Collisions
     void OnGroundableEnter(Collision2D collision)
     {
         Vector2 newNormal = collision.GetContact(0).normal;
@@ -172,6 +192,26 @@ public class BlobMovement : MonoBehaviour, IPausable
             currentGroundAngle = 0;
         }
     }
+    
+    void OnSlidableEnter(Collision2D collision)
+    {
+        if (!isExtend)
+        {
+            joint.SetGravity(slidingGravity);
+            isSliding = true;
+            slidingWallNormal = collision.GetContact(0).normal;
+        }
+    }
+    void OnSlidableExit(Collision2D collision)
+    {
+        ExitSlidingState();
+    }
+    void ExitSlidingState()
+    {
+        isSliding = false;
+        joint.SetGravity(statistics.gravity);
+    }
+    #endregion
 
     #region State
     public void DeathEnableMovement()
