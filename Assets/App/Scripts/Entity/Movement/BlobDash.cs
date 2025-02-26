@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -28,6 +29,7 @@ public class BlobDash : MonoBehaviour
 
     //[Header("Input")]
     //[Header("Output")]
+    public Action OnDash;
 
     private void OnDisable()
     {
@@ -68,6 +70,8 @@ public class BlobDash : MonoBehaviour
         joint.ResetVelocity();
         joint.AddForce(dashInput.normalized * dashForce);
         StartCoroutine(DashCooldown());
+
+        OnDash?.Invoke();
     }
     IEnumerator DashCooldown()
     {
