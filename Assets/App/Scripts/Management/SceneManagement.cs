@@ -3,7 +3,7 @@ using UnityEngine;
 public class SceneManagement : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] string[] levelsName;
+    [SerializeField, SceneName] string[] levelsName;
     List<string> levels = new();
 	[SerializeField] string mainMenuName;
 
