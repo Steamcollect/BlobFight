@@ -94,12 +94,12 @@ public class BlobMotor : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
-
-        rsoBlobInGame.Value.Add(this);
+        }   
     }
     private void Start()
     {
+        rsoBlobInGame.Value.Add(this);
+
         pausables = GetComponentsInChildren<IPausable>();
 
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
