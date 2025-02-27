@@ -41,6 +41,13 @@ public class EntityHealth : MonoBehaviour
         isDead = true;
         onDeath?.Invoke();
     }
+    protected void Destroy(Collision2D collision)
+    {
+        if (isDead) return;
+
+        isDead = true;
+        onDestroy?.Invoke(collision.GetContact(0));
+    }
 
     public bool IsDead() { return isDead; }
 }

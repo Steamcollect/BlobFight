@@ -47,5 +47,10 @@ public class RoundManager : MonoBehaviour
             rseOnFightEnd.Call();
             rseLoadNextLevel.Call();
         }
+        else if (blobs.Count <= 0)
+        {
+            rseOnFightEnd.Call();
+            rseLoadNextLevel.Call();
+        }
     }
 }

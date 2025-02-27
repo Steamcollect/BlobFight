@@ -1,8 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
 {
     [Header("Settings")]
+
+    [SerializeField] bool isTestScene = false;
+
+    [Space(10)]
+
     [SerializeField, SceneName] string[] levelsName;
     List<string> levels = new();
 	[SerializeField] string mainMenuName;
@@ -48,8 +54,18 @@ public class SceneManagement : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive));
-        currentLevel = mainMenuName;
+        if(!isTestScene)
+        {
+            StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive));
+            currentLevel = mainMenuName;
+        }
+        else
+        {
+            currentLevel = SceneManager.GetActiveScene().name;
+            rseEnablePauseAction.Call();
+            rseOnFightStart.Call();
+            isLoading = false;
+        }
     }
 
     void LoadNextLevelRandomly()
@@ -69,6 +85,12 @@ public class SceneManagement : MonoBehaviour
         rseDisablePauseAction.Call();
         isLoading = true;
 
+        if (!isTestScene) TransitionWithFade(isMainMenu);
+        else InstanteTransition();
+    }
+
+    void TransitionWithFade(bool isMainMenu)
+    {
         rseFadeOut.Call(() =>
         {
             if (currentLevel != "")
@@ -101,5 +123,27 @@ public class SceneManagement : MonoBehaviour
                 });
             }));
         });
+    }
+    void InstanteTransition()
+    {
+        if (currentLevel != "")
+        {
+            StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
+        }
+
+        if (levels.Count <= 0) levels.AddRange(levelsName);
+
+        int rnd = Random.Range(0, levels.Count);
+        currentLevel = levels[rnd];
+
+        levels.RemoveAt(rnd);
+
+
+        StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
+        {
+            rseEnablePauseAction.Call();
+            rseOnFightStart.Call();
+            isLoading = false;
+        }));
     }
 }
