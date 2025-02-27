@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 43153676634836435}
   - component: {fileID: 1461552652359324139}
   - component: {fileID: 7314335959617273680}
+  - component: {fileID: 7534611521341140703}
   m_Layer: 0
   m_Name: BlobJoint (10)
   m_TagString: Blob
@@ -95,6 +96,21 @@ CircleCollider2D:
   m_Offset: {x: -0.000000020154022, y: 0.5}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &7534611521341140703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253467962816311049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1461552652359324139}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &676199424938980523
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +577,7 @@ GameObject:
   - component: {fileID: 7570484557991017284}
   - component: {fileID: 5199536782192627005}
   - component: {fileID: 561798976202441509}
+  - component: {fileID: 8612317088848802774}
   m_Layer: 0
   m_Name: BlobJoint (5)
   m_TagString: Blob
@@ -645,6 +662,21 @@ CircleCollider2D:
   m_Offset: {x: 0.25, y: -0.4330127}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &8612317088848802774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958215696552307569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5199536782192627005}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &2416926509384189979
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +688,7 @@ GameObject:
   - component: {fileID: 3960501937076853746}
   - component: {fileID: 1416860201021149844}
   - component: {fileID: 7004736946990032236}
+  - component: {fileID: 2980849364020870247}
   m_Layer: 0
   m_Name: BlobJoint (1)
   m_TagString: Blob
@@ -740,6 +773,21 @@ CircleCollider2D:
   m_Offset: {x: -0.5, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &2980849364020870247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416926509384189979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1416860201021149844}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &2445346683314935188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1552,7 @@ GameObject:
   - component: {fileID: 2327912787291704441}
   - component: {fileID: 7535632789336118327}
   - component: {fileID: 4765438213785107794}
+  - component: {fileID: 5370886515723921511}
   m_Layer: 0
   m_Name: BlobJoint (9)
   m_TagString: Blob
@@ -1588,6 +1637,21 @@ CircleCollider2D:
   m_Offset: {x: 0.24999994, y: 0.43301272}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &5370886515723921511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201094002138468326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 7535632789336118327}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &5288605252033070199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1663,7 @@ GameObject:
   - component: {fileID: 5071832066785984783}
   - component: {fileID: 7872576145946085461}
   - component: {fileID: 5461186431456246447}
+  - component: {fileID: 3786543766861809932}
   m_Layer: 0
   m_Name: BlobJoint (3)
   m_TagString: Blob
@@ -1683,6 +1748,21 @@ CircleCollider2D:
   m_Offset: {x: -0.25, y: -0.43301272}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &3786543766861809932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5288605252033070199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 7872576145946085461}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &5295921670383044175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1774,7 @@ GameObject:
   - component: {fileID: 6825201901928020123}
   - component: {fileID: 3904607103932247175}
   - component: {fileID: 2415959324251676680}
+  - component: {fileID: 8632764853872052909}
   m_Layer: 0
   m_Name: BlobJoint (8)
   m_TagString: Blob
@@ -1778,6 +1859,21 @@ CircleCollider2D:
   m_Offset: {x: 0.43301272, y: 0.24999999}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &8632764853872052909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295921670383044175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3904607103932247175}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &5327283560578478816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1885,7 @@ GameObject:
   - component: {fileID: 3643456702632874638}
   - component: {fileID: 2015801568820680587}
   - component: {fileID: 215701415311500111}
+  - component: {fileID: 2604156608659112114}
   m_Layer: 0
   m_Name: BlobJoint (7)
   m_TagString: Blob
@@ -1873,6 +1970,21 @@ CircleCollider2D:
   m_Offset: {x: 0.5, y: 0.00000002419796}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &2604156608659112114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327283560578478816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2015801568820680587}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &5683452872809210774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,6 +1996,7 @@ GameObject:
   - component: {fileID: 3114822118865841227}
   - component: {fileID: 3680761657178793572}
   - component: {fileID: 8150117541801350838}
+  - component: {fileID: 5327759370331536859}
   m_Layer: 0
   m_Name: BlobJoint (2)
   m_TagString: Blob
@@ -1968,6 +2081,21 @@ CircleCollider2D:
   m_Offset: {x: -0.4330127, y: -0.25000003}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &5327759370331536859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683452872809210774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3680761657178793572}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &5696688189413515682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +2107,7 @@ GameObject:
   - component: {fileID: 5020381426362518175}
   - component: {fileID: 3082515600078681646}
   - component: {fileID: 6899225929122140839}
+  - component: {fileID: 5443830000597831175}
   m_Layer: 0
   m_Name: BlobJoint (6)
   m_TagString: Blob
@@ -2063,6 +2192,21 @@ CircleCollider2D:
   m_Offset: {x: 0.4330127, y: -0.25000003}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &5443830000597831175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696688189413515682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3082515600078681646}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &6724505695075795745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,6 +2343,7 @@ GameObject:
   - component: {fileID: 4657501727551700784}
   - component: {fileID: 3851416666136729516}
   - component: {fileID: 3051257457178679431}
+  - component: {fileID: 7996169586270744201}
   m_Layer: 0
   m_Name: BlobJoint (12)
   m_TagString: Blob
@@ -2283,6 +2428,21 @@ CircleCollider2D:
   m_Offset: {x: -0.43301263, y: 0.2500001}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &7996169586270744201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7576523281276242526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3851416666136729516}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &7688631288203330377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2510,7 @@ GameObject:
   - component: {fileID: 2629956655206316680}
   - component: {fileID: 820511166989179409}
   - component: {fileID: 5254413122866333050}
+  - component: {fileID: 3591198286419612253}
   m_Layer: 0
   m_Name: BlobJoint (11)
   m_TagString: Blob
@@ -2434,6 +2595,21 @@ CircleCollider2D:
   m_Offset: {x: -0.24999999, y: 0.43301272}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &3591198286419612253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7969637081626993723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 820511166989179409}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &8036656644236040139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,6 +2693,7 @@ GameObject:
   - component: {fileID: 8539665353618501041}
   - component: {fileID: 4984413241403491806}
   - component: {fileID: 1958119224346039856}
+  - component: {fileID: 4574012863774124582}
   m_Layer: 0
   m_Name: BlobJoint (4)
   m_TagString: Blob
@@ -2601,6 +2778,21 @@ CircleCollider2D:
   m_Offset: {x: 0.000000007664111, y: -0.5}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &4574012863774124582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363391856563956878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4984413241403491806}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &8637187308551530399
 GameObject:
   m_ObjectHideFlags: 0

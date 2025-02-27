@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Window : MonoBehaviour
 {
     public string windowName;
     public WindowType windowType;
+    public Button buttonResume;
 
     [Space(10)]
     public GameObject content;

@@ -378,6 +378,17 @@ MonoBehaviour:
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
   rseCloseAllWindow: {fileID: 11400000, guid: 6d17635263aaced49831067740023c7e, type: 2}
+--- !u!114 &1652013720 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8465353205731601187, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+  m_PrefabInstance: {fileID: 211421305507338407}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1975792719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3756537218117449702, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
@@ -538,6 +549,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3654298239191413587, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+      propertyPath: defaultButton
+      value: 
+      objectReference: {fileID: 1652013720}
     - target: {fileID: 4837408964851800751, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
       propertyPath: m_Name
       value: PausePanel

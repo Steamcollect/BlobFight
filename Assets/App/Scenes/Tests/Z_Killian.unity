@@ -4245,6 +4245,7 @@ GameObject:
   - component: {fileID: 482357732}
   - component: {fileID: 482357731}
   - component: {fileID: 482357730}
+  - component: {fileID: 482357734}
   m_Layer: 0
   m_Name: BallHammer(Clone)
   m_TagString: Untagged
@@ -4406,6 +4407,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &482357734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482357728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 482357730}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1001 &484686899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7894,10 +7910,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1237617896}
     m_Modifications:
-    - target: {fileID: 2542050320697814845, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: slidingGravity
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_Name
       value: Blob

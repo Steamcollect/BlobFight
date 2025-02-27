@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faaeb3caf06c3464998c101151c031ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultButton: {fileID: 8163352663260946181}
+  defaultButton: {fileID: 8465353205731601187}
 --- !u!1 &4390344707962433309
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowName: PausePanel
   windowType: 1
+  buttonResume: {fileID: 8465353205731601187}
   content: {fileID: 7484946344235108433}
   animator: {fileID: 4849198132488124326}
 --- !u!1 &4915996544685134266
