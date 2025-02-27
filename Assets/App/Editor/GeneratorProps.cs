@@ -504,8 +504,7 @@ public class GeneratorProps : EditorWindow
 
                     current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
                 }
-
-                if(i < createdObjects.Count - 1)
+                else if(i < createdObjects.Count - 1)
                 {
                     GameObject next = createdObjects[i + 1];
                     Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();
