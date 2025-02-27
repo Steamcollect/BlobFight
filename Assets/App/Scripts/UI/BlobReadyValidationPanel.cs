@@ -56,7 +56,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     private void Update()
     {
-        if (!isValid)
+        if (!isValid && joint.jointsRb[0].bodyType != RigidbodyType2D.Static)
         {
             if (isInputClick)
             {
@@ -81,11 +81,21 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
             UpdateWheelAmount();
         }
+        else
+        {
+            isInputClick = false;
+        }
 
-        UpdateWheelPosition();
+            UpdateWheelPosition();
     }
 
-    void SetValidInput(bool isClick) => isInputClick = isClick;
+    void SetValidInput(bool isClick)
+    {
+        if (joint.jointsRb[0].bodyType != RigidbodyType2D.Static)
+        {
+            isInputClick = isClick;
+        }
+    }
 
     void ReturnButton()
     {
