@@ -126,24 +126,6 @@ public class SceneManagement : MonoBehaviour
     }
     void InstanteTransition()
     {
-        if (currentLevel != "")
-        {
-            StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
-        }
-
-        if (levels.Count <= 0) levels.AddRange(levelsName);
-
-        int rnd = Random.Range(0, levels.Count);
-        currentLevel = levels[rnd];
-
-        levels.RemoveAt(rnd);
-
-
-        StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
-        {
-            rseEnablePauseAction.Call();
-            rseOnFightStart.Call();
-            isLoading = false;
-        }));
+        SceneManager.LoadScene(currentLevel);
     }
 }
