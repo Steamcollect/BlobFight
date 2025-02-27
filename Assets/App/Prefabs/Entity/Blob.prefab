@@ -475,9 +475,10 @@ MonoBehaviour:
     mass: 500
     distanceMult: 3
     damping: 0
-    frequency: 1000000
+    frequency: 100
   extendStaminaCost: 50
-  slidingGravity: 2.5
+  timeBetweenExtend: 0.1
+  slidingGravity: 5
   angleSpeedMultiplierCurve:
     serializedVersion: 2
     m_Curve:
