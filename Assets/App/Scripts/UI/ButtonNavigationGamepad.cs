@@ -17,25 +17,11 @@ public class ButtonNavigationGamepad : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
-    private void OnEnable()
-    {
-        defaultButton.Select();
-    }
-
-    private void Start()
-    {
-        defaultButton.Select();
-    }
-
     private void Update()
     {
-        if (Input.GetButtonDown("Submit") || Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (EventSystem.current.currentSelectedGameObject == null)
         {
-            if (EventSystem.current.currentSelectedGameObject == null)
-            {
-                
-                EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
-            }
+            defaultButton.Select();
         }
     }
 }

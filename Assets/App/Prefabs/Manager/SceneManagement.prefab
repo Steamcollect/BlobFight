@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd7728e4eae02484b894a16e59f7344a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTestScene: 0
   levelsName:
   - Level_1
+  main: 01_Game
   mainMenuName: 02_MainMenu
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}

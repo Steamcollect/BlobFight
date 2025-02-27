@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -53,6 +54,7 @@ public class Window : MonoBehaviour
     IEnumerator DisablePanelOnAnimationEnd()
     {
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        EventSystem.current.SetSelectedGameObject(null);
         content.SetActive(false);
     }
 

@@ -11,7 +11,8 @@ public class SceneManagement : MonoBehaviour
 
     [SerializeField, SceneName] string[] levelsName;
     List<string> levels = new();
-	[SerializeField] string mainMenuName;
+    [SerializeField] string main;
+    [SerializeField] string mainMenuName;
 
     string currentLevel = "";
 
@@ -86,7 +87,7 @@ public class SceneManagement : MonoBehaviour
         isLoading = true;
 
         if (!isTestScene) TransitionWithFade(isMainMenu);
-        else InstanteTransition();
+        else InstanteTransition(isMainMenu);
     }
 
     void TransitionWithFade(bool isMainMenu)
@@ -124,8 +125,15 @@ public class SceneManagement : MonoBehaviour
             }));
         });
     }
-    void InstanteTransition()
+    void InstanteTransition(bool isMainMenu)
     {
-        SceneManager.LoadScene(currentLevel);
+        if(isMainMenu)
+        {
+            SceneManager.LoadScene(main);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentLevel);
+        }
     }
 }
