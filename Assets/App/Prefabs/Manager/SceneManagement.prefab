@@ -52,6 +52,7 @@ MonoBehaviour:
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
   rseReturnToMainMenu: {fileID: 11400000, guid: 6197bf0e98fb7d24f8073ae8690275b7, type: 2}
+  rseQuit: {fileID: 11400000, guid: 90f1311fdebe863438f72eb1b20bc54b, type: 2}
   rseFadeIn: {fileID: 11400000, guid: e8f09c3d7c12c8249a196b2d4ad7e139, type: 2}
   rseFadeOut: {fileID: 11400000, guid: 5a17d97eb8556424896f138b2f9da148, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}

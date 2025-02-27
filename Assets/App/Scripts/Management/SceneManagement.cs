@@ -29,6 +29,7 @@ public class SceneManagement : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
     [SerializeField] RSE_ReturnToMainMenu rseReturnToMainMenu;
+    [SerializeField] RSE_Quit rseQuit;
 
     [Header("Output")]
     [SerializeField] RSE_FadeIn rseFadeIn;
@@ -46,11 +47,13 @@ public class SceneManagement : MonoBehaviour
     {
         rseLoadNextLevel.action += LoadNextLevelRandomly;
         rseReturnToMainMenu.action += ReturnToMainMenu;
+        rseQuit.action += QuitGame;
     }
     private void OnDisable()
     {
         rseLoadNextLevel.action -= LoadNextLevelRandomly;
         rseReturnToMainMenu.action -= ReturnToMainMenu;
+        rseQuit.action -= QuitGame;
     }
 
     private void Start()
@@ -135,5 +138,13 @@ public class SceneManagement : MonoBehaviour
         {
             SceneManager.LoadScene(currentLevel);
         }
+    }
+
+    void QuitGame()
+    {
+        rseFadeOut.Call(() =>
+        {
+            Application.Quit();
+        });
     }
 }
