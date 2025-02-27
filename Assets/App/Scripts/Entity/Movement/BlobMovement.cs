@@ -132,7 +132,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void ExtendBlob()
     {
-        if (!deathCanMove || !canExtend || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime)) return;
+        if (!deathCanMove || !canExtend || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime) || joint.jointsRb[0].bodyType == RigidbodyType2D.Static) return;
 
         stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
         stamina.DisableStaminaRecuperation();
@@ -145,8 +145,11 @@ public class BlobMovement : MonoBehaviour, IPausable
         onExtend?.Invoke();
         isExtend = true;
     }
+
     void ShrinkBlob()
     {
+        if (isExtend && joint.jointsRb[0].bodyType == RigidbodyType2D.Static) return;
+
         stamina.EnableStaminaRecuperation();
 
         statistics = shrinkStatistics;

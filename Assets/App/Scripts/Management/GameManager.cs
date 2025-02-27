@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     void TogglePause()
     {
-        if (gameState == GameState.MainMenu || !canPause) return;
+        if (!canPause) return;
 
         switch (gameState)
         {
@@ -84,6 +84,12 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.Gameplay;
                 rseDisableWindow.Call("PausePanel");
                 rseOnResume.Call();
+                break;
+
+            case GameState.MainMenu:
+                gameState = GameState.Pause;
+                rseEnableWindow.Call("PausePanel");
+                rseOnPause.Call();
                 break;
         }
     }
