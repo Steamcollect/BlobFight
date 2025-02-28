@@ -17,11 +17,18 @@ public class ButtonNavigationGamepad : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    private void OnEnable()
+    {
+        defaultButton.Select();
+        defaultButton.GetComponent<InteractiveButton>().OnSelect(null);
+    }
+
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             defaultButton.Select();
+            defaultButton.GetComponent<InteractiveButton>().OnSelect(null);
         }
     }
 }

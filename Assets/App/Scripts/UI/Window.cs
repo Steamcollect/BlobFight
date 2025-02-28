@@ -8,7 +8,6 @@ public class Window : MonoBehaviour
 {
     public string windowName;
     public WindowType windowType;
-    public Button buttonResume;
 
     [Space(10)]
     public GameObject content;
@@ -38,6 +37,7 @@ public class Window : MonoBehaviour
         {
             case WindowType.GameObject:
                 content.SetActive(false);
+                EventSystem.current.SetSelectedGameObject(null);
                 break;
 
             case WindowType.Animator:

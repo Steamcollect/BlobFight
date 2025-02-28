@@ -3466,6 +3466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windows:
   - {fileID: 2047234348}
+  - {fileID: 301310819}
   rseEnableJoining: {fileID: 11400000, guid: 3747a78eb82a5c24195bd4cd1519702c, type: 2}
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
@@ -3839,6 +3840,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &301310819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8487068356154267856, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+  m_PrefabInstance: {fileID: 2047234347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd32a9b22292484294c2b8fdf6c471a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &319849157
 GameObject:
   m_ObjectHideFlags: 0

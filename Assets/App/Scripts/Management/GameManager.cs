@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
             case GameState.Pause:
                 gameState = GameState.Gameplay;
+                rseDisableWindow.Call("Settings");
                 rseDisableWindow.Call("PausePanel");
                 rseOnResume.Call();
                 break;
