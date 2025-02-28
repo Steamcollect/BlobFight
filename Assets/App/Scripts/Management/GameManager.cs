@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(rsoBlobInGame.Value[i].gameObject);
         }
+
         rsoBlobInGame.Value.Clear();
     }
 }

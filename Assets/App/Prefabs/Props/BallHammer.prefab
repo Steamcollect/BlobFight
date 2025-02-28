@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1550047796772406056}
   - component: {fileID: 5241750810976674738}
   - component: {fileID: 2444283148228306749}
+  - component: {fileID: 7088803833101784525}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -148,6 +149,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &7088803833101784525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261014160091520009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1148742095169505841
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +175,7 @@ GameObject:
   - component: {fileID: 7563086601271915633}
   - component: {fileID: 7152963431540447149}
   - component: {fileID: 8170928238663297898}
+  - component: {fileID: 5753906596535480490}
   m_Layer: 0
   m_Name: BallHammer
   m_TagString: Untagged
@@ -338,6 +352,18 @@ MonoBehaviour:
   rb: {fileID: 7152963431540447149}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
+--- !u!114 &5753906596535480490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148742095169505841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1658579013693574367
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +408,7 @@ GameObject:
   - component: {fileID: 950241342045127880}
   - component: {fileID: 1610752351615555980}
   - component: {fileID: 7716956542163833369}
+  - component: {fileID: 1900010583459067686}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -518,6 +545,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &1900010583459067686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696218915964017801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1826973515703059557
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +697,7 @@ GameObject:
   - component: {fileID: 5335599575762951333}
   - component: {fileID: 9197841380048150825}
   - component: {fileID: 4097744735270812804}
+  - component: {fileID: 1536023064109573706}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -794,6 +834,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &1536023064109573706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673618491353653071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3725173567827294247
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +858,7 @@ GameObject:
   - component: {fileID: 8562537763563256768}
   - component: {fileID: 7018665813340561261}
   - component: {fileID: 4999911877038818559}
+  - component: {fileID: 3153611918660324567}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -942,6 +995,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &3153611918660324567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725173567827294247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3904644583235720990
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +1019,7 @@ GameObject:
   - component: {fileID: 7672703069159591163}
   - component: {fileID: 2181166230183688130}
   - component: {fileID: 3318594940070508343}
+  - component: {fileID: 4758610780235814203}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1090,6 +1156,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &4758610780235814203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904644583235720990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4335071577744044449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1276,7 @@ GameObject:
   - component: {fileID: 7856324873948339077}
   - component: {fileID: 1586639393311893998}
   - component: {fileID: 395738216879231042}
+  - component: {fileID: 5020652847379086403}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1334,6 +1413,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &5020652847379086403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785761615232587230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5897075561074620791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1437,7 @@ GameObject:
   - component: {fileID: 5752552942422302119}
   - component: {fileID: 6267470710015185069}
   - component: {fileID: 7529737973316313080}
+  - component: {fileID: 4612485599894277560}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1482,6 +1574,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &4612485599894277560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897075561074620791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6042644363796570459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1662,7 @@ GameObject:
   - component: {fileID: 9063892632049651310}
   - component: {fileID: 7499842268532053486}
   - component: {fileID: 4451576271125894517}
+  - component: {fileID: 982433826342587599}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1694,6 +1799,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &982433826342587599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7058226411174521640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7231694639390766421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1823,7 @@ GameObject:
   - component: {fileID: 979714821005911820}
   - component: {fileID: 4772544714276597822}
   - component: {fileID: 8479222584141490390}
+  - component: {fileID: 5942685015470362419}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1842,6 +1960,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &5942685015470362419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231694639390766421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7925345939559326647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1984,7 @@ GameObject:
   - component: {fileID: 6883897417843856096}
   - component: {fileID: 5105095661394993152}
   - component: {fileID: 6327165691514941969}
+  - component: {fileID: 470656494860510948}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -1990,6 +2121,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &470656494860510948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925345939559326647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8850402547633039534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,6 +2145,7 @@ GameObject:
   - component: {fileID: 1303254805921871460}
   - component: {fileID: 3160243748738422618}
   - component: {fileID: 5213144931651026547}
+  - component: {fileID: 3878044485620107575}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -2138,6 +2282,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 9999
   damageType: 0
+--- !u!114 &3878044485620107575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8850402547633039534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9080282328914460382
 GameObject:
   m_ObjectHideFlags: 0
