@@ -252,7 +252,6 @@ public class GeneratorProps : EditorWindow
                 Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
                 Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
 
-                current.AddComponent<RigidbodyMotor>();
                 current.AddComponent<HingeHealth>();
                 current.AddComponent<HingeTrigger>();
 
@@ -472,7 +471,6 @@ public class GeneratorProps : EditorWindow
                 Rigidbody2D currentRb = current.GetComponent<Rigidbody2D>();
                 Rigidbody2D previousRb = createdObjects[i - 1].GetComponent<Rigidbody2D>();
 
-                current.AddComponent<RigidbodyMotor>();
                 current.AddComponent<HingeHealth>();
                 current.AddComponent<HingeTrigger>();
 
@@ -506,8 +504,7 @@ public class GeneratorProps : EditorWindow
 
                     current.GetComponent<HingeHealth>().SetHingeJoint(hinge);
                 }
-
-                if(i < createdObjects.Count - 1)
+                else if(i < createdObjects.Count - 1)
                 {
                     GameObject next = createdObjects[i + 1];
                     Rigidbody2D nextRb = next.GetComponent<Rigidbody2D>();

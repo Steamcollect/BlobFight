@@ -51,7 +51,10 @@ public class MyJoint : MonoBehaviour, IPausable
 
     public void ResetVelocity()
     {
-        rb.velocity = Vector3.zero;
+        if(rb.bodyType != RigidbodyType2D.Static)
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
     public void SetVelocity(Vector2 velocity)
     {

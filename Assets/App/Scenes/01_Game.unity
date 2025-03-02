@@ -374,6 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windows:
   - {fileID: 1145921161}
+  - {fileID: 211421305507338408}
+  rseEnableJoining: {fileID: 11400000, guid: 3747a78eb82a5c24195bd4cd1519702c, type: 2}
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
   rseCloseAllWindow: {fileID: 11400000, guid: 6d17635263aaced49831067740023c7e, type: 2}
@@ -546,6 +548,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+--- !u!114 &211421305507338408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8487068356154267856, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+  m_PrefabInstance: {fileID: 211421305507338407}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd32a9b22292484294c2b8fdf6c471a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &633341013293957529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -596,7 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[0]
-      value: Tweek_Cyril
+      value: Z_Killian
       objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name
@@ -672,6 +685,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 838442062}
     m_Modifications:
+    - target: {fileID: 6030696405772960874, guid: 0a3a00adf4938e64f935f972c604fb1d, type: 3}
+      propertyPath: canPause
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7130130916555675231, guid: 0a3a00adf4938e64f935f972c604fb1d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -737,10 +754,6 @@ PrefabInstance:
     - target: {fileID: 1332142681661897242, guid: 36882b0ba3623df489609dc510b42753, type: 3}
       propertyPath: m_Name
       value: FadePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1332142681661897242, guid: 36882b0ba3623df489609dc510b42753, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2046754217415292188, guid: 36882b0ba3623df489609dc510b42753, type: 3}
       propertyPath: m_Pivot.x

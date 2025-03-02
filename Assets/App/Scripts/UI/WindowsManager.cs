@@ -15,6 +15,7 @@ public class WindowsManager : MonoBehaviour
     // RSP
 
     [Header("Input")]
+    [SerializeField] RSE_EnableJoining rseEnableJoining;
     [SerializeField] RSE_EnableWindow rseEnableWindow;
     [SerializeField] RSE_DisableWindow rseDisableWindow;
     [SerializeField] RSE_CloseAllWindow rseCloseAllWindow;
@@ -31,6 +32,12 @@ public class WindowsManager : MonoBehaviour
         rseEnableWindow.action -= EnableWindow;
         rseDisableWindow.action -= DisableWindow;
         rseCloseAllWindow.action -= CloseAllWindow;
+    }
+
+    private void Start()
+    {
+        rseEnableJoining.Call();
+        rseEnableWindow.Call("PlayerSelectionPanel");
     }
 
     void EnableWindow(string windowName)

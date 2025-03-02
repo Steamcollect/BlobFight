@@ -40,6 +40,12 @@ public class FadePanel : MonoBehaviour
         FadeIn();
     }
 
+    void OnDestroy()
+    {
+        backgroundImage?.rectTransform.DOKill();
+        circleImage?.rectTransform.DOKill();
+    }
+
     void FadeIn(Action OnEnd = null)
     {
         backgroundImage.rectTransform.DOKill();

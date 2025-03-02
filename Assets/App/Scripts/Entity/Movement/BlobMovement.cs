@@ -10,7 +10,9 @@ public class BlobMovement : MonoBehaviour, IPausable
     BlobStatistics statistics;
 
     [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
+    [SerializeField] float timeBetweenExtend;
     bool isExtend = false;
+    bool canExtend = true;
 
     [SerializeField] float slidingGravity;
 
@@ -117,6 +119,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     #endregion
 
+    #region ApplyMovement
     void Move()
     {
         Vector2 direction = Vector2.right;
@@ -130,7 +133,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void ExtendBlob()
     {
-        if (!deathCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime)) return;
+        if (!deathCanMove || !canExtend || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime) || joint.jointsRb[0].bodyType == RigidbodyType2D.Static) return;
 
         stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
         stamina.DisableStaminaRecuperation();
@@ -143,8 +146,11 @@ public class BlobMovement : MonoBehaviour, IPausable
         onExtend?.Invoke();
         isExtend = true;
     }
+
     void ShrinkBlob()
     {
+        if (isExtend && joint.jointsRb[0].bodyType == RigidbodyType2D.Static) return;
+
         stamina.EnableStaminaRecuperation();
 
         statistics = shrinkStatistics;
@@ -154,7 +160,17 @@ public class BlobMovement : MonoBehaviour, IPausable
         onShrink?.Invoke();
 
         isExtend = false;
+
+        StartCoroutine(ExtendCooldown());
     }
+
+    IEnumerator ExtendCooldown()
+    {
+        canExtend = false;
+        yield return new WaitForSeconds(timeBetweenExtend);
+        canExtend = true;
+    }
+    #endregion
 
     #region Collisions
     void OnGroundableEnter(Collision2D collision)

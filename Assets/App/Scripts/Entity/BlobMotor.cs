@@ -88,8 +88,6 @@ public class BlobMotor : MonoBehaviour
     {
         componentsContent.SetActive(false);
 
-        if (rsoBlobInGame.Value == null) rsoBlobInGame.Value = new();
-
         if(rsoBlobInGame.Value.Count >= blobVisuals.blobs.Length)
         {
             Destroy(gameObject);

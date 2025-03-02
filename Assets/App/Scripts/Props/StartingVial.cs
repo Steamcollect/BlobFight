@@ -9,6 +9,7 @@ public class StartingVial : MonoBehaviour
     int breakCount;
 
     bool canBreak = true;
+    bool isPaused = false;
 
     //[Header("References")]
     BlobMotor blob;
@@ -20,6 +21,30 @@ public class StartingVial : MonoBehaviour
 
     //[Header("Input")]
     //[Header("Output")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
+    private void OnEnable()
+    {
+        rseOnPause.action += Lock;
+        rseOnResume.action += UnLock;
+    }
+
+    private void OnDisable()
+    {
+        rseOnPause.action -= Lock;
+        rseOnResume.action -= UnLock;
+    }
+
+    void Lock()
+    {
+        isPaused = true;
+    }
+
+    void UnLock()
+    {
+        isPaused = false;
+    }
 
     public void Setup(BlobMotor blob)
     {
@@ -30,10 +55,10 @@ public class StartingVial : MonoBehaviour
 
     void OnPress()
     {
-        if (!canBreak) return;
+        if (!canBreak || isPaused) return;
 
         breakCount++;
-        if(breakCount >= breakRequire)
+        if (breakCount >= breakRequire)
         {
             blob.Spawn(transform.position);
             canBreak = false;
