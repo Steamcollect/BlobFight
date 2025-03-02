@@ -213,6 +213,7 @@ public class BlobMotor : MonoBehaviour
     public BlobJoint GetJoint() { return joint; }
     public BlobHealth GetHealth() { return health; }
     public EntityInput GetInput() { return input; }
+    public BlobMovement GetMovement() { return movement; }
 
     public BlobColor GetColor() { return currentStats.color; }
     #endregion

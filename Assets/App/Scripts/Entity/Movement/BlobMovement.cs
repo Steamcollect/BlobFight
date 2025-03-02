@@ -112,7 +112,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void SetInput(Vector2 input)
     {
-        moveInput = input.normalized;
+        if (input.sqrMagnitude > .1f) moveInput = input.normalized;
+        else moveInput = Vector2.zero;
     }
     #endregion
 
@@ -223,4 +224,6 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     public bool CanMove() { return deathCanMove && pauseCanMove; }
     #endregion
+
+    public bool IsExtend() { return isExtend; }
 }
