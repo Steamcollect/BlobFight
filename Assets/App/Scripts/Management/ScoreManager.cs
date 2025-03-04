@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class ScoreManager : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
     [SerializeField] RSE_OnGameStart rseOnGameStart;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
     [SerializeField] RSE_UpdateCrownColor rseUpdateCrownColor;
+    [SerializeField] RSE_AddScore rseAddScore;
 
     //[Header("Output")]
     private SerializableDictionary<BlobMotor, int> scoreDictionary = new SerializableDictionary<BlobMotor, int>();
@@ -31,83 +34,98 @@ public class ScoreManager : MonoBehaviour
     {
         rseOnBlobDeath.action += UpdateCrownOwner;
         rseOnGameStart.action += SetUp;
+        rseOnFightStart.action += GetScoreMax;
+        rseAddScore.action += AddScore;
     }
+
     private void OnDisable()
     {
         rseOnBlobDeath.action -= UpdateCrownOwner;
         rseOnGameStart.action -= SetUp;
+        rseOnFightStart.action -= GetScoreMax;
+        rseAddScore.action -= AddScore;
     }
+
     private void SetUp()
     {
         crownIsHere = false;
-        GetScores();
-        GetScoreMax();
-    }
-    private void GetScores()
-    {
+        scoreDictionary.Dictionary.Clear();
+
         for (int i = 0; rsoBlobInGame.Value.Count > i; i++)
         {
             blobKey = rsoBlobInGame.Value[i];
-            scoreDictionary.Dictionary.Add(blobKey, blobKey.GetScore());
+            scoreDictionary.Dictionary.Add(blobKey, 0);
         }
     }
+
     private void GetScoreMax()
     {
         counterEgality = 0;
+
+        if (!scoreDictionary.Dictionary.Any())
+        {
+            return;
+        }
+
         max = scoreDictionary.Dictionary.Values.Max();
         blobKey = scoreDictionary.Dictionary.FirstOrDefault(x => x.Value == max).Key;
+
         for (int i = 0; rsoBlobInGame.Value.Count > i; i++)
         {
             BlobMotor blob = rsoBlobInGame.Value[i];
             blob.DisableCrown();
         }
+
         if (max != 0)
         {
             crownIsHere = true;
-            foreach (KeyValuePair<BlobMotor, int> blobScore in scoreDictionary.Dictionary)
+            counterEgality = scoreDictionary.Dictionary.Count(pair => pair.Value == max);
+
+            foreach (var blobScore in scoreDictionary.Dictionary.Where(pair => pair.Value == max))
             {
-                if (blobScore.Value == max)
+                blobScore.Key.EnableCrown();
+            }
+
+            rseUpdateCrownColor.Call(counterEgality == 1);
+        }
+    }
+
+    private void UpdateCrownOwner(BlobMotor blob)
+    {
+        bool anyBlobAlive = scoreDictionary.Dictionary.Keys.Any(blob => blob.IsAlive());
+
+        if (anyBlobAlive)
+        {
+            counterEgality = 0;
+            blob.DisableCrown();
+
+            int highestScore = scoreDictionary.Dictionary
+                        .Where(p => p.Key.IsAlive())
+                        .Max(p => p.Value);
+
+            List<BlobMotor> bestPlayers = scoreDictionary.Dictionary
+                .Where(p => p.Key.IsAlive() && p.Value == highestScore)
+                .Select(p => p.Key)
+                .ToList();
+
+            if (bestPlayers.Count > 0 && crownIsHere)
+            {
+                foreach (BlobMotor player in bestPlayers)
                 {
                     counterEgality++;
-                    blobScore.Key.EnableCrown();
+                    player.EnableCrown();
                 }
-            }
-            if (counterEgality == 1)
-            {
-                rseUpdateCrownColor.Call(true);
-            }
-            else
-            {
-                rseUpdateCrownColor.Call(false);
+
+                rseUpdateCrownColor.Call(counterEgality == 1);
             }
         }
     }
-    private void UpdateCrownOwner(BlobMotor blob)
+
+    private void AddScore(BlobMotor blob)
     {
-        counterEgality = 0;
-        blob.DisableCrown();
-        BlobMotor bestPlayer = scoreDictionary.Dictionary
-                    .Where(p => p.Key.IsAlive())
-                    .OrderByDescending(p => p.Value)
-                    .FirstOrDefault().Key;
-        if (bestPlayer != null && crownIsHere)
+        if (scoreDictionary.Dictionary.ContainsKey(blob))
         {
-            foreach (KeyValuePair<BlobMotor, int> blobScore in scoreDictionary.Dictionary)
-            {
-                if (blobScore.Value == bestPlayer.GetScore())
-                {
-                    counterEgality++;
-                    blobScore.Key.EnableCrown();
-                }
-            }
-            if (counterEgality == 1)
-            {
-                rseUpdateCrownColor.Call(true);
-            }
-            else
-            {
-                rseUpdateCrownColor.Call(false);
-            }
+            scoreDictionary.Dictionary[blob] += 1;
         }
     }
 }

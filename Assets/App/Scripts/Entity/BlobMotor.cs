@@ -12,8 +12,6 @@ public class BlobMotor : MonoBehaviour
     BlobInitializeStatistic currentStats;
     public BlobInitializeStatistic GetStats() {  return currentStats; }
 
-    private int score;
-
     [Header("References")]
     [SerializeField] GameObject componentsContent;
 
@@ -93,11 +91,11 @@ public class BlobMotor : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        rsoBlobInGame.Value.Add(this);
     }
     private void Start()
     {
+        rsoBlobInGame.Value.Add(this);
+
         pausables = GetComponentsInChildren<IPausable>();
 
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
@@ -186,16 +184,6 @@ public class BlobMotor : MonoBehaviour
     public void DisableCrown()
     {
         disableCrown?.Invoke();
-    }
-
-    public void AddScore()
-    {
-        winScore.AddScore();
-    }
-    public int GetScore()
-    {
-        score = winScore.GetScore();
-        return score;
     }
     #endregion
 

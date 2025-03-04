@@ -20,6 +20,7 @@ public class RoundManager : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
     [SerializeField] RSE_OnFightEnd rseOnFightEnd;
+    [SerializeField] RSE_AddScore rseAddScore;
 
     private void OnEnable()
     {
@@ -41,13 +42,13 @@ public class RoundManager : MonoBehaviour
     {
         blobs.Remove(blob);
 
-        if(blobs.Count == 1)
+        if (blobs.Count == 1)
         {
-            blobs[0].AddScore();
+            rseAddScore.Call(blobs[0]);
             rseOnFightEnd.Call();
             rseLoadNextLevel.Call();
         }
-        else if (blobs.Count <= 0)
+        else
         {
             rseOnFightEnd.Call();
             rseLoadNextLevel.Call();
