@@ -27,6 +27,7 @@ public class BlobJoint : MonoBehaviour
     {
         SetupSprings();
     }
+    
     void SetupSprings()
     {
         for (int i = 0; i < jointsRb.Length; i++)
@@ -41,20 +42,24 @@ public class BlobJoint : MonoBehaviour
 
             for (int j = i + 1; j < jointsRb.Length; j++)
             {
-                SpringJoint2D spring = jointsRb[i].gameObject.AddComponent<SpringJoint2D>();
-                spring.connectedBody = jointsRb[j];
-                spring.autoConfigureDistance = false;
-
-                float distance = Vector2.Distance(jointsRb[i].transform.position, jointsRb[j].transform.position);
-                spring.distance = distance;
-
-                joint.jointsConnected.Add(new MyJoint.Spring(distance, spring, jointsRb[j]));
+                CreateJoint(joint, jointsRb[i], jointsRb[j]);
             }
 
             joints.Add(joint);
         }
 
         onJointsConnected?.Invoke();
+    }
+    void CreateJoint(MyJoint joint, Rigidbody2D current, Rigidbody2D target)
+    {
+        SpringJoint2D spring = current.gameObject.AddComponent<SpringJoint2D>();
+        spring.connectedBody = target;
+        spring.autoConfigureDistance = false;
+
+        float distance = Vector2.Distance(current.transform.position, target.transform.position);
+        spring.distance = distance;
+
+        joint.jointsConnected.Add(new MyJoint.Spring(distance, spring, target));
     }
 
     public void SetupLayer(LayerMask layerMask)

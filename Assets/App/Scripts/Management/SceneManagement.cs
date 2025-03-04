@@ -12,8 +12,8 @@ public class SceneManagement : MonoBehaviour
 
     [SerializeField, SceneName] string[] levelsName;
     List<string> levels = new();
-    [SerializeField] string main;
-    [SerializeField] string mainMenuName;
+    [SerializeField, SceneName] string main;
+    [SerializeField, SceneName] string mainMenuName;
 
     string currentLevel = "";
 
