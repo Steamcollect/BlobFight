@@ -275,7 +275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 6073834846718290723}
-  main: 01_Game
+  main: 7b33a7ace39394043b01074ed383fe48
+  rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
 --- !u!1001 &1504331429936474963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -325,6 +326,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: main
+      value: 7b33a7ace39394043b01074ed383fe48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: isTestScene
       value: 1
       objectReference: {fileID: 0}
@@ -333,8 +338,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: mainMenuName
+      value: 542457f72f77e1642be309e1c41a0dc5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[0]
-      value: Z_Killian
+      value: 2f1175c4de1c92f4680766d2b2a4da67
       objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name

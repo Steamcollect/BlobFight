@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTestScene: 0
   levelsName:
-  - Level_1
-  main: 01_Game
-  mainMenuName: 02_MainMenu
+  - 8c9cfa26abfee488c85f1582747f6a02
+  main: 7b33a7ace39394043b01074ed383fe48
+  mainMenuName: 542457f72f77e1642be309e1c41a0dc5
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
   rseReturnToMainMenu: {fileID: 11400000, guid: 6197bf0e98fb7d24f8073ae8690275b7, type: 2}

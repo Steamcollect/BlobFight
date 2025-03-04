@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManagement : MonoBehaviour
@@ -11,6 +12,7 @@ public class SceneManagement : MonoBehaviour
     [Space(10)]
 
     [SerializeField, SceneName] string[] levelsName;
+
     List<string> levels = new();
     [SerializeField, SceneName] string main;
     [SerializeField, SceneName] string mainMenuName;
@@ -61,8 +63,11 @@ public class SceneManagement : MonoBehaviour
     {
         if(!isTestScene)
         {
-            StartCoroutine(Utils.LoadSceneAsync(mainMenuName, UnityEngine.SceneManagement.LoadSceneMode.Additive));
-            currentLevel = mainMenuName;
+            string scenePath = AssetDatabase.GUIDToAssetPath(mainMenuName);
+            string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+
+            StartCoroutine(Utils.LoadSceneAsync(sceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive));
+            currentLevel = sceneName;
         }
         else
         {
@@ -108,14 +113,22 @@ public class SceneManagement : MonoBehaviour
                 if (levels.Count <= 0) levels.AddRange(levelsName);
 
                 int rnd = Random.Range(0, levels.Count);
-                currentLevel = levels[rnd];
+
+                string scenePath = AssetDatabase.GUIDToAssetPath(levels[rnd]);
+                string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+
+                currentLevel = sceneName;
 
                 levels.RemoveAt(rnd);
             }
             else
             {
                 rseClearBlobInGame.Call();
-                currentLevel = mainMenuName;
+
+                string scenePath = AssetDatabase.GUIDToAssetPath(mainMenuName);
+                string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+
+                currentLevel = sceneName;
             }
 
             StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
@@ -133,7 +146,10 @@ public class SceneManagement : MonoBehaviour
     {
         if(isMainMenu)
         {
-            SceneManager.LoadScene(main);
+            string scenePath = AssetDatabase.GUIDToAssetPath(main);
+            string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+
+            SceneManager.LoadScene(sceneName);
         }
         else
         {

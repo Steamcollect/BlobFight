@@ -12199,10 +12199,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TEMP
       objectReference: {fileID: 0}
-    - target: {fileID: 8625100012948901837, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: rseOnGameStart
-      value: 
-      objectReference: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
