@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class BlobCombat : MonoBehaviour
@@ -13,6 +14,8 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] BlobMovement blobMovement;
 
     LayerMask currentLayer;
+
+    List<BlobMotor> blobsTouch = new();
 
     //[Space(10)]
     // RSO
@@ -38,22 +41,35 @@ public class BlobCombat : MonoBehaviour
 
     void OnBlobCollisionEnter(BlobMotor blob)
     {
+        if (blobsTouch.Contains(blob)) return;
+
         float velocity = blobJoint.GetVelocity().sqrMagnitude;
         Vector2 impactDir = (blob.GetJoint().GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
 
         if (!blob.GetMovement().IsExtend() && blobMovement.IsExtend())
         {
             Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
+            Debug.DrawLine(blob.GetJoint().GetJointsCenter(), blob.GetJoint().GetJointsCenter() + propulsionDir, Color.blue, 1);
 
             blob.GetJoint().AddForce(propulsionDir * pushBackForce * velocity * extendForceMultiplier);
             blobJoint.AddForce(-impactDir * returnPushBackForce * velocity);
             blob.GetTrigger().ExludeLayer(currentLayer, .5f);
+
+            StartCoroutine(ImpactCooldown(blob));
         }
         else if(!blob.GetMovement().IsExtend() && !blobMovement.IsExtend())
         {
             blob.GetJoint().AddForce(impactDir * pushBackForce * velocity);
             blobJoint.AddForce(-impactDir * returnPushBackForce * velocity);
+
+            StartCoroutine(ImpactCooldown(blob));
         }
+    }
+    IEnumerator ImpactCooldown(BlobMotor blobTouch)
+    {
+        blobsTouch.Add(blobTouch);
+        yield return new WaitForSeconds(.1f);
+        blobsTouch.Remove(blobTouch);
     }
 
     public static Vector2 CalculateExpulsionDirection(List<Collision2D> worldCollisions, Vector2 impactDirection)
