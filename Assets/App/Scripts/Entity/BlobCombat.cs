@@ -53,7 +53,7 @@ public class BlobCombat : MonoBehaviour
 
             blob.GetJoint().AddForce(propulsionDir * pushBackForce * velocity * extendForceMultiplier);
             blobJoint.AddForce(-impactDir * returnPushBackForce * velocity);
-            blob.GetTrigger().ExludeLayer(currentLayer, .5f);
+            blob.GetTrigger().ExludeLayer(currentLayer, .1f);
 
             StartCoroutine(ImpactCooldown(blob));
         }
