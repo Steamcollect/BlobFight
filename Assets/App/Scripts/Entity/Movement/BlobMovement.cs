@@ -9,6 +9,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobStatistics extendStatistics;
     BlobStatistics statistics;
 
+    [Space(15)]
     [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
     [SerializeField] float timeBetweenExtend;
     bool isExtend = false;
