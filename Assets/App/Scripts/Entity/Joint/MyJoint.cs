@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MyJoint : MonoBehaviour, IPausable
@@ -118,7 +117,7 @@ public class MyJoint : MonoBehaviour, IPausable
         rb.angularVelocity = angularVelocity;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Spring
     {
         public float distance;

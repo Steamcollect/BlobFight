@@ -22,7 +22,6 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
-    [SerializeField] BlobScore winScore;
 
 	[Space(5)]
     [SerializeField] BlobReadyValidationPanel preparationPanel;
@@ -49,7 +48,7 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] RSE_OnPause rseOnPause;
     [SerializeField] RSE_OnResume rseOnResume;
 
-    [HideInInspector] public Action enableCrown, disableCrown;
+    public Action enableCrown, disableCrown;
     
     private void OnEnable()
     {
