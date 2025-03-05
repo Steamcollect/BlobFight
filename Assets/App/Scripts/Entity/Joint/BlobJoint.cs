@@ -249,6 +249,14 @@ public class BlobJoint : MonoBehaviour
             joint.SetCollidPos(center, dist);
         }
     }
+
+    public void SetLayerToExlude(LayerMask layerToExclude)
+    {
+        foreach (MyJoint joint in joints)
+        {
+            joint.collid.excludeLayers = layerToExclude;
+        }
+    }
     #endregion
 
 

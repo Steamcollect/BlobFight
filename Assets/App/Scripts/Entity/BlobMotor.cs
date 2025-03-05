@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
 
 public class BlobMotor : MonoBehaviour
 {
@@ -21,6 +18,8 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
     [SerializeField] EntityInput input;
+    [SerializeField] BlobTrigger trigger;
+    [SerializeField] BlobCombat combat;
 
 	[Space(5)]
     [SerializeField] BlobReadyValidationPanel preparationPanel;
@@ -98,11 +97,19 @@ public class BlobMotor : MonoBehaviour
         pausables = GetComponentsInChildren<IPausable>();
 
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
-        joint.SetupLayer(currentStats.layer);
+
         visual.Setup(currentStats.color);
 
         Setup();
         UnlockInteraction();
+
+        Invoke("LateStart", .1f);
+    }
+    void LateStart()
+    {
+        joint.SetupLayer(currentStats.layer);
+        trigger.SetLayerToExclude(currentStats.layer);
+        combat.SetLayer(currentStats.layer);
     }
 
     void Setup()
@@ -201,6 +208,8 @@ public class BlobMotor : MonoBehaviour
     public BlobHealth GetHealth() { return health; }
     public EntityInput GetInput() { return input; }
     public BlobMovement GetMovement() { return movement; }
+    public BlobTrigger GetTrigger() { return trigger; }
+    public BlobCombat GetCombat() { return combat; }
 
     public BlobColor GetColor() { return currentStats.color; }
     #endregion

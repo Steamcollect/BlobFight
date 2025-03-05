@@ -1,24 +1,27 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
-using NUnit.Framework;
+using System.Collections;
 
 public class BlobTrigger : CollisionTrigger
 {
     [Header("Settings")]
-    [SerializeField] string groundableTag;
+    [SerializeField, TagName] string groundableTag;
     [SerializeField] bool isGrounded = false;
 
-    [SerializeField] string slidableTag;
+    [SerializeField, TagName] string slidableTag;
 
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
 
+    List<Collision2D> worldCollisions = new();
     List<GameObject> groundables = new();
     List<GameObject> slidables = new();
 
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
     public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
+
+    LayerMask layerToExclude;
 
     //[Space(10)]
     // RSO
@@ -64,6 +67,8 @@ public class BlobTrigger : CollisionTrigger
             OnSlidableEnter?.Invoke(collision);
             slidables.Add(collision.gameObject);
         }
+
+        worldCollisions.Add(collision);
     }
     void OnExit(Collision2D collision)
     {
@@ -79,7 +84,29 @@ public class BlobTrigger : CollisionTrigger
         {
             OnSlidableExit?.Invoke(collision);
         }
+
+        worldCollisions.Remove(collision);
+    }
+    public bool IsGrounded() { return isGrounded; }
+    public List<Collision2D> GetCollisions() { return worldCollisions; }
+
+    public void ExludeLayer(LayerMask layerToExclude, float excludingTime)
+    {
+        LayerMask combine = this.layerToExclude | layerToExclude;
+        this.layerToExclude = combine;
+        blobJoint.SetLayerToExlude(this.layerToExclude);
+
+        StartCoroutine(RemoveExludeLayer(layerToExclude, excludingTime));
+    }
+    IEnumerator RemoveExludeLayer(LayerMask layerToExclude, float excludingTime)
+    {
+        yield return new WaitForSeconds(excludingTime);
+        this.layerToExclude = this.layerToExclude & ~layerToExclude;
+        blobJoint.SetLayerToExlude(this.layerToExclude);
     }
 
-    public bool IsGrounded() { return isGrounded; }
+    public void SetLayerToExclude(LayerMask layerToExclude)
+    {
+        this.layerToExclude = layerToExclude;
+    }
 }
