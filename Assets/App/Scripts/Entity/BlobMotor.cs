@@ -10,7 +10,6 @@ public class BlobMotor : MonoBehaviour
     [Header("Settings")]
     [SerializeField] SSO_BlobVisuals blobVisuals;
     BlobInitializeStatistic currentStats;
-    public BlobInitializeStatistic GetStats() {  return currentStats; }
 
     [Header("References")]
     [SerializeField] GameObject componentsContent;
@@ -49,7 +48,8 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] RSE_OnResume rseOnResume;
 
     public Action enableCrown, disableCrown;
-    
+
+    #region Setup
     private void OnEnable()
     {
         rseOnFightStart.action += UnlockInteraction;
@@ -109,6 +109,7 @@ public class BlobMotor : MonoBehaviour
     {
         rseSpawnBlob.Call(this);
     }
+    #endregion
 
     void Enable()
     {
@@ -195,6 +196,7 @@ public class BlobMotor : MonoBehaviour
     #endregion
 
     #region Getter
+    public BlobInitializeStatistic GetStats() { return currentStats; }
     public BlobJoint GetJoint() { return joint; }
     public BlobHealth GetHealth() { return health; }
     public EntityInput GetInput() { return input; }

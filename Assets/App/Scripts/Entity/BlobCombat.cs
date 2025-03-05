@@ -4,10 +4,12 @@ public class BlobCombat : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float pushBackForce;
     [SerializeField] float returnPushBackForce;
+    [SerializeField] float extendForceMultiplier;
 
     [Header("References")]
     [SerializeField] BlobTrigger blobTrigger;
     [SerializeField] BlobJoint blobJoint;
+    [SerializeField] BlobMovement blobMovement;
 
     //[Space(10)]
     // RSO
@@ -34,9 +36,15 @@ public class BlobCombat : MonoBehaviour
     void OnBlobCollisionEnter(BlobMotor blob)
     {
         float velocity = blobJoint.GetVelocity().sqrMagnitude;
-        if (blob.GetJoint().GetVelocity().sqrMagnitude < velocity)
+        Vector2 direction = (blob.GetJoint().GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
+
+        if (!blob.GetMovement().IsExtend() && blobMovement.IsExtend())
         {
-            Vector2 direction = (blob.GetJoint().GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
+            blob.GetJoint().AddForce(direction * pushBackForce * velocity * extendForceMultiplier);
+            blobJoint.AddForce(-direction * returnPushBackForce * velocity);
+        }
+        else if(!blob.GetMovement().IsExtend() && !blobMovement.IsExtend())
+        {
             blob.GetJoint().AddForce(direction * pushBackForce * velocity);
             blobJoint.AddForce(-direction * returnPushBackForce * velocity);
         }
