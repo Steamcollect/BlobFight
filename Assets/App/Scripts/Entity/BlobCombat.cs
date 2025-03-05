@@ -62,6 +62,7 @@ public class BlobCombat : MonoBehaviour
             return impactDirection.normalized;
 
         Vector2 totalNormal = Vector2.zero;
+
         foreach (var collision in worldCollisions)
         {
             foreach (var contact in collision.contacts)
@@ -71,10 +72,15 @@ public class BlobCombat : MonoBehaviour
         }
         totalNormal.Normalize();
 
-        Vector2 expulsionDirection = (impactDirection + totalNormal).normalized;
-        //Debug.DrawLine(Vector2.zero, expulsionDirection, Color.black, 1);
+        Vector2 blockedComponent = Vector2.Dot(impactDirection, totalNormal) * totalNormal;
+        Vector2 freeComponent = impactDirection - blockedComponent;
 
-        return expulsionDirection;
+        if (freeComponent.magnitude < 0.1f)
+        {
+            freeComponent = new Vector2(-totalNormal.y, totalNormal.x); // Rotation 90°
+        }
+
+        return freeComponent.normalized;
     }
 
     public void SetLayer(LayerMask layer)
