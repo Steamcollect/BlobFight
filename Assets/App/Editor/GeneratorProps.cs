@@ -188,7 +188,7 @@ public class GeneratorProps : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
 
-        Undo.RecordObject(this, "Changed Damage By Speed Curve");
+        Undo.RecordObject(this, "Changed Damage by Speed Curve");
         damageBySpeedCurve = EditorGUILayout.CurveField("Damage By Speed", damageBySpeedCurve);
 
         GUILayout.Space(30);
@@ -378,7 +378,7 @@ public class GeneratorProps : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(30);
 
-        Undo.RecordObject(this, "Changed Damage By Speed Curve");
+        Undo.RecordObject(this, "Changed Damage by Speed Curve");
         damageBySpeedCurve = EditorGUILayout.CurveField("Damage By Speed", damageBySpeedCurve);
 
         GUILayout.Space(30);
