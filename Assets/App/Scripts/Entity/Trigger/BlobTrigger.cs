@@ -8,6 +8,7 @@ public class BlobTrigger : CollisionTrigger
     [Header("Settings")]
     [SerializeField, TagName] string groundableTag;
     [SerializeField] bool isGrounded = false;
+    [SerializeField] bool isSliding = false;
 
     [SerializeField, TagName] string slidableTag;
 
@@ -64,6 +65,8 @@ public class BlobTrigger : CollisionTrigger
         }
         else if (collision.gameObject.CompareTag(slidableTag))
         {
+            isSliding = true;
+
             OnSlidableEnter?.Invoke(collision);
             slidables.Add(collision.gameObject);
         }
@@ -82,12 +85,14 @@ public class BlobTrigger : CollisionTrigger
         slidables.Remove(collision.gameObject);
         if(slidables.Count <= 0)
         {
+            isSliding = false;
             OnSlidableExit?.Invoke(collision);
         }
 
         worldCollisions.Remove(collision);
     }
     public bool IsGrounded() { return isGrounded; }
+    public bool IsSliding() { return isSliding; }
     public List<Collision2D> GetCollisions() { return worldCollisions; }
 
     public void ExludeLayer(LayerMask layerToExclude, float excludingTime)

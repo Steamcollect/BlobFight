@@ -61,8 +61,8 @@ public class BlobDash : MonoBehaviour
 
         if (dashCount <= 0)
         {
-            if (!trigger.IsGrounded()) return;
-            else dashCount = maxDashCount;
+            if (trigger.IsGrounded() || trigger.IsSliding()) dashCount = maxDashCount;
+            else return;
         }
 
         dashCount--;
