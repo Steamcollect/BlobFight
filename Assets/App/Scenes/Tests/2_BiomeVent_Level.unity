@@ -538,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5130,6 +5130,10 @@ PrefabInstance:
       propertyPath: windForce
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: launchType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8010946453871632358, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_Name
       value: WindZone (2)
@@ -5577,6 +5581,10 @@ PrefabInstance:
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: launchType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010946453871632358, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_Name
