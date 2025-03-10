@@ -1381,6 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundableTag: Groundable
   isGrounded: 0
+  isSliding: 0
   slidableTag: Slidable
   blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &4126363389251937977
@@ -1486,6 +1487,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500000
   isStatic: 1
+  pushBackPercentage: 0
+  percentagePerSpeedOnImpact:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 10000
+      value: 15
+      inSlope: 0.0038693647
+      outSlope: 0.0038693647
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.05380703
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   shakeIntensityOnDeath: 0.7
   shakeTimeOnDeath: 0.25
   blobTrigger: {fileID: 606557387366902294}
