@@ -24,7 +24,7 @@ public class WindProps : GameProps
 
     private void FixedUpdate()
     {
-        if (isLaunched) return;
+        if (!isLaunched) return;
 
         if(rbs.Count > 0)
         {
