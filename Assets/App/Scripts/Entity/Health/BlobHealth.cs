@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class BlobHealth : EntityHealth, IPausable
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] float pushBackPercentage;
+    [SerializeField] AnimationCurve percentagePerSpeedOnImpact;
 
     [Space(10)]
     [SerializeField] float shakeIntensityOnDeath;
@@ -44,6 +46,8 @@ public class BlobHealth : EntityHealth, IPausable
     {
         isDead = false;
         currentHealth = maxHealth;
+
+        pushBackPercentage = 0;
     }
 
     //void OnTakeDamage()
@@ -53,6 +57,7 @@ public class BlobHealth : EntityHealth, IPausable
 
     void OnDeath()
     {
+        pushBackPercentage = 0;
         rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
     }
 
@@ -84,9 +89,14 @@ public class BlobHealth : EntityHealth, IPausable
     {
         isInvincible = true;
     }
-
     public void Resume()
     {
         isInvincible = false;
     }
+
+    public void AddPercentageWithSpeed(float speed)
+    {
+        pushBackPercentage += (percentagePerSpeedOnImpact.Evaluate(speed) / 100);
+    }
+    public float GetPercentage() { return 1 + pushBackPercentage; }
 }

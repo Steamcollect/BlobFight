@@ -444,6 +444,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blob
       objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: percentagePerSpeedOnImpact.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: percentagePerSpeedOnImpact.m_Curve.Array.data[1].time
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: percentagePerSpeedOnImpact.m_Curve.Array.data[1].value
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: percentagePerSpeedOnImpact.m_Curve.Array.data[1].inSlope
+      value: 0.0038693647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: percentagePerSpeedOnImpact.m_Curve.Array.data[1].inWeight
+      value: 0.05380703
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355027135910952395, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: percentagePerSpeedOnImpact.m_Curve.Array.data[1].outSlope
+      value: 0.0038693647
+      objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
