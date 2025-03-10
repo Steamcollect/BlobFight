@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712fd8b9292a1504fb2443068b4acae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 6000
+  dashForce: 5000
   dashCooldown: 0.1
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
@@ -494,7 +494,7 @@ MonoBehaviour:
     frequency: 10
   extendStaminaCost: 50
   timeBetweenExtend: 0.1
-  slidingGravity: 5
+  slidingGravity: 2.5
   angleSpeedMultiplierCurve:
     serializedVersion: 2
     m_Curve:
@@ -1381,6 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundableTag: Groundable
   isGrounded: 0
+  isSliding: 0
   slidableTag: Slidable
   blobJoint: {fileID: 6321734985548798584}
 --- !u!1 &4126363389251937977
