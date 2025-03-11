@@ -9,10 +9,13 @@ public class ThunderSpawner : MonoBehaviour
     [SerializeField] float delayAfterGameStart;
     //[SerializeField] AnimationCurve curveDifficulty;
     [SerializeField] Vector2 delayBetweenLightning;
-
+    [Space(5)]
+    [SerializeField] int objToSpawnOnStart;
     [Header("References")]
     [SerializeField] List<Transform> spawnPoint;
-    [SerializeField] GameObject thunderPrefab;
+    [SerializeField] ThunderProps thunderPrefab;
+
+    Queue<ThunderProps> thunderQueue = new();
 
     //[Space(10)]
     // RSO
@@ -31,6 +34,13 @@ public class ThunderSpawner : MonoBehaviour
     {
         RSE_OnGameStart.action -= StartCoroutineDelay;
     }
+    private void Awake()
+    {
+        for (int i = 0; i < objToSpawnOnStart; i++)
+        {
+            CreateThunderObj();
+        }
+    }
     private void StartCoroutineDelay()
     {
         StartCoroutine(StartDelaySpawn());
@@ -42,9 +52,29 @@ public class ThunderSpawner : MonoBehaviour
     }
     IEnumerator SpawnThunder()
     {
-        int rnd = Random.Range(0, spawnPoint.Count);
-        Instantiate(thunderPrefab, spawnPoint[rnd]);
         yield return new WaitForSeconds(Random.Range(delayBetweenLightning.x, delayBetweenLightning.y));
+        int rnd = Random.Range(0, spawnPoint.Count);
+        ThunderProps thunder = GetThunderObj();
+        thunder.gameObject.SetActive(true);
+        thunder.transform.position = spawnPoint[rnd].position;
         StartCoroutine(SpawnThunder());
+    }
+    ThunderProps GetThunderObj()
+    {
+        if (thunderQueue.Count <= 0) CreateThunderObj();
+
+        return thunderQueue.Dequeue();
+    }
+    private void CreateThunderObj()
+    {
+        ThunderProps obj = Instantiate(thunderPrefab);
+        obj.gameObject.SetActive(false);
+        obj.transform.SetParent(spawnPoint[0]);
+        obj.onEndAction += QueueThunder;
+        thunderQueue.Enqueue(obj);
+    }
+    private void QueueThunder(ThunderProps thunder)
+    {
+        thunderQueue.Enqueue(thunder);
     }
 }

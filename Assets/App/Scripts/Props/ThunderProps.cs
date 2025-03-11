@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class ThunderProps : MonoBehaviour
@@ -6,7 +7,7 @@ public class ThunderProps : MonoBehaviour
 
     [Header("References")]
     [SerializeField] Collider2D thunderCollider;
-
+    public Action<ThunderProps> onEndAction;
     //[Space(10)]
     // RSO
     // RSF
@@ -26,5 +27,6 @@ public class ThunderProps : MonoBehaviour
     public void OnEndAnimation()
     {
         gameObject.SetActive(false);
+        onEndAction.Invoke(this);
     }
 }
