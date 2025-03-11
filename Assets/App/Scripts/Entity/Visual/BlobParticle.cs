@@ -6,6 +6,9 @@ public class BlobParticle : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] int touchParticleStartingCount;
+    [SerializeField] int hitParticleStartingCount;
+
+    [SerializeField] AnimationCurve hitScaleBySpeedCurve;
 
     [Header("References")]
     [SerializeField] BlobTrigger trigger;
@@ -20,6 +23,9 @@ public class BlobParticle : MonoBehaviour
     
     [SerializeField] ParticleSystem destroyParticlePrefab;
     Queue<ParticleSystem> destroyParticles = new();
+
+    [SerializeField] ParticleSystem hitParticlePrefab;
+    Queue <ParticleSystem> hitParticles = new();
 
     //[Space(10)]
     // RSO
@@ -44,6 +50,9 @@ public class BlobParticle : MonoBehaviour
     {
         for (int i = 0; i < touchParticleStartingCount; i++)
             dustParticles.Enqueue(CreateParticle(dustParticlePrefab, OnTouchParticleEnd));
+
+        for (int i = 0; i < hitParticleStartingCount; i++)
+            hitParticles.Enqueue(CreateParticle(hitParticlePrefab, OnHitParticleEnd));
 
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
     }
@@ -93,7 +102,7 @@ public class BlobParticle : MonoBehaviour
         main.stopAction = ParticleSystemStopAction.Callback;
 
         particle.transform.position = position;
-        main.startColor = color.fillColor;
+        //main.startColor = color.fillColor;
 
         particle.Play();
     }
@@ -116,7 +125,7 @@ public class BlobParticle : MonoBehaviour
 
         particle.transform.position = contact.point;
         particle.transform.up = contact.normal;
-        main.startColor = color.fillColor;
+        //main.startColor = color.fillColor;
 
         particle.Play();
     }
@@ -124,6 +133,30 @@ public class BlobParticle : MonoBehaviour
     {
         particle.gameObject.SetActive(false);
         deathParticles.Enqueue(particle);
+    }
+
+    public void HitParticle(Vector2 position, Vector2 rotation, float speed)
+    {
+        ParticleSystem particle;
+        if (hitParticles.Count <= 0) particle = CreateParticle(hitParticlePrefab, OnHitParticleEnd);
+        else particle = hitParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+
+        ParticleSystem.MainModule main = particle.main;
+        main.stopAction = ParticleSystemStopAction.Callback;
+
+        particle.transform.position = position;
+        particle.transform.up = rotation;
+        particle.transform.localScale = Vector2.one * hitScaleBySpeedCurve.Evaluate(speed);
+        print(Vector2.one * hitScaleBySpeedCurve.Evaluate(speed));
+
+        particle.Play();
+    }
+    void OnHitParticleEnd(ParticleSystem particle)
+    {
+        particle.gameObject.SetActive(false);
+        hitParticles.Enqueue(particle);
     }
 
     ParticleSystem CreateParticle(ParticleSystem prefab, Action<ParticleSystem> stopAction)

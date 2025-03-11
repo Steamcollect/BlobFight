@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class BlobCombat : MonoBehaviour
 {
     [Header("Settings")]
@@ -12,6 +13,7 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] BlobTrigger blobTrigger;
     [SerializeField] BlobJoint blobJoint;
     [SerializeField] BlobMovement blobMovement;
+    [SerializeField] BlobParticle blobParticle;
 
     LayerMask currentLayer;
 
@@ -27,7 +29,7 @@ public class BlobCombat : MonoBehaviour
 
     private void OnDisable()
     {
-        blobTrigger.OnCollisionEnterWithBlob -= OnBlobCollisionEnter;
+        blobTrigger.OnBlobCollisionEnter -= OnBlobCollisionEnter;
     }
 
     private void Start()
@@ -36,10 +38,10 @@ public class BlobCombat : MonoBehaviour
     }
     void LateStart()
     {
-        blobTrigger.OnCollisionEnterWithBlob += OnBlobCollisionEnter;
+        blobTrigger.OnBlobCollisionEnter += OnBlobCollisionEnter;
     }
 
-    void OnBlobCollisionEnter(BlobMotor blob)
+    void OnBlobCollisionEnter(BlobMotor blob, Collision2D collision)
     {
         if (blobsTouch.Contains(blob)) return;
 
@@ -54,20 +56,26 @@ public class BlobCombat : MonoBehaviour
             Vector2 impactForce = propulsionDir * pushBackForce * velocity * extendForceMultiplier;
             blob.GetJoint().AddForce(impactForce);
 
-            blobJoint.AddForce(-impactDir * returnPushBackForce * velocity * blob.GetHealth().GetPercentage());
+            Vector2 impact = -impactDir * returnPushBackForce * velocity * blob.GetHealth().GetPercentage();
+            blobJoint.AddForce(impact);
 
             blob.GetHealth().AddPercentageWithSpeed(impactForce.sqrMagnitude);
             blob.GetTrigger().ExludeLayer(currentLayer, .1f);
+
+            blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
 
             StartCoroutine(ImpactCooldown(blob));
         }
         else if(!blob.GetMovement().IsExtend() && !blobMovement.IsExtend())
         {
             Vector2 impactForce = impactDir * pushBackForce * velocity;
-            blob.GetJoint().AddForce(impactForce * blob.GetHealth().GetPercentage());
+            Vector2 impact = impactForce * blob.GetHealth().GetPercentage();
+            blob.GetJoint().AddForce(impact);
             blob.GetHealth().AddPercentageWithSpeed(impactForce.sqrMagnitude);
 
             blobJoint.AddForce(-impactDir * returnPushBackForce * velocity);
+
+            blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
 
             StartCoroutine(ImpactCooldown(blob));
         }
