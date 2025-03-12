@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class BlobMovement : MonoBehaviour, IPausable
@@ -17,6 +18,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     Vector2 moveInput;
 
+    bool stunImpactCanMove = true;
     bool deathCanMove = true;
     bool pauseCanMove = true;
 
@@ -228,8 +230,21 @@ public class BlobMovement : MonoBehaviour, IPausable
         pauseCanMove = true;
     }
 
-    public bool CanMove() { return deathCanMove && pauseCanMove; }
+    public bool CanMove() { return deathCanMove && pauseCanMove && stunImpactCanMove; }
     #endregion
 
     public bool IsExtend() { return isExtend; }
+
+    Coroutine stunImpactCoroutine;
+    public void StunImpact(float delay)
+    {
+        if (stunImpactCoroutine != null) StopCoroutine(stunImpactCoroutine);
+        stunImpactCoroutine = StartCoroutine(StunImpactCooldown(delay));
+    }
+    IEnumerator StunImpactCooldown(float delay)
+    {
+        stunImpactCanMove = false;
+        yield return new WaitForSeconds(delay);
+        stunImpactCanMove = true;
+    }
 }
