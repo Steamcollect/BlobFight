@@ -6,8 +6,6 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] float pushBackPercentage;
     [SerializeField] AnimationCurve percentagePerSpeedOnImpactCurve;
 
-    [SerializeField] AnimationCurve stunMovementDelayPerSpeedOnImpactCurve;
-
     [Space(10)]
     [SerializeField] float shakeIntensityOnDeath;
     [SerializeField] float shakeTimeOnDeath;
@@ -94,7 +92,6 @@ public class BlobHealth : EntityHealth, IPausable
 
     public void OnDamageImpact(float speed)
     {
-        blobMovement.StunImpact(stunMovementDelayPerSpeedOnImpactCurve.Evaluate(speed));
         pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed) / 100);
     }
     public float GetPercentage() { return 1 + pushBackPercentage; }
