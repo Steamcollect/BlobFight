@@ -17,17 +17,16 @@ public class BlobCrown : MonoBehaviour
     private float rotationVelocity;
 
     [Header("References")]
-    [SerializeField] RSE_UpdateCrownColor rseUpdateCrownColor;
+    [SerializeField] RSE_UpdateCrownVisual rseUpdateCrownVisual;
     [Space(5)]
     [SerializeField] BlobMotor motor;
     [SerializeField] BlobJoint joint;
     [SerializeField] BlobMovement movement;
 
     [Space(5)]
-    [SerializeField] GameObject crown;
-    [SerializeField] SpriteRenderer crownRenderer;
-    
-    
+    [SerializeField] GameObject crownsContent;
+    [SerializeField] GameObject goldCrown;
+    [SerializeField] GameObject silverCrown;
 
     //[Space(10)]
     // RSO
@@ -45,7 +44,7 @@ public class BlobCrown : MonoBehaviour
         movement.onExtend += OnExtend;
         movement.onShrink += OnShrink;
 
-        rseUpdateCrownColor.action += UpdateColor;
+        rseUpdateCrownVisual.action += UpdateVisual;
     }
     private void OnDisable()
     {
@@ -55,30 +54,32 @@ public class BlobCrown : MonoBehaviour
         movement.onExtend -= OnExtend;
         movement.onShrink -= OnShrink;
 
-        rseUpdateCrownColor.action -= UpdateColor;
+        rseUpdateCrownVisual.action -= UpdateVisual;
     }
     private void Update()
     {
-        UpdateVisual();
+        Move();
     }
 
     void EnableCrown()
     {
-        crown.SetActive(true);
+        crownsContent.SetActive(true);
     }
     void DisableCrown()
     {
-        crown.SetActive(false);
+        crownsContent.SetActive(false);
     }
-    void UpdateColor(bool isGold)
+    void UpdateVisual(bool isGold)
     {
         if (isGold)
         {
-            crownRenderer.color = new Color32(197, 199, 37, 255);
+            silverCrown.SetActive(false);
+            goldCrown.SetActive(true);
         }
         else
         {
-            crownRenderer.color = new Color32(90, 90, 90, 255);
+            silverCrown.SetActive(true);
+            goldCrown.SetActive(false);
         }
     }
     void OnShrink()
@@ -89,12 +90,12 @@ public class BlobCrown : MonoBehaviour
     {
         posOffset = extendPos;
     }
-    void UpdateVisual()
+    void Move()
     {
-        crown.transform.position = Vector2.SmoothDamp(crown.transform.position, joint.GetJointsCenter() + posOffset, ref velocity, smoothTime);
+        crownsContent.transform.position = Vector2.SmoothDamp(crownsContent.transform.position, joint.GetJointsCenter() + posOffset, ref velocity, smoothTime);
 
         float targetRot = (velocity / velocityRotDiviser * rotationAmount).x;
         rotationDelta = Mathf.SmoothDamp(rotationDelta, targetRot, ref rotationVelocity, rotationTime);
-        crown.transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(rotationDelta, -60, 60));
+        crownsContent.transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(rotationDelta, -60, 60));
     }
 }

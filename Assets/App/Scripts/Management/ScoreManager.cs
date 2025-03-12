@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
     [SerializeField] RSE_OnGameStart rseOnGameStart;
     [SerializeField] RSE_OnFightStart rseOnFightStart;
-    [SerializeField] RSE_UpdateCrownColor rseUpdateCrownColor;
+    [SerializeField] RSE_UpdateCrownVisual rseUpdateCrownVisual;
     [SerializeField] RSE_AddScore rseAddScore;
 
     //[Header("Output")]
@@ -86,7 +86,7 @@ public class ScoreManager : MonoBehaviour
                 blobScore.Key.EnableCrown();
             }
 
-            rseUpdateCrownColor.Call(counterEgality == 1);
+            rseUpdateCrownVisual.Call(counterEgality == 1);
         }
     }
 
@@ -116,7 +116,7 @@ public class ScoreManager : MonoBehaviour
                     player.EnableCrown();
                 }
 
-                rseUpdateCrownColor.Call(counterEgality == 1);
+                rseUpdateCrownVisual.Call(counterEgality == 1);
             }
         }
     }

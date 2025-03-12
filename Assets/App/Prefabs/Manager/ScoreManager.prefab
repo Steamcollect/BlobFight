@@ -48,5 +48,5 @@ MonoBehaviour:
   rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  rseUpdateCrownColor: {fileID: 11400000, guid: 0b099065ca877d94ba1f01751a68a50d, type: 2}
+  rseUpdateCrownVisual: {fileID: 11400000, guid: 0b099065ca877d94ba1f01751a68a50d, type: 2}
   rseAddScore: {fileID: 11400000, guid: 77bdf45b54dd4bd41a86fbfe0b532775, type: 2}
