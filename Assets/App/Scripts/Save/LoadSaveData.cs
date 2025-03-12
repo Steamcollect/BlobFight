@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Linq;
+using System.Collections;
 
 namespace BT.Save
 {
@@ -51,18 +52,20 @@ namespace BT.Save
         private static string Encrypt(string plainText, string key)
         {
             using Aes aes = Aes.Create();
-            aes.Key = Encoding.UTF8.GetBytes(key).Take(32).ToArray();
+            aes.Key = Encoding.UTF8.GetBytes(key);
             aes.GenerateIV();
 
-            using MemoryStream ms = new();
-            ms.Write(aes.IV, 0, aes.IV.Length);
+            using MemoryStream memoryStream = new();
+            memoryStream.Write(aes.IV, 0, aes.IV.Length);
 
-            using CryptoStream cs = new(ms, aes.CreateEncryptor(), CryptoStreamMode.Write);
-            using StreamWriter sw = new(cs);
-            sw.Write(plainText);
+            using CryptoStream cryptoStream = new(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
+            using StreamWriter writer = new(cryptoStream);
+            writer.Write(plainText);
 
-            cs.FlushFinalBlock();
-            return Convert.ToBase64String(ms.ToArray());
+            writer.Flush();
+            cryptoStream.FlushFinalBlock();
+
+            return Convert.ToBase64String(memoryStream.ToArray());
         }
 
         private static string Decrypt(string cipherText, string key)
@@ -70,13 +73,18 @@ namespace BT.Save
             byte[] buffer = Convert.FromBase64String(cipherText);
 
             using Aes aes = Aes.Create();
-            aes.Key = Encoding.UTF8.GetBytes(key).Take(32).ToArray();
-            aes.IV = buffer.Take(aes.BlockSize / 8).ToArray();
+            aes.Key = Encoding.UTF8.GetBytes(key);
 
-            using MemoryStream ms = new(buffer.Skip(aes.IV.Length).ToArray());
-            using CryptoStream cs = new(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
-            using StreamReader sr = new(cs);
-            return sr.ReadToEnd();
+            byte[] iv = buffer[..(aes.BlockSize / 8)];
+            byte[] cipherArray = buffer[(aes.BlockSize / 8)..];
+
+            aes.IV = iv;
+
+            using MemoryStream memoryStream = new(cipherArray);
+            using CryptoStream cryptoStream = new(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Read);
+            using StreamReader reader = new(cryptoStream);
+
+            return reader.ReadToEnd();
         }
 
         private void SaveToJson()
