@@ -51,7 +51,7 @@ public class BlobCombat : MonoBehaviour
         if (!blob.GetMovement().IsExtend() && blobMovement.IsExtend())
         {
             Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
-            Debug.DrawLine(blob.GetJoint().GetJointsCenter(), blob.GetJoint().GetJointsCenter() + propulsionDir, Color.blue, 1);
+            //Debug.DrawLine(blob.GetJoint().GetJointsCenter(), blob.GetJoint().GetJointsCenter() + propulsionDir, Color.blue, 1);
 
             Vector2 impactForce = propulsionDir * pushBackForce * velocity * extendForceMultiplier;
             blob.GetJoint().AddForce(impactForce);
@@ -66,7 +66,7 @@ public class BlobCombat : MonoBehaviour
 
             StartCoroutine(ImpactCooldown(blob));
         }
-        else if(!blob.GetMovement().IsExtend() && !blobMovement.IsExtend())
+        else
         {
             Vector2 impactForce = impactDir * pushBackForce * velocity;
             Vector2 impact = impactForce * blob.GetHealth().GetPercentage();

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+
 public class CollisionTrigger : MonoBehaviour
 {
     //[Header("Settings")]
@@ -22,6 +23,9 @@ public class CollisionTrigger : MonoBehaviour
     public Action<BlobMotor> OnCollisionEnterWithBlob, OnCollisionExitWithBlob;
     public Action<BlobMotor, Collision2D> OnBlobCollisionEnter;
     public Action<ContactPoint2D> OnCollisionExitGetLastContact;
+
+    public Action<Collider2D> OnTriggerEnter, OnTriggerExit;
+    public Action<BlobMotor> OnTriggerEnterWithBlob, OnTriggerExitWithBlob;
 
     protected void OnEnterCollision(Collision2D collision)
     {
@@ -51,7 +55,6 @@ public class CollisionTrigger : MonoBehaviour
             lastContacts[collision.gameObject] = collision.GetContact(collision.contactCount - 1);
         }
     }
-
     protected void OnExitCollision(Collision2D collision)
     {
         collisions.Remove(collision.gameObject);
@@ -79,6 +82,50 @@ public class CollisionTrigger : MonoBehaviour
             }
 
             lastContacts.Remove(collision.gameObject);
+        }
+    }
+
+    protected void OnEnterTrigger(Collider2D collider)
+    {
+        if (!collisions.Contains(collider.gameObject))
+        {
+            // Check if blob
+            if (collider.transform.TryGetComponent(out MyJoint joint))
+            {
+                if (!blobs.Contains(joint.parentMotor))
+                {
+                    OnTriggerEnterWithBlob?.Invoke(joint.parentMotor);
+                }
+
+                blobs.Add(joint.parentMotor);
+            }
+            else
+            {
+                OnTriggerEnter?.Invoke(collider);
+            }
+        }
+        collisions.Add(collider.gameObject);
+    }
+    protected void OnExitTrigger(Collider2D collider)
+    {
+        collisions.Remove(collider.gameObject);
+
+        if (!collisions.Contains(collider.gameObject))
+        {
+            // Check if blob
+            if (collider.transform.TryGetComponent(out MyJoint joint))
+            {
+                blobs.Remove(joint.parentMotor);
+
+                if (!blobs.Contains(joint.parentMotor))
+                {
+                    OnTriggerExitWithBlob?.Invoke(joint.parentMotor);
+                }
+            }
+            else
+            {
+                OnTriggerExit?.Invoke(collider);
+            }
         }
     }
 }

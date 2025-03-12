@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185a36d3e9489a4418bb172570ddc6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchType: 1
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   delayAfterGameStart: 2
   delayBetweenLightning: {x: 4, y: 5}
   objToSpawnOnStart: 2
@@ -57,7 +59,6 @@ MonoBehaviour:
   - {fileID: 4553976894774741503}
   - {fileID: 2129625708994800755}
   thunderPrefab: {fileID: 4498869795054011900, guid: fd28360248491ad46bd4872b72a84424, type: 3}
-  RSE_OnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
 --- !u!1 &2966361593193574170
 GameObject:
   m_ObjectHideFlags: 0

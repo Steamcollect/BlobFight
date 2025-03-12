@@ -49,4 +49,9 @@ public class WindProps : GameProps
             rbs.Remove(rb);
         }
     }
+
+    public void SetWindForce(float windForceChange)
+    {
+        windForce = windForceChange;
+    }
 }
