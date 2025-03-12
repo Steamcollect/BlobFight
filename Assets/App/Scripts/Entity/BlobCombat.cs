@@ -59,7 +59,7 @@ public class BlobCombat : MonoBehaviour
             Vector2 impact = -impactDir * returnPushBackForce * velocity * blob.GetHealth().GetPercentage();
             blobJoint.AddForce(impact);
 
-            blob.GetHealth().AddPercentageWithSpeed(impactForce.sqrMagnitude);
+            blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
             blob.GetTrigger().ExludeLayer(currentLayer, .1f);
 
             blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
@@ -71,7 +71,7 @@ public class BlobCombat : MonoBehaviour
             Vector2 impactForce = impactDir * pushBackForce * velocity;
             Vector2 impact = impactForce * blob.GetHealth().GetPercentage();
             blob.GetJoint().AddForce(impact);
-            blob.GetHealth().AddPercentageWithSpeed(impactForce.sqrMagnitude);
+            blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
 
             blobJoint.AddForce(-impactDir * returnPushBackForce * velocity);
 
