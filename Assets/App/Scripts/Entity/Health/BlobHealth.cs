@@ -4,7 +4,9 @@ public class BlobHealth : EntityHealth, IPausable
 {
     [Header("Settings")]
     [SerializeField] float pushBackPercentage;
-    [SerializeField] AnimationCurve percentagePerSpeedOnImpact;
+    [SerializeField] AnimationCurve percentagePerSpeedOnImpactCurve;
+
+    [SerializeField] AnimationCurve stunMovementDelayPerSpeedOnImpactCurve;
 
     [Space(10)]
     [SerializeField] float shakeIntensityOnDeath;
@@ -12,6 +14,7 @@ public class BlobHealth : EntityHealth, IPausable
 
     [Header("References")] 
     [SerializeField] BlobTrigger blobTrigger;
+    [SerializeField] BlobMovement blobMovement;
 
     //[Space(10)]
     // RSO
@@ -49,11 +52,6 @@ public class BlobHealth : EntityHealth, IPausable
 
         pushBackPercentage = 0;
     }
-
-    //void OnTakeDamage()
-    //{
-        
-    //}
 
     void OnDeath()
     {
@@ -94,9 +92,10 @@ public class BlobHealth : EntityHealth, IPausable
         isInvincible = false;
     }
 
-    public void AddPercentageWithSpeed(float speed)
+    public void OnDamageImpact(float speed)
     {
-        pushBackPercentage += (percentagePerSpeedOnImpact.Evaluate(speed) / 100);
+        blobMovement.StunImpact(stunMovementDelayPerSpeedOnImpactCurve.Evaluate(speed));
+        pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed) / 100);
     }
     public float GetPercentage() { return 1 + pushBackPercentage; }
 }

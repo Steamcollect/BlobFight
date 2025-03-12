@@ -1515,7 +1515,31 @@ MonoBehaviour:
   maxHealth: 500000
   isStatic: 1
   pushBackPercentage: 0
-  percentagePerSpeedOnImpact:
+  percentagePerSpeedOnImpactCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.000006044959
+      outSlope: 0.000006044959
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.15532996
+    - serializedVersion: 3
+      time: 50050.76
+      value: 20
+      inSlope: 0.0012992407
+      outSlope: 0.0012992407
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.024340758
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  stunMovementDelayPerSpeedOnImpactCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -1528,13 +1552,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 15
-      inSlope: 0.0038693647
-      outSlope: 0.0038693647
+      time: 50000
+      value: 1
+      inSlope: 0.00006275978
+      outSlope: 0.00006275978
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.05380703
+      inWeight: 0.024365546
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1542,6 +1566,7 @@ MonoBehaviour:
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
   blobTrigger: {fileID: 606557387366902294}
+  blobMovement: {fileID: 2542050320697814845}
   rseCamShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
 --- !u!1 &4923810736974419187
 GameObject:
