@@ -156,27 +156,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchParticleStartingCount: 15
-  hitParticleStartingCount: 0
+  hitParticleStartingCount: 15
   hitScaleBySpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0.000006157612
-      outSlope: 0.000006157612
+      value: 0.5
+      inSlope: 0.000001478139
+      outSlope: 0.000001478139
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.08381839
+      outWeight: 0.074111685
     - serializedVersion: 3
       time: 30000
-      value: 4
-      inSlope: 0.0003183061
-      outSlope: 0.0003183061
+      value: 0.8
+      inSlope: 0.000033085264
+      outSlope: 0.000033085264
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.04540163
+      inWeight: 0.08324863
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
