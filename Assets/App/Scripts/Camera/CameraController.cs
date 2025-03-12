@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (rsoBlobInGame.Value.Count == 0) return;
+        if (rsoBlobInGame.Value.Count <= 1) return;
 
         Vector2 center = CalculateCenter();
         float distance = CalculateMaxDistance(center);
@@ -71,10 +71,6 @@ public class CameraController : MonoBehaviour
 
     private Vector2 CalculateCenter()
     {
-        if (rsoBlobInGame.Value.Count <= 1)
-        {
-            return cam.transform.position;
-        }
         Vector2 sum = Vector2.zero;
         foreach (BlobMotor blob in rsoBlobInGame.Value)
         {
@@ -87,10 +83,6 @@ public class CameraController : MonoBehaviour
 
     private float CalculateMaxDistance(Vector2 center)
     {
-        if (rsoBlobInGame.Value.Count <= 1)
-        {
-            return cam.orthographicSize;
-        }
         float maxDistance = 0f;
         foreach (BlobMotor blob in rsoBlobInGame.Value)
         {
