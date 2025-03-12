@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Settings : MonoBehaviour
 {
@@ -79,52 +81,9 @@ public class Settings : MonoBehaviour
         rseSaveData.Call();
     }
 
-    public void UpdateAudioMusic()
+    public void UpdateAudioMusic(float val)
     {
-        if (rsoContentSave.Value.audioMusic == 0)
-        {
-            rsoContentSave.Value.audioMusic = 10;
-        }
-        else if (rsoContentSave.Value.audioMusic == 10)
-        {
-            rsoContentSave.Value.audioMusic = 20;
-        }
-        else if (rsoContentSave.Value.audioMusic == 20)
-        {
-            rsoContentSave.Value.audioMusic = 30;
-        }
-        else if (rsoContentSave.Value.audioMusic == 30)
-        {
-            rsoContentSave.Value.audioMusic = 40;
-        }
-        else if (rsoContentSave.Value.audioMusic == 40)
-        {
-            rsoContentSave.Value.audioMusic = 50;
-        }
-        else if (rsoContentSave.Value.audioMusic == 50)
-        {
-            rsoContentSave.Value.audioMusic = 60;
-        }
-        else if (rsoContentSave.Value.audioMusic == 60)
-        {
-            rsoContentSave.Value.audioMusic = 70;
-        }
-        else if (rsoContentSave.Value.audioMusic == 70)
-        {
-            rsoContentSave.Value.audioMusic = 80;
-        }
-        else if (rsoContentSave.Value.audioMusic == 80)
-        {
-            rsoContentSave.Value.audioMusic = 90;
-        }
-        else if (rsoContentSave.Value.audioMusic == 90)
-        {
-            rsoContentSave.Value.audioMusic = 100;
-        }
-        else if (rsoContentSave.Value.audioMusic == 100)
-        {
-            rsoContentSave.Value.audioMusic = 0;
-        }
+        rsoContentSave.Value.audioMusic = val * 5;
 
         audioMixer.SetFloat("Music", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioMusic, 1) / 100));
         textAudioMusic.text = rsoContentSave.Value.audioMusic.ToString() + "%";
@@ -132,52 +91,9 @@ public class Settings : MonoBehaviour
         rseSaveData.Call();
     }
 
-    public void UpdateAudioSounds()
+    public void UpdateAudioSounds(float val)
     {
-        if (rsoContentSave.Value.audioSounds == 0)
-        {
-            rsoContentSave.Value.audioSounds = 10;
-        }
-        else if (rsoContentSave.Value.audioSounds == 10)
-        {
-            rsoContentSave.Value.audioSounds = 20;
-        }
-        else if (rsoContentSave.Value.audioSounds == 20)
-        {
-            rsoContentSave.Value.audioSounds = 30;
-        }
-        else if (rsoContentSave.Value.audioSounds == 30)
-        {
-            rsoContentSave.Value.audioSounds = 40;
-        }
-        else if (rsoContentSave.Value.audioSounds == 40)
-        {
-            rsoContentSave.Value.audioSounds = 50;
-        }
-        else if (rsoContentSave.Value.audioSounds == 50)
-        {
-            rsoContentSave.Value.audioSounds = 60;
-        }
-        else if (rsoContentSave.Value.audioSounds == 60)
-        {
-            rsoContentSave.Value.audioSounds = 70;
-        }
-        else if (rsoContentSave.Value.audioSounds == 70)
-        {
-            rsoContentSave.Value.audioSounds = 80;
-        }
-        else if (rsoContentSave.Value.audioSounds == 80)
-        {
-            rsoContentSave.Value.audioSounds = 90;
-        }
-        else if (rsoContentSave.Value.audioSounds == 90)
-        {
-            rsoContentSave.Value.audioSounds = 100;
-        }
-        else if (rsoContentSave.Value.audioSounds == 100)
-        {
-            rsoContentSave.Value.audioSounds = 0;
-        }
+        rsoContentSave.Value.audioSounds = val * 5;
 
         audioMixer.SetFloat("Sound", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioSounds, 1) / 100));
         textAudioSounds.text = rsoContentSave.Value.audioSounds.ToString() + "%";

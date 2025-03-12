@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Linq;
 using System.Collections;
+using UnityEngine.Audio;
 
 namespace BT.Save
 {
@@ -16,7 +17,8 @@ namespace BT.Save
         [SerializeField] private RSE_SaveData rseSave;
         [SerializeField] private RSE_ClearData rseClear;
         [SerializeField] private RSO_ContentSaved rsoContentSave;
-        
+        [SerializeField] private AudioMixer audioMixer;
+
         private string filePath;
 
         private static readonly string EncryptionKey = "ajekoBnPxI9jGbnYCOyvE9alNy9mM/Kw";
@@ -100,6 +102,7 @@ namespace BT.Save
             rsoContentSave.Value = JsonUtility.FromJson<ContentSaved>(decryptedJson);
 
             SetScreen();
+            SetAudio();
         }
 
         private void SetScreen()
@@ -114,6 +117,12 @@ namespace BT.Save
             }
 
             Screen.fullScreen = rsoContentSave.Value.fullScreen;
+        }
+
+        private void SetAudio()
+        {
+            audioMixer.SetFloat("Music", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioMusic, 1) / 100));
+            audioMixer.SetFloat("Sound", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioSounds, 1) / 100));
         }
 
         private void ClearContent()

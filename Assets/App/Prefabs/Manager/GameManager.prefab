@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7737276214581666368}
   - component: {fileID: 6030696405772960874}
+  - component: {fileID: 80043123510570971}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -57,3 +58,20 @@ MonoBehaviour:
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
+--- !u!114 &80043123510570971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130130916555675231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c45ded95fc3a844f8b8b69c51f08f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rseLoad: {fileID: 11400000, guid: fbe627b7d86927449bc58aec9a77c2bb, type: 2}
+  rseSave: {fileID: 11400000, guid: ab95bbe7e45931d4fbafecb0f2d7ba94, type: 2}
+  rseClear: {fileID: 11400000, guid: 3e63553046872014d8944d492749c7a5, type: 2}
+  rsoContentSave: {fileID: 11400000, guid: d740f6a049223ce4fb18b39424d38a67, type: 2}
+  audioMixer: {fileID: 24100000, guid: 2627c2080fb0a2b488ae734d16cc292e, type: 2}
