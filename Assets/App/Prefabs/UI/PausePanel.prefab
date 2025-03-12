@@ -2322,10 +2322,8 @@ MonoBehaviour:
   textAudioMusic: {fileID: 621713952227116626}
   textAudioSounds: {fileID: 1920827685947146145}
   audioMixer: {fileID: 24100000, guid: 2627c2080fb0a2b488ae734d16cc292e, type: 2}
-  rsoScreenShake: {fileID: 11400000, guid: 998102880309d004a81154d3675ea627, type: 2}
-  rsoFullScreen: {fileID: 11400000, guid: e6ac6cf32216aa6479a2827b4c43b2f0, type: 2}
-  rsoAudioMusic: {fileID: 11400000, guid: d44f2b9921acd3342abceca8fc9cb60c, type: 2}
-  rsoAudioSounds: {fileID: 11400000, guid: 7ab0b12e9e5389049891659583cb23b3, type: 2}
+  rsoContentSave: {fileID: 11400000, guid: d740f6a049223ce4fb18b39424d38a67, type: 2}
+  rseSaveData: {fileID: 11400000, guid: ab95bbe7e45931d4fbafecb0f2d7ba94, type: 2}
 --- !u!1 &6224994400498925014
 GameObject:
   m_ObjectHideFlags: 0

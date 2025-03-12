@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &53012793904667326
 Transform:
   m_ObjectHideFlags: 0
@@ -845,10 +845,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PausePanel
       objectReference: {fileID: 0}
-    - target: {fileID: 5895346078023923791, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
-      propertyPath: rsoContentSave
-      value: 
-      objectReference: {fileID: 11400000, guid: d740f6a049223ce4fb18b39424d38a67, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
