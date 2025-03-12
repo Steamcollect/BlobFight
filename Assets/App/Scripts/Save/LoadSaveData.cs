@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine.Serialization;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
 
 namespace BT.Save
 {
@@ -49,79 +50,46 @@ namespace BT.Save
 
         private static string Encrypt(string plainText, string key)
         {
-            byte[] iv;
-            byte[] array;
+            using Aes aes = Aes.Create();
+            aes.Key = Encoding.UTF8.GetBytes(key).Take(32).ToArray();
+            aes.GenerateIV();
 
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = Encoding.UTF8.GetBytes(key);
-                aes.GenerateIV();
-                iv = aes.IV;
+            using MemoryStream ms = new();
+            ms.Write(aes.IV, 0, aes.IV.Length);
 
-                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+            using CryptoStream cs = new(ms, aes.CreateEncryptor(), CryptoStreamMode.Write);
+            using StreamWriter sw = new(cs);
+            sw.Write(plainText);
 
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter streamWriter = new StreamWriter((Stream)cryptoStream))
-                        {
-                            streamWriter.Write(plainText);
-                        }
-
-                        array = memoryStream.ToArray();
-                    }
-                }
-            }
-
-            byte[] combinedArray = new byte[iv.Length + array.Length];
-            Array.Copy(iv, 0, combinedArray, 0, iv.Length);
-            Array.Copy(array, 0, combinedArray, iv.Length, array.Length);
-
-            return Convert.ToBase64String(combinedArray);
+            cs.FlushFinalBlock();
+            return Convert.ToBase64String(ms.ToArray());
         }
 
         private static string Decrypt(string cipherText, string key)
         {
             byte[] buffer = Convert.FromBase64String(cipherText);
 
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = Encoding.UTF8.GetBytes(key);
+            using Aes aes = Aes.Create();
+            aes.Key = Encoding.UTF8.GetBytes(key).Take(32).ToArray();
+            aes.IV = buffer.Take(aes.BlockSize / 8).ToArray();
 
-                byte[] iv = new byte[aes.BlockSize / 8];
-                byte[] cipherArray = new byte[buffer.Length - iv.Length];
-
-                Array.Copy(buffer, iv, iv.Length);
-                Array.Copy(buffer, iv.Length, cipherArray, 0, cipherArray.Length);
-
-                aes.IV = iv;
-
-                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
-                using (MemoryStream memoryStream = new MemoryStream(cipherArray))
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream((Stream)memoryStream, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader streamReader = new StreamReader((Stream)cryptoStream))
-                        {
-                            return streamReader.ReadToEnd();
-                        }
-                    }
-                }
-            }
+            using MemoryStream ms = new(buffer.Skip(aes.IV.Length).ToArray());
+            using CryptoStream cs = new(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
+            using StreamReader sr = new(cs);
+            return sr.ReadToEnd();
         }
 
         private void SaveToJson()
         {
             string infoData = JsonUtility.ToJson(rsoContentSave.Value);
-            //string encryptedJson = Encrypt(infoData, EncryptionKey);
-            File.WriteAllText(filePath, infoData);
+            string encryptedJson = Encrypt(infoData, EncryptionKey);
+            File.WriteAllText(filePath, encryptedJson);
         }
         private void LoadFromJson()
         {
-            string infoData = System.IO.File.ReadAllText(filePath);
-            rsoContentSave.Value = JsonUtility.FromJson<ContentSaved>(infoData);
+            string infoData = File.ReadAllText(filePath);
+            string decryptedJson = Decrypt(infoData, EncryptionKey);
+            rsoContentSave.Value = JsonUtility.FromJson<ContentSaved>(decryptedJson);
         }
         private void ClearContent()
         {

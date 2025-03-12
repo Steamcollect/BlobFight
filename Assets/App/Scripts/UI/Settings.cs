@@ -1,5 +1,3 @@
-using BT.Save;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -42,8 +40,8 @@ public class Settings : MonoBehaviour
             textFullScreen.text = "Off";
         }
 
-        textAudioMusic.text = rsoContentSave.Value.audioMusic.ToString();
-        textAudioSounds.text = rsoContentSave.Value.audioSounds.ToString();
+        textAudioMusic.text = rsoContentSave.Value.audioMusic.ToString() + "%";
+        textAudioSounds.text = rsoContentSave.Value.audioSounds.ToString() + "%";
     }
 
     public void UpdateScreenShake()
@@ -85,120 +83,104 @@ public class Settings : MonoBehaviour
     {
         if (rsoContentSave.Value.audioMusic == 0)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(10, 1) / 100));
-            textAudioMusic.text = "10";
+            rsoContentSave.Value.audioMusic = 10;
         }
         else if (rsoContentSave.Value.audioMusic == 10)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(20, 1) / 100));
-            textAudioMusic.text = "20";
+            rsoContentSave.Value.audioMusic = 20;
         }
         else if (rsoContentSave.Value.audioMusic == 20)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(30, 1) / 100));
-            textAudioMusic.text = "30";
+            rsoContentSave.Value.audioMusic = 30;
         }
         else if (rsoContentSave.Value.audioMusic == 30)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(40, 1) / 100));
-            textAudioMusic.text = "40";
+            rsoContentSave.Value.audioMusic = 40;
         }
         else if (rsoContentSave.Value.audioMusic == 40)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(50, 1) / 100));
-            textAudioMusic.text = "50";
+            rsoContentSave.Value.audioMusic = 50;
         }
         else if (rsoContentSave.Value.audioMusic == 50)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(60, 1) / 100));
-            textAudioMusic.text = "60";
+            rsoContentSave.Value.audioMusic = 60;
         }
         else if (rsoContentSave.Value.audioMusic == 60)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(70, 1) / 100));
-            textAudioMusic.text = "70";
+            rsoContentSave.Value.audioMusic = 70;
         }
         else if (rsoContentSave.Value.audioMusic == 70)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(80, 1) / 100));
-            textAudioMusic.text = "80";
+            rsoContentSave.Value.audioMusic = 80;
         }
         else if (rsoContentSave.Value.audioMusic == 80)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(90, 1) / 100));
-            textAudioMusic.text = "90";
+            rsoContentSave.Value.audioMusic = 90;
         }
         else if (rsoContentSave.Value.audioMusic == 90)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(100, 1) / 100));
-            textAudioMusic.text = "100";
+            rsoContentSave.Value.audioMusic = 100;
         }
         else if (rsoContentSave.Value.audioMusic == 100)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(0, 1) / 100));
-            textAudioMusic.text = "0";
+            rsoContentSave.Value.audioMusic = 0;
         }
+
+        audioMixer.SetFloat("Music", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioMusic, 1) / 100));
+        textAudioMusic.text = rsoContentSave.Value.audioMusic.ToString() + "%";
 
         rseSaveData.Call();
     }
 
     public void UpdateAudioSounds()
     {
-        if (rsoContentSave.Value.audioMusic == 0)
+        if (rsoContentSave.Value.audioSounds == 0)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(10, 1) / 100));
-            textAudioMusic.text = "10";
+            rsoContentSave.Value.audioSounds = 10;
         }
-        else if (rsoContentSave.Value.audioMusic == 10)
+        else if (rsoContentSave.Value.audioSounds == 10)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(20, 1) / 100));
-            textAudioMusic.text = "20";
+            rsoContentSave.Value.audioSounds = 20;
         }
-        else if (rsoContentSave.Value.audioMusic == 20)
+        else if (rsoContentSave.Value.audioSounds == 20)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(30, 1) / 100));
-            textAudioMusic.text = "30";
+            rsoContentSave.Value.audioSounds = 30;
         }
-        else if (rsoContentSave.Value.audioMusic == 30)
+        else if (rsoContentSave.Value.audioSounds == 30)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(40, 1) / 100));
-            textAudioMusic.text = "40";
+            rsoContentSave.Value.audioSounds = 40;
         }
-        else if (rsoContentSave.Value.audioMusic == 40)
+        else if (rsoContentSave.Value.audioSounds == 40)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(50, 1) / 100));
-            textAudioMusic.text = "50";
+            rsoContentSave.Value.audioSounds = 50;
         }
-        else if (rsoContentSave.Value.audioMusic == 50)
+        else if (rsoContentSave.Value.audioSounds == 50)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(60, 1) / 100));
-            textAudioMusic.text = "60";
+            rsoContentSave.Value.audioSounds = 60;
         }
-        else if (rsoContentSave.Value.audioMusic == 60)
+        else if (rsoContentSave.Value.audioSounds == 60)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(70, 1) / 100));
-            textAudioMusic.text = "70";
+            rsoContentSave.Value.audioSounds = 70;
         }
-        else if (rsoContentSave.Value.audioMusic == 70)
+        else if (rsoContentSave.Value.audioSounds == 70)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(80, 1) / 100));
-            textAudioMusic.text = "80";
+            rsoContentSave.Value.audioSounds = 80;
         }
-        else if (rsoContentSave.Value.audioMusic == 80)
+        else if (rsoContentSave.Value.audioSounds == 80)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(90, 1) / 100));
-            textAudioMusic.text = "90";
+            rsoContentSave.Value.audioSounds = 90;
         }
-        else if (rsoContentSave.Value.audioMusic == 90)
+        else if (rsoContentSave.Value.audioSounds == 90)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(100, 1) / 100));
-            textAudioMusic.text = "100";
+            rsoContentSave.Value.audioSounds = 100;
         }
-        else if (rsoContentSave.Value.audioMusic == 100)
+        else if (rsoContentSave.Value.audioSounds == 100)
         {
-            audioMixer.SetFloat("Volume", 40 * Mathf.Log10(Mathf.Max(0, 1) / 100));
-            textAudioMusic.text = "0";
+            rsoContentSave.Value.audioSounds = 0;
         }
+
+        audioMixer.SetFloat("Sound", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioSounds, 1) / 100));
+        textAudioSounds.text = rsoContentSave.Value.audioSounds.ToString() + "%";
 
         rseSaveData.Call();
     }
