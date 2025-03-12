@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-public class ThunderSpawner : MonoBehaviour
+public class ThunderSpawner : GameProps
 {
     [Header("Settings")]
     [SerializeField] float delayAfterGameStart;
@@ -22,18 +22,8 @@ public class ThunderSpawner : MonoBehaviour
     // RSF
     // RSP
 
-    [Header("Input")]
-    [SerializeField] RSE_OnGameStart RSE_OnGameStart;
+    //[Header("Input")]
     //[Header("Output")]
-
-    private void OnEnable()
-    {
-        RSE_OnGameStart.action += StartCoroutineDelay;
-    }
-    private void OnDisable()
-    {
-        RSE_OnGameStart.action -= StartCoroutineDelay;
-    }
     private void Awake()
     {
         for (int i = 0; i < objToSpawnOnStart; i++)
@@ -76,5 +66,10 @@ public class ThunderSpawner : MonoBehaviour
     private void QueueThunder(ThunderProps thunder)
     {
         thunderQueue.Enqueue(thunder);
+    }
+
+    public override void Launch()
+    {
+        StartCoroutineDelay();
     }
 }
