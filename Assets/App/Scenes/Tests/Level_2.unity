@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blob
       objectReference: {fileID: 0}
+    - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1955,7 +1959,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2082,7 +2086,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2175,7 +2179,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
