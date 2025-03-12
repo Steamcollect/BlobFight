@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3085670914074965322}
   - component: {fileID: 4254080652120276551}
   - component: {fileID: 6745023593858242276}
+  - component: {fileID: 7307063819379520189}
   m_Layer: 0
   m_Name: WindZone
   m_TagString: Untagged
@@ -146,3 +147,18 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   windForce: 300
+--- !u!114 &7307063819379520189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010946453871632358}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e764a07fca9ba438cd827c368d6d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windControl: []
+  isLooping: 1
+  windZone: {fileID: 6745023593858242276}
