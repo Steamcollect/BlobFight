@@ -90,7 +90,24 @@ namespace BT.Save
             string infoData = File.ReadAllText(filePath);
             string decryptedJson = Decrypt(infoData, EncryptionKey);
             rsoContentSave.Value = JsonUtility.FromJson<ContentSaved>(decryptedJson);
+
+            SetScreen();
         }
+
+        private void SetScreen()
+        {
+            if (rsoContentSave.Value.fullScreen)
+            {
+                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            }
+            else
+            {
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+            }
+
+            Screen.fullScreen = rsoContentSave.Value.fullScreen;
+        }
+
         private void ClearContent()
         {
             rsoContentSave.Value = new();
