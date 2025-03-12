@@ -12155,6 +12155,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3298772611925015966, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
+      propertyPath: rseSaveData
+      value: 
+      objectReference: {fileID: 11400000, guid: ab95bbe7e45931d4fbafecb0f2d7ba94, type: 2}
     - target: {fileID: 6355303935705448582, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
