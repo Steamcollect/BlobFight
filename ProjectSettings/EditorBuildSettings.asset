@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/App/Scenes/Tests/Level_2.unity
     guid: d97f159d6709c2c4583498bacae30a04
+  - enabled: 1
+    path: Assets/App/Scenes/Tests/1_BiomeCelest_Level.unity
+    guid: 94d7303145cd12a4b934d3365a52eacf
   m_configObjects: {}
