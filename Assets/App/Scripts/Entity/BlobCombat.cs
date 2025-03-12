@@ -66,7 +66,7 @@ public class BlobCombat : MonoBehaviour
 
             StartCoroutine(ImpactCooldown(blob));
         }
-        else
+        else if((!blobMovement.IsExtend() && !blob.GetMovement().IsExtend()) || (blobMovement.IsExtend() && blob.GetMovement().IsExtend()))
         {
             Vector2 impactForce = impactDir * pushBackForce * velocity;
             Vector2 impact = impactForce * blob.GetHealth().GetPercentage();
