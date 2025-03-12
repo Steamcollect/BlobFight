@@ -1,19 +1,22 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class MovingProps : GameProps, IPausable
 {
     [Header("Settings")]
+    [SerializeField] bool haveWarning;
     [SerializeField] float moveSpeed;
     int currentPosIndex;
-
+    bool isVisible;
     [SerializeField] float delayBeforeStart;
     [SerializeField] float delayAtPoint;
 
     [Header("References")]
     [SerializeField] Transform movable;
     [SerializeField] Transform[] positions;
+    [SerializeField] RSE_UpdateWarning RSE_UpdateWarning;
 
     //[Space(10)]
     // RSO
@@ -31,10 +34,19 @@ public class MovingProps : GameProps, IPausable
             StartCoroutine(DelayBeforeStart());
         }
     }
-
+    private void FixedUpdate()
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        isVisible = GeometryUtility.TestPlanesAABB(planes, new Bounds(transform.position, Vector3.one));
+        if (haveWarning)
+        {
+            RSE_UpdateWarning.Call(!isVisible);
+        }
+    }
     IEnumerator DelayBeforeStart()
     {
         yield return new WaitForSeconds(delayBeforeStart);
+        
         SetNextPos();
     }
     IEnumerator DelayAtPoint()
