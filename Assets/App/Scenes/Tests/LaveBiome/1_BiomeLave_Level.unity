@@ -2814,8 +2814,8 @@ Transform:
   m_GameObject: {fileID: 1094495019}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -15.45, z: 0}
-  m_LocalScale: {x: 57.44651, y: 10.41449, z: 1}
+  m_LocalPosition: {x: 0.12, y: -23.61, z: 0}
+  m_LocalScale: {x: 57.44651, y: 26.296587, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2007084533}
@@ -3245,6 +3245,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1372913570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6073834846718290723, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
+  m_PrefabInstance: {fileID: 1648521671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1394362458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3717,7 +3722,7 @@ Transform:
   m_GameObject: {fileID: 1452565125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15.94, z: 0}
+  m_LocalPosition: {x: 0, y: -25.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3861,7 +3866,7 @@ PrefabInstance:
     - target: {fileID: 4918325825267218515, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: content
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1372913570}
     - target: {fileID: 6355303935705448582, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4126,7 +4131,7 @@ Transform:
   m_GameObject: {fileID: 1687339118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.27, z: 0}
+  m_LocalPosition: {x: 0, y: -12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4894,7 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 0
+  launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 2
   delayBeforeStart: 5

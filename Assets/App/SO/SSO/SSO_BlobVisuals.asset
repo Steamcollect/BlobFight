@@ -19,25 +19,25 @@ MonoBehaviour:
       autoSetOutlineColor: 0
     layer:
       serializedVersion: 2
-      m_Bits: 512
+      m_Bits: 128
   - color:
       fillColor: {r: 0.30588236, g: 0.83137256, b: 0.49803922, a: 1}
       outlineColor: {r: 0.23921569, g: 0.6509804, b: 0.39215687, a: 1}
       autoSetOutlineColor: 0
     layer:
       serializedVersion: 2
-      m_Bits: 4096
+      m_Bits: 256
   - color:
       fillColor: {r: 0.85882354, g: 0.29803923, b: 0.5176471, a: 1}
       outlineColor: {r: 0.69411767, g: 0.27058825, b: 0.44313726, a: 1}
       autoSetOutlineColor: 0
     layer:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 512
   - color:
       fillColor: {r: 1, g: 0.7137255, b: 0.27450982, a: 1}
       outlineColor: {r: 0.7019608, g: 0.49411765, b: 0.1882353, a: 1}
       autoSetOutlineColor: 0
     layer:
       serializedVersion: 2
-      m_Bits: 128
+      m_Bits: 1024
