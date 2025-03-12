@@ -11,8 +11,8 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     [Space(15)]
     [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
-    [SerializeField] float timeBetweenExtend;
     bool isExtend = false;
+    float extendTime;
 
     [SerializeField] float slidingGravity;
 
@@ -87,13 +87,16 @@ public class BlobMovement : MonoBehaviour, IPausable
                 if (!stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime))
                 {
                     ShrinkBlob();
+                    extendTime = 0;
                 }
                 else
                 {
                     stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
+                    extendTime += Time.deltaTime;
                 }
             }
         }
+
         joint.SetCollidersPosOffset(.5f);
     }
 
@@ -247,4 +250,6 @@ public class BlobMovement : MonoBehaviour, IPausable
         yield return new WaitForSeconds(delay);
         stunImpactCanMove = true;
     }
+
+    public float GetExtendTime() { return extendTime; }
 }

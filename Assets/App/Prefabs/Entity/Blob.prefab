@@ -519,7 +519,6 @@ MonoBehaviour:
     damping: 0
     frequency: 10
   extendStaminaCost: 50
-  timeBetweenExtend: 0.1
   slidingGravity: 2.5
   angleSpeedMultiplierCurve:
     serializedVersion: 2
@@ -944,6 +943,8 @@ MonoBehaviour:
   pushBackForce: 1.4
   returnPushBackForce: 0.8
   extendForceMultiplier: 3
+  paryMaxTime: 0.1
+  paryForceMultiplier: 5
   blobTrigger: {fileID: 606557387366902294}
   blobJoint: {fileID: 6321734985548798584}
   blobMovement: {fileID: 2542050320697814845}

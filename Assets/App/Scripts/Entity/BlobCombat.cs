@@ -9,6 +9,10 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] float returnPushBackForce;
     [SerializeField] float extendForceMultiplier;
 
+    [Space(5)]
+    [SerializeField] float paryMaxTime;
+    [SerializeField] float paryForceMultiplier;
+
     [Header("References")]
     [SerializeField] BlobTrigger blobTrigger;
     [SerializeField] BlobJoint blobJoint;
@@ -48,7 +52,29 @@ public class BlobCombat : MonoBehaviour
         float velocity = blobJoint.GetVelocity().sqrMagnitude;
         Vector2 impactDir = (blob.GetJoint().GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
 
-        if (!blob.GetMovement().IsExtend() && blobMovement.IsExtend())
+        if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < paryMaxTime)
+        {
+            float mySpeed = blobJoint.GetVelocity().sqrMagnitude;
+            float impactSpeed = blob.GetJoint().GetVelocity().sqrMagnitude;
+
+            if(mySpeed <= impactSpeed)
+            {
+                Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
+                Vector2 impactForce = propulsionDir * pushBackForce * velocity * extendForceMultiplier;
+                blob.GetJoint().AddForce(impactForce);
+
+                Vector2 impact = -impactDir * returnPushBackForce * velocity * blob.GetHealth().GetPercentage() * paryForceMultiplier;
+                blobJoint.AddForce(impact);
+
+                blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
+                blob.GetTrigger().ExludeLayer(currentLayer, .1f);
+
+                blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
+
+                StartCoroutine(ImpactCooldown(blob));
+            }
+        }
+        else if (!blob.GetMovement().IsExtend() && blobMovement.IsExtend())
         {
             Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
             //Debug.DrawLine(blob.GetJoint().GetJointsCenter(), blob.GetJoint().GetJointsCenter() + propulsionDir, Color.blue, 1);
