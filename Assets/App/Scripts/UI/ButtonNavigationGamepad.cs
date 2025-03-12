@@ -20,7 +20,7 @@ public class ButtonNavigationGamepad : MonoBehaviour
     private void OnEnable()
     {
         defaultButton.Select();
-        defaultButton.GetComponent<InteractiveButton>().OnSelect(null);
+        defaultButton.GetComponent<InteractiveButton>()?.OnSelect(null);
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class ButtonNavigationGamepad : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject == null)
         {
             defaultButton.Select();
-            defaultButton.GetComponent<InteractiveButton>().OnSelect(null);
+            defaultButton.GetComponent<InteractiveButton>()?.OnSelect(null);
         }
     }
 }
