@@ -961,6 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
+  haveWarning: 0
   moveSpeed: 50
   delayBeforeStart: 8
   delayAtPoint: 6
@@ -968,6 +969,7 @@ MonoBehaviour:
   positions:
   - {fileID: 562954668}
   - {fileID: 1620186533}
+  RSE_UpdateWarning: {fileID: 0}
 --- !u!4 &487575738
 Transform:
   m_ObjectHideFlags: 0
@@ -3201,10 +3203,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4918325825267218515, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: content
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6355303935705448582, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3471,6 +3469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
+  haveWarning: 0
   moveSpeed: 50
   delayBeforeStart: 5
   delayAtPoint: 5
@@ -3478,6 +3477,7 @@ MonoBehaviour:
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
+  RSE_UpdateWarning: {fileID: 0}
 --- !u!4 &2007084533
 Transform:
   m_ObjectHideFlags: 0

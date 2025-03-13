@@ -33,27 +33,27 @@ EditorBuildSettings:
     path: Assets/App/Scenes/Tests/Z_Eliot.unity
     guid: 4e6bc60bad028d0468020c4d923e903e
   - enabled: 1
-    path: Assets/App/Scenes/Tests/VentBiome/1_BiomeVent_Level.unity
+    path: Assets/App/Scenes/Levels/VentBiome/1_BiomeVent_Level.unity
     guid: ca9256da3c5d90f48a0d1d46286a810c
   - enabled: 1
-    path: Assets/App/Scenes/Tests/VentBiome/2_BiomeVent_Level.unity
+    path: Assets/App/Scenes/Levels/VentBiome/2_BiomeVent_Level.unity
     guid: 7b147f3051ee97b48b714a04324d2454
   - enabled: 1
-    path: Assets/App/Scenes/Tests/VentBiome/3_BiomeVent_Level.unity
+    path: Assets/App/Scenes/Levels/VentBiome/3_BiomeVent_Level.unity
     guid: 1ff207b03c0267d43864d5887695aed4
   - enabled: 1
-    path: Assets/App/Scenes/Tests/ScienceBiome/1_BiomesScience_Level.unity
+    path: Assets/App/Scenes/Levels/ScienceBiome/1_BiomesScience_Level.unity
     guid: 943277f8ba02b734e84c85d7152c42c9
   - enabled: 1
-    path: Assets/App/Scenes/Tests/ScienceBiome/2_BiomesScience_Level.unity
+    path: Assets/App/Scenes/Levels/ScienceBiome/2_BiomesScience_Level.unity
     guid: 0ee14a7c79334c646b7fd4b03fe80e9e
   - enabled: 1
-    path: Assets/App/Scenes/Tests/CelestBiome/1_BiomeCelest_Level.unity
+    path: Assets/App/Scenes/Levels/CelestBiome/1_BiomeCelest_Level.unity
     guid: 94d7303145cd12a4b934d3365a52eacf
   - enabled: 1
-    path: Assets/App/Scenes/Tests/LaveBiome/1_BiomeLave_Level.unity
+    path: Assets/App/Scenes/Levels/LaveBiome/1_BiomeLave_Level.unity
     guid: d6f85ddf2ad141f4bbcb489e9e63058e
   - enabled: 1
-    path: "Assets/App/Scenes/Tests/MarecageBiome/1_BiomeMar\xE9cage_Level.unity"
+    path: "Assets/App/Scenes/Levels/MarecageBiome/1_BiomeMar\xE9cage_Level.unity"
     guid: 014ef4a7d2a242141889cd251cda9a8c
   m_configObjects: {}
