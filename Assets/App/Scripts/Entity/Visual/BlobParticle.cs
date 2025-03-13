@@ -7,8 +7,10 @@ public class BlobParticle : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int touchParticleStartingCount;
     [SerializeField] int hitParticleStartingCount;
+    [SerializeField] int extendHitParticleStartingCount;
 
     [SerializeField] AnimationCurve hitScaleBySpeedCurve;
+    [SerializeField] AnimationCurve extendHitScaleBySpeedCurve;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -27,6 +29,9 @@ public class BlobParticle : MonoBehaviour
 
     [SerializeField] ParticleSystem hitParticlePrefab;
     Queue <ParticleCallback> hitParticles = new();
+
+    [SerializeField] ParticleSystem extendHitParticlePrefab;
+    Queue <ParticleCallback> extendHitParticles = new();
 
     //[Space(10)]
     // RSO
@@ -54,6 +59,9 @@ public class BlobParticle : MonoBehaviour
 
         for (int i = 0; i < hitParticleStartingCount; i++)
             hitParticles.Enqueue(CreateParticle(hitParticlePrefab, OnHitParticleEnd));
+
+        for (int i = 0; i < extendHitParticleStartingCount; i++)
+            extendHitParticles.Enqueue(CreateParticle(extendHitParticlePrefab, OnExtendHitParticleEnd));
 
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
     }
@@ -148,6 +156,28 @@ public class BlobParticle : MonoBehaviour
     {
         particle.gameObject.SetActive(false);
         hitParticles.Enqueue(particle);
+    }
+
+    public void ExtendHitParticle(Vector2 position, Vector2 rotation, float speed)
+    {
+        ParticleCallback particle;
+        if (extendHitParticles.Count <= 0) particle = CreateParticle(extendHitParticlePrefab, OnHitParticleEnd);
+        else particle = extendHitParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+
+        particle.SetColor(motor.GetColor().fillColor);
+
+        particle.transform.position = position;
+        particle.transform.up = -rotation;
+        particle.transform.localScale = Vector2.one * extendHitScaleBySpeedCurve.Evaluate(speed);
+
+        particle.Play();
+    }
+    void OnExtendHitParticleEnd(ParticleCallback particle)
+    {
+        particle.gameObject.SetActive(false);
+        extendHitParticles.Enqueue(particle);
     }
 
     ParticleCallback CreateParticle(ParticleSystem prefab, Action<ParticleCallback> stopAction)

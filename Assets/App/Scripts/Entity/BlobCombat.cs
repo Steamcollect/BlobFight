@@ -66,7 +66,7 @@ public class BlobCombat : MonoBehaviour
             {
                 print("Parry");
                                 
-                impactVelocity = -blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
+                impactVelocity = blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
                 impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
 
                 blobTouch.GetJoint().ResetVelocity();
@@ -80,6 +80,8 @@ public class BlobCombat : MonoBehaviour
             Debug.DrawLine(blobTouch.GetJoint().GetJointsCenter(), blobTouch.GetJoint().GetJointsCenter() + impactVelocity, Color.blue, 1);
 
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
+
+            particle.ExtendHitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactVelocity.sqrMagnitude);
         }
         else if ((!movement.IsExtend() && !blobTouch.GetMovement().IsExtend()) || (movement.IsExtend() && blobTouch.GetMovement().IsExtend()))
         {
