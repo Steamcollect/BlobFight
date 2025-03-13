@@ -12,27 +12,48 @@ EditorBuildSettings:
     path: Assets/App/Scenes/02_MainMenu.unity
     guid: 542457f72f77e1642be309e1c41a0dc5
   - enabled: 1
-    path: Assets/App/Scenes/Tests/Level_1.unity
+    path: Assets/App/Scenes/Tests/Z_Level_1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/App/Scenes/Tests/Z_Level_2.unity
+    guid: d97f159d6709c2c4583498bacae30a04
+  - enabled: 1
+    path: Assets/App/Scenes/Tests/Z_Level_3.unity
+    guid: 21c669a26e12def46aa13cb48f7ba71a
   - enabled: 1
     path: Assets/App/Scenes/Tests/Z_Killian.unity
     guid: 2f1175c4de1c92f4680766d2b2a4da67
   - enabled: 1
-    path: Assets/App/Scenes/Tests/Tweek_Cyril.unity
+    path: Assets/App/Scenes/Tests/Z_Cyril.unity
     guid: 05534d2906af36b4eaffc07b7826834c
   - enabled: 1
     path: Assets/App/Scenes/Tests/Z_Florian.unity
     guid: e02a7b46a540df84da7d3b0d8132448c
   - enabled: 1
+    path: Assets/App/Scenes/Tests/Z_Eliot.unity
+    guid: 4e6bc60bad028d0468020c4d923e903e
+  - enabled: 1
+    path: Assets/App/Scenes/Tests/VentBiome/1_BiomeVent_Level.unity
+    guid: ca9256da3c5d90f48a0d1d46286a810c
+  - enabled: 1
     path: Assets/App/Scenes/Tests/VentBiome/2_BiomeVent_Level.unity
     guid: 7b147f3051ee97b48b714a04324d2454
   - enabled: 1
-    path: Assets/App/Scenes/Tests/Level_2.unity
-    guid: d97f159d6709c2c4583498bacae30a04
+    path: Assets/App/Scenes/Tests/VentBiome/3_BiomeVent_Level.unity
+    guid: 1ff207b03c0267d43864d5887695aed4
+  - enabled: 1
+    path: Assets/App/Scenes/Tests/ScienceBiome/1_BiomesScience_Level.unity
+    guid: 943277f8ba02b734e84c85d7152c42c9
+  - enabled: 1
+    path: Assets/App/Scenes/Tests/ScienceBiome/2_BiomesScience_Level.unity
+    guid: 0ee14a7c79334c646b7fd4b03fe80e9e
   - enabled: 1
     path: Assets/App/Scenes/Tests/CelestBiome/1_BiomeCelest_Level.unity
     guid: 94d7303145cd12a4b934d3365a52eacf
   - enabled: 1
     path: Assets/App/Scenes/Tests/LaveBiome/1_BiomeLave_Level.unity
     guid: d6f85ddf2ad141f4bbcb489e9e63058e
+  - enabled: 1
+    path: "Assets/App/Scenes/Tests/MarecageBiome/1_BiomeMar\xE9cage_Level.unity"
+    guid: 014ef4a7d2a242141889cd251cda9a8c
   m_configObjects: {}
