@@ -10,16 +10,16 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] float extendForceMultiplier;
 
     [Space(5)]
-    [SerializeField] float paryMaxTime;
+    [SerializeField] float parryMaxTime;
     [SerializeField] float paryForceMultiplier;
 
     bool canFight = true;
 
     [Header("References")]
-    [SerializeField] BlobTrigger blobTrigger;
-    [SerializeField] BlobJoint blobJoint;
-    [SerializeField] BlobMovement blobMovement;
-    [SerializeField] BlobParticle blobParticle;
+    [SerializeField] BlobTrigger trigger;
+    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobMovement movement;
+    [SerializeField] BlobParticle particle;
 
     LayerMask currentLayer;
 
@@ -35,7 +35,7 @@ public class BlobCombat : MonoBehaviour
 
     private void OnDisable()
     {
-        blobTrigger.OnBlobCollisionEnter -= OnBlobCollisionEnter;
+        trigger.OnBlobCollisionEnter -= OnBlobCollisionEnter;
     }
 
     private void Start()
@@ -44,79 +44,63 @@ public class BlobCombat : MonoBehaviour
     }
     void LateStart()
     {
-        blobTrigger.OnBlobCollisionEnter += OnBlobCollisionEnter;
+        trigger.OnBlobCollisionEnter += OnBlobCollisionEnter;
     }
 
-    void OnBlobCollisionEnter(BlobMotor blob, Collision2D collision)
+    void OnBlobCollisionEnter(BlobMotor blobTouch, Collision2D collision)
     {
-        if (blobsTouch.Contains(blob) || !canFight) return;
+        if (blobsTouch.Contains(blobTouch) || !canFight) return;
 
-        float velocity = blobJoint.GetVelocity().sqrMagnitude;
-        float blobVelocity = blob.GetJoint().GetVelocity().sqrMagnitude;
+        float speed = joint.GetVelocity().sqrMagnitude;
+        float blobTouchSpeed = blobTouch.GetJoint().GetVelocity().sqrMagnitude;
         
-        Vector2 impactDir = (blob.GetJoint().GetJointsCenter() - blobJoint.GetJointsCenter()).normalized;
+        Vector2 propulsionDir = (blobTouch.GetJoint().GetJointsCenter() - joint.GetJointsCenter()).normalized;
 
-        if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < paryMaxTime)
+        Vector2 impactVelocity = Vector2.zero;
+        Vector2 impactForce = Vector2.zero;
+
+
+        if(movement.IsExtend() && movement.GetExtendTime() < parryMaxTime)
         {
-            float mySpeed = blobJoint.GetVelocity().sqrMagnitude;
-            float impactSpeed = blob.GetJoint().GetVelocity().sqrMagnitude;
-
-            if(mySpeed <= impactSpeed)
+            if(speed < blobTouchSpeed)
             {
                 print("Parry");
-                Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
-                Vector2 impactForce = propulsionDir * pushBackForce * blobVelocity * extendForceMultiplier * velocity * blob.GetHealth().GetPercentage() * paryForceMultiplier;
+                                
+                impactVelocity = -blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
+                impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
 
-                blob.GetJoint().ResetVelocity();
-                blob.GetJoint().AddForce(impactForce);
-
-                Vector2 impact = -impactDir * returnPushBackForce;
-                blobJoint.AddForce(impact);
-
-                blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
-                blob.GetTrigger().ExludeLayer(currentLayer, .1f);
-
-                blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
-
-                StartCoroutine(ImpactCooldown(blob));
+                blobTouch.GetJoint().ResetVelocity();
             }
         }
-        else if (!blob.GetMovement().IsExtend() && blobMovement.IsExtend())
+        else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
         {
-            Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
-            //Debug.DrawLine(blob.GetJoint().GetJointsCenter(), blob.GetJoint().GetJointsCenter() + propulsionDir, Color.blue, 1);
+            impactVelocity = CalculateExpulsionDirection(blobTouch.GetTrigger().GetCollisions(), propulsionDir) * speed;
+            impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * extendForceMultiplier;
 
-            Vector2 impactForce = propulsionDir * pushBackForce * velocity * extendForceMultiplier;
-            blob.GetJoint().AddForce(impactForce);
+            Debug.DrawLine(blobTouch.GetJoint().GetJointsCenter(), blobTouch.GetJoint().GetJointsCenter() + impactVelocity, Color.blue, 1);
 
-            Vector2 impact = -impactDir * returnPushBackForce * velocity * blob.GetHealth().GetPercentage();
-            blobJoint.AddForce(impact);
-
-            blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
-            blob.GetTrigger().ExludeLayer(currentLayer, .1f);
-
-            blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
-
-            StartCoroutine(ImpactCooldown(blob));
-            StartCoroutine(blob.GetCombat().CanFightCooldown());
+            blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
         }
-        else if((!blobMovement.IsExtend() && !blob.GetMovement().IsExtend()) || (blobMovement.IsExtend() && blob.GetMovement().IsExtend()))
+        else if ((!movement.IsExtend() && !blobTouch.GetMovement().IsExtend()) || (movement.IsExtend() && blobTouch.GetMovement().IsExtend()))
         {
-            if(velocity > blobVelocity)
-            {
-                Vector2 impactForce = impactDir * pushBackForce * velocity;
-                Vector2 impact = impactForce * blob.GetHealth().GetPercentage();
-                blob.GetJoint().AddForce(impact);
-                blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
+            if (speed < blobTouchSpeed) return; // Do not add force in this case
 
-                blobJoint.AddForce(-impactDir * returnPushBackForce * velocity);
+            impactVelocity = propulsionDir * speed;
+            impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage();
 
-                blobParticle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impact.sqrMagnitude);
-
-                StartCoroutine(ImpactCooldown(blob));
-                StartCoroutine(blob.GetCombat().CanFightCooldown());
-            }
+            particle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactVelocity.sqrMagnitude);
         }
+
+        // Set new velocity
+        blobTouch.GetJoint().AddForce(impactForce * pushBackForce);
+        joint.AddForce(-impactVelocity * returnPushBackForce);
+
+        // Set health
+        blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
+
+        // Set cooldowns
+        StartCoroutine(ImpactCooldown(blobTouch));
+        StartCoroutine(blobTouch.GetCombat().CanFightCooldown());
     }
     IEnumerator ImpactCooldown(BlobMotor blobTouch)
     {

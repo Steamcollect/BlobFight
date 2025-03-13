@@ -941,15 +941,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackForce: 1.4
+  pushBackForce: 1.1
   returnPushBackForce: 0.8
-  extendForceMultiplier: 3
-  paryMaxTime: 0.1
-  paryForceMultiplier: 5
-  blobTrigger: {fileID: 606557387366902294}
-  blobJoint: {fileID: 6321734985548798584}
-  blobMovement: {fileID: 2542050320697814845}
-  blobParticle: {fileID: 4617812964555812280}
+  extendForceMultiplier: 2
+  parryMaxTime: 0.1
+  paryForceMultiplier: 4
+  trigger: {fileID: 606557387366902294}
+  joint: {fileID: 6321734985548798584}
+  movement: {fileID: 2542050320697814845}
+  particle: {fileID: 4617812964555812280}
 --- !u!1 &3267906026199711181
 GameObject:
   m_ObjectHideFlags: 0
