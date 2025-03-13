@@ -63,11 +63,14 @@ public class BlobCombat : MonoBehaviour
 
             if(mySpeed <= impactSpeed)
             {
+                print("Parry");
                 Vector2 propulsionDir = CalculateExpulsionDirection(blob.GetTrigger().GetCollisions(), impactDir);
-                Vector2 impactForce = propulsionDir * pushBackForce * blobVelocity * extendForceMultiplier;
+                Vector2 impactForce = propulsionDir * pushBackForce * blobVelocity * extendForceMultiplier * velocity * blob.GetHealth().GetPercentage() * paryForceMultiplier;
+
+                blob.GetJoint().ResetVelocity();
                 blob.GetJoint().AddForce(impactForce);
 
-                Vector2 impact = -impactDir * returnPushBackForce * velocity * blob.GetHealth().GetPercentage() * paryForceMultiplier;
+                Vector2 impact = -impactDir * returnPushBackForce;
                 blobJoint.AddForce(impact);
 
                 blob.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);

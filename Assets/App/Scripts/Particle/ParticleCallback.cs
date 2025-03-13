@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class ParticleCallback : MonoBehaviour
 {
     //[Header("Settings")]
 
     //[Header("References")]
-    Action<ParticleSystem> OnParticleStopped;
+    Action<ParticleCallback> OnParticleStopped;
     ParticleSystem particleConnected;
 
     //[Space(10)]
@@ -17,14 +18,27 @@ public class ParticleCallback : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
-    public void Setup(Action<ParticleSystem> onStopped, ParticleSystem particleConnected)
+    public void Setup(Action<ParticleCallback> onStopped, ParticleSystem particleConnected)
     {
+        MainModule main = particleConnected.main;
+        main.stopAction = ParticleSystemStopAction.Callback;
+
         OnParticleStopped += onStopped;
         this.particleConnected = particleConnected;
     }
 
+    public virtual void SetColor(Color newColor)
+    {
+        // Do nothing
+    }
+
+    public void Play()
+    {
+        particleConnected.Play();
+    }
+
     private void OnParticleSystemStopped()
     {
-        OnParticleStopped?.Invoke(particleConnected);
+        OnParticleStopped?.Invoke(this);
     }
 }

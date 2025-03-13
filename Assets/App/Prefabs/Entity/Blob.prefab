@@ -181,6 +181,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  motor: {fileID: 3420423106000584793}
   trigger: {fileID: 606557387366902294}
   health: {fileID: 5355027135910952395}
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
