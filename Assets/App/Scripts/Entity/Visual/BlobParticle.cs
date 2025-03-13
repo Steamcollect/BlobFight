@@ -147,9 +147,9 @@ public class BlobParticle : MonoBehaviour
         main.stopAction = ParticleSystemStopAction.Callback;
 
         particle.transform.position = position;
-        particle.transform.up = rotation;
+        particle.transform.up = -rotation;
         particle.transform.localScale = Vector2.one * hitScaleBySpeedCurve.Evaluate(speed);
-        print(hitScaleBySpeedCurve.Evaluate(speed));
+        //print(hitScaleBySpeedCurve.Evaluate(speed));
 
         particle.Play();
     }
