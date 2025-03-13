@@ -2874,6 +2874,55 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
+--- !u!1 &1628859129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628859131}
+  - component: {fileID: 1628859130}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1628859130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628859129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 947a813c37693334589f1643997eefe0, type: 2}
+--- !u!4 &1628859131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628859129}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.852595, y: -1.2937611, z: 0.06790121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893993356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3120,19 +3169,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.2679245
+      value: 0.078431375
       objectReference: {fileID: 0}
     - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.2679245
+      value: 0.078431375
       objectReference: {fileID: 0}
     - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.2679245
+      value: 0.078431375
       objectReference: {fileID: 0}
     - target: {fileID: 4666903761734457750, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357332876369614491, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: m_Antialiasing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357332876369614491, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3152,3 +3209,4 @@ SceneRoots:
   - {fileID: 1066067693}
   - {fileID: 17093955}
   - {fileID: 449480673}
+  - {fileID: 1628859131}
