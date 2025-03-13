@@ -57,7 +57,7 @@ public class HingeTrigger : CollisionTrigger
     {
         if(collision.gameObject.TryGetComponent(out Rigidbody2D rb))
         {
-            if(!collision.gameObject.GetComponent<BallHamerCollision>())
+            if(!collision.gameObject.GetComponent<CustomCollision>())
             {
                 int damage = (int)damageBySpeedCurve.Evaluate(rb.velocity.sqrMagnitude * rb.mass);
                 health.TakeDamage(damage);

@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 96575908}
   - component: {fileID: 96575909}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (3)_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 360574522}
   - component: {fileID: 360574523}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576956347}
   - component: {fileID: 576956348}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (2)_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 1428463513}
   - component: {fileID: 1428463515}
   - component: {fileID: 1428463514}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1454,7 +1454,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1602,7 +1602,7 @@ GameObject:
   - component: {fileID: 1563569238}
   - component: {fileID: 1563569240}
   - component: {fileID: 1563569239}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1695,7 +1695,7 @@ GameObject:
   - component: {fileID: 1776137689}
   - component: {fileID: 1776137691}
   - component: {fileID: 1776137690}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1747,7 +1747,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

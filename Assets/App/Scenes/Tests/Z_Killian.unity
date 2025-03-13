@@ -5847,7 +5847,7 @@ GameObject:
   - component: {fileID: 1036577682}
   - component: {fileID: 1036577684}
   - component: {fileID: 1036577683}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7883,7 +7883,7 @@ GameObject:
   - component: {fileID: 1377235651}
   - component: {fileID: 1377235653}
   - component: {fileID: 1377235652}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8608,7 +8608,7 @@ GameObject:
   - component: {fileID: 1553218828}
   - component: {fileID: 1553218830}
   - component: {fileID: 1553218829}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8707,13 +8707,14 @@ GameObject:
   - component: {fileID: 1653407308}
   - component: {fileID: 1653407307}
   - component: {fileID: 1653407306}
+  - component: {fileID: 1653407311}
   m_Layer: 0
   m_Name: Platform1 (6)
   m_TagString: Groundable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1653407306
 Rigidbody2D:
   serializedVersion: 4
@@ -8754,7 +8755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  damageType: 1
+  damageType: 2
 --- !u!61 &1653407308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8867,6 +8868,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1653407311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653407305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e57bc2c15b0f8c43a0e6164540cd463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1680574217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
@@ -8883,7 +8896,7 @@ GameObject:
   - component: {fileID: 1685068310}
   - component: {fileID: 1685068312}
   - component: {fileID: 1685068311}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Void (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

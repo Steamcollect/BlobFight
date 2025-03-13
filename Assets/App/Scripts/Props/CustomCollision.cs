@@ -1,5 +1,5 @@
 using UnityEngine;
-public class BallHamerCollision : MonoBehaviour
+public class CustomCollision : MonoBehaviour
 {
     void OnCollision(Collision2D collision)
     {
