@@ -10,11 +10,14 @@ public class ParticleColorSettable : ParticleCallback
     {
         public ParticleSystem particle;
         public MainModule mainModule;
+        public ParticleSystemRenderer psr;
 
         public MyParticle(ParticleSystem particle, MainModule mainModule)
         {
             this.particle = particle;
             this.mainModule = mainModule;
+            psr = particle.GetComponent<ParticleSystemRenderer>();
+            psr.trailMaterial = new Material(Shader.Find("Sprites/Default"));
         }
     }
 
@@ -32,6 +35,8 @@ public class ParticleColorSettable : ParticleCallback
         for (int i = 0; i < myParticles.Length; i++)
         {
             myParticles[i].mainModule.startColor = newColor;
+            //print(myParticles[i].psr.trailMaterial.name);
+            //myParticles[i].psr.trailMaterial.color = newColor;
         }
     }
 }

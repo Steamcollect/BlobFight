@@ -153,7 +153,7 @@ public class BlobParticle : MonoBehaviour
 
         for (int i = 0; i < hitParticles.Length; i++)
         {
-            if (hitParticles[i].hitStrenght <= speedPercent)
+            if (hitParticles[i].hitStrenght >= speedPercent)
             {
                 hitParticle = hitParticles[i];
                 break;
