@@ -62,15 +62,17 @@ public class BlobCombat : MonoBehaviour
 
         if(movement.IsExtend() && movement.GetExtendTime() < parryMaxTime)
         {
-            if(speed < blobTouchSpeed)
+            print("try parry");
+            if (speed < blobTouchSpeed)
             {
                 print("Parry");
-                                
+
                 impactVelocity = blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
                 impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
 
                 blobTouch.GetJoint().ResetVelocity();
             }
+            else return;
         }
         else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
         {
@@ -80,8 +82,6 @@ public class BlobCombat : MonoBehaviour
             Debug.DrawLine(blobTouch.GetJoint().GetJointsCenter(), blobTouch.GetJoint().GetJointsCenter() + impactVelocity, Color.blue, 1);
 
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
-
-            particle.ExtendHitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactVelocity.sqrMagnitude);
         }
         else if ((!movement.IsExtend() && !blobTouch.GetMovement().IsExtend()) || (movement.IsExtend() && blobTouch.GetMovement().IsExtend()))
         {
@@ -89,8 +89,6 @@ public class BlobCombat : MonoBehaviour
 
             impactVelocity = propulsionDir * speed;
             impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage();
-
-            particle.HitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactVelocity.sqrMagnitude);
         }
 
         // Set new velocity
@@ -99,6 +97,8 @@ public class BlobCombat : MonoBehaviour
 
         // Set health
         blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
+
+        particle.DoHitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactForce.sqrMagnitude);
 
         // Set cooldowns
         StartCoroutine(ImpactCooldown(blobTouch));
