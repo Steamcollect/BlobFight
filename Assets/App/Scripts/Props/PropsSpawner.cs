@@ -52,8 +52,10 @@ public class PropsSpawner : GameProps
     Rigidbody2D GetObj()
     {
         if(objQueue.Count <= 0) CreateObj();
-        
-        return objQueue.Dequeue();
+
+        Rigidbody2D obj = objQueue.Dequeue();
+        objQueue.Enqueue(obj);
+        return obj;
     }
     void CreateObj()
     {
