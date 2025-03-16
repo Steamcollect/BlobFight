@@ -72,8 +72,12 @@ public class BlobParticle : MonoBehaviour
         hitParticles = hitParticles.OrderBy(x => x.hitStrenght).ToArray();
         foreach (var hitParticle in hitParticles)
             for (int j = 0; j < hitParticleStartingCount; j++)
-                hitParticle.particles.Enqueue(CreateParticle(hitParticle.particlePrefab, hitParticle.OnParticleEnd));
-    }
+            {
+                ParticleCallback particle = CreateParticle(hitParticle.particlePrefab, hitParticle.OnParticleEnd);
+                particle.SetColor(motor.GetColor().fillColor);
+                hitParticle.particles.Enqueue(particle);
+            }
+}
 
     void OnTouchEnter(Collision2D coll)
     {
@@ -166,8 +170,6 @@ public class BlobParticle : MonoBehaviour
         else particle = hitParticle.particles.Dequeue();
 
         particle.gameObject.SetActive(true);
-
-        particle.SetColor(motor.GetColor().fillColor);
 
         particle.transform.position = position;
         particle.transform.up = -rotation;
