@@ -1719,10 +1719,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: delayAfterGameStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: spawnPoint.Array.size
       value: 5
       objectReference: {fileID: 0}

@@ -50,15 +50,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  delayAfterGameStart: 2
+  delayAfterGameStart: 0
   delayBetweenLightning: {x: 4, y: 5}
   objToSpawnOnStart: 2
+  timeSpeed: 000000001e0000003c0000005a000000
+  newDelayBetweenLightning:
+  - {x: 4, y: 5}
+  - {x: 3, y: 4}
+  - {x: 2, y: 3}
+  - {x: 1, y: 2}
   spawnPoint:
   - {fileID: 5155470544710904835}
   - {fileID: 1580813269545095234}
   - {fileID: 4553976894774741503}
   - {fileID: 2129625708994800755}
   thunderPrefab: {fileID: 4498869795054011900, guid: fd28360248491ad46bd4872b72a84424, type: 3}
+  rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!1 &2966361593193574170
 GameObject:
   m_ObjectHideFlags: 0

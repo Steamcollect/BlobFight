@@ -11,11 +11,18 @@ public class ThunderSpawner : GameProps
     [SerializeField] Vector2 delayBetweenLightning;
     [Space(5)]
     [SerializeField] int objToSpawnOnStart;
+    [SerializeField] List<int> timeSpeed;
+    [SerializeField] List<Vector2> newDelayBetweenLightning;
+
     [Header("References")]
     [SerializeField] List<Transform> spawnPoint;
     [SerializeField] ThunderProps thunderPrefab;
 
+    [Header("Output")]
+    [SerializeField] RSO_TimerParty rsoTimerParty;
+
     Queue<ThunderProps> thunderQueue = new();
+    int mode = 0;
 
     //[Space(10)]
     // RSO
@@ -42,6 +49,16 @@ public class ThunderSpawner : GameProps
     }
     IEnumerator SpawnThunder()
     {
+        if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+        {
+            delayBetweenLightning = newDelayBetweenLightning[mode];
+
+            if(mode < timeSpeed.Count - 1)
+            {
+                mode++;
+            }
+        }
+
         yield return new WaitForSeconds(Random.Range(delayBetweenLightning.x, delayBetweenLightning.y));
         int rnd = Random.Range(0, spawnPoint.Count);
         ThunderProps thunder = GetThunderObj();
