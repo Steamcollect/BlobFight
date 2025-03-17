@@ -9,7 +9,7 @@ public class MovingProps : GameProps, IPausable
     [SerializeField] bool haveWarning;
     [SerializeField] float moveSpeed;
     int currentPosIndex;
-    bool isVisible;
+    bool isVisible = false;
     [SerializeField] float delayBeforeStart;
     [SerializeField] float delayAtPoint;
 
@@ -28,7 +28,9 @@ public class MovingProps : GameProps, IPausable
 
     public override void Launch()
     {
-        if(positions.Length > 0)
+        RSE_UpdateWarning.Call(!Checkisibility());
+
+        if (positions.Length > 0)
         {
             movable.position = positions[0].position;
             StartCoroutine(DelayBeforeStart());
@@ -36,13 +38,19 @@ public class MovingProps : GameProps, IPausable
     }
     private void FixedUpdate()
     {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        isVisible = GeometryUtility.TestPlanesAABB(planes, new Bounds(transform.position, Vector3.one));
-        if (haveWarning)
+        bool visible = Checkisibility();
+        if (haveWarning && visible != isVisible)
         {
-            RSE_UpdateWarning.Call(!isVisible);
+            isVisible = visible;
+            RSE_UpdateWarning.Call(!visible);
         }
     }
+    bool Checkisibility()
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        return GeometryUtility.TestPlanesAABB(planes, new Bounds(movable.position, Vector3.one));
+    }
+
     IEnumerator DelayBeforeStart()
     {
         yield return new WaitForSeconds(delayBeforeStart);
