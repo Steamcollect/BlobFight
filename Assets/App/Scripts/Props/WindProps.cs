@@ -54,4 +54,9 @@ public class WindProps : GameProps
     {
         windForce = windForceChange;
     }
+
+    public float GetWindForce()
+    {
+        return windForce;
+    }
 }
