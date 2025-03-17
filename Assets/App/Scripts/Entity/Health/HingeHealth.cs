@@ -5,7 +5,9 @@ using UnityEngine.Rendering;
 
 public class HingeHealth : EntityHealth
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] bool instantDestroy;
+    [SerializeField] float tempDestroy;
 
     [Header("References")]
     [SerializeField, ContextMenuItem("Get All Joints In Object", "GetAllJoints")] List<HingeJoint2D> joints = new List<HingeJoint2D>();
@@ -14,9 +16,6 @@ public class HingeHealth : EntityHealth
     [SerializeField] SpriteRenderer graphics;
     [SerializeField] Color initColor;
     [SerializeField] Color endColor;
-
-    [SerializeField] bool instantDestroy;
-    [SerializeField] float tempDestroy;
 
     //[Space(10)]
     // RSO
