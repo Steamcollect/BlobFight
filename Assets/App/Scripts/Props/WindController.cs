@@ -33,9 +33,22 @@ public class WindController : MonoBehaviour
         {
             for (int i = 0; i < windControl.Length; i++)
             {
-                windZone.SetWindForce(windControl[i].target);
-                yield return new WaitForSeconds(windControl[i].time);
+                float elapsedTime = 0f;
+                float duration = windControl[i].time;
+                float startForce = windZone.GetWindForce(); // Assuming there's a method to get current wind force
+                float targetForce = windControl[i].target;
+
+                while (elapsedTime < duration)
+                {
+                    elapsedTime += Time.deltaTime;
+                    float newForce = Mathf.Lerp(startForce, targetForce, elapsedTime / duration);
+                    windZone.SetWindForce(newForce);
+                    yield return null; // Wait for the next frame
+                }
+
+                windZone.SetWindForce(targetForce); // Ensure it reaches the exact target value
             }
+
             StartCoroutine(ChangeWindForce());
         }
         else
