@@ -14,6 +14,8 @@ public class HingeHealth : EntityHealth
     [SerializeField] Color initColor;
     [SerializeField] Color endColor;
 
+    [SerializeField] bool instantDestroy;
+
     //[Space(10)]
     // RSO
     // RSF
@@ -58,9 +60,17 @@ public class HingeHealth : EntityHealth
     void OnDeath()
     {
         graphics.color = endColor;
-        for (int i = 0; i < joints.Count; i++)
+
+        if(instantDestroy)
         {
-            joints[i].enabled = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            for (int i = 0; i < joints.Count; i++)
+            {
+                joints[i].enabled = false;
+            }
         }
     }
 }
