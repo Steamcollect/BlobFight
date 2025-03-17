@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -15,6 +16,7 @@ public class HingeHealth : EntityHealth
     [SerializeField] Color endColor;
 
     [SerializeField] bool instantDestroy;
+    [SerializeField] float tempDestroy;
 
     //[Space(10)]
     // RSO
@@ -57,13 +59,20 @@ public class HingeHealth : EntityHealth
         endColor = color1;
     }
 
+    IEnumerator DestroyDelay()
+    {
+        yield return new WaitForSeconds(tempDestroy);
+
+        gameObject.SetActive(false);
+    }
+
     void OnDeath()
     {
         graphics.color = endColor;
 
         if(instantDestroy)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(DestroyDelay());
         }
         else
         {
