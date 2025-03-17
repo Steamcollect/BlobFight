@@ -12,21 +12,22 @@ public class ParticleColorSettable : ParticleCallback
         public MainModule mainModule;
         public ParticleSystemRenderer psr;
 
-        public MyParticle(ParticleSystem particle, MainModule mainModule)
+        public MyParticle(ParticleSystem particle, MainModule mainModule, Material trailMat)
         {
             this.particle = particle;
             this.mainModule = mainModule;
             psr = particle.GetComponent<ParticleSystemRenderer>();
-            psr.trailMaterial = new Material(Shader.Find("Sprites/Default"));
+            psr.trailMaterial = trailMat;
         }
     }
 
     private void Awake()
     {
         myParticles = new MyParticle[particles.Length];
+        Material trailMat = new Material(Shader.Find("Sprites/Default"));
         for (int i = 0; i < particles.Length; i++)
         {
-            myParticles[i] = new MyParticle(particles[i], particles[i].main);
+            myParticles[i] = new MyParticle(particles[i], particles[i].main, trailMat);
         }
     }
 
