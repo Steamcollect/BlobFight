@@ -12,7 +12,10 @@ public class CameraController : MonoBehaviour
     [Space(10)]
     [SerializeField] float moveSmoothTime = 0.2f;
     [SerializeField] float zoomSmoothTime = 0.2f;
-    
+
+    [Space(10)]
+    [SerializeField] Vector3 centerOffset;
+
     private Vector3 velocity = Vector3.zero;
     private float zoomVelocity = 0f;
 
@@ -52,7 +55,7 @@ public class CameraController : MonoBehaviour
         float distance = CalculateMaxDistance(center);
 
         // SmoothDamp for position
-        Vector3 targetPosition = new Vector3(center.x, center.y, cam.transform.position.z);
+        Vector3 targetPosition = new Vector3(center.x, center.y, cam.transform.position.z) + centerOffset;
         cam.transform.position = Vector3.SmoothDamp(cam.transform.position, targetPosition, ref velocity, moveSmoothTime) + posOffset;
 
         // SmoothDamp for zoom

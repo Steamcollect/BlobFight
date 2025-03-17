@@ -3,7 +3,7 @@ using UnityEngine;
 public class BlobHealth : EntityHealth, IPausable
 {
     [Header("Settings")]
-    [SerializeField] float pushBackPercentage;
+    public float pushBackPercentage;
     [SerializeField] AnimationCurve percentagePerSpeedOnImpactCurve;
     [SerializeField] AnimationCurve stunTimePerSpeedOnImpactCurve;
 
