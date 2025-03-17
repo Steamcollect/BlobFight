@@ -71,6 +71,7 @@ public class BlobTrigger : CollisionTrigger
             slidables.Add(collision.gameObject);
         }
 
+        print(collision.gameObject.name);
         worldCollisions.Add(collision);
     }
     void OnExit(Collision2D collision)

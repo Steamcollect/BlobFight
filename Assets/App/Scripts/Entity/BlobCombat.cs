@@ -60,19 +60,14 @@ public class BlobCombat : MonoBehaviour
         Vector2 impactForce = Vector2.zero;
 
 
-        if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime)
+        if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
-            print("try parry");
-            if (speed < blobTouchSpeed)
-            {
-                print("Parry");
+            print("Parry");
 
-                impactVelocity = blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
-                impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
+            impactVelocity = blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
+            impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
 
-                blobTouch.GetJoint().ResetVelocity();
-            }
-            else return;
+            blobTouch.GetJoint().ResetVelocity();
         }
         else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
         {
@@ -124,6 +119,8 @@ public class BlobCombat : MonoBehaviour
             return impactDirection.normalized;
 
         Vector2 totalNormal = Vector2.zero;
+
+        Debug.DrawLine(worldCollisions[0].GetContact(0).point, worldCollisions[0].GetContact(0).point + worldCollisions[0].GetContact(0).normal, Color.green, 1);
 
         foreach (var collision in worldCollisions)
         {

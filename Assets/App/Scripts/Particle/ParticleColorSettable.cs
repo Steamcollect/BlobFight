@@ -25,6 +25,7 @@ public class ParticleColorSettable : ParticleCallback
     {
         myParticles = new MyParticle[particles.Length];
         Material trailMat = new Material(Shader.Find("Sprites/Default"));
+
         for (int i = 0; i < particles.Length; i++)
         {
             myParticles[i] = new MyParticle(particles[i], particles[i].main, trailMat);
@@ -36,8 +37,6 @@ public class ParticleColorSettable : ParticleCallback
         for (int i = 0; i < myParticles.Length; i++)
         {
             myParticles[i].mainModule.startColor = newColor;
-            //print(myParticles[i].psr.trailMaterial.name);
-            //myParticles[i].psr.trailMaterial.color = newColor;
         }
     }
 }
