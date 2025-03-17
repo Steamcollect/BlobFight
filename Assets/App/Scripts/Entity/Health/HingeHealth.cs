@@ -1,10 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class HingeHealth : EntityHealth
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] bool instantDestroy;
+    [SerializeField] float tempDestroy;
 
     [Header("References")]
     [SerializeField, ContextMenuItem("Get All Joints In Object", "GetAllJoints")] List<HingeJoint2D> joints = new List<HingeJoint2D>();
@@ -13,8 +16,6 @@ public class HingeHealth : EntityHealth
     [SerializeField] SpriteRenderer graphics;
     [SerializeField] Color initColor;
     [SerializeField] Color endColor;
-
-    [SerializeField] bool instantDestroy;
 
     //[Space(10)]
     // RSO
@@ -57,13 +58,20 @@ public class HingeHealth : EntityHealth
         endColor = color1;
     }
 
+    IEnumerator DestroyDelay()
+    {
+        yield return new WaitForSeconds(tempDestroy);
+
+        gameObject.SetActive(false);
+    }
+
     void OnDeath()
     {
         graphics.color = endColor;
 
         if(instantDestroy)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(DestroyDelay());
         }
         else
         {
