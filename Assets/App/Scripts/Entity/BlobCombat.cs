@@ -119,8 +119,8 @@ public class BlobCombat : MonoBehaviour
             return impactDirection.normalized;
 
         Vector2 totalNormal = Vector2.zero;
-
-        Debug.DrawLine(worldCollisions[0].GetContact(0).point, worldCollisions[0].GetContact(0).point + worldCollisions[0].GetContact(0).normal, Color.green, 1);
+        
+        //Debug.DrawLine(worldCollisions[0].GetContact(0).point, worldCollisions[0].GetContact(0).point + worldCollisions[0].GetContact(0).normal, Color.green, 1);
 
         foreach (var collision in worldCollisions)
         {

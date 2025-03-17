@@ -97,6 +97,7 @@ public class BlobMotor : MonoBehaviour
         pausables = GetComponentsInChildren<IPausable>();
 
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
+        gameObject.name = currentStats.blobName;
 
         visual.Setup(currentStats.color);
 
