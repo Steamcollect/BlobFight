@@ -70,7 +70,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 9.683836
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -150,13 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0281db0e9930143a4324f21fcb5b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSize: 11
-  maxSize: 15
+  minSize: 13
+  maxSize: 16
   zoomMultiplier: 1.1
   moveSmoothTime: 0.2
   zoomSmoothTime: 0.2
-  minBounds: {x: -40, y: -10}
-  maxBounds: {x: 40, y: 20}
+  minBounds: {x: -40, y: -15.2}
+  maxBounds: {x: 40, y: 50.2}
   shakeSpeed: 10
   cam: {fileID: 1532893824451167384}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
