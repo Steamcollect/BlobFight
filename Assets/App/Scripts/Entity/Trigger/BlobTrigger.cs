@@ -15,8 +15,9 @@ public class BlobTrigger : CollisionTrigger
     [Header("References")]
     [SerializeField] BlobJoint blobJoint;
 
-    List<Collision2D> worldCollisions = new();
     List<GameObject> groundables = new();
+    Collision2D lastGroundTouch;
+
     List<GameObject> slidables = new();
 
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
@@ -62,6 +63,8 @@ public class BlobTrigger : CollisionTrigger
 
             OnGroundedEnter?.Invoke(collision);
             groundables.Add(collision.gameObject);
+
+            lastGroundTouch = collision;
         }
         else if (collision.gameObject.CompareTag(slidableTag))
         {
@@ -70,9 +73,6 @@ public class BlobTrigger : CollisionTrigger
             OnSlidableEnter?.Invoke(collision);
             slidables.Add(collision.gameObject);
         }
-
-        //print(collision.gameObject.name);
-        worldCollisions.Add(collision);
     }
     void OnExit(Collision2D collision)
     {
@@ -89,12 +89,11 @@ public class BlobTrigger : CollisionTrigger
             isSliding = false;
             OnSlidableExit?.Invoke(collision);
         }
-
-        worldCollisions.Remove(collision);
     }
     public bool IsGrounded() { return isGrounded; }
     public bool IsSliding() { return isSliding; }
-    public List<Collision2D> GetCollisions() { return worldCollisions; }
+
+    public Collision2D GetLastGroundTouch() { return lastGroundTouch; }
 
     public void ExludeLayer(LayerMask layerToExclude, float excludingTime)
     {

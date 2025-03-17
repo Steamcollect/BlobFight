@@ -71,7 +71,7 @@ public class BlobCombat : MonoBehaviour
         }
         else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
         {
-            impactVelocity = CalculateExpulsionDirection(blobTouch.GetTrigger().GetCollisions(), propulsionDir) * speed;
+            impactVelocity = propulsionDir * speed;
             impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * extendForceMultiplier;
 
             Debug.DrawLine(blobTouch.GetJoint().GetJointsCenter(), blobTouch.GetJoint().GetJointsCenter() + impactVelocity, Color.blue, 1);
@@ -111,35 +111,6 @@ public class BlobCombat : MonoBehaviour
         canFight = false;
         yield return new WaitForSeconds(.1f);
         canFight = true;
-    }
-
-    public static Vector2 CalculateExpulsionDirection(List<Collision2D> worldCollisions, Vector2 impactDirection)
-    {
-        if (worldCollisions == null || worldCollisions.Count == 0)
-            return impactDirection.normalized;
-
-        Vector2 totalNormal = Vector2.zero;
-        
-        //Debug.DrawLine(worldCollisions[0].GetContact(0).point, worldCollisions[0].GetContact(0).point + worldCollisions[0].GetContact(0).normal, Color.green, 1);
-
-        foreach (var collision in worldCollisions)
-        {
-            foreach (var contact in collision.contacts)
-            {
-                totalNormal += contact.normal;
-            }
-        }
-        totalNormal.Normalize();
-
-        Vector2 blockedComponent = Vector2.Dot(impactDirection, totalNormal) * totalNormal;
-        Vector2 freeComponent = impactDirection - blockedComponent;
-
-        if (freeComponent.magnitude < 0.1f)
-        {
-            freeComponent = new Vector2(-totalNormal.y, totalNormal.x); // Rotation 90°
-        }
-
-        return freeComponent.normalized;
     }
 
     public void SetLayer(LayerMask layer)

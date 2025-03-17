@@ -67,8 +67,9 @@ public class CollisionTrigger : MonoBehaviour
             }
 
             // Check if blob
-            if (collision.transform.TryGetComponent(out MyJoint joint))
+            if (collision.transform.CompareTag("Blob"))
             {
+                MyJoint joint = collision.gameObject.GetComponent<MyJoint>();
                 blobs.Remove(joint.parentMotor);
 
                 if (!blobs.Contains(joint.parentMotor))
