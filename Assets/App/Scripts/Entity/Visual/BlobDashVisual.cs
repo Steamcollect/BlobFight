@@ -90,13 +90,13 @@ public class BlobDashVisual : MonoBehaviour
             BlobCloneVisual clone = GetClone();
             clone.content.gameObject.SetActive(true);
 
-            //clone.fillFilter.mesh = _fillFilter.mesh;
-            //clone.outlineFilter.mesh = _outlineFilter.mesh;
+            //clone.fillFilter.mesh = _fillFilter.sharedMesh;
+            //clone.outlineFilter.mesh = _outlineFilter.sharedMesh;
 
-            //clone.fillRenderer.material.color =
-            //    new Color(_fillRenderer.material.color.r, _fillRenderer.material.color.g, _fillRenderer.material.color.b, cloneStartingAlpha);
-            //clone.outlineRenderer.material.color =
-            //    new Color(_outlineRenderer.material.color.r, _outlineRenderer.material.color.g, _outlineRenderer.material.color.b, cloneStartingAlpha);
+            //clone.fillrenderer.material.color =
+            //    new color(_fillrenderer.material.color.r, _fillrenderer.material.color.g, _fillrenderer.material.color.b, clonestartingalpha);
+            //clone.outlinerenderer.material.color =
+            //    new color(_outlinerenderer.material.color.r, _outlinerenderer.material.color.g, _outlinerenderer.material.color.b, clonestartingalpha);
 
             clone.fillMat.DOFade(0, cloneLifeTime);
             clone.outlineMat.DOFade(0, cloneLifeTime).OnComplete(() =>

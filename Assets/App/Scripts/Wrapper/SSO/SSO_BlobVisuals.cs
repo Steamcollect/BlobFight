@@ -25,6 +25,7 @@ public class SSO_BlobVisuals : ScriptableObject
 [System.Serializable]
 public struct BlobInitializeStatistic
 {
+    public string blobName;
     public BlobColor color;
 
     [Space(10)]
