@@ -1637,6 +1637,7 @@ MonoBehaviour:
   graphics: {fileID: 717232849}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  instantDestroy: 1
 --- !u!114 &717232846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2607,6 +2608,7 @@ MonoBehaviour:
   graphics: {fileID: 1264555380}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  instantDestroy: 1
 --- !u!114 &1264555377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2855,6 +2857,7 @@ MonoBehaviour:
   graphics: {fileID: 1277100072}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  instantDestroy: 1
 --- !u!114 &1277100069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3251,6 +3254,7 @@ MonoBehaviour:
   graphics: {fileID: 1330460144}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  instantDestroy: 1
 --- !u!114 &1330460141
 MonoBehaviour:
   m_ObjectHideFlags: 0
