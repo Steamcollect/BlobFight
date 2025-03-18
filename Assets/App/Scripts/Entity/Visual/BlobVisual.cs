@@ -24,6 +24,9 @@ public class BlobVisual : MonoBehaviour, IPausable
     [SerializeField] float yExtendScaleAtMaxSpeed;
     [SerializeField] float maxSpeed;
 
+    [Space(5)]
+    [SerializeField] int speedMinToSquash;
+
     Vector2 scale = Vector3.one;
 
     Vector2 blobVelocity;
@@ -92,7 +95,9 @@ public class BlobVisual : MonoBehaviour, IPausable
     }
 
     private void UpdateFillMesh()
-    {        
+    {
+        fillMesh.Clear();
+
         List<Vector3> pointsPos = new List<Vector3>();
         Vector2 blobCenter = blobJoint.GetJointsCenter(); // Centre du Blob
 
@@ -125,6 +130,8 @@ public class BlobVisual : MonoBehaviour, IPausable
     }
     private void UpdateOutlineMesh()
     {
+        outlineMesh.Clear();
+
         List<Vector3> outlinePoints = new List<Vector3>();
         List<Vector3> extendedOutlinePoints = new List<Vector3>();
 
@@ -188,51 +195,57 @@ public class BlobVisual : MonoBehaviour, IPausable
 
     public void ApplyBlobTransform()
     {
-        if (fillMeshVertices == null || fillMeshVertices.Length < 3 || fillMeshTriangles == null || fillMeshTriangles.Length < 3)
-            return;
-        if (outlineMeshVertices == null || outlineMeshVertices.Length < 3 || outlineMeshTriangles == null || outlineMeshTriangles.Length < 3)
-            return;
-
-        Vector3 blobCenter = blobJoint.GetJointsCenter();
-        Vector3[] modifiedFillVertices = new Vector3[fillMeshVertices.Length];
-        Vector3[] modifiedOutlineVertices = new Vector3[outlineMeshVertices.Length];
-
-        float rotationAngle = blobSpeed > 10 ? Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg - 90 : 0;
-        Quaternion rotationQuat = Quaternion.Euler(0, 0, rotationAngle);
-
-        for (int i = 0; i < fillMeshVertices.Length; i++)
+        if (blobSpeed >= speedMinToSquash)
         {
-            Vector3 localPoint = fillMeshVertices[i] - blobCenter;
+            if (fillMeshVertices == null || fillMeshVertices.Length < 3 || fillMeshTriangles == null || fillMeshTriangles.Length < 3)
+                return;
+            if (outlineMeshVertices == null || outlineMeshVertices.Length < 3 || outlineMeshTriangles == null || outlineMeshTriangles.Length < 3)
+                return;
 
-            // Appliquer l'échelle
-            localPoint = new Vector3(localPoint.x * scale.x, localPoint.y * scale.y, localPoint.z);
+            Vector3[] modifiedFillVertices = new Vector3[fillMeshVertices.Length];
+            Vector3[] modifiedOutlineVertices = new Vector3[outlineMeshVertices.Length];
+            Vector3 blobCenter = blobJoint.GetJointsCenter();
 
-            // Appliquer la rotation
-            localPoint = rotationQuat * localPoint;
+            float rotationAngle = Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg - 90;
+            Quaternion rotationQuat = Quaternion.Euler(0, 0, rotationAngle);
 
-            modifiedFillVertices[i] = localPoint + blobCenter;
-        }
+            for (int i = 0; i < fillMeshVertices.Length; i++)
+            {
+                Vector3 localPoint = fillMeshVertices[i] - blobCenter;
 
-        for (int i = 0; i < outlineMeshVertices.Length; i++)
-        {
-            Vector3 localPoint = outlineMeshVertices[i] - blobCenter;
+                // Appliquer l'échelle
+                localPoint = new Vector3(localPoint.x * scale.x, localPoint.y * scale.y, localPoint.z);
 
-            // Appliquer l'échelle
-            localPoint = new Vector3(localPoint.x * scale.x, localPoint.y * scale.y, localPoint.z);
+                // Appliquer la rotation
+                localPoint = rotationQuat * localPoint;
 
-            // Appliquer la rotation
-            localPoint = rotationQuat * localPoint;
+                modifiedFillVertices[i] = localPoint + blobCenter;
+            }
 
-            modifiedOutlineVertices[i] = localPoint + blobCenter;
+            for (int i = 0; i < outlineMeshVertices.Length; i++)
+            {
+                Vector3 localPoint = outlineMeshVertices[i] - blobCenter;
+
+                // Appliquer l'échelle
+                localPoint = new Vector3(localPoint.x * scale.x, localPoint.y * scale.y, localPoint.z);
+
+                // Appliquer la rotation
+                localPoint = rotationQuat * localPoint;
+
+                modifiedOutlineVertices[i] = localPoint + blobCenter;
+            }
+
+            fillMeshVertices = modifiedFillVertices;
+            outlineMeshVertices = modifiedOutlineVertices;
         }
 
         // Mise à jour des meshes
-        fillMesh.vertices = modifiedFillVertices;
+        fillMesh.vertices = fillMeshVertices;
         fillMesh.triangles = fillMeshTriangles;
         fillMesh.RecalculateBounds();
         fillMesh.RecalculateNormals();
 
-        outlineMesh.vertices = modifiedOutlineVertices;
+        outlineMesh.vertices = outlineMeshVertices;
         outlineMesh.triangles = outlineMeshTriangles;
         outlineMesh.RecalculateBounds();
         outlineMesh.RecalculateNormals();
