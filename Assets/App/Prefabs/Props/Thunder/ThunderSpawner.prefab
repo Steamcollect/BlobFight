@@ -53,7 +53,7 @@ MonoBehaviour:
   delayAfterGameStart: 0
   delayBetweenLightning: {x: 4, y: 5}
   objToSpawnOnStart: 2
-  timeSpeed: 000000001e0000003c0000005a000000
+  timeSpeed: 000000000f0000001e0000002d000000
   newDelayBetweenLightning:
   - {x: 4, y: 5}
   - {x: 3, y: 4}
