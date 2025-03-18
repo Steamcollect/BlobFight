@@ -5755,52 +5755,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: addForceSpeedMult.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: addForceSpeedMult.m_Curve.Array.data[1].time
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: addForceSpeedMult.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[1].value
-      value: 1.4
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[0].inSlope
-      value: 0.00004
+      value: 0.0001484337
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[1].inSlope
-      value: 0.00004
+      value: 0.000005191626
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[0].outSlope
-      value: 0.00004
+      value: 0.0001484337
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
+      value: 0.11929824
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[1].outSlope
-      value: 0.00004
+      value: 0.000005191626
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
+      value: 0.038596492
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[0].tangentMode
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7635950092096172936, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: addForceSpeedMult.m_Curve.Array.data[1].tangentMode
-      value: 34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8257410376989422824, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: m_Name

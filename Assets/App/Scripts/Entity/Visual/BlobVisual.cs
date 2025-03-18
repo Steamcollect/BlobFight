@@ -11,7 +11,12 @@ public class BlobVisual : MonoBehaviour, IPausable
     [SerializeField] int extendBevelCount;
     [SerializeField, Range(0, .3f)] float extendHeightFactor;
 
-    [Space(5)]
+    [Space(3)]
+    [SerializeField] AnimationCurve shakeSpeedByPercentage;
+    [SerializeField] AnimationCurve shakeAmplitudeByPercentage;
+    float shakeCosTime;
+
+    [Space(10)]
     [SerializeField] float fillDistanceMultiplier = 1f;
     [SerializeField] float outlineThickness = 0.1f;
     int bevelCount;
@@ -49,6 +54,7 @@ public class BlobVisual : MonoBehaviour, IPausable
 
     [Space(10)]
     [SerializeField] BlobJoint blobJoint;
+    [SerializeField] BlobHealth blobHealth;
 
     private Mesh outlineMesh;
     private Mesh fillMesh;
@@ -93,6 +99,11 @@ public class BlobVisual : MonoBehaviour, IPausable
 
         ApplyBlobTransform();
     }
+    float GetHeightFactor()
+    {
+        shakeCosTime += Time.deltaTime * shakeSpeedByPercentage.Evaluate(blobHealth.GetPercentage());        
+        return Mathf.Cos(shakeCosTime) * shakeAmplitudeByPercentage.Evaluate(blobHealth.GetPercentage());
+    }
 
     private void UpdateFillMesh()
     {
@@ -108,7 +119,7 @@ public class BlobVisual : MonoBehaviour, IPausable
 
             // Calcul de la normale entre les deux points
             Vector3 segmentDirection = (p1 - p0).normalized;
-            Vector3 normal = Vector3.Cross(segmentDirection, Vector3.forward).normalized * heightFactor * fillDistanceMultiplier;
+            Vector3 normal = Vector3.Cross(segmentDirection, Vector3.forward).normalized * GetHeightFactor() * fillDistanceMultiplier;
             Vector3 midPoint = (p0 + p1) / 2 + normal;
 
             // Ajout des points intermédiaires basés sur une courbe de Bézier quadratique
