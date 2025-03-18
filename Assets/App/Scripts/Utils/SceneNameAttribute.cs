@@ -5,9 +5,8 @@ using UnityEngine;
 [Serializable]
 public class SceneNameAttribute : PropertyAttribute
 {
-    [SerializeField, HideInInspector] private int index;
-    [SerializeField] private string sceneGUID;
     [SerializeField] private string sceneName;
+    [SerializeField] private string sceneGUID;
 
     public string GUID => sceneGUID;
     public string Name => sceneName;
