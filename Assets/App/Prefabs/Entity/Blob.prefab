@@ -2682,10 +2682,10 @@ MonoBehaviour:
   outlineThickness: 0.3
   xShrinkScaleAtMaxSpeed: 0.6
   yShrinkScaleAtMaxSpeed: 1.4
-  xExtendScaleAtMaxSpeed: 0.8
-  yExtendScaleAtMaxSpeed: 1.2
-  maxSpeed: 3000
-  rotationTime: 0.05
+  xExtendScaleAtMaxSpeed: 0.9
+  yExtendScaleAtMaxSpeed: 1.1
+  maxSpeed: 3500
+  speedMinToSquash: 15
   outlineMeshFilter: {fileID: 1097680500150144223}
   outlineRenderer: {fileID: 1326883160990318666}
   fillMeshFilter: {fileID: 4563486604708086893}
@@ -2860,6 +2860,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingDistanceFromCenter: 0.7
   mass: 12
+  addForceSpeedMult:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.00004
+      outSlope: 0.00004
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10000
+      value: 1.4
+      inSlope: 0.00004
+      outSlope: 0.00004
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   motor: {fileID: 3420423106000584793}
   jointsRb:
   - {fileID: 1416860201021149844}
