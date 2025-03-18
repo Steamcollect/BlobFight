@@ -26,11 +26,6 @@ public class BlobVisual : MonoBehaviour, IPausable
 
     Vector2 scale = Vector3.one;
 
-    [Space(5)]
-    float rotationAngle = 0;
-    float rotationVelocity;
-    [SerializeField] float rotationTime;
-
     Vector2 blobVelocity;
     float blobSpeed;
 
@@ -202,8 +197,7 @@ public class BlobVisual : MonoBehaviour, IPausable
         Vector3[] modifiedFillVertices = new Vector3[fillMeshVertices.Length];
         Vector3[] modifiedOutlineVertices = new Vector3[outlineMeshVertices.Length];
 
-        float targetRot = blobSpeed > 10 ? Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg - 90 : 0;
-        rotationAngle = Mathf.SmoothDampAngle(rotationAngle, targetRot, ref rotationVelocity, rotationTime);
+        float rotationAngle = blobSpeed > 10 ? Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg - 90 : 0;
         Quaternion rotationQuat = Quaternion.Euler(0, 0, rotationAngle);
 
         for (int i = 0; i < fillMeshVertices.Length; i++)
