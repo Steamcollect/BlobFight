@@ -276,7 +276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 6073834846718290723}
-  main: 7b33a7ace39394043b01074ed383fe48
+  main:
+    sceneGUID: 7b33a7ace39394043b01074ed383fe48
+    sceneName: 01_Game
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
 --- !u!1001 &1504331429936474963
 PrefabInstance:

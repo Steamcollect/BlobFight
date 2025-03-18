@@ -1,8 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class SceneManagement : MonoBehaviour
 {
     [Header("Settings")]
@@ -11,11 +12,11 @@ public class SceneManagement : MonoBehaviour
 
     [Space(10)]
 
-    [SerializeField, SceneName] string[] levelsName;
+    [SerializeField] SceneNameAttribute[] levelsName;
 
     List<string> levels = new();
-    [SerializeField, SceneName] string main;
-    [SerializeField, SceneName] string mainMenuName;
+    [SerializeField] SceneNameAttribute main;
+    [SerializeField] SceneNameAttribute mainMenuName;
 
     string currentLevel = "";
 
@@ -63,11 +64,8 @@ public class SceneManagement : MonoBehaviour
     {
         if(!isTestScene)
         {
-            string scenePath = AssetDatabase.GUIDToAssetPath(mainMenuName);
-            string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
-
-            StartCoroutine(Utils.LoadSceneAsync(sceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive));
-            currentLevel = sceneName;
+            StartCoroutine(Utils.LoadSceneAsync(mainMenuName.Name, LoadSceneMode.Additive));
+            currentLevel = mainMenuName.Name;
         }
         else
         {
@@ -110,28 +108,21 @@ public class SceneManagement : MonoBehaviour
 
             if (!isMainMenu)
             {
-                if (levels.Count <= 0) levels.AddRange(levelsName);
+                if (levels.Count <= 0) levels.AddRange(levelsName.Select(scene => scene.Name));
 
                 int rnd = Random.Range(0, levels.Count);
 
-                string scenePath = AssetDatabase.GUIDToAssetPath(levels[rnd]);
-                string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
-
-                currentLevel = sceneName;
+                currentLevel = levels[rnd];
 
                 levels.RemoveAt(rnd);
             }
             else
             {
                 rseClearBlobInGame.Call();
-
-                string scenePath = AssetDatabase.GUIDToAssetPath(mainMenuName);
-                string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
-
-                currentLevel = sceneName;
+                currentLevel = mainMenuName.Name;
             }
 
-            StartCoroutine(Utils.LoadSceneAsync(currentLevel, UnityEngine.SceneManagement.LoadSceneMode.Additive, () =>
+            StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
             {
                 rseFadeIn.Call(() =>
                 {
@@ -146,10 +137,7 @@ public class SceneManagement : MonoBehaviour
     {
         if(isMainMenu)
         {
-            string scenePath = AssetDatabase.GUIDToAssetPath(main);
-            string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
-
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(main.Name);
         }
         else
         {

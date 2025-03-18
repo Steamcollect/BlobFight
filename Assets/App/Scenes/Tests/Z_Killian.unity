@@ -12493,6 +12493,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TEMP
       objectReference: {fileID: 0}
+    - target: {fileID: 8625100012948901837, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
+      propertyPath: levelsName.Array.data[0].sceneGUID
+      value: 2f1175c4de1c92f4680766d2b2a4da67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625100012948901837, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
+      propertyPath: levelsName.Array.data[0].sceneName
+      value: Z_Killian
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
