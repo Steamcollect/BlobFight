@@ -47,13 +47,16 @@ public class PropsSpawner : GameProps
 
     IEnumerator SpawnCooldown()
     {
-        if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+        if (timeSpeed.Count > 0)
         {
-            spawnCooldown = newtimeSpeed[mode];
-
-            if (mode < timeSpeed.Count - 1)
+            if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
             {
-                mode++;
+                spawnCooldown = newtimeSpeed[mode];
+
+                if (mode < timeSpeed.Count - 1)
+                {
+                    mode++;
+                }
             }
         }
 

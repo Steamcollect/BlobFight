@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 public class ThunderSpawner : GameProps
 {
@@ -49,13 +47,16 @@ public class ThunderSpawner : GameProps
     }
     IEnumerator SpawnThunder()
     {
-        if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+        if (timeSpeed.Count > 0)
         {
-            delayBetweenLightning = newDelayBetweenLightning[mode];
-
-            if(mode < timeSpeed.Count - 1)
+            if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
             {
-                mode++;
+                delayBetweenLightning = newDelayBetweenLightning[mode];
+
+                if (mode < timeSpeed.Count - 1)
+                {
+                    mode++;
+                }
             }
         }
 

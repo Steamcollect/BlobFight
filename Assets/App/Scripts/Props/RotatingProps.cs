@@ -31,13 +31,16 @@ public class RotatingProps : GameProps
     {
         if (!isLaunched) return;
 
-        if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+        if (timeSpeed.Count > 0)
         {
-            rotationSpeed = newtimeSpeed[mode];
-
-            if (mode < timeSpeed.Count - 1)
+            if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
             {
-                mode++;
+                rotationSpeed = newtimeSpeed[mode];
+
+                if (mode < timeSpeed.Count - 1)
+                {
+                    mode++;
+                }
             }
         }
 

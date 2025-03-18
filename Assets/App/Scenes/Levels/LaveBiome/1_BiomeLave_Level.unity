@@ -4896,11 +4896,23 @@ MonoBehaviour:
   moveSpeed: 2
   delayBeforeStart: 5
   delayAtPoint: 5
+  timeSpeed: 000000000f0000001e0000002d000000
+  newDelayAtPoint:
+  - 5
+  - 4
+  - 3
+  - 2
+  newMoveSpeed:
+  - 2
+  - 3
+  - 4
+  - 5
   movable: {fileID: 1094495020}
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
   RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &2007084533
 Transform:
   m_ObjectHideFlags: 0

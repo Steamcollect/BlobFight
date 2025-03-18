@@ -2789,11 +2789,23 @@ MonoBehaviour:
   moveSpeed: 4
   delayBeforeStart: 2
   delayAtPoint: 50
+  timeSpeed: 000000000f0000001e0000002d000000
+  newDelayAtPoint:
+  - 50
+  - 50
+  - 50
+  - 50
+  newMoveSpeed:
+  - 4
+  - 5
+  - 6
+  - 7
   movable: {fileID: 1138818396}
   positions:
   - {fileID: 31206403}
   - {fileID: 1293708128}
   RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 0}
 --- !u!4 &1095796512
 Transform:
   m_ObjectHideFlags: 0
@@ -3212,11 +3224,15 @@ MonoBehaviour:
   moveSpeed: 8
   delayBeforeStart: 0
   delayAtPoint: 0
+  timeSpeed: 
+  newDelayAtPoint: []
+  newMoveSpeed: []
   movable: {fileID: 1851106240}
   positions:
   - {fileID: 1622651518}
   - {fileID: 440870219}
   RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 0}
 --- !u!1 &1247842551
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,11 +5507,23 @@ MonoBehaviour:
   moveSpeed: 4
   delayBeforeStart: 2
   delayAtPoint: 50
+  timeSpeed: 000000000f0000001e0000002d000000
+  newDelayAtPoint:
+  - 50
+  - 50
+  - 50
+  - 50
+  newMoveSpeed:
+  - 4
+  - 5
+  - 6
+  - 7
   movable: {fileID: 1094495020}
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
   RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 0}
 --- !u!4 &2007084533
 Transform:
   m_ObjectHideFlags: 0
@@ -5572,11 +5600,15 @@ MonoBehaviour:
   moveSpeed: 8
   delayBeforeStart: 0
   delayAtPoint: 0
+  timeSpeed: 
+  newDelayAtPoint: []
+  newMoveSpeed: []
   movable: {fileID: 1666378926}
   positions:
   - {fileID: 77683110}
   - {fileID: 842602082}
   RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 0}
 --- !u!1 &2119204639
 GameObject:
   m_ObjectHideFlags: 0
