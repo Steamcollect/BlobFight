@@ -51,6 +51,9 @@ EditorBuildSettings:
     path: Assets/App/Scenes/Levels/CelestBiome/1_BiomeCelest_Level.unity
     guid: 94d7303145cd12a4b934d3365a52eacf
   - enabled: 1
+    path: Assets/App/Scenes/Levels/LaveBiome/1_BiomeLave_Level.unity
+    guid: 26001ac257d7b5a48a4ce06b378c3f86
+  - enabled: 1
     path: Assets/App/Scenes/Levels/LaveBiome/2_BiomeLave_Level.unity
     guid: d6f85ddf2ad141f4bbcb489e9e63058e
   - enabled: 1
