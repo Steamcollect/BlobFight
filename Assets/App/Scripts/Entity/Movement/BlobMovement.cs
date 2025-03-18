@@ -171,6 +171,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     #region Collisions
     void OnGroundableEnter(Collision2D collision)
     {
+        if (collision.contactCount == 0) return;
+
         Vector2 newNormal = collision.GetContact(0).normal;
 
         float angleDifference = Vector2.Angle(currentGroundNormal, newNormal);
