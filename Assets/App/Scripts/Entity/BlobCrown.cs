@@ -92,10 +92,13 @@ public class BlobCrown : MonoBehaviour
     }
     void Move()
     {
-        crownsContent.transform.position = Vector2.SmoothDamp(crownsContent.transform.position, joint.GetJointsCenter() + posOffset, ref velocity, smoothTime);
+        if(crownsContent.activeInHierarchy)
+        {
+            crownsContent.transform.position = Vector2.SmoothDamp(crownsContent.transform.position, joint.GetJointsCenter() + posOffset, ref velocity, smoothTime);
 
-        float targetRot = (velocity / velocityRotDiviser * rotationAmount).x;
-        rotationDelta = Mathf.SmoothDamp(rotationDelta, targetRot, ref rotationVelocity, rotationTime);
-        crownsContent.transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(rotationDelta, -60, 60));
+            float targetRot = (velocity / velocityRotDiviser * rotationAmount).x;
+            rotationDelta = Mathf.SmoothDamp(rotationDelta, targetRot, ref rotationVelocity, rotationTime);
+            crownsContent.transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(rotationDelta, -60, 60));
+        }
     }
 }

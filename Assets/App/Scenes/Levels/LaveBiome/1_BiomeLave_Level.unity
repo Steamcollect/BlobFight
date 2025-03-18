@@ -2800,7 +2800,7 @@ GameObject:
   - component: {fileID: 1094495021}
   m_Layer: 0
   m_Name: Platform1 (5)
-  m_TagString: Groundable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4900,7 +4900,7 @@ MonoBehaviour:
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
-  RSE_UpdateWarning: {fileID: 0}
+  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
 --- !u!4 &2007084533
 Transform:
   m_ObjectHideFlags: 0
