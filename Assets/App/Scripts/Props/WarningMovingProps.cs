@@ -2,15 +2,15 @@ using System;
 using UnityEngine;
 public class WarningMovingProps : MonoBehaviour
 {
-    //[Header("Settings")]
-
+    [Header("Settings")]
+    [SerializeField] bool haveWarning;
+    [SerializeField] bool isOnAxeX;
+    [SerializeField] float marginPos;
+    bool isVisible = false;
     [Header("References")]
     private Camera cam;
     [SerializeField] GameObject warning;
-    [SerializeField] bool isOnAxeX;
-    [SerializeField] float marginPos;
     [SerializeField] Transform movable;
-    [SerializeField] RSE_UpdateWarning RSE_UpdateWarning;
     //[Space(10)]
     // RSO
     // RSF
@@ -18,20 +18,33 @@ public class WarningMovingProps : MonoBehaviour
 
     //[Header("Input")]
     //[Header("Output")]
-    private void OnEnable()
-    {
-        RSE_UpdateWarning.action += UpdateWarning;
-    }
-    private void OnDisable()
-    {
-        RSE_UpdateWarning.action -= UpdateWarning;
-    }
 
     private void Awake()
     {
         cam = Camera.main;
     }
+    private void Start()
+    {
+        if(haveWarning)
+        {
+            UpdateWarning(!Checkisibility());
+        }
 
+    }
+    private void FixedUpdate()
+    {
+        bool visible = Checkisibility();
+        if (haveWarning && visible != isVisible)
+        {
+            isVisible = visible;
+           UpdateWarning(!visible);
+        }
+    }
+    bool Checkisibility()
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        return GeometryUtility.TestPlanesAABB(planes, new Bounds(movable.position, Vector3.one));
+    }
     private void UpdateWarning(bool seeWarning)
     {
         if(seeWarning)

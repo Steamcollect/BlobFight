@@ -3912,16 +3912,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  haveWarning: 1
-  warningIndex: 0
   moveSpeed: 4
   delayBeforeStart: 1
   delayAtPoint: 1
+  timeSpeed: 
+  newDelayAtPoint: []
+  newMoveSpeed: []
   movable: {fileID: 1577317535}
   positions:
   - {fileID: 272322540}
   - {fileID: 2104656317}
-  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &788097427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
@@ -6635,11 +6636,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abf5a9d9928b9b4d8a89a3b57e0b2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warning: []
+  haveWarning: 1
   isOnAxeX: 1
   marginPos: 2
+  warning: {fileID: 14711545}
   movable: {fileID: 492537053}
-  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
 --- !u!1 &1296742631
 GameObject:
   m_ObjectHideFlags: 0
@@ -7027,16 +7028,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  haveWarning: 1
-  warningIndex: 1
   moveSpeed: 4
   delayBeforeStart: 1
   delayAtPoint: 1
+  timeSpeed: 
+  newDelayAtPoint: []
+  newMoveSpeed: []
   movable: {fileID: 492537053}
   positions:
   - {fileID: 858566056}
   - {fileID: 1147268738}
-  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
+  rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &1513681879
 Transform:
   m_ObjectHideFlags: 0
@@ -7046,7 +7048,7 @@ Transform:
   m_GameObject: {fileID: 1513681877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.75, y: 32.25, z: 0}
+  m_LocalPosition: {x: -27.75, y: 32.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10014,12 +10016,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abf5a9d9928b9b4d8a89a3b57e0b2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warning:
-  - {fileID: 82578505}
+  haveWarning: 1
   isOnAxeX: 0
   marginPos: 2
+  warning: {fileID: 82578505}
   movable: {fileID: 1577317535}
-  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
 --- !u!1 &2055723940
 GameObject:
   m_ObjectHideFlags: 0

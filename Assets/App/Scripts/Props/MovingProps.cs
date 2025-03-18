@@ -6,10 +6,8 @@ using System.Collections.Generic;
 public class MovingProps : GameProps, IPausable
 {
     [Header("Settings")]
-    [SerializeField] bool haveWarning;
     [SerializeField] float moveSpeed;
     int currentPosIndex;
-    bool isVisible = false;
     [SerializeField] float delayBeforeStart;
     [SerializeField] float delayAtPoint;
     [SerializeField] List<int> timeSpeed;
@@ -19,7 +17,6 @@ public class MovingProps : GameProps, IPausable
     [Header("References")]
     [SerializeField] Transform movable;
     [SerializeField] Transform[] positions;
-    [SerializeField] RSE_UpdateWarning RSE_UpdateWarning;
 
     int mode = 0;
 
@@ -35,29 +32,12 @@ public class MovingProps : GameProps, IPausable
 
     public override void Launch()
     {
-        RSE_UpdateWarning.Call(!Checkisibility());
-
         if (positions.Length > 0)
         {
             movable.position = positions[0].position;
             StartCoroutine(DelayBeforeStart());
         }
     }
-    private void FixedUpdate()
-    {
-        bool visible = Checkisibility();
-        if (haveWarning && visible != isVisible)
-        {
-            isVisible = visible;
-            RSE_UpdateWarning.Call(!visible);
-        }
-    }
-    bool Checkisibility()
-    {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        return GeometryUtility.TestPlanesAABB(planes, new Bounds(movable.position, Vector3.one));
-    }
-
     IEnumerator DelayBeforeStart()
     {
         yield return new WaitForSeconds(delayBeforeStart);
