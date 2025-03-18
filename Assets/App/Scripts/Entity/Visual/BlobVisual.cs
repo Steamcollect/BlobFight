@@ -12,6 +12,7 @@ public class BlobVisual : MonoBehaviour, IPausable
     [SerializeField, Range(0, .3f)] float extendHeightFactor;
 
     [Space(5)]
+    [SerializeField] float fillDistanceMultiplier = 1f;
     [SerializeField] float outlineThickness = 0.1f;
     int bevelCount;
     float heightFactor;
@@ -24,6 +25,11 @@ public class BlobVisual : MonoBehaviour, IPausable
     [SerializeField] float maxSpeed;
 
     Vector2 scale = Vector3.one;
+
+    [Space(5)]
+    float rotationAngle = 0;
+    float rotationVelocity;
+    [SerializeField] float rotationTime;
 
     Vector2 blobVelocity;
     float blobSpeed;
@@ -91,10 +97,10 @@ public class BlobVisual : MonoBehaviour, IPausable
     }
 
     private void UpdateFillMesh()
-    {
-        fillMesh.Clear();
-
+    {        
         List<Vector3> pointsPos = new List<Vector3>();
+        Vector2 blobCenter = blobJoint.GetJointsCenter(); // Centre du Blob
+
         for (int i = 0; i < blobJoint.jointsRb.Length; i++)
         {
             Vector3 p0 = blobJoint.jointsRb[i].position;
@@ -102,7 +108,7 @@ public class BlobVisual : MonoBehaviour, IPausable
 
             // Calcul de la normale entre les deux points
             Vector3 segmentDirection = (p1 - p0).normalized;
-            Vector3 normal = Vector3.Cross(segmentDirection, Vector3.forward).normalized * heightFactor;
+            Vector3 normal = Vector3.Cross(segmentDirection, Vector3.forward).normalized * heightFactor * fillDistanceMultiplier;
             Vector3 midPoint = (p0 + p1) / 2 + normal;
 
             // Ajout des points intermédiaires basés sur une courbe de Bézier quadratique
@@ -110,30 +116,34 @@ public class BlobVisual : MonoBehaviour, IPausable
             {
                 float t = j / (float)(bevelCount + 1);
                 Vector3 bezierPoint = Mathf.Pow(1 - t, 2) * p0 + 2 * (1 - t) * t * midPoint + Mathf.Pow(t, 2) * p1;
+
+                // Appliquer la mise à l'échelle de la distance par rapport au centre du blob
+                bezierPoint = (bezierPoint - (Vector3)blobCenter) * fillDistanceMultiplier + (Vector3)blobCenter;
                 pointsPos.Add(bezierPoint);
             }
         }
+
+        if (pointsPos.Count < 3) return;
 
         fillMeshVertices = pointsPos.ToArray();
         fillMeshTriangles = GetTriangles(pointsPos);
     }
     private void UpdateOutlineMesh()
     {
-        outlineMesh.Clear();
-
         List<Vector3> outlinePoints = new List<Vector3>();
         List<Vector3> extendedOutlinePoints = new List<Vector3>();
 
-        for (int i = 0; i < fillMesh.vertices.Length; i++)
+        for (int i = 0; i < fillMeshVertices.Length; i++)
         {
-            Vector3 point = fillMesh.vertices[i];
-            Vector3 prevPoint = fillMesh.vertices[(i - 1 + fillMesh.vertices.Length) % fillMesh.vertices.Length];
-            Vector3 nextPoint = fillMesh.vertices[(i + 1) % fillMesh.vertices.Length];
+            Vector3 point = fillMeshVertices[i];
+            Vector3 prevPoint = fillMeshVertices[(i - 1 + fillMeshVertices.Length) % fillMeshVertices.Length];
+            Vector3 nextPoint = fillMeshVertices[(i + 1) % fillMeshVertices.Length];
 
             // Calcul de la direction moyenne pour lisser l'outline
             Vector3 direction = ((point - prevPoint).normalized + (nextPoint - point).normalized).normalized;
             Vector3 perpendicular = Vector3.Cross(direction, Vector3.forward).normalized;
 
+            // L'outline commence là où le fill s'arrête et s'étend de outlineThickness
             Vector3 outlinePoint = point;
             Vector3 extendedOutlinePoint = point + perpendicular * outlineThickness;
 
@@ -156,11 +166,18 @@ public class BlobVisual : MonoBehaviour, IPausable
             outlineTriangles.Add(i + count);
         }
 
+        if (outlinePoints.Count < 3) return;
+
         outlineMeshVertices = outlinePoints.Concat(extendedOutlinePoints).ToArray();
         outlineMeshTriangles = outlineTriangles.ToArray();
     }
     private int[] GetTriangles(List<Vector3> pointsPos)
     {
+        if (pointsPos.Count < 3)
+        {
+            return new int[0];
+        }
+
         int triangleAmount = pointsPos.Count - 2;
         List<int> newTriangles = new List<int>();
 
@@ -176,14 +193,18 @@ public class BlobVisual : MonoBehaviour, IPausable
 
     public void ApplyBlobTransform()
     {
-        if (fillMeshVertices == null || fillMeshVertices.Length == 0) return;
+        if (fillMeshVertices == null || fillMeshVertices.Length < 3 || fillMeshTriangles == null || fillMeshTriangles.Length < 3)
+            return;
+        if (outlineMeshVertices == null || outlineMeshVertices.Length < 3 || outlineMeshTriangles == null || outlineMeshTriangles.Length < 3)
+            return;
 
         Vector3 blobCenter = blobJoint.GetJointsCenter();
         Vector3[] modifiedFillVertices = new Vector3[fillMeshVertices.Length];
         Vector3[] modifiedOutlineVertices = new Vector3[outlineMeshVertices.Length];
 
-        float rotationAngle = blobSpeed > 10 ? Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg : 0; // Convertir la direction en angle
-        Quaternion rotationQuat = Quaternion.Euler(0, 0, rotationAngle - 90); // Rotation autour de Z
+        float targetRot = blobSpeed > 10 ? Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg - 90 : 0;
+        rotationAngle = Mathf.SmoothDampAngle(rotationAngle, targetRot, ref rotationVelocity, rotationTime);
+        Quaternion rotationQuat = Quaternion.Euler(0, 0, rotationAngle);
 
         for (int i = 0; i < fillMeshVertices.Length; i++)
         {

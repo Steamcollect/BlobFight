@@ -2678,12 +2678,14 @@ MonoBehaviour:
   shrinkHeightFactor: 0.04
   extendBevelCount: 4
   extendHeightFactor: 0.15
+  fillDistanceMultiplier: 1
   outlineThickness: 0.3
   xShrinkScaleAtMaxSpeed: 0.6
   yShrinkScaleAtMaxSpeed: 1.4
   xExtendScaleAtMaxSpeed: 0.8
   yExtendScaleAtMaxSpeed: 1.2
   maxSpeed: 3000
+  rotationTime: 0.05
   outlineMeshFilter: {fileID: 1097680500150144223}
   outlineRenderer: {fileID: 1326883160990318666}
   fillMeshFilter: {fileID: 4563486604708086893}
