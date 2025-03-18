@@ -8,6 +8,8 @@ public class PropsSpawner : GameProps
     [Header("Settings")]
     [SerializeField] Vector2 spawnCooldown;
     [SerializeField] float spawnForce;
+    [SerializeField] List<int> timeSpeed;
+    [SerializeField] List<Vector2> newtimeSpeed;
 
     [Space(5)]
     [SerializeField] int objToSpawnOnStart;
@@ -24,7 +26,12 @@ public class PropsSpawner : GameProps
     // RSP
 
     //[Header("Input")]
-    //[Header("Output")]
+
+    [Header("Output")]
+    [SerializeField] RSO_TimerParty rsoTimerParty;
+
+    int mode = 0;
+
     public override void Launch()
     {
         StartCoroutine(SpawnCooldown());
@@ -40,6 +47,16 @@ public class PropsSpawner : GameProps
 
     IEnumerator SpawnCooldown()
     {
+        if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+        {
+            spawnCooldown = newtimeSpeed[mode];
+
+            if (mode < timeSpeed.Count - 1)
+            {
+                mode++;
+            }
+        }
+
         yield return new WaitForSeconds(Random.Range(spawnCooldown.x, spawnCooldown.y));
 
         Rigidbody2D obj = GetObj();

@@ -744,12 +744,16 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
+      propertyPath: rsoTimerParty
+      value: 
+      objectReference: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
+    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: spawnCooldown.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: spawnCooldown.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name
@@ -903,14 +907,6 @@ PrefabInstance:
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: spawnForce
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnCooldown.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnCooldown.y
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name
@@ -2650,12 +2646,16 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
+      propertyPath: rsoTimerParty
+      value: 
+      objectReference: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
+    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: spawnCooldown.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: spawnCooldown.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name

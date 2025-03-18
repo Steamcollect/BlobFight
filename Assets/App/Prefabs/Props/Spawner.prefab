@@ -46,8 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  spawnCooldown: {x: 0.5, y: 1}
+  spawnCooldown: {x: 2, y: 3}
   spawnForce: 100
+  timeSpeed: 000000000f0000001e0000002d000000
+  newtimeSpeed:
+  - {x: 2, y: 3}
+  - {x: 1.5, y: 2.5}
+  - {x: 1, y: 2}
+  - {x: 0.5, y: 1.5}
   objToSpawnOnStart: 10
   spawner: {fileID: 7153350957555051841}
   objToSpawn: {fileID: 0}
+  rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
