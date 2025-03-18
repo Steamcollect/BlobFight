@@ -16,7 +16,26 @@ public class BlobVisual : MonoBehaviour, IPausable
     int bevelCount;
     float heightFactor;
 
+    [Space(5)]
+    [SerializeField] float xShrinkScaleAtMaxSpeed;
+    [SerializeField] float yShrinkScaleAtMaxSpeed;
+    [SerializeField] float xExtendScaleAtMaxSpeed;
+    [SerializeField] float yExtendScaleAtMaxSpeed;
+    [SerializeField] float maxSpeed;
+
+    Vector2 scale = Vector3.one;
+
+    Vector2 blobVelocity;
+    float blobSpeed;
+
+    bool isExtend = false;
     bool canDisplay = true;
+
+    Vector3[] fillMeshVertices;
+    int[] fillMeshTriangles;
+
+    Vector3[] outlineMeshVertices;
+    int[] outlineMeshTriangles;
 
     [Header("References")]
     [SerializeField] MeshFilter outlineMeshFilter;
@@ -59,8 +78,16 @@ public class BlobVisual : MonoBehaviour, IPausable
     {
         if (!canDisplay) return;
 
+        blobVelocity = blobJoint.GetVelocity();
+        blobSpeed = blobVelocity.sqrMagnitude;
+
+        scale = !isExtend ? new Vector2(Mathf.Lerp(1, xShrinkScaleAtMaxSpeed, blobSpeed / maxSpeed), Mathf.Lerp(1, yShrinkScaleAtMaxSpeed, blobSpeed / maxSpeed))
+            : new Vector2(Mathf.Lerp(1, xExtendScaleAtMaxSpeed, blobSpeed / maxSpeed), Mathf.Lerp(1, yExtendScaleAtMaxSpeed, blobSpeed / maxSpeed));
+
         UpdateFillMesh();
         UpdateOutlineMesh();
+
+        ApplyBlobTransform();
     }
 
     private void UpdateFillMesh()
@@ -87,8 +114,8 @@ public class BlobVisual : MonoBehaviour, IPausable
             }
         }
 
-        fillMesh.vertices = pointsPos.ToArray();
-        fillMesh.triangles = GetTriangles(pointsPos);
+        fillMeshVertices = pointsPos.ToArray();
+        fillMeshTriangles = GetTriangles(pointsPos);
     }
     private void UpdateOutlineMesh()
     {
@@ -129,8 +156,8 @@ public class BlobVisual : MonoBehaviour, IPausable
             outlineTriangles.Add(i + count);
         }
 
-        outlineMesh.vertices = outlinePoints.Concat(extendedOutlinePoints).ToArray();
-        outlineMesh.triangles = outlineTriangles.ToArray();
+        outlineMeshVertices = outlinePoints.Concat(extendedOutlinePoints).ToArray();
+        outlineMeshTriangles = outlineTriangles.ToArray();
     }
     private int[] GetTriangles(List<Vector3> pointsPos)
     {
@@ -145,6 +172,55 @@ public class BlobVisual : MonoBehaviour, IPausable
         }
 
         return newTriangles.ToArray();
+    }
+
+    public void ApplyBlobTransform()
+    {
+        if (fillMeshVertices == null || fillMeshVertices.Length == 0) return;
+
+        Vector3 blobCenter = blobJoint.GetJointsCenter();
+        Vector3[] modifiedFillVertices = new Vector3[fillMeshVertices.Length];
+        Vector3[] modifiedOutlineVertices = new Vector3[outlineMeshVertices.Length];
+
+        float rotationAngle = blobSpeed > 10 ? Mathf.Atan2(blobVelocity.y, blobVelocity.x) * Mathf.Rad2Deg : 0; // Convertir la direction en angle
+        Quaternion rotationQuat = Quaternion.Euler(0, 0, rotationAngle - 90); // Rotation autour de Z
+
+        for (int i = 0; i < fillMeshVertices.Length; i++)
+        {
+            Vector3 localPoint = fillMeshVertices[i] - blobCenter;
+
+            // Appliquer l'échelle
+            localPoint = new Vector3(localPoint.x * scale.x, localPoint.y * scale.y, localPoint.z);
+
+            // Appliquer la rotation
+            localPoint = rotationQuat * localPoint;
+
+            modifiedFillVertices[i] = localPoint + blobCenter;
+        }
+
+        for (int i = 0; i < outlineMeshVertices.Length; i++)
+        {
+            Vector3 localPoint = outlineMeshVertices[i] - blobCenter;
+
+            // Appliquer l'échelle
+            localPoint = new Vector3(localPoint.x * scale.x, localPoint.y * scale.y, localPoint.z);
+
+            // Appliquer la rotation
+            localPoint = rotationQuat * localPoint;
+
+            modifiedOutlineVertices[i] = localPoint + blobCenter;
+        }
+
+        // Mise à jour des meshes
+        fillMesh.vertices = modifiedFillVertices;
+        fillMesh.triangles = fillMeshTriangles;
+        fillMesh.RecalculateBounds();
+        fillMesh.RecalculateNormals();
+
+        outlineMesh.vertices = modifiedOutlineVertices;
+        outlineMesh.triangles = outlineMeshTriangles;
+        outlineMesh.RecalculateBounds();
+        outlineMesh.RecalculateNormals();
     }
 
     public void Show()
@@ -162,11 +238,13 @@ public class BlobVisual : MonoBehaviour, IPausable
     {
         bevelCount = shrinkBevelCount;
         heightFactor = shrinkHeightFactor;
+        isExtend = false;
     }
     public void SetToExtend()
     {
         bevelCount = extendBevelCount;
         heightFactor = extendHeightFactor;
+        isExtend = true;
     }
 
     public void Pause()

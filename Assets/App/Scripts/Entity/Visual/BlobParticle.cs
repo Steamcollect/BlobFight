@@ -13,6 +13,7 @@ public class BlobParticle : MonoBehaviour
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
+    [SerializeField] BlobJoint joint;
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobHealth health;
 
@@ -27,6 +28,8 @@ public class BlobParticle : MonoBehaviour
     Queue<ParticleCallback> destroyParticles = new();
 
     [SerializeField] HitParticle[] hitParticles;
+
+    [SerializeField] ParticleSystem expulseParticle;
 
     [Serializable]
     class HitParticle
@@ -77,7 +80,12 @@ public class BlobParticle : MonoBehaviour
                 particle.SetColor(motor.GetColor().fillColor);
                 hitParticle.particles.Enqueue(particle);
             }
-}
+    }
+
+    private void Update()
+    {
+        expulseParticle.transform.position = joint.GetJointsCenter();
+    }
 
     void OnTouchEnter(Collision2D coll)
     {
@@ -176,6 +184,13 @@ public class BlobParticle : MonoBehaviour
 
         particle.Play();
     }
+
+    public void EnableExpulseParticle(Vector2 rotation)
+    {
+        expulseParticle.transform.up = rotation;
+        expulseParticle.Play();
+    }
+    public void DisableExpulseParticle() { expulseParticle.Stop(); }
 
     ParticleCallback CreateParticle(ParticleSystem prefab, Action<ParticleCallback> stopAction)
     {
