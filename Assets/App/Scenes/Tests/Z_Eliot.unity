@@ -6195,6 +6195,86 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blob (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xScaleBySpeed.m_Curve.Array.data[1].time
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yScaleBySpeed.m_Curve.Array.data[1].time
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xScaleBySpeed.m_Curve.Array.data[0].inSlope
+      value: -0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xScaleBySpeed.m_Curve.Array.data[1].inSlope
+      value: -0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yScaleBySpeed.m_Curve.Array.data[0].inSlope
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yScaleBySpeed.m_Curve.Array.data[1].inSlope
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xScaleBySpeed.m_Curve.Array.data[0].outSlope
+      value: -0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xScaleBySpeed.m_Curve.Array.data[1].outSlope
+      value: -0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yScaleBySpeed.m_Curve.Array.data[0].outSlope
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yScaleBySpeed.m_Curve.Array.data[1].outSlope
+      value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xShrinkScaleBySpeed.m_Curve.Array.data[1].time
+      value: 7000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yShrinkScaleBySpeed.m_Curve.Array.data[1].time
+      value: 7000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xShrinkScaleBySpeed.m_Curve.Array.data[0].inSlope
+      value: -0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xShrinkScaleBySpeed.m_Curve.Array.data[1].inSlope
+      value: -0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yShrinkScaleBySpeed.m_Curve.Array.data[0].inSlope
+      value: 0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yShrinkScaleBySpeed.m_Curve.Array.data[1].inSlope
+      value: 0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xShrinkScaleBySpeed.m_Curve.Array.data[0].outSlope
+      value: -0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: xShrinkScaleBySpeed.m_Curve.Array.data[1].outSlope
+      value: -0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yShrinkScaleBySpeed.m_Curve.Array.data[0].outSlope
+      value: 0.00007142857
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232837032291008028, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: yShrinkScaleBySpeed.m_Curve.Array.data[1].outSlope
+      value: 0.00007142857
+      objectReference: {fileID: 0}
     - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

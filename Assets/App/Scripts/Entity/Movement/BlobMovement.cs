@@ -34,6 +34,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobVisual visual;
     [SerializeField] BlobStamina stamina;
     [SerializeField] BlobTrigger trigger;
+    [SerializeField] BlobParticle particle;
 
     //[Header("Output")]
     public Action onShrink,onExtend;
@@ -247,8 +248,10 @@ public class BlobMovement : MonoBehaviour, IPausable
     IEnumerator StunImpactCooldown(float delay)
     {
         stunImpactCanMove = false;
+        particle.EnableExpulseParticle(joint.GetVelocity());
         yield return new WaitForSeconds(delay);
         stunImpactCanMove = true;
+        particle.DisableExpulseParticle();
     }
 
     public float GetExtendTime() { return extendTime; }
