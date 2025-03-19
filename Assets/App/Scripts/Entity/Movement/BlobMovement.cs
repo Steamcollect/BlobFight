@@ -30,7 +30,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     [Header("References")]
     [SerializeField] EntityInput input;
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics physics;
     [SerializeField] BlobVisual visual;
     [SerializeField] BlobStamina stamina;
     [SerializeField] BlobTrigger trigger;
@@ -41,7 +41,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     private void OnEnable()
     {
-        joint.onJointsConnected += SetupJoint;
+        physics.onJointsConnected += SetupJoint;
 
         trigger.OnGroundedEnter += OnGroundableEnter;
         trigger.OnGroundedExit += OnGroundableExit;
@@ -55,7 +55,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         input.compressUpInput -= ShrinkBlob;
         input.moveInput -= SetInput;
 
-        joint.onJointsConnected -= SetupJoint;
+        physics.onJointsConnected -= SetupJoint;
 
         trigger.OnGroundedEnter -= OnGroundableEnter;
         trigger.OnGroundedExit -= OnGroundableExit;
@@ -97,8 +97,6 @@ public class BlobMovement : MonoBehaviour, IPausable
                 }
             }
         }
-
-        joint.SetCollidersPosOffset(.5f);
     }
 
     #region Setup
@@ -109,13 +107,11 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void SetJointStats()
     {
-        joint.SetDrag(statistics.drag);
-        joint.SetGravity(statistics.gravity);
+        physics.SetDrag(statistics.drag);
+        physics.SetGravity(statistics.gravity);
 
-        joint.MultiplyInitialSpringDistance(statistics.distanceMult);
-        joint.SetDamping(statistics.damping);
-        joint.SetFrequency(statistics.frequency);
-        joint.SetMass(statistics.mass);
+        physics.ChangeScaleTarget(statistics.scale, statistics.timeToSwap);
+        physics.SetMass(statistics.mass);
     }
     void SetInput(Vector2 input)
     {
@@ -131,14 +127,14 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
         direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
-        Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + direction);
+        Debug.DrawLine(physics.GetCenter(), physics.GetCenter() + direction);
 
-        joint.AddForce(direction * moveInput.x * statistics.moveSpeed);
+        physics.AddForce(direction * moveInput.x * statistics.moveSpeed);
     }
 
     void ExtendBlob()
     {
-        if (!deathCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime) || joint.jointsRb[0].bodyType == RigidbodyType2D.Static) return;
+        if (!deathCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime) || physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
 
         stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
         stamina.DisableStaminaRecuperation();
@@ -146,25 +142,26 @@ public class BlobMovement : MonoBehaviour, IPausable
         statistics = extendStatistics;
         SetJointStats();
 
-        visual.SetToExtend();
-
         onExtend?.Invoke();
         isExtend = true;
+
+        visual.Extend();
     }
 
     void ShrinkBlob()
     {
-        if (isExtend && joint.jointsRb[0].bodyType == RigidbodyType2D.Static) return;
+        if (isExtend && physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
 
         stamina.EnableStaminaRecuperation();
 
         statistics = shrinkStatistics;
         SetJointStats();
 
-        visual.SetToShrink();
         onShrink?.Invoke();
 
         isExtend = false;
+
+        visual.Shrink();
     }
     #endregion
 
@@ -180,10 +177,10 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         float speedFactor = angleVelocityMultiplierCurve.Evaluate(angleDifference);
 
-        Vector2 projectedVelocity = Vector2.Perpendicular(newNormal) * Vector2.Dot(joint.GetVelocity(), Vector2.Perpendicular(newNormal));
-        Debug.DrawLine(joint.GetJointsCenter(), joint.GetJointsCenter() + projectedVelocity.normalized, Color.red, 1);
+        Vector2 projectedVelocity = Vector2.Perpendicular(newNormal) * Vector2.Dot(physics.GetVelocity(), Vector2.Perpendicular(newNormal));
+        Debug.DrawLine(physics.GetCenter(), physics.GetCenter() + projectedVelocity.normalized, Color.red, 1);
 
-        joint.SetVelocity(projectedVelocity * speedFactor);
+        physics.SetVelocity(projectedVelocity * speedFactor);
 
         currentGroundNormal = newNormal;
 
@@ -203,7 +200,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         if (!isExtend)
         {
             Debug.DrawLine(collision.GetContact(0).point, collision.GetContact(0).point + collision.GetContact(0).normal, Color.blue, 1);
-            joint.SetGravity(slidingGravity);
+            physics.SetGravity(slidingGravity);
         }
     }
     void OnSlidableExit(Collision2D collision)
@@ -212,7 +209,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void ExitSlidingState()
     {
-        joint.SetGravity(statistics.gravity);
+        physics.SetGravity(statistics.gravity);
     }
     #endregion
 
@@ -250,7 +247,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     IEnumerator StunImpactCooldown(float delay)
     {
         stunImpactCanMove = false;
-        particle.EnableExpulseParticle(joint.GetVelocity());
+        particle.EnableExpulseParticle(physics.GetVelocity());
         yield return new WaitForSeconds(delay);
         stunImpactCanMove = true;
         particle.DisableExpulseParticle();

@@ -18,7 +18,7 @@ public class BlobDash : MonoBehaviour
 
     [Header("References")]
     [SerializeField] EntityInput input;
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics joint;
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobMovement movement;
 

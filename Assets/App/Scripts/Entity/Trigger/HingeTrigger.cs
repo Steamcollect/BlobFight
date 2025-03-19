@@ -37,7 +37,7 @@ public class HingeTrigger : CollisionTrigger
 
     void OnBlobCollision(BlobMotor blob, Collision2D collision)
     {
-        Vector3 velocity = blob.GetJoint().GetVelocity();
+        Vector3 velocity = blob.GetPhysics().GetVelocity();
         float velocityMagnitude = velocity.sqrMagnitude;
 
         Vector2 contactNormal = collision.GetContact(0).normal;
@@ -46,7 +46,7 @@ public class HingeTrigger : CollisionTrigger
 
         float damageMultiplier = Mathf.Lerp(0f, 1f, impactFactor);
 
-        int baseDamage = (int)damageBySpeedCurve.Evaluate(velocityMagnitude * blob.GetJoint().mass);
+        int baseDamage = (int)damageBySpeedCurve.Evaluate(velocityMagnitude * blob.GetPhysics().GetRigidbody().mass);
 
         int finalDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
 

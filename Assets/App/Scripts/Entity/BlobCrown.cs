@@ -20,7 +20,7 @@ public class BlobCrown : MonoBehaviour
     [SerializeField] RSE_UpdateCrownVisual rseUpdateCrownVisual;
     [Space(5)]
     [SerializeField] BlobMotor motor;
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics joint;
     [SerializeField] BlobMovement movement;
 
     [Space(5)]
@@ -94,7 +94,7 @@ public class BlobCrown : MonoBehaviour
     {
         if(crownsContent.activeInHierarchy)
         {
-            crownsContent.transform.position = Vector2.SmoothDamp(crownsContent.transform.position, joint.GetJointsCenter() + posOffset, ref velocity, smoothTime);
+            crownsContent.transform.position = Vector2.SmoothDamp(crownsContent.transform.position, joint.GetCenter() + posOffset, ref velocity, smoothTime);
 
             float targetRot = (velocity / velocityRotDiviser * rotationAmount).x;
             rotationDelta = Mathf.SmoothDamp(rotationDelta, targetRot, ref rotationVelocity, rotationTime);

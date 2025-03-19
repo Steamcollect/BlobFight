@@ -13,7 +13,7 @@ public class BlobParticle : MonoBehaviour
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics physics;
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobHealth health;
 
@@ -84,7 +84,7 @@ public class BlobParticle : MonoBehaviour
 
     private void Update()
     {
-        expulseParticle.transform.position = joint.GetJointsCenter();
+        expulseParticle.transform.position = physics.GetCenter();
     }
 
     void OnTouchEnter(Collision2D coll)

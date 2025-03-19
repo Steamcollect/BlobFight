@@ -44,18 +44,8 @@ public class Explosion : MonoBehaviour
             {
                 health.TakeDamage((int)(damage * power));
             }
-
-            if (hit.TryGetComponent(out MyJoint joint))
-            {
-                if (!blobsTouch.Contains(joint.parentMotor))
-                {
-                    joint.parentMotor.GetJoint().AddForce(direction * pushBackForce * power);
-                    joint.parentMotor.GetHealth().TakeDamage((int)(damage * power));
-                }
-                blobsTouch.Add(joint.parentMotor);
-            }
-
-            else if (hit.TryGetComponent(out Rigidbody2D rb))
+            
+            if (hit.TryGetComponent(out Rigidbody2D rb))
             {
                 rb.AddForce(direction * pushBackForce * power);
             }

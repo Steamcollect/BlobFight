@@ -17,7 +17,7 @@ public class BlobCombat : MonoBehaviour
 
     [Header("References")]
     [SerializeField] BlobTrigger trigger;
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics physics;
     [SerializeField] BlobMovement movement;
     [SerializeField] BlobParticle particle;
 
@@ -51,10 +51,10 @@ public class BlobCombat : MonoBehaviour
     {
         if (blobsTouch.Contains(blobTouch) || !canFight) return;
 
-        float speed = joint.GetVelocity().sqrMagnitude;
-        float blobTouchSpeed = blobTouch.GetJoint().GetVelocity().sqrMagnitude;
+        float speed = physics.GetVelocity().sqrMagnitude;
+        float blobTouchSpeed = blobTouch.GetPhysics().GetVelocity().sqrMagnitude;
         
-        Vector2 propulsionDir = (blobTouch.GetJoint().GetJointsCenter() - joint.GetJointsCenter()).normalized;
+        Vector2 propulsionDir = (blobTouch.GetPhysics().GetCenter() - physics.GetCenter()).normalized;
 
         Vector2 impactVelocity = Vector2.zero;
         Vector2 impactForce = Vector2.zero;
@@ -64,17 +64,17 @@ public class BlobCombat : MonoBehaviour
         {
             print("Parry");
 
-            impactVelocity = blobTouch.GetJoint().GetVelocity() * blobTouchSpeed;
+            impactVelocity = blobTouch.GetPhysics().GetVelocity() * blobTouchSpeed;
             impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
 
-            blobTouch.GetJoint().ResetVelocity();
+            blobTouch.GetPhysics().ResetVelocity();
         }
         else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
         {
             impactVelocity = propulsionDir * speed;
             impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * extendForceMultiplier;
 
-            Debug.DrawLine(blobTouch.GetJoint().GetJointsCenter(), blobTouch.GetJoint().GetJointsCenter() + impactVelocity, Color.blue, 1);
+            Debug.DrawLine(blobTouch.GetPhysics().GetCenter(), blobTouch.GetPhysics().GetCenter() + impactVelocity, Color.blue, 1);
 
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
         }
@@ -88,8 +88,8 @@ public class BlobCombat : MonoBehaviour
         else return;
 
         // Set new velocity
-        blobTouch.GetJoint().AddForce(impactForce * pushBackForce);
-        joint.AddForce(-impactVelocity * returnPushBackForce);
+        blobTouch.GetPhysics().AddForce(impactForce * pushBackForce);
+        physics.AddForce(-impactVelocity * returnPushBackForce);
 
         // Set health
         blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);

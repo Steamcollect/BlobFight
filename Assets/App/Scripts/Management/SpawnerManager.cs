@@ -69,7 +69,7 @@ public class SpawnerManager : MonoBehaviour
             {
                 if (blob == excludedBlob) continue;
 
-                float distance = Vector2.Distance(spawn.position, blob.GetJoint().GetJointsCenter());
+                float distance = Vector2.Distance(spawn.position, blob.GetPhysics().GetCenter());
                 if (distance < minDistanceToBlobs)
                 {
                     minDistanceToBlobs = distance;

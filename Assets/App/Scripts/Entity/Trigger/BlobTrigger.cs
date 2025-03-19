@@ -13,7 +13,7 @@ public class BlobTrigger : CollisionTrigger
     [SerializeField, TagName] string slidableTag;
 
     [Header("References")]
-    [SerializeField] BlobJoint blobJoint;
+    [SerializeField] BlobPhysics physics;
 
     List<GameObject> groundables = new();
     Collision2D lastGroundTouch;
@@ -35,8 +35,8 @@ public class BlobTrigger : CollisionTrigger
 
     private void OnDisable()
     {
-        blobJoint.RemoveOnCollisionEnterListener(OnEnterCollision);
-        blobJoint.RemoveOnCollisionExitListener(OnExitCollision);
+        physics.RemoveOnCollisionEnterListener(OnEnterCollision);
+        physics.RemoveOnCollisionExitListener(OnExitCollision);
 
         OnCollisionEnter -= OnEnter;
         OnCollisionExit -= OnExit;
@@ -48,8 +48,8 @@ public class BlobTrigger : CollisionTrigger
     }
     void LateStart()
     {
-        blobJoint.AddOnCollisionEnterListener(OnEnterCollision);
-        blobJoint.AddOnCollisionExitListener(OnExitCollision);
+        physics.AddOnCollisionEnterListener(OnEnterCollision);
+        physics.AddOnCollisionExitListener(OnExitCollision);
 
         OnCollisionEnter += OnEnter;
         OnCollisionExit += OnExit;
@@ -99,7 +99,7 @@ public class BlobTrigger : CollisionTrigger
     {
         LayerMask combine = this.layerToExclude | layerToExclude;
         this.layerToExclude = combine;
-        blobJoint.SetLayerToExlude(this.layerToExclude);
+        physics.SetLayerToExlude(this.layerToExclude);
 
         StartCoroutine(RemoveExludeLayer(layerToExclude, excludingTime));
     }
@@ -107,7 +107,7 @@ public class BlobTrigger : CollisionTrigger
     {
         yield return new WaitForSeconds(excludingTime);
         this.layerToExclude = this.layerToExclude & ~layerToExclude;
-        blobJoint.SetLayerToExlude(this.layerToExclude);
+        physics.SetLayerToExlude(this.layerToExclude);
     }
 
     public void SetLayerToExclude(LayerMask layerToExclude)

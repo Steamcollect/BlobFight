@@ -13,7 +13,6 @@ public struct BlobStatistics
     public float mass;
     
     [Space(5)]
-    public float distanceMult;
-    [Range(0, 1)] public float damping;
-    public float frequency;
+    public float scale;
+    public float timeToSwap;
 }

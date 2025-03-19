@@ -14,7 +14,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     [Header("References")]
     [SerializeField] EntityInput input;
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics blobPhysics;
 
     Camera cam;
 
@@ -56,7 +56,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     private void Update()
     {
-        if (!isValid && joint.jointsRb[0].bodyType != RigidbodyType2D.Static)
+        if (!isValid && blobPhysics.GetRigidbody().bodyType != RigidbodyType2D.Static)
         {
             if (isInputClick)
             {
@@ -91,7 +91,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     void SetValidInput(bool isClick)
     {
-        if (joint.jointsRb[0].bodyType != RigidbodyType2D.Static)
+        if (blobPhysics.GetRigidbody().bodyType != RigidbodyType2D.Static)
         {
             isInputClick = isClick;
         }
@@ -113,7 +113,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
     }
     void UpdateWheelPosition()
     {
-        transform.position = cam.WorldToScreenPoint(joint.GetJointsCenter() + posOffset);
+        transform.position = cam.WorldToScreenPoint(blobPhysics.GetCenter() + posOffset);
     }
 
     void DisableGO()

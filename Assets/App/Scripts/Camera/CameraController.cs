@@ -79,7 +79,7 @@ public class CameraController : MonoBehaviour
         {
             if (!blob.IsAlive()) continue;
 
-            sum += blob.GetJoint().GetJointsCenter();
+            sum += blob.GetPhysics().GetCenter();
         }
         return sum / rsoBlobInGame.Value.Count;
     }
@@ -91,7 +91,7 @@ public class CameraController : MonoBehaviour
         {
             if (!blob.IsAlive()) continue;
 
-            float distance = Vector2.Distance(center, blob.GetJoint().GetJointsCenter());
+            float distance = Vector2.Distance(center, blob.GetPhysics().GetCenter());
             if (distance > maxDistance)
             {
                 maxDistance = distance;

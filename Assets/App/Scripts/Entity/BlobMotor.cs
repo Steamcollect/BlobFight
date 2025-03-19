@@ -12,7 +12,7 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] GameObject componentsContent;
 
     [Space(5)]
-    [SerializeField] BlobJoint joint;
+    [SerializeField] BlobPhysics physics;
     [SerializeField] BlobVisual visual;
     [SerializeField] BlobHealth health;
     [SerializeField] BlobMovement movement;
@@ -99,7 +99,7 @@ public class BlobMotor : MonoBehaviour
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
         gameObject.name = currentStats.blobName;
 
-        visual.Setup(currentStats.color);
+        visual.SetColor(currentStats.color.fillColor);
 
         Setup();
         UnlockInteraction();
@@ -108,7 +108,7 @@ public class BlobMotor : MonoBehaviour
     }
     void LateStart()
     {
-        joint.SetupLayer(currentStats.layer);
+        physics.SetupLayer(currentStats.layer);
         trigger.SetLayerToExclude(currentStats.layer);
         combat.SetLayer(currentStats.layer);
     }
@@ -121,12 +121,12 @@ public class BlobMotor : MonoBehaviour
 
     void Enable()
     {
-        joint.EnableJoint();
+        physics.Enable();
         visual.Show();
     }
     void Disable()
     {
-        joint.DisableJoint();
+        physics.Disable();
         visual.Hide();
 
         LockInteraction();
@@ -145,7 +145,7 @@ public class BlobMotor : MonoBehaviour
     {
         componentsContent.SetActive(true);
 
-        joint.MoveJointsByTransform(position);
+        physics.MoveTo(position);
         health.Setup();
         Enable();
     }
@@ -153,7 +153,7 @@ public class BlobMotor : MonoBehaviour
     #region Health
     void OnDeath()
     {
-        particle.DeathParticle(joint.GetJointsCenter(), currentStats.color);
+        particle.DeathParticle(physics.GetCenter(), currentStats.color);
         Disable();
         rseOnBlobDeath.Call(this);
     }
@@ -205,7 +205,7 @@ public class BlobMotor : MonoBehaviour
 
     #region Getter
     public BlobInitializeStatistic GetStats() { return currentStats; }
-    public BlobJoint GetJoint() { return joint; }
+    public BlobPhysics GetPhysics() { return physics; }
     public BlobHealth GetHealth() { return health; }
     public EntityInput GetInput() { return input; }
     public BlobMovement GetMovement() { return movement; }
