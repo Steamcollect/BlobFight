@@ -212,4 +212,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  damageType: 1
+  damageType: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   blobs:
   - blobName: BLOB_Blue
     color:
-      fillColor: {r: 0.21568628, g: 0.7254902, b: 0.85490197, a: 1}
+      fillColor: {r: 1, g: 0, b: 0.06252861, a: 1}
       outlineColor: {r: 0.16470589, g: 0.56078434, b: 0.65882355, a: 1}
       autoSetOutlineColor: 0
     layer:
