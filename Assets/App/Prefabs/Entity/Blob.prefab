@@ -323,9 +323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712fd8b9292a1504fb2443068b4acae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 12000
+  dashForce: 13500
   dashCooldown: 0.1
-  removeGravityTime: 0.3
+  removeGravityTime: 0.1
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
@@ -378,16 +378,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkStatistics:
-    moveSpeed: 500
-    gravity: 10
+    moveSpeed: 800
+    gravity: 18
     drag: 5
     mass: 5
     scale: 2
     timeToSwap: 0.08
   extendStatistics:
     moveSpeed: 300
-    gravity: 45
-    drag: 10
+    gravity: 65
+    drag: 7.5
     mass: 50
     scale: 5
     timeToSwap: 0.04
@@ -1219,8 +1219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cloneCount: 3
   timeBetweenClone: 0.07
-  cloneStartingAlpha: 0.3
-  cloneLifeTime: 0.3
+  cloneStartingAlpha: 0.15
+  cloneLifeTime: 0.15
   cloneCountToInstantiate: 10
   blobDash: {fileID: 3726202644600941132}
   visual: {fileID: 6232837032291008028}
