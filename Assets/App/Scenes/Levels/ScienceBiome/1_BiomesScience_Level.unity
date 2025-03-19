@@ -2714,14 +2714,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1851161582335571656, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: cloneLifeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851161582335571656, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
-      propertyPath: cloneStartingAlpha
-      value: 0.15
-      objectReference: {fileID: 0}
     - target: {fileID: 6355303935705448582, guid: 37b6926b14c16934796863427fd8c3a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
