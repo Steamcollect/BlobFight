@@ -18,39 +18,17 @@ public class BlobDashVisual : MonoBehaviour
 
     [Header("References")]
     [SerializeField] BlobDash blobDash;
-
-    [Space(10)]
-    [SerializeField] MeshFilter _fillFilter;
-    [SerializeField] MeshRenderer _fillRenderer;
-
-    [SerializeField] MeshFilter _outlineFilter;
-    [SerializeField] MeshRenderer _outlineRenderer;
+    [SerializeField] BlobVisual visual;
 
     Queue<BlobCloneVisual> clones = new();
 
     struct BlobCloneVisual
     {
-        public GameObject content;
-        public MeshFilter fillFilter, outlineFilter;
-        public MeshRenderer fillRenderer, outlineRenderer;
+        public SpriteRenderer graphics;
 
-        public Material fillMat, outlineMat;
-        
-        public BlobCloneVisual(GameObject clone, MeshFilter fillFilter, MeshRenderer fillRenderer, MeshFilter outlineFilter, MeshRenderer outlineRenderer)
+        public BlobCloneVisual(SpriteRenderer graphics)
         {
-            this.content = clone;
-
-            this.fillFilter = fillFilter;
-            this.fillRenderer = fillRenderer;
-
-            this.outlineFilter = outlineFilter;
-            this.outlineRenderer = outlineRenderer;
-
-            fillMat = new Material(fillRenderer.material);
-            outlineMat = new Material(outlineRenderer.material);
-
-            this.fillRenderer.material = fillMat;
-            this.outlineRenderer.material = outlineMat;
+            this.graphics = graphics;
         }
     }
 
@@ -85,23 +63,24 @@ public class BlobDashVisual : MonoBehaviour
     }
     IEnumerator DashVisual()
     {
+        yield return new WaitForSeconds(.05f);
+
         for (int i = 0; i < cloneCount; i++)
         {
             BlobCloneVisual clone = GetClone();
-            clone.content.gameObject.SetActive(true);
 
-            //clone.fillFilter.mesh = _fillFilter.sharedMesh;
-            //clone.outlineFilter.mesh = _outlineFilter.sharedMesh;
+            clone.graphics.sprite = visual.GetGraphics().sprite;
+            clone.graphics.color = visual.GetGraphics().color;
 
-            //clone.fillrenderer.material.color =
-            //    new color(_fillrenderer.material.color.r, _fillrenderer.material.color.g, _fillrenderer.material.color.b, clonestartingalpha);
-            //clone.outlinerenderer.material.color =
-            //    new color(_outlinerenderer.material.color.r, _outlinerenderer.material.color.g, _outlinerenderer.material.color.b, clonestartingalpha);
+            clone.graphics.transform.position = visual.transform.position;
+            clone.graphics.transform.localScale = Vector2.Scale(visual.transform.localScale, visual.transform.parent.localScale);
+            clone.graphics.transform.rotation = visual.transform.rotation;
 
-            clone.fillMat.DOFade(0, cloneLifeTime);
-            clone.outlineMat.DOFade(0, cloneLifeTime).OnComplete(() =>
+            clone.graphics.gameObject.SetActive(true);
+
+            clone.graphics.DOFade(0, cloneLifeTime).OnComplete(() =>
             {
-                clone.content.gameObject.SetActive(false);
+                clone.graphics.gameObject.SetActive(false);
                 clones.Enqueue(clone);
             });
 
@@ -116,20 +95,11 @@ public class BlobDashVisual : MonoBehaviour
     }
     void CreateClone()
     {
-        GameObject clone = new GameObject("BlobClone");
+        GameObject clone = new GameObject("Blob Dash Clone");
         clone.transform.SetParent(transform);
+        SpriteRenderer graphics = clone.AddComponent<SpriteRenderer>();
 
-        GameObject fill = new GameObject("Fill");
-        fill.transform.SetParent(clone.transform);
-        MeshFilter fillFilter = fill.AddComponent<MeshFilter>();
-        MeshRenderer fillRenderer = fill.AddComponent<MeshRenderer>();
-
-        GameObject outline = new GameObject("Outline");
-        outline.transform.SetParent(clone.transform);
-        MeshFilter outlineFilter = outline.AddComponent<MeshFilter>();
-        MeshRenderer outlineRenderer = outline.AddComponent<MeshRenderer>();
-
-        BlobCloneVisual blobCloneVisual = new BlobCloneVisual(clone, fillFilter, fillRenderer, outlineFilter, outlineRenderer);
+        BlobCloneVisual blobCloneVisual = new BlobCloneVisual(graphics);
         clone.SetActive(false);
 
         clones.Enqueue(blobCloneVisual);

@@ -465,6 +465,7 @@ MonoBehaviour:
   stamina: {fileID: 4226171251788006590}
   trigger: {fileID: 606557387366902294}
   particle: {fileID: 4617812964555812280}
+  dash: {fileID: 0}
 --- !u!1 &3184432519262760862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1481141001695929454
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,16 +1217,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc1380c3a9c10d439d486abf45f8d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloneCount: 4
-  timeBetweenClone: 0.15
-  cloneStartingAlpha: 0.4
+  cloneCount: 3
+  timeBetweenClone: 0.07
+  cloneStartingAlpha: 0.3
   cloneLifeTime: 0.3
   cloneCountToInstantiate: 10
   blobDash: {fileID: 3726202644600941132}
-  _fillFilter: {fileID: 0}
-  _fillRenderer: {fileID: 0}
-  _outlineFilter: {fileID: 0}
-  _outlineRenderer: {fileID: 0}
+  visual: {fileID: 6232837032291008028}
 --- !u!1 &6724505695075795745
 GameObject:
   m_ObjectHideFlags: 0

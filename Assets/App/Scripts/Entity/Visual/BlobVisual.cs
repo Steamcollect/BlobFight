@@ -78,4 +78,6 @@ public class BlobVisual : MonoBehaviour
     {
         isExtend = true;
     }
+
+    public SpriteRenderer GetGraphics() { return graphics; }
 }
