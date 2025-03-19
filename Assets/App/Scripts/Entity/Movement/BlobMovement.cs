@@ -35,6 +35,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobStamina stamina;
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobParticle particle;
+    [SerializeField] BlobDash dash;
 
     //[Header("Output")]
     public Action onShrink,onExtend;
@@ -107,6 +108,8 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void SetJointStats()
     {
+        if (_RemoveGravity != null) StopCoroutine(_RemoveGravity);
+
         physics.SetDrag(statistics.drag);
         physics.SetGravity(statistics.gravity);
 
@@ -209,7 +212,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void ExitSlidingState()
     {
-        physics.SetGravity(statistics.gravity);
+        //physics.SetGravity(statistics.gravity);
     }
     #endregion
 
@@ -254,4 +257,17 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
 
     public float GetExtendTime() { return extendTime; }
+
+    public void RemoveGravity(float delay)
+    {
+        if (_RemoveGravity != null) StopCoroutine(_RemoveGravity);
+        _RemoveGravity = StartCoroutine(RemoveGravityCoroutine(delay));
+    }
+    Coroutine _RemoveGravity;
+    IEnumerator RemoveGravityCoroutine(float delay)
+    {
+        physics.SetGravity(0);
+        yield return new WaitForSeconds(delay);
+        physics.SetGravity(statistics.gravity);
+    }
 }

@@ -325,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashForce: 12000
   dashCooldown: 0.1
+  removeGravityTime: 0.3
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
@@ -1240,7 +1241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1228737701814485243
 Transform:
   m_ObjectHideFlags: 0

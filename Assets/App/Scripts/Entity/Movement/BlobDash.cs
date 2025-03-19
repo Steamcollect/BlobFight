@@ -7,6 +7,7 @@ public class BlobDash : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float dashForce;
     [SerializeField] float dashCooldown;
+    [SerializeField] float removeGravityTime;
 
     [Space(5)]
     [SerializeField] int maxDashCount;
@@ -71,6 +72,8 @@ public class BlobDash : MonoBehaviour
         joint.ResetVelocity();
         joint.AddForce(dashInput.normalized * dashForce);
         StartCoroutine(DashCooldown());
+
+        movement.RemoveGravity(removeGravityTime);
 
         OnDash?.Invoke();
     }
