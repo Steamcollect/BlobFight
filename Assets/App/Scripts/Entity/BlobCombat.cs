@@ -15,6 +15,9 @@ public class BlobCombat : MonoBehaviour
 
     bool canFight = true;
 
+    [Space(10)]
+    [SerializeField] float minSpeedAtImpact;
+
     [Header("References")]
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobPhysics physics;
@@ -71,7 +74,7 @@ public class BlobCombat : MonoBehaviour
         }
         else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
         {
-            impactVelocity = propulsionDir * speed;
+            impactVelocity = propulsionDir * (speed < minSpeedAtImpact ? minSpeedAtImpact : speed);
             impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * extendForceMultiplier;
 
             Debug.DrawLine(blobTouch.GetPhysics().GetCenter(), blobTouch.GetPhysics().GetCenter() + impactVelocity, Color.blue, 1);

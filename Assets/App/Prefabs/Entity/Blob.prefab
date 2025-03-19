@@ -429,31 +429,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 65.04426
-      value: 1.3185672
-      inSlope: -0.0031142135
-      outSlope: -0.0031142135
+      time: 180
+      value: 1
+      inSlope: -0.006357907
+      outSlope: -0.006357907
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 117.55948
-      value: 0.95503163
-      inSlope: -0.008769241
-      outSlope: -0.008769241
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3670922
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 153.61104
-      value: 0.009466438
-      inSlope: -0.03744219
-      outSlope: -0.03744219
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.0512224
+      inWeight: 0.064298585
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -464,7 +446,7 @@ MonoBehaviour:
   stamina: {fileID: 4226171251788006590}
   trigger: {fileID: 606557387366902294}
   particle: {fileID: 4617812964555812280}
-  dash: {fileID: 0}
+  dash: {fileID: 3726202644600941132}
 --- !u!1 &3184432519262760862
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +496,7 @@ MonoBehaviour:
   extendForceMultiplier: 3
   parryMaxTime: 0.1
   paryForceMultiplier: 5
+  minSpeedAtImpact: 1000
   trigger: {fileID: 606557387366902294}
   physics: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
