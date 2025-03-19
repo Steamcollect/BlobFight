@@ -155,10 +155,11 @@ MonoBehaviour:
   zoomMultiplier: 1.1
   moveSmoothTime: 0.2
   zoomSmoothTime: 0.2
+  centerOffset: {x: 0, y: 0, z: 0}
   minBounds: {x: -40, y: -15.2}
   maxBounds: {x: 40, y: 50.2}
   shakeSpeed: 10
   cam: {fileID: 1532893824451167384}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
-  rsoContentSaved: {fileID: 11400000, guid: d740f6a049223ce4fb18b39424d38a67, type: 2}
+  rsoSettingsSaved: {fileID: 11400000, guid: a857db71988974c48a8700f4999afd19, type: 2}
   rseCameraShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}

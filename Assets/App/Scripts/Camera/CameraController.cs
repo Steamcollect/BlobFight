@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
 
     [Space(10)]
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    [SerializeField] RSO_ContentSaved rsoContentSaved;
+    [SerializeField] RSO_SettingsSaved rsoSettingsSaved;
 
     [Header("Input")]
     [SerializeField] RSE_CameraShake rseCameraShake;
@@ -102,7 +102,7 @@ public class CameraController : MonoBehaviour
 
     void Shake(float range, float time)
     {
-        if (rsoContentSaved.Value.screenShake)
+        if (rsoSettingsSaved.Value.screenShake)
         {
             StartCoroutine(CameraShake(range, time));
         }

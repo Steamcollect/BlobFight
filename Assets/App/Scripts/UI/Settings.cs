@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Settings : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField, SaveName] private string saveSettingsName;
+
     [Header("References")]
     [SerializeField] private TextMeshProUGUI textScreenShake;
     [SerializeField] private TextMeshProUGUI textFullScreen;
@@ -14,7 +15,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
 
     [Header("Output")]
-    [SerializeField] private RSO_ContentSaved rsoContentSave;
+    [SerializeField] private RSO_SettingsSaved rsoSettingsSaved;
     [SerializeField] private RSE_SaveData rseSaveData;
 
     private void Start()
@@ -24,80 +25,80 @@ public class Settings : MonoBehaviour
 
     private void UpdateUISettings()
     {
-        if (rsoContentSave.Value.screenShake)
+        if (rsoSettingsSaved.Value.screenShake)
         {
             textScreenShake.text = "On";
         }
-        else if (!rsoContentSave.Value.screenShake)
+        else if (!rsoSettingsSaved.Value.screenShake)
         {
             textScreenShake.text = "Off";
         }
 
-        if (rsoContentSave.Value.fullScreen)
+        if (rsoSettingsSaved.Value.fullScreen)
         {
             textFullScreen.text = "On";
         }
-        else if (!rsoContentSave.Value.fullScreen)
+        else if (!rsoSettingsSaved.Value.fullScreen)
         {
             textFullScreen.text = "Off";
         }
 
-        textAudioMusic.text = rsoContentSave.Value.audioMusic.ToString() + "%";
-        textAudioSounds.text = rsoContentSave.Value.audioSounds.ToString() + "%";
+        textAudioMusic.text = rsoSettingsSaved.Value.audioMusic.ToString() + "%";
+        textAudioSounds.text = rsoSettingsSaved.Value.audioSounds.ToString() + "%";
     }
 
     public void UpdateScreenShake()
     {
-        if (rsoContentSave.Value.screenShake)
+        if (rsoSettingsSaved.Value.screenShake)
         {
-            rsoContentSave.Value.screenShake = false;
+            rsoSettingsSaved.Value.screenShake = false;
             textScreenShake.text = "Off";
         }
         else
         {
-            rsoContentSave.Value.screenShake = true;
+            rsoSettingsSaved.Value.screenShake = true;
             textScreenShake.text = "On";
         }
 
-        rseSaveData.Call();
+        rseSaveData.Call(saveSettingsName, true);
     }
 
     public void UpdateFullScreen()
     {
-        if (rsoContentSave.Value.fullScreen)
+        if (rsoSettingsSaved.Value.fullScreen)
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            rsoContentSave.Value.fullScreen = false;
+            rsoSettingsSaved.Value.fullScreen = false;
             textFullScreen.text = "Off";
         }
         else
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            rsoContentSave.Value.fullScreen = true;
+            rsoSettingsSaved.Value.fullScreen = true;
             textFullScreen.text = "On";
         }
 
-        Screen.fullScreen = rsoContentSave.Value.fullScreen;
-        rseSaveData.Call();
+        Screen.fullScreen = rsoSettingsSaved.Value.fullScreen;
+        rseSaveData.Call(saveSettingsName, true);
     }
 
     public void UpdateAudioMusic(float val)
     {
-        rsoContentSave.Value.audioMusic = val * 5;
+        rsoSettingsSaved.Value.audioMusic = val * 5;
 
-        audioMixer.SetFloat("Music", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioMusic, 1) / 100));
-        textAudioMusic.text = rsoContentSave.Value.audioMusic.ToString() + "%";
+        audioMixer.SetFloat("Music", 40 * Mathf.Log10(Mathf.Max(rsoSettingsSaved.Value.audioMusic, 1) / 100));
+        textAudioMusic.text = rsoSettingsSaved.Value.audioMusic.ToString() + "%";
 
-        rseSaveData.Call();
+        rseSaveData.Call(saveSettingsName, true);
     }
 
     public void UpdateAudioSounds(float val)
     {
-        rsoContentSave.Value.audioSounds = val * 5;
+        rsoSettingsSaved.Value.audioSounds = val * 5;
 
-        audioMixer.SetFloat("Sound", 40 * Mathf.Log10(Mathf.Max(rsoContentSave.Value.audioSounds, 1) / 100));
-        textAudioSounds.text = rsoContentSave.Value.audioSounds.ToString() + "%";
+        audioMixer.SetFloat("Sound", 40 * Mathf.Log10(Mathf.Max(rsoSettingsSaved.Value.audioSounds, 1) / 100));
+        textAudioSounds.text = rsoSettingsSaved.Value.audioSounds.ToString() + "%";
 
-        rseSaveData.Call();
+        rseSaveData.Call(saveSettingsName, true);
     }
 }
