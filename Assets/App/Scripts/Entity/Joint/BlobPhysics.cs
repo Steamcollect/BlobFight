@@ -18,6 +18,8 @@ public class BlobPhysics : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    public Vector2 lastVelocity;
+
     Action<Collision2D> onCollisionEnter, OnCollisionExit;
     public Action onJointsConnected;
 
@@ -36,6 +38,11 @@ public class BlobPhysics : MonoBehaviour
     {
         collid.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void FixedUpdate()
+    {
+        lastVelocity = rb.velocity;    
     }
 
     #region Joint

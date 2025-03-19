@@ -51,8 +51,8 @@ public class BlobCombat : MonoBehaviour
     {
         if (blobsTouch.Contains(blobTouch) || !canFight) return;
 
-        float speed = physics.GetVelocity().sqrMagnitude;
-        float blobTouchSpeed = blobTouch.GetPhysics().GetVelocity().sqrMagnitude;
+        float speed = physics.lastVelocity.sqrMagnitude;
+        float blobTouchSpeed = blobTouch.GetPhysics().lastVelocity.sqrMagnitude;
         
         Vector2 propulsionDir = (blobTouch.GetPhysics().GetCenter() - physics.GetCenter()).normalized;
 
@@ -64,7 +64,7 @@ public class BlobCombat : MonoBehaviour
         {
             print("Parry");
 
-            impactVelocity = blobTouch.GetPhysics().GetVelocity() * blobTouchSpeed;
+            impactVelocity = blobTouch.GetPhysics().lastVelocity * blobTouchSpeed;
             impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
 
             blobTouch.GetPhysics().ResetVelocity();

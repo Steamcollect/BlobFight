@@ -509,11 +509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackForce: 12
-  returnPushBackForce: 3
-  extendForceMultiplier: 15
+  pushBackForce: 1.1
+  returnPushBackForce: 0.8
+  extendForceMultiplier: 3
   parryMaxTime: 0.1
-  paryForceMultiplier: 40
+  paryForceMultiplier: 5
   trigger: {fileID: 606557387366902294}
   physics: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
@@ -1451,6 +1451,7 @@ MonoBehaviour:
   motor: {fileID: 3420423106000584793}
   rb: {fileID: 3386927719614357757}
   collid: {fileID: 1719897261511637580}
+  lastVelocity: {x: 0, y: 0}
 --- !u!50 &3386927719614357757
 Rigidbody2D:
   serializedVersion: 4
