@@ -1328,6 +1328,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: main.sceneGUID
+      value: 7b33a7ace39394043b01074ed383fe48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: main.sceneName
+      value: 01_Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[0]
       value: d6f85ddf2ad141f4bbcb489e9e63058e
       objectReference: {fileID: 0}

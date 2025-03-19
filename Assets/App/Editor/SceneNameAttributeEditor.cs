@@ -4,15 +4,23 @@ using UnityEngine;
 
 namespace App.Scripts.Utils
 {
-    [CustomPropertyDrawer(typeof(SceneNameAttribute))]
+    [CustomPropertyDrawer(typeof(SceneReference))]
     public class TagsNameAttributeEditor : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(position, label, property);
 
-            SerializedProperty sceneGUIDProp = property.FindPropertyRelative("sceneGUID");
-            SerializedProperty sceneNameProp = property.FindPropertyRelative("sceneName");
+            // Get references to sceneGUID and sceneName inside SceneReference struct
+            SerializedProperty guidProperty = property.FindPropertyRelative("sceneGUID");
+            SerializedProperty nameProperty = property.FindPropertyRelative("sceneName");
+
+            if (guidProperty == null || nameProperty == null)
+            {
+                EditorGUI.LabelField(position, label.text, "Invalid SceneReference.");
+                EditorGUI.EndProperty();
+                return;
+            }
 
             var buildScenes = EditorBuildSettings.scenes;
             if (buildScenes.Length == 0)
@@ -22,28 +30,21 @@ namespace App.Scripts.Utils
                 return;
             }
 
-            // Get List of Scene Paths and Names
             var scenePaths = buildScenes.Select(scene => scene.path).ToArray();
             var sceneNames = scenePaths.Select(System.IO.Path.GetFileNameWithoutExtension).ToArray();
+            var sceneGUIDs = scenePaths.Select(AssetDatabase.AssetPathToGUID).ToArray();
 
-            string storedScenePath = AssetDatabase.GUIDToAssetPath(sceneGUIDProp.stringValue);
-            int selectedIndex = System.Array.IndexOf(scenePaths, storedScenePath);
+            // Find index based on GUID
+            int selectedIndex = System.Array.IndexOf(sceneGUIDs, guidProperty.stringValue);
+            if (selectedIndex == -1) selectedIndex = 0; // Default to first scene if not found
 
-            // Find Scene Name
+            // Display dropdown
             int newIndex = EditorGUI.Popup(position, label.text, selectedIndex, sceneNames);
             if (newIndex != selectedIndex)
             {
-                string selectedPath = scenePaths[newIndex];
-                sceneGUIDProp.stringValue = AssetDatabase.AssetPathToGUID(selectedPath);
-                sceneNameProp.stringValue = sceneNames[newIndex];
-            }
-
-            // First Scene if Not Set
-            if (string.IsNullOrEmpty(sceneGUIDProp.stringValue) && string.IsNullOrEmpty(sceneNameProp.stringValue))
-            {
-                string defaultPath = buildScenes[0].path;
-                sceneGUIDProp.stringValue = AssetDatabase.AssetPathToGUID(defaultPath);
-                sceneNameProp.stringValue = System.IO.Path.GetFileNameWithoutExtension(defaultPath);
+                // Update GUID and cached name
+                guidProperty.stringValue = sceneGUIDs[newIndex];
+                nameProperty.stringValue = sceneNames[newIndex];
             }
 
             EditorGUI.EndProperty();

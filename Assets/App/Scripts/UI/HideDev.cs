@@ -5,7 +5,7 @@ public class HideDev : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject content;
-    [SerializeField] SceneNameAttribute main;
+    [SerializeField] SceneReference main;
     [SerializeField] RSE_OnGameStart rseOnGameStart;
 
     private void Awake()

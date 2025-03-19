@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,11 +13,11 @@ public class SceneManagement : MonoBehaviour
 
     [Space(10)]
 
-    [SerializeField] SceneNameAttribute[] levelsName;
+    [SerializeField] SceneReference[] levelsName;
 
     List<string> levels = new();
-    [SerializeField] SceneNameAttribute main;
-    [SerializeField] SceneNameAttribute mainMenuName;
+    [SerializeField] SceneReference main;
+    [SerializeField] SceneReference mainMenuName;
 
     string currentLevel = "";
 
@@ -108,7 +109,7 @@ public class SceneManagement : MonoBehaviour
 
             if (!isMainMenu)
             {
-                if (levels.Count <= 0) levels.AddRange(levelsName.Select(scene => scene.Name));
+                if (levels.Count <= 0) levels.AddRange(levelsName);
 
                 int rnd = Random.Range(0, levels.Count);
 
