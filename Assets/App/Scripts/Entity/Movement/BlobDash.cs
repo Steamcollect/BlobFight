@@ -95,6 +95,7 @@ public class BlobDash : MonoBehaviour
 
     void SetInput(Vector2 input)
     {
-        if(input != Vector2.zero) dashInput = input;
+        if (input != Vector2.zero) dashInput = input;
+        else dashInput = Vector2.up;
     }
 }
