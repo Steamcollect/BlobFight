@@ -1311,7 +1311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  haveWarning: 0
   moveSpeed: 50
   delayBeforeStart: 8
   delayAtPoint: 5
@@ -1330,7 +1329,6 @@ MonoBehaviour:
   positions:
   - {fileID: 562954668}
   - {fileID: 1620186533}
-  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &487575738
 Transform:
@@ -1576,7 +1574,7 @@ Transform:
   m_GameObject: {fileID: 578796939}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: -9.3, z: 0}
+  m_LocalPosition: {x: -4.11, y: -12.27, z: 0}
   m_LocalScale: {x: 3.12, y: 3.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1623,12 +1621,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -99
-  m_Sprite: {fileID: 21300000, guid: 2d7ffedd6a4c40148a8c437b008dd830, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6af17cf5855a21f4d9d8969a4a3277f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 18.62, y: 6.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3831,7 +3829,7 @@ Transform:
   m_GameObject: {fileID: 1747590584}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.44, y: -0.28, z: 0}
+  m_LocalPosition: {x: 0.85, y: -0.28, z: 0}
   m_LocalScale: {x: 3.12, y: 3.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3878,12 +3876,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -98
-  m_Sprite: {fileID: 21300000, guid: d523df4d1c4f62746b805d6e740a012c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88252dbf9fb8cb3428482b2735e78184, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 18.71, y: 9.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4107,7 +4105,7 @@ Transform:
   m_GameObject: {fileID: 1875257189}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.5, y: 0.03, z: 0}
+  m_LocalPosition: {x: 21.27, y: 5.47, z: 0}
   m_LocalScale: {x: 3.12, y: 3.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4154,12 +4152,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -97
-  m_Sprite: {fileID: 21300000, guid: 187ecc01558340f44b6002ddb7c3aa2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c8fcbb92533d9c4caa0f9eff9d9ccd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 11.21, y: 10.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4270,7 +4268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  haveWarning: 0
   moveSpeed: 50
   delayBeforeStart: 5
   delayAtPoint: 5
@@ -4289,7 +4286,6 @@ MonoBehaviour:
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
-  RSE_UpdateWarning: {fileID: 11400000, guid: f026dec1358321e4ea3fe421c94a49ed, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &2007084533
 Transform:
