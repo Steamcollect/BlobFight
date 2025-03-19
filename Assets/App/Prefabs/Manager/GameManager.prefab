@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6e50f6c97c82488828b3dd4fcecc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canPause: 0
+  canPause: 1
   gameState: 2
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseTogglePause: {fileID: 11400000, guid: 56dbc203358bab942a372845a2e91b4c, type: 2}

@@ -11,7 +11,7 @@ namespace App.Scripts.Utils
         {
             EditorGUI.BeginProperty(position, label, property);
 
-            // Get references to sceneGUID and sceneName inside SceneReference struct
+            // Get Property
             SerializedProperty guidProperty = property.FindPropertyRelative("sceneGUID");
             SerializedProperty nameProperty = property.FindPropertyRelative("sceneName");
 
@@ -30,19 +30,19 @@ namespace App.Scripts.Utils
                 return;
             }
 
+            // Get List of Scene Paths and Names
             var scenePaths = buildScenes.Select(scene => scene.path).ToArray();
             var sceneNames = scenePaths.Select(System.IO.Path.GetFileNameWithoutExtension).ToArray();
             var sceneGUIDs = scenePaths.Select(AssetDatabase.AssetPathToGUID).ToArray();
 
             // Find index based on GUID
             int selectedIndex = System.Array.IndexOf(sceneGUIDs, guidProperty.stringValue);
-            if (selectedIndex == -1) selectedIndex = 0; // Default to first scene if not found
+            if (selectedIndex == -1) selectedIndex = 0;
 
-            // Display dropdown
+            // Display Dropdown
             int newIndex = EditorGUI.Popup(position, label.text, selectedIndex, sceneNames);
             if (newIndex != selectedIndex)
             {
-                // Update GUID and cached name
                 guidProperty.stringValue = sceneGUIDs[newIndex];
                 nameProperty.stringValue = sceneNames[newIndex];
             }
