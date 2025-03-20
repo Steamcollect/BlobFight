@@ -124,12 +124,12 @@ public class SceneManagement : MonoBehaviour
 			currentLevel = mainMenuName.Name;
 		}
 
-		StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive));
-
-		rseEnablePauseAction.Call();
-		rseOnFightStart.Call();
-		isLoading = false;
-
+		StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
+        {
+			rseEnablePauseAction.Call();
+			rseOnFightStart.Call();
+			isLoading = false;
+		}));
 
 		/*rseFadeOut.Call(() =>
         {
@@ -170,7 +170,7 @@ public class SceneManagement : MonoBehaviour
                 });
             }));
         });*/
-    }
+	}
     void InstanteTransition(bool isMainMenu)
     {
         if(isMainMenu)
