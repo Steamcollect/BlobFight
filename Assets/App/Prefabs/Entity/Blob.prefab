@@ -547,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 60
   staminaGivenPerSec: 25
+  waitingTimeWhenNoStamina: 0.5
 --- !u!1 &3290518167020313716
 GameObject:
   m_ObjectHideFlags: 0

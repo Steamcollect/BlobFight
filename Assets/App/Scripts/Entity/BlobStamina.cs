@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class BlobStamina : MonoBehaviour
 {
@@ -6,7 +7,9 @@ public class BlobStamina : MonoBehaviour
     float currentStamina;
 
     [SerializeField] float staminaGivenPerSec;
+    [SerializeField] float waitingTimeWhenNoStamina;
 
+    bool isWaitingForStamina = false;
     bool canGetStamina = true;
 
     //[Header("References")]
@@ -26,7 +29,7 @@ public class BlobStamina : MonoBehaviour
 
     private void Update()
     {
-        if (!canGetStamina) return;
+        if (!canGetStamina || isWaitingForStamina) return;
 
         if (currentStamina > maxStamina)
         {
@@ -41,7 +44,18 @@ public class BlobStamina : MonoBehaviour
     public void RemoveStamina(float stamina)
     {
         currentStamina -= stamina;
-        if (currentStamina < 0) currentStamina = 0;
+        if (currentStamina <= 1)
+        {
+            currentStamina = 0;
+            StartCoroutine(OnNoStaminaDelay());
+        }
+    }
+
+    IEnumerator OnNoStaminaDelay()
+    {
+        isWaitingForStamina = true;
+        yield return new WaitForSeconds(waitingTimeWhenNoStamina);
+        isWaitingForStamina = false;
     }
 
     public bool HaveEnoughStamina(float staminaRequire) { return currentStamina >= staminaRequire; }
