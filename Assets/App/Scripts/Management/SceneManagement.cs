@@ -110,7 +110,7 @@ public class SceneManagement : MonoBehaviour
                 {
                     foreach (var item in levelsName)
                     {
-                        levels.Add(item);
+                        levels.Add(item.Name);
                     }
                 }
 
