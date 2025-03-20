@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PropsSpawner : GameProps
@@ -83,7 +82,7 @@ public class PropsSpawner : GameProps
         Rigidbody2D obj = Instantiate(objToSpawn);
         obj.gameObject.SetActive(false);
         obj.transform.SetParent(spawner);
-        obj.AddComponent<CustomCollision>();
+        obj.gameObject.AddComponent<CustomCollision>();
 
         objQueue.Enqueue(obj);
     }

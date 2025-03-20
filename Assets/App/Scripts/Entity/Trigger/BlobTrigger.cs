@@ -7,18 +7,20 @@ public class BlobTrigger : CollisionTrigger
 {
     [Header("Settings")]
     [SerializeField, TagName] string groundableTag;
+    [SerializeField, TagName] string slidableTag;
+    [SerializeField, TagName] string windTag;
+
+    [Space(5)]
     [SerializeField] bool isGrounded = false;
     [SerializeField] bool isSliding = false;
-
-    [SerializeField, TagName] string slidableTag;
+    [SerializeField] bool isInWind = false;
 
     [Header("References")]
     [SerializeField] BlobPhysics physics;
 
     List<GameObject> groundables = new();
-    Collision2D lastGroundTouch;
-
     List<GameObject> slidables = new();
+    int windsTouchCount;
 
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
     public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
@@ -63,8 +65,6 @@ public class BlobTrigger : CollisionTrigger
 
             OnGroundedEnter?.Invoke(collision);
             groundables.Add(collision.gameObject);
-
-            lastGroundTouch = collision;
         }
         else if (collision.gameObject.CompareTag(slidableTag))
         {
@@ -90,10 +90,26 @@ public class BlobTrigger : CollisionTrigger
             OnSlidableExit?.Invoke(collision);
         }
     }
+
+    public void OnWindEnter()
+    {
+        windsTouchCount++;
+        isInWind = true;
+    }
+    public void OnWindExit()
+    {
+        windsTouchCount--;
+        if (windsTouchCount < 0) windsTouchCount = 0;
+
+        if(windsTouchCount <= 0)
+        {
+            isInWind = false;
+        }
+    }
+
     public bool IsGrounded() { return isGrounded; }
     public bool IsSliding() { return isSliding; }
-
-    public Collision2D GetLastGroundTouch() { return lastGroundTouch; }
+    public bool IsInWind() { return isInWind; }
 
     public void ExludeLayer(LayerMask layerToExclude, float excludingTime)
     {

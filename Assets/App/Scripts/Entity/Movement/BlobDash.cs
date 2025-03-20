@@ -62,11 +62,11 @@ public class BlobDash : MonoBehaviour
 
         if (dashCount <= 0)
         {
-            if (trigger.IsGrounded() || trigger.IsSliding()) dashCount = maxDashCount;
+            if (trigger.IsGrounded() || trigger.IsSliding() || trigger.IsInWind()) dashCount = maxDashCount;
             else return;
         }
 
-        dashCount--;
+        if(!trigger.IsInWind() && !trigger.IsGrounded() && !trigger.IsSliding()) dashCount--;
         StartCoroutine(LockResetDashCount());
 
         joint.ResetVelocity();

@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -109,7 +106,13 @@ public class SceneManagement : MonoBehaviour
 
             if (!isMainMenu)
             {
-                if (levels.Count <= 0) levels.AddRange(levelsName);
+                if (levels.Count <= 0)
+                {
+                    foreach (var item in levelsName)
+                    {
+                        levels.Add(item);
+                    }
+                }
 
                 int rnd = Random.Range(0, levels.Count);
 

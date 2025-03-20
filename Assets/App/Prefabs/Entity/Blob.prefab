@@ -993,9 +993,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundableTag: Groundable
+  slidableTag: Slidable
+  windTag: Wind
   isGrounded: 0
   isSliding: 0
-  slidableTag: Slidable
+  isInWind: 0
   physics: {fileID: 6321734985548798584}
 --- !u!1 &4126363389251937977
 GameObject:

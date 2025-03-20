@@ -7,6 +7,7 @@ TagManager:
   - Blob
   - Groundable
   - Slidable
+  - Wind
   layers:
   - Default
   - TransparentFX

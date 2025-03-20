@@ -10,4 +10,9 @@ public class SceneReference
     public string Name => sceneName;
 
     public string GUID => sceneGUID;
+
+    public static implicit operator string(SceneReference sceneRef)
+    {
+        return sceneRef.sceneName;
+    }
 }
