@@ -47,7 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchParticleStartingCount: 15
   hitParticleStartingCount: 5
+  percentageEffectStartingCount: 3
   maxHitSpeed: 100000000
+  percentageEffectPosOffset: {x: 0, y: 2}
   motor: {fileID: 3420423106000584793}
   physics: {fileID: 6321734985548798584}
   trigger: {fileID: 606557387366902294}
@@ -61,6 +63,7 @@ MonoBehaviour:
   - particlePrefab: {fileID: 7930703714630030017, guid: f391e0780956c5c4697469b035197641, type: 3}
     hitStrenght: 100
   expulseParticle: {fileID: 5425739583313106901}
+  percentageEffectPrefab: {fileID: 7449701940541993344, guid: e5fb4cff1910b43489d10e4551ace785, type: 3}
 --- !u!1 &871332911037382281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,20 +1114,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.000006044959
-      outSlope: 0.000006044959
+      inSlope: 4.780957e-10
+      outSlope: 4.780957e-10
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.15532996
+      outWeight: 0.061725214
     - serializedVersion: 3
-      time: 50050.76
-      value: 20
-      inSlope: 0.0012992407
-      outSlope: 0.0012992407
+      time: 50000000
+      value: 0.2
+      inSlope: 0.000000011220307
+      outSlope: 0.000000011220307
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.024340758
+      inWeight: 0.11826744
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1157,6 +1160,7 @@ MonoBehaviour:
   shakeTimeOnDeath: 0.4
   blobTrigger: {fileID: 606557387366902294}
   blobMovement: {fileID: 2542050320697814845}
+  particle: {fileID: 4617812964555812280}
   rseCamShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
 --- !u!1 &6724505695075795745
 GameObject:

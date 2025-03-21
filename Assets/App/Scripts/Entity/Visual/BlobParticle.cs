@@ -8,8 +8,12 @@ public class BlobParticle : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int touchParticleStartingCount;
     [SerializeField] int hitParticleStartingCount;
+    [SerializeField] int percentageEffectStartingCount;
 
     [SerializeField] float maxHitSpeed;
+
+    [Space(5)]
+    [SerializeField] Vector2 percentageEffectPosOffset;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -30,6 +34,9 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] HitParticle[] hitParticles;
 
     [SerializeField] ParticleSystem expulseParticle;
+
+    [SerializeField] PercentageEffect percentageEffectPrefab;
+    Queue<PercentageEffect> percentageEffects = new();
 
     [Serializable]
     class HitParticle
@@ -69,6 +76,9 @@ public class BlobParticle : MonoBehaviour
     {
         for (int i = 0; i < touchParticleStartingCount; i++)
             dustParticles.Enqueue(CreateParticle(dustParticlePrefab, OnTouchParticleEnd));
+
+        for (int i = 0; i < percentageEffectStartingCount; i++)
+            percentageEffects.Enqueue(CreatePercentageEffect(percentageEffectPrefab, OnPercentageEffectEnd));
 
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
 
@@ -185,6 +195,21 @@ public class BlobParticle : MonoBehaviour
         particle.Play();
     }
 
+    public void PercentageEffect(float percentage)
+    {
+        PercentageEffect effect;
+        if (percentageEffects.Count <= 0) effect = CreatePercentageEffect(percentageEffectPrefab, OnPercentageEffectEnd);
+        else effect = percentageEffects.Dequeue();
+
+        effect.gameObject.SetActive(true);
+        effect.Setup(physics.GetCenter() + percentageEffectPosOffset, percentage);
+    }
+    void OnPercentageEffectEnd(PercentageEffect effect)
+    {
+        effect.gameObject.SetActive(false);
+        percentageEffects.Enqueue(effect);
+    }
+
     public void EnableExpulseParticle(Vector2 rotation)
     {
         expulseParticle.transform.up = rotation;
@@ -202,5 +227,15 @@ public class BlobParticle : MonoBehaviour
         particle.gameObject.SetActive(false);
 
         return callback;
+    }
+    PercentageEffect CreatePercentageEffect(PercentageEffect prefab, Action<PercentageEffect> stopAction)
+    {
+        PercentageEffect effect = Instantiate(prefab, transform);
+
+        effect.OnAnimationEnd += stopAction;
+
+        effect.gameObject.SetActive(false);
+
+        return effect;
     }
 }
