@@ -16,6 +16,9 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] BlobMovement blobMovement;
     [SerializeField] BlobParticle particle;
 
+    [Space(10)]
+    [SerializeField] BlobPercentageEffect percentageEffect;
+
     //[Space(10)]
     // RSO
     // RSF
@@ -97,7 +100,7 @@ public class BlobHealth : EntityHealth, IPausable
         blobMovement.StunImpact(stunTimePerSpeedOnImpactCurve.Evaluate(speed));
         pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed));
 
-        particle.PercentageEffect(pushBackPercentage);
+        percentageEffect.Setup(pushBackPercentage);
     }
     public float GetPercentage() { return 1 + pushBackPercentage; }
 }

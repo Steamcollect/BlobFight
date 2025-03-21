@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3521606169727880316}
   - component: {fileID: 7887408204417086430}
   - component: {fileID: 3768554501184173315}
-  - component: {fileID: 7449701940541993344}
+  - component: {fileID: 5544832501409553243}
   m_Layer: 0
   m_Name: PercentageEffect
   m_TagString: Untagged
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7887408204417086430}
   m_maskType: 0
---- !u!114 &7449701940541993344
+--- !u!114 &5544832501409553243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,59 +181,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619418512243289019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a51df3c31a64146aac400702aad711, type: 3}
+  m_Script: {fileID: 11500000, guid: 47a8ca3ff3faa8c4d8369e5df6306626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorOverPercentage:
-    serializedVersion: 2
-    key0: {r: 1, g: 0.8575664, b: 0, a: 1}
-    key1: {r: 1, g: 0.55590475, b: 0, a: 1}
-    key2: {r: 1, g: 0.35212418, b: 0, a: 0}
-    key3: {r: 1, g: 0, b: 0, a: 0}
-    key4: {r: 0.6301887, g: 0, b: 0.046291023, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 22745
-    ctime2: 41865
-    ctime3: 57285
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 5
-    m_NumAlphaKeys: 2
   sizeOverPercentage:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.00031458307
+      outSlope: 0.00031458307
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.06395939
     - serializedVersion: 3
-      time: 1
-      value: 3
-      inSlope: 2
-      outSlope: 2
+      time: 3
+      value: 2
+      inSlope: 0.8522942
+      outSlope: 0.8522942
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.054822285
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -251,18 +221,20 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 7
-      inSlope: 2
-      outSlope: 2
+      time: 3
+      value: 5
+      inSlope: 3.9255037
+      outSlope: 3.9255037
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.023350159
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  enableScaleTime: 0.1
   readTime: 0.8
   disableTime: 0.2
+  posOffset: {x: 0, y: 2}
+  motor: {fileID: 0}
+  physics: {fileID: 0}
   text: {fileID: 3768554501184173315}

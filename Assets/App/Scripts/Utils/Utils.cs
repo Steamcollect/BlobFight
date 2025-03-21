@@ -109,5 +109,13 @@ public static class Utils
             t.DOScale(1, .08f);
         });
     }
+    public static void BumpVisual(this Transform t, float targetScale, Action OnComplecte)
+    {
+        t.DOKill();
+        t.DOScale(targetScale * 1.1f, .06f).OnComplete(() =>
+        {
+            t.DOScale(targetScale, .08f).OnComplete(() => { OnComplecte.Invoke(); });
+        });
+    }
     #endregion
 }
