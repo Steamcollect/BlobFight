@@ -7,6 +7,9 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] AnimationCurve percentagePerSpeedOnImpactCurve;
     [SerializeField] AnimationCurve stunTimePerSpeedOnImpactCurve;
 
+    [Space(5)]
+    [SerializeField] int maxImpactSpeed;
+
     [Space(10)]
     [SerializeField] float shakeIntensityOnDeath;
     [SerializeField] float shakeTimeOnDeath;
@@ -97,6 +100,8 @@ public class BlobHealth : EntityHealth, IPausable
 
     public void OnDamageImpact(float speed)
     {
+        speed = Mathf.Clamp01(speed / maxImpactSpeed);
+
         blobMovement.StunImpact(stunTimePerSpeedOnImpactCurve.Evaluate(speed));
         pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed));
 

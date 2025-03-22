@@ -1106,8 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500000
-  isStatic: 1
-  pushBackPercentage: 0
+  canTakeDamage: 0
   percentagePerSpeedOnImpactCurve:
     serializedVersion: 2
     m_Curve:
@@ -1121,13 +1120,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.061725214
     - serializedVersion: 3
-      time: 50000000
-      value: 0.2
-      inSlope: 0.000000011220307
-      outSlope: 0.000000011220307
+      time: 1
+      value: 0.3
+      inSlope: 0.54737836
+      outSlope: 0.54737836
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.11826744
+      inWeight: 0.042639613
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1136,8 +1135,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 50000
-      value: 0.3
+      time: 0
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1145,17 +1144,18 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 10000000
+      time: 1
       value: 1
-      inSlope: 0.00000019184132
-      outSlope: 0.00000019184132
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.10862945
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  maxImpactSpeed: 50000000
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
   blobTrigger: {fileID: 606557387366902294}
