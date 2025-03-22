@@ -7,7 +7,7 @@ public class EntityHealth : MonoBehaviour
     [SerializeField] public int maxHealth;
     protected int currentHealth;
 
-    [SerializeField, Tooltip("Lock take damage function")] bool isStatic;
+    [SerializeField] bool canTakeDamage;
     protected bool isInvincible = false;
     protected bool isDead;
 
@@ -19,7 +19,7 @@ public class EntityHealth : MonoBehaviour
     // RSP
 
     [Header("Input")]
-    public Action onTakeDamage;
+    public Action<int> onTakeDamage;
     public Action onDeath;
     public Action<ContactPoint2D> onDestroy;
 
@@ -27,10 +27,10 @@ public class EntityHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(isStatic || isDead || isInvincible) return;
+        if(canTakeDamage || isDead || isInvincible) return;
 
         currentHealth -= damage;
-        onTakeDamage?.Invoke();
+        onTakeDamage?.Invoke(damage);
 
         if (currentHealth <= 0) Die();
     }

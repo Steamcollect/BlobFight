@@ -41,7 +41,7 @@ public class HingeHealth : EntityHealth
         currentHealth = maxHealth;
     }
 
-    void OnTakeDamage()
+    void OnTakeDamage(int damageTaken)
     {
         graphics.color = Color.Lerp(endColor, initColor, (float)currentHealth / (float)maxHealth);
     }
