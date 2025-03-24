@@ -51,7 +51,7 @@ MonoBehaviour:
   percentageEffectPosOffset: {x: 0, y: 2}
   motor: {fileID: 3420423106000584793}
   physics: {fileID: 6321734985548798584}
-  trigger: {fileID: 606557387366902294}
+  trigger: {fileID: 0}
   health: {fileID: 5355027135910952395}
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
@@ -335,7 +335,7 @@ MonoBehaviour:
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
-  trigger: {fileID: 606557387366902294}
+  trigger: {fileID: 0}
   movement: {fileID: 2542050320697814845}
 --- !u!1 &1689548152335019987
 GameObject:
@@ -450,7 +450,7 @@ MonoBehaviour:
   physics: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
   stamina: {fileID: 4226171251788006590}
-  trigger: {fileID: 606557387366902294}
+  trigger: {fileID: 0}
   particle: {fileID: 4617812964555812280}
   dash: {fileID: 3726202644600941132}
 --- !u!1 &3184432519262760862
@@ -503,7 +503,7 @@ MonoBehaviour:
   parryMaxTime: 0.1
   paryForceMultiplier: 5
   minSpeedAtImpact: 200
-  trigger: {fileID: 606557387366902294}
+  trigger: {fileID: 0}
   physics: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
@@ -775,7 +775,7 @@ MonoBehaviour:
   movement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
   input: {fileID: 8417928549951212344}
-  trigger: {fileID: 606557387366902294}
+  trigger: {fileID: 6449519957614820434}
   combat: {fileID: 6850913828851939280}
   preparationPanel: {fileID: 5953893452250420699}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
@@ -955,57 +955,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4116451079935618550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4279075659712848528}
-  - component: {fileID: 606557387366902294}
-  m_Layer: 0
-  m_Name: Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4279075659712848528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4116451079935618550}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1228737701814485243}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &606557387366902294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4116451079935618550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39fdb7dca2588d34cb6f5b90c66726c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundableTag: Groundable
-  slidableTag: Slidable
-  windTag: Wind
-  isGrounded: 0
-  isSliding: 0
-  isInWind: 0
-  physics: {fileID: 6321734985548798584}
 --- !u!1 &4126363389251937977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1111,7 @@ MonoBehaviour:
   maxImpactSpeed: 50000000
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
-  blobTrigger: {fileID: 606557387366902294}
+  blobTrigger: {fileID: 0}
   blobMovement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
   percentageEffect: {fileID: 7706814225328905213}
@@ -1199,7 +1148,6 @@ Transform:
   - {fileID: 7476704659426826772}
   - {fileID: 6043654905334400925}
   - {fileID: 7400549710319070123}
-  - {fileID: 4279075659712848528}
   - {fileID: 7182060017204364085}
   - {fileID: 5190642175830350477}
   - {fileID: 5753215936194828634}
@@ -1406,6 +1354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5190642175830350477}
   - component: {fileID: 6321734985548798584}
+  - component: {fileID: 6449519957614820434}
   - component: {fileID: 3386927719614357757}
   - component: {fileID: 1719897261511637580}
   m_Layer: 0
@@ -1447,6 +1396,25 @@ MonoBehaviour:
   rb: {fileID: 3386927719614357757}
   collid: {fileID: 1719897261511637580}
   lastVelocity: {x: 0, y: 0}
+--- !u!114 &6449519957614820434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8036656644236040139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39fdb7dca2588d34cb6f5b90c66726c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundableTag: Groundable
+  slidableTag: Slidable
+  windTag: Wind
+  isGrounded: 0
+  isSliding: 0
+  isInWind: 0
+  physics: {fileID: 6321734985548798584}
 --- !u!50 &3386927719614357757
 Rigidbody2D:
   serializedVersion: 4
@@ -1483,7 +1451,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8036656644236040139}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3fc965f8a2c070442bc3c6944b10dee8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
