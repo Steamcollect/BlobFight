@@ -43,8 +43,12 @@ public class RigidbodyMotor : MonoBehaviour, IPausable
     public void Resume()
     {
         rb.bodyType = bodyType;
-        rb.velocity = velocity;
-        rb.angularVelocity = angularVelocity;
+
+        if(rb.bodyType != RigidbodyType2D.Static)
+        {
+            rb.velocity = velocity;
+            rb.angularVelocity = angularVelocity;
+        }
     }
 
     void GetRigidbody()

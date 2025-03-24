@@ -11,6 +11,10 @@ public class RotatingProps : GameProps
     [Header("Output")]
     [SerializeField] RSO_TimerParty rsoTimerParty;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
     //[Header("References")]
 
     //[Space(10)]
@@ -21,30 +25,55 @@ public class RotatingProps : GameProps
     //[Header("Input")]
 
     int mode = 0;
+    bool isPaused = false;
+
+    private void OnEnable()
+    {
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
+    }
+    private void OnDisable()
+    {
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
+    }
 
     public override void Launch()
     {
         isLaunched = true;
     }
 
+    private void Pause()
+    {
+        isPaused = true;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
+    }
+
     private void Update()
     {
-        if (!isLaunched) return;
-
-        if (timeSpeed.Count > 0)
+        if (!isPaused)
         {
-            if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
-            {
-                rotationSpeed = newtimeSpeed[mode];
+            if (!isLaunched) return;
 
-                if (mode < timeSpeed.Count - 1)
+            if (timeSpeed.Count > 0)
+            {
+                if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
                 {
-                    mode++;
+                    rotationSpeed = newtimeSpeed[mode];
+
+                    if (mode < timeSpeed.Count - 1)
+                    {
+                        mode++;
+                    }
                 }
             }
-        }
 
-        float zRot = transform.rotation.eulerAngles.z;
-        transform.rotation = Quaternion.Euler(0,0, zRot + rotationSpeed * Time.deltaTime);
+            float zRot = transform.rotation.eulerAngles.z;
+            transform.rotation = Quaternion.Euler(0, 0, zRot + rotationSpeed * Time.deltaTime);
+        }
     }
 }
