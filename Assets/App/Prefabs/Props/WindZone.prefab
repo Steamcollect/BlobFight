@@ -227,12 +227,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8010946453871632358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 587ba381af18a5748ba313373f5ac3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: f1846a529bc320a45a2d12bb8c4ee8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 1
+  launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  windForce: 300
+  windForce: 1000
+  windForceDelay: 0.1
 --- !u!114 &7307063819379520189
 MonoBehaviour:
   m_ObjectHideFlags: 0

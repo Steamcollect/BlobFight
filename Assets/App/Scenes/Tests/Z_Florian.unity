@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -2477,7 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -3092,7 +3092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -3589,7 +3589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -4270,14 +4270,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
-      propertyPath: windForce
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
-      propertyPath: windForceDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: rbDelays.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -4762,7 +4754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -5344,7 +5336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -6016,7 +6008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -7787,7 +7779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -8090,7 +8082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -9113,7 +9105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:

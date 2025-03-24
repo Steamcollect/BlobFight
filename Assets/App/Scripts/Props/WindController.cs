@@ -14,7 +14,7 @@ public class WindController : MonoBehaviour
     [SerializeField] bool isLooping;
 
     [Header("References")]
-    [SerializeField] WindProps windZone;
+    [SerializeField] MyWindZone windZone;
 
     //[Space(10)]
     // RSO
