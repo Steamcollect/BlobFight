@@ -21,8 +21,6 @@ public class ThunderProps : MonoBehaviour
     [SerializeField] RSE_OnPause rseOnPause;
     [SerializeField] RSE_OnResume rseOnResume;
 
-    bool isPaused = false;
-
     private void OnEnable()
     {
         rseOnPause.action += Pause;
@@ -36,13 +34,11 @@ public class ThunderProps : MonoBehaviour
 
     private void Pause()
     {
-        isPaused = true;
         animator.speed = 0;
     }
 
     private void Resume()
     {
-        isPaused = false;
         animator.speed = 1;
     }
 
