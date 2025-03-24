@@ -130,46 +130,6 @@ public class SceneManagement : MonoBehaviour
 			rseOnFightStart.Call();
 			isLoading = false;
 		}));
-
-		/*rseFadeOut.Call(() =>
-        {
-            if (currentLevel != "")
-            {
-                StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
-            }
-
-            if (!isMainMenu)
-            {
-                if (levels.Count <= 0)
-                {
-                    foreach (var item in levelsName)
-                    {
-                        levels.Add(item.Name);
-                    }
-                }
-
-                int rnd = Random.Range(0, levels.Count);
-
-                currentLevel = levels[rnd];
-
-                levels.RemoveAt(rnd);
-            }
-            else
-            {
-                rseClearBlobInGame.Call();
-                currentLevel = mainMenuName.Name;
-            }
-
-            StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
-            {
-                rseFadeIn.Call(() =>
-                {
-                    rseEnablePauseAction.Call();
-                    rseOnFightStart.Call();
-                    isLoading = false;
-                });
-            }));
-        });*/
 	}
     void InstanteTransition(bool isMainMenu)
     {
