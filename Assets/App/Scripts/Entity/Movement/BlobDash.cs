@@ -60,7 +60,8 @@ public class BlobDash : MonoBehaviour
     {
         if (!movement.CanMove() || !canDash) return;
 
-        if (trigger.IsGrounded() || trigger.IsSliding() || trigger.IsInWind()) dashCount = maxDashCount;
+        if (!trigger.IsGrounded() && trigger.IsSliding() && trigger.IsInWind() && dashCount <= 0) return;
+        else dashCount = maxDashCount;
 
         if (!trigger.IsInWind() && !trigger.IsGrounded() && !trigger.IsSliding()) dashCount--;
         StartCoroutine(LockResetDashCount());
