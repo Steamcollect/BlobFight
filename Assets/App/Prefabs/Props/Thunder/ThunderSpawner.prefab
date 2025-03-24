@@ -66,6 +66,8 @@ MonoBehaviour:
   - {fileID: 2129625708994800755}
   thunderPrefab: {fileID: 4498869795054011900, guid: fd28360248491ad46bd4872b72a84424, type: 3}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &2966361593193574170
 GameObject:
   m_ObjectHideFlags: 0

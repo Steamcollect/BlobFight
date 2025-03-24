@@ -1812,14 +1812,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: rseOnPause
-      value: 
-      objectReference: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: rseOnResume
-      value: 
-      objectReference: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: objToSpawnOnStart
       value: 5
       objectReference: {fileID: 0}
