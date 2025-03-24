@@ -44,6 +44,11 @@ public class HingeHealth : EntityHealth
     void OnTakeDamage(int damageTaken)
     {
         graphics.color = Color.Lerp(endColor, initColor, (float)currentHealth / (float)maxHealth);
+
+        if (instantDestroy)
+        {
+            StartCoroutine(DestroyDelay());
+        }
     }
 
     public void SetHingeJoint(HingeJoint2D hingeJoint2D)
@@ -69,16 +74,9 @@ public class HingeHealth : EntityHealth
     {
         graphics.color = endColor;
 
-        if(instantDestroy)
+        for (int i = 0; i < joints.Count; i++)
         {
-            StartCoroutine(DestroyDelay());
-        }
-        else
-        {
-            for (int i = 0; i < joints.Count; i++)
-            {
-                joints[i].enabled = false;
-            }
+            joints[i].enabled = false;
         }
     }
 }
