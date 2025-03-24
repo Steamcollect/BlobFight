@@ -56,13 +56,9 @@ MonoBehaviour:
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
   destroyParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
-  hitParticles:
-  - particlePrefab: {fileID: 4007821960139497423, guid: ebb730153f3762a4a86dc21a995baa9c, type: 3}
-    hitStrenght: 50
-  - particlePrefab: {fileID: 7930703714630030017, guid: f391e0780956c5c4697469b035197641, type: 3}
-    hitStrenght: 100
+  hitParticles: []
   expulseParticle: {fileID: 5425739583313106901}
-  percentageEffectPrefab: {fileID: 7449701940541993344, guid: e5fb4cff1910b43489d10e4551ace785, type: 3}
+  percentageEffectPrefab: {fileID: 7706814225328905213}
 --- !u!1 &871332911037382281
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class ParticleCallback : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class ParticleCallback : MonoBehaviour
 
     public void Setup(Action<ParticleCallback> onStopped, ParticleSystem particleConnected)
     {
-        MainModule main = particleConnected.main;
+        ParticleSystem.MainModule main = particleConnected.main;
         main.stopAction = ParticleSystemStopAction.Callback;
 
         OnParticleStopped += onStopped;
