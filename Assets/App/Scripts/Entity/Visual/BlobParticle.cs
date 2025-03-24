@@ -35,7 +35,6 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] ParticleSystem expulseParticle;
 
     [SerializeField] BlobPercentageEffect percentageEffectPrefab;
-    Queue<BlobPercentageEffect> percentageEffects = new();
 
     [Serializable]
     class HitParticle

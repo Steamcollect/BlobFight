@@ -5,7 +5,7 @@ public class ThunderCollision : CollisionTrigger
     [Header("Settings")]
     [SerializeField] private float expulsionUpForce;
     [SerializeField] private float expulsionRightForce;
-
+    [SerializeField] private float damage = 50000000;
     //[Header("References")]
 
     //[Space(10)]
@@ -27,6 +27,7 @@ public class ThunderCollision : CollisionTrigger
     {
         if(collider.TryGetComponent(out BlobPhysics blobPhysics))
         {
+            blobPhysics.GetMotor().GetHealth().OnDamageImpact(damage);
             blobPhysics.AddForce(transform.up * expulsionUpForce);
             if(transform.position.x > collider.transform.position.x)
             {

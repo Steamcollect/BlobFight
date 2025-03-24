@@ -8,6 +8,7 @@ public class ThunderProps : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] Collider2D thunderCollider;
+    [SerializeField] SpriteRenderer spriteRenderer;
     public Action<ThunderProps> onEndAction;
     //[Space(10)]
     // RSO
@@ -54,5 +55,9 @@ public class ThunderProps : MonoBehaviour
     {
         gameObject.SetActive(false);
         onEndAction.Invoke(this);
+    }
+    public void Flip(bool flipX)
+    {
+        spriteRenderer.flipX = flipX;
     }
 }

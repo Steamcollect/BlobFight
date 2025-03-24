@@ -117,6 +117,7 @@ public class ThunderSpawner : GameProps
         ThunderProps thunder = GetThunderObj();
         thunder.gameObject.SetActive(true);
         thunder.transform.position = spawnPoint[rnd].position;
+        thunder.Flip(Random.value < 0.5f);
         StartCoroutine(SpawnThunder());
     }
     ThunderProps GetThunderObj()

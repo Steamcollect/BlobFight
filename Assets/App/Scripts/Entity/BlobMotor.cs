@@ -94,7 +94,7 @@ public class BlobMotor : MonoBehaviour
     {
         rsoBlobInGame.Value.Add(this);
 
-        pausables = GetComponentsInChildren<IPausable>();
+        pausables = GetComponentsInChildren<IPausable>(true);
 
         currentStats = blobVisuals.blobs[rsoBlobInGame.Value.Count - 1];
         gameObject.name = currentStats.blobName;

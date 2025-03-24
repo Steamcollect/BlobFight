@@ -65,7 +65,6 @@ public class BlobPercentageEffect : MonoBehaviour
 
         float rot = maxRotOverPercentage.Evaluate(percentage);
         transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-rot, rot));
-        print(transform.eulerAngles.z);
 
         text.text = (percentage * 100).ToString("F0") + '%';
 

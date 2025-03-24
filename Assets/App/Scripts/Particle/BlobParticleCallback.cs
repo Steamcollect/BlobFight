@@ -1,11 +1,10 @@
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class ParticleColorSettable : ParticleCallback
+public class BlobParticleCallback : ParticleCallback
 {
     [SerializeField] ParticleSystem[] particles;
     MyParticle[] myParticles;
-
     struct MyParticle
     {
         public ParticleSystem particle;
