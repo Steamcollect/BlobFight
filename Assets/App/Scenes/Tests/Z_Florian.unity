@@ -578,27 +578,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 19635733}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2440,27 +2423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 506276433}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3055,27 +3021,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 600629276}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3552,27 +3501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 742555274}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3936,6 +3868,8 @@ MonoBehaviour:
   positions:
   - {fileID: 272322540}
   - {fileID: 2104656317}
+  rseOnPause: {fileID: 0}
+  rseOnResume: {fileID: 0}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &788097427 stripped
 Transform:
@@ -4717,27 +4651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1065896307}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -5299,27 +5216,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1161249700}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -5971,27 +5871,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1236739930}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -7059,7 +6942,7 @@ Transform:
   m_GameObject: {fileID: 1476129901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.45, y: 5.016104, z: 0}
+  m_LocalPosition: {x: 10.200001, y: 5.016104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7112,6 +6995,8 @@ MonoBehaviour:
   positions:
   - {fileID: 858566056}
   - {fileID: 1147268738}
+  rseOnPause: {fileID: 0}
+  rseOnResume: {fileID: 0}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
 --- !u!4 &1513681879
 Transform:
@@ -7628,7 +7513,7 @@ Transform:
   m_GameObject: {fileID: 1600958972}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.3, y: 5.016104, z: 0}
+  m_LocalPosition: {x: -44.3, y: 5.016104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7742,27 +7627,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1617250789}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -8045,27 +7913,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1635274864}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -9068,27 +8919,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1908714944}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -10408,7 +10242,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1217650912467255256, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: launchType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: delayBetweenLightning.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: delayBetweenLightning.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8906423376991246311, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_LocalPosition.x

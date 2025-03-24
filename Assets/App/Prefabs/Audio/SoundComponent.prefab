@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound:
     clips: []
-    volumMultiplier: 0
+    volumMultiplier: 1
     spatialBlend: 0
   rsePlayClipAt: {fileID: 11400000, guid: eb8f82a3b87a0d64caa32d0e95498bf3, type: 2}
