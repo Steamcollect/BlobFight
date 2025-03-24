@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlobPhysics : MonoBehaviour
+public class BlobPhysics : MonoBehaviour, IPausable
 {
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -137,5 +137,15 @@ public class BlobPhysics : MonoBehaviour
     private void OnDisable()
     {
         transform.DOKill();
+    }
+
+    public void Pause()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void Resume()
+    {
+        if(motor.IsAlive()) rb.constraints = RigidbodyConstraints2D.None;
     }
 }
