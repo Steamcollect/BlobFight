@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7153350957555051841}
   - component: {fileID: 3364032795294973882}
+  - component: {fileID: 1659968598774075768}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -44,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa15fd9a0f07f4448694903adeca710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 1
+  launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   spawnCooldown: {x: 2, y: 3}
   spawnForce: 100
@@ -58,3 +59,20 @@ MonoBehaviour:
   spawner: {fileID: 7153350957555051841}
   objToSpawn: {fileID: 0}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
+--- !u!114 &1659968598774075768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784166557644239861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}

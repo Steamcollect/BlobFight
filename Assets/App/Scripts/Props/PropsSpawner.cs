@@ -19,17 +19,26 @@ public class PropsSpawner : GameProps
 
     Queue<Rigidbody2D> objQueue = new();
 
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-
     [Header("Output")]
     [SerializeField] RSO_TimerParty rsoTimerParty;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
     int mode = 0;
+    bool isPaused = false;
+
+    private void OnEnable()
+    {
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
+    }
+    private void OnDisable()
+    {
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
+    }
 
     public override void Launch()
     {
@@ -42,6 +51,16 @@ public class PropsSpawner : GameProps
         {
             CreateObj();
         }
+    }
+
+    private void Pause()
+    {
+        isPaused = true;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
     }
 
     IEnumerator SpawnCooldown()
@@ -59,7 +78,18 @@ public class PropsSpawner : GameProps
             }
         }
 
-        yield return new WaitForSeconds(Random.Range(spawnCooldown.x, spawnCooldown.y));
+        float cooldown = Random.Range(spawnCooldown.x, spawnCooldown.y);
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if(!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
 
         Rigidbody2D obj = GetObj();
         obj.gameObject.SetActive(true);

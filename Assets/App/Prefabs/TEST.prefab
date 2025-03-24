@@ -241,6 +241,7 @@ MonoBehaviour:
     sceneName: 01_Game
     sceneGUID: 7b33a7ace39394043b01074ed383fe48
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!1 &8585250105621413450
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,10 +544,6 @@ PrefabInstance:
     - target: {fileID: 1332142681661897242, guid: 36882b0ba3623df489609dc510b42753, type: 3}
       propertyPath: m_Name
       value: FadePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1332142681661897242, guid: 36882b0ba3623df489609dc510b42753, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2046754217415292188, guid: 36882b0ba3623df489609dc510b42753, type: 3}
       propertyPath: m_Pivot.x

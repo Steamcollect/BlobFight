@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -1709,7 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -3182,7 +3182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -3661,7 +3661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -3911,7 +3911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -4088,6 +4088,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2051902021}
     m_Modifications:
+    - target: {fileID: 1659968598774075768, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1653407306}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: objToSpawn
       value: 
@@ -4340,7 +4344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -4647,7 +4651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -5332,7 +5336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -5743,7 +5747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -6464,7 +6468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -6633,7 +6637,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -7.2, z: 0}
-  m_LocalScale: {x: 3.3988233, y: 3.3988233, z: 3.3988233}
+  m_LocalScale: {x: 3.3988233, y: 3.3988233, z: 2.74}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 47534200}
@@ -6780,7 +6784,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -6917,7 +6921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -7238,7 +7242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -7713,7 +7717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -8216,7 +8220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -8767,6 +8771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TEST
       objectReference: {fileID: 0}
+    - target: {fileID: 8585250105621413450, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8882,6 +8890,7 @@ GameObject:
   - component: {fileID: 1653407308}
   - component: {fileID: 1653407307}
   - component: {fileID: 1653407306}
+  - component: {fileID: 1653407311}
   m_Layer: 0
   m_Name: Platform1 (6)
   m_TagString: Untagged
@@ -9036,12 +9045,27 @@ Transform:
   m_GameObject: {fileID: 1653407305}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -47.33, y: 0.01, z: 0}
+  m_LocalPosition: {x: -28.57, y: -1.26, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2051902021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1653407311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653407305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca58e748507bb1e408a70d0134fefd10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1653407306}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!4 &1680574217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
@@ -9413,7 +9437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -9725,7 +9749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -10136,7 +10160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -10662,7 +10686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -10913,7 +10937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -11347,7 +11371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -11598,7 +11622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
@@ -12006,7 +12030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  isStatic: 0
+  canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
   joints:
