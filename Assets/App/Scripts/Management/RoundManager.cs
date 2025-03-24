@@ -18,7 +18,6 @@ public class RoundManager : MonoBehaviour
     [SerializeField] RSE_OnFightStart rseOnFightStart;
 
     [Header("Output")]
-    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
     [SerializeField] RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] RSE_AddScore rseAddScore;
 
@@ -46,12 +45,10 @@ public class RoundManager : MonoBehaviour
         {
             rseAddScore.Call(blobs[0]);
             rseOnFightEnd.Call();
-            rseLoadNextLevel.Call();
         }
         else
         {
             rseOnFightEnd.Call();
-            rseLoadNextLevel.Call();
         }
     }
 }

@@ -41,6 +41,5 @@ public class PlayerSelectionPanel : MonoBehaviour
 
         rseDisableJoining.Call();
         rseOnGameStart.Call();
-        rseLoadNextLevel.Call();
     }
 }
