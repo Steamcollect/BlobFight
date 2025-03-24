@@ -1062,6 +1062,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3150704875117048935, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1261102117}
+    - target: {fileID: 3800788344518766095, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1261102117}
+    - target: {fileID: 3800788344518766095, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: percentageEffectPrefab
+      value: 
+      objectReference: {fileID: 1630711041}
+    - target: {fileID: 5124244393124555259, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1261102117}
     - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: levelsName.Array.data[0].sceneGUID
       value: ca9256da3c5d90f48a0d1d46286a810c
@@ -1070,6 +1086,10 @@ PrefabInstance:
       propertyPath: levelsName.Array.data[0].sceneName
       value: 1_BiomeVent_Level
       objectReference: {fileID: 0}
+    - target: {fileID: 6335990714344336522, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1261102117}
     - target: {fileID: 6880067595588563945, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.46124083
@@ -1386,6 +1406,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2140377547865530996, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
   m_PrefabInstance: {fileID: 1216479662}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1261102117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3254858478675230693, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+  m_PrefabInstance: {fileID: 761810235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39fdb7dca2588d34cb6f5b90c66726c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1295537878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1839,6 +1870,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1630711041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2188399795417028682, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+  m_PrefabInstance: {fileID: 761810235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a8ca3ff3faa8c4d8369e5df6306626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776137688
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,7 +51,7 @@ MonoBehaviour:
   percentageEffectPosOffset: {x: 0, y: 2}
   motor: {fileID: 3420423106000584793}
   physics: {fileID: 6321734985548798584}
-  trigger: {fileID: 0}
+  trigger: {fileID: 6449519957614820434}
   health: {fileID: 5355027135910952395}
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
@@ -335,7 +335,7 @@ MonoBehaviour:
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
   joint: {fileID: 6321734985548798584}
-  trigger: {fileID: 0}
+  trigger: {fileID: 6449519957614820434}
   movement: {fileID: 2542050320697814845}
 --- !u!1 &1689548152335019987
 GameObject:
@@ -450,7 +450,7 @@ MonoBehaviour:
   physics: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
   stamina: {fileID: 4226171251788006590}
-  trigger: {fileID: 0}
+  trigger: {fileID: 6449519957614820434}
   particle: {fileID: 4617812964555812280}
   dash: {fileID: 3726202644600941132}
 --- !u!1 &3184432519262760862
@@ -503,7 +503,7 @@ MonoBehaviour:
   parryMaxTime: 0.1
   paryForceMultiplier: 5
   minSpeedAtImpact: 200
-  trigger: {fileID: 0}
+  trigger: {fileID: 6449519957614820434}
   physics: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   maxImpactSpeed: 50000000
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
-  blobTrigger: {fileID: 0}
+  blobTrigger: {fileID: 6449519957614820434}
   blobMovement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
   percentageEffect: {fileID: 7706814225328905213}
