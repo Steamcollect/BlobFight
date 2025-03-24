@@ -5,6 +5,14 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine.Audio;
 
+public static class SaveConfig
+{
+    public static readonly int SaveMax = 0;
+    public static bool saveActived = true;
+    public static readonly bool HaveSettings = true;
+    public static readonly bool FileCrypted = true;
+}
+
 namespace BT.Save
 {
     public class LoadSaveData : MonoBehaviour
@@ -26,8 +34,6 @@ namespace BT.Save
 
         private static readonly string EncryptionKey = "ajekoBnPxI9jGbnYCOyvE9alNy9mM/Kw";
         private static readonly string SaveDirectory = Path.Combine(Directory.GetParent(Application.dataPath).FullName, "Saves");
-        private static readonly bool FileCrypted = true;
-        private static readonly bool HaveSettings = true;
 
         private void OnEnable()
         {
@@ -45,20 +51,28 @@ namespace BT.Save
 
         private void Start()
         {
+            if (SaveConfig.SaveMax <= 0 && !SaveConfig.HaveSettings)
+            {
+                SaveConfig.saveActived = false;
+            }
+
             if (!Directory.Exists(SaveDirectory))
             {
                 Directory.CreateDirectory(SaveDirectory);
             }
 
-            if (HaveSettings)
+            if (SaveConfig.saveActived)
             {
-                if (FileAlreadyExist(saveSettingsName))
+                if (SaveConfig.HaveSettings)
                 {
-                    LoadFromJson(saveSettingsName, true);
-                }
-                else
-                {
-                    SaveToJson(saveSettingsName, true);
+                    if (FileAlreadyExist(saveSettingsName))
+                    {
+                        LoadFromJson(saveSettingsName, true);
+                    }
+                    else
+                    {
+                        SaveToJson(saveSettingsName, true);
+                    }
                 }
             }
         }
@@ -106,46 +120,77 @@ namespace BT.Save
 
         private void SaveToJson(string name, bool isSettings)
         {
-            string filePath = GetFilePath(name);
+            if (SaveConfig.saveActived)
+            {
+                string filePath = GetFilePath(name);
 
-            string dataToSave = isSettings && HaveSettings ? JsonUtility.ToJson(rsoSettingsSaved.Value) : JsonUtility.ToJson(rsoContentSaved.Value);
+                string dataToSave = "";
 
-            File.WriteAllText(filePath, FileCrypted ? Encrypt(dataToSave) : dataToSave);
+                if (isSettings && SaveConfig.HaveSettings)
+                {
+                    dataToSave = JsonUtility.ToJson(rsoSettingsSaved.Value);
+                }
+                else
+                {
+                    if (SaveConfig.SaveMax > 0)
+                    {
+                        dataToSave = JsonUtility.ToJson(rsoContentSaved.Value);
+                    }
+                    else
+                    {
+                        dataToSave = JsonUtility.ToJson(rsoSettingsSaved.Value);
+                    }
+                }
+
+                File.WriteAllText(filePath, SaveConfig.FileCrypted ? Encrypt(dataToSave) : dataToSave);
+            }
         }
 
         private void LoadFromJson(string name, bool isSettings)
         {
-            if (!FileAlreadyExist(name)) return;
-
-            string filePath = GetFilePath(name);
-            string encryptedJson = File.ReadAllText(filePath);
-
-            if (FileCrypted)
+            if (SaveConfig.saveActived)
             {
-                encryptedJson = Decrypt(encryptedJson);
-            }
+                if (!FileAlreadyExist(name)) return;
 
+                string filePath = GetFilePath(name);
+                string encryptedJson = File.ReadAllText(filePath);
 
-            if (isSettings && HaveSettings)
-            {
-                rsoSettingsSaved.Value = JsonUtility.FromJson<SettingsSaved>(encryptedJson);
-            }
-            else
-            {
-                rsoContentSaved.Value = JsonUtility.FromJson<ContentSaved>(encryptedJson);
-            }
+                if (SaveConfig.FileCrypted)
+                {
+                    encryptedJson = Decrypt(encryptedJson);
+                }
 
-            SetScreen();
-            SetAudio();
+                if (isSettings && SaveConfig.HaveSettings)
+                {
+                    rsoSettingsSaved.Value = JsonUtility.FromJson<SettingsSaved>(encryptedJson);
+                }
+                else
+                {
+                    if (SaveConfig.SaveMax > 0)
+                    {
+                        rsoContentSaved.Value = JsonUtility.FromJson<ContentSaved>(encryptedJson);
+                    }
+                    else
+                    {
+                        rsoSettingsSaved.Value = JsonUtility.FromJson<SettingsSaved>(encryptedJson);
+                    }
+                }
+
+                SetScreen();
+                SetAudio();
+            }
         }
 
         private void ClearContent(string name)
         {
-            if (FileAlreadyExist(name))
+            if (SaveConfig.saveActived)
             {
-                string filePath = GetFilePath(name);
+                if (FileAlreadyExist(name))
+                {
+                    string filePath = GetFilePath(name);
 
-                File.Delete(filePath);
+                    File.Delete(filePath);
+                }
             }
         }
 
