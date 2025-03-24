@@ -21,6 +21,7 @@ public class EntityHealth : MonoBehaviour
     [Header("Input")]
     public Action<int> onTakeDamage;
     public Action onDeath;
+    public Action OnDestroyBlob;
     public Action<ContactPoint2D> onDestroy;
 
     //[Header("Output")]
@@ -46,6 +47,7 @@ public class EntityHealth : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
+        OnDestroyBlob?.Invoke();
         onDestroy?.Invoke(collision.GetContact(0));
     }
 

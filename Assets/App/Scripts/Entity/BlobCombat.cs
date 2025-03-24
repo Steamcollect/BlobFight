@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,7 @@ public class BlobCombat : MonoBehaviour
     LayerMask currentLayer;
 
     List<BlobMotor> blobsTouch = new();
-
+    public Action<float> OnHitBlob;
     //[Space(10)]
     // RSO
     // RSF
@@ -98,7 +99,7 @@ public class BlobCombat : MonoBehaviour
         blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
 
         particle.DoHitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactForce.sqrMagnitude);
-
+        OnHitBlob.Invoke(0);
         // Set cooldowns
         StartCoroutine(ImpactCooldown(blobTouch));
         StartCoroutine(blobTouch.GetCombat().CanFightCooldown());

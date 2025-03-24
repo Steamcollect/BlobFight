@@ -23,6 +23,7 @@ public class BlobTrigger : CollisionTrigger
     int windsTouchCount;
 
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
+    public Action OnGroundTouch;
     public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
 
     LayerMask layerToExclude;
@@ -64,6 +65,7 @@ public class BlobTrigger : CollisionTrigger
             isGrounded = true;
 
             OnGroundedEnter?.Invoke(collision);
+            OnGroundTouch?.Invoke();
             groundables.Add(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag(slidableTag))
