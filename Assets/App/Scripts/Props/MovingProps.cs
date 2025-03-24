@@ -18,6 +18,12 @@ public class MovingProps : GameProps, IPausable
     [SerializeField] Transform movable;
     [SerializeField] Transform[] positions;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
+    bool isPaused = false;
+
     int mode = 0;
 
     //[Space(10)]
@@ -30,6 +36,18 @@ public class MovingProps : GameProps, IPausable
     [Header("Output")]
     [SerializeField] RSO_TimerParty rsoTimerParty;
 
+    private void OnEnable()
+    {
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
+    }
+    private void OnDisable()
+    {
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
+    }
+
+
     public override void Launch()
     {
         if (positions.Length > 0)
@@ -40,7 +58,18 @@ public class MovingProps : GameProps, IPausable
     }
     IEnumerator DelayBeforeStart()
     {
-        yield return new WaitForSeconds(delayBeforeStart);
+        float cooldown = delayBeforeStart;
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
         
         SetNextPos();
     }
@@ -60,8 +89,19 @@ public class MovingProps : GameProps, IPausable
             }
         }
 
+        float cooldown = delayAtPoint;
+        float timer = 0f;
 
-        yield return new WaitForSeconds(delayAtPoint);
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+
         SetNextPos();
     }
 
@@ -82,11 +122,13 @@ public class MovingProps : GameProps, IPausable
 
     public void Pause()
     {
+        isPaused = true;
         movable.DOPause();
     }
 
     public void Resume()
     {
+        isPaused = false;
         movable.DOPlay();
     }
 }
