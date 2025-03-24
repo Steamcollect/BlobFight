@@ -22,6 +22,12 @@ public class ThunderSpawner : GameProps
     Queue<ThunderProps> thunderQueue = new();
     int mode = 0;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
+    bool isPaused = false;
+
     //[Space(10)]
     // RSO
     // RSF
@@ -36,13 +42,47 @@ public class ThunderSpawner : GameProps
             CreateThunderObj();
         }
     }
+
+    private void OnEnable()
+    {
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
+    }
+    private void OnDisable()
+    {
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
+    }
+
+    private void Pause()
+    {
+        isPaused = true;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
+    }
+
     private void StartCoroutineDelay()
     {
         StartCoroutine(StartDelaySpawn());
     }
     IEnumerator StartDelaySpawn()
     {
-        yield return new WaitForSeconds(delayAfterGameStart);
+        float cooldown = delayAfterGameStart;
+        float timer = 0f;
+
+        while (timer < delayAfterGameStart)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+
         StartCoroutine(SpawnThunder());
     }
     IEnumerator SpawnThunder()
@@ -60,7 +100,19 @@ public class ThunderSpawner : GameProps
             }
         }
 
-        yield return new WaitForSeconds(Random.Range(delayBetweenLightning.x, delayBetweenLightning.y));
+        float cooldown = Random.Range(delayBetweenLightning.x, delayBetweenLightning.y);
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+
         int rnd = Random.Range(0, spawnPoint.Count);
         ThunderProps thunder = GetThunderObj();
         thunder.gameObject.SetActive(true);
