@@ -230,26 +230,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 66175046}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -266,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -569,26 +570,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 109208598}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -605,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -823,7 +825,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 1}
-  m_ConnectedAnchor: {x: 0.000000021855694, y: 0.5}
+  m_ConnectedAnchor: {x: 0.000000021855689, y: 0.49999988}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -845,27 +847,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 110676715}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1101,26 +1086,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 158979631}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1137,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -1422,26 +1408,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 181268461}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1458,7 +1445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -1672,26 +1659,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 182090004}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1708,7 +1696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -1922,27 +1910,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 182697809}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2172,26 +2143,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 227445414}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2208,7 +2180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -2400,7 +2372,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -1}
-  m_ConnectedAnchor: {x: -0.0000002587262, y: 0.5001732}
+  m_ConnectedAnchor: {x: 0.00000002186324, y: 0.5001726}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2422,27 +2394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 247746520}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2734,26 +2689,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 254280499}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2770,7 +2726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -3145,26 +3101,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 256037073}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -3181,7 +3138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -3624,27 +3581,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 295044690}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3874,26 +3814,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 319849161}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -3910,7 +3851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -4099,6 +4040,10 @@ PrefabInstance:
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7153350957555051841, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4307,26 +4252,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 442633223}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -4343,7 +4289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -4614,27 +4560,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 580714642}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -5299,26 +5228,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 928212169}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -5335,7 +5265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -5688,7 +5618,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -1}
-  m_ConnectedAnchor: {x: 0.000000043711378, y: 0.99999976}
+  m_ConnectedAnchor: {x: -0.0000018636367, y: 1.0000017}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5710,27 +5640,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1023431897}
-  damageBySpeedCurve:
+  maxRbVelocity: 0
+  damageBySpeeCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -6431,26 +6344,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1048253671}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -6467,7 +6381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -6884,26 +6798,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1077713781}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -6920,7 +6835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -7205,26 +7120,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1211395458}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7241,7 +7157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -7559,7 +7475,7 @@ Transform:
   m_GameObject: {fileID: 1288381387}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.9044176, y: 9.206406, z: 0}
+  m_LocalPosition: {x: 13.37, y: 9.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7680,26 +7596,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1296216296}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7716,7 +7633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -8183,26 +8100,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1384853917}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -8219,7 +8137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -8938,7 +8856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  damageType: 2
+  damageType: 1
 --- !u!61 &1653407308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8951,10 +8869,10 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 3fc965f8a2c070442bc3c6944b10dee8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -9400,26 +9318,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1724873836}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -9436,7 +9355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -9712,26 +9631,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1818273960}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -9748,7 +9668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -10123,26 +10043,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1832299355}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -10159,7 +10080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -10649,26 +10570,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1867396960}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -10685,7 +10607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -10900,26 +10822,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1875607997}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -10936,7 +10859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -11334,26 +11257,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1901180289}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -11370,7 +11294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -11585,26 +11509,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1932440167}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -11621,7 +11546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0
@@ -11993,26 +11918,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1945642587}
-  damageBySpeedCurve:
+  maxRbVelocity: 100
+  damageBySpeeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.00032295828
-      outSlope: 0.00032295828
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.07323232
+      outWeight: 0
     - serializedVersion: 3
-      time: 10000
-      value: 100
-      inSlope: 0.02964844
-      outSlope: 0.02964844
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042929295
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -12029,7 +11955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
   tempDestroy: 0

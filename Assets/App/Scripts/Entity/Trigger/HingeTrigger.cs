@@ -7,7 +7,8 @@ public class HingeTrigger : CollisionTrigger
     [Header("References")]
     [SerializeField] HingeHealth health;
 
-    [SerializeField] AnimationCurve damageBySpeedCurve;
+    [SerializeField] int maxRbVelocity;
+    [SerializeField] AnimationCurve damageBySpeeCurve;
 
     //[Space(10)]
     // RSO
@@ -28,10 +29,11 @@ public class HingeTrigger : CollisionTrigger
         OnBlobCollisionEnter -= OnBlobCollision;
     }
 
-    public void SetScript(HingeHealth hingeHealth, AnimationCurve damageCurve)
+    public void SetScript(HingeHealth hingeHealth, int maxRbVelocity, AnimationCurve damageBySpeeCurve)
     {
         health = hingeHealth;
-        damageBySpeedCurve = damageCurve;
+        this.maxRbVelocity = maxRbVelocity;
+        this.damageBySpeeCurve = damageBySpeeCurve;
     }
 
     void OnBlobCollision(BlobMotor blob, Collision2D collision)
@@ -39,17 +41,8 @@ public class HingeTrigger : CollisionTrigger
         Vector3 velocity = blob.GetPhysics().GetVelocity();
         float velocityMagnitude = velocity.sqrMagnitude;
 
-        Vector2 contactNormal = collision.GetContact(0).normal;
-
-        float impactFactor = Mathf.Abs(Vector2.Dot(velocity.normalized, contactNormal));
-
-        float damageMultiplier = Mathf.Lerp(0f, 1f, impactFactor);
-
-        int baseDamage = (int)damageBySpeedCurve.Evaluate(velocityMagnitude * blob.GetPhysics().GetRigidbody().mass);
-
-        int finalDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
-
-        health.TakeDamage(finalDamage);
+        int damage = (int)damageBySpeeCurve.Evaluate(velocityMagnitude / maxRbVelocity) * (int)blob.GetPhysics().GetComponent<Rigidbody2D>().mass;
+        health.TakeDamage(damage);
     }
 
     void OnCollision(Collision2D collision)
@@ -58,7 +51,7 @@ public class HingeTrigger : CollisionTrigger
         {
             if(!collision.gameObject.GetComponent<CustomCollision>())
             {
-                int damage = (int)damageBySpeedCurve.Evaluate(rb.velocity.sqrMagnitude * rb.mass);
+                int damage = (int)damageBySpeeCurve.Evaluate(rb.velocity.sqrMagnitude / maxRbVelocity) * (int)rb.mass;
                 health.TakeDamage(damage);
             }
             else
@@ -67,7 +60,8 @@ public class HingeTrigger : CollisionTrigger
                 health.TakeDamage(damage);
             }
         }
-        else if (collision.gameObject.TryGetComponent(out Damagable damagable))
+
+        if (collision.gameObject.TryGetComponent(out Damagable damagable))
         {
             switch (damagable.GetDamageType())
             {

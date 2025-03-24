@@ -18,6 +18,7 @@ public class GeneratorProps : EditorWindow
     [SerializeField] private int number = 5;
     [SerializeField] private float spacing = 1;
     [SerializeField] private int health = 500;
+    [SerializeField] private int maxRbVelocity = 100;
     [SerializeField] private AnimationCurve damageBySpeedCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(10000, 100));
 
     [SerializeField] private GameObject prefabBall = null;
@@ -257,7 +258,7 @@ public class GeneratorProps : EditorWindow
 
                 current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
 
-                current.GetComponent<HingeTrigger>().SetScript(current.GetComponent<HingeHealth>(), damageBySpeedCurve);
+                current.GetComponent<HingeTrigger>().SetScript(current.GetComponent<HingeHealth>(), maxRbVelocity, damageBySpeedCurve);
                 current.GetComponent<HingeHealth>().maxHealth = health;
 
                 current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(168, 101, 38, 255), new Color32(168, 40, 38, 255));
@@ -476,7 +477,7 @@ public class GeneratorProps : EditorWindow
 
                 current.GetComponent<RigidbodyMotor>().SetScripts(rseOnPause, rseOnResume);
 
-                current.GetComponent<HingeTrigger>().SetScript(current.GetComponent<HingeHealth>(), damageBySpeedCurve);
+                current.GetComponent<HingeTrigger>().SetScript(current.GetComponent<HingeHealth>(), maxRbVelocity, damageBySpeedCurve);
                 current.GetComponent<HingeHealth>().maxHealth = health;
 
                 current.GetComponent<HingeHealth>().SetHingeColor(current.GetComponent<SpriteRenderer>(), new Color32(0, 0, 0, 255), new Color32(168, 40, 38, 255));
