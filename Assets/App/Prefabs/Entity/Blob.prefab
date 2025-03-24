@@ -62,7 +62,7 @@ MonoBehaviour:
   - particlePrefab: {fileID: 7930703714630030017, guid: f391e0780956c5c4697469b035197641, type: 3}
     hitStrenght: 100
   expulseParticle: {fileID: 5425739583313106901}
-  percentageEffectPrefab: {fileID: 7449701940541993344, guid: e5fb4cff1910b43489d10e4551ace785, type: 3}
+  percentageEffectPrefab: {fileID: 0}
 --- !u!1 &871332911037382281
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712fd8b9292a1504fb2443068b4acae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 13500
+  dashForce: 14500
   dashCooldown: 0.1
   removeGravityTime: 0.1
   maxDashCount: 2
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkStatistics:
-    moveSpeed: 800
+    moveSpeed: 500
     gravity: 18
     drag: 5
     mass: 5
@@ -388,7 +388,7 @@ MonoBehaviour:
   extendStatistics:
     moveSpeed: 300
     gravity: 65
-    drag: 7.5
+    drag: 12
     mass: 50
     scale: 5
     timeToSwap: 0.04
@@ -493,12 +493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackForce: 1.1
+  pushBackForce: 3
   returnPushBackForce: 0.8
-  extendForceMultiplier: 1.5
+  extendForceMultiplier: 4
   parryMaxTime: 0.1
   paryForceMultiplier: 5
-  minSpeedAtImpact: 1000
+  minSpeedAtImpact: 200
   trigger: {fileID: 606557387366902294}
   physics: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
@@ -1332,11 +1332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f9dfed204d22f344acb348ca38c933f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xShrinkScaleAtMaxSpeed: 0.6
+  xShrinkScaleAtMaxSpeed: 0.4
   yShrinkScaleAtMaxSpeed: 1.2
-  xExtendScaleAtMaxSpeed: 0.9
+  xExtendScaleAtMaxSpeed: 1
   yExtendScaleAtMaxSpeed: 1.1
-  maxSpeed: 30
+  maxSpeed: 70
   speedMinToSquash: 1
   physics: {fileID: 6321734985548798584}
   graphics: {fileID: 1959618378066109591}

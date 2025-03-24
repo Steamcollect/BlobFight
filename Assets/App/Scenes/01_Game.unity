@@ -352,6 +352,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[0].sceneGUID
+      value: 014ef4a7d2a242141889cd251cda9a8c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[0].sceneName
+      value: "1_BiomeMar\xE9cage_Level"
+      objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name
       value: SceneManagement
