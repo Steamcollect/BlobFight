@@ -57,9 +57,13 @@ MonoBehaviour:
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
   destroyParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
   hitParticles:
-  - particlePrefab: {fileID: 4007821960139497423, guid: ebb730153f3762a4a86dc21a995baa9c, type: 3}
-    hitStrenght: 50
-  - particlePrefab: {fileID: 7930703714630030017, guid: f391e0780956c5c4697469b035197641, type: 3}
+  - particlePrefab: {fileID: 7291753846233562658, guid: ebb730153f3762a4a86dc21a995baa9c, type: 3}
+    hitStrenght: 40
+  - particlePrefab: {fileID: 7291753846233562658, guid: 9d502e7993a6712438ae87e57aacc29f, type: 3}
+    hitStrenght: 70
+  - particlePrefab: {fileID: 7291753846233562658, guid: d14fc8cead465cb419c4ed12ac2b521e, type: 3}
+    hitStrenght: 90
+  - particlePrefab: {fileID: 7291753846233562658, guid: 5ee85dea0df985c4b93b720b4fe19f51, type: 3}
     hitStrenght: 100
   expulseParticle: {fileID: 5425739583313106901}
   percentageEffectPrefab: {fileID: 0}
