@@ -16,7 +16,6 @@ public class TransitionLevel : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
-    [SerializeField] private RSE_OnGameStart rseOnGameStart;
     [SerializeField] private RSE_LoadNextLevel rseLoadNextLevel;
 
     [SerializeField] private bool doStart;
@@ -24,13 +23,11 @@ public class TransitionLevel : MonoBehaviour
     private void OnEnable()
     {
         rseOnFightEnd.action += TransitionEnd;
-        rseOnGameStart.action += TransitionEnd;
     }
 
     private void OnDisable()
     {
         rseOnFightEnd.action -= TransitionEnd;
-        rseOnGameStart.action -= TransitionEnd;
     }
 
     private void Start()
