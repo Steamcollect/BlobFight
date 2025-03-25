@@ -39,7 +39,7 @@ public class RoundManager : MonoBehaviour
 
     void CheckBlobCount(BlobMotor blob)
     {
-        if(blobs.Contains(blob))
+        if(blobs != null && blobs.Contains(blob))
         {
             blobs.Remove(blob);
 
