@@ -833,7 +833,7 @@ MonoBehaviour:
   input: {fileID: 8417928549951212344}
   trigger: {fileID: 6449519957614820434}
   combat: {fileID: 6850913828851939280}
-  audio: {fileID: 0}
+  blobAudio: {fileID: 8813555513755880380}
   preparationPanel: {fileID: 5953893452250420699}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
