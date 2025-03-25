@@ -1487,6 +1487,7 @@ MonoBehaviour:
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
   rseDisableJoining: {fileID: 11400000, guid: e56ca70ff724b5942a6f262dafb1cd21, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseTransit: {fileID: 11400000, guid: de1d05397ce9f074aa8dacd98a3ccc91, type: 2}
 --- !u!1 &1824511429
 GameObject:
   m_ObjectHideFlags: 0

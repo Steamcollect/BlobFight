@@ -176,6 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7557694ad3b3a4e48a8a7cd06e755ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doStart: 1
+  delayStart: 3
   rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
+  rseTransit: {fileID: 11400000, guid: de1d05397ce9f074aa8dacd98a3ccc91, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
-  doStart: 0
+  rseFadeIn: {fileID: 11400000, guid: e8f09c3d7c12c8249a196b2d4ad7e139, type: 2}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
+  rseSpawnPoint: {fileID: 11400000, guid: 354d9138d9b09de479306906b7dd7651, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}

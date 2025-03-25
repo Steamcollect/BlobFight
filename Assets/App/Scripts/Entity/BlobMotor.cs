@@ -6,6 +6,7 @@ public class BlobMotor : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] SSO_BlobVisuals blobVisuals;
+    [SerializeField] bool menu;
     BlobInitializeStatistic currentStats;
 
     [Header("References")]
@@ -102,11 +103,20 @@ public class BlobMotor : MonoBehaviour
 
         visual.SetColor(currentStats.color.fillColor);
 
-        Setup();
-        UnlockInteraction();
+        if (menu)
+        {
+            Setup();
+            UnlockInteraction();
+        }
 
         Invoke("LateStart", .1f);
     }
+
+    public void Setup()
+    {
+        rseSpawnBlob.Call(this);
+    }
+
     void LateStart()
     {
         physics.SetupLayer(currentStats.layer);
@@ -114,10 +124,6 @@ public class BlobMotor : MonoBehaviour
         combat.SetLayer(currentStats.layer);
     }
 
-    void Setup()
-    {
-        rseSpawnBlob.Call(this);
-    }
     #endregion
 
     void Enable()

@@ -22,6 +22,7 @@ public class PlayerSelectionPanel : MonoBehaviour
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
     [SerializeField] RSE_DisableJoining rseDisableJoining;
     [SerializeField] RSE_OnGameStart rseOnGameStart;
+    [SerializeField] RSE_Transit rseTransit;
 
     private void OnEnable()
     {
@@ -41,5 +42,6 @@ public class PlayerSelectionPanel : MonoBehaviour
 
         rseDisableJoining.Call();
         rseOnGameStart.Call();
+        rseTransit.Call();
     }
 }

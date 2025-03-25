@@ -36,7 +36,6 @@ public class SceneManagement : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_FadeIn rseFadeIn;
     [SerializeField] RSE_FadeOut rseFadeOut;
-    [SerializeField] RSE_OnFightStart rseOnFightStart;
 
     [Space(5)]
     [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
@@ -69,7 +68,6 @@ public class SceneManagement : MonoBehaviour
         {
             currentLevel = SceneManager.GetActiveScene().name;
             rseEnablePauseAction.Call();
-            rseOnFightStart.Call();
             isLoading = false;
         }
     }
@@ -127,7 +125,6 @@ public class SceneManagement : MonoBehaviour
 		StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
         {
 			rseEnablePauseAction.Call();
-			rseOnFightStart.Call();
 			isLoading = false;
 		}));
 	}

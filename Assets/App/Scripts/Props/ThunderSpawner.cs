@@ -43,13 +43,15 @@ public class ThunderSpawner : GameProps
         }
     }
 
-    private void OnEnable()
+    private new void OnEnable()
     {
+        base.OnEnable();
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
-    private void OnDisable()
+    private new void OnDisable()
     {
+        base.OnDisable();
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }

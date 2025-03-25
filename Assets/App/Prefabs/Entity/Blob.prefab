@@ -826,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blobVisuals: {fileID: 11400000, guid: 96af32aab7d73644885a3faf46ac1939, type: 2}
+  menu: 1
   componentsContent: {fileID: 6724505695075795745}
   physics: {fileID: 6321734985548798584}
   visual: {fileID: 6232837032291008028}
