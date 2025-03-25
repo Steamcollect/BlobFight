@@ -39,16 +39,19 @@ public class RoundManager : MonoBehaviour
 
     void CheckBlobCount(BlobMotor blob)
     {
-        blobs.Remove(blob);
+        if(blobs.Contains(blob))
+        {
+            blobs.Remove(blob);
 
-        if (blobs.Count == 1)
-        {
-            rseAddScore.Call(blobs[0]);
-            rseOnFightEnd.Call();
-        }
-        else
-        {
-            rseOnFightEnd.Call();
+            if (blobs.Count == 1)
+            {
+                rseAddScore.Call(blobs[0]);
+                rseOnFightEnd.Call();
+            }
+            else
+            {
+                rseOnFightEnd.Call();
+            }
         }
     }
 }
