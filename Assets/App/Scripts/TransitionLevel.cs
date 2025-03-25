@@ -34,6 +34,8 @@ public class TransitionLevel : MonoBehaviour
     {
         if(doStart)
         {
+            gameObject.transform.position = new Vector3(-100,0,-10);
+
             gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
             {
             });
