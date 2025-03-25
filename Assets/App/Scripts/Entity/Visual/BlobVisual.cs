@@ -28,7 +28,6 @@ public class BlobVisual : MonoBehaviour
     private void Update()
     {
         SquashAndStresh();
-        physics.SyncColliderRadiusToVisual(transform.localScale, initScale);
     }
 
     void SquashAndStresh()
