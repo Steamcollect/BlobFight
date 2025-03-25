@@ -20,7 +20,7 @@ public class BlobMotor : MonoBehaviour
     [SerializeField] EntityInput input;
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobCombat combat;
-    [SerializeField] BlobAudio audio;
+    [SerializeField] BlobAudio blobAudio;
 
 	[Space(5)]
     [SerializeField] BlobReadyValidationPanel preparationPanel;
@@ -212,7 +212,7 @@ public class BlobMotor : MonoBehaviour
     public BlobMovement GetMovement() { return movement; }
     public BlobTrigger GetTrigger() { return trigger; }
     public BlobCombat GetCombat() { return combat; }
-    public BlobAudio GetAudio() { return audio; }
+    public BlobAudio GetAudio() { return blobAudio; }
 
     public BlobColor GetColor() { return currentStats.color; }
     #endregion
