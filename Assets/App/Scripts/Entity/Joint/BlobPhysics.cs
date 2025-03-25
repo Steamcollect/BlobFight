@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BlobPhysics : MonoBehaviour, IPausable
 {
+    float baseColliderRadius;
+
     [Header("References")]
     [SerializeField] BlobMotor motor;
 
@@ -18,7 +20,7 @@ public class BlobPhysics : MonoBehaviour, IPausable
     //[Header("Input")]
     //[Header("Output")]
 
-    public Vector2 lastVelocity;
+    [HideInInspector] public Vector2 lastVelocity;
 
     Action<Collision2D> onCollisionEnter, OnCollisionExit;
     public Action onJointsConnected;
@@ -123,6 +125,17 @@ public class BlobPhysics : MonoBehaviour, IPausable
     private void OnCollisionExit2D(Collision2D collision)
     {
         OnCollisionExit?.Invoke(collision);
+    }
+
+    public void SyncColliderRadiusToVisual(Vector2 visualScale, Vector2 visualInitScale)
+    {
+        Vector2 normalizedScale = new Vector2(
+            visualScale.x / visualInitScale.x,
+            visualScale.y / visualInitScale.y
+        );
+
+        float smallestAxis = Mathf.Min(normalizedScale.x, normalizedScale.y);
+        collid.radius = baseColliderRadius * smallestAxis;
     }
     #endregion
 
