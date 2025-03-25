@@ -18,16 +18,36 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
+    bool isPaused = false;
+
     private void OnEnable()
     {
         rseOnFightEnd.action += TransitionEnd;
         rseTransit.action += TransitionEnd;
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
     }
 
     private void OnDisable()
     {
         rseOnFightEnd.action -= TransitionEnd;
         rseTransit.action -= TransitionEnd;
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        isPaused = false;
     }
 
     private void Start()
@@ -51,7 +71,18 @@ public class TransitionLevel : MonoBehaviour
 
     private IEnumerator DelayStart()
     {
-        yield return new WaitForSeconds(delayStart);
+        float cooldown = delayStart;
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
 
         Debug.Log("Start");
 

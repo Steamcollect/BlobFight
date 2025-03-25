@@ -51,14 +51,15 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   delayAfterGameStart: 0
-  delayBetweenLightning: {x: 4, y: 5}
-  objToSpawnOnStart: 2
-  timeSpeed: 000000000f0000001e0000002d000000
+  delayBetweenLightning: {x: 3, y: 4}
+  objToSpawnOnStart: 5
+  timeSpeed: 000000000f0000001e0000002d0000003c000000
   newDelayBetweenLightning:
-  - {x: 4, y: 5}
   - {x: 3, y: 4}
   - {x: 2, y: 3}
   - {x: 1, y: 2}
+  - {x: 0.1, y: 1}
+  - {x: 0, y: 0.5}
   spawnPoint:
   - {fileID: 5155470544710904835}
   - {fileID: 1580813269545095234}
