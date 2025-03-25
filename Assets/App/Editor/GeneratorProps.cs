@@ -231,6 +231,7 @@ public class GeneratorProps : EditorWindow
         Undo.RegisterCreatedObjectUndo(bridgeParent, "Create Bridge");
         bridgeParent.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
         bridgeParent.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        bridgeParent.AddComponent<LauchGameProp>();
         createdObjects.Add(bridgeParent);
 
         // Create Children
@@ -443,6 +444,7 @@ public class GeneratorProps : EditorWindow
         Undo.RegisterCreatedObjectUndo(bridgeParent, "Create Hammer");
         bridgeParent.transform.position = new Vector3(spawnPosition.x, spawnPosition.y, 0);
         bridgeParent.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        bridgeParent.AddComponent<LauchGameProp>();
         createdObjects.Add(bridgeParent);
 
         // Create Children

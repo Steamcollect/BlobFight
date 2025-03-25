@@ -23,11 +23,11 @@ public abstract class GameProps : MonoBehaviour
 
     //[Header("Output")]
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         if (launchType == GamePropsLaunchType.OnFightStart) rseOnFightStart.action += Launch;
     }
-    private void OnDisable()
+    protected void OnDisable()
     {
         if (launchType == GamePropsLaunchType.OnFightStart) rseOnFightStart.action -= Launch;
     }

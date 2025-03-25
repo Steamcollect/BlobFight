@@ -19,22 +19,20 @@ public class FadePanel : MonoBehaviour
     // RSP
 
     [Header("Input")]
+    [SerializeField] RSE_FadeIn rseFadeIn;
     [SerializeField] RSE_FadeOut rseFadeOut;
 
     //[Header("Output")]
 
     private void OnEnable()
     {
+        rseFadeIn.action += FadeIn;
         rseFadeOut.action += FadeOut;
     }
     private void OnDisable()
     {
+        rseFadeIn.action -= FadeIn;
         rseFadeOut.action -= FadeOut;
-    }
-
-    private void Start()
-    {
-        FadeIn();
     }
 
     void OnDestroy()
@@ -50,11 +48,15 @@ public class FadePanel : MonoBehaviour
         backgroundImage.rectTransform.sizeDelta = Vector2.zero;
         float screenSize = Mathf.Max(Screen.width, Screen.height);
 
-        circleImage.rectTransform.DOSizeDelta(new Vector2(screenSize * 2.5f, screenSize * 2.5f), fadeInDuration)
+        backgroundImage.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+
+        circleImage.rectTransform.DOSizeDelta(new Vector2(screenSize * 1.5f, screenSize * 1.5f), fadeInDuration)
             .OnUpdate(() =>
             {
-                backgroundImage.transform.localPosition = -circleImage.transform.localPosition;
-                backgroundImage.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
+                if (backgroundImage && circleImage)
+                {
+                    backgroundImage.transform.localPosition = -circleImage.transform.localPosition;
+                }
             })
             .OnComplete(() =>
             {

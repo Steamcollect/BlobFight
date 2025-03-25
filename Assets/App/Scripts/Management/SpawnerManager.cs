@@ -15,23 +15,23 @@ public class SpawnerManager : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] RSE_SpawnBlob rseSpawnBlob;
+    [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
 
     //[Header("Output")]
 
     private void OnEnable()
     {
         rseSpawnBlob.action += SpawnBlob;
-    }
-    private void OnDisable()
-    {
-         rseSpawnBlob.action -= SpawnBlob;
+        rseSpawnPoint.action += SpawnerBlob;
     }
 
-    private void Start()
+    private void OnDisable()
     {
-        Invoke("LateStart", .05f);
+        rseSpawnBlob.action -= SpawnBlob;
+        rseSpawnPoint.action -= SpawnerBlob;
     }
-    void LateStart()
+
+    void SpawnerBlob()
     {
         if (rsoBlobInGame.Value.Count == 0) return;
         if (rsoSpawnpoints.Value.Count == 0)
