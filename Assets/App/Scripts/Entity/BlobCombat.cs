@@ -10,6 +10,11 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] float returnPushBackForce;
     [SerializeField] float extendForceMultiplier;
 
+    [SerializeField] float percentageMultiplier;
+
+    [Space(5)]
+    [SerializeField] float speedMultToPushExtendBlob = .4f;
+
     [Space(5)]
     [SerializeField] float parryMaxTime;
     [SerializeField] float paryForceMultiplier;
@@ -29,6 +34,7 @@ public class BlobCombat : MonoBehaviour
 
     List<BlobMotor> blobsTouch = new();
     public Action<float> OnHitBlob;
+
     //[Space(10)]
     // RSO
     // RSF
@@ -37,18 +43,13 @@ public class BlobCombat : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    private void OnEnable()
+    {
+        trigger.OnBlobCollisionEnter += OnBlobCollisionEnter;
+    }
     private void OnDisable()
     {
         trigger.OnBlobCollisionEnter -= OnBlobCollisionEnter;
-    }
-
-    private void Start()
-    {
-        Invoke("LateStart", .05f);
-    }
-    void LateStart()
-    {
-        trigger.OnBlobCollisionEnter += OnBlobCollisionEnter;
     }
 
     void OnBlobCollisionEnter(BlobMotor blobTouch, Collision2D collision)
@@ -56,6 +57,7 @@ public class BlobCombat : MonoBehaviour
         if (blobsTouch.Contains(blobTouch) || !canFight) return;
 
         float speed = physics.lastVelocity.sqrMagnitude;
+
         float blobTouchSpeed = blobTouch.GetPhysics().lastVelocity.sqrMagnitude;
         
         Vector2 propulsionDir = (blobTouch.GetPhysics().GetCenter() - physics.GetCenter()).normalized;
@@ -63,22 +65,24 @@ public class BlobCombat : MonoBehaviour
         Vector2 impactVelocity = Vector2.zero;
         Vector2 impactForce = Vector2.zero;
 
-
         if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
             print("Parry");
 
             impactVelocity = blobTouch.GetPhysics().lastVelocity * blobTouchSpeed;
-            impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * paryForceMultiplier;
-
-            blobTouch.GetPhysics().ResetVelocity();
+            impactForce = impactVelocity * paryForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
         }
-        else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend())
+        else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend() && (blobTouchSpeed * speedMultToPushExtendBlob) < speed)
         {
             impactVelocity = propulsionDir * (speed < minSpeedAtImpact ? minSpeedAtImpact : speed);
-            impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage() * extendForceMultiplier;
+            impactForce = impactVelocity * extendForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
 
             Debug.DrawLine(blobTouch.GetPhysics().GetCenter(), blobTouch.GetPhysics().GetCenter() + impactVelocity, Color.blue, 1);
+        }
+        else if(!movement.IsExtend() && blobTouch.GetMovement().IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
+        {
+            impactVelocity = propulsionDir * (speed < minSpeedAtImpact ? minSpeedAtImpact : speed);
+            impactForce = impactVelocity * extendForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
 
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
         }
@@ -87,11 +91,14 @@ public class BlobCombat : MonoBehaviour
             if (speed < blobTouchSpeed) return; // Do not add force in this case
 
             impactVelocity = propulsionDir * speed;
-            impactForce = impactVelocity * blobTouch.GetHealth().GetPercentage();
+            impactForce = impactVelocity * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
         }
         else return;
 
         // Set new velocity
+        blobTouch.GetPhysics().ResetVelocity();
+        physics.ResetVelocity();
+
         blobTouch.GetPhysics().AddForce(impactForce * pushBackForce);
         physics.AddForce(-impactVelocity * returnPushBackForce);
 
@@ -100,6 +107,7 @@ public class BlobCombat : MonoBehaviour
 
         particle.DoHitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactForce.sqrMagnitude);
         OnHitBlob.Invoke(0);
+
         // Set cooldowns
         StartCoroutine(ImpactCooldown(blobTouch));
         StartCoroutine(blobTouch.GetCombat().CanFightCooldown());

@@ -556,9 +556,11 @@ MonoBehaviour:
   pushBackForce: 3
   returnPushBackForce: 0.8
   extendForceMultiplier: 4
+  percentageMultiplier: 1.5
+  speedMultToPushExtendBlob: 0.4
   parryMaxTime: 0.1
   paryForceMultiplier: 5
-  minSpeedAtImpact: 200
+  minSpeedAtImpact: 1000
   trigger: {fileID: 6449519957614820434}
   physics: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
@@ -1131,7 +1133,7 @@ MonoBehaviour:
       outWeight: 0.061725214
     - serializedVersion: 3
       time: 1
-      value: 0.3
+      value: 0.18
       inSlope: 0.54737836
       outSlope: 0.54737836
       tangentMode: 0
@@ -1165,7 +1167,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxImpactSpeed: 50000000
+  maxImpactSpeed: 10000000
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
   blobTrigger: {fileID: 6449519957614820434}
@@ -2033,6 +2035,10 @@ PrefabInstance:
     - target: {fileID: 879627387722928022, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
+      propertyPath: sound.volumMultiplier
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.clips.Array.size
