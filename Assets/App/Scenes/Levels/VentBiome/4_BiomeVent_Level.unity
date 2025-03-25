@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.24
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -282,12 +282,12 @@ MonoBehaviour:
   maxHealth: 1
   canTakeDamage: 1
   instantDestroy: 1
-  tempDestroy: 0.5
   joints:
   - {fileID: 80588654}
   graphics: {fileID: 80588660}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &80588657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +560,10 @@ PrefabInstance:
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: launchType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windControl.Array.size
@@ -1413,12 +1417,12 @@ MonoBehaviour:
   maxHealth: 1
   canTakeDamage: 1
   instantDestroy: 1
-  tempDestroy: 0.5
   joints:
   - {fileID: 628753794}
   graphics: {fileID: 628753800}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &628753797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,12 +1851,12 @@ MonoBehaviour:
   maxHealth: 1
   canTakeDamage: 1
   instantDestroy: 1
-  tempDestroy: 0.5
   joints:
   - {fileID: 756561629}
   graphics: {fileID: 756561635}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &756561632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,7 +2060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.45
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2202,12 +2206,12 @@ MonoBehaviour:
   maxHealth: 1
   canTakeDamage: 1
   instantDestroy: 1
-  tempDestroy: 0.5
   joints:
   - {fileID: 995523598}
   graphics: {fileID: 995523604}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &995523601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,7 +2573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.27
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2631,7 +2635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.37
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2831,6 +2835,10 @@ PrefabInstance:
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: launchType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windControl.Array.size

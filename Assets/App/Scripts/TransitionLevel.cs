@@ -74,6 +74,8 @@ public class TransitionLevel : MonoBehaviour
         float cooldown = delayStart;
         float timer = 0f;
 
+        Debug.Log($"Wait: {delayStart}s");
+
         while (timer < cooldown)
         {
             yield return null;

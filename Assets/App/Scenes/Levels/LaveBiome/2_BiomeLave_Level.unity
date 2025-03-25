@@ -2765,7 +2765,7 @@ Transform:
   m_GameObject: {fileID: 1094495019}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -57.9, y: 6, z: 0}
+  m_LocalPosition: {x: -60, y: 6, z: 0}
   m_LocalScale: {x: 57.44651, y: 69.35725, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2911,7 +2911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 0
+  launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 4
   delayBeforeStart: 2
@@ -3125,7 +3125,7 @@ Transform:
   m_GameObject: {fileID: 1138818395}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -57.9, y: 6, z: 0}
+  m_LocalPosition: {x: -60, y: 6, z: 0}
   m_LocalScale: {x: 57.44651, y: 69.35725, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3289,8 +3289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 0
-  rseOnFightStart: {fileID: 0}
+  launchType: 1
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 8
   delayBeforeStart: 0
   delayAtPoint: 0
@@ -4541,7 +4541,7 @@ Transform:
   m_GameObject: {fileID: 1622651517}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 272.2, y: -14.927443, z: 0}
+  m_LocalPosition: {x: 272.2, y: -14.6, z: 0}
   m_LocalScale: {x: 13.087462, y: 3.6382499, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5543,7 +5543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 0
+  launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 4
   delayBeforeStart: 2
@@ -5631,8 +5631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchType: 0
-  rseOnFightStart: {fileID: 0}
+  launchType: 1
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 8
   delayBeforeStart: 0
   delayAtPoint: 0

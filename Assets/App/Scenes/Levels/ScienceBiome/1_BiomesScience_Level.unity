@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -705,29 +705,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 522603615}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: launchType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: objToSpawn
       value: 
       objectReference: {fileID: 522603615}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: rsoTimerParty
-      value: 
-      objectReference: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnCooldown.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnCooldown.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name
       value: Spawner (2)
@@ -1099,17 +1079,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2026903933}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: launchType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: objToSpawn
       value: 
       objectReference: {fileID: 2026903933}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnForce
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -1560,7 +1532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.11
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2297,7 +2269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.09
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2359,7 +2331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.07
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2931,29 +2903,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1284242264}
     - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: launchType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: objToSpawn
       value: 
       objectReference: {fileID: 1284242264}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: rsoTimerParty
-      value: 
-      objectReference: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnCooldown.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364032795294973882, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
-      propertyPath: spawnCooldown.y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3784166557644239861, guid: b0e036b7f0fd9554892e5514738e6a52, type: 3}
       propertyPath: m_Name
       value: Spawner (1)

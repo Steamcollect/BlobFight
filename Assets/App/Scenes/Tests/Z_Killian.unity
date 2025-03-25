@@ -270,12 +270,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 66175044}
   graphics: {fileID: 66175050}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &66175047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,12 +610,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 109208596}
   graphics: {fileID: 109208602}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &109208599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,13 +887,13 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 110676713}
   - {fileID: 110676712}
   graphics: {fileID: 110676719}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &110676716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,12 +1144,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 158979629}
   graphics: {fileID: 158979635}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &158979632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,12 +1481,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 181268459}
   graphics: {fileID: 181268465}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &181268462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,12 +1732,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 182090002}
   graphics: {fileID: 182090008}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &182090005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,12 +1983,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 182697807}
   graphics: {fileID: 182697813}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &182697810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,12 +2234,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 227445412}
   graphics: {fileID: 227445418}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &227445415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2485,12 +2485,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 247746518}
   graphics: {fileID: 247746524}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &247746521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2798,12 +2798,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 254280497}
   graphics: {fileID: 254280503}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &254280500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3210,12 +3210,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 256037071}
   graphics: {fileID: 256037077}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &256037074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3690,12 +3690,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 295044688}
   graphics: {fileID: 295044694}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &295044691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3941,12 +3941,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 319849159}
   graphics: {fileID: 319849165}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &319849162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4379,12 +4379,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 442633221}
   graphics: {fileID: 442633227}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &442633224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4687,12 +4687,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 580714640}
   graphics: {fileID: 580714646}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &580714643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5373,12 +5373,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 928212167}
   graphics: {fileID: 928212173}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &928212170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5785,12 +5785,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1023431895}
   graphics: {fileID: 1023431901}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1023431898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6507,12 +6507,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1048253669}
   graphics: {fileID: 1048253675}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1048253672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6961,12 +6961,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1077713779}
   graphics: {fileID: 1077713785}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1077713782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7298,12 +7298,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1211395456}
   graphics: {fileID: 1211395462}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1211395459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7784,12 +7784,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1296216294}
   graphics: {fileID: 1296216300}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1296216297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8288,12 +8288,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1384853915}
   graphics: {fileID: 1384853921}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1384853918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9506,12 +9506,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1724873834}
   graphics: {fileID: 1724873840}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1724873837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9819,12 +9819,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1818273958}
   graphics: {fileID: 1818273964}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1818273961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,12 +10231,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1832299353}
   graphics: {fileID: 1832299359}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1832299356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10758,13 +10758,13 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1867396958}
   - {fileID: 1867396957}
   graphics: {fileID: 1867396964}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1867396961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11010,12 +11010,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1875607995}
   graphics: {fileID: 1875608001}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1875607998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11445,13 +11445,13 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1901180287}
   - {fileID: 1901180286}
   graphics: {fileID: 1901180293}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1901180290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11697,12 +11697,12 @@ MonoBehaviour:
   maxHealth: 20
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1932440165}
   graphics: {fileID: 1932440171}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1932440168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12106,12 +12106,12 @@ MonoBehaviour:
   maxHealth: 100
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1945642585}
   graphics: {fileID: 1945642591}
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1945642588
 MonoBehaviour:
   m_ObjectHideFlags: 0

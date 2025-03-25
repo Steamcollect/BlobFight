@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1519,7 +1519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949158439990322528, guid: 95962fa11af837a4690452fc5ec193e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1909,32 +1909,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: launchType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: objToSpawnOnStart
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: timeSpeed.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: spawnPoint.Array.size
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: delayBetweenLightning.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: delayBetweenLightning.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: timeSpeed.Array.data[4]
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: spawnPoint.Array.data[4]
@@ -1956,50 +1932,6 @@ PrefabInstance:
       propertyPath: spawnPoint.Array.data[8]
       value: 
       objectReference: {fileID: 683544082}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[0].x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[0].y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[1].x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[1].y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[2].x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[2].y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[3].x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[3].y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[4].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
-      propertyPath: newDelayBetweenLightning.Array.data[4].y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4553976894774741503, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.97

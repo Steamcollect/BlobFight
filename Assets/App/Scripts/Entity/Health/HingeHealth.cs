@@ -7,7 +7,6 @@ public class HingeHealth : EntityHealth
 {
     [Header("Settings")]
     [SerializeField] bool instantDestroy;
-    [SerializeField] float tempDestroy;
 
     [Header("References")]
     [SerializeField, ContextMenuItem("Get All Joints In Object", "GetAllJoints")] List<HingeJoint2D> joints = new List<HingeJoint2D>();
@@ -16,6 +15,8 @@ public class HingeHealth : EntityHealth
     [SerializeField] SpriteRenderer graphics;
     [SerializeField] Color initColor;
     [SerializeField] Color endColor;
+
+    [SerializeField] private RSE_OnFightStart rseOnFightStart;
 
     //[Space(10)]
     // RSO
@@ -29,11 +30,13 @@ public class HingeHealth : EntityHealth
     {
         onTakeDamage += OnTakeDamage;
         onDeath += OnDeath;
+        rseOnFightStart.action += DestroyDelay;
     }
     private void OnDisable()
     {
         onTakeDamage -= OnTakeDamage;
         onDeath -= OnDeath;
+        rseOnFightStart.action -= DestroyDelay;
     }
 
     private void Start()
@@ -44,11 +47,6 @@ public class HingeHealth : EntityHealth
     void OnTakeDamage(int damageTaken)
     {
         graphics.color = Color.Lerp(endColor, initColor, (float)currentHealth / (float)maxHealth);
-
-        if (instantDestroy)
-        {
-            StartCoroutine(DestroyDelay());
-        }
     }
 
     public void SetHingeJoint(HingeJoint2D hingeJoint2D)
@@ -62,12 +60,12 @@ public class HingeHealth : EntityHealth
         initColor = color;
         endColor = color1;
     }
-
-    IEnumerator DestroyDelay()
+    void DestroyDelay()
     {
-        yield return new WaitForSeconds(tempDestroy);
-
-        gameObject.SetActive(false);
+        if (instantDestroy)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void OnDeath()
