@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class BlobPhysics : MonoBehaviour, IPausable
 {
+    //[Header("Settings")]
+    float baseColliderRadius;
+    Vector2 lastVelocity;
+
     [Header("References")]
     [SerializeField] BlobMotor motor;
 
@@ -17,8 +21,6 @@ public class BlobPhysics : MonoBehaviour, IPausable
 
     //[Header("Input")]
     //[Header("Output")]
-
-    public Vector2 lastVelocity;
 
     Action<Collision2D> onCollisionEnter, OnCollisionExit;
     public Action onJointsConnected;
@@ -38,6 +40,11 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         collid.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    void Start()
+    {
+        baseColliderRadius = collid.radius;
     }
 
     private void FixedUpdate()
@@ -90,6 +97,8 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         return rb.velocity;
     }
+
+    public Vector2 GetLastVelocity() { return lastVelocity; }
     public Rigidbody2D GetRigidbody() { return rb; }
     #endregion
 
@@ -123,6 +132,17 @@ public class BlobPhysics : MonoBehaviour, IPausable
     private void OnCollisionExit2D(Collision2D collision)
     {
         OnCollisionExit?.Invoke(collision);
+    }
+
+    public void SyncColliderRadiusToVisual(Vector2 visualScale, Vector2 visualInitScale)
+    {
+        Vector2 normalizedScale = new Vector2(
+            visualScale.x / visualInitScale.x,
+            visualScale.y / visualInitScale.y
+        );
+
+        float smallestAxis = Mathf.Min(normalizedScale.x, normalizedScale.y);
+        collid.radius = baseColliderRadius * smallestAxis;
     }
     #endregion
 

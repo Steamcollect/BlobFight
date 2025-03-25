@@ -1453,7 +1453,6 @@ MonoBehaviour:
   motor: {fileID: 3420423106000584793}
   rb: {fileID: 3386927719614357757}
   collid: {fileID: 1719897261511637580}
-  lastVelocity: {x: 0, y: 0}
 --- !u!114 &6449519957614820434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,7 +1508,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8036656644236040139}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3fc965f8a2c070442bc3c6944b10dee8, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
