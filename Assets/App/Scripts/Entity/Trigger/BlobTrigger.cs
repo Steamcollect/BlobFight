@@ -26,6 +26,8 @@ public class BlobTrigger : CollisionTrigger
     public Action OnGroundTouch;
     public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
 
+    public Action _OnWindEnter;
+
     LayerMask layerToExclude;
 
     //[Space(10)]
@@ -97,6 +99,8 @@ public class BlobTrigger : CollisionTrigger
     {
         windsTouchCount++;
         isInWind = true;
+
+        _OnWindEnter.Invoke();
     }
     public void OnWindExit()
     {

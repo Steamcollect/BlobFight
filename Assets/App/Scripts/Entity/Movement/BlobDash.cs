@@ -36,17 +36,20 @@ public class BlobDash : MonoBehaviour
     {
         input.moveInput -= SetInput;
         input.dashInput -= Dash;
-        trigger.OnGroundedEnter -= ResetDashCount;
-        trigger.OnGroundedExit -= ResetDashCount;
+
+        trigger.OnGroundedEnter -= ResetDashCountOnCollision;
+        trigger.OnSlidableEnter -= ResetDashCountOnCollision;
+        trigger._OnWindEnter -= ResetDashCount;
     }
 
     private void Start()
     {
         input.moveInput += SetInput;
         input.dashInput += Dash;
-        trigger.OnGroundedEnter += ResetDashCount;
-        trigger.OnGroundedExit += ResetDashCount;
-        trigger.OnSlidableEnter += ResetDashCount;
+
+        trigger.OnGroundedEnter += ResetDashCountOnCollision;
+        trigger.OnSlidableEnter += ResetDashCountOnCollision;
+        trigger._OnWindEnter += ResetDashCount;
 
         Invoke("LateStart", .1f);
     }
@@ -92,7 +95,8 @@ public class BlobDash : MonoBehaviour
         canResetDashCount = true;
     }
 
-    void ResetDashCount(Collision2D collision)
+    void ResetDashCountOnCollision(Collision2D coll) { ResetDashCount(); }
+    void ResetDashCount()
     {
         if(!canResetDashCount) return;
         dashCount = maxDashCount;
