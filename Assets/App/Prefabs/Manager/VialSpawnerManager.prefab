@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6200338558518401644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5481115614068295840}
+  - component: {fileID: 7773767740800133496}
+  - component: {fileID: 9133007884422977399}
+  m_Layer: 0
+  m_Name: VialSpawnerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5481115614068295840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200338558518401644}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7773767740800133496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200338558518401644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec28d084742c20b4a89d171bc1ce9bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
+--- !u!114 &9133007884422977399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200338558518401644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe4a118d9b7d00429b852fa88cb3c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  rseOnBlobReady: {fileID: 11400000, guid: 41ba8179e6d7aff419499135403837eb, type: 2}
+  rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
+  rseDisableJoining: {fileID: 11400000, guid: e56ca70ff724b5942a6f262dafb1cd21, type: 2}
+  rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseTransit: {fileID: 11400000, guid: de1d05397ce9f074aa8dacd98a3ccc91, type: 2}

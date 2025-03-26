@@ -7,9 +7,7 @@ public class PlayerSelectionPanel : MonoBehaviour
     //[SerializeField] int blobRequireToPlay = 1;
 
     [Header("References")]
-    [SerializeField] GameObject blobRequireCountTxt;
 
-    [Space(10)]
     // RSO
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
     // RSF

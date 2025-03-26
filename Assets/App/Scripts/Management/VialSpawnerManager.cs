@@ -4,7 +4,7 @@ public class VialSpawnerManager : MonoBehaviour
     //[Header("Settings")]
 
     [Header("References")]
-    [SerializeField] StartingVial[] vials;
+    [SerializeField] VialSpawner[] vials;
 
     [Space(10)]
     // RSO
