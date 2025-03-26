@@ -101,6 +101,8 @@ public class BlobCombat : MonoBehaviour
         blobTouch.GetPhysics().ResetVelocity();
         physics.ResetVelocity();
 
+        Debug.DrawLine(blobTouch.GetPhysics().GetCenter(), blobTouch.GetPhysics().GetCenter() + impactForce, Color.black, 1f);
+
         blobTouch.GetPhysics().AddForce(impactForce * pushBackForce);
         physics.AddForce(-impactVelocity * returnPushBackForce);
 
