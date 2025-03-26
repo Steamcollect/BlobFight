@@ -28,7 +28,7 @@ public class ParallaxEffect : MonoBehaviour
 
     private void Update()
     {
-        Vector3 camDelta = cam.transform.position - startCamPosition;
+        Vector3 camDelta = cam.transform.position - startCamPosition + new Vector3(-100, 0, 0);
 
         // Applique la vitesse de parallaxe différente pour chaque axe
         transform.position = startPosition + new Vector3(camDelta.x * parallaxSpeedX, camDelta.y * parallaxSpeedY, 0);
