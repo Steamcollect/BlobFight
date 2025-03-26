@@ -3861,6 +3861,7 @@ MonoBehaviour:
   moveSpeed: 4
   delayBeforeStart: 1
   delayAtPoint: 1
+  delayActiveWarning: 0
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
@@ -3868,6 +3869,7 @@ MonoBehaviour:
   positions:
   - {fileID: 272322540}
   - {fileID: 2104656317}
+  warningMovingProps: {fileID: 0}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -4995,7 +4997,7 @@ Transform:
   m_GameObject: {fileID: 1147268737}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: -23.25, z: 0}
+  m_LocalPosition: {x: 62, y: -23.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6319,6 +6321,7 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 14711545}
   movable: {fileID: 492537053}
+  warningState: 0
 --- !u!1001 &1281466038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6985,7 +6988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1513681878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7001,8 +7004,9 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 4
-  delayBeforeStart: 1
-  delayAtPoint: 1
+  delayBeforeStart: 3
+  delayAtPoint: 3
+  delayActiveWarning: 1
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
@@ -7010,6 +7014,7 @@ MonoBehaviour:
   positions:
   - {fileID: 858566056}
   - {fileID: 1147268738}
+  warningMovingProps: {fileID: 1270778244}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -9958,6 +9963,7 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 82578505}
   movable: {fileID: 1577317535}
+  warningState: 0
 --- !u!1 &2080386779
 GameObject:
   m_ObjectHideFlags: 0
@@ -10284,19 +10290,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: delayBetweenLightning.x
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: delayBetweenLightning.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: newDelayBetweenLightning.Array.data[0].x
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: newDelayBetweenLightning.Array.data[0].y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8906423376991246311, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_LocalPosition.x
