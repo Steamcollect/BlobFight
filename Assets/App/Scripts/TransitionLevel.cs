@@ -7,6 +7,7 @@ public class TransitionLevel : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool doStart;
     [SerializeField] private float delayStart;
+    [SerializeField] private bool modeDev;
 
     [Header("Input")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
@@ -60,7 +61,16 @@ public class TransitionLevel : MonoBehaviour
             {
                 rseSpawnPoint.Call();
 
-                StartCoroutine(DelayStart());
+                if(modeDev)
+                {
+                    Debug.Log("Start");
+
+                    rseOnFightStart.Call();
+                }
+                else
+                {
+                    StartCoroutine(DelayStart());
+                }
             });
         }
         else
