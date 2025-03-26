@@ -6,23 +6,26 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] AudioMixerGroup musicMixerGroup;
+    [SerializeField]
+    AudioMixerGroup musicMixerGroup;
+
     [SerializeField] AudioMixerGroup soundMixerGroup;
 
-    Queue<AudioSource> soundsGo = new Queue<AudioSource>();
+    private readonly Queue<AudioSource> _soundsGo = new();
 
-    Transform playlistParent, soundParent;
+    private Transform _playlistParent, _soundParent;
 
     [Header("System References")]
-    [SerializeField, Tooltip("Number of GameObject create on start for the sound")] int startingAudioObjectsCount = 30;
+    [SerializeField, Tooltip("Number of GameObject create on start for the sound")]
+    private int startingAudioObjectsCount = 30;
 
-    [Header("Output")]
-    [SerializeField] RSE_PlayClipAt rsePlayClipAt;
+    [Header("Output")][SerializeField] RSE_PlayClipAt rsePlayClipAt;
 
     private void OnEnable()
     {
         rsePlayClipAt.action += PlayClipAt;
     }
+
     private void OnDisable()
     {
         rsePlayClipAt.action -= PlayClipAt;
@@ -35,48 +38,45 @@ public class AudioManager : MonoBehaviour
         // Create Audio Object
         for (int i = 0; i < startingAudioObjectsCount; i++)
         {
-            soundsGo.Enqueue(CreateSoundsGO());
+            _soundsGo.Enqueue(CreateSoundsGo());
         }
     }
 
     /// <summary>
-    /// Require the clip and the power of the sound
+    /// Play clip at a specific position
     /// </summary>
-    /// <param name="clip"></param>
-    /// <param name="soundPower"></param>
-    /// <param name="position of the sound"></param>
+    /// <param name="sound"></param>
+    /// <param name="position"></param>
     void PlayClipAt(Sound sound, Vector3 position)
     {
         AudioSource tmpAudioSource;
-        if (soundsGo.Count <= 0) tmpAudioSource = CreateSoundsGO();
-        else tmpAudioSource = soundsGo.Dequeue();
+        if (_soundsGo.Count <= 0) tmpAudioSource = CreateSoundsGo();
+        else tmpAudioSource = _soundsGo.Dequeue();
 
         tmpAudioSource.transform.position = position;
 
-        // Set the volum
-        float volumMultiplier = Mathf.Clamp(sound.volumMultiplier, 0, 1);
-        tmpAudioSource.volume = volumMultiplier;
 
+        float volumeMultiplier = Mathf.Clamp(sound.volumeMultiplier, 0, 1);
+        tmpAudioSource.volume = volumeMultiplier;
         tmpAudioSource.spatialBlend = sound.spatialBlend;
 
-        // Set the clip
+
         tmpAudioSource.clip = sound.clips.GetRandom();
         tmpAudioSource.Play();
         StartCoroutine(AddAudioSourceToQueue(tmpAudioSource));
     }
-    IEnumerator AddAudioSourceToQueue(AudioSource current)
+
+    private IEnumerator AddAudioSourceToQueue(AudioSource current)
     {
         yield return new WaitForSeconds(current.clip.length);
-        soundsGo.Enqueue(current);
+        _soundsGo.Enqueue(current);
     }
 
-    AudioSource CreateSoundsGO()
+    private AudioSource CreateSoundsGo()
     {
         AudioSource tmpAudioSource = new GameObject("Audio Go").AddComponent<AudioSource>();
-        tmpAudioSource.transform.SetParent(soundParent);
+        tmpAudioSource.transform.SetParent(_soundParent);
         tmpAudioSource.outputAudioMixerGroup = soundMixerGroup;
-        soundsGo.Enqueue(tmpAudioSource);
-
         return tmpAudioSource;
     }
 
@@ -94,12 +94,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void SetupParent()
+    private void SetupParent()
     {
-        playlistParent = new GameObject("PLAYLIST").transform;
-        playlistParent.parent = transform;
+        _playlistParent = new GameObject("PLAYLIST").transform;
+        _playlistParent.parent = transform;
 
-        soundParent = new GameObject("SOUNDS").transform;
-        soundParent.parent = transform;
+        _soundParent = new GameObject("SOUNDS").transform;
+        _soundParent.parent = transform;
     }
 }
