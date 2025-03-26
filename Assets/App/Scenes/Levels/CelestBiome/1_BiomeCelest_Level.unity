@@ -1950,11 +1950,11 @@ PrefabInstance:
       objectReference: {fileID: 683544082}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: newDelayBetweenLightning.Array.data[0].x
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: newDelayBetweenLightning.Array.data[0].y
-      value: 3.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4553976894774741503, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2201,7 +2201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: orthographic size
-      value: 16.15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -2220,8 +2220,12 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: maxSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: minSize
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: maxBounds.y
