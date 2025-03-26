@@ -143,6 +143,7 @@ public class BlobMotor : MonoBehaviour
     {
         movement.DeathDisableMovement();
         physics.Disable();
+        trigger.ResetTouchs();
     }
     void UnlockInteraction()
     {

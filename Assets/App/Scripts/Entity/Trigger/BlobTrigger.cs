@@ -136,4 +136,14 @@ public class BlobTrigger : CollisionTrigger
     {
         this.layerToExclude = layerToExclude;
     }
+
+    public void ResetTouchs()
+    {
+        groundables.Clear();
+        slidables.Clear();
+        isGrounded = false;
+        isSliding = false;
+        isInWind = false;
+        windsTouchCount = 0;
+    }
 }
