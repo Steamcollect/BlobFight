@@ -172,6 +172,7 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 630991536}
   movable: {fileID: 164145792}
+  warningState: 0
 --- !u!1001 &57449450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -552,6 +553,7 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 1479475404}
   movable: {fileID: 1094495020}
+  warningState: 0
 --- !u!1 &164145791
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 164145791}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.35, y: 4.68, z: 0}
+  m_LocalPosition: {x: 45.35, y: 5, z: 0}
   m_LocalScale: {x: 7.916847, y: 3.9725096, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2035,6 +2037,7 @@ MonoBehaviour:
   positions:
   - {fileID: 562954668}
   - {fileID: 1620186533}
+  warningMovingProps: {fileID: 50861304}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -2166,7 +2169,7 @@ Transform:
   m_GameObject: {fileID: 562954667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.5, y: 4.53, z: 0}
+  m_LocalPosition: {x: 45.5, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3446,7 +3449,7 @@ Transform:
   m_GameObject: {fileID: 1094495019}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.71, y: -4.6, z: 0}
+  m_LocalPosition: {x: -49.71, y: -4, z: 0}
   m_LocalScale: {x: 7.916847, y: 4.1094923, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4472,7 +4475,7 @@ Transform:
   m_GameObject: {fileID: 1452565125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.5, y: -4.95, z: 0}
+  m_LocalPosition: {x: -45.5, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5012,7 +5015,7 @@ Transform:
   m_GameObject: {fileID: 1620186532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.5, y: 6.5, z: 0}
+  m_LocalPosition: {x: -45.5, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5211,7 +5214,7 @@ Transform:
   m_GameObject: {fileID: 1687339118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.5, y: -3.5, z: 0}
+  m_LocalPosition: {x: 45.5, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5985,6 +5988,7 @@ MonoBehaviour:
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
+  warningMovingProps: {fileID: 130835657}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}

@@ -10,7 +10,6 @@ public class MovingProps : GameProps, IPausable
     int currentPosIndex;
     [SerializeField] float delayBeforeStart;
     [SerializeField] float delayAtPoint;
-    [SerializeField] float delayActiveWarning;
     [SerializeField] List<int> timeSpeed;
     [SerializeField] List<float> newDelayAtPoint;
     [SerializeField] List<float> newMoveSpeed;
@@ -73,7 +72,7 @@ public class MovingProps : GameProps, IPausable
             if (!isPaused)
             {
                 timer += Time.deltaTime;
-                if (timer > delayActiveWarning)
+                if (timer > delayBeforeStart - 1)
                 {
                     warningMovingProps.onWarning.Invoke(true);
                 }
@@ -107,7 +106,7 @@ public class MovingProps : GameProps, IPausable
             if (!isPaused)
             {
                 timer += Time.deltaTime;
-                if(timer > delayActiveWarning)
+                if(timer > delayAtPoint - 1)
                 {
                     warningMovingProps.onWarning.Invoke(true);
                 }
