@@ -44,13 +44,17 @@ public class RoundManager : MonoBehaviour
         {
             blobs.Remove(blob);
 
-            if (blobs.Count == 1)
+            if (modeDev)
+            {
+                rseOnFightEnd.Call();
+            }
+            else if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
 
                 rseOnFightEnd.Call();
             }
-            else if (modeDev)
+            else if (blobs.Count < 1)
             {
                 rseOnFightEnd.Call();
             }

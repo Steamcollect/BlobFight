@@ -74,7 +74,7 @@ public class MovingProps : GameProps, IPausable
                 timer += Time.deltaTime;
                 if (timer > Mathf.Max(delayBeforeStart - 1, 0))
                 {
-                    warningMovingProps.onWarning.Invoke(true);
+                    warningMovingProps?.onWarning.Invoke(true);
                 }
             }
         }
@@ -108,7 +108,7 @@ public class MovingProps : GameProps, IPausable
                 timer += Time.deltaTime;
                 if(timer > Mathf.Max(delayAtPoint - 1, 0))
                 {
-                    warningMovingProps.onWarning.Invoke(true);
+                    warningMovingProps?.onWarning.Invoke(true);
                 }
             }
         }
