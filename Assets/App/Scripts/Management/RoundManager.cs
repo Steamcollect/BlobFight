@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] bool modeDev;
 
     [Header("References")]
 
@@ -46,9 +47,10 @@ public class RoundManager : MonoBehaviour
             if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
+
                 rseOnFightEnd.Call();
             }
-            else
+            else if (modeDev)
             {
                 rseOnFightEnd.Call();
             }
