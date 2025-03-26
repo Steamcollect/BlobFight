@@ -67,19 +67,19 @@ public class BlobCombat : MonoBehaviour
 
         if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
-            print("Parry");
-
-            impactVelocity = blobTouch.GetPhysics().lastVelocity * blobTouchSpeed;
+            impactVelocity = -blobTouch.GetPhysics().lastVelocity * blobTouchSpeed;
             impactForce = impactVelocity * paryForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
+        }
+        else if(blobTouch.GetMovement().IsExtend() && blobTouch.GetMovement().GetExtendTime() < parryMaxTime && speed > blobTouchSpeed)
+        {
+            return;
         }
         else if (!blobTouch.GetMovement().IsExtend() && movement.IsExtend() && (blobTouchSpeed * speedMultToPushExtendBlob) < speed)
         {
             impactVelocity = propulsionDir * (speed < minSpeedAtImpact ? minSpeedAtImpact : speed);
             impactForce = impactVelocity * extendForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
-
-            Debug.DrawLine(blobTouch.GetPhysics().GetCenter(), blobTouch.GetPhysics().GetCenter() + impactVelocity, Color.blue, 1);
         }
-        else if(!movement.IsExtend() && blobTouch.GetMovement().IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
+        else if (!movement.IsExtend() && blobTouch.GetMovement().IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
         {
             impactVelocity = propulsionDir * (speed < minSpeedAtImpact ? minSpeedAtImpact : speed);
             impactForce = impactVelocity * extendForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
