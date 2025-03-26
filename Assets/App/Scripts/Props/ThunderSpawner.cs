@@ -11,7 +11,7 @@ public class ThunderSpawner : GameProps
     [SerializeField] int objToSpawnOnStart;
     [SerializeField] List<int> timeSpeed;
     [SerializeField] List<Vector2> newDelayBetweenLightning;
-
+    private List<int> canSpawn = new();
     [Header("References")]
     [SerializeField] List<Transform> spawnPoint;
     [SerializeField] ThunderProps thunderPrefab;
@@ -27,7 +27,7 @@ public class ThunderSpawner : GameProps
     [SerializeField] RSE_OnResume rseOnResume;
 
     bool isPaused = false;
-
+    
     //[Space(10)]
     // RSO
     // RSF
@@ -55,7 +55,6 @@ public class ThunderSpawner : GameProps
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
-
     private void Pause()
     {
         isPaused = true;
@@ -115,11 +114,20 @@ public class ThunderSpawner : GameProps
             }
         }
 
-        int rnd = Random.Range(0, spawnPoint.Count);
-        ThunderProps thunder = GetThunderObj();
-        thunder.gameObject.SetActive(true);
-        thunder.transform.position = spawnPoint[rnd].position;
-        thunder.Flip(Random.value < 0.5f);
+        if(canSpawn.Count > 0)
+        {
+            int rnd = Random.Range(0, canSpawn.Count);
+
+            ThunderProps thunder = GetThunderObj();
+            thunder.randomSpawn = canSpawn[rnd];
+            thunder.gameObject.SetActive(true);
+            thunder.PlaySound();
+            thunder.transform.position = spawnPoint[canSpawn[rnd]].position;
+            thunder.Flip(Random.value < 0.5f);
+            thunder.onEndAction += ResetSpawnPoint;
+
+            canSpawn.RemoveAt(rnd);
+        }
         StartCoroutine(SpawnThunder());
     }
     ThunderProps GetThunderObj()
@@ -143,6 +151,15 @@ public class ThunderSpawner : GameProps
 
     public override void Launch()
     {
+        for (int i = 0; i < spawnPoint.Count; i++)
+        {
+            canSpawn.Add(i);
+        }
         StartCoroutineDelay();
+    }
+    private void ResetSpawnPoint(ThunderProps thunder)
+    {
+        thunder.onEndAction -= ResetSpawnPoint;
+        canSpawn.Add(thunder.randomSpawn);
     }
 }

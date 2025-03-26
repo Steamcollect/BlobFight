@@ -9,7 +9,9 @@ public class ThunderProps : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] Collider2D thunderCollider;
     [SerializeField] SpriteRenderer spriteRenderer;
+    public int randomSpawn;
     public Action<ThunderProps> onEndAction;
+    public Action onThunderSpawn;
     //[Space(10)]
     // RSO
     // RSF
@@ -59,5 +61,9 @@ public class ThunderProps : MonoBehaviour
     public void Flip(bool flipX)
     {
         spriteRenderer.flipX = flipX;
+    }
+    public void PlaySound()
+    {
+        onThunderSpawn.Invoke();
     }
 }
