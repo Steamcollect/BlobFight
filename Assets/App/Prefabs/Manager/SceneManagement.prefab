@@ -46,6 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTestScene: 0
   levelsName:
+  - sceneName: 1_BiomeCelest_Level
+    sceneGUID: 94d7303145cd12a4b934d3365a52eacf
+  - sceneName: 1_BiomeLave_Level
+    sceneGUID: 26001ac257d7b5a48a4ce06b378c3f86
+  - sceneName: 1_BiomeVent_Level
+    sceneGUID: ca9256da3c5d90f48a0d1d46286a810c
   - sceneName: "1_BiomeMar\xE9cage_Level"
     sceneGUID: 014ef4a7d2a242141889cd251cda9a8c
   main:
@@ -60,7 +66,6 @@ MonoBehaviour:
   rseQuit: {fileID: 11400000, guid: 90f1311fdebe863438f72eb1b20bc54b, type: 2}
   rseFadeIn: {fileID: 11400000, guid: e8f09c3d7c12c8249a196b2d4ad7e139, type: 2}
   rseFadeOut: {fileID: 11400000, guid: 5a17d97eb8556424896f138b2f9da148, type: 2}
-  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseEnablePauseAction: {fileID: 11400000, guid: 90e59a3a0cae41947a5d91e154800b98, type: 2}
   rseDisablePauseAction: {fileID: 11400000, guid: f91385a90ac547d4c9afafffbe8612c7, type: 2}
   rseClearBlobInGame: {fileID: 11400000, guid: 0f87cf7e5d0a9d74fa1851b067bd2177, type: 2}

@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManagement : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] bool joinForTest;
+    //[Header("Settings")]
 
     [Header("References")]
     [SerializeField] PlayerInputManager playerInputManager;
@@ -33,13 +32,12 @@ public class PlayerInputManagement : MonoBehaviour
         rseDisableJoining.action -= playerInputManager.DisableJoining;
     }
 
-    private void Start()
+    private void Update()
     {
-        if(!joinForTest) playerInputManager.DisableJoining();
-        else playerInputManager.EnableJoining();
+        print(playerInputManager.joiningEnabled);
     }
 
-	private void OnPlayerJoined(PlayerInput playerInput)
+    private void OnPlayerJoined(PlayerInput playerInput)
 	{
         if(playerInput.TryGetComponent(out BlobMotor blob))
         {
