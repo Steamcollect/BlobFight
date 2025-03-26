@@ -72,7 +72,7 @@ public class MovingProps : GameProps, IPausable
             if (!isPaused)
             {
                 timer += Time.deltaTime;
-                if (timer > delayBeforeStart - 1)
+                if (timer > Mathf.Max(delayBeforeStart - 1, 0))
                 {
                     warningMovingProps.onWarning.Invoke(true);
                 }
@@ -106,7 +106,7 @@ public class MovingProps : GameProps, IPausable
             if (!isPaused)
             {
                 timer += Time.deltaTime;
-                if(timer > delayAtPoint - 1)
+                if(timer > Mathf.Max(delayAtPoint - 1, 0))
                 {
                     warningMovingProps.onWarning.Invoke(true);
                 }

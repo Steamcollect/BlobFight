@@ -36,7 +36,7 @@ public class SpawnerManager : MonoBehaviour
         if (rsoBlobInGame.Value.Count == 0) return;
         if (rsoSpawnpoints.Value.Count == 0)
         {
-            Debug.LogError("You havnt any spawnpoint in the scene");
+            Debug.LogError("You havent any spawnpoint in the scene");
             return;
         }
 
