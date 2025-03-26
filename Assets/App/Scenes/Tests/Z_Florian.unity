@@ -600,12 +600,12 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 19635731}
   graphics: {fileID: 19635737}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &19635734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2445,13 +2445,13 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 506276431}
   - {fileID: 506276430}
   graphics: {fileID: 506276437}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &506276434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3043,13 +3043,13 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 600629274}
   - {fileID: 600629273}
   graphics: {fileID: 600629280}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &600629277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3523,7 +3523,6 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 742555272}
   - {fileID: 742555271}
@@ -3531,6 +3530,7 @@ MonoBehaviour:
   graphics: {fileID: 742555278}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &742555275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4673,13 +4673,13 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1065896305}
   - {fileID: 1065896304}
   graphics: {fileID: 1065896311}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1065896308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5238,12 +5238,12 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1161249698}
   graphics: {fileID: 1161249704}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1161249701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5893,13 +5893,13 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1236739928}
   - {fileID: 1236739927}
   graphics: {fileID: 1236739934}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1236739931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7679,13 +7679,13 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1617250787}
   - {fileID: 1617250786}
   graphics: {fileID: 1617250793}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1617250790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7965,7 +7965,6 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1635274862}
   - {fileID: 1635274861}
@@ -7973,6 +7972,7 @@ MonoBehaviour:
   graphics: {fileID: 1635274868}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1635274865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8971,13 +8971,13 @@ MonoBehaviour:
   maxHealth: 500
   canTakeDamage: 1
   instantDestroy: 0
-  tempDestroy: 0
   joints:
   - {fileID: 1908714942}
   - {fileID: 1908714941}
   graphics: {fileID: 1908714948}
   initColor: {r: 0, g: 0, b: 0, a: 1}
   endColor: {r: 0.65882355, g: 0.15686275, b: 0.14901961, a: 1}
+  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
 --- !u!114 &1908714945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10284,10 +10284,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: delayBetweenLightning.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: delayBetweenLightning.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: newDelayBetweenLightning.Array.data[0].x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: newDelayBetweenLightning.Array.data[0].y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8906423376991246311, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
