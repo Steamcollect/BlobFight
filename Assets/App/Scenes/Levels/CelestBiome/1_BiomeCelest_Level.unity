@@ -1913,6 +1913,22 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: timeSpeed.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: timeSpeed.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: timeSpeed.Array.data[3]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: timeSpeed.Array.data[4]
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: spawnPoint.Array.data[4]
       value: 
       objectReference: {fileID: 2001219218}
@@ -1932,6 +1948,14 @@ PrefabInstance:
       propertyPath: spawnPoint.Array.data[8]
       value: 
       objectReference: {fileID: 683544082}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: newDelayBetweenLightning.Array.data[0].x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: newDelayBetweenLightning.Array.data[0].y
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4553976894774741503, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.97

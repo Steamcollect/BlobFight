@@ -142,10 +142,12 @@ public class BlobMotor : MonoBehaviour
     public void LockInteraction()
     {
         movement.DeathDisableMovement();
+        physics.Disable();
     }
     void UnlockInteraction()
     {
         movement.DeathEnableMovement();
+        physics.Enable();
     }
 
     public void Spawn(Vector2 position)
