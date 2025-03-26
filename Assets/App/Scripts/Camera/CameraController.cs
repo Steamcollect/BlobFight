@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] float minSize = 5f;
     [SerializeField] float maxSize = 15f;
     [SerializeField] float zoomMultiplier;
+    [SerializeField] bool cameraLock;
 
     [Space(10)]
     [SerializeField] float moveSmoothTime = 0.2f;
@@ -49,7 +50,7 @@ public class CameraController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (rsoBlobInGame.Value.Count <= 1) return;
+        if (rsoBlobInGame.Value.Count <= 1 || cameraLock) return;
 
         Vector2 center = CalculateCenter();
         float distance = CalculateMaxDistance(center);

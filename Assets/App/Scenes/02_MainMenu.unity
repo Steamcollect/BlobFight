@@ -1890,6 +1890,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: cameraLock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: maxBounds.y
       value: 20
       objectReference: {fileID: 0}
