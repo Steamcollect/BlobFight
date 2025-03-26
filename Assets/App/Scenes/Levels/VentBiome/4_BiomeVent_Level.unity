@@ -566,6 +566,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windControl.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2790,11 +2794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2140377547865530996, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 35.807167
+      value: 19.174738
       objectReference: {fileID: 0}
     - target: {fileID: 2140377547865530996, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.2
+      value: -29.5159
       objectReference: {fileID: 0}
     - target: {fileID: 2140377547865530996, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2834,15 +2838,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
-      value: 2000
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: launchType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windControl.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windControl.Array.data[0].time
@@ -2853,7 +2861,15 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[2].time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windControl.Array.data[0].target
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[2].target
       value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8010946453871632358, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
