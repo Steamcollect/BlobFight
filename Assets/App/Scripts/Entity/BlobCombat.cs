@@ -67,6 +67,8 @@ public class BlobCombat : MonoBehaviour
 
         if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
+            print("Parry");
+
             impactVelocity = -blobTouch.GetPhysics().lastVelocity * blobTouchSpeed;
             impactForce = impactVelocity * paryForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
         }
