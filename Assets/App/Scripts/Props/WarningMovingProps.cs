@@ -6,11 +6,13 @@ public class WarningMovingProps : MonoBehaviour
     [SerializeField] bool haveWarning;
     [SerializeField] bool isOnAxeX;
     [SerializeField] float marginPos;
-    bool isVisible = false;
+    //bool isVisible = false;
     [Header("References")]
     private Camera cam;
     [SerializeField] GameObject warning;
     [SerializeField] Transform movable;
+    public Action<bool> onWarning;
+    public bool warningState;
     //[Space(10)]
     // RSO
     // RSF
@@ -18,33 +20,49 @@ public class WarningMovingProps : MonoBehaviour
 
     //[Header("Input")]
     //[Header("Output")]
-
+    private void OnEnable()
+    {
+        onWarning += ActiveWarning;
+    }
+    private void OnDisable()
+    {
+        onWarning -= ActiveWarning;
+    }
     private void Awake()
     {
         cam = Camera.main;
     }
-    private void Start()
-    {
-        if(haveWarning)
-        {
-            UpdateWarning(!Checkisibility());
-        }
+    //private void Start()
+    //{
+    //    if(haveWarning)
+    //    {
+    //        UpdateWarning(!Checkisibility());
+    //    }
 
-    }
+    //}
     private void FixedUpdate()
     {
-        bool visible = Checkisibility();
-        if (haveWarning && visible != isVisible)
+        //bool visible = Checkisibility();
+        
+        if (haveWarning)
         {
-            isVisible = visible;
-           UpdateWarning(!visible);
+            if (warningState)
+            {
+                UpdateWarning(true);
+                warningState = false;
+            }
+            else
+            {
+                UpdateWarning(false);
+            }
+   
         }
     }
-    bool Checkisibility()
-    {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        return GeometryUtility.TestPlanesAABB(planes, new Bounds(movable.position, Vector3.one));
-    }
+    //bool Checkisibility()
+    //{
+    //    Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+    //    return GeometryUtility.TestPlanesAABB(planes, new Bounds(movable.position, Vector3.one));
+    //}
     private void UpdateWarning(bool seeWarning)
     {
         if(seeWarning)
@@ -87,5 +105,9 @@ public class WarningMovingProps : MonoBehaviour
                 warning.transform.position = new Vector3(posX, posY - marginPos, movable.position.z);
             }
         }
+    }
+    private void ActiveWarning(bool warning)
+    {
+        warningState = warning;
     }
 }

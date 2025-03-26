@@ -10,6 +10,7 @@ public class MovingProps : GameProps, IPausable
     int currentPosIndex;
     [SerializeField] float delayBeforeStart;
     [SerializeField] float delayAtPoint;
+    [SerializeField] float delayActiveWarning;
     [SerializeField] List<int> timeSpeed;
     [SerializeField] List<float> newDelayAtPoint;
     [SerializeField] List<float> newMoveSpeed;
@@ -17,6 +18,8 @@ public class MovingProps : GameProps, IPausable
     [Header("References")]
     [SerializeField] Transform movable;
     [SerializeField] Transform[] positions;
+    [Space(20)]
+    [SerializeField] WarningMovingProps warningMovingProps;
 
     [Header("Input")]
     [SerializeField] RSE_OnPause rseOnPause;
@@ -70,9 +73,12 @@ public class MovingProps : GameProps, IPausable
             if (!isPaused)
             {
                 timer += Time.deltaTime;
+                if (timer > delayActiveWarning)
+                {
+                    warningMovingProps.onWarning.Invoke(true);
+                }
             }
         }
-        
         SetNextPos();
     }
     IEnumerator DelayAtPoint()
@@ -101,9 +107,12 @@ public class MovingProps : GameProps, IPausable
             if (!isPaused)
             {
                 timer += Time.deltaTime;
+                if(timer > delayActiveWarning)
+                {
+                    warningMovingProps.onWarning.Invoke(true);
+                }
             }
         }
-
         SetNextPos();
     }
 
