@@ -555,11 +555,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushBackForce: 3
   returnPushBackForce: 0.8
-  extendForceMultiplier: 4
+  extendForceMultiplier: 3
   percentageMultiplier: 1.5
-  speedMultToPushExtendBlob: 0.4
-  parryMaxTime: 0.1
-  paryForceMultiplier: 5
+  speedMultToPushExtendBlob: 0.7
+  parryMaxTime: 0.6
+  paryForceMultiplier: 1
   minSpeedAtImpact: 1000
   trigger: {fileID: 6449519957614820434}
   physics: {fileID: 6321734985548798584}
@@ -1133,13 +1133,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.061725214
     - serializedVersion: 3
-      time: 1
-      value: 0.18
-      inSlope: 0.54737836
-      outSlope: 0.54737836
+      time: 0.7265757
+      value: 0.065629736
+      inSlope: 0.18081455
+      outSlope: 0.18081455
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.042639613
+      inWeight: 0.08261281
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.18
+      inSlope: 0.48172775
+      outSlope: 0.48172775
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0957477
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1168,7 +1177,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxImpactSpeed: 10000000
+  maxImpactSpeed: 32000000
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
   blobTrigger: {fileID: 6449519957614820434}
