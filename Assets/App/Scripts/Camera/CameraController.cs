@@ -40,23 +40,31 @@ public class CameraController : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_CameraShake rseCameraShake;
     [SerializeField] RSE_OnFightEnd rseOnFightEnd;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
 
-    bool lockCam;
+    bool lockCam = true;
 
     private void OnEnable()
     {
         rseCameraShake.action += Shake;
+        rseOnFightStart.action += UnlockCamera;
         rseOnFightEnd.action += LockCamera;
     }
     private void OnDisable()
     {
         rseCameraShake.action -= Shake;
+        rseOnFightStart.action -= UnlockCamera;
         rseOnFightEnd.action -= LockCamera;
     }
 
     private void LockCamera()
     {
         lockCam = true;
+    }
+
+    private void UnlockCamera()
+    {
+        lockCam = false;
     }
 
     private void LateUpdate()

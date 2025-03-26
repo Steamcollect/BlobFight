@@ -61,7 +61,7 @@ public class TransitionLevel : MonoBehaviour
             {
                 rseSpawnPoint.Call();
 
-                if(modeDev)
+                if (modeDev)
                 {
                     Debug.Log("Start");
 
