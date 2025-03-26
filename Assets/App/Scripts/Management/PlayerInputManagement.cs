@@ -36,6 +36,7 @@ public class PlayerInputManagement : MonoBehaviour
     private void Start()
     {
         if(!joinForTest) playerInputManager.DisableJoining();
+        else playerInputManager.EnableJoining();
     }
 
 	private void OnPlayerJoined(PlayerInput playerInput)
