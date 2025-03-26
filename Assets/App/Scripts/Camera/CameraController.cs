@@ -39,18 +39,29 @@ public class CameraController : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] RSE_CameraShake rseCameraShake;
+    [SerializeField] RSE_OnFightEnd rseOnFightEnd;
+
+    bool lockCam;
 
     private void OnEnable()
     {
         rseCameraShake.action += Shake;
+        rseOnFightEnd.action += LockCamera;
     }
     private void OnDisable()
     {
         rseCameraShake.action -= Shake;
+        rseOnFightEnd.action -= LockCamera;
     }
+
+    private void LockCamera()
+    {
+        lockCam = true;
+    }
+
     private void LateUpdate()
     {
-        if (rsoBlobInGame.Value.Count <= 1 || cameraLock) return;
+        if (lockCam || cameraLock) return;
 
         Vector2 center = CalculateCenter();
         float distance = CalculateMaxDistance(center);

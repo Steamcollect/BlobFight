@@ -154,6 +154,7 @@ MonoBehaviour:
   minSize: 13
   maxSize: 16
   zoomMultiplier: 1.1
+  cameraLock: 0
   moveSmoothTime: 0.2
   zoomSmoothTime: 0.2
   centerOffset: {x: 0, y: 0, z: 0}
@@ -164,6 +165,7 @@ MonoBehaviour:
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rsoSettingsSaved: {fileID: 11400000, guid: a857db71988974c48a8700f4999afd19, type: 2}
   rseCameraShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
+  rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
 --- !u!114 &1506636571765898075
 MonoBehaviour:
   m_ObjectHideFlags: 0
