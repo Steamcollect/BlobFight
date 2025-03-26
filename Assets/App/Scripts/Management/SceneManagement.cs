@@ -95,12 +95,9 @@ public class SceneManagement : MonoBehaviour
 
     void TransitionWithFade(bool isMainMenu)
     {
-		if (currentLevel != "")
-		{
-			StartCoroutine(Utils.UnloadSceneAsync(currentLevel));
-		}
+        string previousLevel = currentLevel;
 
-		if (!isMainMenu)
+        if (!isMainMenu)
 		{
 			if (levels.Count <= 0)
 			{
@@ -122,12 +119,17 @@ public class SceneManagement : MonoBehaviour
 			currentLevel = mainMenuName.Name;
 		}
 
-		StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
+        if (previousLevel != "")
+        {
+            StartCoroutine(Utils.UnloadSceneAsync(previousLevel));
+        }
+
+        StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
         {
 			rseEnablePauseAction.Call();
 			isLoading = false;
 		}));
-	}
+    }
     void InstanteTransition(bool isMainMenu)
     {
         if(isMainMenu)

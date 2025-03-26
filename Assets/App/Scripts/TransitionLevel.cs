@@ -57,10 +57,10 @@ public class TransitionLevel : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(-100,0,-10);
 
+            StartCoroutine(Utils.Delay(0.1f, () => rseSpawnPoint.Call()));
+
             gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
             {
-                rseSpawnPoint.Call();
-
                 if (modeDev)
                 {
                     Debug.Log("Start");
