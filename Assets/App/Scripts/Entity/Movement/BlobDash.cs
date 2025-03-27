@@ -62,7 +62,7 @@ public class BlobDash : MonoBehaviour
 
     void Dash()
     {
-        if (!movement.CanMove() || !canDash) return;
+        if (!movement.CanMove() || !canDash || movement.IsExtend()) return;
 
         if (trigger.IsGrounded()
             || trigger.IsSliding()
