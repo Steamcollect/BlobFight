@@ -39,8 +39,9 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [SerializeField] RSE_EnableWindow rseEnableWindow;
     [SerializeField] RSE_DisableWindow rseDisableWindow;
+	[SerializeField] RSE_FadeOut rseFadeOut;
 
-    private void OnEnable()
+	private void OnEnable()
     {
         rseTogglePause.action += TogglePause;
         rseOnGameStart.action += SetStateToGameplay;
@@ -97,9 +98,13 @@ public class GameManager : MonoBehaviour
 
     void SetStateToMainMenu()
     {
-        rseDisableWindow.Call("PausePanel");
-        gameState = GameState.MainMenu;
-    }
+        StartCoroutine(Utils.Delay(1.5f, () =>
+        {
+            rseDisableWindow.Call("PausePanel");
+            gameState = GameState.MainMenu;
+         }));
+
+	}
     void SetStateToGameplay()
     {
         gameState = GameState.Gameplay;

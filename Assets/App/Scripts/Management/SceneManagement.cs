@@ -79,7 +79,10 @@ public class SceneManagement : MonoBehaviour
 
     void ReturnToMainMenu()
     {
-        LoadLevel(true);
+		rseFadeOut.Call(() =>
+		{
+			LoadLevel(true);
+		});
     }
 
     void LoadLevel(bool isMainMenu)

@@ -9,7 +9,7 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private float delayStart;
     [SerializeField] private bool modeDev;
 
-    [Header("Input")]
+	[Header("Input")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_Transit rseTransit;
 
@@ -41,7 +41,7 @@ public class TransitionLevel : MonoBehaviour
         rseOnResume.action -= Resume;
     }
 
-    public void Pause()
+	public void Pause()
     {
         isPaused = true;
     }
@@ -53,9 +53,9 @@ public class TransitionLevel : MonoBehaviour
 
     private void Start()
     {
-        if(doStart)
+        if (doStart)
         {
-            gameObject.transform.position = new Vector3(-100,0,-10);
+            gameObject.transform.position = new Vector3(-100, 0, -10);
 
             StartCoroutine(Utils.Delay(0.1f, () => rseSpawnPoint.Call()));
 

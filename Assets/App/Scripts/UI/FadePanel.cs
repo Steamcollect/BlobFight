@@ -8,8 +8,9 @@ public class FadePanel : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float fadeInDuration;
     [SerializeField] float fadeOutDuration;
+	[SerializeField] bool showFadeIn;
 
-    [Header("References")]
+	[Header("References")]
     [SerializeField] Image circleImage;
     [SerializeField] Image backgroundImage;
 
@@ -41,7 +42,15 @@ public class FadePanel : MonoBehaviour
         circleImage?.rectTransform.DOKill();
     }
 
-    void FadeIn(Action OnEnd = null)
+	private void Start()
+	{
+		if (showFadeIn)
+		{
+			rseFadeIn.Call(null);
+		}
+	}
+
+	void FadeIn(Action OnEnd = null)
     {
         backgroundImage.rectTransform.DOKill();
 

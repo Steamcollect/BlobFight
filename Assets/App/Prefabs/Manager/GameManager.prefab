@@ -58,6 +58,7 @@ MonoBehaviour:
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
+  rseFadeOut: {fileID: 11400000, guid: 5a17d97eb8556424896f138b2f9da148, type: 2}
 --- !u!114 &80043123510570971
 MonoBehaviour:
   m_ObjectHideFlags: 0
