@@ -185,7 +185,7 @@ public class BlobParticle : MonoBehaviour
         particle.gameObject.SetActive(true);
 
         particle.transform.position = position;
-        particle.transform.up = -rotation;
+        particle.transform.up = rotation;
 
         particle.Play();
     }
@@ -196,6 +196,10 @@ public class BlobParticle : MonoBehaviour
         expulseParticle.Play();
     }
     public void DisableExpulseParticle() { expulseParticle.Stop(); }
+    public void SetExpulseParticleRotation(Vector2 rotation)
+    {
+        expulseParticle.transform.up = rotation;
+    }
 
     ParticleCallback CreateParticle(ParticleSystem prefab, Action<ParticleCallback> stopAction)
     {

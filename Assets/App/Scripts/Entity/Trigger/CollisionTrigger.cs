@@ -42,6 +42,13 @@ public class CollisionTrigger : MonoBehaviour
             lastContacts[collision.gameObject] = collision.GetContact(collision.contactCount - 1);
         }
     }
+    protected void OnStayCollision(Collision2D collision)
+    {
+        if (lastContacts.ContainsKey(collision.gameObject))
+        {
+            lastContacts[collision.gameObject] = collision.GetContact(collision.contactCount - 1);
+        }
+    }
     protected void OnExitCollision(Collision2D collision)
     {
         if (lastContacts.TryGetValue(collision.gameObject, out ContactPoint2D lastPoint))

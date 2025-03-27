@@ -109,7 +109,7 @@ public class BlobCombat : MonoBehaviour
         // Set health
         blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
 
-        particle.DoHitParticle(collision.GetContact(0).point, collision.GetContact(0).normal, impactForce.sqrMagnitude);
+        particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         OnHitBlob.Invoke(0);
 
         // Set cooldowns

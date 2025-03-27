@@ -1,6 +1,5 @@
 using DG.Tweening;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlobPhysics : MonoBehaviour, IPausable
@@ -13,6 +12,9 @@ public class BlobPhysics : MonoBehaviour, IPausable
     [SerializeField] Rigidbody2D rb;
     [SerializeField] CircleCollider2D collid;
 
+    [Space(5)]
+    [SerializeField] Transform buttomPos;
+
     // RSO
     // RSF
     // RSP
@@ -22,7 +24,7 @@ public class BlobPhysics : MonoBehaviour, IPausable
 
     [HideInInspector] public Vector2 lastVelocity;
 
-    Action<Collision2D> onCollisionEnter, OnCollisionExit;
+    Action<Collision2D> onCollisionEnter, onCollisionStay, OnCollisionExit;
     public Action onJointsConnected;
 
     public void SetupLayer(LayerMask layerMask)
@@ -96,6 +98,7 @@ public class BlobPhysics : MonoBehaviour, IPausable
     #endregion
 
     #region Collider
+    #region CollisionEnter
     public void AddOnCollisionEnterListener(Action<Collision2D> action)
     {
         onCollisionEnter += action;
@@ -104,6 +107,8 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         onCollisionEnter -= action;
     }
+    #endregion
+    #region CollisionExit
     public void AddOnCollisionExitListener(Action<Collision2D> action)
     {
         OnCollisionExit += action;
@@ -112,6 +117,17 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         OnCollisionExit -= action;
     }
+    #endregion
+    #region CollisionStay
+    public void AddOnCollisionStayListener(Action<Collision2D> action)
+    {
+        onCollisionStay += action;
+    }
+    public void RemoveOnCollisionStayListener(Action<Collision2D> action)
+    {
+        onCollisionStay -= action;
+    }
+    #endregion
 
     public void SetLayerToExlude(LayerMask layerToExclude)
     {
@@ -121,6 +137,10 @@ public class BlobPhysics : MonoBehaviour, IPausable
     private void OnCollisionEnter2D(Collision2D collision)
     {
         onCollisionEnter?.Invoke(collision);
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        onCollisionStay?.Invoke(collision);
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -136,6 +156,11 @@ public class BlobPhysics : MonoBehaviour, IPausable
 
         float smallestAxis = Mathf.Min(normalizedScale.x, normalizedScale.y);
         collid.radius = baseColliderRadius * smallestAxis;
+    }
+
+    public Vector2 GetButtomPosition()
+    {
+        return buttomPos.position;
     }
     #endregion
 
@@ -159,6 +184,6 @@ public class BlobPhysics : MonoBehaviour, IPausable
 
     public void Resume()
     {
-        if(motor.IsAlive()) rb.constraints = RigidbodyConstraints2D.None;
+        if(motor.IsAlive()) rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

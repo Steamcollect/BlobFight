@@ -42,6 +42,7 @@ public class BlobTrigger : CollisionTrigger
     {
         physics.RemoveOnCollisionEnterListener(OnEnterCollision);
         physics.RemoveOnCollisionExitListener(OnExitCollision);
+        physics.RemoveOnCollisionStayListener(OnStayCollision);
 
         OnCollisionEnter -= OnEnter;
         OnCollisionExit -= OnExit;
@@ -55,6 +56,7 @@ public class BlobTrigger : CollisionTrigger
     {
         physics.AddOnCollisionEnterListener(OnEnterCollision);
         physics.AddOnCollisionExitListener(OnExitCollision);
+        physics.AddOnCollisionStayListener(OnStayCollision);
 
         OnCollisionEnter += OnEnter;
         OnCollisionExit += OnExit;

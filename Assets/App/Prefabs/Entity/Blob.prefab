@@ -27,11 +27,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6233008804036170025}
-  m_Father: {fileID: 1228737701814485243}
+  m_Father: {fileID: 5190642175830350477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4617812964555812280
 MonoBehaviour:
@@ -1185,6 +1185,37 @@ MonoBehaviour:
   particle: {fileID: 4617812964555812280}
   percentageEffect: {fileID: 7706814225328905213}
   rseCamShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
+--- !u!1 &4620752509850307575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7034404990517373361}
+  m_Layer: 0
+  m_Name: ButtomPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7034404990517373361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620752509850307575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5190642175830350477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6724505695075795745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1228737701814485243
 Transform:
   m_ObjectHideFlags: 0
@@ -1220,7 +1251,6 @@ Transform:
   - {fileID: 7182060017204364085}
   - {fileID: 5190642175830350477}
   - {fileID: 5753215936194828634}
-  - {fileID: 9190874016585853854}
   - {fileID: 8978287973337524796}
   - {fileID: 6789031250025082759}
   m_Father: {fileID: 6496818755490878508}
@@ -1448,6 +1478,8 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8157001937566509527}
+  - {fileID: 9190874016585853854}
+  - {fileID: 7034404990517373361}
   m_Father: {fileID: 1228737701814485243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6321734985548798584
@@ -1465,6 +1497,7 @@ MonoBehaviour:
   motor: {fileID: 3420423106000584793}
   rb: {fileID: 3386927719614357757}
   collid: {fileID: 1719897261511637580}
+  buttomPos: {fileID: 7034404990517373361}
   lastVelocity: {x: 0, y: 0}
 --- !u!114 &6449519957614820434
 MonoBehaviour:
@@ -1511,7 +1544,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1719897261511637580
 CircleCollider2D:
   m_ObjectHideFlags: 0
