@@ -49,6 +49,12 @@ namespace BT.Save
             rseClear.action -= ClearContent;
         }
 
+        private void Awake()
+        {
+            rsoSettingsSaved.Value = new SettingsSaved();
+            rsoContentSaved.Value = new ContentSaved();
+        }
+
         private void Start()
         {
             if (SaveConfig.SaveMax <= 0 && !SaveConfig.HaveSettings)
