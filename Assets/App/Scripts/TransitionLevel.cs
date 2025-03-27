@@ -63,8 +63,7 @@ public class TransitionLevel : MonoBehaviour
             {
                 if (modeDev)
                 {
-                    Debug.Log("Start");
-
+                    //Debug.Log("Start");
                     rseOnFightStart.Call();
                 }
                 else
