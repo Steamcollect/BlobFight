@@ -40,7 +40,7 @@ public class WarningMovingProps : MonoBehaviour
     //    }
 
     //}
-    private void FixedUpdate()
+    private void Update()
     {
         //bool visible = Checkisibility();
         
@@ -77,26 +77,29 @@ public class WarningMovingProps : MonoBehaviour
     }
     private void SetPositionWarning()
     {
-        Vector3 sceneDimension = cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        Debug.DrawLine(sceneDimension, Vector3.zero,Color.black,1);
+        float camHeight = cam.orthographicSize * 2f;
+        float camWidth = camHeight * cam.aspect;
 
-        float posX = Mathf.Clamp(movable.position.x, cam.transform.position.x - sceneDimension.x, cam.transform.position.x + sceneDimension.x);
-        float posY = Mathf.Clamp(movable.position.y, cam.transform.position.y - sceneDimension.y, cam.transform.position.y + sceneDimension.y);
+        float halfWidth = camWidth / 2f;
+        float halfHeight = camHeight / 2f;
+
+        float posX = Mathf.Clamp(movable.position.x, cam.transform.position.x - halfWidth, cam.transform.position.x + halfWidth);
+        float posY = Mathf.Clamp(movable.position.y, cam.transform.position.y - halfHeight, cam.transform.position.y + halfHeight);
 
         if (isOnAxeX)
         {
-            if(movable.transform.position.x < 0)
+            if (movable.position.x < cam.transform.position.x)
             {
                 warning.transform.position = new Vector3(posX + marginPos, posY, movable.position.z);
-            }
+            }    
             else
             {
                 warning.transform.position = new Vector3(posX - marginPos, posY, movable.position.z);
-            }
+            }     
         }
         else
         {
-            if (movable.transform.position.y < 0)
+            if (movable.position.y < cam.transform.position.y)
             {
                 warning.transform.position = new Vector3(posX, posY + marginPos, movable.position.z);
             }
