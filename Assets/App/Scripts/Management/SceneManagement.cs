@@ -36,6 +36,7 @@ public class SceneManagement : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_FadeIn rseFadeIn;
     [SerializeField] RSE_FadeOut rseFadeOut;
+    [SerializeField] RSE_EnableJoining rseEnableJoining;
 
     [Space(5)]
     [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
@@ -131,7 +132,8 @@ public class SceneManagement : MonoBehaviour
         {
 			rseEnablePauseAction.Call();
 			isLoading = false;
-		}));
+            if(isMainMenu) rseEnableJoining.Call();
+        }));
     }
     void InstanteTransition(bool isMainMenu)
     {

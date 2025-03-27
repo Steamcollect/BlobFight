@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (lockCam || cameraLock) return;
+        if (lockCam || cameraLock || rsoBlobInGame.Value.Count == 0) return;
 
         Vector2 center = CalculateCenter();
         float distance = CalculateMaxDistance(center);

@@ -1734,13 +1734,21 @@ PrefabInstance:
       propertyPath: doStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1506636571765898075, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532893824451167384, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: orthographic size
+      value: 16.449791
+      objectReference: {fileID: 0}
     - target: {fileID: 4666903761734457750, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: cameraLock
