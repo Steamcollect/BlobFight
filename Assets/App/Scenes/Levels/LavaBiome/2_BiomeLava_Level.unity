@@ -2201,12 +2201,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: levelsName.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: levelsName.Array.data[0].sceneGUID
       value: d6f85ddf2ad141f4bbcb489e9e63058e
       objectReference: {fileID: 0}
     - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: levelsName.Array.data[0].sceneName
-      value: 2_BiomeLave_Level
+      value: 2_BiomeLava_Level
       objectReference: {fileID: 0}
     - target: {fileID: 6880067595588563945, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2931,6 +2935,7 @@ MonoBehaviour:
   positions:
   - {fileID: 31206403}
   - {fileID: 1293708128}
+  warningMovingProps: {fileID: 0}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -3301,6 +3306,7 @@ MonoBehaviour:
   positions:
   - {fileID: 1622651518}
   - {fileID: 440870219}
+  warningMovingProps: {fileID: 0}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 0}
@@ -5563,6 +5569,7 @@ MonoBehaviour:
   positions:
   - {fileID: 1452565126}
   - {fileID: 1687339119}
+  warningMovingProps: {fileID: 0}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -5643,6 +5650,7 @@ MonoBehaviour:
   positions:
   - {fileID: 77683110}
   - {fileID: 842602082}
+  warningMovingProps: {fileID: 0}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 0}

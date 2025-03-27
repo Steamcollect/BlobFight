@@ -1741,12 +1741,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
+      propertyPath: levelsName.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: levelsName.Array.data[0].sceneGUID
       value: 26001ac257d7b5a48a4ce06b378c3f86
       objectReference: {fileID: 0}
     - target: {fileID: 6278092047901973275, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: levelsName.Array.data[0].sceneName
-      value: 1_BiomeLave_Level
+      value: 1_BiomeLava_Level
       objectReference: {fileID: 0}
     - target: {fileID: 6880067595588563945, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5106,7 +5110,6 @@ MonoBehaviour:
   moveSpeed: 2
   delayBeforeStart: 5
   delayAtPoint: 5
-  delayActiveWarning: 0
   timeSpeed: 000000000f0000001e0000002d000000
   newDelayAtPoint:
   - 5
