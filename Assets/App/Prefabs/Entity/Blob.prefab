@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posOffset: {x: 1.5, y: 1.5}
-  timeToValid: 1.5
+  timeToValid: 1
   input: {fileID: 8417928549951212344}
   blobPhysics: {fileID: 6321734985548798584}
   wheelImage: {fileID: 8429143397690697996}
