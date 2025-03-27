@@ -34,7 +34,7 @@ public class PlayerInputManagement : MonoBehaviour
 
     private void Update()
     {
-        print(playerInputManager.joiningEnabled);
+        //print(playerInputManager.joiningEnabled);
     }
 
     private void OnPlayerJoined(PlayerInput playerInput)
