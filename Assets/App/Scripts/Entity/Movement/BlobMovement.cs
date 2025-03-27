@@ -101,7 +101,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         if (stunImpactCanMove)
         {
-            particle.SetExpulseParticleRotation(physics.GetVelocity());
+            particle.SetExpulseParticleRotation(physics.GetVelocity().normalized);
         }
     }
 

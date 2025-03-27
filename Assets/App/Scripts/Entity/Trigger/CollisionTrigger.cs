@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Linq;
 
 public class CollisionTrigger : MonoBehaviour
 {
@@ -92,5 +93,10 @@ public class CollisionTrigger : MonoBehaviour
         {
             OnTriggerExit?.Invoke(collider);
         }
+    }
+
+    public ContactPoint2D[] GetAllContacts()
+    {
+        return lastContacts.Values.ToArray();
     }
 }

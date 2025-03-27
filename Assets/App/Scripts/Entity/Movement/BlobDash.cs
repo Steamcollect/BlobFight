@@ -19,9 +19,10 @@ public class BlobDash : MonoBehaviour
 
     [Header("References")]
     [SerializeField] EntityInput input;
-    [SerializeField] BlobPhysics joint;
+    [SerializeField] BlobPhysics physics;
     [SerializeField] BlobTrigger trigger;
     [SerializeField] BlobMovement movement;
+    [SerializeField] BlobParticle particle;
 
     //[Space(10)]
     // RSO
@@ -72,10 +73,16 @@ public class BlobDash : MonoBehaviour
 
         dashCount--;
 
-        StartCoroutine(LockResetDashCount());
+        if (!trigger.IsGrounded() && !trigger.IsSliding())
+            particle.DustDashParticle(physics.GetButtomPosition(), dashInput.normalized);
+        else
+            foreach (var contact in trigger.GetAllContacts())
+                particle.DustParticle(contact.point, contact.normal);
 
-        joint.ResetVelocity();
-        joint.AddForce(dashInput.normalized * dashForce);
+            StartCoroutine(LockResetDashCount());
+
+        physics.ResetVelocity();
+        physics.AddForce(dashInput.normalized * dashForce);
         StartCoroutine(DashCooldown());
 
         movement.RemoveGravity(removeGravityTime);

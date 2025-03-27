@@ -8,11 +8,9 @@ public class BlobParticle : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int touchParticleStartingCount;
     [SerializeField] int hitParticleStartingCount;
+    [SerializeField] int dustDashParticleStartingCount;
 
     [SerializeField] float maxHitSpeed;
-
-    [Space(5)]
-    [SerializeField] Vector2 percentageEffectPosOffset;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -24,6 +22,9 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] ParticleSystem dustParticlePrefab;
     Queue<ParticleCallback> dustParticles = new();
 
+    [SerializeField] ParticleSystem dustDashParticlePrefab;
+    Queue<ParticleCallback> dustDashParticles = new();
+
     [SerializeField] ParticleSystem deathParticlePrefab;
     Queue<ParticleCallback> deathParticles = new();
     
@@ -33,8 +34,6 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] HitParticle[] hitParticles;
 
     [SerializeField] ParticleSystem expulseParticle;
-
-    [SerializeField] BlobPercentageEffect percentageEffectPrefab;
 
     [Serializable]
     class HitParticle
@@ -73,7 +72,7 @@ public class BlobParticle : MonoBehaviour
     private void Start()
     {
         for (int i = 0; i < touchParticleStartingCount; i++)
-            dustParticles.Enqueue(CreateParticle(dustParticlePrefab, OnTouchParticleEnd));
+            dustParticles.Enqueue(CreateParticle(dustParticlePrefab, OnDustParticleEnd));
 
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
 
@@ -103,10 +102,10 @@ public class BlobParticle : MonoBehaviour
         DustParticle(contact.point, contact.normal);
     }
 
-    void DustParticle(Vector2 position, Vector2 direction)
+    public void DustParticle(Vector2 position, Vector2 direction)
     {
         ParticleCallback particle;
-        if (dustParticles.Count <= 0) particle = CreateParticle(dustParticlePrefab, OnTouchParticleEnd);
+        if (dustParticles.Count <= 0) particle = CreateParticle(dustParticlePrefab, OnDustParticleEnd);
         else particle = dustParticles.Dequeue();
 
         particle.gameObject.SetActive(true);
@@ -116,10 +115,29 @@ public class BlobParticle : MonoBehaviour
 
         particle.Play();
     }
-    void OnTouchParticleEnd(ParticleCallback particle)
+    void OnDustParticleEnd(ParticleCallback particle)
     {
         particle.gameObject.SetActive(false);
         dustParticles.Enqueue(particle);
+    }
+
+    public void DustDashParticle(Vector2 position, Vector2 direction)
+    {
+        ParticleCallback particle;
+        if (dustDashParticles.Count <= 0) particle = CreateParticle(dustDashParticlePrefab, OnDustDashParticleEnd);
+        else particle = dustDashParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+
+        particle.transform.position = position;
+        particle.transform.up = direction;
+
+        particle.Play();
+    }
+    void OnDustDashParticleEnd(ParticleCallback particle)
+    {
+        particle.gameObject.SetActive(false);
+        dustDashParticles.Enqueue(particle);
     }
 
     public void DeathParticle(Vector2 position, BlobColor color)

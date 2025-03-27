@@ -47,13 +47,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchParticleStartingCount: 15
   hitParticleStartingCount: 5
+  dustDashParticleStartingCount: 8
   maxHitSpeed: 100000000
-  percentageEffectPosOffset: {x: 0, y: 2}
   motor: {fileID: 3420423106000584793}
   physics: {fileID: 6321734985548798584}
   trigger: {fileID: 6449519957614820434}
   health: {fileID: 5355027135910952395}
   dustParticlePrefab: {fileID: 4007821960139497423, guid: 706ac656d52bbe1499467459604fd34d, type: 3}
+  dustDashParticlePrefab: {fileID: 4007821960139497423, guid: c65029a34c35c1f4fad08b2baa04c4ff, type: 3}
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
   destroyParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
   hitParticles:
@@ -66,7 +67,6 @@ MonoBehaviour:
   - particlePrefab: {fileID: 7291753846233562658, guid: 5ee85dea0df985c4b93b720b4fe19f51, type: 3}
     hitStrenght: 100
   expulseParticle: {fileID: 5425739583313106901}
-  percentageEffectPrefab: {fileID: 0}
 --- !u!1 &871332911037382281
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,9 +334,10 @@ MonoBehaviour:
   removeGravityTime: 0.1
   maxDashCount: 2
   input: {fileID: 8417928549951212344}
-  joint: {fileID: 6321734985548798584}
+  physics: {fileID: 6321734985548798584}
   trigger: {fileID: 6449519957614820434}
   movement: {fileID: 2542050320697814845}
+  particle: {fileID: 4617812964555812280}
 --- !u!1 &1561271271718153126
 GameObject:
   m_ObjectHideFlags: 0
