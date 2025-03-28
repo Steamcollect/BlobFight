@@ -44,11 +44,13 @@ public class TransitionLevel : MonoBehaviour
 	public void Pause()
     {
         isPaused = true;
+        gameObject.transform.DOPause();
     }
 
     public void Resume()
     {
         isPaused = false;
+        gameObject.transform.DOPlay();
     }
 
     private void Start()
@@ -107,7 +109,18 @@ public class TransitionLevel : MonoBehaviour
 
     private IEnumerator Delay()
     {
-        yield return new WaitForSeconds(0.5f);
+        float cooldown = 0.5f;
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
 
         if (doStart)
         {
