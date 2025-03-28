@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using TMPro;
 
-public class InteractiveButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class InteractiveButton : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] float selectionPunchForce;
@@ -31,30 +31,7 @@ public class InteractiveButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
     //[Header("Input")]
     //[Header("Output")]
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        OnSelected();
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        OnDeselected();
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        OnSelected();
-    }
-    public void OnDeselect(BaseEventData eventData)
-    {
-        OnDeselected();
-    }
-
-    void Start()
-    {
-        text.color = initColor;
-    }
-
-    void OnSelected()
+    public void OnSelected()
     {
         interactiveContent.DOKill();
         interactiveContent.rotation = Quaternion.identity;
@@ -65,7 +42,7 @@ public class InteractiveButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         text.DOKill();
         text.DOColor(hoverColor, hoverideScaleTime);
     }
-    void OnDeselected()
+    public void OnDeselected()
     {
         interactiveContent.DOKill();
         interactiveContent.rotation = Quaternion.identity;

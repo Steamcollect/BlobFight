@@ -23,7 +23,7 @@ public class ButtonNavigationGamepad : MonoBehaviour
         if (Gamepad.current != null)
         {
             defaultButton.Select();
-            defaultButton.GetComponent<InteractiveButton>()?.OnSelect(null);
+            defaultButton.GetComponent<InteractiveButton>()?.OnSelected();
         }
     }
 }
