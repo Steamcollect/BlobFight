@@ -81,12 +81,14 @@ public class BlobHealth : EntityHealth, IPausable
                 
                 case Damagable.DamageType.Kill:
                     rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+                    rSE_CallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
                     Die();
                     break;
                 
                 case Damagable.DamageType.Destroy:
                     if (isDead) return;
                     rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+                    rSE_CallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
                     Destroy(collision);
                     break;
             }

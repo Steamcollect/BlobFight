@@ -13,7 +13,7 @@ public class HideDev : MonoBehaviour
         if (!SceneManager.GetSceneByName(main.Name).isLoaded)
         {
             content.SetActive(true);
-            rseOnGameStart.Call();
+            StartCoroutine(Utils.Delay(0.1f, () => rseOnGameStart.Call()));
         }
     }
 }

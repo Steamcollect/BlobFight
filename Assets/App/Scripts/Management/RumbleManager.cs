@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class RumbleManager : MonoBehaviour
 {
     [Header("Settings")]
@@ -11,6 +12,7 @@ public class RumbleManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] RSE_CallRumble rSE_CallRumble;
+    [SerializeField] RSE_OnGameStart rseOnGameStart;
     [Space(10)]
     // RSO
     [SerializeField] RSO_BlobInGame RSO_BlobInGame;
@@ -19,33 +21,41 @@ public class RumbleManager : MonoBehaviour
 
     //[Header("Input")]
     //[Header("Output")]
+
+    private List<int> listindex = new();
+
     private void OnEnable()
     {
         rSE_CallRumble.action += RumbleController;
+        rseOnGameStart.action += Init;
     }
     private void OnDisable()
     {
         rSE_CallRumble.action -= RumbleController;
+        rseOnGameStart.action -= Init;
     }
+
+    private void Init()
+    {
+        for (int i = 0; i < RSO_BlobInGame.Value.Count; i++) 
+        {
+            listindex.Add(i);
+        }
+    }
+
     private void RumbleController(int index, string currentSche)
     {
-        if(currentSche == "Controller")
+        if (currentSche == "Controller")
         {
             var devices = InputSystem.devices;
 
             foreach (var device in devices)
             {
-                if (device is Gamepad pad)
+                if (device is Gamepad pad && index == listindex[index])
                 {
-					foreach (var blob in RSO_BlobInGame.Value)
-					{
-                        /*if (blob.GetComponent<PlayerInput>(). == pad)
-						{
-							pad.SetMotorSpeeds(lowRumbleForce, highRumbleForce);
-							StartCoroutine(DelayRumble(rumbleDuration, pad));
-						}*/
-					}
-				}
+                    pad.SetMotorSpeeds(lowRumbleForce, highRumbleForce);
+                    StartCoroutine(DelayRumble(rumbleDuration, pad));
+                }
             }
         }
     }
