@@ -10,43 +10,52 @@ public class TimeManager : MonoBehaviour
     [Header("Input")]
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
 
-    private int totalSecondesGame;
-    private int totalSecondesParty;
-
-    private Coroutine timerParty;
+    bool isPaused = false;
+    private int totalSecondesGame = 0;
+    private int totalSecondesParty = 0;
+    private Coroutine timerPartyCoroutine = null;
 
     private void OnEnable()
     {
         rseOnFightStart.action += StartTimerParty;
         rseOnFightEnd.action += StopTimerParty;
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
     }
 
     private void OnDisable()
     {
         rseOnFightStart.action -= StartTimerParty;
         rseOnFightEnd.action -= StopTimerParty;
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
     }
 
-    void Start()
+    private void Start()
     {
-        totalSecondesGame = 0;
-        totalSecondesParty = 0;
-
         rsoTimerGame.Value = totalSecondesGame;
         rsoTimerParty.Value = totalSecondesParty;
 
-        StartCoroutine(TimerGame());
+        InvokeRepeating(nameof(IncrementGameTimer), 1f, 1f);
     }
 
-    IEnumerator TimerGame()
+    public void Pause()
     {
-        yield return new WaitForSeconds(1);
+        isPaused = true;
+    }
 
-        totalSecondesGame++;
+    public void Resume()
+    {
+        isPaused = false;
+    }
+
+    private void IncrementGameTimer()
+    {
+        totalSecondesGame += 1;
         rsoTimerGame.Value = totalSecondesGame;
-
-        StartCoroutine(TimerGame());
     }
 
     private void StartTimerParty()
@@ -54,33 +63,44 @@ public class TimeManager : MonoBehaviour
         totalSecondesParty = 0;
         rsoTimerParty.Value = totalSecondesParty;
 
-        if (timerParty != null)
+        if (timerPartyCoroutine != null)
         {
-            StopCoroutine(timerParty);
-            timerParty = null;
+            StopCoroutine(timerPartyCoroutine);
+            timerPartyCoroutine = null;
         }
 
-        timerParty = StartCoroutine(TimerParty());
+        timerPartyCoroutine = StartCoroutine(IncrementTimerParty());
     }
 
     private void StopTimerParty()
     {
         totalSecondesParty = 0;
 
-        if (timerParty != null)
+        if (timerPartyCoroutine != null)
         {
-            StopCoroutine(timerParty);
-            timerParty = null;
+            StopCoroutine(timerPartyCoroutine);
+            timerPartyCoroutine = null;
         }
     }
 
-    IEnumerator TimerParty()
+    private IEnumerator IncrementTimerParty()
     {
-        yield return new WaitForSeconds(1);
+        float cooldown = 1;
+        float timer = 0f;
 
-        totalSecondesParty++;
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+
+        totalSecondesParty += 1;
         rsoTimerParty.Value = totalSecondesParty;
 
-        timerParty = StartCoroutine(TimerParty());
+        timerPartyCoroutine = StartCoroutine(IncrementTimerParty());
     }
 }

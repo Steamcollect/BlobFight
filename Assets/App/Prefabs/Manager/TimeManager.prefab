@@ -48,3 +48,5 @@ MonoBehaviour:
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
