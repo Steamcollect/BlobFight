@@ -29,7 +29,6 @@ public class RumbleManager : MonoBehaviour
     }
     private void RumbleController(int index, string currentSche)
     {
-
         if(currentSche == "Controller")
         {
             var devices = InputSystem.devices;
@@ -38,12 +37,17 @@ public class RumbleManager : MonoBehaviour
             {
                 if (device is Gamepad pad)
                 {
-                    pad.SetMotorSpeeds(lowRumbleForce, highRumbleForce);
-                    StartCoroutine(DelayRumble(rumbleDuration, pad));
-                }
+					foreach (var blob in RSO_BlobInGame.Value)
+					{
+                        /*if (blob.GetComponent<PlayerInput>(). == pad)
+						{
+							pad.SetMotorSpeeds(lowRumbleForce, highRumbleForce);
+							StartCoroutine(DelayRumble(rumbleDuration, pad));
+						}*/
+					}
+				}
             }
         }
-        
     }
     IEnumerator DelayRumble(float duration, Gamepad pad)
     {
