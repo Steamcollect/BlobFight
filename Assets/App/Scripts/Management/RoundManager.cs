@@ -17,6 +17,7 @@ public class RoundManager : MonoBehaviour
     [Header("Input")]
     [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
     [SerializeField] RSE_OnFightStart rseOnFightStart;
+    [SerializeField] private RSE_Message rseMessage;
 
     [Header("Output")]
     [SerializeField] RSE_OnFightEnd rseOnFightEnd;
@@ -47,16 +48,18 @@ public class RoundManager : MonoBehaviour
             if (modeDev)
             {
                 rseOnFightEnd.Call();
+                rseMessage.Call("Blob ??? Win!", 1f, Color.black);
             }
             else if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
-
                 rseOnFightEnd.Call();
+                rseMessage.Call($"Blob {blobs[0].GetColor().nameColor} Win!", 1f, blobs[0].GetColor().fillColor);
             }
             else if (blobs.Count < 1)
             {
                 rseOnFightEnd.Call();
+                rseMessage.Call("Blob ??? Win!", 1f, Color.black);
             }
         }
     }

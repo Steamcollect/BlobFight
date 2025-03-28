@@ -18,6 +18,7 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_FadeIn rseFadeIn;
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
+    [SerializeField] private RSE_Message rseMessage;
 
     [Header("Input")]
     [SerializeField] RSE_OnPause rseOnPause;
@@ -65,7 +66,7 @@ public class TransitionLevel : MonoBehaviour
             {
                 if (modeDev)
                 {
-                    //Debug.Log("Start");
+                    rseMessage.Call("START!", 0.5f, Color.black);
                     rseOnFightStart.Call();
                 }
                 else
@@ -85,7 +86,7 @@ public class TransitionLevel : MonoBehaviour
         float cooldown = delayStart;
         float timer = 0f;
 
-        Debug.Log($"Wait: {delayStart}s");
+        rseMessage.Call("READY?", 0.5f, Color.black);
 
         while (timer < cooldown)
         {
@@ -97,7 +98,7 @@ public class TransitionLevel : MonoBehaviour
             }
         }
 
-        Debug.Log("Start");
+        rseMessage.Call("START!", 0.5f, Color.black);
 
         rseOnFightStart.Call();
     }
@@ -109,7 +110,7 @@ public class TransitionLevel : MonoBehaviour
 
     private IEnumerator Delay()
     {
-        float cooldown = 0.5f;
+        float cooldown = 1.5f;
         float timer = 0f;
 
         while (timer < cooldown)

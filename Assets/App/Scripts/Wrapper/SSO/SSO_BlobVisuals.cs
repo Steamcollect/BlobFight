@@ -37,4 +37,5 @@ public struct BlobColor
 {
     public Color fillColor, outlineColor;
     public bool autoSetOutlineColor;
+    public string nameColor;
 }
