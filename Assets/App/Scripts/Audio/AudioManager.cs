@@ -21,14 +21,24 @@ public class AudioManager : MonoBehaviour
 
     [Header("Output")][SerializeField] RSE_PlayClipAt rsePlayClipAt;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
+
+    bool isPaused = false;
+
     private void OnEnable()
     {
         rsePlayClipAt.action += PlayClipAt;
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
     }
 
     private void OnDisable()
     {
         rsePlayClipAt.action -= PlayClipAt;
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
     }
 
     private void Start()
@@ -40,6 +50,16 @@ public class AudioManager : MonoBehaviour
         {
             _soundsGo.Enqueue(CreateSoundsGo());
         }
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+    }
+
+    public void Resume()
+    {
+        isPaused = false;
     }
 
     /// <summary>
@@ -68,7 +88,31 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator AddAudioSourceToQueue(AudioSource current)
     {
-        yield return new WaitForSeconds(current.clip.length);
+        float cooldown = current.clip.length;
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if (!isPaused)
+            {
+                timer += Time.deltaTime;
+
+                if (!current.isPlaying)
+                {
+                    current.UnPause();
+                }
+            }
+            else
+            {
+                if (current.isPlaying)
+                {
+                    current.Pause();
+                }
+            }
+        }
+
         _soundsGo.Enqueue(current);
     }
 

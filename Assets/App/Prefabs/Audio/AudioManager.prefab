@@ -50,6 +50,8 @@ MonoBehaviour:
   soundMixerGroup: {fileID: -557349572666451718, guid: 2627c2080fb0a2b488ae734d16cc292e, type: 2}
   startingAudioObjectsCount: 30
   rsePlayClipAt: {fileID: 11400000, guid: eb8f82a3b87a0d64caa32d0e95498bf3, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!114 &9126565655459505062
 MonoBehaviour:
   m_ObjectHideFlags: 0
