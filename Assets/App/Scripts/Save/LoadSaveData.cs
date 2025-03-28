@@ -51,8 +51,8 @@ namespace BT.Save
 
         private void Awake()
         {
-            rsoSettingsSaved.Value = new SettingsSaved();
-            rsoContentSaved.Value = new ContentSaved();
+            rsoSettingsSaved.Value = new();
+            rsoContentSaved.Value = new();
         }
 
         private void Start()
