@@ -20,16 +20,22 @@ public class AudioManager : MonoBehaviour
     private int startingAudioObjectsCount = 30;
 
     [Header("Output")][SerializeField] RSE_PlayClipAt rsePlayClipAt;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
+    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
 
     [Header("Input")]
     [SerializeField] RSE_OnPause rseOnPause;
     [SerializeField] RSE_OnResume rseOnResume;
 
+    private List<AudioSource> audios = new();
     bool isPaused = false;
+    bool isFinish;
 
     private void OnEnable()
     {
         rsePlayClipAt.action += PlayClipAt;
+        rseOnFightStart.action += Init;
+        rseLoadNextLevel.action += Clear;
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
@@ -37,6 +43,8 @@ public class AudioManager : MonoBehaviour
     private void OnDisable()
     {
         rsePlayClipAt.action -= PlayClipAt;
+        rseOnFightStart.action -= Init;
+        rseLoadNextLevel.action -= Clear;
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
@@ -49,6 +57,20 @@ public class AudioManager : MonoBehaviour
         for (int i = 0; i < startingAudioObjectsCount; i++)
         {
             _soundsGo.Enqueue(CreateSoundsGo());
+        }
+    }
+
+    private void Init()
+    {
+        isFinish = false;
+    }
+
+    private void Clear()
+    {
+        foreach(AudioSource audio in audios)
+        {
+            audio.Stop();
+            isFinish = true;
         }
     }
 
@@ -69,21 +91,24 @@ public class AudioManager : MonoBehaviour
     /// <param name="position"></param>
     void PlayClipAt(Sound sound, Vector3 position)
     {
-        AudioSource tmpAudioSource;
-        if (_soundsGo.Count <= 0) tmpAudioSource = CreateSoundsGo();
-        else tmpAudioSource = _soundsGo.Dequeue();
+        if(!isFinish)
+        {
+            AudioSource tmpAudioSource;
+            if (_soundsGo.Count <= 0) tmpAudioSource = CreateSoundsGo();
+            else tmpAudioSource = _soundsGo.Dequeue();
 
-        tmpAudioSource.transform.position = position;
-
-
-        float volumeMultiplier = Mathf.Clamp(sound.volumeMultiplier, 0, 1);
-        tmpAudioSource.volume = volumeMultiplier;
-        tmpAudioSource.spatialBlend = sound.spatialBlend;
+            tmpAudioSource.transform.position = position;
 
 
-        tmpAudioSource.clip = sound.clips.GetRandom();
-        tmpAudioSource.Play();
-        StartCoroutine(AddAudioSourceToQueue(tmpAudioSource));
+            float volumeMultiplier = Mathf.Clamp(sound.volumeMultiplier, 0, 1);
+            tmpAudioSource.volume = volumeMultiplier;
+            tmpAudioSource.spatialBlend = sound.spatialBlend;
+
+
+            tmpAudioSource.clip = sound.clips.GetRandom();
+            tmpAudioSource.Play();
+            StartCoroutine(AddAudioSourceToQueue(tmpAudioSource));
+        }
     }
 
     private IEnumerator AddAudioSourceToQueue(AudioSource current)
@@ -99,7 +124,7 @@ public class AudioManager : MonoBehaviour
             {
                 timer += Time.deltaTime;
 
-                if (!current.isPlaying)
+                if (!current.isPlaying && !isFinish)
                 {
                     current.UnPause();
                 }
@@ -121,6 +146,7 @@ public class AudioManager : MonoBehaviour
         AudioSource tmpAudioSource = new GameObject("Audio Go").AddComponent<AudioSource>();
         tmpAudioSource.transform.SetParent(_soundParent);
         tmpAudioSource.outputAudioMixerGroup = soundMixerGroup;
+        audios.Add(tmpAudioSource);
         return tmpAudioSource;
     }
 
@@ -132,7 +158,6 @@ public class AudioManager : MonoBehaviour
             audioSource.volume = playlist.volumMultiplier;
             audioSource.loop = playlist.isLooping;
             audioSource.outputAudioMixerGroup = musicMixerGroup;
-
             audioSource.clip = playlist.clip;
             audioSource.Play();
         }
