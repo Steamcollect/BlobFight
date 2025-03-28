@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] RSE_UpdateCrownVisual rseUpdateCrownVisual;
     [SerializeField] RSO_BlobInGame rsoBlobInGame;
 
-    private readonly SerializableDictionary<BlobMotor, int> scoreDictionary = new();
+    private SerializableDictionary<BlobMotor, int> scoreDictionary = new();
 
     private void OnEnable()
     {
