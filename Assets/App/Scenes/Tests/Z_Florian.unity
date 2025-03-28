@@ -6332,7 +6332,6 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 14711545}
   movable: {fileID: 492537053}
-  warningState: 0
 --- !u!1001 &1281466038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9973,7 +9972,6 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 82578505}
   movable: {fileID: 1577317535}
-  warningState: 0
 --- !u!1 &2080386779
 GameObject:
   m_ObjectHideFlags: 0

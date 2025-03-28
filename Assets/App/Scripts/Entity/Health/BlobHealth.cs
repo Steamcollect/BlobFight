@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BlobHealth : EntityHealth, IPausable
 {
@@ -18,10 +19,11 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] BlobTrigger blobTrigger;
     [SerializeField] BlobMovement blobMovement;
     [SerializeField] BlobParticle particle;
+    [SerializeField] PlayerInput playerInput;
 
     [Space(10)]
     [SerializeField] BlobPercentageEffect percentageEffect;
-
+    [SerializeField] RSE_CallRumble rSE_CallRumble;
     //[Space(10)]
     // RSO
     // RSF
@@ -43,6 +45,7 @@ public class BlobHealth : EntityHealth, IPausable
     {
         Setup();
         Invoke("LateStart", .05f);
+        
     }
     void LateStart()
     {
@@ -63,6 +66,7 @@ public class BlobHealth : EntityHealth, IPausable
     {
         pushBackPercentage = 0;
         rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
+        rSE_CallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
     }
 
     void OnEnterCollision(Collision2D collision)
