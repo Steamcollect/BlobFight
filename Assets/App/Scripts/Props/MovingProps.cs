@@ -117,12 +117,14 @@ public class MovingProps : GameProps, IPausable
 
     void SetNextPos()
     {
-        currentPosIndex = (currentPosIndex + 1) % positions.Length;
+		movable.gameObject.SetActive(true);
+		currentPosIndex = (currentPosIndex + 1) % positions.Length;
         float moveTime = Vector2.Distance(movable.position, positions[currentPosIndex].position) / moveSpeed;
-        movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
+		movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
         {
             StartCoroutine(DelayAtPoint());
-        });
+			movable.gameObject.SetActive(false);
+		});
     }
 
     private void OnDestroy()

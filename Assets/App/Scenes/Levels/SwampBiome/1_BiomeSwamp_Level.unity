@@ -172,7 +172,6 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 630991536}
   movable: {fileID: 164145792}
-  warningState: 0
 --- !u!1001 &57449450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -553,7 +552,6 @@ MonoBehaviour:
   marginPos: 2
   warning: {fileID: 1479475404}
   movable: {fileID: 1094495020}
-  warningState: 0
 --- !u!1 &164145791
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &164145792
 Transform:
   m_ObjectHideFlags: 0
@@ -3459,7 +3457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1094495020
 Transform:
   m_ObjectHideFlags: 0

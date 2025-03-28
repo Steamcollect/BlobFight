@@ -40,7 +40,7 @@ public class WarningMovingProps : MonoBehaviour
             {
                 UpdateWarning(true);
                 warningState = false;
-            }
+			}
             else
             {
                 UpdateWarning(false);
