@@ -54,19 +54,16 @@ MonoBehaviour:
     sceneGUID: ca9256da3c5d90f48a0d1d46286a810c
   - sceneName: "1_BiomeMar\xE9cage_Level"
     sceneGUID: 014ef4a7d2a242141889cd251cda9a8c
-  main:
+  mainMain:
     sceneName: 01_Game
     sceneGUID: 7b33a7ace39394043b01074ed383fe48
   mainMenuName:
     sceneName: 02_MainMenu
     sceneGUID: 542457f72f77e1642be309e1c41a0dc5
-  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
   rseReturnToMainMenu: {fileID: 11400000, guid: 6197bf0e98fb7d24f8073ae8690275b7, type: 2}
   rseQuit: {fileID: 11400000, guid: 90f1311fdebe863438f72eb1b20bc54b, type: 2}
-  rseFadeIn: {fileID: 11400000, guid: e8f09c3d7c12c8249a196b2d4ad7e139, type: 2}
   rseFadeOut: {fileID: 11400000, guid: 5a17d97eb8556424896f138b2f9da148, type: 2}
   rseEnableJoining: {fileID: 11400000, guid: 3747a78eb82a5c24195bd4cd1519702c, type: 2}
-  rseEnablePauseAction: {fileID: 11400000, guid: 90e59a3a0cae41947a5d91e154800b98, type: 2}
-  rseDisablePauseAction: {fileID: 11400000, guid: f91385a90ac547d4c9afafffbe8612c7, type: 2}
   rseClearBlobInGame: {fileID: 11400000, guid: 0f87cf7e5d0a9d74fa1851b067bd2177, type: 2}
+  rseTogglePause: {fileID: 11400000, guid: 56dbc203358bab942a372845a2e91b4c, type: 2}

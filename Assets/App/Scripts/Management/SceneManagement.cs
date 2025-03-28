@@ -1,49 +1,31 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameManager;
 
 public class SceneManagement : MonoBehaviour
 {
     [Header("Settings")]
-
-    [SerializeField] bool isTestScene = false;
-
-    [Space(10)]
-
-    [SerializeField] SceneReference[] levelsName;
-
-    List<string> levels = new();
-    [SerializeField] SceneReference main;
-    [SerializeField] SceneReference mainMenuName;
-
-    string currentLevel = "";
-
-    bool isLoading = false;
-
-    [Header("References")]
-
-    //[Space(10)]
-    // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    // RSF
-    // RSP
+    [SerializeField] private bool isTestScene;
+    [SerializeField] private SceneReference[] levelsName;
+    [SerializeField] private SceneReference mainMain;
+    [SerializeField] private SceneReference mainMenuName;
 
     [Header("Input")]
-    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
-    [SerializeField] RSE_ReturnToMainMenu rseReturnToMainMenu;
-    [SerializeField] RSE_Quit rseQuit;
+    [SerializeField] private RSE_LoadNextLevel rseLoadNextLevel;
+    [SerializeField] private RSE_ReturnToMainMenu rseReturnToMainMenu;
+    [SerializeField] private RSE_Quit rseQuit;
 
     [Header("Output")]
-    [SerializeField] RSE_FadeIn rseFadeIn;
-    [SerializeField] RSE_FadeOut rseFadeOut;
-    [SerializeField] RSE_EnableJoining rseEnableJoining;
+    [SerializeField] private RSE_FadeOut rseFadeOut;
+    [SerializeField] private RSE_EnableJoining rseEnableJoining;
+    [SerializeField] private RSE_ClearBlobInGame rseClearBlobInGame;
+    [SerializeField] private RSE_TogglePause rseTogglePause;
 
-    [Space(5)]
-    [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
-    [SerializeField] RSE_DisablePauseAction rseDisablePauseAction;
-
-    [Space(5)]
-    [SerializeField] RSE_ClearBlobInGame rseClearBlobInGame;
+    private List<string> levels = new();
+    private string currentLevel = "";
+    private bool isLoading = false;
 
     private void OnEnable()
     {
@@ -51,6 +33,7 @@ public class SceneManagement : MonoBehaviour
         rseReturnToMainMenu.action += ReturnToMainMenu;
         rseQuit.action += QuitGame;
     }
+
     private void OnDisable()
     {
         rseLoadNextLevel.action -= LoadNextLevelRandomly;
@@ -60,7 +43,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Start()
     {
-        if(!isTestScene)
+        if (!isTestScene)
         {
             StartCoroutine(Utils.LoadSceneAsync(mainMenuName.Name, LoadSceneMode.Additive));
             currentLevel = mainMenuName.Name;
@@ -68,17 +51,16 @@ public class SceneManagement : MonoBehaviour
         else
         {
             currentLevel = SceneManager.GetActiveScene().name;
-            rseEnablePauseAction.Call();
             isLoading = false;
         }
     }
 
-    void LoadNextLevelRandomly()
+    private void LoadNextLevelRandomly()
     {
         LoadLevel(false);
     }
 
-    void ReturnToMainMenu()
+    private void ReturnToMainMenu()
     {
 		rseFadeOut.Call(() =>
 		{
@@ -86,72 +68,84 @@ public class SceneManagement : MonoBehaviour
 		});
     }
 
-    void LoadLevel(bool isMainMenu)
+    private void QuitGame()
+    {
+        rseFadeOut.Call(() =>
+        {
+            Application.Quit();
+        });
+    }
+
+    private void LoadLevel(bool isMainMenu)
     {
         if (isLoading) return;
 
-        rseDisablePauseAction.Call();
         isLoading = true;
 
-        if (!isTestScene) TransitionWithFade(isMainMenu);
-        else InstanteTransition(isMainMenu);
+        if (!isTestScene)
+        {
+            Transition(isMainMenu);
+        }
+        else
+        {
+            InstanteTransition(isMainMenu);
+        }
     }
 
-    void TransitionWithFade(bool isMainMenu)
+    private string GetRandomLevel()
+    {
+        if (levels.Count == 0)
+        {
+            levels.AddRange(levelsName.Select(level => level.Name));
+        }
+
+        int index = Random.Range(0, levels.Count);
+        string selectedLevel = levels[index];
+        levels.RemoveAt(index);
+
+        return selectedLevel;
+    }
+
+    private void Transition(bool isMainMenu)
     {
         string previousLevel = currentLevel;
 
         if (!isMainMenu)
 		{
-			if (levels.Count <= 0)
-			{
-				foreach (var item in levelsName)
-				{
-					levels.Add(item.Name);
-				}
-			}
-
-			int rnd = Random.Range(0, levels.Count);
-
-			currentLevel = levels[rnd];
-
-			levels.RemoveAt(rnd);
+            currentLevel = GetRandomLevel();
 		}
 		else
 		{
 			rseClearBlobInGame.Call();
 			currentLevel = mainMenuName.Name;
-		}
+            rseTogglePause.Call();
+        }
 
-        if (previousLevel != "")
+        if (!string.IsNullOrEmpty(previousLevel))
         {
             StartCoroutine(Utils.UnloadSceneAsync(previousLevel));
         }
 
         StartCoroutine(Utils.LoadSceneAsync(currentLevel, LoadSceneMode.Additive, () =>
         {
-			rseEnablePauseAction.Call();
 			isLoading = false;
-            if(isMainMenu) rseEnableJoining.Call();
+
+            if (isMainMenu)
+            {
+                rseEnableJoining.Call();
+            }
         }));
     }
-    void InstanteTransition(bool isMainMenu)
+
+    private void InstanteTransition(bool isMainMenu)
     {
-        if(isMainMenu)
+        if (isMainMenu)
         {
-            SceneManager.LoadScene(main.Name);
+            SceneManager.LoadScene(mainMain.Name);
         }
         else
         {
             SceneManager.LoadScene(currentLevel);
         }
-    }
-
-    void QuitGame()
-    {
-        rseFadeOut.Call(() =>
-        {
-            Application.Quit();
-        });
     }
 }

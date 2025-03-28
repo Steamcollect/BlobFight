@@ -3,21 +3,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManagement : MonoBehaviour
 {
-    //[Header("Settings")]
-
     [Header("References")]
-    [SerializeField] PlayerInputManager playerInputManager;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [SerializeField] private PlayerInputManager playerInputManager;
 
     [Header("Input")]
-    [SerializeField] RSE_EnableJoining rseEnableJoining;
-    [SerializeField] RSE_DisableJoining rseDisableJoining;
-
-	//[Header("Output")]
+    [SerializeField] private RSE_EnableJoining rseEnableJoining;
+    [SerializeField] private RSE_DisableJoining rseDisableJoining;
 
 	private void OnEnable()
     {
@@ -25,6 +16,7 @@ public class PlayerInputManagement : MonoBehaviour
 		rseEnableJoining.action += playerInputManager.EnableJoining;
         rseDisableJoining.action += playerInputManager.DisableJoining;
     }
+
     private void OnDisable()
     {
 		playerInputManager.onPlayerJoined -= OnPlayerJoined;
@@ -32,16 +24,8 @@ public class PlayerInputManagement : MonoBehaviour
         rseDisableJoining.action -= playerInputManager.DisableJoining;
     }
 
-    private void Update()
-    {
-        //print(playerInputManager.joiningEnabled);
-    }
-
     private void OnPlayerJoined(PlayerInput playerInput)
 	{
-        if(playerInput.TryGetComponent(out BlobMotor blob))
-        {
-            blob.OnJoined();
-        }
-	}
+        playerInput.GetComponent<BlobMotor>()?.OnJoined();
+    }
 }
