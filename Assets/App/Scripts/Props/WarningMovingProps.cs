@@ -12,7 +12,7 @@ public class WarningMovingProps : MonoBehaviour
     [SerializeField] GameObject warning;
     [SerializeField] Transform movable;
     public Action<bool> onWarning;
-    public bool warningState;
+    private bool warningState;
     //[Space(10)]
     // RSO
     // RSF
@@ -32,18 +32,8 @@ public class WarningMovingProps : MonoBehaviour
     {
         cam = Camera.main;
     }
-    //private void Start()
-    //{
-    //    if(haveWarning)
-    //    {
-    //        UpdateWarning(!Checkisibility());
-    //    }
-
-    //}
     private void Update()
     {
-        //bool visible = Checkisibility();
-        
         if (haveWarning)
         {
             if (warningState)
@@ -55,14 +45,8 @@ public class WarningMovingProps : MonoBehaviour
             {
                 UpdateWarning(false);
             }
-   
         }
     }
-    //bool Checkisibility()
-    //{
-    //    Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-    //    return GeometryUtility.TestPlanesAABB(planes, new Bounds(movable.position, Vector3.one));
-    //}
     private void UpdateWarning(bool seeWarning)
     {
         if(seeWarning)
