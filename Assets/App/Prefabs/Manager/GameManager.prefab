@@ -45,20 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d6e50f6c97c82488828b3dd4fcecc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canPause: 1
-  gameState: 2
-  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  gameState: 0
   rseTogglePause: {fileID: 11400000, guid: 56dbc203358bab942a372845a2e91b4c, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
-  rseReturnToMainMenu: {fileID: 11400000, guid: 6197bf0e98fb7d24f8073ae8690275b7, type: 2}
-  rseEnablePauseAction: {fileID: 11400000, guid: 90e59a3a0cae41947a5d91e154800b98, type: 2}
-  rseDisablePauseAction: {fileID: 11400000, guid: f91385a90ac547d4c9afafffbe8612c7, type: 2}
   rseClearBlobInGame: {fileID: 11400000, guid: 0f87cf7e5d0a9d74fa1851b067bd2177, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
-  rseFadeOut: {fileID: 11400000, guid: 5a17d97eb8556424896f138b2f9da148, type: 2}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
 --- !u!114 &80043123510570971
 MonoBehaviour:
   m_ObjectHideFlags: 0

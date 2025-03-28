@@ -2,65 +2,38 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] bool canPause = true;
-    [SerializeField] GameState gameState = GameState.MainMenu;
     public enum GameState
     {
         Gameplay,
         Pause,
-        MainMenu
     }
 
-    [Header("References")]
-
-    //[Space(10)]
-    // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    // RSF
-    // RSP
+    [Header("Settings")]
+    [SerializeField] private GameState gameState;
 
     [Header("Input")]
-    [SerializeField] RSE_TogglePause rseTogglePause;
-    [SerializeField] RSE_OnGameStart rseOnGameStart;
-    [SerializeField] RSE_ReturnToMainMenu rseReturnToMainMenu;
-
-    [Space(5)]
-    [SerializeField] RSE_EnablePauseAction rseEnablePauseAction;
-    [SerializeField] RSE_DisablePauseAction rseDisablePauseAction;
-
-    [Space(5)]
-    [SerializeField] RSE_ClearBlobInGame rseClearBlobInGame;
+    [SerializeField] private RSE_TogglePause rseTogglePause;
+    [SerializeField] private RSE_OnGameStart rseOnGameStart;
+    [SerializeField] private RSE_ClearBlobInGame rseClearBlobInGame;
 
     [Header("Output")]
-    [SerializeField] RSE_OnResume rseOnResume;
-    [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_EnableWindow rseEnableWindow;
+    [SerializeField] private RSE_DisableWindow rseDisableWindow;
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
 
-    [Space(10)]
-    [SerializeField] RSE_EnableWindow rseEnableWindow;
-    [SerializeField] RSE_DisableWindow rseDisableWindow;
-	[SerializeField] RSE_FadeOut rseFadeOut;
-
-	private void OnEnable()
+    private void OnEnable()
     {
         rseTogglePause.action += TogglePause;
-        rseOnGameStart.action += SetStateToGameplay;
-        rseReturnToMainMenu.action += SetStateToMainMenu;
-
-        rseEnablePauseAction.action += EnablePause;
-        rseDisablePauseAction.action += DisablePause;
-
+        rseOnGameStart.action += SetGameStateToGameplay;
         rseClearBlobInGame.action += ClearBlobInGame;
     }
+
     private void OnDisable()
     {
         rseTogglePause.action -= TogglePause;
-        rseOnGameStart.action -= SetStateToGameplay;
-        rseReturnToMainMenu.action -= SetStateToMainMenu;
-
-        rseEnablePauseAction.action -= EnablePause;
-        rseDisablePauseAction.action -= DisablePause;
-
+        rseOnGameStart.action -= SetGameStateToGameplay;
         rseClearBlobInGame.action -= ClearBlobInGame;
     }
 
@@ -69,10 +42,8 @@ public class GameManager : MonoBehaviour
         rsoBlobInGame.Value = new();
     }
 
-    void TogglePause()
+    private void TogglePause()
     {
-        if (!canPause) return;
-
         switch (gameState)
         {
             case GameState.Gameplay:
@@ -87,47 +58,26 @@ public class GameManager : MonoBehaviour
                 rseDisableWindow.Call("PausePanel");
                 rseOnResume.Call();
                 break;
-
-            case GameState.MainMenu:
-                gameState = GameState.Pause;
-                rseEnableWindow.Call("PausePanel");
-                rseOnPause.Call();
-                break;
         }
     }
 
-    void SetStateToMainMenu()
-    {
-        StartCoroutine(Utils.Delay(1.5f, () =>
-        {
-            rseDisableWindow.Call("PausePanel");
-            gameState = GameState.MainMenu;
-         }));
-
-	}
-    void SetStateToGameplay()
+    private void SetGameStateToGameplay()
     {
         gameState = GameState.Gameplay;
     }
 
-    void EnablePause()
+    private void ClearBlobInGame()
     {
-        canPause = true;
-    }
-    void DisablePause()
-    {
-        canPause = false;
-    }
-
-    void ClearBlobInGame()
-    {
-        if (rsoBlobInGame.Value.Count <= 0) return;
-
-        for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
+        Debug.Log(rsoBlobInGame.Value.Count);
+        if (rsoBlobInGame.Value.Count > 0)
         {
-            Destroy(rsoBlobInGame.Value[i].gameObject);
-        }
+            foreach (var blob in rsoBlobInGame.Value)
+            {
+                Destroy(blob.gameObject);
+            }
 
-        rsoBlobInGame.Value.Clear();
+            rsoBlobInGame.Value.Clear();
+        }
+        Debug.Log(rsoBlobInGame.Value.Count);
     }
 }

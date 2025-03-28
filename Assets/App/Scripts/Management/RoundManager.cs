@@ -32,7 +32,7 @@ public class RoundManager : MonoBehaviour
 
     private void Setup()
     {
-        blobs = rsoBlobInGame.Value;
+        blobs = new(rsoBlobInGame.Value);
     }
 
     private void CheckBlobCount(BlobMotor blob)
