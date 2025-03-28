@@ -48,18 +48,18 @@ public class RoundManager : MonoBehaviour
             if (modeDev)
             {
                 rseOnFightEnd.Call();
-                rseMessage.Call("Blob ??? Win!", 1f, Color.black);
+                rseMessage.Call("BLOB ??? WIN!", 1f, Color.black);
             }
             else if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
                 rseOnFightEnd.Call();
-                rseMessage.Call($"Blob {blobs[0].GetColor().nameColor} Win!", 1f, blobs[0].GetColor().fillColor);
+                rseMessage.Call($"BLOB {blobs[0].GetColor().nameColor} WIN!", 1f, blobs[0].GetColor().fillColor);
             }
             else if (blobs.Count < 1)
             {
                 rseOnFightEnd.Call();
-                rseMessage.Call("Blob ??? Win!", 1f, Color.black);
+                rseMessage.Call("BLOB ??? WIN!", 1f, Color.black);
             }
         }
     }

@@ -70,3 +70,4 @@ MonoBehaviour:
   rseDisableJoining: {fileID: 11400000, guid: e56ca70ff724b5942a6f262dafb1cd21, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
   rseTransit: {fileID: 11400000, guid: de1d05397ce9f074aa8dacd98a3ccc91, type: 2}
+  rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
