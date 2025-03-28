@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 1402503480}
   - component: {fileID: 1402503484}
   - component: {fileID: 1402503485}
+  - component: {fileID: 1402503486}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -752,7 +753,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -815,6 +816,18 @@ MonoBehaviour:
   panelMessage: {fileID: 1580243450}
   textMessage: {fileID: 1370804913}
   rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
+--- !u!114 &1402503486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402503479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076d22cd86f2a0347a3bc8bfab44df77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1418728594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -960,7 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1142,6 +1155,18 @@ PrefabInstance:
     - target: {fileID: 4837408964851800751, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
       propertyPath: m_Name
       value: PausePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298222904622161892, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542798985125992416, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019384484186338906, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+      propertyPath: m_Maskable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

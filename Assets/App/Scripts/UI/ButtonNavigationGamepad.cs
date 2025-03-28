@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class ButtonNavigationGamepad : MonoBehaviour
 {
@@ -19,13 +20,7 @@ public class ButtonNavigationGamepad : MonoBehaviour
 
     private void OnEnable()
     {
-        defaultButton.Select();
-        defaultButton.GetComponent<InteractiveButton>()?.OnSelect(null);
-    }
-
-    private void Update()
-    {
-        if (EventSystem.current.currentSelectedGameObject == null)
+        if (Gamepad.current != null)
         {
             defaultButton.Select();
             defaultButton.GetComponent<InteractiveButton>()?.OnSelect(null);
