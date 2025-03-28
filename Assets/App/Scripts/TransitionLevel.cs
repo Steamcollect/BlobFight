@@ -66,7 +66,7 @@ public class TransitionLevel : MonoBehaviour
             {
                 if (modeDev)
                 {
-                    rseMessage.Call("START!", 0.5f, Color.black);
+                    rseMessage.Call("START!", 1f, Color.black);
                     rseOnFightStart.Call();
                 }
                 else
@@ -86,7 +86,7 @@ public class TransitionLevel : MonoBehaviour
         float cooldown = delayStart;
         float timer = 0f;
 
-        rseMessage.Call("READY?", 0.5f, Color.black);
+        rseMessage.Call("READY?", 1f, Color.black);
 
         while (timer < cooldown)
         {
@@ -98,7 +98,7 @@ public class TransitionLevel : MonoBehaviour
             }
         }
 
-        rseMessage.Call("START!", 0.5f, Color.black);
+        rseMessage.Call("START!", 1f, Color.black);
 
         rseOnFightStart.Call();
     }
