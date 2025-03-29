@@ -47,6 +47,6 @@ MonoBehaviour:
   lowRumbleForce: 0.5
   highRumbleForce: 1
   rumbleDuration: 0.5
-  rSE_CallRumble: {fileID: 11400000, guid: e4acf188d8a9a9342b67ee7d2ffac481, type: 2}
+  rseCallRumble: {fileID: 11400000, guid: e4acf188d8a9a9342b67ee7d2ffac481, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
-  RSO_BlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}

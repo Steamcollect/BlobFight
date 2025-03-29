@@ -5,37 +5,32 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private int startingAudioObjectsCount;
+
     [Header("References")]
-    [SerializeField]
-    AudioMixerGroup musicMixerGroup;
-
-    [SerializeField] AudioMixerGroup soundMixerGroup;
-
-    private readonly Queue<AudioSource> _soundsGo = new();
-
-    private Transform _playlistParent, _soundParent;
-
-    [Header("System References")]
-    [SerializeField, Tooltip("Number of GameObject create on start for the sound")]
-    private int startingAudioObjectsCount = 30;
-
-    [Header("Output")][SerializeField] RSE_PlayClipAt rsePlayClipAt;
-    [SerializeField] RSE_OnFightStart rseOnFightStart;
-    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
+    [SerializeField] private AudioMixerGroup musicMixerGroup;
+    [SerializeField] private AudioMixerGroup soundMixerGroup;
 
     [Header("Input")]
+    [SerializeField] RSE_PlayClipAt rsePlayClipAt;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
+    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
     [SerializeField] RSE_OnPause rseOnPause;
     [SerializeField] RSE_OnResume rseOnResume;
 
+    private Transform playlistParent = null;
+    private Transform soundParent = null;
+    private readonly Queue<AudioSource> soundsQueue = new();
     private List<AudioSource> audios = new();
-    bool isPaused = false;
-    bool isFinish;
+    private bool isPaused = false;
+    private bool isFinish = false;
 
     private void OnEnable()
     {
         rsePlayClipAt.action += PlayClipAt;
-        rseOnFightStart.action += Init;
-        rseLoadNextLevel.action += Clear;
+        rseOnFightStart.action += CanLaunchAudio;
+        rseLoadNextLevel.action += ClearAllAudio;
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
@@ -43,71 +38,78 @@ public class AudioManager : MonoBehaviour
     private void OnDisable()
     {
         rsePlayClipAt.action -= PlayClipAt;
-        rseOnFightStart.action -= Init;
-        rseLoadNextLevel.action -= Clear;
+        rseOnFightStart.action -= CanLaunchAudio;
+        rseLoadNextLevel.action -= ClearAllAudio;
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
 
     private void Start()
     {
-        SetupParent();
+        SetupAudioParent();
 
-        // Create Audio Object
         for (int i = 0; i < startingAudioObjectsCount; i++)
         {
-            _soundsGo.Enqueue(CreateSoundsGo());
+            soundsQueue.Enqueue(CreateAudioSource(soundParent));
         }
     }
 
-    private void Init()
+    private void SetupAudioParent()
+    {
+        playlistParent = new GameObject("PLAYLIST").transform;
+        playlistParent.parent = transform;
+
+        soundParent = new GameObject("SOUNDS").transform;
+        soundParent.parent = transform;
+    }
+
+    private void CanLaunchAudio()
     {
         isFinish = false;
     }
 
-    private void Clear()
+    private void ClearAllAudio()
     {
         foreach(AudioSource audio in audios)
         {
             audio.Stop();
-            isFinish = true;
         }
+
+        isFinish = true;
     }
 
-    public void Pause()
+    private void Pause()
     {
         isPaused = true;
     }
 
-    public void Resume()
+    private void Resume()
     {
         isPaused = false;
     }
 
-    /// <summary>
-    /// Play clip at a specific position
-    /// </summary>
-    /// <param name="sound"></param>
-    /// <param name="position"></param>
-    void PlayClipAt(Sound sound, Vector3 position)
+    private void PlayClipAt(Sound sound, Vector3 position)
     {
         if(!isFinish)
         {
-            AudioSource tmpAudioSource;
-            if (_soundsGo.Count <= 0) tmpAudioSource = CreateSoundsGo();
-            else tmpAudioSource = _soundsGo.Dequeue();
+            AudioSource audioSource;
 
-            tmpAudioSource.transform.position = position;
+            if (soundsQueue.Count <= 0)
+            {
+                audioSource = CreateAudioSource(soundParent);
+            }
+            else
+            {
+                audioSource = soundsQueue.Dequeue();
+            }
 
+            audioSource.transform.position = position;
+            audioSource.clip = sound.clips.GetRandom();
+            audioSource.volume = Mathf.Clamp(sound.volumeMultiplier, 0, 1);
+            audioSource.spatialBlend = sound.spatialBlend;
 
-            float volumeMultiplier = Mathf.Clamp(sound.volumeMultiplier, 0, 1);
-            tmpAudioSource.volume = volumeMultiplier;
-            tmpAudioSource.spatialBlend = sound.spatialBlend;
-
-
-            tmpAudioSource.clip = sound.clips.GetRandom();
-            tmpAudioSource.Play();
-            StartCoroutine(AddAudioSourceToQueue(tmpAudioSource));
+            audioSource.Play();
+            StartCoroutine(AddAudioSourceToQueue(audioSource));
         }
     }
 
@@ -138,37 +140,29 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-        _soundsGo.Enqueue(current);
+        soundsQueue.Enqueue(current);
     }
 
-    private AudioSource CreateSoundsGo()
+    private AudioSource CreateAudioSource(Transform parent)
     {
-        AudioSource tmpAudioSource = new GameObject("Audio Go").AddComponent<AudioSource>();
-        tmpAudioSource.transform.SetParent(_soundParent);
-        tmpAudioSource.outputAudioMixerGroup = soundMixerGroup;
-        audios.Add(tmpAudioSource);
-        return tmpAudioSource;
+        AudioSource audioSource = new GameObject("AudioSource").AddComponent<AudioSource>();
+        audioSource.transform.SetParent(parent);
+        audioSource.outputAudioMixerGroup = soundMixerGroup;
+        audios.Add(audioSource);
+        return audioSource;
     }
 
     public void SetupPlaylist(Playlist[] playlists)
     {
         foreach (Playlist playlist in playlists)
         {
-            AudioSource audioSource = new GameObject("PlaylistGO").AddComponent<AudioSource>();
+            AudioSource audioSource = new GameObject("Playlist").AddComponent<AudioSource>();
+            audioSource.transform.SetParent(playlistParent);
             audioSource.volume = playlist.volumMultiplier;
             audioSource.loop = playlist.isLooping;
             audioSource.outputAudioMixerGroup = musicMixerGroup;
             audioSource.clip = playlist.clip;
             audioSource.Play();
         }
-    }
-
-    private void SetupParent()
-    {
-        _playlistParent = new GameObject("PLAYLIST").transform;
-        _playlistParent.parent = transform;
-
-        _soundParent = new GameObject("SOUNDS").transform;
-        _soundParent.parent = transform;
     }
 }

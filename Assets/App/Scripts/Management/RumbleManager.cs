@@ -6,62 +6,60 @@ using UnityEngine.InputSystem;
 public class RumbleManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float lowRumbleForce;
-    [SerializeField] float highRumbleForce;
-    [SerializeField] float rumbleDuration;
+    [SerializeField] private float lowRumbleForce;
+    [SerializeField] private float highRumbleForce;
+    [SerializeField] private float rumbleDuration;
 
-    [Header("References")]
-    [SerializeField] RSE_CallRumble rSE_CallRumble;
-    [SerializeField] RSE_OnGameStart rseOnGameStart;
-    [Space(10)]
-    // RSO
-    [SerializeField] RSO_BlobInGame RSO_BlobInGame;
-    // RSF
-    // RSP
+    [Header("Input")]
+    [SerializeField] private RSE_CallRumble rseCallRumble;
+    [SerializeField] private RSE_OnGameStart rseOnGameStart;
 
-    //[Header("Input")]
-    //[Header("Output")]
+    [Header("Output")]
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
 
-    private List<int> listindex = new();
+    private List<int> listIndex = new();
 
     private void OnEnable()
     {
-        rSE_CallRumble.action += RumbleController;
+        rseCallRumble.action += RumbleController;
         rseOnGameStart.action += Init;
     }
+
     private void OnDisable()
     {
-        rSE_CallRumble.action -= RumbleController;
+        rseCallRumble.action -= RumbleController;
         rseOnGameStart.action -= Init;
     }
 
     private void Init()
     {
-        for (int i = 0; i < RSO_BlobInGame.Value.Count; i++) 
+        for (int i = 0; i < rsoBlobInGame.Value.Count; i++) 
         {
-            listindex.Add(i);
+            listIndex.Add(i);
         }
     }
 
     private void RumbleController(int index, string currentSche)
     {
-        if (currentSche == "Controller")
+        if (currentSche == "Controller" && index < rsoBlobInGame.Value.Count)
         {
             var devices = InputSystem.devices;
 
             foreach (var device in devices)
             {
-                if (device is Gamepad pad && index == listindex[index])
+                if (device is Gamepad pad && index == listIndex[index])
                 {
                     pad.SetMotorSpeeds(lowRumbleForce, highRumbleForce);
+
                     StartCoroutine(DelayRumble(rumbleDuration, pad));
                 }
             }
         }
     }
-    IEnumerator DelayRumble(float duration, Gamepad pad)
+    private IEnumerator DelayRumble(float duration, Gamepad pad)
     {
         yield return new WaitForSeconds(duration);
+
         pad.SetMotorSpeeds(0f, 0f);
     }
 }

@@ -42,12 +42,12 @@ public class TimeManager : MonoBehaviour
         InvokeRepeating(nameof(IncrementGameTimer), 1f, 1f);
     }
 
-    public void Pause()
+    private void Pause()
     {
         isPaused = true;
     }
 
-    public void Resume()
+    private void Resume()
     {
         isPaused = false;
     }

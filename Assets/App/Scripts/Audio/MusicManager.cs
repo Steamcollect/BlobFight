@@ -3,18 +3,10 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] Playlist[] playlists;
+    [SerializeField] private Playlist[] playlists;
 
     [Header("References")]
-    [SerializeField] AudioManager audioManager;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    [SerializeField] private AudioManager audioManager;
 
     private void Start()
     {
