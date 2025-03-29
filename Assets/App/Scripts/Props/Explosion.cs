@@ -1,26 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+
 public class Explosion : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float pushBackForce;
-    [SerializeField] float damage;
-    [SerializeField] AnimationCurve powerCurve;
-
-    [Space(10)]
-    [SerializeField] float range;
-
-    //[Header("References")]
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    [SerializeField] private float pushBackForce;
+    [SerializeField] private float damage;
+    [SerializeField] private AnimationCurve powerCurve;
+    [SerializeField] private float range;
 
     private void Start()
     {
@@ -28,26 +15,26 @@ public class Explosion : MonoBehaviour
         Invoke("Explode", 1);
     }
 
-    public void Explode()
+    private void Explode()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, range);
-        List<BlobMotor> blobsTouch = new();
+        Vector2 explosionPosition = transform.position;
+        Collider2D[] hits = Physics2D.OverlapCircleAll(explosionPosition, range);
 
         foreach (Collider2D hit in hits)
         {
-            float distance = Vector2.Distance(hit.transform.position, transform.position);
+            Vector2 targetPosition = hit.transform.position;
+            float distance = Vector2.Distance(targetPosition, explosionPosition);
             float power = powerCurve.Evaluate(distance / range);
+            Vector2 forceDirection = (targetPosition - explosionPosition).normalized;
 
-            Vector2 direction = (hit.transform.position - transform.position).normalized;
-            
             if (hit.TryGetComponent(out EntityHealth health))
             {
-                health.TakeDamage((int)(damage * power));
+                health.TakeDamage(Mathf.RoundToInt(damage * power));
             }
-            
+
             if (hit.TryGetComponent(out Rigidbody2D rb))
             {
-                rb.AddForce(direction * pushBackForce * power);
+                rb.AddForce(forceDirection * pushBackForce * power, ForceMode2D.Impulse);
             }
         }
     }

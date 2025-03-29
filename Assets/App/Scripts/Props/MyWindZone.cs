@@ -1,26 +1,39 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MyWindZone : GameProps
 {
+    private struct WindEffect
+    {
+        public Rigidbody2D Rb;
+        public float delayTimer;
+        public float delayDuration;
+
+        public WindEffect(Rigidbody2D rb, float delayDuration)
+        {
+            Rb = rb;
+            this.delayDuration = delayDuration;
+            delayTimer = 0f;
+        }
+
+        public bool CanApplyForce()
+        {
+            return (delayTimer += Time.fixedDeltaTime) >= delayDuration;
+        }
+
+        public void ApplyWindForce(Vector2 force)
+        {
+            Rb.AddForce(force);
+        }
+    }
+
+    [Space(10)]
     [Header("Settings")]
-    [SerializeField] float windForce;
-    [SerializeField] float windForceDelay;
-    bool isLaunched = false;
+    [SerializeField] private float windForce;
+    [SerializeField] private float windForceDelay;
 
-    //[Header("References")]
-    //List<Rigidbody2D> rbs = new();
-    List<WindEffect> windEffects = new List<WindEffect>();
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private bool isLaunched = false;
+    private List<WindEffect> windEffects = new();
 
     public override void Launch()
     {
@@ -31,18 +44,12 @@ public class MyWindZone : GameProps
     {
         if (!isLaunched) return;
 
-        //if(rbs.Count > 0)
-        //{
-        //    foreach (var rbs in rbs)
-        //    {
-        //        rbs.AddForce(transform.up * windForce);
-        //    }
-        //}
         if (windEffects.Count > 0)
         {
             for (int i = windEffects.Count - 1; i >= 0; i--)
             {
                 var windEffect = windEffects[i];
+
                 if (windEffect.CanApplyForce())
                 {
                     windEffect.ApplyWindForce(transform.up * windForce);
@@ -64,7 +71,6 @@ public class MyWindZone : GameProps
                 blobPhysics.GetMotor().GetTrigger().OnWindEnter();
             }
 
-            //rbs.Add(rb);
             windEffects.Add(new WindEffect(rb, windForceDelay));
         }
     }
@@ -76,7 +82,7 @@ public class MyWindZone : GameProps
             {
                 blobPhysics.GetMotor().GetTrigger().OnWindExit();
             }
-            //rbs.Remove(rb);
+
             windEffects.RemoveAll(windEffect => windEffect.Rb == rb);
         }
     }
@@ -89,31 +95,5 @@ public class MyWindZone : GameProps
     public float GetWindForce()
     {
         return windForce;
-    }
-}
-public struct WindEffect
-{
-    public Rigidbody2D Rb;
-    public float delayTimer;
-    public float delayDuration;
-
-    public WindEffect(Rigidbody2D rb, float delayDuration)
-    {
-        Rb = rb;
-        this.delayDuration = delayDuration;
-        delayTimer = 0f;
-    }
-    public bool CanApplyForce()
-    {
-        if(delayTimer < delayDuration)
-        {
-            delayTimer += Time.fixedDeltaTime;
-            return false;
-        }
-        return true;
-    }
-    public void ApplyWindForce(Vector2 force)
-    {
-        Rb.AddForce(force);
     }
 }
