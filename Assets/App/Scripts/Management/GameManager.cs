@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -68,16 +69,14 @@ public class GameManager : MonoBehaviour
 
     private void ClearBlobInGame()
     {
-        Debug.Log(rsoBlobInGame.Value.Count);
         if (rsoBlobInGame.Value.Count > 0)
         {
-            foreach (var blob in rsoBlobInGame.Value)
+            for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
             {
-                Destroy(blob.gameObject);
+                Destroy(rsoBlobInGame.Value[i].gameObject);
             }
 
             rsoBlobInGame.Value.Clear();
         }
-        Debug.Log(rsoBlobInGame.Value.Count);
     }
 }
