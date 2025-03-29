@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff48d31d1f5b5a2449c588695e0c1bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 8585250105621413450}
   main:
     sceneName: 01_Game
     sceneGUID: 7b33a7ace39394043b01074ed383fe48
+  content: {fileID: 8585250105621413450}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
 --- !u!1 &8585250105621413450
 GameObject:
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4795997754905142067, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
       propertyPath: m_Name
-      value: Canvas (1)
+      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
