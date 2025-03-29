@@ -1,66 +1,75 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-[System.Serializable]
 public class Window : MonoBehaviour
 {
-    public string windowName;
-    public WindowType windowType;
-
-    [Space(10)]
-    public GameObject content;
-    public Animator animator;
-    bool isOpen;
-
-    Coroutine animationDelay;
-
-    public void EnableWindow()
-    {
-        switch (windowType)
-        {
-            case WindowType.GameObject:
-                content.SetActive(true);
-                break;
-
-            case WindowType.Animator:
-                content.SetActive(true);
-                animator.SetBool("IsOpen", true);
-                break;
-        }
-        isOpen = true;
-    }
-    public void DisableWindow()
-    {
-        switch (windowType)
-        {
-            case WindowType.GameObject:
-                content.SetActive(false);
-                EventSystem.current.SetSelectedGameObject(null);
-                break;
-
-            case WindowType.Animator:
-                animator.SetBool("IsOpen", false);
-
-                if(animationDelay != null) StopCoroutine(animationDelay);
-                animationDelay = StartCoroutine(DisablePanelOnAnimationEnd());
-                break;
-        }
-        isOpen = false;
-    }
-    public bool IsOpen() { return isOpen; }
-
-    IEnumerator DisablePanelOnAnimationEnd()
-    {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
-        EventSystem.current.SetSelectedGameObject(null);
-        content.SetActive(false);
-    }
-
     public enum WindowType
     {
         GameObject,
         Animator,
+    }
+
+    [Header("Settings")]
+    [SerializeField] private string windowName;
+    [SerializeField] private WindowType windowType;
+
+    [Header("References")]
+    [SerializeField] private GameObject content;
+    [SerializeField] private Animator animator;
+
+    private bool isOpen;
+    private Coroutine animationDelay;
+
+    public void EnableWindow()
+    {
+        content.SetActive(true);
+
+        if (windowType == WindowType.Animator)
+        {
+            animator.SetBool("IsOpen", true);
+        }
+
+        isOpen = true;
+    }
+
+    public void DisableWindow()
+    {
+        if (windowType == WindowType.GameObject)
+        {
+            content.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+        else if (windowType == WindowType.Animator)
+        {
+            animator.SetBool("IsOpen", false);
+
+            if (animationDelay != null)
+            {
+                StopCoroutine(animationDelay);
+            }
+
+            animationDelay = StartCoroutine(DisablePanelOnAnimationEnd());
+        }
+
+        isOpen = false;
+    }
+
+    public string GetName()
+    {
+        return windowName;
+    }
+
+    public bool IsOpen() 
+    { 
+        return isOpen; 
+    }
+
+    private IEnumerator DisablePanelOnAnimationEnd()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        content.SetActive(false);
     }
 }

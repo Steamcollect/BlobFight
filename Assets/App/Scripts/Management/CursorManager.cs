@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class S_CursorManager : MonoBehaviour
 {
@@ -35,7 +34,7 @@ public class S_CursorManager : MonoBehaviour
             {
                 HideMouseCursor();
             }
-            else if (change == InputDeviceChange.Removed)
+            else if (change == InputDeviceChange.Removed && Gamepad.all.Count == 0)
             {
                 EventSystem.current.SetSelectedGameObject(null);
 

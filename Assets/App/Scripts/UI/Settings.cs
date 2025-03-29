@@ -49,14 +49,14 @@ public class Settings : MonoBehaviour
 
     public void UpdateScreenShake()
     {
+        rsoSettingsSaved.Value.screenShake = !rsoSettingsSaved.Value.screenShake;
+
         if (rsoSettingsSaved.Value.screenShake)
         {
-            rsoSettingsSaved.Value.screenShake = false;
             textScreenShake.text = "Off";
         }
         else
         {
-            rsoSettingsSaved.Value.screenShake = true;
             textScreenShake.text = "On";
         }
 
@@ -65,16 +65,16 @@ public class Settings : MonoBehaviour
 
     public void UpdateFullScreen()
     {
+        rsoSettingsSaved.Value.fullScreen = !rsoSettingsSaved.Value.fullScreen;
+
         if (rsoSettingsSaved.Value.fullScreen)
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            rsoSettingsSaved.Value.fullScreen = false;
             textFullScreen.text = "Off";
         }
         else
         {
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            rsoSettingsSaved.Value.fullScreen = true;
             textFullScreen.text = "On";
         }
 

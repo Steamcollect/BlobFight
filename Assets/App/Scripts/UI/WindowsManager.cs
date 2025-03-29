@@ -1,25 +1,18 @@
 using UnityEngine;
-using System.Collections;
 using System.Linq;
 
 public class WindowsManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] Window[] windows;
-
-    //[Header("References")]
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [SerializeField] private Window[] windows;
 
     [Header("Input")]
-    [SerializeField] RSE_EnableJoining rseEnableJoining;
-    [SerializeField] RSE_EnableWindow rseEnableWindow;
-    [SerializeField] RSE_DisableWindow rseDisableWindow;
-    [SerializeField] RSE_CloseAllWindow rseCloseAllWindow;
-    //[Header("Output")]
+    [SerializeField] private RSE_EnableWindow rseEnableWindow;
+    [SerializeField] private RSE_DisableWindow rseDisableWindow;
+    [SerializeField] private RSE_CloseAllWindow rseCloseAllWindow;
+
+    [Header("Output")]
+    [SerializeField] private RSE_EnableJoining rseEnableJoining;
 
     private void OnEnable()
     {
@@ -27,6 +20,7 @@ public class WindowsManager : MonoBehaviour
         rseDisableWindow.action += DisableWindow;
         rseCloseAllWindow.action += CloseAllWindow;
     }
+
     private void OnDisable()
     {
         rseEnableWindow.action -= EnableWindow;
@@ -37,33 +31,33 @@ public class WindowsManager : MonoBehaviour
     private void Start()
     {
         rseEnableJoining.Call();
-        rseEnableWindow.Call("PlayerSelectionPanel");
     }
 
-    void EnableWindow(string windowName)
+    private void EnableWindow(string windowName)
     {
-        Window window = windows.FirstOrDefault(x => x.windowName == windowName);
+        Window window = windows.FirstOrDefault(x => x.GetName() == windowName);
+
         if (window != null)
         {
             window.EnableWindow();
         }
     }
-    void DisableWindow(string windowName)
+
+    private void DisableWindow(string windowName)
     {
-        Window window = windows.FirstOrDefault(x => x.windowName == windowName);
+        Window window = windows.FirstOrDefault(x => x.GetName() == windowName);
+
         if (window != null)
         {
             window.DisableWindow();
         }
     }
-    void CloseAllWindow()
+
+    private void CloseAllWindow()
     {
-        foreach (var window in windows)
+        foreach (var window in windows.Where(w => w.IsOpen()))
         {
-            if (window.IsOpen())
-            {
-                window.DisableWindow();
-            }
+            window.DisableWindow();
         }
     }
 }

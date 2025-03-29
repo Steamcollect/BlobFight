@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MessageManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameObject panelMessage;
     [SerializeField] private TextMeshProUGUI textMessage;
 
+    [Header("Input")]
     [SerializeField] private RSE_Message rseMessage;
 
     private void OnEnable()
@@ -25,10 +27,10 @@ public class MessageManager : MonoBehaviour
         textMessage.color = textColor;
         panelMessage.SetActive(true);
 
-        StartCoroutine(DelayMessage(duration));
+        StartCoroutine(DelayHideMessage(duration));
     }
 
-    private IEnumerator DelayMessage(float duration)
+    private IEnumerator DelayHideMessage(float duration)
     {
         yield return new WaitForSeconds(duration);
 
