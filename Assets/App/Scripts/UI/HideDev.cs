@@ -3,9 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class HideDev : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] SceneReference main;
+
     [Header("References")]
     [SerializeField] GameObject content;
-    [SerializeField] SceneReference main;
+
+    [Header("Output")]
     [SerializeField] RSE_OnGameStart rseOnGameStart;
 
     private void Awake()
@@ -13,6 +17,7 @@ public class HideDev : MonoBehaviour
         if (!SceneManager.GetSceneByName(main.Name).isLoaded)
         {
             content.SetActive(true);
+
             StartCoroutine(Utils.Delay(0.1f, () => rseOnGameStart.Call()));
         }
     }

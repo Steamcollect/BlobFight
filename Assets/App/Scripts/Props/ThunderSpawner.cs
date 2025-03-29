@@ -1,40 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class ThunderSpawner : GameProps
 {
+    [Space(10)]
     [Header("Settings")]
-    [SerializeField] float delayAfterGameStart;
-    //[SerializeField] AnimationCurve curveDifficulty;
-    [SerializeField] Vector2 delayBetweenLightning;
-    [Space(5)]
-    [SerializeField] int objToSpawnOnStart;
-    [SerializeField] List<int> timeSpeed;
-    [SerializeField] List<Vector2> newDelayBetweenLightning;
-    private List<int> canSpawn = new();
+    [SerializeField] private float delayAfterGameStart;
+    [SerializeField] private Vector2 delayBetweenLightning;
+    [SerializeField] private int objToSpawnOnStart;
+    [SerializeField] private List<int> timeSpeed;
+    [SerializeField] private List<Vector2> newDelayBetweenLightning;
+
     [Header("References")]
-    [SerializeField] List<Transform> spawnPoint;
-    [SerializeField] ThunderProps thunderPrefab;
+    [SerializeField] private ThunderProps thunderPrefab;
+    [SerializeField] private List<Transform> spawnPoint;
+
+    [Header("Input")]
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
     [Header("Output")]
     [SerializeField] RSO_TimerParty rsoTimerParty;
 
-    Queue<ThunderProps> thunderQueue = new();
-    int mode = 0;
-
-    [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
-
-    bool isPaused = false;
+    private bool isPaused = false;
+    private int mode = 0;
+    private Queue<ThunderProps> thunderQueue = new();
+    private List<int> availableSpawns = new();
     
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
     private void Awake()
     {
         for (int i = 0; i < objToSpawnOnStart; i++)
@@ -49,12 +42,14 @@ public class ThunderSpawner : GameProps
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
+
     private new void OnDisable()
     {
         base.OnDisable();
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
+
     private void Pause()
     {
         isPaused = true;
@@ -65,11 +60,17 @@ public class ThunderSpawner : GameProps
         isPaused = false;
     }
 
-    private void StartCoroutineDelay()
+    public override void Launch()
     {
+        for (int i = 0; i < spawnPoint.Count; i++)
+        {
+            availableSpawns.Add(i);
+        }
+
         StartCoroutine(StartDelaySpawn());
     }
-    IEnumerator StartDelaySpawn()
+
+    private IEnumerator StartDelaySpawn()
     {
         float cooldown = delayAfterGameStart;
         float timer = 0f;
@@ -86,11 +87,12 @@ public class ThunderSpawner : GameProps
 
         StartCoroutine(SpawnThunder());
     }
-    IEnumerator SpawnThunder()
+
+    private IEnumerator SpawnThunder()
     {
         if (timeSpeed.Count > 0)
         {
-            if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+            if (mode < timeSpeed.Count && rsoTimerParty.Value >= timeSpeed[mode])
             {
                 delayBetweenLightning = newDelayBetweenLightning[mode];
 
@@ -114,28 +116,34 @@ public class ThunderSpawner : GameProps
             }
         }
 
-        if(canSpawn.Count > 0)
+        if (availableSpawns.Count > 0)
         {
-            int rnd = Random.Range(0, canSpawn.Count);
+            int rndIndex = Random.Range(0, availableSpawns.Count);
+            int spawnIdx = availableSpawns[rndIndex];
+            availableSpawns.RemoveAt(rndIndex);
 
             ThunderProps thunder = GetThunderObj();
-            thunder.randomSpawn = canSpawn[rnd];
+            thunder.randomSpawn = spawnIdx;
             thunder.gameObject.SetActive(true);
             thunder.PlaySound();
-            thunder.transform.position = spawnPoint[canSpawn[rnd]].position;
+            thunder.transform.position = spawnPoint[spawnIdx].position;
             thunder.Flip(Random.value < 0.5f);
             thunder.onEndAction += ResetSpawnPoint;
-
-            canSpawn.RemoveAt(rnd);
         }
+
         StartCoroutine(SpawnThunder());
     }
-    ThunderProps GetThunderObj()
+
+    private ThunderProps GetThunderObj()
     {
-        if (thunderQueue.Count <= 0) CreateThunderObj();
+        if (thunderQueue.Count == 0)
+        {
+            CreateThunderObj();
+        }
 
         return thunderQueue.Dequeue();
     }
+
     private void CreateThunderObj()
     {
         ThunderProps obj = Instantiate(thunderPrefab);
@@ -144,22 +152,15 @@ public class ThunderSpawner : GameProps
         obj.onEndAction += QueueThunder;
         thunderQueue.Enqueue(obj);
     }
+
     private void QueueThunder(ThunderProps thunder)
     {
         thunderQueue.Enqueue(thunder);
     }
 
-    public override void Launch()
-    {
-        for (int i = 0; i < spawnPoint.Count; i++)
-        {
-            canSpawn.Add(i);
-        }
-        StartCoroutineDelay();
-    }
     private void ResetSpawnPoint(ThunderProps thunder)
     {
         thunder.onEndAction -= ResetSpawnPoint;
-        canSpawn.Add(thunder.randomSpawn);
+        availableSpawns.Add(thunder.randomSpawn);
     }
 }

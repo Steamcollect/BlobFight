@@ -21,10 +21,10 @@ public class AudioManager : MonoBehaviour
 
     private Transform playlistParent = null;
     private Transform soundParent = null;
-    private readonly Queue<AudioSource> soundsQueue = new();
-    private List<AudioSource> audios = new();
     private bool isPaused = false;
     private bool isFinish = false;
+    private readonly Queue<AudioSource> soundsQueue = new();
+    private List<AudioSource> audios = new();
 
     private void OnEnable()
     {

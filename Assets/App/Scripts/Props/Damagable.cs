@@ -1,10 +1,7 @@
 using UnityEngine;
+
 public class Damagable : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] int damage;
-    [SerializeField] DamageType damageType;
-
     public enum DamageType
     {
         Damage,
@@ -12,19 +9,15 @@ public class Damagable : MonoBehaviour
         Destroy
     }
 
-    //[Header("References")]
+    [Header("Settings")]
+    [SerializeField] private int damage;
+    [SerializeField] private DamageType damageType;
 
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
     public DamageType GetDamageType()
     {
         return damageType;
     }
+
     public int GetDamage()
     {
         return damage;

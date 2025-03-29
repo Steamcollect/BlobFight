@@ -1,32 +1,25 @@
 using UnityEngine;
+
 public abstract class GameProps : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] GamePropsLaunchType launchType;
-
-    enum GamePropsLaunchType
+    private enum GamePropsLaunchType
     {
         OnStart,
         OnFightStart,
         OnEvent
     }
 
-    //[Header("References")]
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [Header("Settings")]
+    [SerializeField] GamePropsLaunchType launchType;
 
     [Header("Input")]
     [SerializeField] RSE_OnFightStart rseOnFightStart;
-
-    //[Header("Output")]
 
     protected void OnEnable()
     {
         if (launchType == GamePropsLaunchType.OnFightStart) rseOnFightStart.action += Launch;
     }
+
     protected void OnDisable()
     {
         if (launchType == GamePropsLaunchType.OnFightStart) rseOnFightStart.action -= Launch;

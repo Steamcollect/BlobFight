@@ -7,9 +7,9 @@ public class SceneManagement : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool isTestScene;
-    [SerializeField] private SceneReference[] levelsName;
     [SerializeField] private SceneReference mainMain;
     [SerializeField] private SceneReference mainMenuName;
+    [SerializeField] private SceneReference[] levelsName;
 
     [Header("Input")]
     [SerializeField] private RSE_LoadNextLevel rseLoadNextLevel;
@@ -22,9 +22,9 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] private RSE_ClearBlobInGame rseClearBlobInGame;
     [SerializeField] private RSE_TogglePause rseTogglePause;
 
-    private List<string> levels = new();
     private string currentLevel = "";
     private bool isLoading = false;
+    private List<string> levels = new();
 
     private void OnEnable()
     {

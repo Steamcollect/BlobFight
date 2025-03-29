@@ -1,25 +1,17 @@
 using UnityEngine;
+
 public class Spawnpoint : MonoBehaviour
 {
-    //[Header("Settings")]
-
-    [Header("References")]
-
-    //[Space(10)]
-    // RSO
+    [Header("Output")]
     [SerializeField] RSO_Spawnpoints rsoSpawnpoints;
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
-
-    private void Start()
+    
+    private void OnEnable()
     {
         if (rsoSpawnpoints.Value == null)
         {
             rsoSpawnpoints.Value = new();
         }
+
         rsoSpawnpoints.Value.Add(transform);
     }
 
