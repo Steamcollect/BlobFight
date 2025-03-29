@@ -7,6 +7,7 @@ public class WarningMovingProps : MonoBehaviour
     [SerializeField] private bool haveWarning;
     [SerializeField] private bool isOnAxeX;
     [SerializeField] private float marginPos;
+    [SerializeField] private Vector3 offsetPos;
 
     [Header("References")]
     [SerializeField] private GameObject warning;
@@ -65,12 +66,13 @@ public class WarningMovingProps : MonoBehaviour
         float camHeight = cam.orthographicSize * 2f;
         float camWidth = camHeight * cam.aspect;
         Vector3 camPos = cam.transform.position;
+        Vector3 pos = movable.position + offsetPos;
 
         float halfWidth = camWidth / 2f;
         float halfHeight = camHeight / 2f;
 
-        float posX = Mathf.Clamp(movable.position.x, camPos.x - halfWidth, camPos.x + halfWidth);
-        float posY = Mathf.Clamp(movable.position.y, camPos.y - halfHeight, camPos.y + halfHeight);
+        float posX = Mathf.Clamp(pos.x, camPos.x - halfWidth, camPos.x + halfWidth);
+        float posY = Mathf.Clamp(pos.y, camPos.y - halfHeight, camPos.y + halfHeight);
 
         Vector3 offset = Vector3.zero;
 
