@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector3 centerOffset;
     [SerializeField] private Vector2 minBounds; // Limite minimale (x, y)
     [SerializeField] private Vector2 maxBounds; // Limite maximale (x, y)
-    [SerializeField] private float shakeSpeed;
 
     [Header("References")]
     [SerializeField] private Camera cam;

@@ -38,10 +38,10 @@ public class BlobParticle : MonoBehaviour
     [Serializable]
     class HitParticle
     {
-        public ParticleSystem particlePrefab;
+        public ParticleSystem particlePrefab = null;
         public Queue<ParticleCallback> particles = new();
 
-        [Range(0, 100)] public float hitStrenght;
+        [Range(0, 100)] public float hitStrenght = 0;
 
         public void OnParticleEnd(ParticleCallback particle)
         {

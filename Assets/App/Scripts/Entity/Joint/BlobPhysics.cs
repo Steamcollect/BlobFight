@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlobPhysics : MonoBehaviour, IPausable
 {
-    float baseColliderRadius;
+    float baseColliderRadius = 0;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
