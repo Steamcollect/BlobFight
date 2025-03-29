@@ -1,59 +1,50 @@
 using System.Collections;
 using UnityEngine;
 
-[System.Serializable]
-public struct WindControl
-{
-    public float target;
-    public float time;
-}
 public class WindController : MonoBehaviour
 {
+    [System.Serializable]
+    private struct WindControl
+    {
+        public float target;
+        public float time;
+    }
+
     [Header("Settings")]
-    [SerializeField] WindControl[] windControl;
-    [SerializeField] bool isLooping;
+    [SerializeField] private bool isLooping;
+    [SerializeField] private WindControl[] windControl;
 
     [Header("References")]
     [SerializeField] MyWindZone windZone;
 
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
     private void Start()
     {
         StartCoroutine(ChangeWindForce());
     }
-    IEnumerator ChangeWindForce()
+
+    private IEnumerator ChangeWindForce()
     {
-        if (isLooping)
+        foreach (var control in windControl)
         {
-            for (int i = 0; i < windControl.Length; i++)
+            float elapsedTime = 0f;
+            float duration = control.time;
+            float startForce = windZone.GetWindForce(); // Assuming there's a method to get current wind force
+            float targetForce = control.target;
+
+            while (elapsedTime < duration)
             {
-                float elapsedTime = 0f;
-                float duration = windControl[i].time;
-                float startForce = windZone.GetWindForce(); // Assuming there's a method to get current wind force
-                float targetForce = windControl[i].target;
-
-                while (elapsedTime < duration)
-                {
-                    elapsedTime += Time.deltaTime;
-                    float newForce = Mathf.Lerp(startForce, targetForce, elapsedTime / duration);
-                    windZone.SetWindForce(newForce);
-                    yield return null; // Wait for the next frame
-                }
-
-                windZone.SetWindForce(targetForce); // Ensure it reaches the exact target value
+                elapsedTime += Time.deltaTime;
+                float newForce = Mathf.Lerp(startForce, targetForce, elapsedTime / duration);
+                windZone.SetWindForce(newForce);
+                yield return null; // Wait for the next frame
             }
 
-            StartCoroutine(ChangeWindForce());
+            windZone.SetWindForce(targetForce); // Ensure it reaches the exact target value
         }
-        else
+
+        if (isLooping)
         {
-            windZone.SetWindForce(windControl[0].target);
+            StartCoroutine(ChangeWindForce());
         }
     }
 }
