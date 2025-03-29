@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5760642682781737976
+--- !u!1 &821183691041958400
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8589312839991062928}
-  - component: {fileID: 6098116842975625978}
+  - component: {fileID: 3032606163607875143}
+  - component: {fileID: 2681097629423101146}
   m_Layer: 0
-  m_Name: PhysicsPropsManager
+  m_Name: PlayerReadyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8589312839991062928
+--- !u!4 &3032606163607875143
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5760642682781737976}
+  m_GameObject: {fileID: 821183691041958400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,17 +32,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6098116842975625978
+--- !u!114 &2681097629423101146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5760642682781737976}
+  m_GameObject: {fileID: 821183691041958400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 096232220b9b406458a79f0e06e6c9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fe4a118d9b7d00429b852fa88cb3c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbodys: []
-  rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
+  rseOnBlobReady: {fileID: 11400000, guid: 41ba8179e6d7aff419499135403837eb, type: 2}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  rseDisableJoining: {fileID: 11400000, guid: e56ca70ff724b5942a6f262dafb1cd21, type: 2}
+  rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseTransit: {fileID: 11400000, guid: de1d05397ce9f074aa8dacd98a3ccc91, type: 2}
+  rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}

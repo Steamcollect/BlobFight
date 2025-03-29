@@ -1,31 +1,27 @@
 using UnityEngine;
+
 public class VialSpawnerManager : MonoBehaviour
 {
-    //[Header("Settings")]
-
     [Header("References")]
-    [SerializeField] VialSpawner[] vials;
-
-    [Space(10)]
-    // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    // RSF
-    // RSP
+    [SerializeField] private VialSpawner[] vials;
 
     [Header("Input")]
-    [SerializeField] RSE_SpawnBlob rseSpawnBlob;
-    //[Header("Output")]
+    [SerializeField] private RSE_SpawnBlob rseSpawnBlob;
+
+    [Header("Output")]
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
 
     private void OnEnable()
     {
         rseSpawnBlob.action += SpawnBlob;
     }
+
     private void OnDisable()
     {
         rseSpawnBlob.action -= SpawnBlob;
     }
 
-    void SpawnBlob(BlobMotor blob)
+    private void SpawnBlob(BlobMotor blob)
     {
         if (vials.Length < rsoBlobInGame.Value.Count)
         {

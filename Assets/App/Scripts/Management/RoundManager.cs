@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] private bool modeDev;
-
     [Header("Input")]
     [SerializeField] private RSE_OnBlobDeath rseOnBlobDeath;
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
@@ -41,7 +38,7 @@ public class RoundManager : MonoBehaviour
         {
             blobs.Remove(blob);
 
-            if (modeDev || blobs.Count == 0)
+            if (blobs.Count == 0)
             {
                 rseOnFightEnd.Call();
                 rseMessage.Call("BLOB ??? WIN!", 1f, Color.black);

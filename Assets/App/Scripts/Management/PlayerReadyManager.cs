@@ -1,23 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerSelectionPanel : MonoBehaviour
 {
-    [Header("Settings")]
-    //[SerializeField] int blobRequireToPlay = 1;
-
-    [Header("References")]
-
-    // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    // RSF
-    // RSP
-
     [Header("Input")]
     [SerializeField] RSE_OnBlobReady rseOnBlobReady;
 
     [Header("Output")]
-    [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
+    [SerializeField] RSO_BlobInGame rsoBlobInGame;
     [SerializeField] RSE_DisableJoining rseDisableJoining;
     [SerializeField] RSE_OnGameStart rseOnGameStart;
     [SerializeField] RSE_Transit rseTransit;
@@ -27,21 +16,20 @@ public class PlayerSelectionPanel : MonoBehaviour
     {
         rseOnBlobReady.action += OnBlobReady;
     }
+
     private void OnDisable()
     {
         rseOnBlobReady.action -= OnBlobReady;
     }
 
-    void OnBlobReady()
+    private void OnBlobReady()
     {
-        for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
+        if (rsoBlobInGame.Value.TrueForAll(blob => blob.IsReady()))
         {
-            if (!rsoBlobInGame.Value[i].IsReady()) return;
+            rseDisableJoining.Call();
+            rseOnGameStart.Call();
+            rseTransit.Call();
+            rseMessage.Call("GAME START!", 1f, Color.black);
         }
-
-        rseDisableJoining.Call();
-        rseOnGameStart.Call();
-        rseTransit.Call();
-        rseMessage.Call("GAME START!", 1f, Color.black);
     }
 }

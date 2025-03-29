@@ -10,32 +10,56 @@ public class BackGround : MonoBehaviour
     [Header("Input")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_Transit rseTransit;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
+
+    private bool isPaused = false;
 
     private void OnEnable()
     {
         rseOnFightEnd.action += HideBackGround;
         rseTransit.action += HideBackGround;
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
     }
 
     private void OnDisable()
     {
         rseOnFightEnd.action -= HideBackGround;
         rseTransit.action -= HideBackGround;
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
     }
 
     private void Start()
     {
         foreach (var sprite in backgroundSprites)
         {
-            StartCoroutine(FadeIn(sprite, 0.6f));
+            if(sprite != null)
+            {
+                StartCoroutine(FadeIn(sprite, 0.6f));
+            }
         }
+    }
+
+    private void Pause()
+    {
+        isPaused = true;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
     }
 
     private void HideBackGround()
     {
         foreach (var sprite in backgroundSprites)
         {
-            StartCoroutine(FadeOut(sprite, 2f));
+            if (sprite != null)
+            {
+                StartCoroutine(FadeOut(sprite, 2f));
+            }
         }
     }
 
@@ -46,12 +70,15 @@ public class BackGround : MonoBehaviour
 
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, 1f, elapsed / duration);
-            Color color = sprite.color;
-            color.a = alpha;
-            sprite.color = color;
-            yield return null;
+            if(!isPaused)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(startAlpha, 1f, elapsed / duration);
+                Color color = sprite.color;
+                color.a = alpha;
+                sprite.color = color;
+                yield return null;
+            }
         }
     }
 
@@ -64,11 +91,15 @@ public class BackGround : MonoBehaviour
 
         while (elapsed < duration)
         {
-            elapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, 0f, elapsed / duration);
-            Color color = sprite.color;
-            color.a = alpha;
-            sprite.color = color;
+            if(!isPaused)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(startAlpha, 0f, elapsed / duration);
+                Color color = sprite.color;
+                color.a = alpha;
+                sprite.color = color;
+            }
+
             yield return null;
         }
     }

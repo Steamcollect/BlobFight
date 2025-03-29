@@ -12,6 +12,8 @@ public class TransitionLevel : MonoBehaviour
 	[Header("Input")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_Transit rseTransit;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
     [Header("Output")]
     [SerializeField] private RSE_LoadNextLevel rseLoadNextLevel;
@@ -20,11 +22,7 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
     [SerializeField] private RSE_Message rseMessage;
 
-    [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
-
-    bool isPaused = false;
+    private bool isPaused = false;
 
     private void OnEnable()
     {
@@ -42,13 +40,13 @@ public class TransitionLevel : MonoBehaviour
         rseOnResume.action -= Resume;
     }
 
-	public void Pause()
+    private void Pause()
     {
         isPaused = true;
         gameObject.transform.DOPause();
     }
 
-    public void Resume()
+    private void Resume()
     {
         isPaused = false;
         gameObject.transform.DOPlay();
@@ -105,10 +103,10 @@ public class TransitionLevel : MonoBehaviour
 
     private void TransitionEnd()
     {
-        StartCoroutine(Delay());
+        StartCoroutine(DelayEnd());
     }
 
-    private IEnumerator Delay()
+    private IEnumerator DelayEnd()
     {
         float cooldown = 1.5f;
         float timer = 0f;

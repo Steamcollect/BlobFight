@@ -1,48 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float minSize = 5f;
-    [SerializeField] float maxSize = 15f;
-    [SerializeField] float zoomMultiplier;
-    [SerializeField] bool cameraLock;
-
-    [Space(10)]
-    [SerializeField] float moveSmoothTime = 0.2f;
-    [SerializeField] float zoomSmoothTime = 0.2f;
-
-    [Space(10)]
-    [SerializeField] Vector3 centerOffset;
-
-    private Vector3 velocity = Vector3.zero;
-    private float zoomVelocity = 0f;
-
-    private Vector3 posOffset;
-
-    [Header("Bounds")]
-    [SerializeField] Vector2 minBounds; // Limite minimale (x, y)
-    [SerializeField] Vector2 maxBounds; // Limite maximale (x, y)
-
-    [Space(10)]
-    [SerializeField] float shakeSpeed;
-    float shakeOffset;
+    [SerializeField] private float minSize;
+    [SerializeField] private float maxSize;
+    [SerializeField] private float zoomMultiplier;
+    [SerializeField] private bool cameraLock;
+    [SerializeField] private float moveSmoothTime;
+    [SerializeField] private float zoomSmoothTime;
+    [SerializeField] private Vector3 centerOffset;
+    [SerializeField] private Vector2 minBounds; // Limite minimale (x, y)
+    [SerializeField] private Vector2 maxBounds; // Limite maximale (x, y)
+    [SerializeField] private float shakeSpeed;
 
     [Header("References")]
-    [SerializeField] Camera cam;
-
-    [Space(10)]
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    [SerializeField] RSO_SettingsSaved rsoSettingsSaved;
+    [SerializeField] private Camera cam;
 
     [Header("Input")]
-    [SerializeField] RSE_CameraShake rseCameraShake;
-    [SerializeField] RSE_OnFightEnd rseOnFightEnd;
-    [SerializeField] RSE_OnFightStart rseOnFightStart;
+    [SerializeField] private RSE_CameraShake rseCameraShake;
+    [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
+    [SerializeField] private RSE_OnFightStart rseOnFightStart;
 
-    bool lockCam = true;
+    [Header("Output")]
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
+    [SerializeField] private RSO_SettingsSaved rsoSettingsSaved;
+
+    private bool lockCam = true;
+    private Vector3 velocity = Vector3.zero;
+    private float zoomVelocity = 0f;
+    private float shakeOffset = 0;
+    private Vector3 posOffset = Vector3.zero;
 
     private void OnEnable()
     {
@@ -50,6 +39,7 @@ public class CameraController : MonoBehaviour
         rseOnFightStart.action += UnlockCamera;
         rseOnFightEnd.action += LockCamera;
     }
+
     private void OnDisable()
     {
         rseCameraShake.action -= Shake;
@@ -79,10 +69,9 @@ public class CameraController : MonoBehaviour
         cam.transform.position = Vector3.SmoothDamp(cam.transform.position, targetPosition, ref velocity, moveSmoothTime) + posOffset;
 
         // SmoothDamp for zoom
-        float targetSize = Mathf.Clamp(distance, minSize, maxSize);
-        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetSize, ref zoomVelocity, zoomSmoothTime);
+        cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, Mathf.Clamp(distance, minSize, maxSize), ref zoomVelocity, zoomSmoothTime);
 
-        //Bounds fixes
+        // Apply bounds clamping
         float halfWidth = cam.orthographicSize * cam.aspect;
         float halfHeight = cam.orthographicSize;
 
@@ -95,39 +84,45 @@ public class CameraController : MonoBehaviour
     private Vector2 CalculateCenter()
     {
         Vector2 sum = Vector2.zero;
+        int aliveCount = 0;
+
+        // Calculate center position of all alive blobs
         foreach (BlobMotor blob in rsoBlobInGame.Value)
         {
-            if (!blob.IsAlive()) continue;
-
-            sum += blob.GetPhysics().GetCenter();
+            if (blob.IsAlive())
+            {
+                sum += blob.GetPhysics().GetCenter();
+                aliveCount++;
+            }
         }
-        return sum / rsoBlobInGame.Value.Count;
+
+        return aliveCount > 0 ? sum / aliveCount : Vector2.zero;
     }
 
     private float CalculateMaxDistance(Vector2 center)
     {
         float maxDistance = 0f;
+
         foreach (BlobMotor blob in rsoBlobInGame.Value)
         {
-            if (!blob.IsAlive()) continue;
-
-            float distance = Vector2.Distance(center, blob.GetPhysics().GetCenter());
-            if (distance > maxDistance)
+            if (blob.IsAlive())
             {
-                maxDistance = distance;
+                maxDistance = Mathf.Max(maxDistance, Vector2.Distance(center, blob.GetPhysics().GetCenter()));
             }
         }
+
         return maxDistance * zoomMultiplier;
     }
 
-    void Shake(float range, float time)
+    private void Shake(float range, float time)
     {
         if (rsoSettingsSaved.Value.screenShake)
         {
             StartCoroutine(CameraShake(range, time));
         }
     }
-    IEnumerator CameraShake(float magnitude, float time)
+
+    private IEnumerator CameraShake(float magnitude, float time)
     {
         if (magnitude > Mathf.Abs(shakeOffset))
         {
@@ -148,18 +143,23 @@ public class CameraController : MonoBehaviour
             posOffset = Vector3.zero;
         }
     }
-    private void OnDrawGizmos()
+
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
 
-        Vector3 bottomLeft = new Vector3(minBounds.x, minBounds.y, 0);
-        Vector3 bottomRight = new Vector3(maxBounds.x, minBounds.y, 0);
-        Vector3 topLeft = new Vector3(minBounds.x, maxBounds.y, 0);
-        Vector3 topRight = new Vector3(maxBounds.x, maxBounds.y, 0);
+        Vector3[] corners = new Vector3[4]
+        {
+            new Vector3(minBounds.x, minBounds.y, 0),
+            new Vector3(maxBounds.x, minBounds.y, 0),
+            new Vector3(maxBounds.x, maxBounds.y, 0),
+            new Vector3(minBounds.x, maxBounds.y, 0)
+        };
 
-        Gizmos.DrawLine(bottomLeft, bottomRight); // Bas
-        Gizmos.DrawLine(bottomRight, topRight);   // Droite
-        Gizmos.DrawLine(topRight, topLeft);       // Haut
-        Gizmos.DrawLine(topLeft, bottomLeft);     // Gauche
+        // Draw rectangle bounds
+        for (int i = 0; i < 4; i++)
+        {
+            Gizmos.DrawLine(corners[i], corners[(i + 1) % 4]);
+        }
     }
 }

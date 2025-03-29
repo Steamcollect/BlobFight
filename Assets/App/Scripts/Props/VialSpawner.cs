@@ -5,46 +5,29 @@ using UnityEngine;
 public class VialSpawner : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float breakCooldownDelay = .5f;
-
-    [Space(5)]
-    [SerializeField] float shakeForce = 8;
-    [SerializeField] float shakeDuration = .5f;
-
-    [Space(5)]
-    [SerializeField] float explosionRadius;
-    [SerializeField] float explosionTorque;
-    [SerializeField] float explosionForce;
-
-    int breakCount;
-
-    bool canBreak = true;
-    bool isPaused = false;
+    [SerializeField] private float breakCooldownDelay;
+    [SerializeField] private float shakeForce;
+    [SerializeField] private float shakeDuration;
+    [SerializeField] private float explosionRadius;
+    [SerializeField] private float explosionTorque;
+    [SerializeField] private float explosionForce;
 
     [Header("References")]
-    BlobMotor blob;
-
-    [SerializeField] Transform content;
-
-    [Space(5)]
-    [SerializeField] SpriteRenderer blobGraphics;
-    [SerializeField] SpriteRenderer vialGraphics;
-    [SerializeField] Sprite[] sprites;
-
-    [Space(5)]
-    [SerializeField] Rigidbody2D[] vialPieces;
-    [SerializeField] ParticleSystem[] breakParticles;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [SerializeField] private Transform content;
+    [SerializeField] private SpriteRenderer blobGraphics;
+    [SerializeField] private SpriteRenderer vialGraphics;
+    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private Rigidbody2D[] vialPieces;
+    [SerializeField] private ParticleSystem[] breakParticles;
 
     [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
-    
-    //[Header("Output")]
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
+
+    private int breakCount = 0;
+    private bool canBreak = true;
+    private bool isPaused = false;
+    private BlobMotor blob;
 
     private void OnEnable()
     {
@@ -71,7 +54,7 @@ public class VialSpawner : MonoBehaviour
         OnPress();
     }
 
-    void OnPress()
+    private void OnPress()
     {
         if (!canBreak || isPaused) return;
 
@@ -101,6 +84,8 @@ public class VialSpawner : MonoBehaviour
                 }
             }
 
+            blob.GetInput().breakVialInput -= OnPress;
+
             return;
         }
 
@@ -111,18 +96,21 @@ public class VialSpawner : MonoBehaviour
         vialGraphics.sprite = sprites[breakCount];
     }
 
-    IEnumerator BreakCooldown()
+    private IEnumerator BreakCooldown()
     {
         canBreak = false;
+
         yield return new WaitForSeconds(breakCooldownDelay);
+
         canBreak = true;
     }
 
-    void Lock()
+    private void Lock()
     {
         isPaused = true;
     }
-    void UnLock()
+
+    private void UnLock()
     {
         isPaused = false;
     }
