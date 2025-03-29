@@ -1,34 +1,27 @@
 using System;
-using System.Collections;
 using UnityEngine;
+
 public class ThunderProps : MonoBehaviour
 {
-    //[Header("Settings")]
-
     [Header("References")]
     [SerializeField] private Animator animator;
-    [SerializeField] Collider2D thunderCollider;
-    [SerializeField] SpriteRenderer spriteRenderer;
-    public int randomSpawn;
+    [SerializeField] private Collider2D thunderCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
+    [Header("Input")]
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
+
     public Action<ThunderProps> onEndAction;
     public Action onThunderSpawn;
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
-
-    [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
+    private int randomSpawn;
 
     private void OnEnable()
     {
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
+
     private void OnDisable()
     {
         rseOnPause.action -= Pause;
@@ -49,21 +42,35 @@ public class ThunderProps : MonoBehaviour
     {
         thunderCollider.enabled = true;
     }
+
     public void DisableCollider()
     {
         thunderCollider.enabled = false;
     }
+
     public void OnEndAnimation()
     {
         gameObject.SetActive(false);
         onEndAction.Invoke(this);
     }
+
     public void Flip(bool flipX)
     {
         spriteRenderer.flipX = flipX;
     }
+
     public void PlaySound()
     {
         onThunderSpawn.Invoke();
+    }
+
+    public void SetRandomSpawn(int index)
+    {
+        randomSpawn = index;
+    }
+
+    public int GetRandomSpawn()
+    {
+        return randomSpawn;
     }
 }

@@ -1,38 +1,31 @@
 using UnityEngine;
-public class RigidbodyMotor : MonoBehaviour, IPausable
+
+public class RigidbodyMotor : MonoBehaviour
 {
-    [Header("Settings")]
-    Vector3 velocity;
-    float angularVelocity;
-
-    RigidbodyType2D bodyType;
-
     [Header("References")]
-    [SerializeField, ContextMenuItem("Get Rigidbody", "GetRigidbody")] Rigidbody2D rb;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [SerializeField] private Rigidbody2D rb;
 
     [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
-    //[Header("Output")]
+    private Vector3 velocity;
+    private float angularVelocity;
+    private RigidbodyType2D bodyType;
 
     private void OnEnable()
     {
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
+
     private void OnDisable()
     {
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
 
-    public void Pause()
+    private void Pause()
     {
         velocity = rb.velocity;
         angularVelocity = rb.angularVelocity;
@@ -40,18 +33,19 @@ public class RigidbodyMotor : MonoBehaviour, IPausable
 
         rb.bodyType = RigidbodyType2D.Static;
     }
-    public void Resume()
+
+    private void Resume()
     {
         rb.bodyType = bodyType;
 
-        if(rb.bodyType != RigidbodyType2D.Static)
+        if (rb.bodyType != RigidbodyType2D.Static)
         {
             rb.velocity = velocity;
             rb.angularVelocity = angularVelocity;
         }
     }
 
-    void GetRigidbody()
+    private void GetRigidbody()
     {
         rb = GetComponent<Rigidbody2D>();
     }

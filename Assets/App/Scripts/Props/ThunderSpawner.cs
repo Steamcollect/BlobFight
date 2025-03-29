@@ -85,24 +85,11 @@ public class ThunderSpawner : GameProps
             }
         }
 
-        StartCoroutine(SpawnThunder());
+        StartCoroutine(DelaySpawnThunder());
     }
 
-    private IEnumerator SpawnThunder()
+    private IEnumerator DelaySpawnThunder()
     {
-        if (timeSpeed.Count > 0)
-        {
-            if (mode < timeSpeed.Count && rsoTimerParty.Value >= timeSpeed[mode])
-            {
-                delayBetweenLightning = newDelayBetweenLightning[mode];
-
-                if (mode < timeSpeed.Count - 1)
-                {
-                    mode++;
-                }
-            }
-        }
-
         float cooldown = Random.Range(delayBetweenLightning.x, delayBetweenLightning.y);
         float timer = 0f;
 
@@ -116,6 +103,11 @@ public class ThunderSpawner : GameProps
             }
         }
 
+        SpawnThunder();
+    }
+
+    private void SpawnThunder()
+    {
         if (availableSpawns.Count > 0)
         {
             int rndIndex = Random.Range(0, availableSpawns.Count);
@@ -123,7 +115,7 @@ public class ThunderSpawner : GameProps
             availableSpawns.RemoveAt(rndIndex);
 
             ThunderProps thunder = GetThunderObj();
-            thunder.randomSpawn = spawnIdx;
+            thunder.SetRandomSpawn(spawnIdx);
             thunder.gameObject.SetActive(true);
             thunder.PlaySound();
             thunder.transform.position = spawnPoint[spawnIdx].position;
@@ -131,7 +123,20 @@ public class ThunderSpawner : GameProps
             thunder.onEndAction += ResetSpawnPoint;
         }
 
-        StartCoroutine(SpawnThunder());
+        if (timeSpeed.Count > 0)
+        {
+            if (mode < timeSpeed.Count && rsoTimerParty.Value >= timeSpeed[mode])
+            {
+                delayBetweenLightning = newDelayBetweenLightning[mode];
+
+                if (mode < timeSpeed.Count - 1)
+                {
+                    mode++;
+                }
+            }
+        }
+
+        StartCoroutine(DelaySpawnThunder());
     }
 
     private ThunderProps GetThunderObj()
@@ -161,6 +166,6 @@ public class ThunderSpawner : GameProps
     private void ResetSpawnPoint(ThunderProps thunder)
     {
         thunder.onEndAction -= ResetSpawnPoint;
-        availableSpawns.Add(thunder.randomSpawn);
+        availableSpawns.Add(thunder.GetRandomSpawn());
     }
 }
