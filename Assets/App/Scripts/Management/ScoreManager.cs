@@ -63,7 +63,7 @@ public class ScoreManager : MonoBehaviour
         int highestScore = aliveBlobs.Max(blob => scoreDictionary[blob]);
         var bestPlayers = aliveBlobs.Where(blob => scoreDictionary[blob] == highestScore).ToList();
 
-        if (bestPlayers.Any())
+        if (highestScore > 0 && bestPlayers.Any())
         {
             bestPlayers.ForEach(blob => blob.EnableCrown());
             rseUpdateCrownVisual.Call(bestPlayers.Count == 1);

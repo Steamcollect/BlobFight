@@ -1,23 +1,15 @@
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-    //[Header("Settings")]
-        
-    [Header("References")]
-    //[Space(10)]
-    // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    [SerializeField] RSO_Spawnpoints rsoSpawnpoints;
-    // RSF
-    // RSP
-
     [Header("Input")]
-    [SerializeField] RSE_SpawnBlob rseSpawnBlob;
+    [SerializeField] private RSE_SpawnBlob rseSpawnBlob;
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
 
-    //[Header("Output")]
+    [Header("Output")]
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
+    [SerializeField] private RSO_Spawnpoints rsoSpawnpoints;
 
     private void OnEnable()
     {
@@ -31,12 +23,13 @@ public class SpawnerManager : MonoBehaviour
         rseSpawnPoint.action -= SpawnerBlob;
     }
 
-    void SpawnerBlob()
+    private void SpawnerBlob()
     {
         if (rsoBlobInGame.Value.Count == 0) return;
+
         if (rsoSpawnpoints.Value.Count == 0)
         {
-            Debug.LogError("You havent any spawnpoint in the scene");
+            Debug.LogError("No spawn points available");
             return;
         }
 
@@ -47,41 +40,23 @@ public class SpawnerManager : MonoBehaviour
         }
     }
 
-    void SpawnBlob(BlobMotor blob)
+    private void SpawnBlob(BlobMotor blob)
     {
         Transform bestSpawn = GetFarthestSpawnPoint(blob);
+
         if (bestSpawn != null)
         {
             blob.Spawn(bestSpawn.position);
         }
     }
 
-    Transform GetFarthestSpawnPoint(BlobMotor excludedBlob)
+    private Transform GetFarthestSpawnPoint(BlobMotor blob)
     {
-        Transform bestSpawn = null;
-        float maxDistance = float.MinValue;
-
-        foreach (Transform spawn in rsoSpawnpoints.Value)
-        {
-            float minDistanceToBlobs = float.MaxValue;
-
-            foreach (BlobMotor blob in rsoBlobInGame.Value)
-            {
-                if (blob == excludedBlob) continue;
-
-                float distance = Vector2.Distance(spawn.position, blob.GetPhysics().GetCenter());
-                if (distance < minDistanceToBlobs)
-                {
-                    minDistanceToBlobs = distance;
-                }
-            }
-
-            if (minDistanceToBlobs > maxDistance)
-            {
-                maxDistance = minDistanceToBlobs;
-                bestSpawn = spawn;
-            }
-        }
+        Transform bestSpawn = rsoSpawnpoints.Value
+            .OrderByDescending(spawn => rsoBlobInGame.Value
+            .Where(b => b != blob)
+            .Min(b => Vector2.Distance(spawn.position, b.GetPhysics().GetCenter())))
+            .FirstOrDefault();
 
         return bestSpawn;
     }
