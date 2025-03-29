@@ -21,6 +21,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     bool stunImpactCanMove = true;
     bool deathCanMove = true;
     bool pauseCanMove = true;
+    bool needShrink = false;
 
     [Space(10)]
     [SerializeField] AnimationCurve angleSpeedMultiplierCurve;
@@ -158,6 +159,13 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     void ShrinkBlob()
     {
+        if (pauseCanMove && isExtend)
+        {
+            needShrink = true;
+        }
+
+        if (!pauseCanMove) return;
+
         if (isExtend && physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
 
         stamina.EnableStaminaRecuperation();
@@ -239,6 +247,12 @@ public class BlobMovement : MonoBehaviour, IPausable
     public void Resume()
     {
         pauseCanMove = true;
+
+        if (needShrink)
+        {
+            needShrink = false;
+            ShrinkBlob();
+        }
     }
 
     public bool CanMove() { return deathCanMove && pauseCanMove && stunImpactCanMove; }
