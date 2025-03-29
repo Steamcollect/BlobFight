@@ -7,6 +7,7 @@ public class MovingProps : GameProps, IPausable
 {
     [Header("Settings")]
     [SerializeField] float moveSpeed;
+    [SerializeField] bool isLava;
     int currentPosIndex;
     [SerializeField] float delayBeforeStart;
     [SerializeField] float delayAtPoint;
@@ -117,13 +118,21 @@ public class MovingProps : GameProps, IPausable
 
     void SetNextPos()
     {
-		movable.gameObject.SetActive(true);
+        if (!isLava)
+        {
+            movable.gameObject.SetActive(true);
+        }
+		
 		currentPosIndex = (currentPosIndex + 1) % positions.Length;
         float moveTime = Vector2.Distance(movable.position, positions[currentPosIndex].position) / moveSpeed;
 		movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
         {
             StartCoroutine(DelayAtPoint());
-			movable.gameObject.SetActive(false);
+
+            if (!isLava)
+            {
+                movable.gameObject.SetActive(false);
+            }
 		});
     }
 

@@ -4964,6 +4964,7 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 2
+  isLava: 1
   delayBeforeStart: 5
   delayAtPoint: 5
   timeSpeed: 000000000f0000001e0000002d000000
