@@ -1,42 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class HingeHealth : EntityHealth
 {
+    [Space(10)]
     [Header("Settings")]
-    [SerializeField] bool instantDestroy;
+    [SerializeField] private bool instantDestroy;
+    [SerializeField] private Color initColor;
+    [SerializeField] private Color endColor;
 
     [Header("References")]
-    [SerializeField, ContextMenuItem("Get All Joints In Object", "GetAllJoints")] List<HingeJoint2D> joints = new List<HingeJoint2D>();
+    [SerializeField] private SpriteRenderer graphics;
+    [SerializeField] private List<HingeJoint2D> joints;
 
-    [Space(10)]
-    [SerializeField] SpriteRenderer graphics;
-    [SerializeField] Color initColor;
-    [SerializeField] Color endColor;
-
+    [Header("Input")]
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
 
     private void OnEnable()
     {
         onTakeDamage += OnTakeDamage;
         onDeath += OnDeath;
-        rseOnFightStart.action += DestroyDelay;
+        rseOnFightStart.action += DestroyInstant;
     }
+
     private void OnDisable()
     {
         onTakeDamage -= OnTakeDamage;
         onDeath -= OnDeath;
-        rseOnFightStart.action -= DestroyDelay;
+        rseOnFightStart.action -= DestroyInstant;
     }
 
     private void Start()
@@ -44,7 +35,7 @@ public class HingeHealth : EntityHealth
         currentHealth = maxHealth;
     }
 
-    void OnTakeDamage(int damageTaken)
+    private void OnTakeDamage(int damageTaken)
     {
         graphics.color = Color.Lerp(endColor, initColor, (float)currentHealth / (float)maxHealth);
     }
@@ -60,7 +51,8 @@ public class HingeHealth : EntityHealth
         initColor = color;
         endColor = color1;
     }
-    void DestroyDelay()
+
+    private void DestroyInstant()
     {
         if (instantDestroy)
         {
@@ -68,13 +60,13 @@ public class HingeHealth : EntityHealth
         }
     }
 
-    void OnDeath()
+    private void OnDeath()
     {
         graphics.color = endColor;
 
-        for (int i = 0; i < joints.Count; i++)
+        foreach (var joint in joints)
         {
-            joints[i].enabled = false;
+            joint.enabled = false;
         }
     }
 }

@@ -5,26 +5,16 @@ public class EntityHealth : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] public int maxHealth;
-    protected int currentHealth;
+    [SerializeField] private bool canTakeDamage = true;
 
-    [SerializeField] bool canTakeDamage = true;
     protected bool isInvincible = false;
-    protected bool isDead;
+    protected bool isDead = false;
+    protected int currentHealth = 0;
 
-    //[Header("References")]
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    [Header("Input")]
     public Action<int> onTakeDamage;
     public Action onDeath;
     public Action OnDestroyBlob;
     public Action<ContactPoint2D> onDestroy;
-
-    //[Header("Output")]
 
     public void TakeDamage(int damage)
     {
@@ -35,6 +25,7 @@ public class EntityHealth : MonoBehaviour
 
         if (currentHealth <= 0) Die();
     }
+
     public void Die()
     {
         if (isDead) return;
@@ -42,6 +33,7 @@ public class EntityHealth : MonoBehaviour
         isDead = true;
         onDeath?.Invoke();
     }
+
     protected void Destroy(Collision2D collision)
     {
         if (isDead) return;

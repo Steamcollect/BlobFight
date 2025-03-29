@@ -2,27 +2,19 @@ using UnityEngine;
 
 public class HingeTrigger : CollisionTrigger
 {
-    //[Header("Settings")]
-
-    [Header("References")]
-    [SerializeField] HingeHealth health;
-
+    [Header("Settings")]
     [SerializeField] int maxRbVelocity;
     [SerializeField] AnimationCurve damageBySpeeCurve;
 
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    [Header("References")]
+    [SerializeField] HingeHealth health;
 
     private void OnEnable()
     {
         OnCollisionEnter += OnCollision;
         OnBlobCollisionEnter += OnBlobCollision;
     }
+
     private void OnDisable()
     {
         OnCollisionEnter -= OnCollision;
@@ -36,7 +28,7 @@ public class HingeTrigger : CollisionTrigger
         this.damageBySpeeCurve = damageBySpeeCurve;
     }
 
-    void OnBlobCollision(BlobMotor blob, Collision2D collision)
+    private void OnBlobCollision(BlobMotor blob, Collision2D collision)
     {
         Vector3 velocity = blob.GetPhysics().GetVelocity();
         float velocityMagnitude = velocity.sqrMagnitude;
@@ -45,7 +37,7 @@ public class HingeTrigger : CollisionTrigger
         health.TakeDamage(damage);
     }
 
-    void OnCollision(Collision2D collision)
+    private void OnCollision(Collision2D collision)
     {
         if(collision.gameObject.TryGetComponent(out Rigidbody2D rb))
         {
@@ -84,6 +76,7 @@ public class HingeTrigger : CollisionTrigger
     {
         OnEnterCollision(collision);
     }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         OnExitCollision(collision);

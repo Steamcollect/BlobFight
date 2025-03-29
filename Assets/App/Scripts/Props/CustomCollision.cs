@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class CustomCollision : MonoBehaviour
 {
     void OnCollision(Collision2D collision)

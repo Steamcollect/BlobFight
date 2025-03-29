@@ -1,31 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public class RotatingProps : GameProps
 {
+    [Space(10)]
     [Header("Settings")]
-    [SerializeField] float rotationSpeed;
-    bool isLaunched = false;
-    [SerializeField] List<int> timeSpeed;
-    [SerializeField] List<float> newtimeSpeed;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private List<int> timeSpeed;
+    [SerializeField] private List<float> newtimeSpeed;
 
     [Header("Output")]
-    [SerializeField] RSO_TimerParty rsoTimerParty;
+    [SerializeField] private RSO_TimerParty rsoTimerParty;
 
     [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
-    //[Header("References")]
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-
-    int mode = 0;
-    bool isPaused = false;
+    private bool isLaunched = false;
+    private int mode = 0;
+    private bool isPaused = false;
 
     private new void OnEnable()
     {
@@ -33,6 +26,7 @@ public class RotatingProps : GameProps
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
+
     private new void OnDisable()
     {
         base.OnDisable();
@@ -61,21 +55,25 @@ public class RotatingProps : GameProps
         {
             if (!isLaunched) return;
 
-            if (timeSpeed.Count > 0)
-            {
-                if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
-                {
-                    rotationSpeed = newtimeSpeed[mode];
+            Rotate();
+        }
+    }
 
-                    if (mode < timeSpeed.Count - 1)
-                    {
-                        mode++;
-                    }
+    private void Rotate()
+    {
+        if (timeSpeed.Count > 0)
+        {
+            if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
+            {
+                rotationSpeed = newtimeSpeed[mode];
+
+                if (mode < timeSpeed.Count - 1)
+                {
+                    mode++;
                 }
             }
-
-            float zRot = transform.rotation.eulerAngles.z;
-            transform.rotation = Quaternion.Euler(0, 0, zRot + rotationSpeed * Time.deltaTime);
         }
+
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 }
