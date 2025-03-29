@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class PropsSpawner : GameProps
 {
+    [Space(10)]
     [Header("Settings")]
-    [SerializeField] Vector2 spawnCooldown;
-    [SerializeField] float spawnForce;
-    [SerializeField] List<int> timeSpeed;
-    [SerializeField] List<Vector2> newtimeSpeed;
-
-    [Space(5)]
-    [SerializeField] int objToSpawnOnStart;
+    [SerializeField] private Vector2 spawnCooldown;
+    [SerializeField] private float spawnForce;
+    [SerializeField] private int objToSpawnOnStart;
+    [SerializeField] private List<int> timeSpeed;
+    [SerializeField] private List<Vector2> newtimeSpeed;
 
     [Header("References")]
-    [SerializeField] Transform spawner;
-    [SerializeField] Rigidbody2D objToSpawn;
-
-    Queue<Rigidbody2D> objQueue = new();
-
-    [Header("Output")]
-    [SerializeField] RSO_TimerParty rsoTimerParty;
+    [SerializeField] private Transform spawner;
+    [SerializeField] private Rigidbody2D objToSpawn;
 
     [Header("Input")]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
-    int mode = 0;
-    bool isPaused = false;
+    [Header("Output")]
+    [SerializeField] private RSO_TimerParty rsoTimerParty;
+
+    private Queue<Rigidbody2D> objQueue = new();
+    private int mode = 0;
+    private bool isPaused = false;
 
     private new void OnEnable()
     {
@@ -35,6 +33,7 @@ public class PropsSpawner : GameProps
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
+
     private new void OnDisable()
     {
         base.OnDisable();
@@ -65,7 +64,25 @@ public class PropsSpawner : GameProps
         isPaused = false;
     }
 
-    IEnumerator SpawnCooldown()
+    private IEnumerator SpawnCooldown()
+    {
+        float cooldown = Random.Range(spawnCooldown.x, spawnCooldown.y);
+        float timer = 0f;
+
+        while (timer < cooldown)
+        {
+            yield return null;
+
+            if(!isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+
+        SpawnProps();
+    }
+
+    private void SpawnProps()
     {
         if (timeSpeed.Count > 0)
         {
@@ -80,19 +97,6 @@ public class PropsSpawner : GameProps
             }
         }
 
-        float cooldown = Random.Range(spawnCooldown.x, spawnCooldown.y);
-        float timer = 0f;
-
-        while (timer < cooldown)
-        {
-            yield return null;
-
-            if(!isPaused)
-            {
-                timer += Time.deltaTime;
-            }
-        }
-
         Rigidbody2D obj = GetObj();
         obj.gameObject.SetActive(true);
         obj.transform.position = spawner.position;
@@ -101,15 +105,16 @@ public class PropsSpawner : GameProps
         StartCoroutine(SpawnCooldown());
     }
 
-    Rigidbody2D GetObj()
+    private Rigidbody2D GetObj()
     {
-        if(objQueue.Count <= 0) CreateObj();
+        if (objQueue.Count <= 0) CreateObj();
 
         Rigidbody2D obj = objQueue.Dequeue();
         objQueue.Enqueue(obj);
         return obj;
     }
-    void CreateObj()
+
+    private void CreateObj()
     {
         Rigidbody2D obj = Instantiate(objToSpawn);
         obj.gameObject.SetActive(false);

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class MovingProps : GameProps
 {
+    [Space(10)]
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private bool isLava;
