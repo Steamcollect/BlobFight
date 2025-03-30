@@ -16,7 +16,7 @@ MonoBehaviour:
   - blobName: BLOB_Blue
     color:
       fillColor: {r: 0.21568628, g: 0.7254902, b: 0.85490197, a: 1}
-      outlineColor: {r: 0.16470589, g: 0.56078434, b: 0.65882355, a: 1}
+      outlineColor: {r: 0.015686274, g: 0.5254902, b: 0.654902, a: 1}
       autoSetOutlineColor: 0
       nameColor: BLUE
     layer:
@@ -25,7 +25,7 @@ MonoBehaviour:
   - blobName: BLOB_Green
     color:
       fillColor: {r: 0.30588236, g: 0.83137256, b: 0.49803922, a: 1}
-      outlineColor: {r: 0.23921569, g: 0.6509804, b: 0.39215687, a: 1}
+      outlineColor: {r: 0.10588236, g: 0.6313726, b: 0.2980392, a: 1}
       autoSetOutlineColor: 0
       nameColor: GREEN
     layer:
@@ -34,7 +34,7 @@ MonoBehaviour:
   - blobName: BLOB_Pink
     color:
       fillColor: {r: 0.85882354, g: 0.29803923, b: 0.5176471, a: 1}
-      outlineColor: {r: 0.69411767, g: 0.27058825, b: 0.44313726, a: 1}
+      outlineColor: {r: 0.65882355, g: 0.098039225, b: 0.3176471, a: 1}
       autoSetOutlineColor: 0
       nameColor: PINK
     layer:
@@ -43,7 +43,7 @@ MonoBehaviour:
   - blobName: BLOB_Orange
     color:
       fillColor: {r: 1, g: 0.7137255, b: 0.27450982, a: 1}
-      outlineColor: {r: 0.7019608, g: 0.49411765, b: 0.1882353, a: 1}
+      outlineColor: {r: 0.8, g: 0.5137255, b: 0.074509814, a: 1}
       autoSetOutlineColor: 0
       nameColor: ORANGE
     layer:
