@@ -4,54 +4,41 @@ using UnityEngine.InputSystem;
 public class BlobHealth : EntityHealth, IPausable
 {
     [Header("Settings")]
-    float pushBackPercentage;
-    [SerializeField] AnimationCurve percentagePerSpeedOnImpactCurve;
-    [SerializeField] AnimationCurve stunTimePerSpeedOnImpactCurve;
-
-    [Space(5)]
-    [SerializeField] int maxImpactSpeed;
-
-    [Space(10)]
-    [SerializeField] float shakeIntensityOnDeath;
-    [SerializeField] float shakeTimeOnDeath;
+    [SerializeField] private AnimationCurve percentagePerSpeedOnImpactCurve;
+    [SerializeField] private AnimationCurve stunTimePerSpeedOnImpactCurve;
+    [SerializeField] private int maxImpactSpeed;
+    [SerializeField] private float shakeIntensityOnDeath;
+    [SerializeField] private float shakeTimeOnDeath;
 
     [Header("References")] 
-    [SerializeField] BlobTrigger blobTrigger;
-    [SerializeField] BlobMovement blobMovement;
-    [SerializeField] BlobParticle particle;
-    [SerializeField] PlayerInput playerInput;
+    [SerializeField] private BlobTrigger blobTrigger;
+    [SerializeField] private BlobMovement blobMovement;
+    [SerializeField] private BlobParticle particle;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private BlobPercentageEffect percentageEffect;
 
-    [Space(10)]
-    [SerializeField] BlobPercentageEffect percentageEffect;
-    [SerializeField] RSE_CallRumble rSE_CallRumble;
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [Header("Output")]
+    [SerializeField] private RSE_CallRumble rseCallRumble;
+    [SerializeField] private RSE_CameraShake rseCamShake;
 
-    //[Header("Input")]
-    //[Header("Output")]
-
-    [SerializeField] RSE_CameraShake rseCamShake;
+    private float pushBackPercentage = 0;
 
     private void OnDisable()
     {
         blobTrigger.OnCollisionEnter -= OnEnterCollision;
         onDeath -= OnDeath;
-        //onTakeDamage -= OnTakeDamage;
     }
 
     private void Start()
     {
         Setup();
-        Invoke("LateStart", .05f);
-        
+        Invoke(nameof(LateStart), 0.05f);
+
     }
     void LateStart()
     {
         blobTrigger.OnCollisionEnter += OnEnterCollision;
         onDeath += OnDeath;
-        //onTakeDamage += OnTakeDamage;
     }
 
     public void Setup()
@@ -62,14 +49,14 @@ public class BlobHealth : EntityHealth, IPausable
         pushBackPercentage = 0;
     }
 
-    void OnDeath()
+    private void OnDeath()
     {
         pushBackPercentage = 0;
         rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-        rSE_CallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
+        rseCallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
     }
 
-    void OnEnterCollision(Collision2D collision)
+    private void OnEnterCollision(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Damagable damagable))
         {
@@ -80,15 +67,16 @@ public class BlobHealth : EntityHealth, IPausable
                     break;
                 
                 case Damagable.DamageType.Kill:
-                    rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-                    rSE_CallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
+                    if (isDead) return;
+                    OnDeath();
                     Die();
+                    Destroy(collision);
                     break;
                 
                 case Damagable.DamageType.Destroy:
                     if (isDead) return;
-                    rseCamShake.Call(shakeIntensityOnDeath, shakeTimeOnDeath);
-                    rSE_CallRumble.Call(playerInput.user.index, playerInput.currentControlScheme);
+                    OnDeath();
+                    Die();
                     Destroy(collision);
                     break;
             }
@@ -99,6 +87,7 @@ public class BlobHealth : EntityHealth, IPausable
     {
         isInvincible = true;
     }
+
     public void Resume()
     {
         isInvincible = false;
@@ -113,5 +102,6 @@ public class BlobHealth : EntityHealth, IPausable
 
         percentageEffect.Setup(pushBackPercentage);
     }
+
     public float GetPercentage() { return 1 + pushBackPercentage; }
 }

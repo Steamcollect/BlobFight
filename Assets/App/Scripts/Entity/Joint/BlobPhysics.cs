@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class BlobPhysics : MonoBehaviour, IPausable
 {
-    float baseColliderRadius = 0;
-
     [Header("References")]
     [SerializeField] BlobMotor motor;
-
     [SerializeField] Rigidbody2D rb;
     [SerializeField] CircleCollider2D collid;
-
-    [Space(5)]
     [SerializeField] Transform buttomPos;
 
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
-
     [HideInInspector] public Vector2 lastVelocity;
-
-    Action<Collision2D> onCollisionEnter, onCollisionStay, OnCollisionExit;
+    private Action<Collision2D> onCollisionEnter;
+    private Action<Collision2D> onCollisionStay;
+    private Action<Collision2D> OnCollisionExit;
     public Action onJointsConnected;
+    private float baseColliderRadius = 0;
 
     public void SetupLayer(LayerMask layerMask)
     {
@@ -66,11 +56,13 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         rb.velocity = Vector2.zero;
     }
+
     public void AddForce(Vector2 force)
     {
         rb.AddForce(force);
 
     }
+
     public void SetDrag(float drag)
     {
         rb.drag = drag;
@@ -81,6 +73,7 @@ public class BlobPhysics : MonoBehaviour, IPausable
         rb.gravityScale = gravity;
 
     }
+
     public void SetMass(float mass)
     {
         rb.mass = mass;
@@ -90,10 +83,12 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         rb.velocity = velocity;
     }
+
     public Vector2 GetVelocity()
     {
         return rb.velocity;
     }
+
     public Rigidbody2D GetRigidbody() { return rb; }
     #endregion
 
@@ -103,6 +98,7 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         onCollisionEnter += action;
     }
+
     public void RemoveOnCollisionEnterListener(Action<Collision2D> action)
     {
         onCollisionEnter -= action;
@@ -138,10 +134,12 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         onCollisionEnter?.Invoke(collision);
     }
-    void OnCollisionStay2D(Collision2D collision)
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
         onCollisionStay?.Invoke(collision);
     }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         OnCollisionExit?.Invoke(collision);

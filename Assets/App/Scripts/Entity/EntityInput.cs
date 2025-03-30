@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class EntityInput : MonoBehaviour
 {
     public Action<Vector2> moveInput;
-    Vector2 moveInputValue;
 
     public Action dashInput;
 
@@ -19,6 +18,8 @@ public class EntityInput : MonoBehaviour
 
     public Action breakVialInput;
 
+    private Vector2 moveInputValue = Vector2.zero;
+
     private void Update()
     {
         moveInput?.Invoke(moveInputValue);
@@ -28,6 +29,7 @@ public class EntityInput : MonoBehaviour
     {
         moveInputValue = context.ReadValue<Vector2>();
     }
+
     public void DashInput(InputAction.CallbackContext context)
     {
         switch (context.phase)
@@ -37,6 +39,7 @@ public class EntityInput : MonoBehaviour
                 break;
         }
     }
+
     public void CompressInput(InputAction.CallbackContext context)
     {
         switch (context.phase)
@@ -72,6 +75,7 @@ public class EntityInput : MonoBehaviour
                 break;
         }
     }
+
     public void ReturnInput(InputAction.CallbackContext context)
     {
         switch (context.phase)

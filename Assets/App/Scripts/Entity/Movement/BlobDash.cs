@@ -1,37 +1,28 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class BlobDash : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float dashForce;
-    [SerializeField] float dashCooldown;
-    [SerializeField] float removeGravityTime;
-
-    [Space(5)]
-    [SerializeField] int maxDashCount;
-    int dashCount;
-    bool canDash = true;
-    bool canResetDashCount = true;
-
-    Vector2 dashInput = Vector2.up;
+    [SerializeField] private float dashForce;
+    [SerializeField] private float dashCooldown;
+    [SerializeField] private float removeGravityTime;
+    [SerializeField] private int maxDashCount;
 
     [Header("References")]
-    [SerializeField] EntityInput input;
-    [SerializeField] BlobPhysics physics;
-    [SerializeField] BlobTrigger trigger;
-    [SerializeField] BlobMovement movement;
-    [SerializeField] BlobParticle particle;
+    [SerializeField] private EntityInput input;
+    [SerializeField] private BlobPhysics physics;
+    [SerializeField] private BlobTrigger trigger;
+    [SerializeField] private BlobMovement movement;
+    [SerializeField] private BlobParticle particle;
 
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
     public Action OnDash;
+    private int dashCount = 0;
+    private bool canDash = true;
+    private bool canResetDashCount = true;
+    private Vector2 dashInput = Vector2.up;
 
     private void OnDisable()
     {
@@ -52,15 +43,10 @@ public class BlobDash : MonoBehaviour
         trigger.OnSlidableEnter += ResetDashCountOnCollision;
         trigger._OnWindEnter += ResetDashCount;
 
-        Invoke("LateStart", .1f);
-    }
-
-    void LateStart()
-    {
         dashCount = maxDashCount;
     }
 
-    void Dash()
+    private void Dash()
     {
         if (!movement.CanMove() || !canDash || movement.IsExtend()) return;
 
@@ -73,13 +59,12 @@ public class BlobDash : MonoBehaviour
 
         dashCount--;
 
-        if (!trigger.IsGrounded() && !trigger.IsSliding())
-            particle.DustDashParticle(physics.GetButtomPosition(), dashInput.normalized);
+        if (trigger.IsGrounded() || trigger.IsSliding())
+            trigger.GetAllContacts().ToList().ForEach(contact => particle.DustParticle(contact.point, contact.normal));
         else
-            foreach (var contact in trigger.GetAllContacts())
-                particle.DustParticle(contact.point, contact.normal);
+            particle.DustDashParticle(physics.GetButtomPosition(), dashInput.normalized);
 
-            StartCoroutine(LockResetDashCount());
+        StartCoroutine(LockResetDashCount());
 
         physics.ResetVelocity();
         physics.AddForce(dashInput.normalized * dashForce);
@@ -89,27 +74,30 @@ public class BlobDash : MonoBehaviour
 
         OnDash?.Invoke();
     }
-    IEnumerator DashCooldown()
+
+    private IEnumerator DashCooldown()
     {
         canDash = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-    IEnumerator LockResetDashCount()
+
+    private IEnumerator LockResetDashCount()
     {
         canResetDashCount = false;
         yield return new WaitForSeconds(.1f);
         canResetDashCount = true;
     }
 
-    void ResetDashCountOnCollision(Collision2D coll) { ResetDashCount(); }
-    void ResetDashCount()
+    private void ResetDashCountOnCollision(Collision2D coll) { ResetDashCount(); }
+
+    private void ResetDashCount()
     {
         if(!canResetDashCount) return;
         dashCount = maxDashCount;
     }
 
-    void SetInput(Vector2 input)
+    private void SetInput(Vector2 input)
     {
         if (input != Vector2.zero) dashInput = input;
         else dashInput = Vector2.up;

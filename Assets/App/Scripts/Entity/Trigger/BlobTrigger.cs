@@ -6,37 +6,25 @@ using System.Collections;
 public class BlobTrigger : CollisionTrigger
 {
     [Header("Settings")]
-    [SerializeField, TagName] string groundableTag;
-    [SerializeField, TagName] string slidableTag;
-    [SerializeField, TagName] string windTag;
-
-    [Space(5)]
-    [SerializeField] bool isGrounded = false;
-    [SerializeField] bool isSliding = false;
-    [SerializeField] bool isInWind = false;
+    [SerializeField, TagName] private string groundableTag;
+    [SerializeField, TagName] private string slidableTag;
+    [SerializeField, TagName] private string windTag;
+    [SerializeField] private bool isGrounded = false;
+    [SerializeField] private bool isSliding = false;
+    [SerializeField] private bool isInWind = false;
 
     [Header("References")]
-    [SerializeField] BlobPhysics physics;
-
-    List<GameObject> groundables = new();
-    List<GameObject> slidables = new();
-    int windsTouchCount;
+    [SerializeField] private BlobPhysics physics;
 
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
     public Action OnGroundTouch;
     public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
-
     public Action _OnWindEnter;
 
-    LayerMask layerToExclude;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private List<GameObject> groundables = new();
+    private List<GameObject> slidables = new();
+    private int windsTouchCount = 0;
+    private LayerMask layerToExclude;
 
     private void OnDisable()
     {
@@ -50,9 +38,10 @@ public class BlobTrigger : CollisionTrigger
 
     private void Start()
     {
-        Invoke("LateStart", .05f);
+        Invoke(nameof(LateStart), 0.1f);
     }
-    void LateStart()
+
+    private void LateStart()
     {
         physics.AddOnCollisionEnterListener(OnEnterCollision);
         physics.AddOnCollisionExitListener(OnExitCollision);
@@ -62,7 +51,7 @@ public class BlobTrigger : CollisionTrigger
         OnCollisionExit += OnExit;
     }
 
-    void OnEnter(Collision2D collision)
+    private void OnEnter(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(groundableTag))
         {
@@ -80,7 +69,8 @@ public class BlobTrigger : CollisionTrigger
             slidables.Add(collision.gameObject);
         }
     }
-    void OnExit(Collision2D collision)
+
+    private void OnExit(Collision2D collision)
     {
         groundables.Remove(collision.gameObject);
         if(groundables.Count <= 0)
@@ -104,6 +94,7 @@ public class BlobTrigger : CollisionTrigger
 
         _OnWindEnter.Invoke();
     }
+
     public void OnWindExit()
     {
         windsTouchCount--;
@@ -116,7 +107,9 @@ public class BlobTrigger : CollisionTrigger
     }
 
     public bool IsGrounded() { return isGrounded; }
+
     public bool IsSliding() { return isSliding; }
+
     public bool IsInWind() { return isInWind; }
 
     public void ExludeLayer(LayerMask layerToExclude, float excludingTime)
@@ -127,7 +120,8 @@ public class BlobTrigger : CollisionTrigger
 
         StartCoroutine(RemoveExludeLayer(layerToExclude, excludingTime));
     }
-    IEnumerator RemoveExludeLayer(LayerMask layerToExclude, float excludingTime)
+
+    private IEnumerator RemoveExludeLayer(LayerMask layerToExclude, float excludingTime)
     {
         yield return new WaitForSeconds(excludingTime);
         this.layerToExclude = this.layerToExclude & ~layerToExclude;

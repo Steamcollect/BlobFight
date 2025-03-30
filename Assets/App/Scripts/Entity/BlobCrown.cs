@@ -3,38 +3,28 @@ using UnityEngine;
 public class BlobCrown : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] Vector2 shrinkPos;
-    [SerializeField] Vector2 extendPos;
-    [SerializeField] float smoothTime;
-
-    [Space(5)]
-    [SerializeField] float rotationAmount;
-    [SerializeField] float rotationTime;
-    [SerializeField] float velocityRotDiviser;
-    Vector2 velocity;
-    Vector2 posOffset;
-    private float rotationDelta;
-    private float rotationVelocity;
+    [SerializeField] private Vector2 shrinkPos;
+    [SerializeField] private Vector2 extendPos;
+    [SerializeField] private float smoothTime;
+    [SerializeField] private float rotationAmount;
+    [SerializeField] private float rotationTime;
+    [SerializeField] private float velocityRotDiviser;
 
     [Header("References")]
-    [SerializeField] RSE_UpdateCrownVisual rseUpdateCrownVisual;
-    [Space(5)]
-    [SerializeField] BlobMotor motor;
-    [SerializeField] BlobPhysics joint;
-    [SerializeField] BlobMovement movement;
+    [SerializeField] private BlobMotor motor;
+    [SerializeField] private BlobPhysics joint;
+    [SerializeField] private BlobMovement movement;
+    [SerializeField] private GameObject crownsContent;
+    [SerializeField] private GameObject goldCrown;
+    [SerializeField] private GameObject silverCrown;
 
-    [Space(5)]
-    [SerializeField] GameObject crownsContent;
-    [SerializeField] GameObject goldCrown;
-    [SerializeField] GameObject silverCrown;
+    [Header("Input")]
+    [SerializeField] private RSE_UpdateCrownVisual rseUpdateCrownVisual;
 
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private Vector2 velocity = Vector2.zero;
+    private Vector2 posOffset = Vector2.zero;
+    private float rotationDelta = 0;
+    private float rotationVelocity = 0;
 
     private void OnEnable()
     {
@@ -46,6 +36,7 @@ public class BlobCrown : MonoBehaviour
 
         rseUpdateCrownVisual.action += UpdateVisual;
     }
+
     private void OnDisable()
     {
         motor.enableCrown -= EnableCrown;
@@ -56,41 +47,39 @@ public class BlobCrown : MonoBehaviour
 
         rseUpdateCrownVisual.action -= UpdateVisual;
     }
+
     private void Update()
     {
         Move();
     }
 
-    void EnableCrown()
+    private void EnableCrown()
     {
         crownsContent.SetActive(true);
     }
-    void DisableCrown()
+
+    private void DisableCrown()
     {
         crownsContent.SetActive(false);
     }
-    void UpdateVisual(bool isGold)
+
+    private void UpdateVisual(bool isGold)
     {
-        if (isGold)
-        {
-            silverCrown.SetActive(false);
-            goldCrown.SetActive(true);
-        }
-        else
-        {
-            silverCrown.SetActive(true);
-            goldCrown.SetActive(false);
-        }
+        goldCrown.SetActive(isGold);
+        silverCrown.SetActive(!isGold);
     }
-    void OnShrink()
+
+    private void OnShrink()
     {
         posOffset = shrinkPos;
     }
-    void OnExtend()
+
+    private void OnExtend()
     {
         posOffset = extendPos;
     }
-    void Move()
+
+    private void Move()
     {
         if(crownsContent.activeInHierarchy)
         {

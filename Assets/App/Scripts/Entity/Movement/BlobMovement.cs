@@ -7,27 +7,10 @@ public class BlobMovement : MonoBehaviour, IPausable
     [Header("Settings")]
     [SerializeField] BlobStatistics shrinkStatistics;
     [SerializeField] BlobStatistics extendStatistics;
-    BlobStatistics statistics;
-
-    [Space(15)]
-    [SerializeField, Tooltip("Extend stamina cost per second")] float extendStaminaCost;
-    bool isExtend = false;
-    float extendTime;
-
+    [SerializeField] float extendStaminaCost;
     [SerializeField] float slidingGravity;
-
-    Vector2 moveInput;
-
-    bool stunImpactCanMove = true;
-    bool deathCanMove = true;
-    bool pauseCanMove = true;
-    bool needShrink = false;
-
-    [Space(10)]
     [SerializeField] AnimationCurve angleSpeedMultiplierCurve;
     [SerializeField] AnimationCurve angleVelocityMultiplierCurve;
-    Vector2 currentGroundNormal;
-    float currentGroundAngle;
 
     [Header("References")]
     [SerializeField] EntityInput input;
@@ -38,8 +21,19 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobParticle particle;
     [SerializeField] BlobDash dash;
 
-    //[Header("Output")]
+    BlobStatistics statistics = new();
+    bool isExtend = false;
+    float extendTime = 0;
+    Vector2 moveInput = Vector2.zero;
+    bool stunImpactCanMove = true;
+    bool deathCanMove = true;
+    bool pauseCanMove = true;
+    bool needShrink = false;
+    Vector2 currentGroundNormal = Vector2.zero;
+    float currentGroundAngle = 0;
     public Action onShrink,onExtend;
+    private Coroutine stunImpactCoroutine;
+    Coroutine _RemoveGravity;
 
     private void OnEnable()
     {
@@ -51,6 +45,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         trigger.OnSlidableEnter += OnSlidableEnter;
         trigger.OnSlidableExit += OnSlidableExit;
     }
+
     private void OnDisable()
     {
         input.compressDownInput -= ExtendBlob;
@@ -73,11 +68,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         input.moveInput += SetInput;
 
-        Invoke("LateStart", .1f);
-    }
-    void LateStart()
-    {
-        ShrinkBlob();
+        Invoke(nameof(ShrinkBlob), 0.1f);
     }
 
     private void FixedUpdate()
@@ -107,12 +98,13 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
 
     #region Setup
-    void SetupJoint()
+    private void SetupJoint()
     {
         statistics = shrinkStatistics;
         SetJointStats();
     }
-    void SetJointStats()
+
+    private void SetJointStats()
     {
         if (_RemoveGravity != null) StopCoroutine(_RemoveGravity);
 
@@ -122,7 +114,8 @@ public class BlobMovement : MonoBehaviour, IPausable
         physics.ChangeScaleTarget(statistics.scale, statistics.timeToSwap);
         physics.SetMass(statistics.mass);
     }
-    void SetInput(Vector2 input)
+
+    private void SetInput(Vector2 input)
     {
         if (input.sqrMagnitude > .1f) moveInput = input.normalized;
         else moveInput = Vector2.zero;
@@ -130,18 +123,16 @@ public class BlobMovement : MonoBehaviour, IPausable
     #endregion
 
     #region ApplyMovement
-    void Move()
+    private void Move()
     {
-        Vector2 direction = Vector2.right;
-
         float angleOffset = angleSpeedMultiplierCurve.Evaluate(Mathf.Abs(currentGroundAngle)) * Mathf.Sign(currentGroundAngle);
-        direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
-        Debug.DrawLine(physics.GetCenter(), physics.GetCenter() + direction);
+        Vector2 direction = Quaternion.Euler(0, 0, angleOffset) * Vector2.right;
+        Debug.DrawLine(physics.GetCenter(), physics.GetCenter() + Vector2.right);
 
         physics.AddForce(direction * moveInput.x * statistics.moveSpeed);
     }
 
-    void ExtendBlob()
+    private void ExtendBlob()
     {
         if (!deathCanMove || !pauseCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime) || physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
 
@@ -157,7 +148,7 @@ public class BlobMovement : MonoBehaviour, IPausable
         visual.Extend();
     }
 
-    void ShrinkBlob()
+    private void ShrinkBlob()
     {
         if (pauseCanMove && isExtend)
         {
@@ -182,7 +173,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     #endregion
 
     #region Collisions
-    void OnGroundableEnter(Collision2D collision)
+    private void OnGroundableEnter(Collision2D collision)
     {
         if (collision.contactCount == 0) return;
 
@@ -202,7 +193,8 @@ public class BlobMovement : MonoBehaviour, IPausable
 
         ExitSlidingState();
     }
-    void OnGroundableExit(Collision2D collision)
+
+    private void OnGroundableExit(Collision2D collision)
     {
         if (!trigger.IsGrounded())
         {
@@ -210,8 +202,8 @@ public class BlobMovement : MonoBehaviour, IPausable
             currentGroundAngle = 0;
         }
     }
-    
-    void OnSlidableEnter(Collision2D collision)
+
+    private void OnSlidableEnter(Collision2D collision)
     {
         if (!isExtend)
         {
@@ -219,11 +211,13 @@ public class BlobMovement : MonoBehaviour, IPausable
             physics.SetGravity(slidingGravity);
         }
     }
-    void OnSlidableExit(Collision2D collision)
+
+    private void OnSlidableExit(Collision2D collision)
     {
         ExitSlidingState();
     }
-    void ExitSlidingState()
+
+    private void ExitSlidingState()
     {
         physics.SetGravity(statistics.gravity);
     }
@@ -234,6 +228,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         deathCanMove = true;
     }
+
     public void DeathDisableMovement()
     {
         ShrinkBlob();
@@ -244,6 +239,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         pauseCanMove = false;
     }
+
     public void Resume()
     {
         pauseCanMove = true;
@@ -260,13 +256,13 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     public bool IsExtend() { return isExtend; }
 
-    Coroutine stunImpactCoroutine;
     public void StunImpact(float delay)
     {
         if (stunImpactCoroutine != null) StopCoroutine(stunImpactCoroutine);
         stunImpactCoroutine = StartCoroutine(StunImpactCooldown(delay));
     }
-    IEnumerator StunImpactCooldown(float delay)
+
+    private IEnumerator StunImpactCooldown(float delay)
     {
         stunImpactCanMove = false;
         particle.EnableExpulseParticle(physics.GetVelocity());
@@ -282,8 +278,8 @@ public class BlobMovement : MonoBehaviour, IPausable
         if (_RemoveGravity != null) StopCoroutine(_RemoveGravity);
         _RemoveGravity = StartCoroutine(RemoveGravityCoroutine(delay));
     }
-    Coroutine _RemoveGravity;
-    IEnumerator RemoveGravityCoroutine(float delay)
+    
+    private IEnumerator RemoveGravityCoroutine(float delay)
     {
         physics.SetGravity(0);
         yield return new WaitForSeconds(delay);

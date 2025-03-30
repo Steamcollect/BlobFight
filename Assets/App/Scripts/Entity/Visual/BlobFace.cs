@@ -4,29 +4,20 @@ using UnityEngine;
 public class BlobFace : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] Sprite idleSprite;
-    [SerializeField] Sprite extendSprite;
-    [SerializeField] Sprite dashSprite;
-    [SerializeField] Sprite stunSprite;
-
-    [Space(10)]
-    [SerializeField] float dashTime;
-    [SerializeField] float stunTime;
+    [SerializeField] private Sprite idleSprite;
+    [SerializeField] private Sprite extendSprite;
+    [SerializeField] private Sprite dashSprite;
+    [SerializeField] private Sprite stunSprite;
+    [SerializeField] private float dashTime;
+    [SerializeField] private float stunTime;
 
     [Header("References")]
-    [SerializeField] BlobMovement movement;
-    [SerializeField] BlobDash dash;
+    [SerializeField] private BlobMovement movement;
+    [SerializeField] private BlobDash dash;
+    [SerializeField] private SpriteRenderer graphics;
 
-    [Space(10)]
-    [SerializeField] SpriteRenderer graphics;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private Coroutine dashDelay;
+    private Coroutine stunDelay;
 
     private void OnEnable()
     {
@@ -39,6 +30,7 @@ public class BlobFace : MonoBehaviour
     {
         graphics.sprite = idleSprite;
     }
+
     public void SetExtend()
     {
         graphics.sprite = extendSprite;
@@ -52,8 +44,7 @@ public class BlobFace : MonoBehaviour
         dashDelay = StartCoroutine(DashDelay());
     }
 
-    Coroutine dashDelay;
-    IEnumerator DashDelay()
+    private IEnumerator DashDelay()
     {
         yield return new WaitForSeconds(dashTime);
         SetIdle();
@@ -66,8 +57,8 @@ public class BlobFace : MonoBehaviour
         if (stunDelay != null) StopCoroutine(stunDelay);
         stunDelay = StartCoroutine(StunDelay());
     }
-    Coroutine stunDelay;
-    IEnumerator StunDelay()
+    
+    private IEnumerator StunDelay()
     {
         graphics.sprite = stunSprite;
         yield return new WaitForSeconds(stunTime);

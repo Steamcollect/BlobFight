@@ -3,22 +3,19 @@ using UnityEngine;
 public class BlobVisual : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float xShrinkScaleAtMaxSpeed;
-    [SerializeField] float yShrinkScaleAtMaxSpeed;
-    [SerializeField] float xExtendScaleAtMaxSpeed;
-    [SerializeField] float yExtendScaleAtMaxSpeed;
-    [SerializeField] float maxSpeed;
-
-    [Space(5)]
-    [SerializeField] int speedMinToSquash;
-
-    Vector2 initScale;
-    bool isExtend;
+    [SerializeField] private float xShrinkScaleAtMaxSpeed;
+    [SerializeField] private float yShrinkScaleAtMaxSpeed;
+    [SerializeField] private float xExtendScaleAtMaxSpeed;
+    [SerializeField] private float yExtendScaleAtMaxSpeed;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private int speedMinToSquash;
 
     [Header("References")]
-    [SerializeField] BlobPhysics physics;
-    [SerializeField] SpriteRenderer graphics;
+    [SerializeField] private BlobPhysics physics;
+    [SerializeField] private SpriteRenderer graphics;
 
+    private Vector2 initScale = Vector2.zero;
+    private bool isExtend = false;
 
     private void Start()
     {
@@ -28,10 +25,9 @@ public class BlobVisual : MonoBehaviour
     private void Update()
     {
         SquashAndStresh();
-        //physics.SyncColliderRadiusToVisual(transform.localScale, initScale);
     }
 
-    void SquashAndStresh()
+    private void SquashAndStresh()
     {
         Vector2 velocity = physics.GetVelocity();
         float speed = velocity.magnitude;
@@ -66,6 +62,7 @@ public class BlobVisual : MonoBehaviour
     {
         graphics.enabled = true;
     }
+
     public void Hide()
     {
         graphics.enabled = false;
@@ -75,6 +72,7 @@ public class BlobVisual : MonoBehaviour
     {
         isExtend = false;
     }
+
     public void Extend()
     {
         isExtend = true;

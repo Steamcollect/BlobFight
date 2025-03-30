@@ -1,54 +1,42 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlobMotor : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] SSO_BlobVisuals blobVisuals;
-    [SerializeField] bool menu;
-    BlobInitializeStatistic currentStats;
+    [SerializeField] private bool menu;
 
     [Header("References")]
-    [SerializeField] GameObject componentsContent;
-
-    [Space(5)]
-    [SerializeField] BlobPhysics physics;
-    [SerializeField] BlobVisual visual;
-    [SerializeField] BlobHealth health;
-    [SerializeField] BlobMovement movement;
-    [SerializeField] BlobParticle particle;
-    [SerializeField] EntityInput input;
-    [SerializeField] BlobTrigger trigger;
-    [SerializeField] BlobCombat combat;
-    [SerializeField] BlobAudio blobAudio;
-
-	[Space(5)]
-    [SerializeField] BlobReadyValidationPanel preparationPanel;
-
-    IPausable[] pausables;
-
-    [Space(10)]
-    // RSO
-    [SerializeField] RSO_BlobInGame rsoBlobInGame;
-    // RSF
-    // RSP
+    [SerializeField] private GameObject componentsContent;
+    [SerializeField] private BlobPhysics physics;
+    [SerializeField] private BlobVisual visual;
+    [SerializeField] private BlobHealth health;
+    [SerializeField] private BlobMovement movement;
+    [SerializeField] private BlobParticle particle;
+    [SerializeField] private EntityInput input;
+    [SerializeField] private BlobTrigger trigger;
+    [SerializeField] private BlobCombat combat;
+    [SerializeField] private BlobAudio blobAudio;
+    [SerializeField] private BlobReadyValidationPanel preparationPanel;
 
     [Header("Input")]
-    [SerializeField] RSE_OnFightStart rseOnFightStart;
-    [SerializeField] RSE_OnFightEnd rseOnFightEnd;
-    [SerializeField] RSE_OnGameStart rseOnGameStart;
+    [SerializeField] private RSE_OnFightStart rseOnFightStart;
+    [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
+    [SerializeField] private RSE_OnGameStart rseOnGameStart;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
     [Header("Output")]
-    [SerializeField] RSE_SpawnBlob rseSpawnBlob;
-    [SerializeField] RSE_OnBlobDeath rseOnBlobDeath;
-    [SerializeField] RSE_TogglePause rseTogglePause;
+    [SerializeField] private SSO_BlobVisuals blobVisuals;
+    [SerializeField] private RSE_SpawnBlob rseSpawnBlob;
+    [SerializeField] private RSE_OnBlobDeath rseOnBlobDeath;
+    [SerializeField] private RSE_TogglePause rseTogglePause;
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
 
-    [Space(5)]
-    [SerializeField] RSE_OnPause rseOnPause;
-    [SerializeField] RSE_OnResume rseOnResume;
-
-    public Action enableCrown, disableCrown;
+    public Action enableCrown;
+    public Action disableCrown;
+    private BlobInitializeStatistic currentStats;
+    private IPausable[] pausables;
 
     #region Setup
     private void OnEnable()
@@ -65,6 +53,7 @@ public class BlobMotor : MonoBehaviour
         health.onDeath += OnDeath;
         health.onDestroy += OnDestroyed;
     }
+
     private void OnDisable()
     {
         rseOnFightStart.action -= UnlockInteraction;
@@ -92,6 +81,7 @@ public class BlobMotor : MonoBehaviour
             return;
         }
     }
+
     private void Start()
     {
         rsoBlobInGame.Value.Add(this);
@@ -109,7 +99,7 @@ public class BlobMotor : MonoBehaviour
             UnlockInteraction();
         }
 
-        Invoke("LateStart", .1f);
+        Invoke(nameof(LateStart), 0.1f);
     }
 
     public void Setup()
@@ -117,7 +107,7 @@ public class BlobMotor : MonoBehaviour
         rseSpawnBlob.Call(this);
     }
 
-    void LateStart()
+    private void LateStart()
     {
         physics.SetupLayer(currentStats.layer);
         trigger.SetLayerToExclude(currentStats.layer);
@@ -126,12 +116,13 @@ public class BlobMotor : MonoBehaviour
 
     #endregion
 
-    void Enable()
+    private void Enable()
     {
         physics.Enable();
         visual.Show();
     }
-    void Disable()
+
+    private void Disable()
     {
         physics.Disable();
         visual.Hide();
@@ -145,7 +136,8 @@ public class BlobMotor : MonoBehaviour
         physics.Disable();
         trigger.ResetTouchs();
     }
-    void UnlockInteraction()
+
+    private void UnlockInteraction()
     {
         movement.DeathEnableMovement();
         physics.Enable();
@@ -161,13 +153,14 @@ public class BlobMotor : MonoBehaviour
     }
 
     #region Health
-    void OnDeath()
+    private void OnDeath()
     {
         particle.DeathParticle(physics.GetCenter(), currentStats.color);
         Disable();
         rseOnBlobDeath.Call(this);
     }
-    void OnDestroyed(ContactPoint2D contact)
+
+    private void OnDestroyed(ContactPoint2D contact)
     {
         particle.DestroyParticle(contact, currentStats.color);
         Disable();
@@ -178,14 +171,15 @@ public class BlobMotor : MonoBehaviour
     #endregion
 
     #region GameState
-    void OnGamePause()
+    private void OnGamePause()
     {
         foreach (IPausable pausable in pausables)
         {
             pausable.Pause();
         }
     }
-    void OnGameResume()
+
+    private void OnGameResume()
     {
         foreach (IPausable pausable in pausables)
         {
@@ -199,6 +193,7 @@ public class BlobMotor : MonoBehaviour
     {
         enableCrown?.Invoke();
     }
+
     public void DisableCrown()
     {
         disableCrown?.Invoke();
@@ -210,17 +205,25 @@ public class BlobMotor : MonoBehaviour
     {
         preparationPanel.gameObject.SetActive(true);
     }
+
     public bool IsReady() { return preparationPanel.IsReady(); }
     #endregion
 
     #region Getter
     public BlobInitializeStatistic GetStats() { return currentStats; }
+
     public BlobPhysics GetPhysics() { return physics; }
+
     public BlobHealth GetHealth() { return health; }
+
     public EntityInput GetInput() { return input; }
+
     public BlobMovement GetMovement() { return movement; }
+
     public BlobTrigger GetTrigger() { return trigger; }
+
     public BlobCombat GetCombat() { return combat; }
+
     public BlobAudio GetAudio() { return blobAudio; }
 
     public BlobColor GetColor() { return currentStats.color; }

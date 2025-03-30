@@ -3,24 +3,13 @@ using UnityEngine;
 public class BlobStamina : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float maxStamina;
-    float currentStamina;
+    [SerializeField] private float maxStamina;
+    [SerializeField] private float staminaGivenPerSec;
+    [SerializeField] private float waitingTimeWhenNoStamina;
 
-    [SerializeField] float staminaGivenPerSec;
-    [SerializeField] float waitingTimeWhenNoStamina;
-
-    bool isWaitingForStamina = false;
-    bool canGetStamina = true;
-
-    //[Header("References")]
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private float currentStamina = 0;
+    private bool isWaitingForStamina = false;
+    private bool canGetStamina = true;
 
     public void Setup()
     {
@@ -31,27 +20,20 @@ public class BlobStamina : MonoBehaviour
     {
         if (!canGetStamina || isWaitingForStamina) return;
 
-        if (currentStamina > maxStamina)
-        {
-            currentStamina = maxStamina;
-        }
-        else
-        {
-            currentStamina += staminaGivenPerSec * Time.deltaTime;
-        }
+        currentStamina = Mathf.Min(currentStamina + staminaGivenPerSec * Time.deltaTime, maxStamina);
     }
 
-    public void RemoveStamina(float stamina)
+    public void RemoveStamina(float amount)
     {
-        currentStamina -= stamina;
-        if (currentStamina <= 1)
+        currentStamina = Mathf.Max(currentStamina - amount, 0);
+
+        if (currentStamina == 0)
         {
-            currentStamina = 0;
             StartCoroutine(OnNoStaminaDelay());
         }
     }
 
-    IEnumerator OnNoStaminaDelay()
+    private IEnumerator OnNoStaminaDelay()
     {
         isWaitingForStamina = true;
         yield return new WaitForSeconds(waitingTimeWhenNoStamina);
@@ -59,7 +41,10 @@ public class BlobStamina : MonoBehaviour
     }
 
     public bool HaveEnoughStamina(float staminaRequire) { return currentStamina >= staminaRequire; }
+
     public float GetStamina() {  return currentStamina; }
+
     public void EnableStaminaRecuperation() { canGetStamina = true;}
+
     public void DisableStaminaRecuperation() { canGetStamina = false;}
 }
