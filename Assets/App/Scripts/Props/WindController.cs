@@ -15,7 +15,7 @@ public class WindController : MonoBehaviour
     [SerializeField] private WindControl[] windControl;
 
     [Header("References")]
-    [SerializeField] MyWindZone windZone;
+    [SerializeField] private MyWindZone windZone;
 
     [Header("Input")]
     [SerializeField] private RSE_OnFightStart rseOnFightStart;

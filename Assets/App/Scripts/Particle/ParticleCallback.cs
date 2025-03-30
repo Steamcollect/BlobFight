@@ -3,19 +3,8 @@ using UnityEngine;
 
 public class ParticleCallback : MonoBehaviour
 {
-    //[Header("Settings")]
-
-    //[Header("References")]
-    Action<ParticleCallback> OnParticleStopped;
-    ParticleSystem particleConnected;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private Action<ParticleCallback> OnParticleStopped;
+    private ParticleSystem particleConnected;
 
     public void Setup(Action<ParticleCallback> onStopped, ParticleSystem particleConnected)
     {
@@ -28,7 +17,7 @@ public class ParticleCallback : MonoBehaviour
 
     public virtual void SetColor(Color newColor)
     {
-        // Do nothing
+        
     }
 
     public void Play()

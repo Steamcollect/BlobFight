@@ -1,39 +1,24 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using System;
-using System.Collections;
 
 public class BlobPercentageEffect : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] AnimationCurve sizeOverPercentage;
-    [SerializeField] AnimationCurve maxRotOverPercentage;
-    Color color;
-
-    [Space(5)]
-    [SerializeField] float readTime;
-    [SerializeField] float disableTime;
-
-    [Space(5)]
-    [SerializeField] Vector2 posOffset;
+    [SerializeField] private AnimationCurve sizeOverPercentage;
+    [SerializeField] private AnimationCurve maxRotOverPercentage;
+    [SerializeField] private float readTime;
+    [SerializeField] private float disableTime;
+    [SerializeField] private Vector2 posOffset;
 
     [Header("References")]
-    [SerializeField] BlobMotor motor;
-    [SerializeField] BlobPhysics physics;
+    [SerializeField] private BlobMotor motor;
+    [SerializeField] private BlobPhysics physics;
+    [SerializeField] private TMP_Text text;
 
-    [Space(5)]
-    [SerializeField] TMP_Text text;
-
-    bool isVisible = false;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
-
-    //[Header("Input")]
-    //[Header("Output")]
+    private Color color = Color.black;
+    private bool isVisible = false;
+    private Coroutine delayCoroutine;
 
     private void Start()
     {
@@ -41,7 +26,8 @@ public class BlobPercentageEffect : MonoBehaviour
 
         Invoke("LateStart", .1f);
     }
-    void LateStart()
+
+    private void LateStart()
     {
         color = motor.GetColor().fillColor;
     }
@@ -51,7 +37,6 @@ public class BlobPercentageEffect : MonoBehaviour
         if (isVisible) transform.position = physics.GetCenter() + posOffset;
     }
 
-    Coroutine delayCoroutine;
     public void Setup(float percentage)
     {
         transform.DOKill();
@@ -62,15 +47,14 @@ public class BlobPercentageEffect : MonoBehaviour
         isVisible = true;
 
         transform.localScale = Vector3.zero;
-
-        float rot = maxRotOverPercentage.Evaluate(percentage);
-        transform.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(-rot, rot));
-
         text.text = (percentage * 100).ToString("F0") + '%';
-
         text.color = color;
 
-        transform.BumpVisual(sizeOverPercentage.Evaluate(percentage), () =>
+        float size = sizeOverPercentage.Evaluate(percentage);
+        float rot = maxRotOverPercentage.Evaluate(percentage);
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-rot, rot));
+
+        transform.BumpVisual(size, () =>
         {
             delayCoroutine = StartCoroutine(Utils.Delay(readTime, () =>
             {

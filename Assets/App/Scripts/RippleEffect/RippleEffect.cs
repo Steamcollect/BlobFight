@@ -2,6 +2,33 @@
 
 public class RippleEffect : MonoBehaviour
 {
+    private class Droplet
+    {
+        Vector2 position;
+        float time;
+
+        public Droplet()
+        {
+            time = 1000;
+        }
+
+        public void Reset(Vector2 pos)
+        {
+            position = pos;
+            time = 0;
+        }
+
+        public void Update()
+        {
+            time += Time.deltaTime * 2;
+        }
+
+        public Vector4 MakeShaderParameter(float aspect)
+        {
+            return new Vector4(position.x * aspect, position.y, time, 0);
+        }
+    }
+
     public AnimationCurve waveform = new AnimationCurve(
         new Keyframe(0.00f, 0.50f, 0, 0),
         new Keyframe(0.05f, 1.00f, 0, 0),
@@ -31,42 +58,15 @@ public class RippleEffect : MonoBehaviour
     public float dropInterval = 0.5f;
 
     [SerializeField, HideInInspector]
-    Shader shader;
+    private Shader shader;
 
-    class Droplet
-    {
-        Vector2 position;
-        float time;
+    private Droplet[] droplets;
+    private Texture2D gradTexture;
+    private Material material;
+    private float timer;
+    private int dropCount;
 
-        public Droplet()
-        {
-            time = 1000;
-        }
-
-        public void Reset(Vector2 pos)
-        {
-            position = pos;
-            time = 0;
-        }
-
-        public void Update()
-        {
-            time += Time.deltaTime * 2;
-        }
-
-        public Vector4 MakeShaderParameter(float aspect)
-        {
-            return new Vector4(position.x * aspect, position.y, time, 0);
-        }
-    }
-
-    Droplet[] droplets;
-    Texture2D gradTexture;
-    Material material;
-    float timer;
-    int dropCount;
-
-    void UpdateShaderParameters()
+    private void UpdateShaderParameters()
     {
         var c = GetComponent<Camera>();
 
@@ -79,7 +79,7 @@ public class RippleEffect : MonoBehaviour
         material.SetVector("_Params2", new Vector4(1, 1 / c.aspect, refractionStrength, reflectionStrength));
     }
 
-    void Awake()
+    private void Awake()
     {
         droplets = new Droplet[3];
         droplets[0] = new Droplet();
@@ -109,7 +109,7 @@ public class RippleEffect : MonoBehaviour
         Emit(Vector2.zero);
     }
 
-    void Update()
+    private void Update()
     {
         if (dropInterval > 0)
         {
@@ -126,7 +126,7 @@ public class RippleEffect : MonoBehaviour
         UpdateShaderParameters();
     }
 
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         Graphics.Blit(source, destination, material);
     }

@@ -5,34 +5,26 @@ using UnityEngine.UI;
 public class BlobReadyValidationPanel : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] Vector2 posOffset;
-    [SerializeField] float timeToValid;
-    float currentTime;
-
-    bool isInputClick = false;
-    bool isValid = false;
+    [SerializeField] private Vector2 posOffset;
+    [SerializeField] private float timeToValid;
 
     [Header("References")]
-    [SerializeField] EntityInput input;
-    [SerializeField] BlobPhysics blobPhysics;
-
-    Camera cam;
-
-    [Space(10)]
-    [SerializeField] Image wheelImage;
-    [SerializeField] TMP_Text pressInputTxt;
-    [SerializeField] TMP_Text readyTxt;
-
-    //[Space(10)]
-    // RSO
-    // RSF
-    // RSP
+    [SerializeField] private EntityInput input;
+    [SerializeField] private BlobPhysics blobPhysics;
+    [SerializeField] private Image wheelImage;
+    [SerializeField] private TMP_Text pressInputTxt;
+    [SerializeField] private TMP_Text readyTxt;
 
     [Header("Input")]
-    [SerializeField] RSE_OnGameStart rseOnGameStart;
+    [SerializeField] private RSE_OnGameStart rseOnGameStart;
 
     [Header("Output")]
-    [SerializeField] RSE_OnBlobReady rseOnBlobReady;
+    [SerializeField] private RSE_OnBlobReady rseOnBlobReady;
+
+    private Camera cam = null;
+    private float currentTime = 0;
+    private bool isInputClick = false;
+    private bool isValid = false;
 
     private void OnEnable()
     {
@@ -41,6 +33,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
         rseOnGameStart.action += DisableGO;
     }
+
     private void OnDisable()
     {
         input.returnInput -= ReturnButton;
@@ -58,38 +51,43 @@ public class BlobReadyValidationPanel : MonoBehaviour
     {
         if (!isValid && blobPhysics.GetRigidbody().bodyType != RigidbodyType2D.Static)
         {
-            if (isInputClick)
-            {
-                currentTime += Time.deltaTime;
-
-                if (currentTime >= timeToValid)
-                {
-                    isValid = true;
-                    pressInputTxt.gameObject.SetActive(false);
-                    wheelImage.gameObject.SetActive(false);
-                    readyTxt.gameObject.SetActive(true);
-                    transform.BumpVisual();
-
-                    rseOnBlobReady.Call();
-                }
-            }
-            else
-            {
-                currentTime -= Time.deltaTime * 5;
-                if (currentTime < 0) currentTime = 0;
-            }
-
-            UpdateWheelAmount();
+            ValidateInputProgress();
         }
         else
         {
             isInputClick = false;
         }
 
-            UpdateWheelPosition();
+        UpdateWheelPosition();
     }
 
-    void SetValidInput(bool isClick)
+    private void ValidateInputProgress()
+    {
+        if (isInputClick)
+        {
+            currentTime += Time.deltaTime;
+
+            if (currentTime >= timeToValid)
+            {
+                isValid = true;
+                pressInputTxt.gameObject.SetActive(false);
+                wheelImage.gameObject.SetActive(false);
+                readyTxt.gameObject.SetActive(true);
+                transform.BumpVisual();
+
+                rseOnBlobReady.Call();
+            }
+        }
+        else
+        {
+            currentTime -= Time.deltaTime * 5;
+            if (currentTime < 0) currentTime = 0;
+        }
+
+        UpdateWheelAmount();
+    }
+
+    private void SetValidInput(bool isClick)
     {
         if (blobPhysics.GetRigidbody().bodyType != RigidbodyType2D.Static)
         {
@@ -97,7 +95,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
         }
     }
 
-    void ReturnButton()
+    private void ReturnButton()
     {
         isValid = false;
         readyTxt.gameObject.SetActive(false);
@@ -107,16 +105,17 @@ public class BlobReadyValidationPanel : MonoBehaviour
         transform.BumpVisual();
     }
 
-    void UpdateWheelAmount()
+    private void UpdateWheelAmount()
     {
         wheelImage.fillAmount = currentTime / timeToValid;
     }
-    void UpdateWheelPosition()
+
+    private void UpdateWheelPosition()
     {
         transform.position = cam.WorldToScreenPoint(blobPhysics.GetCenter() + posOffset);
     }
 
-    void DisableGO()
+    private void DisableGO()
     {
         gameObject.SetActive(false);
     }

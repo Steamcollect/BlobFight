@@ -3,9 +3,12 @@ using static UnityEngine.ParticleSystem;
 
 public class BlobParticleCallback : ParticleCallback
 {
-    [SerializeField] ParticleSystem[] particles;
-    MyParticle[] myParticles;
-    struct MyParticle
+    [Header("References")]
+    [SerializeField] private ParticleSystem[] particles;
+
+    private MyParticle[] myParticles;
+
+    private struct MyParticle
     {
         public ParticleSystem particle;
         public MainModule mainModule;
