@@ -8,7 +8,7 @@ public class MovingProps : GameProps
     [Space(10)]
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private bool isLava;
+    [SerializeField] private bool notHide;
     [SerializeField] private float delayBeforeStart;
     [SerializeField] private float delayAtPoint;
     [SerializeField] private List<int> timeSpeed;
@@ -95,7 +95,7 @@ public class MovingProps : GameProps
 
     private void SetNextPos()
     {
-        if (!isLava)
+        if (!notHide)
         {
             movable.gameObject.SetActive(true);
         }
@@ -119,7 +119,7 @@ public class MovingProps : GameProps
 
         movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
         {
-            if (!isLava)
+            if (!notHide)
             {
                 movable.gameObject.SetActive(false);
             }

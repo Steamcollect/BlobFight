@@ -115,7 +115,7 @@ MonoBehaviour:
   moveSpeed: 8
   isLava: 0
   delayBeforeStart: 0
-  delayAtPoint: 0
+  delayAtPoint: 0.5
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []

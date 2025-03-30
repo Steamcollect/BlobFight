@@ -1610,6 +1610,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: notHide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -2420,6 +2424,22 @@ PrefabInstance:
     - target: {fileID: 6757168184534640755, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
       propertyPath: m_Name
       value: Moving (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: isLava
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: notHide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: delayAtPoint
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4609,6 +4629,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: notHide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: moveSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -5096,6 +5120,18 @@ PrefabInstance:
     - target: {fileID: 6757168184534640755, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
       propertyPath: m_Name
       value: Moving
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: isLava
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: notHide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: moveSpeed
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
