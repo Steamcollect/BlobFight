@@ -225,7 +225,7 @@ public class BlobMovement : MonoBehaviour, IPausable
     }
     void ExitSlidingState()
     {
-        //physics.SetGravity(statistics.gravity);
+        physics.SetGravity(statistics.gravity);
     }
     #endregion
 
