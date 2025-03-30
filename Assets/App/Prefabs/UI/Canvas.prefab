@@ -354,6 +354,8 @@ MonoBehaviour:
   panelMessage: {fileID: 5651693942617068428}
   textMessage: {fileID: 7719117341936196666}
   rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!114 &371241767014496281
 MonoBehaviour:
   m_ObjectHideFlags: 0
