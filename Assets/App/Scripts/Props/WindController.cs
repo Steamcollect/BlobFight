@@ -17,9 +17,40 @@ public class WindController : MonoBehaviour
     [Header("References")]
     [SerializeField] MyWindZone windZone;
 
-    private void Start()
+    [Header("Input")]
+    [SerializeField] private RSE_OnFightStart rseOnFightStart;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
+
+    private bool isPaused = false;
+
+    private void OnEnable()
+    {
+        rseOnFightStart.action += Setup;
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
+    }
+
+    private void OnDisable()
+    {
+        rseOnFightStart.action -= Setup;
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
+    }
+
+    private void Setup()
     {
         StartCoroutine(ChangeWindForce());
+    }
+
+    private void Pause()
+    {
+        isPaused = true;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
     }
 
     private IEnumerator ChangeWindForce()
@@ -33,9 +64,13 @@ public class WindController : MonoBehaviour
 
             while (elapsedTime < duration)
             {
-                elapsedTime += Time.deltaTime;
-                float newForce = Mathf.Lerp(startForce, targetForce, elapsedTime / duration);
-                windZone.SetWindForce(newForce);
+                if (!isPaused)
+                {
+                    elapsedTime += Time.deltaTime;
+                    float newForce = Mathf.Lerp(startForce, targetForce, elapsedTime / duration);
+                    windZone.SetWindForce(newForce);
+                }
+
                 yield return null; // Wait for the next frame
             }
 

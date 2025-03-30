@@ -4781,11 +4781,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
-      value: 600
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: launchType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: rseOnFightEnd
+      value: 
+      objectReference: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[0].time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[1].time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[2].time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[3].time
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[0].target
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[1].target
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: windControl.Array.data[3].target
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8010946453871632358, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_Name
@@ -5169,7 +5209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
-      value: 600
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: launchType
