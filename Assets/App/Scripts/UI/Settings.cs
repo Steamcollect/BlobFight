@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Settings : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textAudioMusic;
     [SerializeField] private TextMeshProUGUI textAudioSounds;
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider sliderAudioMusic;
+    [SerializeField] private Slider sliderAudioSounds;
 
     [Header("Output")]
     [SerializeField] private RSO_SettingsSaved rsoSettingsSaved;
@@ -28,29 +31,33 @@ public class Settings : MonoBehaviour
         if (rsoSettingsSaved.Value.screenShake)
         {
             textScreenShake.text = "On";
+
         }
         else if (!rsoSettingsSaved.Value.screenShake)
         {
             textScreenShake.text = "Off";
+
         }
 
         if (rsoSettingsSaved.Value.fullScreen)
         {
             textFullScreen.text = "On";
+
         }
         else if (!rsoSettingsSaved.Value.fullScreen)
         {
             textFullScreen.text = "Off";
+
         }
 
         textAudioMusic.text = rsoSettingsSaved.Value.audioMusic.ToString() + "%";
+        sliderAudioMusic.value = rsoSettingsSaved.Value.audioMusic / 5;
         textAudioSounds.text = rsoSettingsSaved.Value.audioSounds.ToString() + "%";
+        sliderAudioSounds.value = rsoSettingsSaved.Value.audioSounds / 5;
     }
 
     public void UpdateScreenShake()
     {
-        rsoSettingsSaved.Value.screenShake = !rsoSettingsSaved.Value.screenShake;
-
         if (rsoSettingsSaved.Value.screenShake)
         {
             textScreenShake.text = "Off";
@@ -60,13 +67,13 @@ public class Settings : MonoBehaviour
             textScreenShake.text = "On";
         }
 
+        rsoSettingsSaved.Value.screenShake = !rsoSettingsSaved.Value.screenShake;
+
         rseSaveData.Call(saveSettingsName, true);
     }
 
     public void UpdateFullScreen()
     {
-        rsoSettingsSaved.Value.fullScreen = !rsoSettingsSaved.Value.fullScreen;
-
         if (rsoSettingsSaved.Value.fullScreen)
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
@@ -77,6 +84,8 @@ public class Settings : MonoBehaviour
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
             textFullScreen.text = "On";
         }
+
+        rsoSettingsSaved.Value.fullScreen = !rsoSettingsSaved.Value.fullScreen;
 
         Screen.fullScreen = rsoSettingsSaved.Value.fullScreen;
         rseSaveData.Call(saveSettingsName, true);
