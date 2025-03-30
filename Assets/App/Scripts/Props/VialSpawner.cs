@@ -108,11 +108,27 @@ public class VialSpawner : MonoBehaviour
     private void Lock()
     {
         isPaused = true;
+
+        foreach (var particle in breakParticles) 
+        {
+            if (particle.isPlaying)
+            {
+                particle.Pause();
+            }
+        }
     }
 
     private void UnLock()
     {
         isPaused = false;
+
+        foreach (var particle in breakParticles)
+        {
+            if (particle.isPaused)
+            {
+                particle.Play();
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
