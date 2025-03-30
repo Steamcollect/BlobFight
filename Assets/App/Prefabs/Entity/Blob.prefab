@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9190874016585853854}
   - component: {fileID: 4617812964555812280}
+  - component: {fileID: 6166644353404609521}
   m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
@@ -67,6 +68,20 @@ MonoBehaviour:
     particlePrefab: {fileID: 7291753846233562658, guid: d14fc8cead465cb419c4ed12ac2b521e, type: 3}
   - hitStrenght: 100
     particlePrefab: {fileID: 7291753846233562658, guid: 5ee85dea0df985c4b93b720b4fe19f51, type: 3}
+--- !u!114 &6166644353404609521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676199424938980523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4e935df21aee34595fc79d0ac13162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &793592039679487213
 GameObject:
   m_ObjectHideFlags: 0

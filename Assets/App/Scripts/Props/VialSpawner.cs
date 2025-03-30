@@ -120,13 +120,16 @@ public class VialSpawner : MonoBehaviour
 
     private void UnLock()
     {
-        isPaused = false;
-
-        foreach (var particle in breakParticles)
+        if (isPaused)
         {
-            if (particle.isPaused)
+            isPaused = false;
+
+            foreach (var particle in breakParticles)
             {
-                particle.Play();
+                if (particle.isPaused)
+                {
+                    particle.Play();
+                }
             }
         }
     }
