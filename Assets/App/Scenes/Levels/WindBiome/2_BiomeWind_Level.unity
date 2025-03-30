@@ -4789,7 +4789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7307063819379520189, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: rseOnFightEnd
