@@ -36,12 +36,13 @@ public class RoundManager : MonoBehaviour
     {
         if (blobs != null && blobs.Contains(blob))
         {
-            blobs.Remove(blob);
+            var tempBlob = blob;
+            blobs.Remove(tempBlob);
 
             if (blobs.Count == 0)
             {
                 rseOnFightEnd.Call();
-                rseMessage.Call("BLOB ??? WIN!", 1f, Color.black);
+                rseMessage.Call($"BLOB {tempBlob.GetColor().nameColor} WIN!", 1f, tempBlob.GetColor().fillColor);
             }
             else if (blobs.Count == 1)
             {

@@ -57,16 +57,16 @@ MonoBehaviour:
   dustDashParticlePrefab: {fileID: 4007821960139497423, guid: c65029a34c35c1f4fad08b2baa04c4ff, type: 3}
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
   destroyParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
-  hitParticles:
-  - particlePrefab: {fileID: 7291753846233562658, guid: ebb730153f3762a4a86dc21a995baa9c, type: 3}
-    hitStrenght: 40
-  - particlePrefab: {fileID: 7291753846233562658, guid: 9d502e7993a6712438ae87e57aacc29f, type: 3}
-    hitStrenght: 70
-  - particlePrefab: {fileID: 7291753846233562658, guid: d14fc8cead465cb419c4ed12ac2b521e, type: 3}
-    hitStrenght: 90
-  - particlePrefab: {fileID: 7291753846233562658, guid: 5ee85dea0df985c4b93b720b4fe19f51, type: 3}
-    hitStrenght: 100
   expulseParticle: {fileID: 5425739583313106901}
+  hitParticles:
+  - hitStrenght: 40
+    particlePrefab: {fileID: 7291753846233562658, guid: ebb730153f3762a4a86dc21a995baa9c, type: 3}
+  - hitStrenght: 70
+    particlePrefab: {fileID: 7291753846233562658, guid: 9d502e7993a6712438ae87e57aacc29f, type: 3}
+  - hitStrenght: 90
+    particlePrefab: {fileID: 7291753846233562658, guid: d14fc8cead465cb419c4ed12ac2b521e, type: 3}
+  - hitStrenght: 100
+    particlePrefab: {fileID: 7291753846233562658, guid: 5ee85dea0df985c4b93b720b4fe19f51, type: 3}
 --- !u!1 &793592039679487213
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3838ae0a432b6eb43be6c1ce200b74ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blobVisuals: {fileID: 11400000, guid: 96af32aab7d73644885a3faf46ac1939, type: 2}
   menu: 1
   componentsContent: {fileID: 6724505695075795745}
   physics: {fileID: 6321734985548798584}
@@ -945,15 +944,16 @@ MonoBehaviour:
   combat: {fileID: 6850913828851939280}
   blobAudio: {fileID: 8813555513755880380}
   preparationPanel: {fileID: 5953893452250420699}
-  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
+  blobVisuals: {fileID: 11400000, guid: 96af32aab7d73644885a3faf46ac1939, type: 2}
   rseSpawnBlob: {fileID: 11400000, guid: 991e86a4646784745983b3e41b075cfb, type: 2}
   rseOnBlobDeath: {fileID: 11400000, guid: 2b638b321d169624492274c70235000a, type: 2}
   rseTogglePause: {fileID: 11400000, guid: 56dbc203358bab942a372845a2e91b4c, type: 2}
-  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
-  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
+  rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
 --- !u!1 &3312758724125885820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,13 +1173,13 @@ MonoBehaviour:
   rotationAmount: 1.4
   rotationTime: 0.1
   velocityRotDiviser: 1
-  rseUpdateCrownVisual: {fileID: 11400000, guid: 0b099065ca877d94ba1f01751a68a50d, type: 2}
   motor: {fileID: 3420423106000584793}
   joint: {fileID: 6321734985548798584}
   movement: {fileID: 2542050320697814845}
   crownsContent: {fileID: 3436811190145985997}
   goldCrown: {fileID: 985776247518708268}
   silverCrown: {fileID: 6862882163578350998}
+  rseUpdateCrownVisual: {fileID: 11400000, guid: 0b099065ca877d94ba1f01751a68a50d, type: 2}
 --- !u!1 &4440481460841885347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1228737701814485243
 Transform:
   m_ObjectHideFlags: 0
