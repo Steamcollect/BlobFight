@@ -1393,6 +1393,10 @@ PrefabInstance:
       value: SpawnPoint (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
+      propertyPath: delayAfterGameStart
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: spawnPoint.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -1450,11 +1454,11 @@ PrefabInstance:
       objectReference: {fileID: 2009770806}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: newDelayBetweenLightning.Array.data[0].x
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: newDelayBetweenLightning.Array.data[0].y
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4553976894774741503, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_LocalPosition.x
