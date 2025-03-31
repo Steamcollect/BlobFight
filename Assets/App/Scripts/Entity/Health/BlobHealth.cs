@@ -87,7 +87,6 @@ public class BlobHealth : EntityHealth, IPausable
     {
         isInvincible = true;
     }
-
     public void Resume()
     {
         isInvincible = false;
@@ -100,6 +99,11 @@ public class BlobHealth : EntityHealth, IPausable
         blobMovement.StunImpact(stunTimePerSpeedOnImpactCurve.Evaluate(speed));
         pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed));
 
+        percentageEffect.Setup(pushBackPercentage);
+    }
+    public void AddPercentage(int percentageGiven)
+    {
+        pushBackPercentage += percentageGiven;
         percentageEffect.Setup(pushBackPercentage);
     }
 

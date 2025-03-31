@@ -5,7 +5,7 @@ public class ThunderCollision : CollisionTrigger
     [Header("Settings")]
     [SerializeField] private float expulsionUpForce;
     [SerializeField] private float expulsionRightForce;
-    [SerializeField] private float damage;
+    [SerializeField] private int percentageDamage;
 
     private void OnEnable()
     {
@@ -22,9 +22,9 @@ public class ThunderCollision : CollisionTrigger
         if (collider.TryGetComponent(out BlobPhysics blobPhysics))
         {
             var motor = blobPhysics.GetMotor();
-            motor.GetHealth().OnDamageImpact(damage);
-            blobPhysics.AddForce(transform.up * expulsionUpForce);
+            motor.GetHealth().AddPercentage(percentageDamage);
 
+            Vector3 expulsionForce = transform.up * expulsionUpForce;
             Vector3 horizontalForce = Vector3.zero;
 
             if (transform.position.x > collider.transform.position.x)
@@ -36,7 +36,8 @@ public class ThunderCollision : CollisionTrigger
                 horizontalForce = transform.right * expulsionRightForce;
             }
 
-            blobPhysics.AddForce(horizontalForce);
+            expulsionForce += horizontalForce * motor.GetHealth().GetPercentage();            
+            blobPhysics.AddForce(expulsionForce);
         }
     }
 
