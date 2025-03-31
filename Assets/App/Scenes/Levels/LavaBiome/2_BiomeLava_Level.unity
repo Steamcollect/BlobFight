@@ -888,6 +888,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801966507}
     m_Modifications:
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: damageType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: pushBackForce
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: percentageGiven
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2445422115749257938, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -1808,6 +1820,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801966507}
     m_Modifications:
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: damageType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: pushBackForce
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: percentageGiven
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2445422115749257938, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -2837,6 +2861,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801966507}
     m_Modifications:
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: damageType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: pushBackForce
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: percentageGiven
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2445422115749257938, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -4806,6 +4842,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801966507}
     m_Modifications:
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: damageType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: pushBackForce
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: percentageGiven
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4948971469816887855, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
       propertyPath: m_Name
       value: Lave_Fin (6)
@@ -5150,6 +5198,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1801966507}
     m_Modifications:
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: damageType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: pushBackForce
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 326054892295711998, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
+      propertyPath: percentageGiven
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4948971469816887855, guid: 54d999e2dd7ee714487cff16022f3578, type: 3}
       propertyPath: m_Name
       value: Lave_Fin (5)

@@ -3546,6 +3546,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: delayAtPoint
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: delayBeforeStart
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: timeSpeed.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: timeSpeed.Array.data[2]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: timeSpeed.Array.data[3]
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8461714246644544854, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: m_LocalPosition.x
       value: -100
@@ -5026,7 +5046,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: delayBeforeStart
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: timeSpeed.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: timeSpeed.Array.data[2]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: timeSpeed.Array.data[3]
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: newDelayAtPoint.Array.data[0]
