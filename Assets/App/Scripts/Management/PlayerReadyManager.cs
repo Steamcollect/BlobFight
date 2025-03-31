@@ -11,6 +11,7 @@ public class PlayerSelectionPanel : MonoBehaviour
     [SerializeField] RSE_OnGameStart rseOnGameStart;
     [SerializeField] RSE_Transit rseTransit;
     [SerializeField] RSE_Message rseMessage;
+    [SerializeField] SSO_ListFightText listFightText;
 
     private void OnEnable()
     {
@@ -29,7 +30,7 @@ public class PlayerSelectionPanel : MonoBehaviour
             rseDisableJoining.Call();
             rseOnGameStart.Call();
             rseTransit.Call();
-            rseMessage.Call("GAME START!", 1f, Color.black);
+            rseMessage.Call("GAME START!", 1f, listFightText.colorMessage);
         }
     }
 }

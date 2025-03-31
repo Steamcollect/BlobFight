@@ -12,9 +12,10 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private RSO_BlobInGame rsoBlobInGame;
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_AddScore rseAddScore;
+    [SerializeField] private SSO_ListFightText listFightText;
 
     private List<BlobMotor> blobs = new();
-
+    private int randomText = 0;
     private void OnEnable()
     {
         rseOnBlobDeath.action += CheckBlobCount;
@@ -39,17 +40,19 @@ public class RoundManager : MonoBehaviour
             var tempBlob = blob;
             blobs.Remove(tempBlob);
 
+            randomText = Random.Range(0, listFightText.victoryText.Count);
             if (blobs.Count == 0)
             {
                 rseOnFightEnd.Call();
-                rseMessage.Call($"BLOB {tempBlob.GetColor().nameColor} WIN!", 1f, tempBlob.GetColor().fillColor);
+                rseMessage.Call($"{listFightText.victoryText[randomText]}", 1f, listFightText.colorMessage);
             }
             else if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
                 rseOnFightEnd.Call();
-                rseMessage.Call($"BLOB {blobs[0].GetColor().nameColor} WIN!", 1f, blobs[0].GetColor().fillColor);
+                rseMessage.Call($"{listFightText.victoryText[randomText]}", 1f, blobs[0].GetColor().fillColor);
             }
+            
         }
     }
 }

@@ -21,8 +21,11 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
     [SerializeField] private RSE_Message rseMessage;
+    [SerializeField] private SSO_ListFightText listFightText;
 
     private bool isPaused = false;
+    private int randomReadyText = 0;
+    private int randomStartText = 0;
 
     private void OnEnable()
     {
@@ -62,9 +65,10 @@ public class TransitionLevel : MonoBehaviour
 
             gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
             {
+                randomStartText = Random.Range(0, listFightText.startText.Count);
                 if (modeDev)
                 {
-                    rseMessage.Call("START!", 1f, Color.black);
+                    rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage);
                     rseOnFightStart.Call();
                 }
                 else
@@ -83,8 +87,8 @@ public class TransitionLevel : MonoBehaviour
     {
         float cooldown = delayStart;
         float timer = 0f;
-
-        rseMessage.Call("READY?", 1f, Color.black);
+        randomReadyText = Random.Range(0, listFightText.readyText.Count);
+        rseMessage.Call($"{listFightText.readyText[randomReadyText]}", 1f, listFightText.colorMessage);
 
         while (timer < cooldown)
         {
@@ -96,7 +100,7 @@ public class TransitionLevel : MonoBehaviour
             }
         }
 
-        rseMessage.Call("START!", 1f, Color.black);
+        rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage);
 
         rseOnFightStart.Call();
     }

@@ -50,3 +50,4 @@ MonoBehaviour:
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
   rseTransit: {fileID: 11400000, guid: de1d05397ce9f074aa8dacd98a3ccc91, type: 2}
   rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
+  listFightText: {fileID: 11400000, guid: c21c5cae8940649488e67d2c6c686466, type: 2}
