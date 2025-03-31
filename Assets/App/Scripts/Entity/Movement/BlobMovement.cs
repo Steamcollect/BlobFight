@@ -13,7 +13,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     [Space(10)]
     [SerializeField] float slidingGravity;
     [SerializeField] AnimationCurve angleSpeedMultiplierCurve;
-    [SerializeField] AnimationCurve angleVelocityMultiplierCurve;
 
     [Header("References")]
     [SerializeField] EntityInput input;
@@ -180,19 +179,19 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         if (collision.contactCount == 0) return;
 
-        Vector2 newNormal = collision.GetContact(0).normal;
+        //Vector2 newNormal = collision.GetContact(0).normal;
 
-        float angleDifference = Vector2.Angle(currentGroundNormal, newNormal);
-        currentGroundAngle = Mathf.Atan2(newNormal.x, newNormal.y) * Mathf.Rad2Deg;
+        //float angleDifference = Vector2.Angle(currentGroundNormal, newNormal);
+        //currentGroundAngle = Mathf.Atan2(newNormal.x, newNormal.y) * Mathf.Rad2Deg;
 
-        float speedFactor = angleVelocityMultiplierCurve.Evaluate(angleDifference);
+        //float speedFactor = angleVelocityMultiplierCurve.Evaluate(angleDifference);
 
-        Vector2 projectedVelocity = Vector2.Perpendicular(newNormal) * Vector2.Dot(physics.GetVelocity(), Vector2.Perpendicular(newNormal));
-        Debug.DrawLine(physics.GetCenter(), physics.GetCenter() + projectedVelocity.normalized, Color.red, 1);
+        //Vector2 projectedVelocity = Vector2.Perpendicular(newNormal) * Vector2.Dot(physics.GetVelocity(), Vector2.Perpendicular(newNormal));
+        //Debug.DrawLine(physics.GetCenter(), physics.GetCenter() + projectedVelocity.normalized, Color.red, 1);
 
-        physics.SetVelocity(projectedVelocity * speedFactor);
+        //physics.SetVelocity(projectedVelocity * speedFactor);
 
-        currentGroundNormal = newNormal;
+        //currentGroundNormal = newNormal;
 
         ExitSlidingState();
     }
