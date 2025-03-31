@@ -58,7 +58,7 @@ public class HingeTrigger : CollisionTrigger
             switch (damagable.GetDamageType())
             {
                 case Damagable.DamageType.Damage:
-                    health.TakeDamage(damagable.GetDamage());
+                    health.TakeDamage((int)damagable.GetDamage());
                     break;
 
                 case Damagable.DamageType.Kill:

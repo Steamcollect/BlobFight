@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Damagable : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Damagable : MonoBehaviour
     }
 
     [Header("Settings")]
-    [SerializeField] private int damage;
+    [SerializeField] float percentageGiven;
+    [SerializeField] float pushBackForce;
     [SerializeField] private DamageType damageType;
 
     public DamageType GetDamageType()
@@ -18,14 +20,18 @@ public class Damagable : MonoBehaviour
         return damageType;
     }
 
-    public int GetDamage()
+    public float GetPushBackForce()
     {
-        return damage;
+        return pushBackForce;
+    }
+    public float GetDamage()
+    {
+        return percentageGiven;
     }
 
     public void SetScripts(int damageVal, DamageType type)
     {
-        damage = damageVal;
+        //damage = damageVal;
         damageType = type;
     }
 }

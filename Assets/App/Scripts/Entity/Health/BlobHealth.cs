@@ -10,12 +10,13 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] private float shakeIntensityOnDeath;
     [SerializeField] private float shakeTimeOnDeath;
 
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private BlobTrigger blobTrigger;
     [SerializeField] private BlobMovement blobMovement;
     [SerializeField] private BlobParticle particle;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private BlobPercentageEffect percentageEffect;
+    [SerializeField] private BlobPhysics physics;
 
     [Header("Output")]
     [SerializeField] private RSE_CallRumble rseCallRumble;
@@ -63,7 +64,8 @@ public class BlobHealth : EntityHealth, IPausable
             switch (damagable.GetDamageType())
             {
                 case Damagable.DamageType.Damage:
-                    TakeDamage(damagable.GetDamage());
+                    AddPercentage(damagable.GetDamage());
+                    physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce());
                     break;
                 
                 case Damagable.DamageType.Kill:
