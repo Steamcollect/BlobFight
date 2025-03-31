@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class RotatingProps : GameProps
     [Space(10)]
     [Header("Settings")]
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float delayBeforeStart;
     [SerializeField] private List<int> timeSpeed;
     [SerializeField] private List<float> newtimeSpeed;
 
@@ -36,6 +38,13 @@ public class RotatingProps : GameProps
 
     public override void Launch()
     {
+        StartCoroutine(DelayStart());
+    }
+
+    private IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(delayBeforeStart);
+
         isLaunched = true;
     }
 
