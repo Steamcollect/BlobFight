@@ -101,7 +101,7 @@ public class BlobHealth : EntityHealth, IPausable
 
         percentageEffect.Setup(pushBackPercentage);
     }
-    public void AddPercentage(int percentageGiven)
+    public void AddPercentage(float percentageGiven)
     {
         pushBackPercentage += percentageGiven;
         percentageEffect.Setup(pushBackPercentage);

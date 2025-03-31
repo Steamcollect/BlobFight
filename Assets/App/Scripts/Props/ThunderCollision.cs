@@ -5,7 +5,7 @@ public class ThunderCollision : CollisionTrigger
     [Header("Settings")]
     [SerializeField] private float expulsionUpForce;
     [SerializeField] private float expulsionRightForce;
-    [SerializeField] private int percentageDamage;
+    [SerializeField] private float percentageDamage;
 
     private void OnEnable()
     {
