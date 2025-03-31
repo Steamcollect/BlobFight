@@ -575,6 +575,7 @@ MonoBehaviour:
     scale: 5
     timeToSwap: 0.04
   extendStaminaCost: 50
+  staminaPercentageRequireToExtend: 0.3
   slidingGravity: 2.5
   angleSpeedMultiplierCurve:
     serializedVersion: 2
@@ -731,8 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8e7e679a5169848a57e68213bac075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 60
-  staminaGivenPerSec: 25
+  maxStamina: 100
+  staminaGivenPerSec: 30
   waitingTimeWhenNoStamina: 0.5
 --- !u!1 &3290518167020313716
 GameObject:
