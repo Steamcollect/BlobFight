@@ -8,6 +8,9 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] BlobStatistics shrinkStatistics;
     [SerializeField] BlobStatistics extendStatistics;
     [SerializeField] float extendStaminaCost;
+    [SerializeField, Range(0,1)] float staminaPercentageRequireToExtend;
+
+    [Space(10)]
     [SerializeField] float slidingGravity;
     [SerializeField] AnimationCurve angleSpeedMultiplierCurve;
     [SerializeField] AnimationCurve angleVelocityMultiplierCurve;
@@ -134,7 +137,7 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     private void ExtendBlob()
     {
-        if (!deathCanMove || !pauseCanMove || !stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime) || physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
+        if (!deathCanMove || !pauseCanMove || !stamina.HaveEnoughStaminaPercentage(staminaPercentageRequireToExtend) || physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
 
         stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
         stamina.DisableStaminaRecuperation();
