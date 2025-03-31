@@ -231,7 +231,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 6000
+  m_Mass: 14000
   m_LinearDrag: 0
   m_AngularDrag: 0.3
   m_GravityScale: 1
@@ -4204,6 +4204,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: damageType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: pushBackForce
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: percentageGiven
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7703692141052848893, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: m_LocalPosition.y
       value: 11
@@ -4215,6 +4227,22 @@ PrefabInstance:
     - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: warningMovingProps
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: newMoveSpeed.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: newMoveSpeed.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: newMoveSpeed.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: newDelayAtPoint.Array.data[1]
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
