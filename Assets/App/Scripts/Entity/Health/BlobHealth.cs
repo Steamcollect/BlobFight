@@ -65,7 +65,7 @@ public class BlobHealth : EntityHealth, IPausable
             {
                 case Damagable.DamageType.Damage:
                     AddPercentage(damagable.GetDamage());
-                    physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce());
+                    physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce() * GetPercentage());
                     break;
                 
                 case Damagable.DamageType.Kill:
