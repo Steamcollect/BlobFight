@@ -171,7 +171,6 @@ MonoBehaviour:
   animator: {fileID: 6478415381595320726}
   thunderCollider: {fileID: 4317004983093672903}
   spriteRenderer: {fileID: 1783473413042642123}
-  randomSpawn: 0
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1 &9101720809967056452
@@ -265,8 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expulsionUpForce: 25000
-  expulsionRightForce: 60000
-  damage: 50000000
+  expulsionRightForce: 40000
+  percentageDamage: 0.5
 --- !u!1001 &6736472188625226234
 PrefabInstance:
   m_ObjectHideFlags: 0
