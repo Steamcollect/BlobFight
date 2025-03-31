@@ -44,6 +44,7 @@ public class BlobStamina : MonoBehaviour
     public bool HaveEnoughStaminaPercentage(float percentage) { return currentStamina / maxStamina > percentage; }
 
     public float GetStamina() {  return currentStamina; }
+    public float GetStaminaPercentage() { return currentStamina / maxStamina; }
 
     public void EnableStaminaRecuperation() { canGetStamina = true;}
 
