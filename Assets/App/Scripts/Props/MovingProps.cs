@@ -11,6 +11,7 @@ public class MovingProps : GameProps
     [SerializeField] private bool notHide;
     [SerializeField] private float delayBeforeStart;
     [SerializeField] private float delayAtPoint;
+    [SerializeField] private float delayWarningBeforeMove;
     [SerializeField] private List<int> timeSpeed;
     [SerializeField] private List<float> newDelayAtPoint;
     [SerializeField] private List<float> newMoveSpeed;
@@ -83,7 +84,7 @@ public class MovingProps : GameProps
             if (!isPaused)
             {
                 timer += Time.deltaTime;
-                if (timer > Mathf.Max(delay - 1, 0))
+                if (timer > Mathf.Max(delay - delayWarningBeforeMove, 0))
                 {
                     warningMovingProps?.onWarning.Invoke(true);
                 }
@@ -110,7 +111,7 @@ public class MovingProps : GameProps
                 delayAtPoint = newDelayAtPoint[mode];
                 moveSpeed = newMoveSpeed[mode];
 
-                if (mode < timeSpeed.Count - 1)
+                if (mode < timeSpeed.Count - delayWarningBeforeMove)
                 {
                     mode++;
                 }
