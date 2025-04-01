@@ -11,14 +11,17 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float moveSmoothTime;
     [SerializeField] private float zoomSmoothTime;
     [SerializeField] private Vector3 centerOffset;
-    [SerializeField] private Vector2 minBounds; // Limite minimale (x, y)
-    [SerializeField] private Vector2 maxBounds; // Limite maximale (x, y)
+    [SerializeField] private Vector2 minBounds;
+    [SerializeField] private Vector2 maxBounds;
+    [SerializeField] private float zoomInSize;
+    [SerializeField] private float zoomInDelay;
 
     [Header("References")]
     [SerializeField] private Camera cam;
 
     [Header("Input")]
     [SerializeField] private RSE_CameraShake rseCameraShake;
+    [SerializeField] private RSE_CameraZoom rseCameraZoom;
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
 
@@ -31,10 +34,11 @@ public class CameraController : MonoBehaviour
     private float zoomVelocity = 0f;
     private float shakeOffset = 0;
     private Vector3 posOffset = Vector3.zero;
-
+    private bool inZoom = false;
     private void OnEnable()
     {
         rseCameraShake.action += Shake;
+        rseCameraZoom.action += ZoomAtPosition;
         rseOnFightStart.action += UnlockCamera;
         rseOnFightEnd.action += LockCamera;
     }
@@ -42,6 +46,7 @@ public class CameraController : MonoBehaviour
     private void OnDisable()
     {
         rseCameraShake.action -= Shake;
+        rseCameraZoom.action -= ZoomAtPosition;
         rseOnFightStart.action -= UnlockCamera;
         rseOnFightEnd.action -= LockCamera;
     }
@@ -58,7 +63,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (lockCam || cameraLock || rsoBlobInGame.Value.Count == 0) return;
+        if (lockCam || cameraLock || rsoBlobInGame.Value.Count == 0 || inZoom) return;
 
         Vector2 center = CalculateCenter();
         float distance = CalculateMaxDistance(center);
@@ -159,6 +164,46 @@ public class CameraController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             Gizmos.DrawLine(corners[i], corners[(i + 1) % 4]);
+        } 
+    }
+    private void ZoomAtPosition(Vector3 targetPosition,float holdTime)
+    {
+        if (_ZoomSequence != null)
+        {
+            StopCoroutine(_ZoomSequence);
         }
+        _ZoomSequence = StartCoroutine(ZoomSequence(targetPosition,holdTime));
+    }
+    Coroutine _ZoomSequence;
+    private IEnumerator ZoomSequence(Vector3 targetPosition, float holdTime)
+    {
+        //  ZoomIn
+        inZoom = true;
+        yield return ZoomTo(targetPosition, zoomInSize, zoomInDelay);
+
+        //  Pause (zoom maintenu)
+        yield return new WaitForSeconds(holdTime);
+        inZoom = false;
+    }
+    IEnumerator ZoomTo(Vector3 targetPosition, float targetSize, float duration)
+    {
+        Vector3 startPos = cam.transform.position;
+        float startSize = cam.orthographicSize;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+
+            // Smooth transition
+            cam.transform.position = Vector3.Lerp(startPos, new Vector3(targetPosition.x, targetPosition.y, cam.transform.position.z), t);
+            cam.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
+
+            yield return null;
+        }
+
+        cam.transform.position = new Vector3(targetPosition.x, targetPosition.y, cam.transform.position.z);
+        cam.orthographicSize = targetSize;
     }
 }

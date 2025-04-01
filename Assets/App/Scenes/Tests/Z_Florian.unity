@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &4146810
 PolygonCollider2D:
@@ -316,7 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &18879425
 PolygonCollider2D:
@@ -877,7 +879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &43194902
 PolygonCollider2D:
@@ -1385,7 +1388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &246575172
 PolygonCollider2D:
@@ -1716,7 +1720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &339099504
 PolygonCollider2D:
@@ -2123,14 +2128,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8860661886277635094, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5280118209445194090, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
-      insertIndex: 8
-      addedObject: {fileID: 548429790}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
 --- !u!1 &490113456
@@ -2477,11 +2479,6 @@ Transform:
   - {fileID: 1797416826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &548429790 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-  m_PrefabInstance: {fileID: 1223454577}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564763549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,7 +3458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &748537801
 PolygonCollider2D:
@@ -3614,7 +3612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &829036719
 PolygonCollider2D:
@@ -4043,7 +4042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1001926594
 PolygonCollider2D:
@@ -4191,7 +4191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1046574445
 PolygonCollider2D:
@@ -5076,7 +5077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1175904187
 PolygonCollider2D:
@@ -5298,7 +5300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!212 &1183828117
 SpriteRenderer:
@@ -5384,67 +5387,6 @@ Transform:
   - {fileID: 2104701972}
   m_Father: {fileID: 1183828113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 132}
---- !u!1001 &1223454577
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1365047414}
-    m_Modifications:
-    - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_Name
-      value: Blob (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420423106000584793, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: menu
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496818755490878508, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
 --- !u!1 &1236739925
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,7 +5711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1269859052
 PolygonCollider2D:
@@ -6037,11 +5980,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7446734867358777568, guid: 0c8beb11871bd094893e9ce0643808f1, type: 3}
   m_PrefabInstance: {fileID: 1348792417}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1365047414 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5280118209445194090, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
-  m_PrefabInstance: {fileID: 450575065}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1379987295
 GameObject:
   m_ObjectHideFlags: 0
@@ -6088,7 +6026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1379987298
 PolygonCollider2D:
@@ -6412,7 +6351,7 @@ Transform:
   m_GameObject: {fileID: 1476129901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30, y: 6, z: 0}
+  m_LocalPosition: {x: -37.25, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6547,7 +6486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1578978030
 PolygonCollider2D:
@@ -6695,7 +6635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1584196400
 PolygonCollider2D:
@@ -7506,7 +7447,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1662815261
 PolygonCollider2D:
@@ -7654,7 +7596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1676087465
 PolygonCollider2D:
@@ -7866,7 +7809,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1690644851
 PolygonCollider2D:
@@ -8148,7 +8092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1797416826
 Transform:
   m_ObjectHideFlags: 0
@@ -8280,7 +8224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1865148202
 PolygonCollider2D:
@@ -8781,7 +8726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1942769535
 PolygonCollider2D:
@@ -9003,7 +8949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!212 &1976111797
 SpriteRenderer:
@@ -9185,7 +9132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &2010915504
 PolygonCollider2D:
@@ -9333,7 +9281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &2022057967
 PolygonCollider2D:
@@ -9513,7 +9462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &2104701974
 PolygonCollider2D:
@@ -9711,6 +9661,10 @@ PrefabInstance:
       propertyPath: minBounds.y
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+      propertyPath: zoomOutDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9787,7 +9741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1217650912467255256, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: launchType
