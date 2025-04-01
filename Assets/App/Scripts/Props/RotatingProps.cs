@@ -8,6 +8,7 @@ public class RotatingProps : GameProps
     [Header("Settings")]
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float delayBeforeStart;
+    [SerializeField] private float delayTransit;
     [SerializeField] private List<int> timeSpeed;
     [SerializeField] private List<float> newtimeSpeed;
 
@@ -21,6 +22,7 @@ public class RotatingProps : GameProps
     private bool isLaunched = false;
     private int mode = 0;
     private bool isPaused = false;
+    private Coroutine speedTransitionCoroutine;
 
     private new void OnEnable()
     {
@@ -74,7 +76,12 @@ public class RotatingProps : GameProps
         {
             if (rsoTimerParty.Value >= timeSpeed[mode] && mode < timeSpeed.Count)
             {
-                rotationSpeed = newtimeSpeed[mode];
+                if (speedTransitionCoroutine != null)
+                {
+                    StopCoroutine(speedTransitionCoroutine);
+                }     
+
+                speedTransitionCoroutine = StartCoroutine(SmoothSpeedTransition(rotationSpeed, newtimeSpeed[mode], delayTransit));
 
                 if (mode < timeSpeed.Count - 1)
                 {
@@ -84,5 +91,19 @@ public class RotatingProps : GameProps
         }
 
         transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator SmoothSpeedTransition(float startSpeed, float targetSpeed, float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            rotationSpeed = Mathf.Lerp(startSpeed, targetSpeed, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rotationSpeed = targetSpeed;
     }
 }
