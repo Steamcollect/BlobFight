@@ -59,6 +59,8 @@ public class BlobCombat : MonoBehaviour
 
             impactVelocity = propulsionDir * blobTouchSpeed;
             impactForce = impactVelocity * paryForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
+
+            particle.ParryParticle(collision.GetContact(0).point, propulsionDir);
         }
         else if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < parryMaxTime && speed > blobTouchSpeed)
         {
@@ -68,6 +70,8 @@ public class BlobCombat : MonoBehaviour
         {
             impactVelocity = propulsionDir * Mathf.Max(speed, minSpeedAtImpact);
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
+
+            particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
         else if (!movement.IsExtend() && blobMovement.IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
         {
@@ -75,6 +79,8 @@ public class BlobCombat : MonoBehaviour
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
 
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
+
+            particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
         else if ((!movement.IsExtend() && !blobMovement.IsExtend()) || (movement.IsExtend() && blobMovement.IsExtend()))
         {
@@ -82,6 +88,8 @@ public class BlobCombat : MonoBehaviour
 
             impactVelocity = propulsionDir * speed;
             impactForce = impactVelocity * (blobHealth.GetPercentage() * percentageMultiplier);
+
+            particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
         else return;
 
@@ -97,7 +105,6 @@ public class BlobCombat : MonoBehaviour
         // Set health
         blobHealth.OnDamageImpact(impactForce.sqrMagnitude);
 
-        particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         OnHitBlob.Invoke(0);
 
         // Set cooldowns

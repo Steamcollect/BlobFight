@@ -6,27 +6,34 @@ using UnityEngine;
 public class BlobParticle : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int touchParticleStartingCount;
-    [SerializeField] private int hitParticleStartingCount;
-    [SerializeField] private int dustDashParticleStartingCount;
-    [SerializeField] private float maxHitSpeed;
+    [SerializeField] int touchParticleStartingCount;
+    [SerializeField] int hitParticleStartingCount;
+    [SerializeField] int parryParticleStartingCount;
+    [SerializeField] int dustDashParticleStartingCount;
+    [SerializeField] float maxHitSpeed;
 
     [Header("References")]
-    [SerializeField] private BlobMotor motor;
-    [SerializeField] private BlobPhysics physics;
-    [SerializeField] private BlobTrigger trigger;
-    [SerializeField] private BlobHealth health;
-    [SerializeField] private ParticleSystem dustParticlePrefab;
-    [SerializeField] private ParticleSystem dustDashParticlePrefab;
-    [SerializeField] private ParticleSystem deathParticlePrefab;
-    [SerializeField] private ParticleSystem destroyParticlePrefab;
-    [SerializeField] private ParticleSystem expulseParticle;
-    [SerializeField] private HitParticle[] hitParticles;
+    [SerializeField] BlobMotor motor;
+    [SerializeField] BlobPhysics physics;
+    [SerializeField] BlobTrigger trigger;
+    [SerializeField] BlobHealth health;
 
-    private Queue<ParticleCallback> dustParticles = new();
-    private Queue<ParticleCallback> dustDashParticles = new();
-    private Queue<ParticleCallback> deathParticles = new();
-    private Queue<ParticleCallback> destroyParticles = new();
+    [Space(10)]
+    [SerializeField] ParticleSystem dustParticlePrefab;
+    [SerializeField] ParticleSystem dustDashParticlePrefab;
+    [SerializeField] ParticleSystem deathParticlePrefab;
+    [SerializeField] ParticleSystem destroyParticlePrefab;
+    [SerializeField] ParticleSystem expulseParticle;
+    [SerializeField] ParticleSystem parryParticlePrefab;
+    
+    [Space(10)]
+    [SerializeField] HitParticle[] hitParticles;
+
+    Queue<ParticleCallback> dustParticles = new();
+    Queue<ParticleCallback> dustDashParticles = new();
+    Queue<ParticleCallback> deathParticles = new();
+    Queue<ParticleCallback> destroyParticles = new();
+    Queue<ParticleCallback> parryParticles = new();
 
     [Serializable]
     private class HitParticle
@@ -197,14 +204,31 @@ public class BlobParticle : MonoBehaviour
         particle.Play();
     }
 
+    public void ParryParticle(Vector2 position, Vector2 rotation)
+    {
+        ParticleCallback particle;
+        if (parryParticles.Count <= 0) particle = CreateParticle(parryParticlePrefab, OnParryParticleEnd);
+        else particle = parryParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+
+        particle.transform.position = position;
+        particle.transform.up = rotation;
+
+        particle.Play();
+    }
+    void OnParryParticleEnd(ParticleCallback particle)
+    {
+        particle.gameObject.SetActive(false);
+        parryParticles.Enqueue(particle);
+    }
+
     public void EnableExpulseParticle(Vector2 rotation)
     {
         expulseParticle.transform.up = rotation;
         expulseParticle.Play();
     }
-
     public void DisableExpulseParticle() { expulseParticle.Stop(); }
-
     public void SetExpulseParticleRotation(Vector2 rotation)
     {
         expulseParticle.transform.up = rotation;
