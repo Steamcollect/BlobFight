@@ -22,6 +22,7 @@ public class MovingProps : GameProps
     [SerializeField] private Transform[] positions;
 
     [Header("Input")]
+    [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
@@ -31,10 +32,12 @@ public class MovingProps : GameProps
     private bool isPaused = false;
     private int currentPosIndex = 0;
     private int mode = 0;
+    private Coroutine coroutine;
 
     private new void OnEnable()
     {
         base.OnEnable();
+        rseOnFightEnd.action += StopDelay;
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
@@ -42,6 +45,7 @@ public class MovingProps : GameProps
     private new void OnDisable()
     {
         base.OnDisable();
+        rseOnFightEnd.action -= StopDelay;
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
@@ -68,7 +72,16 @@ public class MovingProps : GameProps
         if (positions.Length > 0)
         {
             movable.position = positions[0].position;
-            StartCoroutine(DelayLaunch(delayBeforeStart));
+            coroutine = StartCoroutine(DelayLaunch(delayBeforeStart));
+        }
+    }
+
+    private void StopDelay()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
         }
     }
 
@@ -125,7 +138,7 @@ public class MovingProps : GameProps
                 movable.gameObject.SetActive(false);
             }
 
-            StartCoroutine(DelayLaunch(delayAtPoint));
+            coroutine = StartCoroutine(DelayLaunch(delayAtPoint));
 		});
     }
 }
