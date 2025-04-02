@@ -52,6 +52,8 @@ public class BlobMotor : MonoBehaviour
 
         health.onDeath += OnDeath;
         health.onDestroy += OnDestroyed;
+
+        trigger.setParent += (Transform t) => transform.SetParent(t);
     }
 
     private void OnDisable()
@@ -132,6 +134,7 @@ public class BlobMotor : MonoBehaviour
 
     public void LockInteraction()
     {
+        trigger.lockInteraction = true;
         movement.DeathDisableMovement();
         physics.Disable();
         trigger.ResetTouchs();
@@ -139,6 +142,7 @@ public class BlobMotor : MonoBehaviour
 
     private void UnlockInteraction()
     {
+        trigger.lockInteraction = false;
         movement.DeathEnableMovement();
         physics.Enable();
     }
