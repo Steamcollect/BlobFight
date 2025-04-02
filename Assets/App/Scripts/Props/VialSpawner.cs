@@ -19,6 +19,7 @@ public class VialSpawner : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private Rigidbody2D[] vialPieces;
     [SerializeField] private ParticleSystem[] breakParticles;
+    [SerializeField] private VialAudio vialAudio;
 
     [Header("Input")]
     [SerializeField] private RSE_OnPause rseOnPause;
@@ -60,9 +61,10 @@ public class VialSpawner : MonoBehaviour
 
         breakCount--;
         breakParticles[breakCount + 1].Play();
-
+        vialAudio.PlayVialHitSound();
         if (breakCount < 0)
         {
+            vialAudio.PlayVialDestroySound();
             blob.Spawn(transform.position);
             canBreak = false;
 
