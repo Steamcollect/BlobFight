@@ -17,7 +17,6 @@ public class TransitionLevel : MonoBehaviour
 
     [Header("Output")]
     [SerializeField] private RSE_LoadNextLevel rseLoadNextLevel;
-    [SerializeField] private RSE_FadeIn rseFadeIn;
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
     [SerializeField] private RSE_Message rseMessage;
@@ -76,10 +75,6 @@ public class TransitionLevel : MonoBehaviour
                     StartCoroutine(DelayStart());
                 }
             });
-        }
-        else
-        {
-            rseFadeIn.Call(null);
         }
     }
 

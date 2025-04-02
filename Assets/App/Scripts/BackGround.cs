@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BackGround : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private bool playStart;
+
     [Header("References")]
     [SerializeField] private List<SpriteRenderer> backgroundSprites;
 
@@ -33,11 +36,14 @@ public class BackGround : MonoBehaviour
 
     private void Start()
     {
-        foreach (var sprite in backgroundSprites)
+        if (playStart)
         {
-            if(sprite != null)
+            foreach (var sprite in backgroundSprites)
             {
-                StartCoroutine(FadeIn(sprite, 0.6f));
+                if (sprite != null)
+                {
+                    StartCoroutine(FadeIn(sprite, 0.6f));
+                }
             }
         }
     }

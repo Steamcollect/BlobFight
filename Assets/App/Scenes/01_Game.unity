@@ -701,21 +701,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2453508890646750442, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4795997754905142067, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5651693942617068428, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719117341936196666, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

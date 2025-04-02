@@ -17,7 +17,6 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] private RSE_Quit rseQuit;
 
     [Header("Output")]
-    [SerializeField] private RSE_FadeOut rseFadeOut;
     [SerializeField] private RSE_EnableJoining rseEnableJoining;
     [SerializeField] private RSE_ClearBlobInGame rseClearBlobInGame;
     [SerializeField] private RSE_TogglePause rseTogglePause;
@@ -61,18 +60,12 @@ public class SceneManagement : MonoBehaviour
 
     private void ReturnToMainMenu()
     {
-		rseFadeOut.Call(() =>
-		{
-			LoadLevel(true);
-		});
+        LoadLevel(true);
     }
 
     private void QuitGame()
     {
-        rseFadeOut.Call(() =>
-        {
-            Application.Quit();
-        });
+        Application.Quit();
     }
 
     private void LoadLevel(bool isMainMenu)
