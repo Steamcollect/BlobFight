@@ -93,12 +93,18 @@ public class SceneManagement : MonoBehaviour
 
     private string GetRandomLevel()
     {
+        int index; ;
+
         if (levels.Count == 0)
         {
             levels.AddRange(levelsName.Select(level => level.Name));
+            index = 0;
+        }
+        else
+        {
+            index = Random.Range(0, levels.Count);
         }
 
-        int index = Random.Range(0, levels.Count);
         string selectedLevel = levels[index];
         levels.RemoveAt(index);
 
