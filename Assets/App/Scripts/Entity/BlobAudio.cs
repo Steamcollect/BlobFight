@@ -65,6 +65,7 @@ public class BlobAudio : MonoBehaviour
     {
     }
     #endregion
+    #region Touch
     public void PlayTouchGrassClip()
     {
         touchGrassSC.PlayClip();
@@ -77,4 +78,5 @@ public class BlobAudio : MonoBehaviour
     {
         touchMetalSC.PlayClip();
     }
+    #endregion
 }
