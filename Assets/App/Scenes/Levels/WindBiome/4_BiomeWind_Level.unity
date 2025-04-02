@@ -584,11 +584,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  moveSpeed: 6
+  moveSpeed: 5
   notHide: 1
   delayBeforeStart: 10
-  delayAtPoint: 5
-  delayWarningBeforeMove: 0
+  delayAtPoint: 6
+  delayWarningBeforeMove: 1
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
@@ -597,6 +597,7 @@ MonoBehaviour:
   positions:
   - {fileID: 156218371}
   - {fileID: 1337445335}
+  rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -651,7 +652,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494035454}
-  - component: {fileID: 494035456}
   - component: {fileID: 494035455}
   m_Layer: 0
   m_Name: MovableGround
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494035453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
@@ -705,36 +705,10 @@ MonoBehaviour:
   positions:
   - {fileID: 467135529}
   - {fileID: 22873403}
+  rseOnFightEnd: {fileID: 0}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
---- !u!50 &494035456
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 494035453}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &497996752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -808,9 +782,9 @@ GameObject:
   - component: {fileID: 531895822}
   - component: {fileID: 531895824}
   - component: {fileID: 531895823}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: GroundCollider
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1051,9 +1025,9 @@ GameObject:
   - component: {fileID: 630932441}
   - component: {fileID: 630932443}
   - component: {fileID: 630932442}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: GroundCollider
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1284,9 +1258,9 @@ GameObject:
   - component: {fileID: 771904107}
   - component: {fileID: 771904109}
   - component: {fileID: 771904108}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: GroundCollider
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,7 +1390,7 @@ GameObject:
   - component: {fileID: 820938117}
   m_Layer: 0
   m_Name: GroundCollider
-  m_TagString: Groundable
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1521,7 +1495,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.8396226, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1928,7 +1902,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202450006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
@@ -1948,6 +1922,7 @@ MonoBehaviour:
   positions:
   - {fileID: 1750275723}
   - {fileID: 556596947}
+  rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -2027,7 +2002,7 @@ GameObject:
   - component: {fileID: 1292725947}
   m_Layer: 0
   m_Name: GroundCollider
-  m_TagString: Groundable
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2132,7 +2107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.8396226, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2350,11 +2325,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
-  moveSpeed: 6
+  moveSpeed: 5
   notHide: 1
   delayBeforeStart: 10
-  delayAtPoint: 5
-  delayWarningBeforeMove: 0
+  delayAtPoint: 6
+  delayWarningBeforeMove: 1
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
@@ -2363,6 +2338,7 @@ MonoBehaviour:
   positions:
   - {fileID: 28787232}
   - {fileID: 1906369510}
+  rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 11400000, guid: 8861f1662565e7d4796d6930748d2c7c, type: 2}
@@ -2479,7 +2455,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1880873836}
-  - component: {fileID: 1880873837}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Groundable
@@ -2503,33 +2478,6 @@ Transform:
   - {fileID: 630932441}
   m_Father: {fileID: 1279354032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1880873837
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1880873835}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1906369509
 GameObject:
   m_ObjectHideFlags: 0

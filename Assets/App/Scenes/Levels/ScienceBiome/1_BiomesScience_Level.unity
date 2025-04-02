@@ -1013,11 +1013,11 @@ GameObject:
   - component: {fileID: 1284242269}
   m_Layer: 0
   m_Name: Object1
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1284242264
 Rigidbody2D:
   serializedVersion: 4
@@ -1388,9 +1388,9 @@ GameObject:
   - component: {fileID: 1542530634}
   - component: {fileID: 1542530636}
   - component: {fileID: 1542530635}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1623,7 +1623,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1728092262}
-  - component: {fileID: 1728092263}
   m_Layer: 0
   m_Name: Plateform (1)(Clone) (1)
   m_TagString: Groundable
@@ -1647,33 +1646,6 @@ Transform:
   - {fileID: 2065431286}
   m_Father: {fileID: 1595610103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1728092263
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728092261}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 600
-  m_LinearDrag: 0
-  m_AngularDrag: 0.3
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1915878848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1745,7 +1717,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1960777346}
-  - component: {fileID: 1960777345}
   m_Layer: 0
   m_Name: Plateform (1)(Clone) (2)
   m_TagString: Groundable
@@ -1753,33 +1724,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &1960777345
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960777344}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 600
-  m_LinearDrag: 0
-  m_AngularDrag: 0.3
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!4 &1960777346
 Transform:
   m_ObjectHideFlags: 0
@@ -1877,9 +1821,9 @@ GameObject:
   - component: {fileID: 2065431286}
   - component: {fileID: 2065431288}
   - component: {fileID: 2065431287}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

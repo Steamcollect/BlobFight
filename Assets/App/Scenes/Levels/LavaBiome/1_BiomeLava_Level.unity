@@ -888,9 +888,9 @@ GameObject:
   - component: {fileID: 369673014}
   - component: {fileID: 369673016}
   - component: {fileID: 369673015}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1697,9 +1697,9 @@ GameObject:
   - component: {fileID: 961605898}
   - component: {fileID: 961605901}
   - component: {fileID: 961605900}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2710,9 +2710,9 @@ GameObject:
   - component: {fileID: 1394362459}
   - component: {fileID: 1394362461}
   - component: {fileID: 1394362460}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
