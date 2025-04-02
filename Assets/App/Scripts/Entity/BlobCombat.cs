@@ -14,12 +14,16 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] private float parryMaxTime;
     [SerializeField] private float paryForceMultiplier;
     [SerializeField] private float minSpeedAtImpact;
+    [SerializeField] private float zoomDelay;
 
     [Header("References")]
     [SerializeField] private BlobTrigger trigger;
     [SerializeField] private BlobPhysics physics;
     [SerializeField] private BlobMovement movement;
     [SerializeField] private BlobParticle particle;
+
+    [Header("Output")]
+    [SerializeField] private RSE_CameraZoom rseCameraZoom;
 
     private LayerMask currentLayer;
     public Action<float> OnHitBlob;
@@ -56,6 +60,7 @@ public class BlobCombat : MonoBehaviour
         if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
             print("Parry");
+            rseCameraZoom.Call(physics.transform.position, zoomDelay);
 
             impactVelocity = propulsionDir * blobTouchSpeed;
             impactForce = impactVelocity * paryForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);

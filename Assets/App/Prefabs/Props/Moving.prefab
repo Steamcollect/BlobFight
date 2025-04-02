@@ -113,9 +113,10 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 8
-  isLava: 0
+  notHide: 0
   delayBeforeStart: 0
   delayAtPoint: 0.5
+  delayWarningBeforeMove: 0
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
@@ -124,6 +125,7 @@ MonoBehaviour:
   positions:
   - {fileID: 6256733645895707231}
   - {fileID: 3735050323625592948}
+  rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rsoTimerParty: {fileID: 0}
