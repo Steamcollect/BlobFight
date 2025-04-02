@@ -2,11 +2,15 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private int startingAudioObjectsCount;
+
+    [SerializeField] float transitionFadeOutDelay;
+    [SerializeField] float transitionFadeInDelay;
 
     [Header("References")]
     [SerializeField] private AudioMixerGroup musicMixerGroup;
@@ -18,6 +22,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] RSE_LoadNextLevel rseLoadNextLevel;
     [SerializeField] RSE_OnPause rseOnPause;
     [SerializeField] RSE_OnResume rseOnResume;
+    [SerializeField] RSE_ChangeAmbianceMusic rseChangeAmbianceMusic;
 
     private Transform playlistParent = null;
     private Transform soundParent = null;
@@ -25,6 +30,8 @@ public class AudioManager : MonoBehaviour
     private bool isFinish = false;
     private readonly Queue<AudioSource> soundsQueue = new();
     private List<AudioSource> audios = new();
+    List<AudioSource> playlistAudios = new();
+    int initialMusicCount;
 
     private void OnEnable()
     {
@@ -33,6 +40,7 @@ public class AudioManager : MonoBehaviour
         rseLoadNextLevel.action += ClearAllAudio;
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
+        rseChangeAmbianceMusic.action += ChangeAmbianceMusic;
     }
 
     private void OnDisable()
@@ -42,6 +50,7 @@ public class AudioManager : MonoBehaviour
         rseLoadNextLevel.action -= ClearAllAudio;
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
+        rseChangeAmbianceMusic.action -= ChangeAmbianceMusic;
     }
 
     private void Start()
@@ -156,13 +165,50 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Playlist playlist in playlists)
         {
-            AudioSource audioSource = new GameObject("Playlist").AddComponent<AudioSource>();
-            audioSource.transform.SetParent(playlistParent);
+            AudioSource audioSource = CreatePlaylistAudioSource();
             audioSource.volume = playlist.volumMultiplier;
             audioSource.loop = playlist.isLooping;
-            audioSource.outputAudioMixerGroup = musicMixerGroup;
             audioSource.clip = playlist.clip;
             audioSource.Play();
+            playlistAudios.Add(audioSource);
+        }
+        initialMusicCount = playlists.Length;
+    }
+    AudioSource CreatePlaylistAudioSource()
+    {
+        AudioSource audioSource = new GameObject("Playlist").AddComponent<AudioSource>();
+        audioSource.transform.SetParent(playlistParent);
+        audioSource.outputAudioMixerGroup = musicMixerGroup;
+        return audioSource;
+    }
+
+    void ChangeAmbianceMusic(Playlist[] playlists)
+    {
+        StartCoroutine(ChangeAmbianceMusicDelay(playlists));
+    }
+    IEnumerator ChangeAmbianceMusicDelay(Playlist[] playlists)
+    {
+        if(playlistAudios.Count > initialMusicCount)
+        {
+            for (int i = initialMusicCount; i < playlistAudios.Count; i++)
+            {
+                playlistAudios[i].DOFade(0, transitionFadeOutDelay).OnComplete(() =>
+                {
+                    Destroy(playlistAudios[i].gameObject);
+                });
+            }
+        }
+
+        yield return new WaitForSeconds(transitionFadeOutDelay);
+
+        foreach (Playlist playlist in playlists)
+        {
+            AudioSource audioSource = CreatePlaylistAudioSource();
+            audioSource.DOFade(playlist.volumMultiplier, transitionFadeInDelay);
+            audioSource.loop = playlist.isLooping;
+            audioSource.clip = playlist.clip;
+            audioSource.Play();
+            playlistAudios.Add(audioSource);
         }
     }
 }
