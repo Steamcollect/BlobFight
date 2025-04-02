@@ -15,7 +15,7 @@ public class BlobStaminaVisual : MonoBehaviour
         float value = blobStamina.GetStaminaPercentage();
         transform.localScale = new Vector3(value, value, value);
 
-        if (value <= blobMovement.GetStaminaPercentageRequire())
+        if (value <= blobMovement.GetStaminaPercentageRequire() && !blobMovement.IsExtend())
         {
             GetComponent<SpriteRenderer>().color = colorDisable;
         }
