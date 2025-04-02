@@ -56,7 +56,7 @@ public class BlobCombat : MonoBehaviour
 
         if (motor.GetMovement().IsExtend() && motor.GetMovement().GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
-            StartCoroutine(ParryImpact(propulsionDir, blobTouchSpeed, collision, blobHealth));
+            StartCoroutine(ParryImpact(propulsionDir, blobTouchSpeed, collision, blobTouch));
             return;
         }
         else if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < parryMaxTime && speed > blobTouchSpeed)
