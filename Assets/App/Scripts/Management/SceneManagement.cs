@@ -17,7 +17,6 @@ public class SceneManagement : MonoBehaviour
     [SerializeField] private RSE_Quit rseQuit;
 
     [Header("Output")]
-    [SerializeField] private RSE_FadeOut rseFadeOut;
     [SerializeField] private RSE_EnableJoining rseEnableJoining;
     [SerializeField] private RSE_ClearBlobInGame rseClearBlobInGame;
     [SerializeField] private RSE_TogglePause rseTogglePause;
@@ -25,6 +24,7 @@ public class SceneManagement : MonoBehaviour
     private string currentLevel = "";
     private bool isLoading = false;
     private List<string> levels = new();
+    private bool loadFirstLevel = true;
 
     private void OnEnable()
     {
@@ -46,6 +46,7 @@ public class SceneManagement : MonoBehaviour
         {
             StartCoroutine(Utils.LoadSceneAsync(mainMenuName.Name, LoadSceneMode.Additive));
             currentLevel = mainMenuName.Name;
+            loadFirstLevel = true;
         }
         else
         {
@@ -61,18 +62,14 @@ public class SceneManagement : MonoBehaviour
 
     private void ReturnToMainMenu()
     {
-		rseFadeOut.Call(() =>
-		{
-			LoadLevel(true);
-		});
+        LoadLevel(true);
+
+        loadFirstLevel = true;
     }
 
     private void QuitGame()
     {
-        rseFadeOut.Call(() =>
-        {
-            Application.Quit();
-        });
+        Application.Quit();
     }
 
     private void LoadLevel(bool isMainMenu)
@@ -93,12 +90,23 @@ public class SceneManagement : MonoBehaviour
 
     private string GetRandomLevel()
     {
+        int index = 0;
+
         if (levels.Count == 0)
         {
             levels.AddRange(levelsName.Select(level => level.Name));
+
+            if (loadFirstLevel)
+            {
+                loadFirstLevel = false;
+                index = 0;
+            }
+        }
+        else
+        {
+            index = Random.Range(0, levels.Count);
         }
 
-        int index = Random.Range(0, levels.Count);
         string selectedLevel = levels[index];
         levels.RemoveAt(index);
 

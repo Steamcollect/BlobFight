@@ -1074,6 +1074,8 @@ MonoBehaviour:
   pressInputTxt: {fileID: 7137944561233763378}
   readyTxt: {fileID: 7382276932813733310}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
   rseOnBlobReady: {fileID: 11400000, guid: 41ba8179e6d7aff419499135403837eb, type: 2}
 --- !u!1 &3436811190145985997
 GameObject:

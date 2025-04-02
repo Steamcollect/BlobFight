@@ -17,6 +17,8 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private RSE_OnGameStart rseOnGameStart;
+    [SerializeField] private RSE_OnPause rseOnPause;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
     [Header("Output")]
     [SerializeField] private RSE_OnBlobReady rseOnBlobReady;
@@ -25,6 +27,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
     private float currentTime = 0;
     private bool isInputClick = false;
     private bool isValid = false;
+    private bool isPaused = false;
 
     private void OnEnable()
     {
@@ -32,6 +35,9 @@ public class BlobReadyValidationPanel : MonoBehaviour
         input.validateInput += SetValidInput;
 
         rseOnGameStart.action += DisableGO;
+
+        rseOnPause.action += Pause;
+        rseOnResume.action += Resume;
     }
 
     private void OnDisable()
@@ -40,6 +46,9 @@ public class BlobReadyValidationPanel : MonoBehaviour
         input.validateInput -= SetValidInput;
 
         rseOnGameStart.action -= DisableGO;
+
+        rseOnPause.action -= Pause;
+        rseOnResume.action -= Resume;
     }
 
     private void Start()
@@ -49,7 +58,7 @@ public class BlobReadyValidationPanel : MonoBehaviour
 
     private void Update()
     {
-        if (!isValid && blobPhysics.GetRigidbody().bodyType != RigidbodyType2D.Static)
+        if (!isValid && blobPhysics.GetRigidbody().bodyType != RigidbodyType2D.Static && !isPaused)
         {
             ValidateInputProgress();
         }
@@ -59,6 +68,16 @@ public class BlobReadyValidationPanel : MonoBehaviour
         }
 
         UpdateWheelPosition();
+    }
+
+    private void Pause()
+    {
+        isPaused = true;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
     }
 
     private void ValidateInputProgress()
