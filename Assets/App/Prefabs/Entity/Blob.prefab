@@ -1012,7 +1012,6 @@ MonoBehaviour:
   combat: {fileID: 6850913828851939280}
   blobAudio: {fileID: 8813555513755880380}
   preparationPanel: {fileID: 5953893452250420699}
-  rsoBlobContainer: {fileID: 11400000, guid: 0acb799e0f8cb934c960f8c3c0f33977, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
@@ -1698,6 +1697,8 @@ MonoBehaviour:
   speedMinToSquash: 1
   physics: {fileID: 6321734985548798584}
   graphics: {fileID: 1959618378066109591}
+  fill: {fileID: 5553942288258576163}
+  stamina: {fileID: 8471642159794786612}
 --- !u!212 &1959618378066109591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1934,6 +1935,7 @@ MonoBehaviour:
   metalTag: Metal
   physics: {fileID: 6321734985548798584}
   blobAudio: {fileID: 8813555513755880380}
+  lockInteraction: 0
 --- !u!50 &3386927719614357757
 Rigidbody2D:
   serializedVersion: 4
