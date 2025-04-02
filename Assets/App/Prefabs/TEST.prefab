@@ -658,6 +658,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5280118209445194090}
     m_Modifications:
+    - target: {fileID: 1069552495983380100, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+      propertyPath: sound.volumeMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3290518167020313716, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
       propertyPath: m_Name
       value: Blob
@@ -707,7 +711,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 640491630822267215, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+    - {fileID: 1577086915922225468, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+    - {fileID: 3296751627504446733, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
+    - {fileID: 8436009320774674685, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 848bfc29c558bd048beed82e1f4d88ba, type: 3}
