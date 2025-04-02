@@ -166,9 +166,10 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 2
-  isLava: 1
+  notHide: 0
   delayBeforeStart: 5
   delayAtPoint: 5
+  delayWarningBeforeMove: 0
   timeSpeed: 000000000f0000001e0000002d000000
   newDelayAtPoint:
   - 5
@@ -234,7 +235,7 @@ GameObject:
   - component: {fileID: 7564773431859445974}
   m_Layer: 0
   m_Name: Platform1 (5)
-  m_TagString: Untagged
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!1 &8372486993501462352
 GameObject:

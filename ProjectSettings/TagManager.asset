@@ -8,6 +8,10 @@ TagManager:
   - Groundable
   - Slidable
   - Wind
+  - Lava
+  - Brumble
+  - Void
+  - Laser
   layers:
   - Default
   - TransparentFX

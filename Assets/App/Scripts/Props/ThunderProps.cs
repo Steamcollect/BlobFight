@@ -13,7 +13,7 @@ public class ThunderProps : MonoBehaviour
     [SerializeField] private RSE_OnResume rseOnResume;
 
     public Action<ThunderProps> onEndAction;
-    public Action onThunderSpawn;
+    public Action onSoundPlay;
     private int randomSpawn;
 
     private void OnEnable()
@@ -61,7 +61,7 @@ public class ThunderProps : MonoBehaviour
 
     public void PlaySound()
     {
-        onThunderSpawn.Invoke();
+        onSoundPlay.Invoke();
     }
 
     public void SetRandomSpawn(int index)

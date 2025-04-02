@@ -9,6 +9,11 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] private int maxImpactSpeed;
     [SerializeField] private float shakeIntensityOnDeath;
     [SerializeField] private float shakeTimeOnDeath;
+    [Space(10)]
+    [SerializeField, TagName] string lavaTag;
+    [SerializeField, TagName] string voidTag;
+    [SerializeField, TagName] string brumbleTag;
+    [SerializeField, TagName] string laserTag;
 
     [Header("References")]
     [SerializeField] private BlobTrigger blobTrigger;
@@ -17,6 +22,7 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private BlobPercentageEffect percentageEffect;
     [SerializeField] private BlobPhysics physics;
+    [SerializeField] private BlobAudio blobAudio;
 
     [Header("Output")]
     [SerializeField] private RSE_CallRumble rseCallRumble;
@@ -66,20 +72,35 @@ public class BlobHealth : EntityHealth, IPausable
                 case Damagable.DamageType.Damage:
                     AddPercentage(damagable.GetDamage());
                     physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce() * GetPercentage());
+                    if (damagable.CompareTag(lavaTag))
+                    {
+                        blobAudio.PlayHitFromLavaClip();
+                    }
+                    else if (damagable.CompareTag(brumbleTag))
+                    {
+                        blobAudio.PlayHitFromBrumbleClip();
+                    }
+                    else if (damagable.CompareTag(laserTag))
+                    {
+                        blobAudio.PlayHitFromLaserClip();
+                    }
                     break;
                 
-                case Damagable.DamageType.Kill:
+                case Damagable.DamageType.Kill | Damagable.DamageType.Destroy:
                     if (isDead) return;
                     OnDeath();
                     Die();
                     Destroy(collision);
-                    break;
-                
-                case Damagable.DamageType.Destroy:
-                    if (isDead) return;
-                    OnDeath();
-                    Die();
-                    Destroy(collision);
+
+                    if (damagable.CompareTag(lavaTag))
+                    {
+                        blobAudio.PlayDeathFromLavaClip();
+                    }
+                    else if (damagable.CompareTag(voidTag))
+                    {
+                        blobAudio.PlayDeathFromVoidClip();
+                    }
+
                     break;
             }
         }

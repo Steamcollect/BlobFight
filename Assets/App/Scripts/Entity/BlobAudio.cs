@@ -16,14 +16,14 @@ public class BlobAudio : MonoBehaviour
     private void OnEnable()
     {
         blobDash.OnDash += PlayDashClip;
-        blobMotor.GetTrigger().OnGroundTouch += PlayHitGroundClip;
+        blobMotor.GetTrigger().OnGroundTouch += PlayTouchGroundClip;
         blobMotor.GetCombat().OnHitBlob += PlayHitFromBlobClip;
     }
 
     private void OnDisable()
     {
         blobDash.OnDash -= PlayDashClip;
-        blobMotor.GetTrigger().OnGroundTouch -= PlayHitGroundClip;
+        blobMotor.GetTrigger().OnGroundTouch -= PlayTouchGroundClip;
         blobMotor.GetCombat().OnHitBlob -= PlayHitFromBlobClip;
     }
 
@@ -31,22 +31,39 @@ public class BlobAudio : MonoBehaviour
     {
         dashSC.PlayClip();
     }
-
-    private void PlayDeathFromLavaClip()
+    #region Death
+    public void PlayDeathFromLavaClip()
     {
         deathFromLavaSC.PlayClip();
     }
 
-    private void PlayDeathFromVoidClip()
+    public void PlayDeathFromVoidClip()
     {
         deathFromVoidSC.PlayClip();
     }
+    #endregion
+    #region Hit
+    public void PlayHitFromLavaClip()
+    {
 
+    }
+    public void PlayHitFromThunderClip()
+    {
+
+    }
+    public void PlayHitFromLaserClip()
+    {
+
+    }
+    public void PlayHitFromBrumbleClip()
+    {
+
+    }
     private void PlayHitFromBlobClip(float impactForce)
     {
     }
-
-    private void PlayHitGroundClip()
+    #endregion
+    private void PlayTouchGroundClip()
     {
     }
 }

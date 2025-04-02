@@ -8,12 +8,12 @@ public class ThunderAudio : MonoBehaviour
 
     private void OnEnable()
     {
-        thunderSpawner.onThunderSpawn += PlayThunderClip;
+        thunderSpawner.onSoundPlay += PlayThunderClip;
     }
 
     private void OnDisable()
     {
-        thunderSpawner.onThunderSpawn -= PlayThunderClip;
+        thunderSpawner.onSoundPlay -= PlayThunderClip;
     }
 
     private void PlayThunderClip()

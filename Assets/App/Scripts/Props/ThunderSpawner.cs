@@ -117,7 +117,6 @@ public class ThunderSpawner : GameProps
             ThunderProps thunder = GetThunderObj();
             thunder.SetRandomSpawn(spawnIdx);
             thunder.gameObject.SetActive(true);
-            thunder.PlaySound();
             thunder.transform.position = spawnPoint[spawnIdx].position;
             thunder.Flip(Random.value < 0.5f);
             thunder.onEndAction += ResetSpawnPoint;

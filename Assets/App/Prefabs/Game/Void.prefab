@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1151330237387616607}
   m_Layer: 17
   m_Name: Void
-  m_TagString: Untagged
+  m_TagString: Void
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,5 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 2

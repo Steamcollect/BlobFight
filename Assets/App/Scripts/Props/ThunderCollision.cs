@@ -38,6 +38,7 @@ public class ThunderCollision : CollisionTrigger
 
             expulsionForce += horizontalForce * motor.GetHealth().GetPercentage();            
             blobPhysics.AddForce(expulsionForce);
+            blobPhysics.GetMotor().GetAudio().PlayHitFromThunderClip();
         }
     }
 
