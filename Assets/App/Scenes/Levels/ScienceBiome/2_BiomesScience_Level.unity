@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 11856844}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 100285821}
   m_Layer: 0
   m_Name: Square (9)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 114806805}
   m_Layer: 0
   m_Name: Square (5)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -885,7 +885,7 @@ GameObject:
   - component: {fileID: 513878079}
   m_Layer: 0
   m_Name: Square (8)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,9 +1636,9 @@ GameObject:
   - component: {fileID: 753202169}
   - component: {fileID: 753202171}
   - component: {fileID: 753202170}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Planet
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1821,7 +1821,7 @@ GameObject:
   - component: {fileID: 917284060}
   m_Layer: 0
   m_Name: Square (7)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2134,9 +2134,9 @@ GameObject:
   - component: {fileID: 1203723593}
   - component: {fileID: 1203723595}
   - component: {fileID: 1203723594}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Plateforme
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3199,7 +3199,7 @@ GameObject:
   - component: {fileID: 1424112743}
   m_Layer: 0
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3345,7 +3345,7 @@ GameObject:
   - component: {fileID: 1547190286}
   m_Layer: 0
   m_Name: Square (6)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   launchType: 1
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rotationSpeed: 10
-  delayBeforeStart: 5
+  delayBeforeStart: 3
   delayTransit: 2
   timeSpeed: 000000000f0000001e0000002d000000
   newtimeSpeed:
@@ -3928,7 +3928,7 @@ GameObject:
   - component: {fileID: 2081480322}
   m_Layer: 0
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

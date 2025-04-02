@@ -711,9 +711,9 @@ GameObject:
   - component: {fileID: 636802819}
   - component: {fileID: 636802821}
   - component: {fileID: 636802820}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

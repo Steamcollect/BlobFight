@@ -1856,9 +1856,9 @@ GameObject:
   - component: {fileID: 755431611}
   - component: {fileID: 755431613}
   - component: {fileID: 755431614}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2961,9 +2961,9 @@ GameObject:
   - component: {fileID: 1382464892}
   - component: {fileID: 1382464894}
   - component: {fileID: 1382464893}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3185,6 +3185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainPique (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2875195513789641980, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: m_TagString
+      value: Brumble
+      objectReference: {fileID: 0}
     - target: {fileID: 7293172893039116479, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50
@@ -3226,12 +3230,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: moveSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: delayAtPoint
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: delayBeforeStart
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: delayWarningBeforeMove
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: timeSpeed.Array.data[1]
@@ -3540,9 +3552,9 @@ GameObject:
   - component: {fileID: 1616663585}
   - component: {fileID: 1616663587}
   - component: {fileID: 1616663586}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4931,6 +4943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainPique
       objectReference: {fileID: 0}
+    - target: {fileID: 2875195513789641980, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: m_TagString
+      value: Brumble
+      objectReference: {fileID: 0}
     - target: {fileID: 5535110998531142103, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.48
@@ -4980,12 +4996,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: moveSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: delayAtPoint
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: delayBeforeStart
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: delayWarningBeforeMove
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7320266142512302751, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: timeSpeed.Array.data[1]
