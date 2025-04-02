@@ -275,6 +275,8 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     public float GetExtendTime() { return extendTime; }
 
+    public float GetStaminaPercentageRequire() { return staminaPercentageRequireToExtend; }
+
     public void RemoveGravity(float delay)
     {
         if (_RemoveGravity != null) StopCoroutine(_RemoveGravity);

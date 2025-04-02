@@ -1805,7 +1805,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc03f5e05240bd541bf79bfc2a9ca161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorDisable: {r: 0, g: 0, b: 0, a: 0.2}
+  colorEnable: {r: 1, g: 1, b: 1, a: 0.2}
   blobStamina: {fileID: 4226171251788006590}
+  blobMovement: {fileID: 2542050320697814845}
 --- !u!1 &8036656644236040139
 GameObject:
   m_ObjectHideFlags: 0

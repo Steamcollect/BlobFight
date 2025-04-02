@@ -2407,7 +2407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &255915308
 PolygonCollider2D:
@@ -2850,7 +2851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &268675429
 PolygonCollider2D:
@@ -5539,7 +5541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1013395535
 PolygonCollider2D:
@@ -5951,7 +5954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1043888947
 PolygonCollider2D:
@@ -6112,7 +6116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1048005270
 PolygonCollider2D:
@@ -6363,7 +6368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!212 &1066664672
 SpriteRenderer:
@@ -7336,7 +7342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1321594964
 PolygonCollider2D:
@@ -7529,7 +7536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1400904691
 PolygonCollider2D:
@@ -7690,7 +7698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1401120851
 PolygonCollider2D:
@@ -9484,7 +9493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!61 &1653407308
 BoxCollider2D:
@@ -9665,7 +9675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1694089616
 PolygonCollider2D:
@@ -9980,7 +9991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1822261593
 PolygonCollider2D:
@@ -10360,7 +10372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104c28f92488c2f45ab2738af2f495f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  percentageGiven: 0
+  pushBackForce: 0
   damageType: 1
 --- !u!60 &1858762444
 PolygonCollider2D:
