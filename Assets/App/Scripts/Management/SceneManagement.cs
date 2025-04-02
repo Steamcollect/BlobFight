@@ -24,7 +24,7 @@ public class SceneManagement : MonoBehaviour
     private string currentLevel = "";
     private bool isLoading = false;
     private List<string> levels = new();
-    private int indexLevel = -1;
+    private bool loadFirstLevel = true;
 
     private void OnEnable()
     {
@@ -46,7 +46,7 @@ public class SceneManagement : MonoBehaviour
         {
             StartCoroutine(Utils.LoadSceneAsync(mainMenuName.Name, LoadSceneMode.Additive));
             currentLevel = mainMenuName.Name;
-            indexLevel = -1;
+            loadFirstLevel = true;
         }
         else
         {
@@ -63,6 +63,8 @@ public class SceneManagement : MonoBehaviour
     private void ReturnToMainMenu()
     {
         LoadLevel(true);
+
+        loadFirstLevel = true;
     }
 
     private void QuitGame()
@@ -94,9 +96,9 @@ public class SceneManagement : MonoBehaviour
         {
             levels.AddRange(levelsName.Select(level => level.Name));
 
-            if (indexLevel != 0)
+            if (loadFirstLevel)
             {
-                indexLevel = 0;
+                loadFirstLevel = false;
                 index = 0;
             }
         }
