@@ -14,6 +14,7 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField, TagName] string voidTag;
     [SerializeField, TagName] string brumbleTag;
     [SerializeField, TagName] string laserTag;
+    [SerializeField, TagName] string thunderTag;
 
     [Header("References")]
     [SerializeField] private BlobTrigger blobTrigger;
@@ -82,6 +83,10 @@ public class BlobHealth : EntityHealth, IPausable
                 else if (damagable.CompareTag(laserTag))
                 {
                     blobAudio.PlayHitFromLaserClip();
+                }
+                else if (damagable.CompareTag(thunderTag))
+                {
+                    blobAudio.PlayHitFromThunderClip();
                 }
             }
             else if (damagable.GetDamageType() == Damagable.DamageType.Kill || damagable.GetDamageType() == Damagable.DamageType.Destroy)

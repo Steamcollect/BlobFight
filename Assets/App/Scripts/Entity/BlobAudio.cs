@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BlobAudio : MonoBehaviour
@@ -11,7 +12,13 @@ public class BlobAudio : MonoBehaviour
     [SerializeField] private SoundComponent deathFromLavaSC;
     [SerializeField] private SoundComponent deathFromVoidSC;
     [Space(10)]
+    [SerializeField] private HitSound[] hitFromBlobSound;
+    [SerializeField] private SoundComponent hitFromBlobExtandSC;
+    [SerializeField] private SoundComponent hitFromLavaSC;
     [SerializeField] private SoundComponent hitFromParrySC;
+    [SerializeField] private SoundComponent hitFromLaserSC;
+    [SerializeField] private SoundComponent hitFromThunderSC;
+    [SerializeField] private SoundComponent hitFromBrumbleSC;
     [Space(10)]
     [SerializeField] private SoundComponent touchGrassSC;
     [SerializeField] private SoundComponent touchStoneSC;
@@ -20,13 +27,11 @@ public class BlobAudio : MonoBehaviour
     private void OnEnable()
     {
         blobDash.OnDash += PlayDashClip;
-        blobMotor.GetCombat().OnHitBlob += PlayHitFromBlobClip;
     }
 
     private void OnDisable()
     {
         blobDash.OnDash -= PlayDashClip;
-        blobMotor.GetCombat().OnHitBlob -= PlayHitFromBlobClip;
     }
 
     private void PlayDashClip()
@@ -45,24 +50,40 @@ public class BlobAudio : MonoBehaviour
     }
     #endregion
     #region Hit
+    [Serializable]
+    private class HitSound
+    {
+        [Range(0, 100)] public float hitStrenght = 0;
+        public SoundComponent hitSoundComponent = null;
+
+        public void PlayHitSound()
+        {
+            hitSoundComponent.PlayClip();
+        }
+    }
+    public void PlayHitFromParrySound()
+    {
+        hitFromParrySC.PlayClip();
+    }
     public void PlayHitFromLavaClip()
     {
-
+        hitFromLavaSC.PlayClip();
     }
     public void PlayHitFromThunderClip()
     {
-
+        hitFromThunderSC.PlayClip();
     }
     public void PlayHitFromLaserClip()
     {
-
+        hitFromLaserSC.PlayClip();
     }
     public void PlayHitFromBrumbleClip()
     {
-
+        hitFromBrumbleSC.PlayClip();
     }
-    private void PlayHitFromBlobClip(float impactForce)
+    public void PlayHitFromBlobExtandClip()
     {
+        hitFromBlobExtandSC.PlayClip();
     }
     #endregion
     #region Touch

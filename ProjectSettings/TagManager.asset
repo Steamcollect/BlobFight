@@ -13,6 +13,9 @@ TagManager:
   - Grass
   - Stone
   - Metal
+  - Groundable
+  - Slidable
+  - Thunder
   layers:
   - Default
   - TransparentFX

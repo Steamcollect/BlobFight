@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6918189765295212956}
   m_Layer: 0
   m_Name: ThunderCollider
-  m_TagString: Untagged
+  m_TagString: Thunder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
