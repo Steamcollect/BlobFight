@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[0].sceneGUID
@@ -323,6 +323,22 @@ PrefabInstance:
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[5].sceneName
       value: 2_BiomeLava_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[6].sceneGUID
+      value: 943277f8ba02b734e84c85d7152c42c9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[6].sceneName
+      value: 1_BiomesScience_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[7].sceneGUID
+      value: 0ee14a7c79334c646b7fd4b03fe80e9e
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[7].sceneName
+      value: 2_BiomesScience_Level
       objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name
