@@ -12,18 +12,20 @@ public class BlobAudio : MonoBehaviour
     [SerializeField] private SoundComponent deathFromVoidSC;
     [Space(10)]
     [SerializeField] private SoundComponent hitFromParrySC;
+    [Space(10)]
+    [SerializeField] private SoundComponent touchGrassSC;
+    [SerializeField] private SoundComponent touchStoneSC;
+    [SerializeField] private SoundComponent touchMetalSC;
 
     private void OnEnable()
     {
         blobDash.OnDash += PlayDashClip;
-        blobMotor.GetTrigger().OnGroundTouch += PlayTouchGroundClip;
         blobMotor.GetCombat().OnHitBlob += PlayHitFromBlobClip;
     }
 
     private void OnDisable()
     {
         blobDash.OnDash -= PlayDashClip;
-        blobMotor.GetTrigger().OnGroundTouch -= PlayTouchGroundClip;
         blobMotor.GetCombat().OnHitBlob -= PlayHitFromBlobClip;
     }
 
@@ -63,7 +65,16 @@ public class BlobAudio : MonoBehaviour
     {
     }
     #endregion
-    private void PlayTouchGroundClip()
+    public void PlayTouchGrassClip()
     {
+        touchGrassSC.PlayClip();
+    }
+    public void PlayTouchStoneClip()
+    {
+        touchStoneSC.PlayClip();
+    }
+    public void PlayTouchMetalClip()
+    {
+        touchMetalSC.PlayClip();
     }
 }

@@ -5,13 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blob
-  - Groundable
-  - Slidable
   - Wind
   - Lava
   - Brumble
   - Void
   - Laser
+  - Grass
+  - Stone
+  - Metal
   layers:
   - Default
   - TransparentFX
@@ -19,20 +20,20 @@ TagManager:
   - 
   - Water
   - UI
-  - BlobJoint
+  - 
   - Blob_1
   - Blob_2
   - Blob_3
   - Blob_4
-  - Blob_5
-  - Blob_6
-  - Blob_7
-  - Blob_8
-  - Blob_9
-  - Blob_10
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - Void
-  - 
-  - 
+  - Groundable
+  - Slidable
   - 
   - 
   - 

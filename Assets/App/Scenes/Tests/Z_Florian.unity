@@ -714,9 +714,9 @@ GameObject:
   - component: {fileID: 36387685}
   - component: {fileID: 36387687}
   - component: {fileID: 36387686}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ground (3)
-  m_TagString: Groundable
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1835,7 +1835,7 @@ GameObject:
   - component: {fileID: 348658009}
   m_Layer: 0
   m_Name: Ground (1)
-  m_TagString: Groundable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3445,10 +3445,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745909431}
-  - component: {fileID: 745909432}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Groundable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3470,33 +3469,6 @@ Transform:
   - {fileID: 68639338}
   m_Father: {fileID: 1439090377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &745909432
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745909430}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &748537798
 GameObject:
   m_ObjectHideFlags: 0
@@ -6268,9 +6240,9 @@ GameObject:
   - component: {fileID: 1472343110}
   - component: {fileID: 1472343112}
   - component: {fileID: 1472343111}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ground (3)
-  m_TagString: Groundable
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
