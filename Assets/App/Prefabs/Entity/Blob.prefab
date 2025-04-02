@@ -1348,12 +1348,17 @@ MonoBehaviour:
   maxImpactSpeed: 32000000
   shakeIntensityOnDeath: 1.7
   shakeTimeOnDeath: 0.4
+  lavaTag: Lava
+  voidTag: Void
+  brumbleTag: Brumble
+  laserTag: Laser
   blobTrigger: {fileID: 6449519957614820434}
   blobMovement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
   playerInput: {fileID: 5527555768437477477}
   percentageEffect: {fileID: 7706814225328905213}
   physics: {fileID: 6321734985548798584}
+  blobAudio: {fileID: 0}
   rseCallRumble: {fileID: 11400000, guid: e4acf188d8a9a9342b67ee7d2ffac481, type: 2}
   rseCamShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
 --- !u!1 &4620752509850307575
