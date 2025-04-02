@@ -554,7 +554,7 @@ MonoBehaviour:
   blobDash: {fileID: 3726202644600941132}
   blobMotor: {fileID: 3420423106000584793}
   dashSC: {fileID: 1069552495983380100}
-  parrySC: {fileID: 0}
+  parrySC: {fileID: 7047783747670195450}
   deathFromLavaSC: {fileID: 1983071527114878405}
   deathFromVoidSC: {fileID: 6192219461542382376}
   hitFromBlobSound:
@@ -2704,6 +2704,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 879627387722928022, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
   m_PrefabInstance: {fileID: 2128453519195074211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7047783747670195450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
+  m_PrefabInstance: {fileID: 2128453519195074211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ffa20ac694ee244aa83e7f23dcee47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2489428592860423065
 PrefabInstance:
   m_ObjectHideFlags: 0
