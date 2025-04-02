@@ -67,41 +67,39 @@ public class BlobHealth : EntityHealth, IPausable
     {
         if (collision.gameObject.TryGetComponent(out Damagable damagable))
         {
-            switch (damagable.GetDamageType())
+            if (damagable.GetDamageType() == Damagable.DamageType.Damage)
             {
-                case Damagable.DamageType.Damage:
-                    AddPercentage(damagable.GetDamage());
-                    physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce() * GetPercentage());
-                    if (damagable.CompareTag(lavaTag))
-                    {
-                        blobAudio.PlayHitFromLavaClip();
-                    }
-                    else if (damagable.CompareTag(brumbleTag))
-                    {
-                        blobAudio.PlayHitFromBrumbleClip();
-                    }
-                    else if (damagable.CompareTag(laserTag))
-                    {
-                        blobAudio.PlayHitFromLaserClip();
-                    }
-                    break;
-                
-                case Damagable.DamageType.Kill | Damagable.DamageType.Destroy:
-                    if (isDead) return;
-                    OnDeath();
-                    Die();
-                    Destroy(collision);
+                AddPercentage(damagable.GetDamage());
+                physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce() * GetPercentage());
+                if (damagable.CompareTag(lavaTag))
+                {
+                    blobAudio.PlayHitFromLavaClip();
+                }
+                else if (damagable.CompareTag(brumbleTag))
+                {
+                    blobAudio.PlayHitFromBrumbleClip();
+                }
+                else if (damagable.CompareTag(laserTag))
+                {
+                    blobAudio.PlayHitFromLaserClip();
+                }
+            }
+            else if (damagable.GetDamageType() == Damagable.DamageType.Kill || damagable.GetDamageType() == Damagable.DamageType.Destroy)
+            {
+                if (isDead) return;
+                OnDeath();
 
-                    if (damagable.CompareTag(lavaTag))
-                    {
-                        blobAudio.PlayDeathFromLavaClip();
-                    }
-                    else if (damagable.CompareTag(voidTag))
-                    {
-                        blobAudio.PlayDeathFromVoidClip();
-                    }
+                if (damagable.GetDamageType() == Damagable.DamageType.Kill) Die();
+                else Destroy(collision);
 
-                    break;
+                if (damagable.CompareTag(lavaTag))
+                {
+                    blobAudio.PlayDeathFromLavaClip();
+                }
+                else if (damagable.CompareTag(voidTag))
+                {
+                    blobAudio.PlayDeathFromVoidClip();
+                }
             }
         }
     }
