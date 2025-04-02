@@ -24,6 +24,7 @@ public class SceneManagement : MonoBehaviour
     private string currentLevel = "";
     private bool isLoading = false;
     private List<string> levels = new();
+    private int indexLevel = -1;
 
     private void OnEnable()
     {
@@ -45,6 +46,7 @@ public class SceneManagement : MonoBehaviour
         {
             StartCoroutine(Utils.LoadSceneAsync(mainMenuName.Name, LoadSceneMode.Additive));
             currentLevel = mainMenuName.Name;
+            indexLevel = -1;
         }
         else
         {
@@ -86,12 +88,17 @@ public class SceneManagement : MonoBehaviour
 
     private string GetRandomLevel()
     {
-        int index; ;
+        int index = 0;
 
         if (levels.Count == 0)
         {
             levels.AddRange(levelsName.Select(level => level.Name));
-            index = 0;
+
+            if (indexLevel != 0)
+            {
+                indexLevel = 0;
+                index = 0;
+            }
         }
         else
         {
