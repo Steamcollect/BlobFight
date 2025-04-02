@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2544b385c079fa749a778e59c8150742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingAudioObjectsCount: 30
   musicMixerGroup: {fileID: -134585982228756251, guid: 2627c2080fb0a2b488ae734d16cc292e, type: 2}
   soundMixerGroup: {fileID: -557349572666451718, guid: 2627c2080fb0a2b488ae734d16cc292e, type: 2}
-  startingAudioObjectsCount: 30
   rsePlayClipAt: {fileID: 11400000, guid: eb8f82a3b87a0d64caa32d0e95498bf3, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
@@ -66,7 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b52ec97edf46a488a3d4a1bc926193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playlists: []
+  playlists:
+  - clip: {fileID: 8300000, guid: 4e9777988f26fce44a605fb7b1993253, type: 3}
+    volumMultiplier: 0.2
+    isLooping: 1
   audioManager: {fileID: 8800516172224025859}
 --- !u!81 &6341050559767362269
 AudioListener:

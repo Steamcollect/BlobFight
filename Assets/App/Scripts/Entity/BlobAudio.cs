@@ -3,54 +3,50 @@ using UnityEngine;
 public class BlobAudio : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SoundComponent dashSoundComponent;
-    [SerializeField] private SoundComponent destroySoundComponent;
-    [SerializeField] private SoundComponent deathSoundComponent;
-    [SerializeField] private SoundComponent hitBlobSoundComponent;
-    [SerializeField] private SoundComponent hitGroundSoundComponent;
     [SerializeField] private BlobDash blobDash;
     [SerializeField] private BlobMotor blobMotor;
+    [Space(10)]
+    [SerializeField] private SoundComponent dashSC;
+    [Space(10)]
+    [SerializeField] private SoundComponent deathFromLavaSC;
+    [SerializeField] private SoundComponent deathFromVoidSC;
+    [Space(10)]
+    [SerializeField] private SoundComponent hitFromParrySC;
 
     private void OnEnable()
     {
         blobDash.OnDash += PlayDashClip;
-        blobMotor.GetHealth().onDeath += PlayDeathClip;
-        blobMotor.GetHealth().OnDestroyBlob += PlayDestroyClip;
         blobMotor.GetTrigger().OnGroundTouch += PlayHitGroundClip;
-        blobMotor.GetCombat().OnHitBlob += PlayHitBlobClip;
+        blobMotor.GetCombat().OnHitBlob += PlayHitFromBlobClip;
     }
 
     private void OnDisable()
     {
         blobDash.OnDash -= PlayDashClip;
-        blobMotor.GetHealth().onDeath -= PlayDeathClip;
-        blobMotor.GetHealth().OnDestroyBlob -= PlayDestroyClip;
         blobMotor.GetTrigger().OnGroundTouch -= PlayHitGroundClip;
-        blobMotor.GetCombat().OnHitBlob -= PlayHitBlobClip;
+        blobMotor.GetCombat().OnHitBlob -= PlayHitFromBlobClip;
     }
 
     private void PlayDashClip()
     {
-        dashSoundComponent.PlayClip();
+        dashSC.PlayClip();
     }
 
-    private void PlayDestroyClip()
+    private void PlayDeathFromLavaClip()
     {
-        destroySoundComponent.PlayClip();
+        deathFromLavaSC.PlayClip();
     }
 
-    private void PlayDeathClip()
+    private void PlayDeathFromVoidClip()
     {
-        deathSoundComponent.PlayClip();
+        deathFromVoidSC.PlayClip();
     }
 
-    private void PlayHitBlobClip(float impactForce)
+    private void PlayHitFromBlobClip(float impactForce)
     {
-        hitBlobSoundComponent.PlayClip();
     }
 
     private void PlayHitGroundClip()
     {
-        hitGroundSoundComponent.PlayClip();
     }
 }
