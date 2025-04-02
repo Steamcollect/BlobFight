@@ -13,6 +13,8 @@ public class BlobVisual : MonoBehaviour
     [Header("References")]
     [SerializeField] private BlobPhysics physics;
     [SerializeField] private SpriteRenderer graphics;
+    [SerializeField] private SpriteRenderer fill;
+    [SerializeField] private SpriteRenderer stamina;
 
     private Vector2 initScale = Vector2.zero;
     private bool isExtend = false;
@@ -61,11 +63,15 @@ public class BlobVisual : MonoBehaviour
     public void Show()
     {
         graphics.enabled = true;
+        fill.enabled = true;
+        stamina.enabled = true;
     }
 
     public void Hide()
     {
         graphics.enabled = false;
+        fill.enabled = false;
+        stamina.enabled = false;
     }
 
     public void Shrink()
