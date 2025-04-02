@@ -24,6 +24,7 @@ public class BlobCombat : MonoBehaviour
 
     [Header("Output")]
     [SerializeField] private RSE_CameraZoom rseCameraZoom;
+    [SerializeField] private RSE_OnPause rseOnPause;
 
     private LayerMask currentLayer;
     public Action<float> OnHitBlob;
@@ -61,6 +62,7 @@ public class BlobCombat : MonoBehaviour
         {
             print("Parry");
             rseCameraZoom.Call(physics.transform.position, zoomDelay);
+            rseOnPause.Call();
 
             impactVelocity = propulsionDir * blobTouchSpeed;
             impactForce = impactVelocity * paryForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
