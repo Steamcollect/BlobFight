@@ -30,6 +30,11 @@ public class BlobTrigger : CollisionTrigger
     private int windsTouchCount = 0;
     private LayerMask layerToExclude;
 
+    public Action resetParent;
+    public Action<Transform> setParent;
+
+    [HideInInspector]public bool lockInteraction = false;
+
     private void OnDisable()
     {
         physics.RemoveOnCollisionEnterListener(OnEnterCollision);
@@ -57,6 +62,8 @@ public class BlobTrigger : CollisionTrigger
 
     private void OnEnter(Collision2D collision)
     {
+        if(lockInteraction) return;
+
         if (((1 << gameObject.layer) & groundableLayer.value) == 0)
         {
             isGrounded = true;
@@ -64,6 +71,7 @@ public class BlobTrigger : CollisionTrigger
             OnGroundedEnter?.Invoke(collision);
             OnGroundTouch?.Invoke();
             groundables.Add(collision.gameObject);
+            setParent?.Invoke(collision.transform);
         }
         else if (((1 << gameObject.layer) & slidableLayer.value) == 0)
         {
@@ -71,6 +79,7 @@ public class BlobTrigger : CollisionTrigger
 
             OnSlidableEnter?.Invoke(collision);
             slidables.Add(collision.gameObject);
+            setParent?.Invoke(collision.transform);
         }
         OnMapTouch(collision);
     }
@@ -92,6 +101,8 @@ public class BlobTrigger : CollisionTrigger
 
     private void OnExit(Collision2D collision)
     {
+        if (lockInteraction) return;
+
         groundables.Remove(collision.gameObject);
         if(groundables.Count <= 0)
         {
@@ -104,6 +115,11 @@ public class BlobTrigger : CollisionTrigger
         {
             isSliding = false;
             OnSlidableExit?.Invoke(collision);
+        }
+
+        if (!isGrounded && !isSliding)
+        {
+            resetParent?.Invoke();
         }
     }
 
