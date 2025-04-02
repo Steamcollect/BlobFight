@@ -730,7 +730,7 @@ MonoBehaviour:
   extendForceMultiplier: 3
   percentageMultiplier: 1.5
   speedMultToPushExtendBlob: 0.7
-  parryMaxTime: 0.6
+  parryMaxTime: 0.3
   paryForceMultiplier: 1
   minSpeedAtImpact: 1000
   zoomDelay: 0.6
