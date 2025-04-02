@@ -28,6 +28,7 @@ public class CameraController : MonoBehaviour
     [Header("Output")]
     [SerializeField] private RSO_BlobInGame rsoBlobInGame;
     [SerializeField] private RSO_SettingsSaved rsoSettingsSaved;
+    [SerializeField] private RSE_OnResume rseOnResume;
 
     private bool lockCam = true;
     private Vector3 velocity = Vector3.zero;
@@ -183,6 +184,7 @@ public class CameraController : MonoBehaviour
 
         //  Pause (zoom maintenu)
         yield return new WaitForSeconds(holdTime);
+        rseOnResume.Call();
         inZoom = false;
     }
     IEnumerator ZoomTo(Vector3 targetPosition, float targetSize, float duration)
