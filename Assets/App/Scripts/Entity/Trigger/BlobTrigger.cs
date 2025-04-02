@@ -6,16 +6,20 @@ using System.Collections;
 public class BlobTrigger : CollisionTrigger
 {
     [Header("Settings")]
-    [SerializeField, TagName] private string groundableTag;
-    [SerializeField, TagName] private string slidableTag;
+    [SerializeField] private LayerMask groundableLayer;
+    [SerializeField] private LayerMask slidableLayer;
     [SerializeField, TagName] private string windTag;
     [SerializeField] private bool isGrounded = false;
     [SerializeField] private bool isSliding = false;
     [SerializeField] private bool isInWind = false;
+    [Space(10)]
+    [SerializeField, TagName] string grassTag;
+    [SerializeField, TagName] string stoneTag;
+    [SerializeField, TagName] string metalTag;
 
     [Header("References")]
     [SerializeField] private BlobPhysics physics;
-
+    [SerializeField] private BlobAudio blobAudio;
     public Action<Collision2D> OnGroundedEnter, OnGroundedExit;
     public Action OnGroundTouch;
     public Action<Collision2D> OnSlidableEnter, OnSlidableExit;
@@ -53,7 +57,7 @@ public class BlobTrigger : CollisionTrigger
 
     private void OnEnter(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(groundableTag))
+        if (((1 << gameObject.layer) & groundableLayer.value) == 0)
         {
             isGrounded = true;
 
@@ -61,12 +65,28 @@ public class BlobTrigger : CollisionTrigger
             OnGroundTouch?.Invoke();
             groundables.Add(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag(slidableTag))
+        else if (((1 << gameObject.layer) & slidableLayer.value) == 0)
         {
             isSliding = true;
 
             OnSlidableEnter?.Invoke(collision);
             slidables.Add(collision.gameObject);
+        }
+        OnMapTouch(collision);
+    }
+    void OnMapTouch(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(grassTag))
+        {
+            blobAudio.PlayTouchGrassClip();
+        }
+        else if (collision.gameObject.CompareTag(stoneTag))
+        {
+            blobAudio.PlayTouchStoneClip();
+        }
+        else if (collision.gameObject.CompareTag(metalTag))
+        {
+            blobAudio.PlayTouchMetalClip();
         }
     }
 
