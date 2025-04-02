@@ -17,28 +17,24 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] private float zoomDelay;
 
     [Header("References")]
-    [SerializeField] private BlobTrigger trigger;
-    [SerializeField] private BlobPhysics physics;
-    [SerializeField] private BlobMovement movement;
-    [SerializeField] private BlobParticle particle;
+    [SerializeField] BlobMotor motor;
 
     [Header("Output")]
     [SerializeField] private RSE_CameraZoom rseCameraZoom;
     [SerializeField] private RSE_OnPause rseOnPause;
 
     private LayerMask currentLayer;
-    public Action<float> OnHitBlob;
     private bool canFight = true;
     private List<BlobMotor> blobsTouch = new();
 
     private void OnEnable()
     {
-        trigger.OnBlobCollisionEnter += OnBlobCollisionEnter;
+        motor.GetTrigger().OnBlobCollisionEnter += OnBlobCollisionEnter;
     }
 
     private void OnDisable()
     {
-        trigger.OnBlobCollisionEnter -= OnBlobCollisionEnter;
+        motor.GetTrigger().OnBlobCollisionEnter -= OnBlobCollisionEnter;
     }
 
     private void OnBlobCollisionEnter(BlobMotor blobTouch, Collision2D collision)
@@ -49,70 +45,92 @@ public class BlobCombat : MonoBehaviour
         var blobPhysics = blobTouch.GetPhysics();
         var blobHealth = blobTouch.GetHealth();
 
-        float speed = physics.lastVelocity.sqrMagnitude;
+        float speed = motor.GetPhysics().lastVelocity.sqrMagnitude;
 
         float blobTouchSpeed = blobPhysics.lastVelocity.sqrMagnitude;
         
-        Vector2 propulsionDir = (blobPhysics.GetCenter() - physics.GetCenter()).normalized;
+        Vector2 propulsionDir = (blobPhysics.GetCenter() - motor.GetPhysics().GetCenter()).normalized;
 
         Vector2 impactVelocity = Vector2.zero;
         Vector2 impactForce = Vector2.zero;
 
-        if (movement.IsExtend() && movement.GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
+        if (motor.GetMovement().IsExtend() && motor.GetMovement().GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
-            print("Parry");
-            rseCameraZoom.Call(physics.transform.position, zoomDelay);
-            rseOnPause.Call();
-
-            impactVelocity = propulsionDir * blobTouchSpeed;
-            impactForce = impactVelocity * paryForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
-
-            particle.ParryParticle(collision.GetContact(0).point, propulsionDir);
+            StartCoroutine(ParryImpact(propulsionDir, blobTouchSpeed, collision, blobHealth));
+            return;
         }
         else if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < parryMaxTime && speed > blobTouchSpeed)
         {
             return;
         }
-        else if (!blobMovement.IsExtend() && movement.IsExtend() && (blobTouchSpeed * speedMultToPushExtendBlob) < speed)
+        else if (!blobMovement.IsExtend() && motor.GetMovement().IsExtend() && (blobTouchSpeed * speedMultToPushExtendBlob) < speed)
         {
             impactVelocity = propulsionDir * Mathf.Max(speed, minSpeedAtImpact);
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
 
-            particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
+            motor.GetParticle().DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
-        else if (!movement.IsExtend() && blobMovement.IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
+        else if (!motor.GetMovement().IsExtend() && blobMovement.IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
         {
             impactVelocity = propulsionDir * Mathf.Max(speed, minSpeedAtImpact);
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
 
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
 
-            particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
+            motor.GetParticle().DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
-        else if ((!movement.IsExtend() && !blobMovement.IsExtend()) || (movement.IsExtend() && blobMovement.IsExtend()))
+        else if ((!motor.GetMovement().IsExtend() && !blobMovement.IsExtend()) || (motor.GetMovement().IsExtend() && blobMovement.IsExtend()))
         {
             if (speed < blobTouchSpeed) return; // Do not add force in this case
 
             impactVelocity = propulsionDir * speed;
             impactForce = impactVelocity * (blobHealth.GetPercentage() * percentageMultiplier);
 
-            particle.DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
+            motor.GetParticle().DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
         else return;
 
         // Set new velocity
         blobPhysics.ResetVelocity();
-        physics.ResetVelocity();
-
-        Debug.DrawLine(blobPhysics.GetCenter(), blobPhysics.GetCenter() + impactForce, Color.black, 1f);
+        motor.GetPhysics().ResetVelocity();
 
         blobPhysics.AddForce(impactForce * pushBackForce);
-        physics.AddForce(-impactVelocity * returnPushBackForce);
+        motor.GetPhysics().AddForce(-impactVelocity * returnPushBackForce);
 
         // Set health
         blobHealth.OnDamageImpact(impactForce.sqrMagnitude);
 
-        OnHitBlob.Invoke(0);
+        // Set cooldowns
+        StartCoroutine(ImpactCooldown(blobTouch));
+        StartCoroutine(blobTouch.GetCombat().CanFightCooldown());
+    }
+
+    IEnumerator ParryImpact(Vector2 propulsionDir, float blobTouchSpeed, Collision2D collision, BlobMotor blobTouch)
+    {
+        rseCameraZoom.Call(motor.GetPhysics().transform.position, zoomDelay);
+        rseOnPause.Call();
+
+        yield return new WaitForSeconds(.2f);
+
+        Vector2 impactVelocity = propulsionDir * blobTouchSpeed;
+        Vector2 impactForce = impactVelocity * paryForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
+
+        motor.GetParticle().ParryParticle(collision.GetContact(0).point, propulsionDir);
+        motor.GetAudio().PlayParrySound();
+
+        yield return new WaitForSeconds(.2f);
+
+        blobTouch.GetAudio().PlayHitFromParrySound();
+
+        // Set new velocity
+        blobTouch.GetPhysics().ResetVelocity();
+        motor.GetPhysics().ResetVelocity();
+
+        blobTouch.GetPhysics().AddForce(impactForce * pushBackForce);
+        motor.GetPhysics().AddForce(-impactVelocity * returnPushBackForce);
+
+        // Set health
+        blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
 
         // Set cooldowns
         StartCoroutine(ImpactCooldown(blobTouch));

@@ -8,6 +8,7 @@ public class BlobMotor : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject componentsContent;
+    [Space(5)]
     [SerializeField] private BlobPhysics physics;
     [SerializeField] private BlobVisual visual;
     [SerializeField] private BlobHealth health;
@@ -215,21 +216,14 @@ public class BlobMotor : MonoBehaviour
 
     #region Getter
     public BlobInitializeStatistic GetStats() { return currentStats; }
-
     public BlobPhysics GetPhysics() { return physics; }
-
     public BlobHealth GetHealth() { return health; }
-
     public EntityInput GetInput() { return input; }
-
     public BlobMovement GetMovement() { return movement; }
-
     public BlobTrigger GetTrigger() { return trigger; }
-
     public BlobCombat GetCombat() { return combat; }
-
     public BlobAudio GetAudio() { return blobAudio; }
-
     public BlobColor GetColor() { return currentStats.color; }
+    public BlobParticle GetParticle() { return particle; }
     #endregion
 }
