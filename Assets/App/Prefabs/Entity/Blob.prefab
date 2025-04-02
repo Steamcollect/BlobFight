@@ -750,10 +750,7 @@ MonoBehaviour:
   paryForceMultiplier: 1
   minSpeedAtImpact: 1000
   zoomDelay: 0.6
-  trigger: {fileID: 6449519957614820434}
-  physics: {fileID: 6321734985548798584}
-  movement: {fileID: 2542050320697814845}
-  particle: {fileID: 4617812964555812280}
+  motor: {fileID: 3420423106000584793}
   rseCameraZoom: {fileID: 11400000, guid: cd9b026eb73ebdf4e81607f2f42fe998, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
 --- !u!1 &3267906026199711181
