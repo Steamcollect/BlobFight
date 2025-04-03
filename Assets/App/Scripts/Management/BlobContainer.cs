@@ -20,45 +20,22 @@ public class BlobContainer : MonoBehaviour
 
     private void OnEnable()
     {
-        rseOnFightEnd.action += () =>
-        {
-            SetBlobParent();
-        };
-        rseOnGameStart.action += () =>
-        {
-            SetBlobParent();
-        };
+        rseOnFightEnd.action += SetBlobParent;
+        rseOnGameStart.action += SetBlobParent;
     }
 
     private void OnDisable()
     {
-        rseOnFightEnd.action -= () =>
-        {
-            SetBlobParent();
-        };
-        rseOnGameStart.action -= () =>
-        {
-            SetBlobParent();
-        };
-    }
-    private void OnDestroy()
-    {
-        rseOnFightEnd.action -= () =>
-        {
-            SetBlobParent();
-        };
-        rseOnGameStart.action -= () =>
-        {
-            SetBlobParent();
-        };
+        rseOnFightEnd.action -= SetBlobParent;
+        rseOnGameStart.action -= SetBlobParent;
     }
 
     private void SetBlobParent()
     {
-        for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
-        {
-            rsoBlobInGame.Value[i].transform.SetParent(transform);
-        }
-    }
+		for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
+		{
+			rsoBlobInGame.Value[i].transform.SetParent(transform);
+		}
+	}
 
 }
