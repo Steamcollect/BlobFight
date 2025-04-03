@@ -568,10 +568,6 @@ PrefabInstance:
       propertyPath: levelsName.Array.data[0].sceneName
       value: 1_BiomeCelest_Level
       objectReference: {fileID: 0}
-    - target: {fileID: 6605109810637513546, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
-      propertyPath: m_BodyType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6880067595588563945, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.46124083

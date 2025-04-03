@@ -1923,6 +1923,7 @@ MonoBehaviour:
   rb: {fileID: 3386927719614357757}
   collid: {fileID: 1719897261511637580}
   buttomPos: {fileID: 7034404990517373361}
+  rseSpawnBlob: {fileID: 0}
   rseOnGameStart: {fileID: 11400000, guid: d5800c9ab45a06e46863d086e2ef668f, type: 2}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseOnFightEnd: {fileID: 11400000, guid: a23ffd7e4b3b0ff49b3d63d2f32ee85c, type: 2}
@@ -1963,7 +1964,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8036656644236040139}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

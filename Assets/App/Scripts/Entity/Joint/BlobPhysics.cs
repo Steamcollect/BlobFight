@@ -11,6 +11,7 @@ public class BlobPhysics : MonoBehaviour, IPausable
     [SerializeField] Transform buttomPos;
 
     [Header("Input")]
+    [SerializeField] RSE_SpawnBlob rseSpawnBlob;
     [SerializeField] RSE_OnGameStart rseOnGameStart;
     [SerializeField] RSE_OnFightStart rseOnFightStart;
     [SerializeField] RSE_OnFightEnd rseOnFightEnd;
@@ -32,7 +33,6 @@ public class BlobPhysics : MonoBehaviour, IPausable
     private void OnDisable()
     {
         transform.DOKill();
-
         rseOnGameStart.action -= LockRB;
         rseOnFightStart.action -= UnlockRB;
         rseOnFightEnd.action -= LockRB;
@@ -55,12 +55,12 @@ public class BlobPhysics : MonoBehaviour, IPausable
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
     }
 
-    private void LockRB()
+    public void LockRB()
     {
         rb.bodyType = RigidbodyType2D.Static;
     }
 
-    private void UnlockRB()
+    public void UnlockRB()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
     }
