@@ -16,10 +16,20 @@ public class MovingProps : GameProps
     [SerializeField] private List<float> newDelayAtPoint;
     [SerializeField] private List<float> newMoveSpeed;
 
+    [Space(10)]
+    [SerializeField] bool shakeBeforeMoving;
+    [SerializeField] float shakeForce;
+    [SerializeField] float shakeDuration;
+
+    [Space(5)]
+    [SerializeField] bool shakeDuringMovement;
+    [SerializeField] float shakeDuringMovementForce;
+
     [Header("References")]
     [SerializeField] private Transform movable;
     [SerializeField] private WarningMovingProps warningMovingProps;
     [SerializeField] private Transform[] positions;
+    [SerializeField] ParticleSystem[] particleDuringMovement;
 
     [Header("Input")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
@@ -90,6 +100,14 @@ public class MovingProps : GameProps
         float cooldown = delay;
         float timer = 0f;
 
+        if (shakeBeforeMoving)
+        {
+            StartCoroutine(Utils.Delay(delay - shakeDuration, () =>
+            {
+                movable.DOPunchRotation(Vector3.forward * shakeForce, shakeDuration, 20, 1);
+            }));
+        }
+
         while (timer < cooldown)
         {
             yield return null;
@@ -131,11 +149,26 @@ public class MovingProps : GameProps
             }
         }
 
+        for (int i = 0; i < particleDuringMovement.Length; i++)
+        {
+            particleDuringMovement[i].Play();
+        }
+
+        movable.DOKill();
+        if (shakeDuringMovement)
+        {
+            movable.DOPunchRotation(Vector3.forward * shakeDuringMovementForce, moveTime, 20, 1);
+        }
         movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
         {
             if (!notHide)
             {
                 movable.gameObject.SetActive(false);
+            }
+
+            for (int i = 0; i < particleDuringMovement.Length; i++)
+            {
+                particleDuringMovement[i].Stop();
             }
 
             coroutine = StartCoroutine(DelayLaunch(delayAtPoint));
