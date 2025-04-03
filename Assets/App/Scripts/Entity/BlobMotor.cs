@@ -225,5 +225,6 @@ public class BlobMotor : MonoBehaviour
     public BlobAudio GetAudio() { return blobAudio; }
     public BlobColor GetColor() { return currentStats.color; }
     public BlobParticle GetParticle() { return particle; }
+    public BlobVisual GetVisual() { return visual; }
     #endregion
 }
