@@ -32,7 +32,10 @@ public class MyWindZone : GameProps
     [SerializeField] private float windForce;
     [SerializeField] private float windForceDelay;
 
-    private bool isLaunched = false;
+	[Header("References")]
+	[SerializeField] private ParticleSystem particle;
+
+	private bool isLaunched = false;
     private List<WindEffect> windEffects = new();
 
     public override void Launch()

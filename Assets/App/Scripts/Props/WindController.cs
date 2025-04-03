@@ -16,8 +16,9 @@ public class WindController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private MyWindZone windZone;
+	[SerializeField] private ParticleSystem particle;
 
-    [Header("Input")]
+	[Header("Input")]
     [SerializeField] private RSE_OnFightStart rseOnFightStart;
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;

@@ -5156,6 +5156,7 @@ MonoBehaviour:
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   windForce: 1000
   windForceDelay: 0.1
+  particle: {fileID: 350161406533852645}
 --- !u!114 &7307063819379520189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5171,6 +5172,7 @@ MonoBehaviour:
   isLooping: 1
   windControl: []
   windZone: {fileID: 6745023593858242276}
+  particle: {fileID: 350161406533852645}
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
