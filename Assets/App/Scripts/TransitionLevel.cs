@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class TransitionLevel : MonoBehaviour
 {
@@ -8,8 +10,9 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private bool doStart;
     [SerializeField] private float delayStart;
     [SerializeField] private bool modeDev;
+    [SerializeField] private List<Color> colorBlob;
 
-	[Header("Input")]
+    [Header("Input")]
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_Transit rseTransit;
     [SerializeField] private RSE_OnPause rseOnPause;
@@ -21,6 +24,7 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_SpawnPoint rseSpawnPoint;
     [SerializeField] private RSE_Message rseMessage;
     [SerializeField] private SSO_ListFightText listFightText;
+    [SerializeField] private RSO_BlobInGame rsoBlobInGame;
 
     private bool isPaused = false;
     private int randomReadyText = 0;
@@ -60,7 +64,15 @@ public class TransitionLevel : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(-100, 0, -10);
 
-            StartCoroutine(Utils.Delay(0.1f, () => rseSpawnPoint.Call()));
+            StartCoroutine(Utils.Delay(0.1f, () =>
+            {
+                rseSpawnPoint.Call();
+
+                for (int i = 0; i < rsoBlobInGame.Value.Count; i++)
+                {
+                    rsoBlobInGame.Value[i].GetVisual().SetColor(colorBlob[i]);
+                }
+            }));
 
             gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
             {
