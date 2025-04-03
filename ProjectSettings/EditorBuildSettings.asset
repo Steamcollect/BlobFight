@@ -22,13 +22,13 @@ EditorBuildSettings:
     guid: d6f85ddf2ad141f4bbcb489e9e63058e
   - enabled: 1
     path: Assets/App/Scenes/Levels/ScienceBiome/1_BiomesScience_Level.unity
-    guid: 943277f8ba02b734e84c85d7152c42c9
-  - enabled: 1
-    path: Assets/App/Scenes/Levels/ScienceBiome/2_BiomesScience_Level.unity
     guid: 0ee14a7c79334c646b7fd4b03fe80e9e
   - enabled: 1
     path: Assets/App/Scenes/Levels/SwampBiome/1_BiomeSwamp_Level.unity
     guid: 014ef4a7d2a242141889cd251cda9a8c
+  - enabled: 1
+    path: Assets/App/Scenes/Levels/SwampBiome/2_BiomesSwamp_Level.unity
+    guid: 943277f8ba02b734e84c85d7152c42c9
   - enabled: 1
     path: Assets/App/Scenes/Levels/WindBiome/1_BiomeWind_Level.unity
     guid: ca9256da3c5d90f48a0d1d46286a810c
