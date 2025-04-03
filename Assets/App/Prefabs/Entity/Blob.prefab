@@ -4005,7 +4005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.clips.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.volumeMultiplier
