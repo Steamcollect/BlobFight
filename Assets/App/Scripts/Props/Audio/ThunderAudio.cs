@@ -3,21 +3,15 @@ using UnityEngine;
 public class ThunderAudio : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SoundComponent thunderSoundComponent;
+    [SerializeField] private SoundComponent thunderLightningSC;
+    [SerializeField] private SoundComponent thunderSparkleSC;
     [SerializeField] private ThunderProps thunderSpawner;
-
-    private void OnEnable()
+    public void PlayLightningSound()
     {
-        thunderSpawner.onSoundPlay += PlayThunderClip;
+        thunderLightningSC.PlayClip();
     }
-
-    private void OnDisable()
+    public void PlaySparkleSound()
     {
-        thunderSpawner.onSoundPlay -= PlayThunderClip;
-    }
-
-    private void PlayThunderClip()
-    {
-        thunderSoundComponent.PlayClip();
+        thunderSparkleSC.PlayClip();
     }
 }

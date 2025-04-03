@@ -7,13 +7,13 @@ public class ThunderProps : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D thunderCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private ThunderAudio thunderAudio;
     
     [Header("Input")]
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
     public Action<ThunderProps> onEndAction;
-    public Action onSoundPlay;
     private int randomSpawn;
 
     private void OnEnable()
@@ -59,9 +59,13 @@ public class ThunderProps : MonoBehaviour
         spriteRenderer.flipX = flipX;
     }
 
-    public void PlaySound()
+    public void LightningSound()
     {
-        onSoundPlay.Invoke();
+        thunderAudio.PlayLightningSound();
+    }
+    public void SparkleSound()
+    {
+        thunderAudio.PlaySparkleSound();
     }
 
     public void SetRandomSpawn(int index)
