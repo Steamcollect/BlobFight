@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 73f0852359a88134a832588975002061
+guid: 33d58867f84b8984e839b55cb3f4b45a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 140
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lightning_0
+      name: "sprite_sheet_\xE9clair_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 582
-        width: 126
-        height: 290
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc2d233320e1c0428000f8512118890
-      internalID: -1126344604
+      spriteID: 306fcc3339ad5174eb181e6c41b3ec97
+      internalID: 16541254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_1
+      name: "sprite_sheet_\xE9clair_1"
       rect:
         serializedVersion: 2
-        x: 126
-        y: 582
-        width: 126
-        height: 290
+        x: 652
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7243d8d3b0012e14db57d982fb25e983
-      internalID: -2115711338
+      spriteID: 499d14e1a2f861b4abf32ae39cda3a68
+      internalID: -300766795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_2
+      name: "sprite_sheet_\xE9clair_2"
       rect:
         serializedVersion: 2
-        x: 252
-        y: 582
-        width: 126
-        height: 290
+        x: 1304
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a00cebb1052ab943ae57ed2cbfc8bf1
-      internalID: 334542767
+      spriteID: 6c138140fa6a9524f89b2866b3ce9c32
+      internalID: -2101647743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_3
+      name: "sprite_sheet_\xE9clair_3"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 292
-        width: 126
-        height: 290
+        x: 1956
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 196d2ef12adb9584c9883437239bc814
-      internalID: -227341807
+      spriteID: 22c940b40d773b84297c707fbb62300d
+      internalID: 419904139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_4
+      name: "sprite_sheet_\xE9clair_4"
       rect:
         serializedVersion: 2
-        x: 126
-        y: 292
-        width: 126
-        height: 290
+        x: 2608
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8b958680bf01ba49aa3d21037704302
-      internalID: -410499870
+      spriteID: 6643b3692d6fcce449cdaa428fc56503
+      internalID: 1331419776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_5
+      name: "sprite_sheet_\xE9clair_5"
       rect:
         serializedVersion: 2
-        x: 252
-        y: 292
-        width: 126
-        height: 290
+        x: 3260
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e08deb1061fcb244e82abfe55f4ca1db
-      internalID: -2087945949
+      spriteID: 8e25c8fe75b99e24a83f15f48d874b83
+      internalID: -2896611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_6
+      name: "sprite_sheet_\xE9clair_6"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 126
-        height: 290
+        x: 3912
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11d91c7766542b24ca46e8720b0d83c2
-      internalID: 938561671
+      spriteID: b34c4073e37c28e4983fcfb7900f551e
+      internalID: -2074841987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_7
+      name: "sprite_sheet_\xE9clair_7"
       rect:
         serializedVersion: 2
-        x: 126
-        y: 2
-        width: 126
-        height: 290
+        x: 4564
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 923022758ebbbaa439afc8ff71c5bead
-      internalID: -274583851
+      spriteID: 6da658ff051c398479e0b7a8ccc387c0
+      internalID: -906466463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lightning_8
+      name: "sprite_sheet_\xE9clair_8"
       rect:
         serializedVersion: 2
-        x: 252
-        y: 2
-        width: 126
-        height: 290
+        x: 5216
+        y: 0
+        width: 652
+        height: 1500
       alignment: 9
       pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,8 +279,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8e1b3a98ba54374b9dd5be9dcf343b3
-      internalID: -826548604
+      spriteID: 15373496d5dccb74687dcc7170cc4668
+      internalID: 866655625
       vertices: []
       indices: 
       edges: []
@@ -296,15 +296,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lightning_0: -1126344604
-      Lightning_1: -2115711338
-      Lightning_2: 334542767
-      Lightning_3: -227341807
-      Lightning_4: -410499870
-      Lightning_5: -2087945949
-      Lightning_6: 938561671
-      Lightning_7: -274583851
-      Lightning_8: -826548604
+      "sprite_sheet_\xE9clair_0": 16541254
+      "sprite_sheet_\xE9clair_1": -300766795
+      "sprite_sheet_\xE9clair_2": -2101647743
+      "sprite_sheet_\xE9clair_3": 419904139
+      "sprite_sheet_\xE9clair_4": 1331419776
+      "sprite_sheet_\xE9clair_5": -2896611
+      "sprite_sheet_\xE9clair_6": -2074841987
+      "sprite_sheet_\xE9clair_7": -906466463
+      "sprite_sheet_\xE9clair_8": 866655625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
