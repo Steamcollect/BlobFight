@@ -30,5 +30,6 @@ public class VialSpawnerManager : MonoBehaviour
         }
 
         vials[rsoBlobInGame.Value.Count - 1].Setup(blob);
+        blob.GetPhysics().UnlockRB();
     }
 }
