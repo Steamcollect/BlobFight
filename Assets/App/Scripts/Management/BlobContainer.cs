@@ -41,6 +41,17 @@ public class BlobContainer : MonoBehaviour
             SetBlobParent();
         };
     }
+    private void OnDestroy()
+    {
+        rseOnFightEnd.action -= () =>
+        {
+            SetBlobParent();
+        };
+        rseOnGameStart.action -= () =>
+        {
+            SetBlobParent();
+        };
+    }
 
     private void SetBlobParent()
     {

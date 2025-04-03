@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/App/Scenes/Levels/WindBiome/3_BiomeWind_Level.unity
     guid: 1ff207b03c0267d43864d5887695aed4
   - enabled: 1
-    path: Assets/App/Scenes/Levels/WindBiome/4_BiomeWind_Level.unity
+    path: Assets/App/Scenes/Levels/LavaBiome/3_BiomeLava_Level.unity
     guid: d0942348ccc6f6d45a9d63b8ce302803
   - enabled: 1
     path: Assets/App/Scenes/Tests/Z_Cyril.unity
