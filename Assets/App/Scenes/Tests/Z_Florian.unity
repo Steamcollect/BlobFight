@@ -3878,6 +3878,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 731185585}
     m_Modifications:
+    - target: {fileID: 350161406533852645, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 350161406533852645, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2140377547865530996, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -3925,6 +3933,10 @@ PrefabInstance:
     - target: {fileID: 2140377547865530996, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183699132117582684, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6745023593858242276, guid: 89109b74efa19a74fbf3ad020372b54e, type: 3}
       propertyPath: windForce
@@ -7912,6 +7924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainPique (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2875195513789641980, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7293172893039116479, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45
@@ -9012,6 +9028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainPique
       objectReference: {fileID: 0}
+    - target: {fileID: 2875195513789641980, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7293172893039116479, guid: 0c2b51d6413c51349a0dd1fff30929de, type: 3}
       propertyPath: m_LocalPosition.x
       value: -45
@@ -9710,6 +9730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamageZone
       objectReference: {fileID: 0}
+    - target: {fileID: 6685565500566376373, guid: c9082fb92fa808a41a118289603d5957, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9729,7 +9753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1217650912467255256, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4300521944366438910, guid: 52d55ac1f09fefa409ce98bd930d783b, type: 3}
       propertyPath: launchType
