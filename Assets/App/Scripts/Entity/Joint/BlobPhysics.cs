@@ -10,12 +10,33 @@ public class BlobPhysics : MonoBehaviour, IPausable
     [SerializeField] CircleCollider2D collid;
     [SerializeField] Transform buttomPos;
 
+    [Header("Input")]
+    [SerializeField] RSE_OnGameStart rseOnGameStart;
+    [SerializeField] RSE_OnFightStart rseOnFightStart;
+    [SerializeField] RSE_OnFightEnd rseOnFightEnd;
+
     [HideInInspector] public Vector2 lastVelocity;
     private Action<Collision2D> onCollisionEnter;
     private Action<Collision2D> onCollisionStay;
     private Action<Collision2D> OnCollisionExit;
     public Action onJointsConnected;
     private float baseColliderRadius = 0;
+
+    private void OnEnable()
+    {
+        rseOnGameStart.action += LockRB;
+        rseOnFightStart.action += UnlockRB;
+        rseOnFightEnd.action += LockRB;
+    }
+
+    private void OnDisable()
+    {
+        transform.DOKill();
+
+        rseOnGameStart.action -= LockRB;
+        rseOnFightStart.action -= UnlockRB;
+        rseOnFightEnd.action -= LockRB;
+    }
 
     public void SetupLayer(LayerMask layerMask)
     {
@@ -32,6 +53,16 @@ public class BlobPhysics : MonoBehaviour, IPausable
     {
         collid.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    private void LockRB()
+    {
+        rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    private void UnlockRB()
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void FixedUpdate()
@@ -169,11 +200,6 @@ public class BlobPhysics : MonoBehaviour, IPausable
     }
 
     public BlobMotor GetMotor() { return motor; }
-
-    private void OnDisable()
-    {
-        transform.DOKill();
-    }
 
     public void Pause()
     {
