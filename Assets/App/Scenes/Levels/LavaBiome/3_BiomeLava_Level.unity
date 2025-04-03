@@ -5441,7 +5441,7 @@ Transform:
   m_GameObject: {fileID: 409065734}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.93, y: -8.02, z: 0}
+  m_LocalPosition: {x: -2.93, y: -4.8, z: 0}
   m_LocalScale: {x: 4.1667004, y: 4.1667004, z: 1.3889}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5504,7 +5504,7 @@ SpriteRenderer:
   m_SortingOrder: -98
   m_Sprite: {fileID: 21300000, guid: 8d2fc6d9eb6bc3d47bbe036bd9894aa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 18.71, y: 9.62}
@@ -11264,7 +11264,7 @@ Transform:
   m_GameObject: {fileID: 1002200487}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.18, y: -10, z: 0}
+  m_LocalPosition: {x: -21.18, y: -13.6, z: 0}
   m_LocalScale: {x: 2.189867, y: 2.189867, z: 2.189867}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11567,7 +11567,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128665471}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 
@@ -11705,7 +11705,7 @@ Transform:
   m_GameObject: {fileID: 1172120074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.2, y: -9.99, z: 0}
+  m_LocalPosition: {x: 18.2, y: -4.7, z: 0}
   m_LocalScale: {x: 3.6707387, y: 4.894318, z: 0.61178976}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16891,7 +16891,7 @@ Transform:
   m_GameObject: {fileID: 1604972238}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.23, y: -10, z: 0}
+  m_LocalPosition: {x: 21.23, y: -13.6, z: 0}
   m_LocalScale: {x: 2.189867, y: 2.189867, z: 2.189867}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17407,7 +17407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066953022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e99835046bdf8bd47bb1846dba6ceb5f, type: 3}
   m_Name: 

@@ -64,7 +64,7 @@ public class BlobTrigger : CollisionTrigger
     {
         if(lockInteraction) return;
 
-        if (((1 << gameObject.layer) & groundableLayer.value) == 0)
+        if (1<< collision.collider.gameObject.layer == groundableLayer.value)
         {
             isGrounded = true;
 
@@ -73,7 +73,7 @@ public class BlobTrigger : CollisionTrigger
             groundables.Add(collision.gameObject);
             setParent?.Invoke(collision.transform);
         }
-        else if (((1 << gameObject.layer) & slidableLayer.value) == 0)
+        else if (collision.collider.gameObject.layer == slidableLayer.value)
         {
             isSliding = true;
 
