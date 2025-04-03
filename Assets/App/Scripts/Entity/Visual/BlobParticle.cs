@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BlobParticle : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] int hitParticleStartingCount;
     [SerializeField] int parryParticleStartingCount;
     [SerializeField] int dustDashParticleStartingCount;
+    [SerializeField] int lavaBrunDust;
     [SerializeField] float maxHitSpeed;
 
     [Header("References")]
@@ -25,7 +27,8 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] ParticleSystem destroyParticlePrefab;
     [SerializeField] ParticleSystem expulseParticle;
     [SerializeField] ParticleSystem parryParticlePrefab;
-    
+    [SerializeField] ParticleSystem lavaBrunDustPrefab;
+
     [Space(10)]
     [SerializeField] HitParticle[] hitParticles;
 
@@ -34,6 +37,7 @@ public class BlobParticle : MonoBehaviour
     Queue<ParticleCallback> deathParticles = new();
     Queue<ParticleCallback> destroyParticles = new();
     Queue<ParticleCallback> parryParticles = new();
+    Queue<ParticleCallback> lavaBrunDustParticles = new();
 
     [Serializable]
     private class HitParticle
@@ -168,7 +172,6 @@ public class BlobParticle : MonoBehaviour
 
         particle.Play();
     }
-
     private void OnDestroyParticleEnd(ParticleCallback particle)
     {
         particle.gameObject.SetActive(false);
@@ -232,6 +235,22 @@ public class BlobParticle : MonoBehaviour
     public void SetExpulseParticleRotation(Vector2 rotation)
     {
         expulseParticle.transform.up = rotation;
+    }
+
+    public void LavaBrunDustParticle(Vector2 position, Vector2 rotation)
+    {
+        ParticleCallback particle;
+        if (lavaBrunDustParticles.Count <= 0) particle = CreateParticle(lavaBrunDustPrefab, OnLavaBrunDustParticleEnd);
+        else particle = lavaBrunDustParticles.Dequeue();
+        particle.gameObject.SetActive(true);
+        particle.transform.position = position;
+        particle.transform.up = rotation;
+        particle.Play();
+    }
+    void OnLavaBrunDustParticleEnd(ParticleCallback particle)
+    {
+        particle.gameObject.SetActive(false);
+        lavaBrunDustParticles.Enqueue(particle);
     }
 
     private ParticleCallback CreateParticle(ParticleSystem prefab, Action<ParticleCallback> stopAction)

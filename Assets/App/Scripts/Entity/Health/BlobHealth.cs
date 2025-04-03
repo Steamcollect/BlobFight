@@ -74,6 +74,7 @@ public class BlobHealth : EntityHealth, IPausable
                 physics.AddForce(collision.GetContact(0).normal * damagable.GetPushBackForce() * GetPercentage());
                 if (damagable.CompareTag(lavaTag))
                 {
+                    particle.LavaBrunDustParticle(collision.GetContact(0).point, collision.GetContact(0).normal);
                     blobAudio.PlayHitFromLavaClip();
                 }
                 else if (damagable.CompareTag(brumbleTag))
