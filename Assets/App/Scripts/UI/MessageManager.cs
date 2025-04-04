@@ -1,12 +1,14 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MessageManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject panelMessage;
     [SerializeField] private TextMeshProUGUI textMessage;
+    [SerializeField] private Animator animator;
 
     [Header("Input")]
     [SerializeField] private RSE_Message rseMessage;
@@ -14,6 +16,7 @@ public class MessageManager : MonoBehaviour
     [SerializeField] private RSE_OnResume rseOnResume;
 
     private bool isPaused = false;
+    private Coroutine animationDelay;
 
     private void OnEnable()
     {
@@ -44,6 +47,7 @@ public class MessageManager : MonoBehaviour
         textMessage.text = text;
         textMessage.color = textColor;
         panelMessage.SetActive(true);
+        animator.SetBool("IsFade", true);
 
         StartCoroutine(DelayHideMessage(duration));
     }
@@ -62,6 +66,20 @@ public class MessageManager : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
+
+        animator.SetBool("IsFade", false);
+
+        if (animationDelay != null)
+        {
+            StopCoroutine(animationDelay);
+        }
+
+        animationDelay = StartCoroutine(DelayClose());
+    }
+
+    private IEnumerator DelayClose()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
         panelMessage.SetActive(false);
     }

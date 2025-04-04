@@ -282,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[0].sceneName
-      value: 4_BiomeWind_Level
+      value: 3_BiomeLava_Level
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[1].sceneGUID
@@ -302,43 +302,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[3].sceneGUID
-      value: ca9256da3c5d90f48a0d1d46286a810c
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[3].sceneName
-      value: 1_BiomeWind_Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[4].sceneGUID
-      value: 014ef4a7d2a242141889cd251cda9a8c
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[4].sceneName
-      value: 1_BiomeSwamp_Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[5].sceneGUID
       value: d6f85ddf2ad141f4bbcb489e9e63058e
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[5].sceneName
+      propertyPath: levelsName.Array.data[3].sceneName
       value: 2_BiomeLava_Level
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[6].sceneGUID
-      value: 943277f8ba02b734e84c85d7152c42c9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[6].sceneName
-      value: 1_BiomesScience_Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[7].sceneGUID
+      propertyPath: levelsName.Array.data[4].sceneGUID
       value: 0ee14a7c79334c646b7fd4b03fe80e9e
       objectReference: {fileID: 0}
     - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[4].sceneName
+      value: 1_BiomesScience_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[5].sceneGUID
+      value: 014ef4a7d2a242141889cd251cda9a8c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[5].sceneName
+      value: 1_BiomeSwamp_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[6].sceneGUID
+      value: 770f572bf4bd91a45b253e34533bac48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[6].sceneName
+      value: 2_BiomesSwamp_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
+      propertyPath: levelsName.Array.data[7].sceneGUID
+      value: ca9256da3c5d90f48a0d1d46286a810c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: levelsName.Array.data[7].sceneName
-      value: 2_BiomesScience_Level
+      value: 1_BiomeWind_Level
       objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name
@@ -734,6 +734,10 @@ PrefabInstance:
     - target: {fileID: 4795997754905142067, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651693942617068428, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

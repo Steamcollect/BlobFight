@@ -571,11 +571,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5651693942617068428, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007898062880735683, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 117727303030025184}
+    - target: {fileID: 7719117341936196666, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1323083332467660602, guid: 9e4b4f29d1ec4454eb8302e79c72feb6, type: 2}
+    - target: {fileID: 7719117341936196666, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278230220
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2390954882944692379, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+--- !u!95 &117727303030025184 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6438379485381313308, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}
+  m_PrefabInstance: {fileID: 6411991568884492540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5895088023515386358 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 663285951428278538, guid: 672414d888dee2a4f984cf0f829d14c1, type: 3}

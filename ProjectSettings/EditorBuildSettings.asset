@@ -21,14 +21,17 @@ EditorBuildSettings:
     path: Assets/App/Scenes/Levels/LavaBiome/2_BiomeLava_Level.unity
     guid: d6f85ddf2ad141f4bbcb489e9e63058e
   - enabled: 1
-    path: Assets/App/Scenes/Levels/ScienceBiome/2_BiomesScience_Level.unity
+    path: Assets/App/Scenes/Levels/LavaBiome/3_BiomeLava_Level.unity
+    guid: d0942348ccc6f6d45a9d63b8ce302803
+  - enabled: 1
+    path: Assets/App/Scenes/Levels/ScienceBiome/1_BiomesScience_Level.unity
     guid: 0ee14a7c79334c646b7fd4b03fe80e9e
   - enabled: 1
     path: Assets/App/Scenes/Levels/SwampBiome/1_BiomeSwamp_Level.unity
     guid: 014ef4a7d2a242141889cd251cda9a8c
   - enabled: 1
-    path: Assets/App/Scenes/Levels/ScienceBiome/1_BiomesScience_Level.unity
-    guid: 943277f8ba02b734e84c85d7152c42c9
+    path: Assets/App/Scenes/Levels/SwampBiome/2_BiomesSwamp_Level.unity
+    guid: 770f572bf4bd91a45b253e34533bac48
   - enabled: 1
     path: Assets/App/Scenes/Levels/WindBiome/1_BiomeWind_Level.unity
     guid: ca9256da3c5d90f48a0d1d46286a810c
@@ -38,9 +41,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/App/Scenes/Levels/WindBiome/3_BiomeWind_Level.unity
     guid: 1ff207b03c0267d43864d5887695aed4
-  - enabled: 1
-    path: Assets/App/Scenes/Levels/LavaBiome/3_BiomeLava_Level.unity
-    guid: d0942348ccc6f6d45a9d63b8ce302803
   - enabled: 1
     path: Assets/App/Scenes/Tests/Z_Cyril.unity
     guid: 05534d2906af36b4eaffc07b7826834c
