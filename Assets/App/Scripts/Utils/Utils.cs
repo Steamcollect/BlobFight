@@ -118,4 +118,11 @@ public static class Utils
         });
     }
     #endregion
+
+    # region BLOB
+    public static void GetPixelColor()
+    {
+
+    }
+    #endregion
 }
