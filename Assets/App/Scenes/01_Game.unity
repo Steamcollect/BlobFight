@@ -463,6 +463,10 @@ PrefabInstance:
       value: AudioManager
       objectReference: {fileID: 0}
     - target: {fileID: 9126565655459505062, guid: 9dcdd6213f252ef4c9b538dd740de40d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126565655459505062, guid: 9dcdd6213f252ef4c9b538dd740de40d, type: 3}
       propertyPath: playlists.Array.size
       value: 11
       objectReference: {fileID: 0}
