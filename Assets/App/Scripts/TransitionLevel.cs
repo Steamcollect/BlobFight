@@ -25,7 +25,6 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_Message rseMessage;
     [SerializeField] private SSO_ListFightText listFightText;
     [SerializeField] private RSO_BlobInGame rsoBlobInGame;
-    [SerializeField] private RSE_AudioMessage rseAudioMessage;
 
     private bool isPaused = false;
     private int randomReadyText = 0;
@@ -78,10 +77,9 @@ public class TransitionLevel : MonoBehaviour
             gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
             {
                 randomStartText = Random.Range(0, listFightText.startText.Count);
-                rseAudioMessage.Call(false);
                 if (modeDev)
                 {
-                    rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage);
+                    rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage, MessageManager.MessageTexteType.Start);
                     rseOnFightStart.Call();
                 }
                 else
@@ -97,7 +95,7 @@ public class TransitionLevel : MonoBehaviour
         float cooldown = delayStart;
         float timer = 0f;
         randomReadyText = Random.Range(0, listFightText.readyText.Count);
-        rseMessage.Call($"{listFightText.readyText[randomReadyText]}", 1f, listFightText.colorMessage);
+        rseMessage.Call($"{listFightText.readyText[randomReadyText]}", 1f, listFightText.colorMessage,MessageManager.MessageTexteType.Ready);
 
         while (timer < cooldown)
         {
@@ -108,7 +106,7 @@ public class TransitionLevel : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
-        rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage);
+        rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage, MessageManager.MessageTexteType.Start);
 
         rseOnFightStart.Call();
     }

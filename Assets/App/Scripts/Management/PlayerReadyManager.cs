@@ -30,7 +30,7 @@ public class PlayerSelectionPanel : MonoBehaviour
             rseDisableJoining.Call();
             rseOnGameStart.Call();
             rseTransit.Call();
-            rseMessage.Call("GAME START!", 1f, listFightText.colorMessage);
+            rseMessage.Call("GAME START!", 1f, listFightText.colorMessage, MessageManager.MessageTexteType.GameStart);
         }
     }
 }

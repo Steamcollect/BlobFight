@@ -15,18 +15,23 @@ public class MessageManager : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private RSE_Message rseMessage;
-    [SerializeField] private RSE_AudioMessage rseAudioMessage;
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
     private bool isPaused = false;
     private Coroutine animationDelay;
-    private bool isVictoryText = false;
+
+    public enum MessageTexteType
+    {
+        GameStart,
+        Ready,
+        Start,
+        Win
+    }
 
     private void OnEnable()
     {
         rseMessage.action += ShowMessage;
-        rseAudioMessage.action += CanPlayVictorySound;
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
@@ -34,7 +39,6 @@ public class MessageManager : MonoBehaviour
     private void OnDisable()
     {
         rseMessage.action -= ShowMessage;
-        rseAudioMessage.action += CanPlayVictorySound;
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
@@ -48,19 +52,22 @@ public class MessageManager : MonoBehaviour
     {
         isPaused = false;
     }
-    private void CanPlayVictorySound(bool isValid)
+    private void ShowMessage(string text, float duration, Color textColor, MessageTexteType type)
     {
-        isVictoryText = isValid;
-    }
-    private void ShowMessage(string text, float duration, Color textColor)
-    {
-        if (isVictoryText)
+        switch (type)
         {
-            textAudio.PlayVictorySound();
-        }
-        else
-        {
-            textAudio.PlayStartSound();
+            case MessageTexteType.GameStart:
+                textAudio.PlayGameStartSound();
+                break;
+            case MessageTexteType.Start:
+                textAudio.PlayStartSound();
+                break;
+            case MessageTexteType.Ready: 
+                textAudio.PlayReadySound(); 
+                break;
+            case MessageTexteType.Win:
+                textAudio.PlayVictorySound();
+                break;
         }
         textMessage.text = text;
         textMessage.color = textColor;

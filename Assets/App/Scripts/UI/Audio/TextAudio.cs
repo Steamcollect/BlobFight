@@ -4,6 +4,8 @@ public class TextAudio : MonoBehaviour
     //[Header("Settings")]
 
     [Header("References")]
+    [SerializeField] private SoundComponent textGameStartSC;
+    [SerializeField] private SoundComponent textReadySC;
     [SerializeField] private SoundComponent textStartSC;
     [SerializeField] private SoundComponent textVictorySC;
 
@@ -23,5 +25,13 @@ public class TextAudio : MonoBehaviour
     public void PlayStartSound()
     {
         textStartSC.PlayClip(true);
+    }
+    public void PlayReadySound()
+    {
+        textReadySC.PlayClip(true);
+    }
+    public void PlayGameStartSound()
+    {
+        textGameStartSC.PlayClip();
     }
 }
