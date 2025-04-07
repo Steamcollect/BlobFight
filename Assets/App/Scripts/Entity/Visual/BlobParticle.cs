@@ -13,6 +13,7 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] int dustDashParticleStartingCount;
     [SerializeField] int lavaBrunDust;
     [SerializeField] float maxHitSpeed;
+    [SerializeField] bool extendParticle;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -91,7 +92,15 @@ public class BlobParticle : MonoBehaviour
     private void OnTouchEnter(Collision2D coll)
     {
         if (coll.transform.CompareTag("Blob")) return;
-        DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
+        
+        if (extendParticle)
+        {
+            print("Particle Extend Particle");
+        }
+        else
+        {
+            DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
+        }
     }
 
     private void OnTouchExit(ContactPoint2D contact)
