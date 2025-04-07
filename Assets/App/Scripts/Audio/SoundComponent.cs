@@ -8,8 +8,8 @@ public class SoundComponent : MonoBehaviour
     [Header("Output")]
     [SerializeField] private RSE_PlayClipAt rsePlayClipAt;
 
-    public void PlayClip()
+    public void PlayClip(bool isUI = false)
     {
-        rsePlayClipAt.Call(sound, transform.position);
+        rsePlayClipAt.Call(sound, transform.position, isUI);
     }
 }

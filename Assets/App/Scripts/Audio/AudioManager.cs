@@ -97,9 +97,9 @@ public class AudioManager : MonoBehaviour
         isPaused = false;
     }
 
-    private void PlayClipAt(Sound sound, Vector3 position)
+    private void PlayClipAt(Sound sound, Vector3 position, bool isUI)
     {
-        if(!isFinish)
+        if(!isFinish || isUI)
         {
             AudioSource audioSource;
 

@@ -22,6 +22,6 @@ public class TextAudio : MonoBehaviour
     }
     public void PlayStartSound()
     {
-        textStartSC.PlayClip();
+        textStartSC.PlayClip(true);
     }
 }

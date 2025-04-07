@@ -54,15 +54,12 @@ public class MessageManager : MonoBehaviour
     }
     private void ShowMessage(string text, float duration, Color textColor)
     {
-        print(isVictoryText);
         if (isVictoryText)
         {
-            print("Win");
             textAudio.PlayVictorySound();
         }
         else
         {
-            print("Start");
             textAudio.PlayStartSound();
         }
         textMessage.text = text;
