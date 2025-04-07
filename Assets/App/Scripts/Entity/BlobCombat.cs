@@ -8,14 +8,25 @@ public class BlobCombat : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float pushBackForce;
     [SerializeField] private float returnPushBackForce;
+
+    [Space(5)]
     [SerializeField] private float extendForceMultiplier;
     [SerializeField] private float percentageMultiplier;
+
+    [Space(5)]
     [SerializeField] private float speedMultToPushExtendBlob;
+
+    [Space(10)]
     [SerializeField] private float parryMaxTime;
     [SerializeField] private float paryForceMultiplier;
+    [SerializeField] float speedRequireToParry;
+
+    [Space(5)]
     [SerializeField] private float minSpeedAtImpact;
-    [SerializeField] private float zoomDelay;
-    [SerializeField] private float expulseForceParry;
+    
+    [Space(5)]
+    [SerializeField] private float zoomDelayAtParry;
+    [SerializeField] private float expulseForceParrymultiplier;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -55,23 +66,36 @@ public class BlobCombat : MonoBehaviour
         Vector2 impactVelocity = Vector2.zero;
         Vector2 impactForce = Vector2.zero;
 
-        if (motor.GetMovement().IsExtend() && motor.GetMovement().GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
+        if (speed < blobTouchSpeed) return; // Do not add force in this case
+
+        if (motor.GetMovement().IsExtend()
+            && motor.GetMovement().GetExtendTime() < parryMaxTime
+            && speed < blobTouchSpeed
+            && blobTouchSpeed > speedRequireToParry)
         {
-            StartCoroutine(ParryImpact(propulsionDir * expulseForceParry + Vector2.up * expulseForceParry, blobTouchSpeed, collision, blobTouch));
+            print(blobTouchSpeed);
+            StartCoroutine(ParryImpact(propulsionDir * expulseForceParrymultiplier + Vector2.up * expulseForceParrymultiplier, blobTouchSpeed, collision, blobTouch));
             return;
         }
-        else if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < parryMaxTime && speed > blobTouchSpeed)
+        else if(blobMovement.IsExtend() 
+            && blobMovement.GetExtendTime() < parryMaxTime 
+            && speed > blobTouchSpeed
+            && speed > speedRequireToParry)
         {
             return;
         }
-        else if (!blobMovement.IsExtend() && motor.GetMovement().IsExtend() && (blobTouchSpeed * speedMultToPushExtendBlob) < speed)
+        else if (!blobMovement.IsExtend() 
+            && motor.GetMovement().IsExtend() 
+            && (blobTouchSpeed * speedMultToPushExtendBlob) < speed)
         {
             impactVelocity = propulsionDir * Mathf.Max(speed, minSpeedAtImpact);
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
 
             motor.GetParticle().DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
-        else if (!motor.GetMovement().IsExtend() && blobMovement.IsExtend() && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
+        else if (!motor.GetMovement().IsExtend() 
+            && blobMovement.IsExtend() 
+            && (speed * speedMultToPushExtendBlob) > blobTouchSpeed)
         {
             impactVelocity = propulsionDir * Mathf.Max(speed, minSpeedAtImpact);
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
@@ -80,10 +104,10 @@ public class BlobCombat : MonoBehaviour
 
             motor.GetParticle().DoHitParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
         }
-        else if ((!motor.GetMovement().IsExtend() && !blobMovement.IsExtend()) || (motor.GetMovement().IsExtend() && blobMovement.IsExtend()))
+        else if ((!motor.GetMovement().IsExtend() 
+            && !blobMovement.IsExtend()) || (motor.GetMovement().IsExtend() 
+            && blobMovement.IsExtend()))
         {
-            if (speed < blobTouchSpeed) return; // Do not add force in this case
-
             impactVelocity = propulsionDir * speed;
             impactForce = impactVelocity * (blobHealth.GetPercentage() * percentageMultiplier);
 
@@ -108,7 +132,7 @@ public class BlobCombat : MonoBehaviour
 
     IEnumerator ParryImpact(Vector2 propulsionDir, float blobTouchSpeed, Collision2D collision, BlobMotor blobTouch)
     {
-        rseCameraZoom.Call(motor.GetPhysics().transform.position, zoomDelay);
+        rseCameraZoom.Call(motor.GetPhysics().transform.position, zoomDelayAtParry);
         rseOnPause.Call();
 
         yield return new WaitForSeconds(.2f);

@@ -208,7 +208,7 @@ SpriteRenderer:
   m_Size: {x: 8.24, y: 8.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6476458163915508708
@@ -754,9 +754,10 @@ MonoBehaviour:
   speedMultToPushExtendBlob: 0.7
   parryMaxTime: 0.3
   paryForceMultiplier: 1
+  speedRequireToParry: 0
   minSpeedAtImpact: 1000
-  zoomDelay: 0.6
-  expulseForceParry: 2
+  zoomDelayAtParry: 0.6
+  expulseForceParrymultiplier: 2
   motor: {fileID: 3420423106000584793}
   rseCameraZoom: {fileID: 11400000, guid: cd9b026eb73ebdf4e81607f2f42fe998, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
