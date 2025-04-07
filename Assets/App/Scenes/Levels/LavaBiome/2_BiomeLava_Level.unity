@@ -498,9 +498,9 @@ GameObject:
   - component: {fileID: 204609758}
   - component: {fileID: 204609760}
   - component: {fileID: 204609759}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -962,9 +962,9 @@ GameObject:
   - component: {fileID: 323304975}
   - component: {fileID: 323304977}
   - component: {fileID: 323304976}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6609,9 +6609,9 @@ GameObject:
   - component: {fileID: 686015311}
   - component: {fileID: 686015313}
   - component: {fileID: 686015312}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7072,7 +7072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228484070144508346, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6093512131578614716, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7296,9 +7296,9 @@ GameObject:
   - component: {fileID: 908159106}
   - component: {fileID: 908159108}
   - component: {fileID: 908159107}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7426,9 +7426,9 @@ GameObject:
   - component: {fileID: 918498554}
   - component: {fileID: 918498556}
   - component: {fileID: 918498555}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7649,9 +7649,9 @@ GameObject:
   - component: {fileID: 961605898}
   - component: {fileID: 961605901}
   - component: {fileID: 961605900}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12678,6 +12678,14 @@ PrefabInstance:
       propertyPath: delayAtPoint
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8071423614304674670, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071423614304674670, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12877,9 +12885,9 @@ GameObject:
   - component: {fileID: 1197942833}
   - component: {fileID: 1197942835}
   - component: {fileID: 1197942834}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13919,7 +13927,7 @@ GameObject:
   - component: {fileID: 1391683082}
   - component: {fileID: 1391683084}
   - component: {fileID: 1391683083}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Slide (1)
   m_TagString: Slidable
   m_Icon: {fileID: 0}
@@ -14235,9 +14243,9 @@ GameObject:
   - component: {fileID: 1534194171}
   - component: {fileID: 1534194173}
   - component: {fileID: 1534194172}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14365,9 +14373,9 @@ GameObject:
   - component: {fileID: 1572660365}
   - component: {fileID: 1572660367}
   - component: {fileID: 1572660366}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14495,7 +14503,7 @@ GameObject:
   - component: {fileID: 1646676648}
   - component: {fileID: 1646676650}
   - component: {fileID: 1646676649}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Slide
   m_TagString: Slidable
   m_Icon: {fileID: 0}
@@ -14786,9 +14794,9 @@ GameObject:
   - component: {fileID: 1862787473}
   - component: {fileID: 1862787475}
   - component: {fileID: 1862787474}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Platform1
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15462,6 +15470,14 @@ PrefabInstance:
     - target: {fileID: 7079168012409928776, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
       propertyPath: moveSpeed
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071423614304674670, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8071423614304674670, guid: af9c37c3e483a314fbc808b26ffab4c2, type: 3}
+      propertyPath: m_TagString
+      value: Stone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
