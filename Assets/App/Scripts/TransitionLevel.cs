@@ -79,7 +79,7 @@ public class TransitionLevel : MonoBehaviour
                 randomStartText = Random.Range(0, listFightText.startText.Count);
                 if (modeDev)
                 {
-                    rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage, MessageManager.MessageTexteType.Start);
+                    rseMessage.Call($"{listFightText.startText[randomStartText]}", 0.5f, listFightText.colorMessage, MessageManager.MessageTexteType.Start);
                     rseOnFightStart.Call();
                 }
                 else
@@ -95,7 +95,7 @@ public class TransitionLevel : MonoBehaviour
         float cooldown = delayStart;
         float timer = 0f;
         randomReadyText = Random.Range(0, listFightText.readyText.Count);
-        rseMessage.Call($"{listFightText.readyText[randomReadyText]}", 1f, listFightText.colorMessage,MessageManager.MessageTexteType.Ready);
+        rseMessage.Call($"{listFightText.readyText[randomReadyText]}", 0.5f, listFightText.colorMessage,MessageManager.MessageTexteType.Ready);
 
         while (timer < cooldown)
         {
@@ -106,7 +106,7 @@ public class TransitionLevel : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
-        rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage, MessageManager.MessageTexteType.Start);
+        rseMessage.Call($"{listFightText.startText[randomStartText]}", 0.5f, listFightText.colorMessage, MessageManager.MessageTexteType.Start);
 
         rseOnFightStart.Call();
     }
