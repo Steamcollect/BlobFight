@@ -6456,7 +6456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: damageType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: pushBackForce
@@ -7132,7 +7132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: damageType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7564773431859445974, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: pushBackForce

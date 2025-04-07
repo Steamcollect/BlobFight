@@ -45,25 +45,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTestScene: 0
-  levelsName:
-  - sceneName: 1_BiomeCelest_Level
-    sceneGUID: 94d7303145cd12a4b934d3365a52eacf
-  - sceneName: 1_BiomeLave_Level
-    sceneGUID: 26001ac257d7b5a48a4ce06b378c3f86
-  - sceneName: 1_BiomeVent_Level
-    sceneGUID: ca9256da3c5d90f48a0d1d46286a810c
-  - sceneName: "1_BiomeMar\xE9cage_Level"
-    sceneGUID: 014ef4a7d2a242141889cd251cda9a8c
   mainMain:
     sceneName: 01_Game
     sceneGUID: 7b33a7ace39394043b01074ed383fe48
   mainMenuName:
     sceneName: 02_MainMenu
     sceneGUID: 542457f72f77e1642be309e1c41a0dc5
+  levelsName:
+  - sceneName: 3_BiomeLava_Level
+    sceneGUID: d0942348ccc6f6d45a9d63b8ce302803
+  - sceneName: 1_BiomeCelest_Level
+    sceneGUID: 94d7303145cd12a4b934d3365a52eacf
+  - sceneName: 1_BiomeLava_Level
+    sceneGUID: 26001ac257d7b5a48a4ce06b378c3f86
+  - sceneName: 2_BiomeLava_Level
+    sceneGUID: d6f85ddf2ad141f4bbcb489e9e63058e
+  - sceneName: 1_BiomesScience_Level
+    sceneGUID: 0ee14a7c79334c646b7fd4b03fe80e9e
+  - sceneName: 1_BiomeSwamp_Level
+    sceneGUID: 014ef4a7d2a242141889cd251cda9a8c
+  - sceneName: 2_BiomesSwamp_Level
+    sceneGUID: 770f572bf4bd91a45b253e34533bac48
+  - sceneName: 1_BiomeWind_Level
+    sceneGUID: ca9256da3c5d90f48a0d1d46286a810c
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
   rseReturnToMainMenu: {fileID: 11400000, guid: 6197bf0e98fb7d24f8073ae8690275b7, type: 2}
   rseQuit: {fileID: 11400000, guid: 90f1311fdebe863438f72eb1b20bc54b, type: 2}
-  rseFadeOut: {fileID: 11400000, guid: 5a17d97eb8556424896f138b2f9da148, type: 2}
   rseEnableJoining: {fileID: 11400000, guid: 3747a78eb82a5c24195bd4cd1519702c, type: 2}
   rseClearBlobInGame: {fileID: 11400000, guid: 0f87cf7e5d0a9d74fa1851b067bd2177, type: 2}
   rseTogglePause: {fileID: 11400000, guid: 56dbc203358bab942a372845a2e91b4c, type: 2}
