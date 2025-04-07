@@ -191,3 +191,4 @@ MonoBehaviour:
   rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
   listFightText: {fileID: 11400000, guid: c21c5cae8940649488e67d2c6c686466, type: 2}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
+  rseAudioMessage: {fileID: 11400000, guid: 8fd1af017f168e043a999a019afd3b91, type: 2}

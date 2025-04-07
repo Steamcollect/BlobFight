@@ -8,21 +8,25 @@ public class MessageManager : MonoBehaviour
     [SerializeField] private GameObject panelMessage;
     [SerializeField] private TextMeshProUGUI textMessage;
     [SerializeField] private Animator animator;
+    [SerializeField] private TextAudio textAudio;
 
     [Space(5)]
     [SerializeField] float messageMaxAngle;
 
     [Header("Input")]
     [SerializeField] private RSE_Message rseMessage;
+    [SerializeField] private RSE_AudioMessage rseAudioMessage;
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
     private bool isPaused = false;
     private Coroutine animationDelay;
+    private bool isVictoryText = false;
 
     private void OnEnable()
     {
         rseMessage.action += ShowMessage;
+        rseAudioMessage.action += CanPlayVictorySound;
         rseOnPause.action += Pause;
         rseOnResume.action += Resume;
     }
@@ -30,6 +34,7 @@ public class MessageManager : MonoBehaviour
     private void OnDisable()
     {
         rseMessage.action -= ShowMessage;
+        rseAudioMessage.action += CanPlayVictorySound;
         rseOnPause.action -= Pause;
         rseOnResume.action -= Resume;
     }
@@ -43,9 +48,23 @@ public class MessageManager : MonoBehaviour
     {
         isPaused = false;
     }
-
+    private void CanPlayVictorySound(bool isValid)
+    {
+        isVictoryText = isValid;
+    }
     private void ShowMessage(string text, float duration, Color textColor)
     {
+        print(isVictoryText);
+        if (isVictoryText)
+        {
+            print("Win");
+            textAudio.PlayVictorySound();
+        }
+        else
+        {
+            print("Start");
+            textAudio.PlayStartSound();
+        }
         textMessage.text = text;
         textMessage.color = textColor;
 

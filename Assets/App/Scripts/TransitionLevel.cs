@@ -25,6 +25,7 @@ public class TransitionLevel : MonoBehaviour
     [SerializeField] private RSE_Message rseMessage;
     [SerializeField] private SSO_ListFightText listFightText;
     [SerializeField] private RSO_BlobInGame rsoBlobInGame;
+    [SerializeField] private RSE_AudioMessage rseAudioMessage;
 
     private bool isPaused = false;
     private int randomReadyText = 0;
@@ -77,6 +78,7 @@ public class TransitionLevel : MonoBehaviour
             gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
             {
                 randomStartText = Random.Range(0, listFightText.startText.Count);
+                rseAudioMessage.Call(false);
                 if (modeDev)
                 {
                     rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage);
@@ -106,7 +108,6 @@ public class TransitionLevel : MonoBehaviour
                 timer += Time.deltaTime;
             }
         }
-
         rseMessage.Call($"{listFightText.startText[randomStartText]}", 1f, listFightText.colorMessage);
 
         rseOnFightStart.Call();

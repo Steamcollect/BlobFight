@@ -13,6 +13,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private RSE_OnFightEnd rseOnFightEnd;
     [SerializeField] private RSE_AddScore rseAddScore;
     [SerializeField] private SSO_ListFightText listFightText;
+    [SerializeField] private RSE_AudioMessage rseAudioMessage;
 
     private List<BlobMotor> blobs = new();
     private int randomText = 0;
@@ -44,12 +45,14 @@ public class RoundManager : MonoBehaviour
             if (blobs.Count == 0)
             {
                 rseOnFightEnd.Call();
+                rseAudioMessage.Call(true);
                 rseMessage.Call($"{listFightText.victoryText[randomText]}", 1f, listFightText.colorMessage);
             }
             else if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
                 rseOnFightEnd.Call();
+                rseAudioMessage.Call(true);
                 rseMessage.Call($"{listFightText.victoryText[randomText]}", 1f, blobs[0].GetColor().fillColor);
             }
             
