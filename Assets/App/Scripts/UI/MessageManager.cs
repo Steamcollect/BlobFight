@@ -9,6 +9,9 @@ public class MessageManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMessage;
     [SerializeField] private Animator animator;
 
+    [Space(5)]
+    [SerializeField] float messageMaxAngle;
+
     [Header("Input")]
     [SerializeField] private RSE_Message rseMessage;
     [SerializeField] private RSE_OnPause rseOnPause;
@@ -47,6 +50,8 @@ public class MessageManager : MonoBehaviour
         textMessage.color = textColor;
         panelMessage.SetActive(true);
         animator.SetBool("IsFade", true);
+
+        textMessage.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-messageMaxAngle, messageMaxAngle));
 
         StartCoroutine(DelayHideMessage(duration));
     }

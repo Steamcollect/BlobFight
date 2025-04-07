@@ -28,7 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5899901819862250300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,14 +68,14 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e4b4f29d1ec4454eb8302e79c72feb6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1323083332467660602, guid: 9e4b4f29d1ec4454eb8302e79c72feb6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0.8018868, g: 0.61006296, b: 0, a: 0}
+    rgba: 4278230220
+  m_fontColor: {r: 0.8018868, g: 0.61006296, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -352,6 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelMessage: {fileID: 5651693942617068428}
   textMessage: {fileID: 7719117341936196666}
+  animator: {fileID: 0}
+  messageMaxAngle: 0
   rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
@@ -379,14 +381,14 @@ GameObject:
   - component: {fileID: 1011655242364673003}
   - component: {fileID: 7507867993171314688}
   - component: {fileID: 6438379485381313308}
-  - component: {fileID: 2390954882944692379}
+  - component: {fileID: 8614507507285184749}
   m_Layer: 5
   m_Name: PanelMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5899901819862250300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -466,7 +468,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2390954882944692379
+--- !u!114 &8614507507285184749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -475,10 +477,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5651693942617068428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee9fac28354be94a9e95b696bf8c058, type: 3}
+  m_Script: {fileID: 11500000, guid: e6ed51b3c9bd85a4e98395eb37d91606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelMessage: {fileID: 5651693942617068428}
+  textMessage: {fileID: 7719117341936196666}
   animator: {fileID: 6438379485381313308}
+  messageMaxAngle: 4
+  rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
+  rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
+  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!1001 &805365993100041897
 PrefabInstance:
   m_ObjectHideFlags: 0
