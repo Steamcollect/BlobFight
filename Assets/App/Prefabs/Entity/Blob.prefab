@@ -756,6 +756,7 @@ MonoBehaviour:
   paryForceMultiplier: 1
   minSpeedAtImpact: 1000
   zoomDelay: 0.6
+  expulseForceParry: 2
   motor: {fileID: 3420423106000584793}
   rseCameraZoom: {fileID: 11400000, guid: cd9b026eb73ebdf4e81607f2f42fe998, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}

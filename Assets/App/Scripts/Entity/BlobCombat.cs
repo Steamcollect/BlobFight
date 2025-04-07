@@ -15,6 +15,7 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] private float paryForceMultiplier;
     [SerializeField] private float minSpeedAtImpact;
     [SerializeField] private float zoomDelay;
+    [SerializeField] private float expulseForceParry;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -56,7 +57,7 @@ public class BlobCombat : MonoBehaviour
 
         if (motor.GetMovement().IsExtend() && motor.GetMovement().GetExtendTime() < parryMaxTime && speed < blobTouchSpeed)
         {
-            StartCoroutine(ParryImpact(propulsionDir, blobTouchSpeed, collision, blobTouch));
+            StartCoroutine(ParryImpact(propulsionDir * expulseForceParry + Vector2.up * expulseForceParry, blobTouchSpeed, collision, blobTouch));
             return;
         }
         else if(blobMovement.IsExtend() && blobMovement.GetExtendTime() < parryMaxTime && speed > blobTouchSpeed)
@@ -118,7 +119,7 @@ public class BlobCombat : MonoBehaviour
         motor.GetParticle().ParryParticle(collision.GetContact(0).point, propulsionDir);
         motor.GetAudio().PlayParrySound();
 
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.6f);
 
         blobTouch.GetAudio().PlayHitFromParrySound();
 
