@@ -8,13 +8,20 @@ public class MovingProps : GameProps
     [Space(10)]
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private bool notHide;
+    [SerializeField] Ease easeType = Ease.Linear;
+
+    [Space(5)]
     [SerializeField] private float delayBeforeStart;
     [SerializeField] private float delayAtPoint;
-    [SerializeField] private float delayWarningBeforeMove;
     [SerializeField] private List<int> timeSpeed;
     [SerializeField] private List<float> newDelayAtPoint;
     [SerializeField] private List<float> newMoveSpeed;
+
+    [Space(5)]
+    [SerializeField] private float delayWarningBeforeMove;
+
+    [Space(5)]
+    [SerializeField] private bool notHide;
 
     [Space(10)]
     [SerializeField] bool shakeBeforeMoving;
@@ -24,6 +31,7 @@ public class MovingProps : GameProps
     [Space(5)]
     [SerializeField] bool shakeDuringMovement;
     [SerializeField] float shakeDuringMovementForce;
+
 
     [Header("References")]
     [SerializeField] private Transform movable;
@@ -159,7 +167,7 @@ public class MovingProps : GameProps
         {
             movable.DOPunchRotation(Vector3.forward * shakeDuringMovementForce, moveTime, 20, 1);
         }
-        movable.DOMove(positions[currentPosIndex].position, moveTime).OnComplete(() =>
+        movable.DOMove(positions[currentPosIndex].position, moveTime).SetEase(easeType).OnComplete(() =>
         {
             if (!notHide)
             {
