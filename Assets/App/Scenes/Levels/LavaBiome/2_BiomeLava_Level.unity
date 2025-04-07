@@ -7072,7 +7072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228484070144508346, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6093512131578614716, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13927,9 +13927,9 @@ GameObject:
   - component: {fileID: 1391683082}
   - component: {fileID: 1391683084}
   - component: {fileID: 1391683083}
-  m_Layer: 19
+  m_Layer: 18
   m_Name: Slide (1)
-  m_TagString: Slidable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14503,9 +14503,9 @@ GameObject:
   - component: {fileID: 1646676648}
   - component: {fileID: 1646676650}
   - component: {fileID: 1646676649}
-  m_Layer: 19
+  m_Layer: 18
   m_Name: Slide
-  m_TagString: Slidable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
