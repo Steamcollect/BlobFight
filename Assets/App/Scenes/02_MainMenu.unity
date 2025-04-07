@@ -1494,6 +1494,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.7137255
       objectReference: {fileID: 0}
+    - target: {fileID: 2410275289579465223, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2589380083043929170, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
       propertyPath: m_Name
       value: VialSpawner (4)
@@ -1921,7 +1925,7 @@ Transform:
   m_GameObject: {fileID: 1766973590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -1.3, z: 0}
+  m_LocalPosition: {x: -4.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
