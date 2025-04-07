@@ -5425,6 +5425,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
+      propertyPath: easeType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521268568839621310, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
@@ -11660,13 +11664,14 @@ MonoBehaviour:
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 3
-  notHide: 1
+  easeType: 1
   delayBeforeStart: 10
   delayAtPoint: 6
-  delayWarningBeforeMove: 0
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
+  delayWarningBeforeMove: 0
+  notHide: 1
   shakeBeforeMoving: 1
   shakeForce: 2
   shakeDuration: 1.5
@@ -17500,13 +17505,14 @@ MonoBehaviour:
   launchType: 0
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   moveSpeed: 3
-  notHide: 1
+  easeType: 1
   delayBeforeStart: 10
   delayAtPoint: 6
-  delayWarningBeforeMove: 0
   timeSpeed: 
   newDelayAtPoint: []
   newMoveSpeed: []
+  delayWarningBeforeMove: 0
+  notHide: 1
   shakeBeforeMoving: 1
   shakeForce: 2
   shakeDuration: 1.5
