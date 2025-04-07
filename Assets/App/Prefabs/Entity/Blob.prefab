@@ -632,7 +632,7 @@ MonoBehaviour:
     moveSpeed: 300
     gravity: 65
     drag: 12
-    mass: 50
+    mass: 70
     scale: 2.5
     timeToSwap: 0.04
   extendStaminaCost: 50

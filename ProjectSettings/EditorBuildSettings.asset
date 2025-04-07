@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/App/Scenes/Levels/LavaBiome/3_BiomeLava_Level.unity
     guid: d0942348ccc6f6d45a9d63b8ce302803
   - enabled: 1
-    path: Assets/App/Scenes/Levels/ScienceBiome/1_BiomesScience_Level.unity
+    path: Assets/App/Scenes/Levels/ScienceBiome/2_BiomesScience_Level.unity
     guid: 0ee14a7c79334c646b7fd4b03fe80e9e
   - enabled: 1
     path: Assets/App/Scenes/Levels/SwampBiome/1_BiomeSwamp_Level.unity
