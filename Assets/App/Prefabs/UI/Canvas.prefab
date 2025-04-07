@@ -355,7 +355,7 @@ MonoBehaviour:
   textMessage: {fileID: 7719117341936196666}
   animator: {fileID: 6438379485381313308}
   textAudio: {fileID: 1900522778109443276}
-  messageMaxAngle: 10
+  messageMaxAngle: 5
   rseMessage: {fileID: 11400000, guid: b89e1a0d05725294981283f8dbb40e4f, type: 2}
   rseAudioMessage: {fileID: 11400000, guid: 8fd1af017f168e043a999a019afd3b91, type: 2}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
