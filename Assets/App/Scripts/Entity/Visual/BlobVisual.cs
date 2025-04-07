@@ -1,4 +1,6 @@
 using UnityEngine;
+using DG.Tweening;
+using UnityEditor.Experimental.GraphView;
 
 public class BlobVisual : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class BlobVisual : MonoBehaviour
     [SerializeField] private float yExtendScaleAtMaxSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private int speedMinToSquash;
+    [SerializeField] float shakeStenght;
+    [SerializeField] float shakeTime;
+
 
     [Header("References")]
     [SerializeField] private BlobPhysics physics;
@@ -18,10 +23,12 @@ public class BlobVisual : MonoBehaviour
 
     private Vector2 initScale = Vector2.zero;
     private bool isExtend = false;
+    private Vector3 pos = Vector3.zero;
 
     private void Start()
     {
         initScale = transform.localScale;
+        pos = stamina.transform.localPosition;
     }
 
     private void Update()
@@ -83,6 +90,14 @@ public class BlobVisual : MonoBehaviour
     public void Extend()
     {
         isExtend = true;
+    }
+
+    public void Shake()
+    {
+        stamina.transform.DOShakePosition(shakeTime, shakeStenght, 10, 90).OnComplete(() =>
+        {
+            stamina.transform.localPosition = pos;
+        });
     }
 
     public SpriteRenderer GetGraphics() { return graphics; }

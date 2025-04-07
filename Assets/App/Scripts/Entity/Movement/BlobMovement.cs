@@ -151,7 +151,14 @@ public class BlobMovement : MonoBehaviour, IPausable
 
     private void ExtendBlob()
     {
-        if (!deathCanMove || !pauseCanMove || !stamina.HaveEnoughStaminaPercentage(staminaPercentageRequireToExtend) || physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
+        if (!deathCanMove || !pauseCanMove || physics.GetRigidbody().bodyType == RigidbodyType2D.Static) return;
+
+        if (!stamina.HaveEnoughStaminaPercentage(staminaPercentageRequireToExtend))
+        {
+            visual.Shake();
+
+            return;
+        }
 
         stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
         stamina.DisableStaminaRecuperation();

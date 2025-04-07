@@ -48,8 +48,8 @@ public class MessageManager : MonoBehaviour
     {
         textMessage.text = text;
         textMessage.color = textColor;
-        
-        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-messageMaxAngle, messageMaxAngle));
+
+        panelMessage.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-messageMaxAngle, messageMaxAngle));
         
         panelMessage.SetActive(true);
         animator.SetBool("IsFade", true);

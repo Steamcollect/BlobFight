@@ -1715,6 +1715,8 @@ MonoBehaviour:
   yExtendScaleAtMaxSpeed: 1.1
   maxSpeed: 70
   speedMinToSquash: 1
+  shakeStenght: 1
+  shakeTime: 0.2
   physics: {fileID: 6321734985548798584}
   graphics: {fileID: 1959618378066109591}
   fill: {fileID: 5553942288258576163}
