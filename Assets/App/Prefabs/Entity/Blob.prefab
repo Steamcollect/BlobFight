@@ -89,6 +89,7 @@ MonoBehaviour:
   dustDashParticleStartingCount: 8
   lavaBrunDust: 2
   maxHitSpeed: 100000000
+  extendParticle: 0
   motor: {fileID: 3420423106000584793}
   physics: {fileID: 6321734985548798584}
   trigger: {fileID: 6449519957614820434}
@@ -2340,7 +2341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.clips.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.volumeMultiplier
@@ -2353,7 +2354,7 @@ PrefabInstance:
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.clips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: ca915ea0a4cb3bc49a6cd1bab9d4b069, type: 3}
+      objectReference: {fileID: 8300000, guid: b690dae1f40e35f48b3f7a6a43ed347c, type: 3}
     - target: {fileID: 8955136041571471961, guid: 9aaea1520d80c4347aac17ae00085b22, type: 3}
       propertyPath: sound.clips.Array.data[2]
       value: 
