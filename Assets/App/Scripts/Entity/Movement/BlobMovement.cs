@@ -89,6 +89,11 @@ public class BlobMovement : MonoBehaviour, IPausable
                 {
                     stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
                     extendTime += Time.deltaTime;
+
+                    if (extendTime > 0.2f && trigger.IsGrounded())
+                    {
+                        
+                    }
                 }
             }
         }
