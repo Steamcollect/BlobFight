@@ -626,14 +626,14 @@ MonoBehaviour:
     gravity: 18
     drag: 5
     mass: 5
-    scale: 2
+    scale: 1
     timeToSwap: 0.08
   extendStatistics:
     moveSpeed: 300
     gravity: 65
     drag: 12
     mass: 50
-    scale: 5
+    scale: 2.5
     timeToSwap: 0.04
   extendStaminaCost: 50
   staminaPercentageRequireToExtend: 0.45
@@ -1691,7 +1691,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5497207783457576731}
@@ -1902,7 +1902,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8157001937566509527}
@@ -2021,7 +2021,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!1 &8909988202106481896
 GameObject:
   m_ObjectHideFlags: 0

@@ -178,13 +178,13 @@ public class BlobPhysics : MonoBehaviour, IPausable
 
     public void SyncColliderRadiusToVisual(Vector2 visualScale, Vector2 visualInitScale)
     {
-        Vector2 normalizedScale = new Vector2(
-            visualScale.x / visualInitScale.x,
-            visualScale.y / visualInitScale.y
-        );
+        if (baseColliderRadius == 0)
+        {
+            baseColliderRadius = collid.radius;
+        }
 
-        float smallestAxis = Mathf.Min(normalizedScale.x, normalizedScale.y);
-        collid.radius = baseColliderRadius * smallestAxis;
+        float normalizedX = visualScale.x / visualInitScale.x;
+        collid.radius = baseColliderRadius * normalizedX;
     }
 
     public Vector2 GetButtomPosition()
