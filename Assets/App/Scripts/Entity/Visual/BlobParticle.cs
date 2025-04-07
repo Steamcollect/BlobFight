@@ -8,12 +8,14 @@ public class BlobParticle : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] int touchParticleStartingCount;
+    [SerializeField] int touchExtendParticleStartingCount;
     [SerializeField] int hitParticleStartingCount;
     [SerializeField] int parryParticleStartingCount;
     [SerializeField] int dustDashParticleStartingCount;
     [SerializeField] int lavaBrunDust;
     [SerializeField] float maxHitSpeed;
-    [SerializeField] bool extendParticle;
+
+    [HideInInspector] public bool extendDustParticle;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -23,6 +25,7 @@ public class BlobParticle : MonoBehaviour
 
     [Space(10)]
     [SerializeField] ParticleSystem dustParticlePrefab;
+    [SerializeField] ParticleSystem dustExtendParticlePrefab;
     [SerializeField] ParticleSystem dustDashParticlePrefab;
     [SerializeField] ParticleSystem deathParticlePrefab;
     [SerializeField] ParticleSystem destroyParticlePrefab;
@@ -34,6 +37,7 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] HitParticle[] hitParticles;
 
     Queue<ParticleCallback> dustParticles = new();
+    Queue<ParticleCallback> dustExtendParticles = new();
     Queue<ParticleCallback> dustDashParticles = new();
     Queue<ParticleCallback> deathParticles = new();
     Queue<ParticleCallback> destroyParticles = new();
@@ -72,6 +76,9 @@ public class BlobParticle : MonoBehaviour
         for (int i = 0; i < touchParticleStartingCount; i++)
             dustParticles.Enqueue(CreateParticle(dustParticlePrefab, OnDustParticleEnd));
 
+        for (int i = 0; i < touchExtendParticleStartingCount; i++)
+            dustExtendParticles.Enqueue(CreateParticle(dustExtendParticlePrefab, OnDustExtendParticleEnd));
+
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
 
         hitParticles = hitParticles.OrderBy(x => x.hitStrenght).ToArray();
@@ -91,11 +98,16 @@ public class BlobParticle : MonoBehaviour
 
     private void OnTouchEnter(Collision2D coll)
     {
-        if (coll.transform.CompareTag("Blob")) return;
-        
-        if (extendParticle)
+        if (coll.transform.CompareTag("Blob"))
         {
-            print("Particle Extend Particle");
+            extendDustParticle = false;
+            return;
+        }
+        
+        if (extendDustParticle)
+        {
+            DustExtendParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
+            extendDustParticle = false;
         }
         else
         {
@@ -122,11 +134,26 @@ public class BlobParticle : MonoBehaviour
 
         particle.Play();
     }
-
     private void OnDustParticleEnd(ParticleCallback particle)
     {
         particle.gameObject.SetActive(false);
         dustParticles.Enqueue(particle);
+    }
+
+    void DustExtendParticle(Vector2 position, Vector2 rotation)
+    {
+        ParticleCallback particle;
+        if (dustExtendParticles.Count <= 0) particle = CreateParticle(dustExtendParticlePrefab, OnDustExtendParticleEnd);
+        else particle = dustExtendParticles.Dequeue();
+        particle.gameObject.SetActive(true);
+        particle.transform.position = position;
+        particle.transform.up = rotation;
+        particle.Play();
+    }
+    void OnDustExtendParticleEnd(ParticleCallback particle)
+    {
+        particle.gameObject.SetActive(false);
+        dustExtendParticles.Enqueue(particle);
     }
 
     public void DustDashParticle(Vector2 position, Vector2 direction)

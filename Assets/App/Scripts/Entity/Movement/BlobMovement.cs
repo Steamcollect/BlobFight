@@ -10,6 +10,9 @@ public class BlobMovement : MonoBehaviour, IPausable
     [SerializeField] float extendStaminaCost;
     [SerializeField, Range(0,1)] float staminaPercentageRequireToExtend;
 
+    float extendTimeInAire;
+    [SerializeField] float extendTimeInAireForBigDust = .2f;
+
     [Space(10)]
     [SerializeField] float slidingGravity;
     [SerializeField] AnimationCurve angleSpeedMultiplierCurve;
@@ -31,7 +34,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     bool deathCanMove = true;
     bool pauseCanMove = true;
     bool needShrink = false;
-    Vector2 currentGroundNormal = Vector2.zero;
     float currentGroundAngle = 0;
     public Action onShrink,onExtend;
     private Coroutine stunImpactCoroutine;
@@ -83,16 +85,24 @@ public class BlobMovement : MonoBehaviour, IPausable
                 if (!stamina.HaveEnoughStamina(extendStaminaCost * Time.deltaTime))
                 {
                     ShrinkBlob();
-                    extendTime = 0;
                 }
                 else
                 {
                     stamina.RemoveStamina(extendStaminaCost * Time.deltaTime);
                     extendTime += Time.deltaTime;
 
-                    if (extendTime > 0.2f && trigger.IsGrounded())
+                    if (!trigger.IsGrounded())
                     {
-                        
+                        extendTimeInAire += Time.deltaTime;
+
+                        if (extendTimeInAire > extendTimeInAireForBigDust)
+                        {
+                            particle.extendDustParticle = true;
+                        }
+                    }
+                    else
+                    {
+                        extendTimeInAire = 0;
                     }
                 }
             }
@@ -176,6 +186,9 @@ public class BlobMovement : MonoBehaviour, IPausable
         isExtend = false;
 
         visual.Shrink();
+
+        extendTimeInAire = 0;
+        extendTime = 0;
     }
     #endregion
 
@@ -205,7 +218,6 @@ public class BlobMovement : MonoBehaviour, IPausable
     {
         if (!trigger.IsGrounded())
         {
-            currentGroundNormal = Vector2.zero;
             currentGroundAngle = 0;
         }
     }
