@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 24044416}
   - component: {fileID: 24044418}
   - component: {fileID: 24044417}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 100364631}
   - component: {fileID: 100364633}
   - component: {fileID: 100364632}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 704415950}
   - component: {fileID: 704415952}
   - component: {fileID: 704415951}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Bottom
   m_TagString: Groundable
   m_Icon: {fileID: 0}
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 1135479563}
   - component: {fileID: 1135479565}
   - component: {fileID: 1135479564}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1920,7 +1920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766973590}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.5, y: -1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1932,7 +1932,7 @@ Transform:
   - {fileID: 1188351432}
   - {fileID: 2069181063}
   - {fileID: 1081119196}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2051902021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824511429
 GameObject:
@@ -2085,6 +2085,7 @@ Transform:
   - {fileID: 1198220434}
   - {fileID: 1824511430}
   - {fileID: 444634815}
+  - {fileID: 1766973591}
   m_Father: {fileID: 1266847056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069181061
@@ -2483,33 +2484,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1824511430}
     m_Modifications:
-    - target: {fileID: 2410275289579465223, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
-      propertyPath: m_Color.b
-      value: 0.85490197
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410275289579465223, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410275289579465223, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
-      propertyPath: m_Color.r
-      value: 0.21568628
-      objectReference: {fileID: 0}
     - target: {fileID: 2589380083043929170, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
       propertyPath: m_Name
       value: VialSpawner (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144832729778626233, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
-      propertyPath: m_Color.b
-      value: 0.85490197
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144832729778626233, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144832729778626233, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
-      propertyPath: m_Color.r
-      value: 0.21568628
       objectReference: {fileID: 0}
     - target: {fileID: 5590829985962612730, guid: 8d4fb1f3918582544bc711d376f150cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2567,4 +2544,3 @@ SceneRoots:
   - {fileID: 838442062}
   - {fileID: 678662027}
   - {fileID: 1266847056}
-  - {fileID: 1766973591}
