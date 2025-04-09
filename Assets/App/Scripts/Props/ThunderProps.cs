@@ -16,6 +16,9 @@ public class ThunderProps : MonoBehaviour
     public Action<ThunderProps> onEndAction;
     private int randomSpawn;
 
+    [Header("Output")]
+    [SerializeField] RSE_LightFlash rseLightFlash;
+    
     private void OnEnable()
     {
         rseOnPause.action += Pause;
@@ -40,6 +43,7 @@ public class ThunderProps : MonoBehaviour
 
     public void EnableCollider()
     {
+        rseLightFlash.Call();
         thunderCollider.enabled = true;
     }
 

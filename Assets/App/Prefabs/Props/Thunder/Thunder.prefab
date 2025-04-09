@@ -176,6 +176,7 @@ MonoBehaviour:
   thunderAudio: {fileID: 4402523110069951616}
   rseOnPause: {fileID: 11400000, guid: 41fcf1f0bf7bef04e844630e65ce516d, type: 2}
   rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
+  rseLightFlash: {fileID: 11400000, guid: 0817966d4d7b6a14c908cf729fbc874b, type: 2}
 --- !u!1 &9101720809967056452
 GameObject:
   m_ObjectHideFlags: 0
