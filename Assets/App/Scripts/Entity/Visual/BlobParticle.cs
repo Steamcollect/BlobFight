@@ -59,6 +59,8 @@ public class BlobParticle : MonoBehaviour
         }
     }
 
+    Camera cam;
+
     private void OnEnable()
     {
         trigger.OnCollisionEnter += OnTouchEnter;
@@ -69,6 +71,11 @@ public class BlobParticle : MonoBehaviour
     {
         trigger.OnCollisionEnter -= OnTouchEnter;
         trigger.OnCollisionExitGetLastContact -= OnTouchExit;
+    }
+
+    private void Awake()
+    {
+        cam = Camera.main;
     }
 
     private void Start()
@@ -203,8 +210,9 @@ public class BlobParticle : MonoBehaviour
 
         particle.gameObject.SetActive(true);
 
-        particle.transform.position = contact.point;
+        particle.transform.position = GetTheClosestScreenCoordinate(contact.point);
         particle.transform.up = contact.normal;
+        particle.SetColor(color.fillColor);
 
         particle.Play();
     }
@@ -299,5 +307,42 @@ public class BlobParticle : MonoBehaviour
         particle.gameObject.SetActive(false);
 
         return callback;
+    }
+
+    Vector2 GetTheClosestScreenCoordinate(Vector2 worldPosition)
+    {
+        if (cam == null)
+        {
+            Debug.LogError("Main Camera not found");
+            return worldPosition;
+        }
+
+        // Convertir la position en screen space
+        Vector3 screenPos = cam.WorldToScreenPoint(worldPosition);
+
+        // Clamper aux bords de l'écran
+        Vector2 clampedScreenPos = screenPos;
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        float leftDist = screenPos.x;
+        float rightDist = screenWidth - screenPos.x;
+        float bottomDist = screenPos.y;
+        float topDist = screenHeight - screenPos.y;
+
+        float minDist = Mathf.Min(leftDist, rightDist, bottomDist, topDist);
+
+        if (minDist == leftDist)
+            clampedScreenPos.x = 0;
+        else if (minDist == rightDist)
+            clampedScreenPos.x = screenWidth;
+        else if (minDist == bottomDist)
+            clampedScreenPos.y = 0;
+        else
+            clampedScreenPos.y = screenHeight;
+
+        // Reconversion en world space
+        Vector3 worldEdgePos = cam.ScreenToWorldPoint(new Vector3(clampedScreenPos.x, clampedScreenPos.y, screenPos.z));
+        return new Vector2(worldEdgePos.x, worldEdgePos.y);
     }
 }
