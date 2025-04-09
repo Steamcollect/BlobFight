@@ -183,8 +183,8 @@ public class BlobParticle : MonoBehaviour
         else particle = deathParticles.Dequeue();
 
         particle.gameObject.SetActive(true);
-
         particle.transform.position = position;
+        particle.SetColor(color.fillColor);
 
         particle.Play();
     }
