@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,8 +57,15 @@ public class HingeHealth : EntityHealth
     {
         if (instantDestroy)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(Delay());
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        gameObject.SetActive(false);
     }
 
     private void OnDeath()
