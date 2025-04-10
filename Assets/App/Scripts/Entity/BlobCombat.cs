@@ -92,6 +92,7 @@ public class BlobCombat : MonoBehaviour
             impactForce = impactVelocity * extendForceMultiplier * (blobHealth.GetPercentage() * percentageMultiplier);
 
             motor.GetParticle().DoDamageParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
+            motor.GetAudio().PlayHitFromBlobClip(impactForce.sqrMagnitude);
         }
         else if (!motor.GetMovement().IsExtend() 
             && blobMovement.IsExtend() 
@@ -103,6 +104,7 @@ public class BlobCombat : MonoBehaviour
             blobTouch.GetTrigger().ExludeLayer(currentLayer, .1f);
 
             motor.GetParticle().DoDamageParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
+            motor.GetAudio().PlayHitFromBlobClip(impactForce.sqrMagnitude);
         }
         else if ((!motor.GetMovement().IsExtend() 
             && !blobMovement.IsExtend()) || (motor.GetMovement().IsExtend() 
@@ -112,6 +114,7 @@ public class BlobCombat : MonoBehaviour
             impactForce = impactVelocity * (blobHealth.GetPercentage() * percentageMultiplier);
 
             motor.GetParticle().DoDamageParticle(collision.GetContact(0).point, propulsionDir, impactForce.sqrMagnitude);
+            motor.GetAudio().PlayHitFromBlobClip(impactForce.sqrMagnitude);
         }
         else return;
 
