@@ -58,8 +58,9 @@ public class BlobParticle : MonoBehaviour
             particles.Enqueue(particle);
         }
     }
-
-    Camera cam;
+    
+    [Space(10)]
+    [SerializeField] RSO_MainCamera rsoMainCamera;
 
     private void OnEnable()
     {
@@ -71,11 +72,6 @@ public class BlobParticle : MonoBehaviour
     {
         trigger.OnCollisionEnter -= OnTouchEnter;
         trigger.OnCollisionExitGetLastContact -= OnTouchExit;
-    }
-
-    private void Awake()
-    {
-        cam = Camera.main;
     }
 
     private void Start()
@@ -311,14 +307,14 @@ public class BlobParticle : MonoBehaviour
 
     Vector2 GetTheClosestScreenCoordinate(Vector2 worldPosition)
     {
-        if (cam == null)
+        if (rsoMainCamera.Value == null)
         {
             Debug.LogError("Main Camera not found");
             return worldPosition;
         }
 
         // Convertir la position en screen space
-        Vector3 screenPos = cam.WorldToScreenPoint(worldPosition);
+        Vector3 screenPos = rsoMainCamera.Value.WorldToScreenPoint(worldPosition);
 
         // Clamper aux bords de l'écran
         Vector2 clampedScreenPos = screenPos;
@@ -342,7 +338,7 @@ public class BlobParticle : MonoBehaviour
             clampedScreenPos.y = screenHeight;
 
         // Reconversion en world space
-        Vector3 worldEdgePos = cam.ScreenToWorldPoint(new Vector3(clampedScreenPos.x, clampedScreenPos.y, screenPos.z));
+        Vector3 worldEdgePos = rsoMainCamera.Value.ScreenToWorldPoint(new Vector3(clampedScreenPos.x, clampedScreenPos.y, screenPos.z));
         return new Vector2(worldEdgePos.x, worldEdgePos.y);
     }
 }

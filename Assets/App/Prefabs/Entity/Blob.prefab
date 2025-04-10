@@ -112,6 +112,7 @@ MonoBehaviour:
     particlePrefab: {fileID: 7291753846233562658, guid: d14fc8cead465cb419c4ed12ac2b521e, type: 3}
   - hitStrenght: 100
     particlePrefab: {fileID: 7291753846233562658, guid: 5ee85dea0df985c4b93b720b4fe19f51, type: 3}
+  rsoMainCamera: {fileID: 11400000, guid: c9ed7ed0e3c2ec9498ec7ce92f72b366, type: 2}
 --- !u!114 &6166644353404609521
 MonoBehaviour:
   m_ObjectHideFlags: 0
