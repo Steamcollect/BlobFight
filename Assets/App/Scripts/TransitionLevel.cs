@@ -74,7 +74,7 @@ public class TransitionLevel : MonoBehaviour
                 }
             }));
 
-            gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 0.6f).OnComplete(() =>
+            gameObject.transform.DOMove(new Vector3(0, 0, transform.position.z), 0.6f).OnComplete(() =>
             {
                 randomStartText = Random.Range(0, listFightText.startText.Count);
                 if (modeDev)
@@ -135,7 +135,7 @@ public class TransitionLevel : MonoBehaviour
         {
             gameObject.transform.DOMove(transform.position + new Vector3(10, 0, 0), 0.4f).OnComplete(() =>
             {
-                gameObject.transform.DOMove(transform.position - new Vector3(100, 0, 0), 1f).OnComplete(() =>
+                gameObject.transform.DOMove(new Vector3(-100, transform.position.y, transform.position.z), 1f).OnComplete(() =>
                 {
                     rseLoadNextLevel.Call();
                 });
@@ -145,7 +145,7 @@ public class TransitionLevel : MonoBehaviour
         {
             gameObject.transform.DOMove(transform.position - new Vector3(10, 0, 0), 0.4f).OnComplete(() =>
             {
-                gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 1f).OnComplete(() =>
+                gameObject.transform.DOMove(new Vector3(100, transform.position.y, transform.position.z), 1f).OnComplete(() =>
                 {
                     rseLoadNextLevel.Call();
                 });

@@ -42,7 +42,7 @@ public class BackGround : MonoBehaviour
             {
                 if (sprite != null)
                 {
-                    StartCoroutine(FadeIn(sprite, 0.6f));
+                    StartCoroutine(FadeIn(sprite, 0.4f));
                 }
             }
         }
@@ -64,7 +64,7 @@ public class BackGround : MonoBehaviour
         {
             if (sprite != null)
             {
-                StartCoroutine(FadeOut(sprite, 2f));
+                StartCoroutine(FadeOut(sprite, 1f));
             }
         }
     }
@@ -90,7 +90,7 @@ public class BackGround : MonoBehaviour
 
     private IEnumerator FadeOut(SpriteRenderer sprite, float duration)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.4f);
 
         float startAlpha = sprite.color.a;
         float elapsed = 0f;

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 11856843}
   - component: {fileID: 11856844}
   - component: {fileID: 11856845}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 65735143}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Laser (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1332,7 +1332,7 @@ GameObject:
   - component: {fileID: 504207715}
   - component: {fileID: 504207714}
   - component: {fileID: 504207713}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square (2)
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 559539992}
   - component: {fileID: 559539991}
   - component: {fileID: 559539990}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -2053,7 +2053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 637425438}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Laser (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2092,7 +2092,7 @@ GameObject:
   - component: {fileID: 652538142}
   - component: {fileID: 652538141}
   - component: {fileID: 652538140}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square (1)
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -2830,7 +2830,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6.35
+  m_Radius: 6.3
 --- !u!212 &753202171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3273,7 +3273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 981486143}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Laser (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3307,7 +3307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983211306}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Laser (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3345,7 +3345,7 @@ GameObject:
   - component: {fileID: 1050510857}
   - component: {fileID: 1050510856}
   - component: {fileID: 1050510855}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -5091,7 +5091,7 @@ GameObject:
   - component: {fileID: 1541028024}
   - component: {fileID: 1541028023}
   - component: {fileID: 1541028022}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -5531,7 +5531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1682210969}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5888,7 +5888,7 @@ GameObject:
   - component: {fileID: 1829464366}
   - component: {fileID: 1829464365}
   - component: {fileID: 1829464364}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -6376,7 +6376,7 @@ GameObject:
   - component: {fileID: 2057725347}
   - component: {fileID: 2057725346}
   - component: {fileID: 2057725345}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Square (1)
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -6633,7 +6633,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1296352124086622637, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 1296352124086622637, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
       propertyPath: m_LocalPosition.y
