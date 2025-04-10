@@ -272,26 +272,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[0].sceneGUID
-      value: 94d7303145cd12a4b934d3365a52eacf
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[0].sceneName
-      value: 1_BiomeCelest_Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[4].sceneGUID
-      value: 7b33a7ace39394043b01074ed383fe48
-      objectReference: {fileID: 0}
-    - target: {fileID: 7157055112489788574, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
-      propertyPath: levelsName.Array.data[4].sceneName
-      value: 01_Game
-      objectReference: {fileID: 0}
     - target: {fileID: 7335306927902150455, guid: 301de14e8425dea4fa3db529797cf2d9, type: 3}
       propertyPath: m_Name
       value: SceneManagement
