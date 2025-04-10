@@ -8,12 +8,14 @@ public class ThunderProps : MonoBehaviour
     [SerializeField] private Collider2D thunderCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private ThunderAudio thunderAudio;
+    [SerializeField] private WarningThunder warningThunder;
     
     [Header("Input")]
     [SerializeField] private RSE_OnPause rseOnPause;
     [SerializeField] private RSE_OnResume rseOnResume;
 
     public Action<ThunderProps> onEndAction;
+    public Action<bool> setWarning;
     private int randomSpawn;
 
     [Header("Output")]
@@ -80,5 +82,13 @@ public class ThunderProps : MonoBehaviour
     public int GetRandomSpawn()
     {
         return randomSpawn;
+    }
+    public void SetWarningVisible()
+    {
+        warningThunder.onWarning.Invoke(true);
+    }
+    public void SetWarningInvisible()
+    {
+        warningThunder.onWarning.Invoke(false);
     }
 }
