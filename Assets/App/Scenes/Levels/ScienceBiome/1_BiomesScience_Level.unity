@@ -1815,7 +1815,7 @@ GameObject:
   - component: {fileID: 717232844}
   - component: {fileID: 717232843}
   - component: {fileID: 717232850}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: ChainBridge(Clone)
   m_TagString: Metal
   m_Icon: {fileID: 0}
@@ -3574,7 +3574,7 @@ GameObject:
   - component: {fileID: 1264555375}
   - component: {fileID: 1264555374}
   - component: {fileID: 1264555381}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: ChainBridge(Clone)
   m_TagString: Metal
   m_Icon: {fileID: 0}
@@ -3835,7 +3835,7 @@ GameObject:
   - component: {fileID: 1277100067}
   - component: {fileID: 1277100066}
   - component: {fileID: 1277100073}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: ChainBridge(Clone)
   m_TagString: Metal
   m_Icon: {fileID: 0}
@@ -4328,7 +4328,7 @@ GameObject:
   - component: {fileID: 1330460139}
   - component: {fileID: 1330460138}
   - component: {fileID: 1330460145}
-  m_Layer: 18
+  m_Layer: 0
   m_Name: ChainBridge(Clone)
   m_TagString: Metal
   m_Icon: {fileID: 0}
