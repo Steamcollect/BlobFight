@@ -17,6 +17,16 @@ public class InteractiveButton : MonoBehaviour
     [SerializeField] private Transform interactiveContent;
     [SerializeField] private TMP_Text text;
 
+    private void OnDisable()
+    {
+        interactiveContent.DOKill();
+
+        if (text != null)
+        {
+            text.DOKill();
+        }
+    }
+
     public void OnSelected()
     {
         interactiveContent.DOKill();
@@ -25,8 +35,11 @@ public class InteractiveButton : MonoBehaviour
         interactiveContent.DOPunchRotation(Vector3.forward * selectionPunchForce, selectionPunchDuration, 20, 1);
         interactiveContent.DOScale(hoverideScale, hoverideScaleTime);
 
-        text.DOKill();
-        text.DOColor(hoverColor, hoverideScaleTime);
+        if (text != null)
+        {
+            text.DOKill();
+            text.DOColor(hoverColor, hoverideScaleTime);
+        }
     }
 
     public void OnDeselected()
@@ -36,7 +49,10 @@ public class InteractiveButton : MonoBehaviour
 
         interactiveContent.DOScale(1, deselectScaleTime);
 
-        text.DOKill();
-        text.DOColor(initColor, deselectScaleTime);
+        if (text != null)
+        {
+            text.DOKill();
+            text.DOColor(initColor, deselectScaleTime);
+        }
     }
 }
