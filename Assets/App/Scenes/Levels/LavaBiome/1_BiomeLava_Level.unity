@@ -6121,7 +6121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[0]
@@ -6130,13 +6130,17 @@ PrefabInstance:
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 1477352273}
+      objectReference: {fileID: 1685691777}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1477352273}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 1949569427}
+    - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
+      propertyPath: backgroundSprites.Array.data[4]
       value: 
       objectReference: {fileID: 2016592563}
     - target: {fileID: 6495823634417824383, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
@@ -10159,6 +10163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949569426}
   - component: {fileID: 1949569427}
+  - component: {fileID: 1949569428}
   m_Layer: 0
   m_Name: illu_map1 (5)
   m_TagString: Untagged
@@ -10176,7 +10181,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 5.03125, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 428116744}
@@ -10233,6 +10238,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1949569428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949569425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxSpeedX: 0.95
+  parallaxSpeedY: 0.9
 --- !u!4 &2007084533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6093512131578614716, guid: b503aa04c52b5fc4c9fad447c60e6e15, type: 3}

@@ -432,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398854835}
   - component: {fileID: 398854836}
+  - component: {fileID: 398854837}
   m_Layer: 0
   m_Name: illu_map1 (1)
   m_TagString: Untagged
@@ -449,7 +450,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.16, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 6.5649996, y: 6.5649996, z: 0.32825}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1287515230}
@@ -506,6 +507,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &398854837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398854834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxSpeedX: 0.95
+  parallaxSpeedY: 0.9
 --- !u!1 &532287767
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,9 +567,9 @@ GameObject:
   - component: {fileID: 575633693}
   - component: {fileID: 575633695}
   - component: {fileID: 575633694}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ground (3)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1348,24 +1363,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 1988411741}
+      objectReference: {fileID: 1674180257}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 398854836}
+      objectReference: {fileID: 865564593}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 283881197}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 398854836}
+    - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
+      propertyPath: backgroundSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 1988411741}
     - target: {fileID: 6495823634417824383, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: m_Name
       value: Background
@@ -1917,9 +1936,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1832056556}
   - component: {fileID: 1832056557}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Ground
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2055,6 +2074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1988411740}
   - component: {fileID: 1988411741}
+  - component: {fileID: 1988411742}
   m_Layer: 0
   m_Name: illu_map1 (2)
   m_TagString: Untagged
@@ -2071,8 +2091,8 @@ Transform:
   m_GameObject: {fileID: 1988411739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0058, y: -11.38, z: 0}
-  m_LocalScale: {x: 14, y: 2.11, z: 1}
+  m_LocalPosition: {x: -0.0057989, y: -11.38, z: 0}
+  m_LocalScale: {x: 4.5502796, y: 2.11, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1287515230}
@@ -2129,6 +2149,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1988411742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988411739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxSpeedX: 0.95
+  parallaxSpeedY: 0.9
 --- !u!1 &2010862483
 GameObject:
   m_ObjectHideFlags: 0
