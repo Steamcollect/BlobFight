@@ -17,6 +17,7 @@ public class BlobHealth : EntityHealth, IPausable
     [SerializeField, TagName] string thunderTag;
 
     [Header("References")]
+    [SerializeField] BlobMotor motor;
     [SerializeField] private BlobTrigger blobTrigger;
     [SerializeField] private BlobMovement blobMovement;
     [SerializeField] private BlobParticle particle;
@@ -127,6 +128,8 @@ public class BlobHealth : EntityHealth, IPausable
         pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed));
 
         percentageEffect.Setup(pushBackPercentage);
+
+        particle.HitParticle(physics.GetCenter(), motor.GetColor());
     }
     public void AddPercentage(float percentageGiven)
     {

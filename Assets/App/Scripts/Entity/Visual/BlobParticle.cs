@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,10 +10,11 @@ public class BlobParticle : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int touchParticleStartingCount;
     [SerializeField] int touchExtendParticleStartingCount;
-    [SerializeField] int hitParticleStartingCount;
+    [SerializeField] int impactParticleStartingCount;
     [SerializeField] int parryParticleStartingCount;
     [SerializeField] int dustDashParticleStartingCount;
-    [SerializeField] int lavaBrunDust;
+    [SerializeField] int lavaBrunDustCount;
+    [SerializeField] int hitParticleCount;
     [SerializeField] float maxHitSpeed;
 
     [HideInInspector] public bool extendDustParticle;
@@ -32,9 +34,10 @@ public class BlobParticle : MonoBehaviour
     [SerializeField] ParticleSystem expulseParticle;
     [SerializeField] ParticleSystem parryParticlePrefab;
     [SerializeField] ParticleSystem lavaBrunDustPrefab;
+    [SerializeField] ParticleSystem hitParticlePrefab;
 
     [Space(10)]
-    [SerializeField] HitParticle[] hitParticles;
+    [SerializeField] ImpactParticle[] impactParticles;
 
     Queue<ParticleCallback> dustParticles = new();
     Queue<ParticleCallback> dustExtendParticles = new();
@@ -43,9 +46,10 @@ public class BlobParticle : MonoBehaviour
     Queue<ParticleCallback> destroyParticles = new();
     Queue<ParticleCallback> parryParticles = new();
     Queue<ParticleCallback> lavaBrunDustParticles = new();
+    Queue<ParticleCallback> hitParticles = new();
 
     [Serializable]
-    private class HitParticle
+    private class ImpactParticle
     {
         [Range(0, 100)] public float hitStrenght = 0;
 
@@ -84,13 +88,13 @@ public class BlobParticle : MonoBehaviour
 
         deathParticles.Enqueue(CreateParticle(deathParticlePrefab, OnDeathParticleEnd));
 
-        hitParticles = hitParticles.OrderBy(x => x.hitStrenght).ToArray();
-        foreach (var hitParticle in hitParticles)
-            for (int j = 0; j < hitParticleStartingCount; j++)
+        impactParticles = impactParticles.OrderBy(x => x.hitStrenght).ToArray();
+        foreach (var impactParticle in impactParticles)
+            for (int j = 0; j < impactParticleStartingCount; j++)
             {
-                ParticleCallback particle = CreateParticle(hitParticle.particlePrefab, hitParticle.OnParticleEnd);
+                ParticleCallback particle = CreateParticle(impactParticle.particlePrefab, impactParticle.OnParticleEnd);
                 particle.SetColor(motor.GetColor().fillColor);
-                hitParticle.particles.Enqueue(particle);
+                impactParticle.particles.Enqueue(particle);
             }
     }
 
@@ -117,7 +121,6 @@ public class BlobParticle : MonoBehaviour
             DustParticle(coll.GetContact(0).point, coll.GetContact(0).normal);
         }
     }
-
     private void OnTouchExit(ContactPoint2D contact)
     {
         if (contact.collider.transform.CompareTag("Blob")) return;
@@ -172,11 +175,28 @@ public class BlobParticle : MonoBehaviour
 
         particle.Play();
     }
-
     private void OnDustDashParticleEnd(ParticleCallback particle)
     {
         particle.gameObject.SetActive(false);
         dustDashParticles.Enqueue(particle);
+    }
+
+    public void HitParticle(Vector2 position, BlobColor color)
+    {
+        ParticleCallback particle;
+        if (hitParticles.Count <= 0) particle = CreateParticle(hitParticlePrefab, OnHitParticleEnd);
+        else particle = hitParticles.Dequeue();
+
+        particle.gameObject.SetActive(true);
+        particle.transform.position = position;
+        particle.SetColor(color.fillColor);
+
+        particle.Play();
+    }
+    private void OnHitParticleEnd(ParticleCallback particle)
+    {
+        particle.gameObject.SetActive(false);
+        hitParticles.Enqueue(particle);
     }
 
     public void DeathParticle(Vector2 position, BlobColor color)
@@ -191,7 +211,6 @@ public class BlobParticle : MonoBehaviour
 
         particle.Play();
     }
-
     private void OnDeathParticleEnd(ParticleCallback particle)
     {
         particle.gameObject.SetActive(false);
@@ -218,22 +237,22 @@ public class BlobParticle : MonoBehaviour
         deathParticles.Enqueue(particle);
     }
 
-    public void DoHitParticle(Vector2 position, Vector2 rotation, float speed)
+    public void DoDamageParticle(Vector2 position, Vector2 rotation, float speed)
     {
-        if (hitParticles.Length <= 0) return;
+        if (impactParticles.Length <= 0) return;
 
-        HitParticle hitParticle = null;
+        ImpactParticle hitParticle = null;
         float speedPercent = Mathf.Clamp(speed / maxHitSpeed * 100, 0, 100);
 
-        for (int i = 0; i < hitParticles.Length; i++)
+        for (int i = 0; i < impactParticles.Length; i++)
         {
-            if (hitParticles[i].hitStrenght >= speedPercent)
+            if (impactParticles[i].hitStrenght >= speedPercent)
             {
-                hitParticle = hitParticles[i];
+                hitParticle = impactParticles[i];
                 break;
             }
         }
-        if (hitParticle == null) hitParticle = hitParticles[^1];
+        if (hitParticle == null) hitParticle = impactParticles[^1];
 
         ParticleCallback particle;
         if (hitParticle.particles.Count <= 0) particle = CreateParticle(hitParticle.particlePrefab, hitParticle.OnParticleEnd); 
