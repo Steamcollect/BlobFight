@@ -181,7 +181,7 @@ public class BlobParticle : MonoBehaviour
         dustDashParticles.Enqueue(particle);
     }
 
-    public void HitParticle(Vector2 position, Vector2 rotation, BlobColor color)
+    public void HitParticle(Vector2 position, BlobColor color)
     {
         ParticleCallback particle;
         if (hitParticles.Count <= 0) particle = CreateParticle(hitParticlePrefab, OnHitParticleEnd);

@@ -1386,6 +1386,7 @@ MonoBehaviour:
   brumbleTag: Brumble
   laserTag: Laser
   thunderTag: Thunder
+  motor: {fileID: 3420423106000584793}
   blobTrigger: {fileID: 6449519957614820434}
   blobMovement: {fileID: 2542050320697814845}
   particle: {fileID: 4617812964555812280}
