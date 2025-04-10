@@ -6711,8 +6711,7 @@ PrefabInstance:
       propertyPath: minBounds.y
       value: -20
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5900110494437646974, guid: ed963f52a6e64fc4c99f5d11f3d8df47, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
