@@ -447,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windows:
   - {fileID: 4124858381571818801}
+  - {fileID: 4311551470436385322}
   - {fileID: 9143753851191477881}
   rseEnableWindow: {fileID: 11400000, guid: b6268153feccab9409a0fe9f481aba9a, type: 2}
   rseDisableWindow: {fileID: 11400000, guid: 39a6f469741e77d4690b54ecb666af5e, type: 2}
@@ -836,6 +837,17 @@ RectTransform:
 --- !u!114 &4124858381571818801 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3608312171861760920, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
+  m_PrefabInstance: {fileID: 805365993100041897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd32a9b22292484294c2b8fdf6c471a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4311551470436385322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3528721089561943171, guid: f68f3162cd2d13a4485b3d37da648bf2, type: 3}
   m_PrefabInstance: {fileID: 805365993100041897}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

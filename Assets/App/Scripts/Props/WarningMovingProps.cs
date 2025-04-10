@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class WarningMovingProps : MonoBehaviour
@@ -8,6 +10,10 @@ public class WarningMovingProps : MonoBehaviour
     [SerializeField] private bool isOnAxeX;
     [SerializeField] private float marginPos;
     [SerializeField] private Vector3 offsetPos;
+    [SerializeField] private bool doFlashWarning = true;
+    [SerializeField] private float delay = 1.0f;
+    [SerializeField] private float minDelay = 0.1f;
+    [SerializeField] private float decreaseRate = 0.05f;
 
     [Header("References")]
     [SerializeField] private GameObject warning;
@@ -16,6 +22,9 @@ public class WarningMovingProps : MonoBehaviour
     public Action<bool> onWarning;
     private Camera cam;
     private bool warningState;
+    
+    private Coroutine warningCoroutine = null;
+    private float initDelay;
 
     private void OnEnable()
     {
@@ -30,6 +39,7 @@ public class WarningMovingProps : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
+        initDelay = delay;
     }
 
     private void Update()
@@ -40,7 +50,7 @@ public class WarningMovingProps : MonoBehaviour
             {
                 UpdateWarning(true);
                 warningState = false;
-			}
+            }
             else
             {
                 UpdateWarning(false);
@@ -51,13 +61,27 @@ public class WarningMovingProps : MonoBehaviour
     private void UpdateWarning(bool seeWarning)
     {
         if(seeWarning)
-        {            
+        {
             SetPositionWarning();
-            warning.SetActive(true);
+            if (doFlashWarning)
+            {
+                warningCoroutine = StartCoroutine(FlashWarning());
+                doFlashWarning = false;
+            }
         }
         else
         {
-            warning.SetActive(false);
+            if(warningCoroutine != null)
+            {
+                if (!doFlashWarning)
+                {
+                    StopCoroutine(warningCoroutine);
+                    warning.SetActive(false);
+                    delay = initDelay;
+                    doFlashWarning = true;
+                }
+                warningCoroutine = null;
+            }
         }
     }
 
@@ -105,5 +129,15 @@ public class WarningMovingProps : MonoBehaviour
     private void ActiveWarning(bool warning)
     {
         warningState = warning;
+    } 
+    IEnumerator FlashWarning()
+    {
+        warning.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        warning.SetActive(false);
+        yield return new WaitForSeconds(delay);
+
+        delay = Mathf.Max(minDelay, delay - decreaseRate);
+        warningCoroutine = StartCoroutine(FlashWarning());
     }
 }
