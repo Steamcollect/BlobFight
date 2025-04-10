@@ -6817,7 +6817,7 @@ GameObject:
   - component: {fileID: 684137199}
   m_Layer: 18
   m_Name: Platform1
-  m_TagString: Metal
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6982,7 +6982,7 @@ GameObject:
   - component: {fileID: 746894931}
   m_Layer: 18
   m_Name: Platform1
-  m_TagString: Metal
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7341,7 +7341,7 @@ GameObject:
   - component: {fileID: 1016340165}
   m_Layer: 18
   m_Name: Platform1
-  m_TagString: Metal
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

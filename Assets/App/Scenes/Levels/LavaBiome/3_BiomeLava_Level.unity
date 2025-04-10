@@ -5970,7 +5970,7 @@ GameObject:
   - component: {fileID: 630932442}
   m_Layer: 18
   m_Name: GroundCollider
-  m_TagString: Metal
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11358,7 +11358,7 @@ GameObject:
   - component: {fileID: 1002200489}
   m_Layer: 18
   m_Name: Ground
-  m_TagString: Metal
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16986,7 +16986,7 @@ GameObject:
   - component: {fileID: 1604972240}
   m_Layer: 18
   m_Name: Ground
-  m_TagString: Metal
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
