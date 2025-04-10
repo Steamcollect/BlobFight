@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ??? ???
+  m_text: Emilie DIAZ
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e4b4f29d1ec4454eb8302e79c72feb6, type: 2}
   m_sharedMaterial: {fileID: 1323083332467660602, guid: 9e4b4f29d1ec4454eb8302e79c72feb6, type: 2}
@@ -6197,13 +6197,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5311052884015628432}
+  - {fileID: 6664643520624372069}
   - {fileID: 8873975964937776755}
   - {fileID: 4677420539441227414}
   - {fileID: 8483217357398474565}
   - {fileID: 671148252048839361}
   - {fileID: 6396252692750735366}
   - {fileID: 6913028535871945477}
-  - {fileID: 6664643520624372069}
   - {fileID: 5019811882979246512}
   m_Father: {fileID: 5088598938516452026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
