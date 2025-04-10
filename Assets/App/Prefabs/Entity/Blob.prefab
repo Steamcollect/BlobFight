@@ -753,7 +753,7 @@ MonoBehaviour:
   pushBackForce: 3
   returnPushBackForce: 0.8
   extendForceMultiplier: 3
-  percentageMultiplier: 1.5
+  percentageMultiplier: 2
   speedMultToPushExtendBlob: 0.7
   parryMaxTime: 0.3
   paryForceMultiplier: 1
