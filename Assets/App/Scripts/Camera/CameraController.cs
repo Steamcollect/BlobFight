@@ -6,13 +6,25 @@ public class CameraController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float minSize;
     [SerializeField] private float maxSize;
+
+    [Space(5)]
     [SerializeField] private float zoomMultiplier;
-    [SerializeField] private bool cameraLock;
+    
+    [Space(5)]
     [SerializeField] private float moveSmoothTime;
     [SerializeField] private float zoomSmoothTime;
+
+    [Space(5)]
+    [SerializeField] private bool cameraLock;
+
+    [Space(5)]
     [SerializeField] private Vector3 centerOffset;
+    
+    [Space(5)]
     [SerializeField] private Vector2 minBounds;
     [SerializeField] private Vector2 maxBounds;
+    
+    [Space(5)]
     [SerializeField] private float zoomInSize;
     [SerializeField] private float zoomInDelay;
 
