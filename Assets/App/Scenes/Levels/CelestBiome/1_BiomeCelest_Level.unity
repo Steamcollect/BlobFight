@@ -1384,6 +1384,7 @@ GameObject:
   - component: {fileID: 1440687635}
   - component: {fileID: 1440687637}
   - component: {fileID: 1440687636}
+  - component: {fileID: 1440687638}
   m_Layer: 0
   m_Name: illu_map1 (3)
   m_TagString: Untagged
@@ -1400,8 +1401,8 @@ Transform:
   m_GameObject: {fileID: 1440687634}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1, y: 20.7, z: 0}
-  m_LocalScale: {x: 11.291313, y: 3.9532766, z: 0.48355183}
+  m_LocalPosition: {x: -0.5637, y: 24.9, z: 0}
+  m_LocalScale: {x: 12.141803, y: 2.8957753, z: 0.48355183}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604610813}
@@ -1418,8 +1419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxSpeedX: 0.1
-  parallaxSpeedY: 0.05
+  parallaxSpeedX: 0.8
+  parallaxSpeedY: 0.7
 --- !u!212 &1440687637
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1472,6 +1473,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1440687638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440687634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxSpeedX: 0
+  parallaxSpeedY: 0
 --- !u!1 &1506091358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1520555866}
   - component: {fileID: 1520555867}
+  - component: {fileID: 1520555868}
   m_Layer: 0
   m_Name: illu_map1 (2)
   m_TagString: Untagged
@@ -1533,8 +1549,8 @@ Transform:
   m_GameObject: {fileID: 1520555865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10.2, z: 0}
-  m_LocalScale: {x: 10.9846, y: 5.49219, z: 0.54923}
+  m_LocalPosition: {x: 0.6193, y: -10.2, z: 0}
+  m_LocalScale: {x: 11.811988, y: 5.49219, z: 0.54923}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604610813}
@@ -1591,6 +1607,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1520555868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520555865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxSpeedX: 0.8
+  parallaxSpeedY: 0.7
 --- !u!4 &1563569238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7446734867358777568, guid: 0c8beb11871bd094893e9ce0643808f1, type: 3}
@@ -2085,6 +2115,7 @@ GameObject:
   - component: {fileID: 1939776935}
   - component: {fileID: 1939776937}
   - component: {fileID: 1939776936}
+  - component: {fileID: 1939776938}
   m_Layer: 0
   m_Name: illu_map1 (6)
   m_TagString: Untagged
@@ -2101,8 +2132,8 @@ Transform:
   m_GameObject: {fileID: 1939776934}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.2, z: 0}
-  m_LocalScale: {x: 11.362102, y: 1.9959775, z: 0.24949719}
+  m_LocalPosition: {x: 0.6193, y: -11.2, z: 0}
+  m_LocalScale: {x: 12.217924, y: 1.9959775, z: 0.24949719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604610813}
@@ -2119,8 +2150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxSpeedX: 0.1
-  parallaxSpeedY: 0.05
+  parallaxSpeedX: 0.8
+  parallaxSpeedY: 0.7
 --- !u!212 &1939776937
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2173,6 +2204,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1939776938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939776934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallaxSpeedX: 0
+  parallaxSpeedY: 0
 --- !u!1 &2001219217
 GameObject:
   m_ObjectHideFlags: 0
