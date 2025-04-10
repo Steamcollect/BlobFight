@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Camera cam;
+    [SerializeField] RSO_MainCamera rsoMainCamera;
 
     [Header("Input")]
     [SerializeField] private RSE_CameraShake rseCameraShake;
@@ -36,6 +37,7 @@ public class CameraController : MonoBehaviour
     private float shakeOffset = 0;
     private Vector3 posOffset = Vector3.zero;
     private bool inZoom = false;
+
     private void OnEnable()
     {
         rseCameraShake.action += Shake;
@@ -50,6 +52,11 @@ public class CameraController : MonoBehaviour
         rseCameraZoom.action -= ZoomAtPosition;
         rseOnFightStart.action -= UnlockCamera;
         rseOnFightEnd.action -= LockCamera;
+    }
+
+    private void Awake()
+    {
+        rsoMainCamera.Value = cam;
     }
 
     private void LockCamera()
