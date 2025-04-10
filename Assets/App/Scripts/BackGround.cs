@@ -90,7 +90,7 @@ public class BackGround : MonoBehaviour
 
     private IEnumerator FadeOut(SpriteRenderer sprite, float duration)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         float startAlpha = sprite.color.a;
         float elapsed = 0f;

@@ -118,7 +118,7 @@ public class TransitionLevel : MonoBehaviour
 
     private IEnumerator DelayEnd()
     {
-        float cooldown = 1.5f;
+        float cooldown = 1f;
         float timer = 0f;
 
         while (timer < cooldown)
@@ -133,9 +133,9 @@ public class TransitionLevel : MonoBehaviour
 
         if (doStart)
         {
-            gameObject.transform.DOMove(transform.position + new Vector3(10, 0, 0), 0.6f).OnComplete(() =>
+            gameObject.transform.DOMove(transform.position + new Vector3(10, 0, 0), 0.4f).OnComplete(() =>
             {
-                gameObject.transform.DOMove(transform.position - new Vector3(100, 0, 0), 1.4f).OnComplete(() =>
+                gameObject.transform.DOMove(transform.position - new Vector3(100, 0, 0), 1f).OnComplete(() =>
                 {
                     rseLoadNextLevel.Call();
                 });
@@ -143,9 +143,9 @@ public class TransitionLevel : MonoBehaviour
         }
         else
         {
-            gameObject.transform.DOMove(transform.position - new Vector3(10, 0, 0), 0.6f).OnComplete(() =>
+            gameObject.transform.DOMove(transform.position - new Vector3(10, 0, 0), 0.4f).OnComplete(() =>
             {
-                gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 1.4f).OnComplete(() =>
+                gameObject.transform.DOMove(transform.position + new Vector3(100, 0, 0), 1f).OnComplete(() =>
                 {
                     rseLoadNextLevel.Call();
                 });

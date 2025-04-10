@@ -44,13 +44,13 @@ public class RoundManager : MonoBehaviour
             if (blobs.Count == 0)
             {
                 rseOnFightEnd.Call();
-                rseMessage.Call($"{listFightText.victoryText[randomText]}", 1f, listFightText.colorMessage, MessageManager.MessageTexteType.Win);
+                rseMessage.Call($"{listFightText.victoryText[randomText]}", 0.5f, listFightText.colorMessage, MessageManager.MessageTexteType.Win);
             }
             else if (blobs.Count == 1)
             {
                 rseAddScore.Call(blobs[0]);
                 rseOnFightEnd.Call();
-                rseMessage.Call($"{listFightText.victoryText[randomText]}", 1f, blobs[0].GetColor().fillColor, MessageManager.MessageTexteType.Win);
+                rseMessage.Call($"{listFightText.victoryText[randomText]}", 0.5f, blobs[0].GetColor().fillColor, MessageManager.MessageTexteType.Win);
             }
             
         }
