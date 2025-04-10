@@ -85,10 +85,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchParticleStartingCount: 15
   touchExtendParticleStartingCount: 2
-  hitParticleStartingCount: 5
+  impactParticleStartingCount: 2
   parryParticleStartingCount: 2
   dustDashParticleStartingCount: 8
-  lavaBrunDust: 2
+  lavaBrunDustCount: 2
+  hitParticleCount: 20
   maxHitSpeed: 100000000
   extendDustParticle: 0
   motor: {fileID: 3420423106000584793}
@@ -99,11 +100,12 @@ MonoBehaviour:
   dustExtendParticlePrefab: {fileID: 4007821960139497423, guid: 657b137b5a48bdc4c8e7b2d475ca7ec7, type: 3}
   dustDashParticlePrefab: {fileID: 4007821960139497423, guid: c65029a34c35c1f4fad08b2baa04c4ff, type: 3}
   deathParticlePrefab: {fileID: 4007821960139497423, guid: b0cd292758ab7ce40a718fbbf43eac77, type: 3}
-  destroyParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
+  destroyParticlePrefab: {fileID: 4007821960139497423, guid: 450d46058ccab1e4e9fa5a7911b9de23, type: 3}
   expulseParticle: {fileID: 5425739583313106901}
   parryParticlePrefab: {fileID: 2504759276640804447, guid: 521d40bcff7f92447b34464bc1c9cf33, type: 3}
   lavaBrunDustPrefab: {fileID: 4007821960139497423, guid: 0b2f8b6d89f1a9f4e9a57aecfa3b83e0, type: 3}
-  hitParticles:
+  hitParticlePrefab: {fileID: 4007821960139497423, guid: a92d4dbf85174ac40965b33e78ecf2d9, type: 3}
+  impactParticles:
   - hitStrenght: 40
     particlePrefab: {fileID: 7291753846233562658, guid: ebb730153f3762a4a86dc21a995baa9c, type: 3}
   - hitStrenght: 70
