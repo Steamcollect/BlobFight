@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BlobAudio : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private float maxHitStrenght;
     [Header("References")]
     [SerializeField] private BlobDash blobDash;
     [SerializeField] private BlobMotor blobMotor;
@@ -90,6 +92,20 @@ public class BlobAudio : MonoBehaviour
     public void PlayHitFromBlobExtandClip()
     {
         hitFromBlobExtandSC.PlayClip();
+    }
+    public void PlayHitFromBlobClip(float strenght)
+    {
+        if(hitFromBlobSound.Length <= 0) return;
+
+        float strenghtPercent = Mathf.Clamp(strenght / maxHitStrenght * 100, 0, 100);
+        for (int i = 0; i < hitFromBlobSound.Length; i++)
+        {
+            if (hitFromBlobSound[i].hitStrenght >= strenghtPercent)
+            {
+                hitFromBlobSound[i].PlayHitSound();
+                break;
+            }
+        }
     }
     #endregion
     #region Touch
