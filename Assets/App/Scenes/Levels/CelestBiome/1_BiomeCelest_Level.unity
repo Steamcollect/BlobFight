@@ -718,10 +718,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4959770793553946794, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af0ef294f7540d4c9bb890aa4a3807c, type: 3}
 --- !u!1 &619394800
 GameObject:
@@ -1402,7 +1399,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5637, y: 24.9, z: 0}
-  m_LocalScale: {x: 12.141803, y: 2.8957753, z: 0.48355183}
+  m_LocalScale: {x: 4.0480504, y: 2.8957753, z: 0.48355183}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604610813}
@@ -1485,8 +1482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxSpeedX: 0
-  parallaxSpeedY: 0
+  parallaxSpeedX: 0.95
+  parallaxSpeedY: 0.9
 --- !u!1 &1506091358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,8 +1546,8 @@ Transform:
   m_GameObject: {fileID: 1520555865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6193, y: -10.2, z: 0}
-  m_LocalScale: {x: 11.811988, y: 5.49219, z: 0.54923}
+  m_LocalPosition: {x: -0.19402, y: -10.2, z: 0}
+  m_LocalScale: {x: 3.6912463, y: 5.49219, z: 0.54923}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604610813}
@@ -1636,7 +1633,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[0]
@@ -1653,7 +1650,7 @@ PrefabInstance:
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1520555867}
     - target: {fileID: 3839775426695487476, guid: 506b430188ed38e43aa2a07059c47e31, type: 3}
       propertyPath: backgroundSprites.Array.data[4]
       value: 
@@ -2132,8 +2129,8 @@ Transform:
   m_GameObject: {fileID: 1939776934}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6193, y: -11.2, z: 0}
-  m_LocalScale: {x: 12.217924, y: 1.9959775, z: 0.24949719}
+  m_LocalPosition: {x: 0.69841, y: -11.2, z: 0}
+  m_LocalScale: {x: 3.9106221, y: 1.9959775, z: 0.24949719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604610813}
@@ -2216,8 +2213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969423b907be2b74d94c234f0b4ed08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxSpeedX: 0
-  parallaxSpeedY: 0
+  parallaxSpeedX: 0.95
+  parallaxSpeedY: 0.9
 --- !u!1 &2001219217
 GameObject:
   m_ObjectHideFlags: 0
