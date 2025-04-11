@@ -200,9 +200,9 @@ GameObject:
   - component: {fileID: 65155167}
   - component: {fileID: 65155166}
   - component: {fileID: 65155165}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1268,9 +1268,9 @@ GameObject:
   - component: {fileID: 545965127}
   - component: {fileID: 545965126}
   - component: {fileID: 545965125}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1731,9 +1731,9 @@ GameObject:
   - component: {fileID: 726403946}
   - component: {fileID: 726403945}
   - component: {fileID: 726403944}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2082,9 +2082,9 @@ GameObject:
   - component: {fileID: 806269651}
   - component: {fileID: 806269650}
   - component: {fileID: 806269649}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2359,9 +2359,9 @@ GameObject:
   - component: {fileID: 808726262}
   - component: {fileID: 808726261}
   - component: {fileID: 808726260}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2610,9 +2610,9 @@ GameObject:
   - component: {fileID: 828719302}
   - component: {fileID: 828719301}
   - component: {fileID: 828719300}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2938,9 +2938,9 @@ GameObject:
   - component: {fileID: 839667237}
   - component: {fileID: 839667236}
   - component: {fileID: 839667235}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3189,9 +3189,9 @@ GameObject:
   - component: {fileID: 864731550}
   - component: {fileID: 864731549}
   - component: {fileID: 864731548}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3748,9 +3748,9 @@ GameObject:
   - component: {fileID: 1122827288}
   - component: {fileID: 1122827287}
   - component: {fileID: 1122827286}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3999,9 +3999,9 @@ GameObject:
   - component: {fileID: 1151784660}
   - component: {fileID: 1151784659}
   - component: {fileID: 1151784658}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4250,9 +4250,9 @@ GameObject:
   - component: {fileID: 1152586975}
   - component: {fileID: 1152586974}
   - component: {fileID: 1152586973}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4535,9 +4535,9 @@ GameObject:
   - component: {fileID: 1212030078}
   - component: {fileID: 1212030077}
   - component: {fileID: 1212030076}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5043,9 +5043,9 @@ GameObject:
   - component: {fileID: 1320126856}
   - component: {fileID: 1320126855}
   - component: {fileID: 1320126854}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5649,9 +5649,9 @@ GameObject:
   - component: {fileID: 1663564944}
   - component: {fileID: 1663564943}
   - component: {fileID: 1663564942}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6097,9 +6097,9 @@ GameObject:
   - component: {fileID: 1745187574}
   - component: {fileID: 1745187573}
   - component: {fileID: 1745187572}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6539,9 +6539,9 @@ GameObject:
   - component: {fileID: 1848724895}
   - component: {fileID: 1848724894}
   - component: {fileID: 1848724893}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6790,9 +6790,9 @@ GameObject:
   - component: {fileID: 1849530914}
   - component: {fileID: 1849530913}
   - component: {fileID: 1849530912}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7173,9 +7173,9 @@ GameObject:
   - component: {fileID: 1916022424}
   - component: {fileID: 1916022423}
   - component: {fileID: 1916022422}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7556,9 +7556,9 @@ GameObject:
   - component: {fileID: 2054115156}
   - component: {fileID: 2054115155}
   - component: {fileID: 2054115154}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7807,9 +7807,9 @@ GameObject:
   - component: {fileID: 2084821234}
   - component: {fileID: 2084821233}
   - component: {fileID: 2084821232}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: ChainBridge(Clone)
-  m_TagString: Groundable
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
