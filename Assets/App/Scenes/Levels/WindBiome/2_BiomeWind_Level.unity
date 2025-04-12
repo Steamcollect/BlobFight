@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -1828,7 +1828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -2204,7 +2204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -2456,7 +2456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -2707,7 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -3035,7 +3035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -3286,7 +3286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -3845,7 +3845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -4096,7 +4096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -4347,7 +4347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -4632,7 +4632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -5165,7 +5165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -5746,7 +5746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -6194,7 +6194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -6636,7 +6636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -6887,7 +6887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -7270,7 +7270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -7653,7 +7653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
@@ -7904,7 +7904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c730c25596eee45a9b661c034ebe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
   canTakeDamage: 1
   instantDestroy: 0
   initColor: {r: 0.65882355, g: 0.39607844, b: 0.14901961, a: 1}
