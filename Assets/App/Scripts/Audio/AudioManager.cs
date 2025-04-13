@@ -118,7 +118,7 @@ public class AudioManager : MonoBehaviour
             audioSource.spatialBlend = sound.spatialBlend;
 
             audioSource.Play();
-            StartCoroutine(AddAudioSourceToQueue(audioSource));
+            //StartCoroutine(AddAudioSourceToQueue(audioSource));
         }
     }
 

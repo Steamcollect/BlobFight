@@ -151,8 +151,7 @@ MonoBehaviour:
   centerOffset: {x: 0, y: 0, z: 0}
   minBounds: {x: -40, y: -15.2}
   maxBounds: {x: 40, y: 50.2}
-  zoomPercentage: 0.8
-  zoomInDelay: 0.08
+  zoomPercentage: 0.9
   cam: {fileID: 1532893824451167384}
   rsoMainCamera: {fileID: 11400000, guid: c9ed7ed0e3c2ec9498ec7ce92f72b366, type: 2}
   rseCameraShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
@@ -161,7 +160,6 @@ MonoBehaviour:
   rseOnFightStart: {fileID: 11400000, guid: 80f7d3ae66b15c5478d98783fd72c2b5, type: 2}
   rsoBlobInGame: {fileID: 11400000, guid: 935f72d972a341c45b0233daf8683936, type: 2}
   rsoSettingsSaved: {fileID: 11400000, guid: a857db71988974c48a8700f4999afd19, type: 2}
-  rseOnResume: {fileID: 11400000, guid: afe96eee010fd874bb3c244feb245382, type: 2}
 --- !u!114 &1506636571765898075
 MonoBehaviour:
   m_ObjectHideFlags: 0

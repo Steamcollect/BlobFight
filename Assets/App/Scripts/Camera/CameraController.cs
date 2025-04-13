@@ -26,7 +26,6 @@ public class CameraController : MonoBehaviour
     
     [Space(5)]
     [SerializeField] private float zoomPercentage = .8f;
-    [SerializeField] private float zoomInDelay;
 
     [Header("References")]
     [SerializeField] private Camera cam;
@@ -41,7 +40,6 @@ public class CameraController : MonoBehaviour
     [Header("Output")]
     [SerializeField] private RSO_BlobInGame rsoBlobInGame;
     [SerializeField] private RSO_SettingsSaved rsoSettingsSaved;
-    [SerializeField] private RSE_OnResume rseOnResume;
 
     private bool lockCam = true;
     private Vector3 velocity = Vector3.zero;
@@ -186,27 +184,42 @@ public class CameraController : MonoBehaviour
             Gizmos.DrawLine(corners[i], corners[(i + 1) % 4]);
         } 
     }
-    private void ZoomAtPosition(Vector3 targetPosition,float holdTime)
+    private void ZoomAtPosition(Vector3 targetPosition,float zoomTime, float holdTime)
     {
         if (_ZoomSequence != null)
         {
             StopCoroutine(_ZoomSequence);
         }
-        _ZoomSequence = StartCoroutine(ZoomSequence(targetPosition,holdTime));
+        _ZoomSequence = StartCoroutine(ZoomSequence(targetPosition,zoomTime, holdTime));
     }
     Coroutine _ZoomSequence;
-    private IEnumerator ZoomSequence(Vector3 targetPosition, float holdTime)
+    private IEnumerator ZoomSequence(Vector3 targetPosition, float zoomTime, float holdTime)
     {
         //  ZoomIn
         inZoom = true;
-        float zoomValue = cam.orthographicSize * zoomPercentage;
-        yield return ZoomTo(targetPosition, zoomValue, zoomInDelay);
+
+        float startSize = cam.orthographicSize;
+        Vector3 startPos = cam.transform.position;
+
+        float zoomValue = startSize * zoomPercentage;
+        print($"Start : {startSize}, target : {zoomValue}");
+        yield return ZoomTo(targetPosition, zoomValue, zoomTime);
+        //yield return new WaitForSeconds(zoomTime);
+
+        yield return new WaitForSeconds(holdTime);
+
+        if (zoomOutCoroutine != null) StopCoroutine(zoomOutCoroutine);
 
         //  Pause (zoom maintenu)
-        yield return new WaitForSeconds(holdTime);
-        rseOnResume.Call();
         inZoom = false;
+
+        if (lockCam)
+        {
+            zoomOutCoroutine = StartCoroutine(ZoomTo(startPos, startSize, zoomTime));
+        }
     }
+
+    Coroutine zoomOutCoroutine;
     IEnumerator ZoomTo(Vector3 targetPosition, float targetSize, float duration)
     {
         Vector3 startPos = cam.transform.position;
@@ -219,7 +232,15 @@ public class CameraController : MonoBehaviour
             float t = elapsedTime / duration;
 
             // Smooth transition
-            cam.transform.position = Vector3.Lerp(startPos, new Vector3(targetPosition.x, targetPosition.y, cam.transform.position.z), t);
+            Vector3 targetPos = Vector3.Lerp(startPos, new Vector3(targetPosition.x, targetPosition.y, cam.transform.position.z), t);
+
+            float halfWidth = cam.orthographicSize * cam.aspect;
+            float halfHeight = cam.orthographicSize;
+
+            targetPos.x = Mathf.Clamp(targetPos.x, minBounds.x + halfWidth, maxBounds.x - halfWidth);
+            targetPos.y = Mathf.Clamp(targetPos.y, minBounds.y + halfHeight, maxBounds.y - halfHeight);
+            cam.transform.position = targetPos;
+
             cam.orthographicSize = Mathf.Lerp(startSize, targetSize, t);
 
             yield return null;
@@ -227,5 +248,7 @@ public class CameraController : MonoBehaviour
 
         cam.transform.position = new Vector3(targetPosition.x, targetPosition.y, cam.transform.position.z);
         cam.orthographicSize = targetSize;
+
+        print(cam.orthographicSize);
     }
 }

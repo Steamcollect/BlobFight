@@ -13,20 +13,20 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] float extendForceMultiplier;
     [SerializeField] float percentageMultiplier;
 
-    [Space(5)]
+    [Space(15)]
     [SerializeField] float speedMultToPushExtendBlob;
 
     [Space(10)]
     [SerializeField] float parryMaxTime;
-    [SerializeField] float paryForceMultiplier;
+    [SerializeField] float paryExpulsionForce;
     [SerializeField] float speedRequireToParry;
 
     [Space(5)]
     [SerializeField] float minSpeedAtImpact;
     
     [Space(5)]
-    [SerializeField] float zoomDelayAtParry;
-    [SerializeField] float expulseForceParrymultiplier;
+    [SerializeField] float parryZoomTime;
+    [SerializeField] float parryTimeFreez;
 
     [Header("References")]
     [SerializeField] BlobMotor motor;
@@ -34,6 +34,7 @@ public class BlobCombat : MonoBehaviour
     [Header("Output")]
     [SerializeField] RSE_CameraZoom rseCameraZoom;
     [SerializeField] RSE_OnPause rseOnPause;
+    [SerializeField] RSE_OnResume rseOnResume;
 
     LayerMask currentLayer;
     bool canFight = true;
@@ -71,7 +72,7 @@ public class BlobCombat : MonoBehaviour
             && speed < blobTouchSpeed
             && blobTouchSpeed > speedRequireToParry)
         {
-            StartCoroutine(ParryImpact(propulsionDir * expulseForceParrymultiplier + Vector2.up * expulseForceParrymultiplier, blobTouchSpeed, collision, blobTouch));
+            StartCoroutine(ParryImpact(propulsionDir + Vector2.up * propulsionDir * .5f, blobTouchSpeed, collision, blobTouch));
             return;
         }
         else if(blobMovement.IsExtend() 
@@ -127,18 +128,20 @@ public class BlobCombat : MonoBehaviour
 
     IEnumerator ParryImpact(Vector2 propulsionDir, float blobTouchSpeed, Collision2D collision, BlobMotor blobTouch)
     {
-        rseCameraZoom.Call(motor.GetPhysics().transform.position, zoomDelayAtParry);
+        rseCameraZoom.Call(motor.GetPhysics().transform.position, parryZoomTime, parryTimeFreez);
         rseOnPause.Call();
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(parryZoomTime);
 
         Vector2 impactVelocity = propulsionDir * blobTouchSpeed;
-        Vector2 impactForce = impactVelocity * paryForceMultiplier * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
+        Vector2 impactForce = propulsionDir * paryExpulsionForce * (blobTouch.GetHealth().GetPercentage() * percentageMultiplier);
 
         motor.GetParticle().ParryParticle(collision.GetContact(0).point, propulsionDir);
         motor.GetAudio().PlayParrySound();
 
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(parryTimeFreez);
+
+        rseOnResume.Call();
 
         blobTouch.GetAudio().PlayHitFromParrySound();
 
