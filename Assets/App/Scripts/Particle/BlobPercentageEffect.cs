@@ -37,7 +37,7 @@ public class BlobPercentageEffect : MonoBehaviour
         if (isVisible) transform.position = physics.GetCenter() + posOffset;
     }
 
-    public void Setup(float percentage)
+    public void Update(float percentage)
     {
         transform.DOKill();
         text.DOKill();

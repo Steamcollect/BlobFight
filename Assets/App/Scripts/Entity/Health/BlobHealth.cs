@@ -127,14 +127,23 @@ public class BlobHealth : EntityHealth, IPausable
         blobMovement.StunImpact(stunTimePerSpeedOnImpactCurve.Evaluate(speed));
         pushBackPercentage += (percentagePerSpeedOnImpactCurve.Evaluate(speed));
 
-        percentageEffect.Setup(pushBackPercentage);
+        percentageEffect.Update(pushBackPercentage);
+
+        particle.HitParticle(physics.GetCenter(), motor.GetColor());
+    }
+    public void OnDamageImpact(float stunTime, float percentage)
+    {
+        blobMovement.StunImpact(stunTime);
+        pushBackPercentage += percentage;
+
+        percentageEffect.Update(pushBackPercentage);
 
         particle.HitParticle(physics.GetCenter(), motor.GetColor());
     }
     public void AddPercentage(float percentageGiven)
     {
         pushBackPercentage += percentageGiven;
-        percentageEffect.Setup(pushBackPercentage);
+        percentageEffect.Update(pushBackPercentage);
     }
 
     public float GetPercentage() { return 1 + pushBackPercentage; }

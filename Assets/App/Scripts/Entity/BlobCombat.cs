@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BlobCombat : MonoBehaviour
 {
-    [Header("Settings")]
+    [Header("Expulsion")]
     [SerializeField] float pushBackForce;
     [SerializeField] float returnPushBackForce;
 
@@ -14,16 +14,18 @@ public class BlobCombat : MonoBehaviour
     [SerializeField] float percentageMultiplier;
 
     [Space(15)]
+    [SerializeField] float minSpeedAtImpact;
     [SerializeField] float speedMultToPushExtendBlob;
 
-    [Space(10)]
+    [Header("Pary")]
     [SerializeField] float parryMaxTime;
     [SerializeField] float paryExpulsionForce;
     [SerializeField] float speedRequireToParry;
 
     [Space(5)]
-    [SerializeField] float minSpeedAtImpact;
-    
+    [SerializeField] float paryStunTime;
+    [SerializeField] float paryPercentageGiven;
+
     [Space(5)]
     [SerializeField] float parryZoomTime;
     [SerializeField] float parryTimeFreez;
@@ -155,7 +157,7 @@ public class BlobCombat : MonoBehaviour
         blobTouch.GetAudio().PlayParryHitSound();
 
         // Set health
-        blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
+        blobTouch.GetHealth().OnDamageImpact(paryStunTime, paryPercentageGiven);
 
         // Set cooldowns
         StartCoroutine(ImpactCooldown(blobTouch));

@@ -756,11 +756,13 @@ MonoBehaviour:
   returnPushBackForce: 0.8
   extendForceMultiplier: 3
   percentageMultiplier: 1.7
+  minSpeedAtImpact: 10000
   speedMultToPushExtendBlob: 0.7
   parryMaxTime: 0.3
-  paryExpulsionForce: 3000100
+  paryExpulsionForce: 400000
   speedRequireToParry: 100
-  minSpeedAtImpact: 10000
+  paryStunTime: 0.3
+  paryPercentageGiven: 0.4
   parryZoomTime: 0.1
   parryTimeFreez: 0.4
   motor: {fileID: 3420423106000584793}
