@@ -12,6 +12,7 @@ public class BlobAudio : MonoBehaviour
     [SerializeField] private SoundComponent dashSC;
     [Space(10)]
     [SerializeField] private SoundComponent parrySC;
+    [SerializeField] private SoundComponent parryHitSC;
     [Space(10)]
     [SerializeField] private SoundComponent deathFromLavaSC;
     [SerializeField] private SoundComponent deathFromVoidSC;
@@ -45,6 +46,10 @@ public class BlobAudio : MonoBehaviour
     public void PlayParrySound()
     {
         parrySC.PlayClip();
+    }
+    public void PlayParryHitSound()
+    {
+        parryHitSC.PlayClip();
     }
     #region Death
     public void PlayDeathFromLavaClip()

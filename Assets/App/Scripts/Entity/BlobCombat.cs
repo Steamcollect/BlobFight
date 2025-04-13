@@ -138,7 +138,7 @@ public class BlobCombat : MonoBehaviour
         motor.GetParticle().ParryParticle(collision.GetContact(0).point, propulsionDir);
         motor.GetAudio().PlayParrySound();
 
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.4f);
 
         blobTouch.GetAudio().PlayHitFromParrySound();
 
@@ -147,7 +147,9 @@ public class BlobCombat : MonoBehaviour
         motor.GetPhysics().ResetVelocity();
 
         blobTouch.GetPhysics().AddForce(impactForce * pushBackForce);
-        motor.GetPhysics().AddForce(-impactVelocity * returnPushBackForce);
+        //motor.GetPhysics().AddForce(-impactVelocity * returnPushBackForce);
+
+        blobTouch.GetAudio().PlayParryHitSound();
 
         // Set health
         blobTouch.GetHealth().OnDamageImpact(impactForce.sqrMagnitude);
