@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 maxBounds;
     
     [Space(5)]
-    [SerializeField] private float zoomInSize;
+    [SerializeField] private float zoomPercentage = .8f;
     [SerializeField] private float zoomInDelay;
 
     [Header("References")]
@@ -199,7 +199,8 @@ public class CameraController : MonoBehaviour
     {
         //  ZoomIn
         inZoom = true;
-        yield return ZoomTo(targetPosition, zoomInSize, zoomInDelay);
+        float zoomValue = cam.orthographicSize * zoomPercentage;
+        yield return ZoomTo(targetPosition, zoomValue, zoomInDelay);
 
         //  Pause (zoom maintenu)
         yield return new WaitForSeconds(holdTime);

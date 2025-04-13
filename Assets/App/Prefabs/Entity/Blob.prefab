@@ -757,10 +757,10 @@ MonoBehaviour:
   percentageMultiplier: 1.7
   speedMultToPushExtendBlob: 0.7
   parryMaxTime: 0.3
-  paryForceMultiplier: 1
-  speedRequireToParry: 0
+  paryForceMultiplier: 1.6
+  speedRequireToParry: 100
   minSpeedAtImpact: 1000
-  zoomDelayAtParry: 0.6
+  zoomDelayAtParry: 0.2
   expulseForceParrymultiplier: 2
   motor: {fileID: 3420423106000584793}
   rseCameraZoom: {fileID: 11400000, guid: cd9b026eb73ebdf4e81607f2f42fe998, type: 2}

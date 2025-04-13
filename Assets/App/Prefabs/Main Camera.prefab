@@ -146,13 +146,13 @@ MonoBehaviour:
   maxSize: 16
   zoomMultiplier: 1.1
   moveSmoothTime: 0.2
-  zoomSmoothTime: 0.2
+  zoomSmoothTime: 0.5
   cameraLock: 0
   centerOffset: {x: 0, y: 0, z: 0}
   minBounds: {x: -40, y: -15.2}
   maxBounds: {x: 40, y: 50.2}
-  zoomInSize: 10
-  zoomInDelay: 0.15
+  zoomPercentage: 0.8
+  zoomInDelay: 0.08
   cam: {fileID: 1532893824451167384}
   rsoMainCamera: {fileID: 11400000, guid: c9ed7ed0e3c2ec9498ec7ce92f72b366, type: 2}
   rseCameraShake: {fileID: 11400000, guid: f9d8971aa18a7b348b56c214e1f02c61, type: 2}
