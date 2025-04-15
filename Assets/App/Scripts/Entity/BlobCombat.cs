@@ -149,9 +149,7 @@ public class BlobCombat : MonoBehaviour
 
         // Set new velocity
         blobTouch.GetPhysics().ResetVelocity();
-        motor.GetPhysics().ResetVelocity();
-
-        blobTouch.GetPhysics().AddForce(impactForce * pushBackForce);
+        blobTouch.GetPhysics().AddForce(impactForce);
         //motor.GetPhysics().AddForce(-impactVelocity * returnPushBackForce);
 
         blobTouch.GetAudio().PlayParryHitSound();
