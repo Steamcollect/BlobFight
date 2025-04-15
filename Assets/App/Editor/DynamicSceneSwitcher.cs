@@ -10,9 +10,8 @@ public class DynamicSceneSwitcher : EditorWindow
     private string[] scenePaths;
 
     private GUIStyle buttonStyle;
+    private GUIStyle buttonRefreshStyle;
     private float scale;
-
-    private GUIContent refreshIconContent;
 
     [MenuItem("Tools/Dynamic Scenes Switcher")]
     public static void ShowWindow()
@@ -26,10 +25,6 @@ public class DynamicSceneSwitcher : EditorWindow
     private void OnEnable()
     {
         RefreshSceneList();
-        refreshIconContent = new GUIContent(
-            EditorGUIUtility.IconContent("d_RotateTool").image,
-            "Refresh the scene list"
-        );
     }
 
     private void RefreshSceneList()
@@ -43,6 +38,8 @@ public class DynamicSceneSwitcher : EditorWindow
     private void SetupStyles()
     {
         float width = position.width;
+
+        // Calcule dynamique
         scale = Mathf.Clamp(width / 400f, 0.75f, 2f);
 
         buttonStyle = new GUIStyle(GUI.skin.button)
@@ -51,6 +48,16 @@ public class DynamicSceneSwitcher : EditorWindow
             padding = new RectOffset(10, 10, 8, 8),
             fontStyle = FontStyle.Normal,
             fontSize = Mathf.RoundToInt(14 * scale),
+            alignment = TextAnchor.MiddleCenter
+        };
+
+        buttonRefreshStyle = new GUIStyle(GUI.skin.button)
+        {
+            margin = new RectOffset(40, 40, 10, 10),
+            padding = new RectOffset(15, 15, 10, 10),
+            fontStyle = FontStyle.Bold,
+            fontSize = Mathf.RoundToInt(16 * scale),
+            normal = { textColor = Color.white },
             alignment = TextAnchor.MiddleCenter
         };
     }
@@ -81,31 +88,14 @@ public class DynamicSceneSwitcher : EditorWindow
             EditorGUILayout.EndScrollView();
         }
 
-        // --- Refresh Icon en bas à droite proprement ---
-        float iconSize = 20f;
-        float bgSize = 28f;
-        float spacingFromEdge = 8f;
+        EditorGUILayout.Space(5);
 
-        // On s'assure qu'il ne touche pas la scrollbar
-        float xPos = position.width - bgSize - spacingFromEdge;
-        float yPos = position.height - bgSize - spacingFromEdge;
-
-        Rect bgRect = new Rect(xPos, yPos, bgSize, bgSize);
-        Rect iconRect = new Rect(
-            xPos + (bgSize - iconSize) / 2,
-            yPos + (bgSize - iconSize) / 2,
-            iconSize,
-            iconSize
-        );
-
-        // Fond discret derrière l’icône
-        GUI.Box(bgRect, GUIContent.none);
-
-        // Bouton invisible sur l’icône, avec tooltip
-        if (GUI.Button(iconRect, refreshIconContent, GUIStyle.none))
+        if (GUILayout.Button("Refresh Scenes", buttonRefreshStyle))
         {
             RefreshSceneList();
             Repaint();
         }
+
+        EditorGUILayout.Space(5);
     }
 }
