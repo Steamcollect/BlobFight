@@ -752,15 +752,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c788643c24a4be4da7525b250829326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushBackForce: 3
+  pushBackForce: 1.5
   returnPushBackForce: 0.8
-  extendForceMultiplier: 3
+  extendForceMultiplier: 2
   percentageMultiplier: 1.7
   minSpeedAtImpact: 10000
   speedMultToPushExtendBlob: 0.7
-  parryMaxTime: 0.3
-  paryExpulsionForce: 400000
-  speedRequireToParry: 100
+  parryMaxTime: 0.1
+  paryExpulsionForce: 30000
+  speedRequireToParry: 500
   paryStunTime: 0.3
   paryPercentageGiven: 0.4
   parryZoomTime: 0.1
