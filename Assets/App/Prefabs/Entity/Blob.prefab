@@ -640,7 +640,7 @@ MonoBehaviour:
     mass: 70
     scale: 2.5
     timeToSwap: 0.04
-  extendStaminaCost: 50
+  extendStaminaCost: 100
   staminaPercentageRequireToExtend: 0.45
   extendTimeInAireForBigDust: 0.2
   slidingGravity: 2.5
@@ -758,7 +758,7 @@ MonoBehaviour:
   percentageMultiplier: 1.7
   minSpeedAtImpact: 10000
   speedMultToPushExtendBlob: 0.7
-  parryMaxTime: 0.1
+  parryMaxTime: 0.04
   paryExpulsionForce: 30000
   speedRequireToParry: 500
   paryStunTime: 0.3
