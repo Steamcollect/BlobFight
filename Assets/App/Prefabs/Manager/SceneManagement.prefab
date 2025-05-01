@@ -70,8 +70,6 @@ MonoBehaviour:
     sceneGUID: ca9256da3c5d90f48a0d1d46286a810c
   - sceneName: 2_BiomeWind_Level
     sceneGUID: 7b147f3051ee97b48b714a04324d2454
-  - sceneName: 3_BiomeWind_Level
-    sceneGUID: 1ff207b03c0267d43864d5887695aed4
   rseLoadNextLevel: {fileID: 11400000, guid: 4ea1c4db4d6f3094d9932c00e825c542, type: 2}
   rseReturnToMainMenu: {fileID: 11400000, guid: 6197bf0e98fb7d24f8073ae8690275b7, type: 2}
   rseQuit: {fileID: 11400000, guid: 90f1311fdebe863438f72eb1b20bc54b, type: 2}
